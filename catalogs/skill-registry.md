@@ -10,18 +10,18 @@ tags: [goop, skills, registry]
 
 Every skill in the fleet. Click to see SKILL.md. Edit to change.
 
-## Topic Skills (created by Skrypt)
+## Topic Skills (created by Skills)
 
 | Skill | Topic | Used By |
 |---|---|---|
-| (none yet — Skrypt creates from queue) | | |
+| (none yet — Skills creates from queue) | | |
 
 ## Creating a Skill
 
-**Automatic:** Kashik → queue → Skrypt writes.
+**Automatic:** Context → queue → Skills writes.
 
 **Manual:** Edit a topic's `.system/queue.md`:
 ```markdown
-## [SKRYPT] items
+## [SKILLS] items
 - [ ] my-skill — description, when to use
 ```

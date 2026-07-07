@@ -11,10 +11,10 @@ tags: [goop, architecture, nesting]
 The object hierarchy: **Context → Loops → Agents → Skills**
 
 ```
-┌─ Context (Wiki pages, Continuity entries) ← Kashik maintains
-│  ┌─ Loops (cron, kanban, webhooks)        ← Kadens wires
-│  │  ┌─ Agents (profiles, SOUL.md)          ← Klerik creates
-│  │  │  ┌─ Skills (SKILL.md bundles)        ← Skrypt authors
+┌─ Context (Wiki pages, Continuity entries) ← Context maintains
+│  ┌─ Loops (cron, kanban, webhooks)        ← Loops wires
+│  │  ┌─ Agents (profiles, SOUL.md)          ← Agents creates
+│  │  │  ┌─ Skills (SKILL.md bundles)        ← Skills authors
 ```
 
 Each layer builds on the previous. The nesting means each factory's output is the next factory's input.
@@ -23,9 +23,9 @@ Each layer builds on the previous. The nesting means each factory's output is th
 
 | Factory | Produces | Feeds |
 |---|---|---|
-| Kashik | Context (Wiki pages, queue items) | All factories |
-| Skrypt | Skills | Klerik |
-| Klerik | Agents | Kadens |
-| Kadens | Loops | The Fleet |
+| Context | Context (Wiki pages, queue items) | All factories |
+| Skills | Skills | Agents |
+| Agents | Agents | Loops |
+| Loops | Loops | The Fleet |
 
 The full chain: idea → context → skill → agent → loop, all automatic.

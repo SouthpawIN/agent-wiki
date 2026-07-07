@@ -14,23 +14,23 @@ Every running loop. Edit schedule, pause, or remove.
 
 | Loop | Schedule | Status |
 |---|---|---|
-| kashik-context-factory | every 30m | ⏳ pending |
-| skrypt-skill-factory | every 15m | ⏳ pending |
-| klerik-agent-factory | every 15m | ⏳ pending |
-| kadens-loop-factory | every 15m | ⏳ pending |
+| context-factory | every 30m | ⏳ pending |
+| skills-factory | every 15m | ⏳ pending |
+| agents-factory | every 15m | ⏳ pending |
+| loops-factory | every 15m | ⏳ pending |
 
 ## Topic Loops
 
 | Loop | Schedule | Agent | Topic | Status |
 |---|---|---|---|---|
-| (none yet — Kadens creates from queue) | | | | |
+| (none yet — Loops creates from queue) | | | | |
 
 ## Creating a Loop
 
-**Automatic:** Kadens detects unlooped agents → wires them.
+**Automatic:** Loops detects unlooped agents → wires them.
 
 **Manual:** Edit a topic's `.system/queue.md`:
 ```markdown
-## [KADENS] items
+## [LOOPS] items
 - [ ] my-cron — wire my-agent to every hour
 ```

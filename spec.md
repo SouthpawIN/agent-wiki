@@ -19,12 +19,12 @@ Topics are miniature GOOP instances. Markdown is the API between human and machi
 Every GOOP system is made of four typed objects. Each has a factory, a Hermes write mechanism,
 and lives in the wiki:
 
-| Primitive | Factory | Hermes Write | Wiki Path |
-|---|---|---|---|
-| **Context** | Kashik | `write_file` to wiki pages | `topics/<topic>/.system/` + `README.md` |
-| **Loops** | Kadens | `cronjob(create)`, kanban create | `topics/<topic>/loops/` |
-| **Agents** | Klerik | `hermes profile create` + SOUL.md write | `topics/<topic>/agents/` |
-| **Skills** | Skrypt | `skill_manage(action='create')` | `topics/<topic>/skills/` |
+| Primitive | Factory | Hermes Write | Wiki Path | Standard |
+|---|---|---|---|---|---|
+| **Context** | Context | `write_file` to wiki pages | `topics/<topic>/.system/` + `README.md` | wiki markdown |
+| **Loops** | Loops | `cronjob(create)`, kanban create | `topics/<topic>/loops/` | cron/kanban config |
+| **Agents** | Agents | `hermes profile create` + SOUL.md write | `topics/<topic>/agents/` | `AGENTS.md` |
+| **Skills** | Skills | `skill_manage(action='create')` | `topics/<topic>/skills/` | `SKILL.md` |
 
 Primitives nest: Context contains Loops which invoke Agents which load Skills.
 The wiki directory structure mirrors this nesting exactly.
@@ -63,7 +63,7 @@ wiki/topics/<topic-slug>/
 │
 ├── README.md                 ← FRONT END: human-readable dashboard
 ├── .system/                  ← BACK END: machine coordination (hidden by default)
-│   ├── continuity.md         ← Kashik's raw understanding from chat sessions
+│   ├── continuity.md         ← Context's raw understanding from chat sessions
 │   ├── injections.md         ← messages queued for Nous Girl to surface
 │   └── queue.md              ← pending factory work items, tagged by factory
 ├── skills/                   ← skills scoped to this topic
@@ -97,8 +97,8 @@ wiki/topics/_global/
 From idea to working system, driven entirely by markdown reads and writes:
 
 1. Chris speaks an idea to Nous Girl — session auto-saved to Hermes session DB
-2. Kashik (cron, 30m) reads sessions via `session_search(profile='nous-girl')`, writes wiki pages
-3. Kashik populates `queue.md` with tagged items: `[SKRYPT]`, `[KLERIK]`, `[KADENS]`
+2. Context (cron, 30m) reads sessions via `session_search(profile='nous-girl')`, writes wiki pages
+3. Context populates `queue.md` with tagged items: `[SKILLS]`, `[AGENTS]`, `[LOOPS]`
 4. Factories watch queue.md, claim items, spawn `delegate_task`, write artifacts
 5. Factories write status to `.system/injections.md`
 6. Nous Girl reads injections before responding, weaves status into conversation naturally
@@ -106,27 +106,27 @@ From idea to working system, driven entirely by markdown reads and writes:
 ### The Queue Format
 
 ```markdown
-## [SKRYPT] items
+## [SKILLS] items
 - [ ] github-api-paginate — needed for PR watcher
 - [x] github-auth-setup — DONE → skills/github-auth-setup.md
 
-## [KLERIK] items
+## [AGENTS] items
 - [ ] pr-watcher — new agent to run PR monitoring on cron
 
-## [KADENS] items
+## [LOOPS] items
 - [ ] pr-check-cron — wire pr-watcher to 30-min schedule
 ```
 
-Factories read, claim (`[~]`), and mark done (`[x]`). Only Kashik creates entries.
+Factories read, claim (`[~]`), and mark done (`[x]`). Only Context creates entries.
 
 ### The Injection Format
 
 ```markdown
 ## [UNREAD]
-[KLERIK] pr-watcher profile provisioned. SOUL.md ready for review.
+[AGENTS] pr-watcher profile provisioned. SOUL.md ready for review.
 
 ## [READ]
-[KADENS] Cron deployed for pr-check. First run in 2 minutes.
+[LOOPS] Cron deployed for pr-check. First run in 2 minutes.
 ```
 
 Nous Girl's system prompt: check all topics' `.system/injections.md` for `[UNREAD]` blocks.
@@ -140,10 +140,10 @@ The wiki is user-editable. This is the steering wheel:
 
 | What to change | Where to edit |
 |---|---|
-| "You misunderstood my goal" | `.system/continuity.md` — correct Kashik's understanding |
+| "You misunderstood my goal" | `.system/continuity.md` — correct Context's understanding |
 | "I don't want that agent" | `agents/<agent>.md` — mark cancelled |
-| "Change the cron frequency" | `loops/<loop>.md` — Kadens reads this |
-| "Force-create a skill now" | `.system/queue.md` — add `[SKRYPT] my-skill` |
+| "Change the cron frequency" | `loops/<loop>.md` — Loops reads this |
+| "Force-create a skill now" | `.system/queue.md` — add `[SKILLS] my-skill` |
 | "Show me what's running" | `README.md` — the human dashboard |
 
 No chat command. No config file. No YAML wizard. Just edit markdown.
@@ -154,7 +154,7 @@ No chat command. No config file. No YAML wizard. Just edit markdown.
 
 All factories use the same **4-stage pipeline**: Collect evidence → Generate candidates → Evaluate → Apply.
 
-### Kashik — Context Factory
+### Context Factory
 
 **Trigger:** Every 30 minutes.
 **Input:** Nous Girl's session DB (`session_search(profile='nous-girl')`).
@@ -166,9 +166,9 @@ Pipeline:
 3. **Evaluate:** Does this understanding match the raw chat? Are queue items actionable?
 4. **Apply:** Write wiki pages. Never overwrite user-edited continuity lines.
 
-### Skrypt — Skill Factory
+### Skills Factory
 
-**Trigger:** New `[SKRYPT]` entries in any topic's queue.
+**Trigger:** New `[SKILLS]` entries in any topic's queue.
 **Output:** SKILL.md files via `skill_manage(action='create')`.
 
 Pipeline:
@@ -177,9 +177,9 @@ Pipeline:
 3. **Evaluate:** Score against rubric: completeness, clarity, reusability, evidence.
 4. **Apply:** `skill_manage(action='create')` with winning candidate. Write summary.
 
-### Klerik — Agent Factory
+### Agents Factory
 
-**Trigger:** New `[KLERIK]` entries. Also watches Skill Registry for unhosted skills.
+**Trigger:** New `[AGENTS]` entries. Also watches Skill Registry for unhosted skills.
 **Output:** Hermes profiles via `hermes profile create`.
 
 Pipeline:
@@ -188,11 +188,11 @@ Pipeline:
 3. **Evaluate:** Scoring matrix: fit to requirements, fleet composition, toolset.
 4. **Apply:** `hermes profile create` + write SOUL.md. Write summary to agent catalog.
 
-**No-self-edit rule:** Klerik cannot edit Klerik's own profile.
+**No-self-edit rule:** The Agents factory cannot edit its own profile.
 
-### Kadens — Loop Factory
+### Loops Factory
 
-**Trigger:** New `[KADENS]` entries. Also watches Agent Registry for unlooped agents.
+**Trigger:** New `[LOOPS]` entries. Also watches Agent Registry for unlooped agents.
 **Output:** Cron jobs via `cronjob(create)`, kanban tasks.
 
 Pipeline:
@@ -212,10 +212,10 @@ The Agent Wiki system uses only existing Hermes primitives:
 | Component | Hermes Primitive | Status |
 |---|---|---|
 | Nous Girl (chat surface) | Profile with stripped toolsets | Profile exists |
-| Kashik (context factory) | Cron job + `session_search()` + `write_file()` | Needs creation |
-| Skrypt (skill factory) | Cron job + `delegate_task()` + `skill_manage()` | Needs creation |
-| Klerik (agent factory) | Cron job + `delegate_task()` + profile create | Needs creation |
-| Kadens (loop factory) | Cron job + `delegate_task()` + `cronjob()` | Needs creation |
+| Context (context factory) | Cron job + `session_search()` + `write_file()` | Needs creation |
+| Skills (skill factory) | Cron job + `delegate_task()` + `skill_manage()` | Needs creation |
+| Agents (agent factory) | Cron job + `delegate_task()` + profile create | Needs creation |
+| Loops (loop factory) | Cron job + `delegate_task()` + `cronjob()` | Needs creation |
 | Session storage | Hermes session DB (automatic) | ✅ Built-in |
 | Cross-profile reads | `session_search(profile='...')` | ✅ Built-in |
 | Wiki directory | `~/.hermes/wiki/` on filesystem | ✅ Already exists |
@@ -232,10 +232,10 @@ mkdir -p ~/.hermes/wiki/topics/_global/.system
 # 2. Strip tools from Nous Girl
 hermes -p nous-girl config set agent.toolsets "[]"
 
-# 3. Kashik cron — reads chat, writes wiki
+# 3. Context cron — reads chat, writes wiki
 hermes cron create "every 30m" \
-  --name "kashik-context-factory" \
-  --prompt "You are Kashik, the Context factory of the Agent Wiki system.
+  --name "context-factory" \
+  --prompt "You are the Context factory of the Agent Wiki system.
 
   EVERY TICK:
   1. Read Nous Girl's latest sessions: session_search(profile='nous-girl', sort='newest', limit=5)
@@ -243,37 +243,37 @@ hermes cron create "every 30m" \
   3. For each project/idea mentioned, create or update wiki/topics/<topic-slug>/
      - Write/update README.md (human-facing dashboard)
      - Write/update .system/continuity.md (your raw understanding)
-     - Append to .system/queue.md: [SKRYPT]/[KLERIK]/[KADENS] items as appropriate
+     - Append to .system/queue.md: [SKILLS]/[AGENTS]/[LOOPS] items as appropriate
   4. Update wiki/topics/_global/README.md (fleet dashboard) if roster changed
   5. NEVER overwrite user-edited continuity lines
   6. Log all actions to wiki/log.md"
 
-# 4. Skrypt cron — writes skills on demand
+# 4. Skills cron — writes skills on demand
 hermes cron create "every 15m" \
-  --name "skrypt-skill-factory" \
-  --prompt "You are Skrypt, the Skill factory.
-  Read all topics' .system/queue.md files. For each [SKRYPT] item:
+  --name "skills-factory" \
+  --prompt "You are the Skills factory.
+  Read all topics' .system/queue.md files. For each [SKILLS] item:
   1. Mark [~] (in progress)
   2. delegate_task to write a SKILL.md
   3. Call skill_manage(action='create') with the result
   4. Mark [x] done
   5. Write injection to .system/injections.md"
 
-# 5. Klerik cron — provisions agents
+# 5. Agents cron — provisions agents
 hermes cron create "every 15m" \
-  --name "klerik-agent-factory" \
-  --prompt "You are Klerik, the Agent factory.
-  Read queue.md for [KLERIK] items. For each:
+  --name "agents-factory" \
+  --prompt "You are the Agents factory.
+  Read queue.md for [AGENTS] items. For each:
   1. delegate_task to draft SOUL.md + profile config
   2. hermes profile create <name>
   3. Write summary to topics/<topic>/agents/<name>.md
   4. Inject status"
 
-# 6. Kadens cron — wires execution
+# 6. Loops cron — wires execution
 hermes cron create "every 15m" \
-  --name "kadens-loop-factory" \
-  --prompt "You are Kadens, the Loop factory.
-  Read queue.md for [KADENS] items AND agents/ for new agents without loops.
+  --name "loops-factory" \
+  --prompt "You are the Loops factory.
+  Read queue.md for [LOOPS] items AND agents/ for new agents without loops.
   For each: cronjob(create) or kanban create as appropriate.
   Write summary to loops/<name>.md. Inject status."
 ```
@@ -290,7 +290,7 @@ hermes cron create "every 15m" \
 | Factories as named agents with persistent memory | Factories as cron-triggered `delegate_task` roles |
 | 3-month build, 8 phases | ~1 hour to wire up (all Hermes primitives) |
 | Separate state store | Filesystem IS the database |
-| Wiki produced by Record Keeper | Wiki IS the system; Kashik maintains it |
+| Wiki produced by Record Keeper | Wiki IS the system; Context maintains it |
 | 3 primitives (Skills, Agents, Loops) | 4 primitives (adds Context, completing the stack) |
 
 ---
@@ -304,4 +304,4 @@ hermes cron create "every 15m" \
 5. **Topics are self-contained GOOP instances.** Each topic contains its own Context, Loops, Agents, and Skills.
 6. **Factories are thin.** Each factory is a cron job that spawns one `delegate_task`. No persistent factory profiles needed.
 7. **Injections keep the human in the loop.** Factories don't message the user. They write to a file. Nous Girl reads it.
-8. **No self-edit.** Klerik cannot edit Klerik. Kashik cannot rewrite its own continuity without user approval.
+8. **No self-edit.** Agents cannot edit Agents. Context cannot rewrite its own continuity without user approval.

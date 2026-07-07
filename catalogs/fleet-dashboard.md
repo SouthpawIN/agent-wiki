@@ -26,14 +26,14 @@ tags: [goop, fleet, overview]
 
 | Loop | Type | Schedule | Status |
 |---|---|---|---|
-| kashik-context-factory | cron | every 30m | ⏳ pending |
-| skrypt-skill-factory | cron | every 15m | ⏳ pending |
-| klerik-agent-factory | cron | every 15m | ⏳ pending |
-| kadens-loop-factory | cron | every 15m | ⏳ pending |
+| context-factory | cron | every 30m | ⏳ pending |
+| skills-factory | cron | every 15m | ⏳ pending |
+| agents-factory | cron | every 15m | ⏳ pending |
+| loops-factory | cron | every 15m | ⏳ pending |
 
 ## Quick Actions
 
-- **New idea?** Tell Nous Girl — Kashik creates the topic automatically
-- **Force a skill:** Edit `.system/queue.md` → add `[SKRYPT] my-skill`
+- **New idea?** Tell Nous Girl — Context creates the topic automatically
+- **Force a skill:** Edit `.system/queue.md` → add `[SKILLS] my-skill`
 - **Fix a misunderstanding:** Edit `.system/continuity.md` directly
 - **See what factories are doing:** Read `log.md`

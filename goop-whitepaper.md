@@ -20,7 +20,7 @@ GOOP reframes multi-agent AI fleets as object-oriented programming with three pr
 - **Agents** = classes (named entities with identity)
 - **Loops** = main/workflow (execution infrastructure)
 
-Three factory meta-agents (Skrypt, Klerik, Kadens) produce new instances using a unified
+Three factory meta-agents (Skills, Agents, Loops) produce new instances using a unified
 DSLy/GEPA optimization pipeline. A shared Continuity Stream + Wiki provides the memory substrate.
 
 ## What Agent Wiki Changes

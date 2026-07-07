@@ -22,14 +22,14 @@ Every agent in the fleet. Click any agent to see its SOUL. Edit to change behavi
 
 | Agent | Profile | Skills | Loops | Topic | Status |
 |---|---|---|---|---|---|
-| (none yet — Klerik creates from queue) | | | | | |
+| (none yet — Agents creates from queue) | | | | | |
 
 ## Creating an Agent
 
-**Automatic:** Kashik → queue → Klerik provisions.
+**Automatic:** Context → queue → Agents provisions.
 
 **Manual:** Edit a topic's `.system/queue.md`:
 ```markdown
-## [KLERIK] items
+## [AGENTS] items
 - [ ] my-agent — description, skills needed
 ```

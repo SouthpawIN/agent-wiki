@@ -35,10 +35,10 @@ hermes profile create nous-girl
 hermes -p nous-girl config set agent.toolsets "[]"
 
 # Start the factory crons
-hermes cron create "every 30m" --name "kashik-context-factory" --prompt "..."
-hermes cron create "every 15m" --name "skrypt-skill-factory" --prompt "..."
-hermes cron create "every 15m" --name "klerik-agent-factory" --prompt "..."
-hermes cron create "every 15m" --name "kadens-loop-factory" --prompt "..."
+hermes cron create "every 30m" --name "context-factory" --prompt "..."
+hermes cron create "every 15m" --name "skills-factory" --prompt "..."
+hermes cron create "every 15m" --name "agents-factory" --prompt "..."
+hermes cron create "every 15m" --name "loops-factory" --prompt "..."
 
 # Start chatting
 hermes -p nous-girl --tui
@@ -54,10 +54,10 @@ hermes -p nous-girl --tui
 
 | Primitive | Factory | What It Is |
 |---|---|---|
-| **Context** | Kashik | Wiki pages — raw understanding from chat, structured into knowledge |
-| **Loops** | Kadens | Cron jobs, kanban tasks — execution that runs over time |
-| **Agents** | Klerik | Hermes profiles — named entities with personality, tools, and skills |
-| **Skills** | Skrypt | SKILL.md bundles — reusable procedures loaded on demand |
+| **Context** | Context | Wiki pages — raw understanding from chat, structured into knowledge |
+| **Loops** | Loops | Cron jobs, kanban tasks — execution that runs over time |
+| **Agents** | Agents | Hermes profiles — named entities with personality, tools, and skills |
+| **Skills** | Skills | SKILL.md bundles — reusable procedures loaded on demand |
 
 Primitives nest: **Context** contains **Loops** which invoke **Agents** which load **Skills**.
 
@@ -70,8 +70,8 @@ Primitives nest: **Context** contains **Loops** which invoke **Agents** which lo
 From idea to working system — driven entirely by markdown reads and writes:
 
 1. **Chat** — You tell Nous Girl about an idea
-2. **Comprehend** — Kashik reads the chat, writes wiki pages
-3. **Create** — Factories (Skrypt, Klerik, Kadens) build skills, agents, and loops
+2. **Comprehend** — Context reads the chat, writes wiki pages
+3. **Create** — Factories (Skills, Agents, Loops) build skills, agents, and loops
 4. **Inject** — Status flows back to Nous Girl, who tells you what happened
 
 ---
@@ -106,10 +106,10 @@ Four cron jobs run the system. Each watches the wiki for signals and spawns work
 
 | Factory | Watches | Produces | Uses |
 |---|---|---|---|
-| **Kashik** | Chat sessions | Wiki pages, queue items | `session_search()`, `write_file()` |
-| **Skrypt** | `[SKRYPT]` queue items | SKILL.md files | `delegate_task()`, `skill_manage()` |
-| **Klerik** | `[KLERIK]` queue items | Agent profiles | `delegate_task()`, `hermes profile create` |
-| **Kadens** | `[KADENS]` queue items | Cron jobs, kanban | `delegate_task()`, `cronjob()` |
+| **Context** | Chat sessions | Wiki pages, queue items | `session_search()`, `write_file()` |
+| **Skills** | `[SKILLS]` queue items | SKILL.md files | `delegate_task()`, `skill_manage()` |
+| **Agents** | `[AGENTS]` queue items | Agent profiles | `delegate_task()`, `hermes profile create` |
+| **Loops** | `[LOOPS]` queue items | Cron jobs, kanban | `delegate_task()`, `cronjob()` |
 
 All factories use **the same 4-stage pipeline**: Collect evidence → Generate candidates → Evaluate → Apply.
 
