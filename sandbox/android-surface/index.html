@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Senter STS Surface Prototype</title>
+  <style>
+    :root { color-scheme: dark; --bg:#111; --panel:#1b1b1b; --line:#3a3a3a; --mint:#9ece6a; --gold:#e0af68; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; background:var(--bg); color:#eee; font:16px system-ui,sans-serif; }
+    button { color:inherit; background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:10px 14px; }
+    button:focus-visible { outline:2px solid var(--mint); outline-offset:2px; }
+    #app { min-height:100vh; display:grid; place-items:center; padding:24px; }
+    #surface { width:min(920px,100%); min-height:560px; border:1px solid var(--line); border-radius:18px; background:#151515; padding:18px; }
+    header { display:flex; justify-content:space-between; align-items:center; gap:12px; color:var(--mint); }
+    #compact { display:grid; place-items:center; min-height:450px; }
+    #compact[hidden], #expanded[hidden] { display:none; }
+    #owl { color:var(--gold); font-size:54px; line-height:1; margin:20px; }
+    #bar { display:flex; gap:8px; width:min(650px,100%); }
+    #input { flex:1; min-width:0; background:#0b0b0b; color:#fff; border:1px solid var(--line); border-radius:8px; padding:12px; }
+    #action { border-color:var(--mint); cursor:pointer; user-select:none; touch-action:none; }
+    #hint { color:#888; font-size:13px; margin-top:10px; text-align:center; }
+    #expanded { display:grid; grid-template-columns:220px 1fr; gap:14px; min-height:470px; }
+    #blocks { border-right:1px solid var(--line); padding-right:14px; }
+    #blocks h2 { color:var(--gold); font-size:15px; }
+    .block { display:block; width:100%; text-align:left; margin:7px 0; cursor:grab; }
+    #canvas { min-height:420px; border:1px dashed #555; border-radius:12px; padding:14px; }
+    .card { border:1px solid var(--line); border-left:3px solid var(--mint); border-radius:8px; padding:12px; margin:8px 0; background:#1b1b1b; }
+    #status { color:#aaa; font-size:13px; }
+  </style>
+</head>
+<body>
+<div id="app"><main id="surface" aria-label="Senter STS prototype">
+  <header><strong>SENTER · STS auxiliary</strong><span id="status">compact</span><button id="side" type="button">Side button</button></header>
+  <section id="compact" aria-label="Compact input overlay">
+    <div id="owl" aria-hidden="true">◉·◉<br>◉</div>
+    <div id="bar"><input id="input" aria-label="Senter input" placeholder="Ask Senter…"><button id="action" type="button" aria-label="Send; double tap for screenshot">↑</button></div>
+    <div id="hint">Tap ↑ to send · double tap ↑ to screenshot · drag ↑ upward to expand</div>
+  </section>
+  <section id="expanded" hidden aria-label="Full chat canvas">
+    <aside id="blocks"><h2>Building blocks</h2></aside>
+    <section id="canvas" aria-label="Conversation canvas"><h2>Chat canvas</h2><p>Drop a block here.</p></section>
+  </section>
+</main></div>
+<script type="module">
+  const blocks = ['SESSIONS.md','CHAT.md','SENTER.md','current-topic','proposal-queue','kanban-status'];
+  const compact = document.querySelector('#compact');
+  const expanded = document.querySelector('#expanded');
+  const status = document.querySelector('#status');
+  const input = document.querySelector('#input');
+  const action = document.querySelector('#action');
+  const canvas = document.querySelector('#canvas');
+  let dragY = null;
+  const show = (name) => { const open = name === 'expanded'; compact.hidden=open; expanded.hidden=!open; status.textContent=name; };
+  const send = () => { const text=input.value.trim(); if (!text) return; const card=document.createElement('article'); card.className='card'; card.textContent='You: '+text; canvas.append(card); input.value=''; show('expanded'); };
+  const screenshot = () => { status.textContent='screenshot requested · permission required'; };
+  action.addEventListener('click', send);
+  action.addEventListener('dblclick', (event) => { event.preventDefault(); screenshot(); });
+  action.addEventListener('pointerdown', (event) => { dragY=event.clientY; action.setPointerCapture(event.pointerId); });
+  action.addEventListener('pointermove', (event) => { if (dragY !== null && dragY-event.clientY > 48) { dragY=null; show('expanded'); } });
+  action.addEventListener('pointerup', () => { dragY=null; });
+  document.querySelector('#side').addEventListener('click', () => show('compact'));
+  blocks.forEach((name) => { const item=document.createElement('button'); item.className='block'; item.draggable=true; item.textContent=name; item.addEventListener('dragstart',(event)=>event.dataTransfer.setData('text/plain',name)); item.addEventListener('click',()=>drop(name)); document.querySelector('#blocks').append(item); });
+  const drop = (name) => { const card=document.createElement('article'); card.className='card'; card.textContent=name; canvas.append(card); };
+  canvas.addEventListener('dragover',(event)=>event.preventDefault());
+  canvas.addEventListener('drop',(event)=>{ event.preventDefault(); drop(event.dataTransfer.getData('text/plain')); });
+</script>
+</body>
+</html>
