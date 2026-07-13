@@ -26,6 +26,8 @@ def main() -> int:
     assert bridge["default"] == "disabled"
     assert bridge["emulator_service"] == "android"
     assert bridge["adb_endpoint"] == "android:5555"
+    assert bridge["architecture"] == "x86_64"
+    assert bridge["persistent_mount"] == "/data"
     assert bridge["allow_raw_host_access"] is False
     print(json.dumps({"schema": data["schema"], "status": "valid", "blocks": len(data["default_blocks"]), "bridge": bridge["default"]}, indent=2))
     return 0

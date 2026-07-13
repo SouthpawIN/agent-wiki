@@ -30,9 +30,7 @@ services:
       - /dev/kvm:/dev/kvm
     ports:
       - "5555:5555"
-      - "6080:6080"
     volumes:
-      - ./android-home:/home/androidusr
+      - ./android-home:/data
     environment:
       EMULATOR_DEVICE: ${ANDROID_DEVICE:-Pixel_2}
-      WEBRTC: "true"

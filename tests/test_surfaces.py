@@ -40,5 +40,7 @@ def test_android_operations_remain_permission_gated():
         "default": "disabled",
         "emulator_service": "android",
         "adb_endpoint": "android:5555",
+        "architecture": "x86_64",
+        "persistent_mount": "/data",
         "allow_raw_host_access": False,
     }
