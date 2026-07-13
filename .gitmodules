@@ -1,0 +1,9 @@
+[submodule "sandbox/hermes-agent"]
+	path = sandbox/hermes-agent
+	url = https://github.com/NousResearch/hermes-agent.git
+[submodule "sandbox/herm-sovth"]
+	path = sandbox/herm-sovth
+	url = https://github.com/SouthpawIN/herm-sovth.git
+[submodule "sandbox/hermes-android"]
+	path = sandbox/hermes-android
+	url = https://github.com/SouthpawIN/hermes-android.git

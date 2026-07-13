@@ -11,7 +11,8 @@ Never modify `~/.hermes/hermes-agent/` or the running Hermes installation. Build
 ```text
 sandbox/
 ├── hermes-agent/       # clean Hermes-Agent checkout
-├── herm-frontend/      # clean Herm TUI/frontend checkout when identified
+├── herm-sovth/         # clean Southpaw Herm TUI/OpenTUI checkout
+├── hermes-android/     # clean Android frontend checkout
 ├── hermes-home/        # disposable HERMES_HOME; never host credentials
 ├── goop/               # mounted/copyable SENTER.md and GOOP objects
 └── docker/              # reproducible image and compose definitions
@@ -28,7 +29,7 @@ python -m senter_agent.cli . --queue .system/proposals.md
 HERMES_HOME="$PWD/sandbox/hermes-home" hermes --tui
 ```
 
-The exact Herm frontend checkout is intentionally not hard-coded until its upstream repository/path is confirmed. The sandbox must remain usable with a local checkout or a pinned Docker build.
+The sandbox pins three clean checkouts as Git submodules: upstream Hermes-Agent, Southpaw's `herm-sovth` OpenTUI frontend, and `hermes-android`. The main Hermes-Agent checkout also contains the upstream `ui-tui/` frontend. No checkout is the live installation.
 
 ## Image variants
 
@@ -55,7 +56,7 @@ docker compose up --build
 
 The compose service uses a disposable `sandbox/hermes-home/` volume and mounts `sandbox/goop/` read-only. Do not place credentials in either the image or committed files.
 
-The upstream Hermes repository contains the Herm TUI under `ui-tui/`; there is not a separate Herm TUI repository in the checkout. The first sandbox therefore builds Hermes-Agent's own pinned TUI. A custom sidebar/Eikon frontend can be developed in a later branch of this clean checkout.
+The upstream Hermes repository contains the current TUI under `ui-tui/`; the Southpaw `herm-sovth` checkout is also present for the modified frontend work. The Android checkout is present for the side-button STS and canvas surface.
 
 ## Current status
 

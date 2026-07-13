@@ -12,6 +12,8 @@ services:
     volumes:
       - ./hermes-home:/opt/data/.hermes
       - ./goop:/opt/data/goop:ro
+      - ./herm-sovth:/opt/data/herm-sovth:ro
+      - ./hermes-android:/opt/data/hermes-android:ro
     stdin_open: true
     tty: true
     command: ["hermes", "--tui"]
