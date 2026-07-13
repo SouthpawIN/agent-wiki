@@ -50,13 +50,13 @@ The Hermes-Agent checkout is pinned by Git history and the compose wrapper is ve
 
 ```bash
 cd sandbox
-docker build -t senter-agent:hermes-sandbox -f Dockerfile .
-docker compose up --build
+docker compose build
+docker compose run --rm senter-agent hermes --help
 ```
 
 The compose service uses a disposable `sandbox/hermes-home/` volume and mounts `sandbox/goop/` read-only. Do not place credentials in either the image or committed files.
 
-The upstream Hermes repository contains the current TUI under `ui-tui/`; the Southpaw `herm-sovth` checkout is also present for the modified frontend work. The Android checkout is present for the side-button STS and canvas surface.
+The upstream Hermes repository contains the current TUI under `ui-tui/`; the Southpaw `herm-sovth` checkout is also present for the modified frontend work. The Android checkout is present for the side-button STS and canvas surface. The Compose build uses the pinned `sandbox/hermes-agent/Dockerfile`; the root `sandbox/Dockerfile` is reserved for a future derived image once the base image is published.
 
 ## Current status
 
