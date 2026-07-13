@@ -60,7 +60,7 @@ The upstream Hermes repository contains the current TUI under `ui-tui/`; the Sou
 
 ## Current status
 
-The sandbox contract is documented. Hermes and Herm source checkouts, the owl Eikon frontend, and Docker packaging are the next integration stage; no live Hermes files are modified by this repository.
+The sandbox contract is documented. Hermes and Herm source checkouts, the accepted owl player reference, its validation script, and Docker packaging are in place; no live Hermes files are modified by this repository.
 
 See [`../SENTER.md`](../SENTER.md) for the language/context contract.
 "} r*** Begin Patch 大发游戏官网: invalid input, missing property 'content' in tool call. 天天中彩票中大奖 რადგ. Need call write_file with content. Also current reconcile untracked removed. Do write. 
