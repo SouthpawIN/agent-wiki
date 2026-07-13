@@ -22,7 +22,12 @@ def main() -> int:
     assert all(value is False for value in data["security"].values() if isinstance(value, bool))
     assert data["capabilities"]["screenshot"]["approval"] == "user"
     assert data["capabilities"]["phone_operation"]["approval"] == "user"
-    print(json.dumps({"schema": data["schema"], "status": "valid", "blocks": len(data["default_blocks"])}, indent=2))
+    bridge = data["security"]["bridge"]
+    assert bridge["default"] == "disabled"
+    assert bridge["emulator_service"] == "android"
+    assert bridge["adb_endpoint"] == "android:5555"
+    assert bridge["allow_raw_host_access"] is False
+    print(json.dumps({"schema": data["schema"], "status": "valid", "blocks": len(data["default_blocks"]), "bridge": bridge["default"]}, indent=2))
     return 0
 
 

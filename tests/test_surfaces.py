@@ -36,3 +36,9 @@ def test_android_operations_remain_permission_gated():
     assert data["security"]["host_credentials"] is False
     assert data["security"]["hermes_session_databases"] is False
     assert data["security"]["unrestricted_shell"] is False
+    assert data["security"]["bridge"] == {
+        "default": "disabled",
+        "emulator_service": "android",
+        "adb_endpoint": "android:5555",
+        "allow_raw_host_access": False,
+    }

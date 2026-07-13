@@ -69,7 +69,7 @@ docker compose --profile android up android
 adb connect 127.0.0.1:5555
 ```
 
-The service exposes ADB on `5555` and a browser surface on `6080`, and persists only the disposable `android-home/` directory, which is ignored by Git. This is an emulator/test device, not the physical-phone STS client. Senter must use a future controlled Android bridge; the sidecar does not grant unrestricted phone control to the agent.
+The service exposes ADB on `5555` and a browser surface on `6080`, and persists only the disposable `android-home/` directory, which is ignored by Git. This is an emulator/test device, not the physical-phone STS client. The bridge is explicitly disabled by default; when enabled later, its endpoint is `android:5555` on the Compose network. Senter must use a future controlled Android bridge; the sidecar does not grant unrestricted phone control to the agent.
 
 ## Current status
 

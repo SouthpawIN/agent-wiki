@@ -11,6 +11,7 @@ services:
       HERMES_TUI: "1"
       SENTER_GOOP_ROOT: /opt/data/goop
       SENTER_GOOP_PROFILE: /opt/data/goop/profiles/${GOOP_PROFILE:-base}
+      SENTER_ANDROID_BRIDGE: ${SENTER_ANDROID_BRIDGE:-disabled}
     volumes:
       - ./hermes-home:/opt/data/.hermes
       - ./goop:/opt/data/goop:ro
