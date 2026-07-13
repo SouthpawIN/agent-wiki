@@ -69,7 +69,7 @@ docker compose --profile android up android
 adb connect 127.0.0.1:5555
 ```
 
-The service exposes ADB on `5555` and persists the disposable `android-home/` directory at the image's documented `/data` path; that directory is ignored by Git. This is an emulator/test device, not the physical-phone STS client. The bridge is explicitly disabled by default; when enabled later, its endpoint is `android:5555` on the Compose network. The future bridge allowlist is documented in `goop/ANDROID_BRIDGE.json`: one user-approved screenshot, tap, swipe, or bounded text action per request; no raw ADB, shell, install, file transfer, port forwarding, root, or credential access.
+The service exposes ADB on `5555` and persists the disposable `android-home/` directory at the image's documented `/data` path; that directory is ignored by Git. This is an emulator/test device, not the physical-phone STS client. The bridge is explicitly disabled by default; when enabled later, its endpoint is `android:5555` on the Compose network. The future bridge allowlist is documented in `goop/ANDROID_BRIDGE.json`, and its dry-run planner is `goop/android_bridge.py`: one user-approved screenshot, tap, swipe, or bounded text action per request; no raw ADB, shell, install, file transfer, port forwarding, root, or credential access.
 
 ## Current status
 
