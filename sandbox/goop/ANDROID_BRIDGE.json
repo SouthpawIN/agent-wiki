@@ -1,0 +1,48 @@
+{
+  "schema": "senter.android.bridge.v1",
+  "transport": "adb-over-controlled-sidecar",
+  "endpoint": "android:5555",
+  "enabled_by": "SENTER_ANDROID_BRIDGE",
+  "default": "disabled",
+  "operations": {
+    "screenshot": {
+      "adb": ["exec-out", "screencap", "-p"],
+      "approval": "user",
+      "returns": "png"
+    },
+    "tap": {
+      "adb": ["shell", "input", "tap", "<x>", "<y>"],
+      "approval": "user",
+      "bounds": "screen"
+    },
+    "swipe": {
+      "adb": ["shell", "input", "swipe", "<x1>", "<y1>", "<x2>", "<y2>", "<duration_ms>"],
+      "approval": "user",
+      "bounds": "screen"
+    },
+    "text": {
+      "adb": ["shell", "input", "text", "<encoded_text>"],
+      "approval": "user",
+      "max_length": 2000
+    }
+  },
+  "forbidden": [
+    "shell",
+    "exec",
+    "install",
+    "push",
+    "pull",
+    "forward",
+    "reverse",
+    "root",
+    "remount",
+    "port forwarding",
+    "credential access"
+  ],
+  "limits": {
+    "max_actions_per_request": 1,
+    "max_screenshot_bytes": 10000000,
+    "allow_raw_adb": false,
+    "allow_host_paths": false
+  }
+}

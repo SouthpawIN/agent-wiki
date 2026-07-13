@@ -44,3 +44,15 @@ def test_android_operations_remain_permission_gated():
         "persistent_mount": "/data",
         "allow_raw_host_access": False,
     }
+
+
+def test_android_bridge_is_narrow_and_approval_gated():
+    data = json.loads((ROOT / "sandbox/goop/ANDROID_BRIDGE.json").read_text())
+
+    assert data["default"] == "disabled"
+    assert set(data["operations"]) == {"screenshot", "tap", "swipe", "text"}
+    assert all(item["approval"] == "user" for item in data["operations"].values())
+    assert data["limits"]["max_actions_per_request"] == 1
+    assert data["limits"]["allow_raw_adb"] is False
+    assert "shell" in data["forbidden"]
+    assert "install" in data["forbidden"]
