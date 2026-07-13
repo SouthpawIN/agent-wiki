@@ -54,7 +54,7 @@ docker compose build
 docker compose run --rm senter-agent hermes --help
 ```
 
-The compose service uses a disposable `sandbox/hermes-home/` volume and mounts `sandbox/goop/` read-only. Preconfigured profiles live under `goop/profiles/{base,media,wallet,research}/` and can be selected by changing the read-only mount or copied into an isolated test workspace. Do not place credentials in either the image or committed files.
+The compose service uses a disposable `sandbox/hermes-home/` volume and mounts `sandbox/goop/` read-only. Preconfigured profiles live under `goop/profiles/{base,media,wallet,research}/`; set `GOOP_PROFILE=media` to expose the selected profile path through `SENTER_GOOP_PROFILE`. Do not place credentials in either the image or committed files.
 
 The upstream Hermes repository contains the current TUI under `ui-tui/`; the Southpaw `herm-sovth` checkout is also present for the modified frontend work. The Android checkout is present for the side-button STS and canvas surface. The Compose build uses the pinned `sandbox/hermes-agent/Dockerfile`; the root `sandbox/Dockerfile` is reserved for a future derived image once the base image is published.
 

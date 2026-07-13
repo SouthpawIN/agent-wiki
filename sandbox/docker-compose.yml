@@ -10,11 +10,10 @@ services:
       HERMES_HOME: /opt/data/.hermes
       HERMES_TUI: "1"
       SENTER_GOOP_ROOT: /opt/data/goop
-      SENTER_GOOP_PROFILE: /opt/data/goop/profile
+      SENTER_GOOP_PROFILE: /opt/data/goop/profiles/${GOOP_PROFILE:-base}
     volumes:
       - ./hermes-home:/opt/data/.hermes
       - ./goop:/opt/data/goop:ro
-      - ./goop/profiles/${GOOP_PROFILE:-base}:/opt/data/goop/profile:ro
       - ./herm-sovth:/opt/data/herm-sovth:ro
       - ./hermes-android:/opt/data/hermes-android:ro
     stdin_open: true
