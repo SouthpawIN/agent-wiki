@@ -58,6 +58,8 @@ The compose service uses a disposable `sandbox/hermes-home/` volume and mounts `
 
 The upstream Hermes repository contains the current TUI under `ui-tui/`; the Southpaw `herm-sovth` checkout is also present for the modified frontend work. The Android checkout is present for the side-button STS and canvas surface. The Compose build uses the pinned `sandbox/hermes-agent/Dockerfile`; the root `sandbox/Dockerfile` is reserved for a future derived image once the base image is published.
 
+The Android checkout currently contains a prebuilt APK and Termux setup rather than modifiable Android source. `goop/ANDROID_SURFACE.json` is therefore the implementation contract for the future source checkout, and `validate_android_surface.py` checks the gesture, canvas, block, and permission boundaries without claiming that the APK implements them yet.
+
 ## Current status
 
 The sandbox contract is documented. Hermes and Herm source checkouts, the accepted owl player reference, its validation script, and Docker packaging are in place; no live Hermes files are modified by this repository.

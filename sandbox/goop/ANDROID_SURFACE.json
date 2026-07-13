@@ -1,0 +1,40 @@
+{
+  "schema": "senter.android.surface.v1",
+  "identity": "senter-sts-auxiliary",
+  "source": "sandbox/goop/ANDROID.md",
+  "states": ["compact", "expanded"],
+  "default_blocks": [
+    "SESSIONS.md",
+    "CHAT.md",
+    "SENTER.md",
+    "current-topic",
+    "proposal-queue",
+    "kanban-status"
+  ],
+  "gesture_contract": {
+    "side_button": "open_compact",
+    "icon_tap": "send",
+    "icon_double_tap": "screenshot",
+    "icon_drag_up": "open_expanded"
+  },
+  "compact": {
+    "surfaces": ["input-bar", "response-surface", "action-icon"],
+    "input": ["text", "voice"],
+    "actions": ["send", "screenshot", "expand"]
+  },
+  "expanded": {
+    "surfaces": ["input-bar", "conversation-canvas", "building-block-sidebar"],
+    "placement": "drag_sidebar_block_to_canvas",
+    "morphable": true
+  },
+  "capabilities": {
+    "screenshot": {"permission": "platform_capture_api", "approval": "user"},
+    "phone_operation": {"permission": "android_accessibility_service", "approval": "user"}
+  },
+  "security": {
+    "host_credentials": false,
+    "hermes_session_databases": false,
+    "unrestricted_shell": false,
+    "transport": "controlled-senter-endpoint"
+  }
+}
