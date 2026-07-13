@@ -14,6 +14,7 @@ class GoopDocument:
     links: list[str] = field(default_factory=list)
     source_hash: str = ""
     explicit_kind: Optional[str] = None
+    declaration: dict[str, list[str]] = field(default_factory=dict)
 
 @dataclass
 class Proposal:
@@ -43,3 +44,18 @@ def title_slug(title: str) -> str:
     import re
     slug = re.sub(r"[^a-z0-9]+", "-", title.lower()).strip("-")
     return slug or "untitled"
+
+
+@dataclass
+class GoopDeclaration:
+    """Safe, declarative fields extracted from an all-caps Markdown module."""
+
+    name: str
+    purpose: list[str] = field(default_factory=list)
+    allowed: list[str] = field(default_factory=list)
+    forbidden: list[str] = field(default_factory=list)
+    approvals: list[str] = field(default_factory=list)
+    skills: list[str] = field(default_factory=list)
+    agents: list[str] = field(default_factory=list)
+    loops: list[str] = field(default_factory=list)
+    secret_refs: list[str] = field(default_factory=list)

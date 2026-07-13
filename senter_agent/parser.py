@@ -4,7 +4,7 @@ import hashlib
 import re
 from pathlib import Path
 
-from .model import GoopDocument, normalize_kind
+from .model import GoopDeclaration, GoopDocument, normalize_kind
 
 _FRONTMATTER = re.compile(r"\A---\s*\n(.*?)\n---\s*\n", re.S)
 _HEADING = re.compile(r"^#{1,6}\s+(.+?)\s*$", re.M)
@@ -22,6 +22,26 @@ def _sections(body: str) -> dict[str, str]:
     return result
 
 
+def _items(section: str) -> list[str]:
+    """Return only declarative Markdown list items, never arbitrary prose."""
+    return [m.group(1).strip() for m in re.finditer(r"^\s*[-*]\s+(.+?)\s*$", section, re.M)]
+
+
+def _declaration(path: Path, sections: dict[str, str]) -> GoopDeclaration:
+    values = {key: _items(value) for key, value in sections.items()}
+    return GoopDeclaration(
+        name=path.stem,
+        purpose=values.get("purpose", []),
+        allowed=values.get("allowed", []),
+        forbidden=values.get("forbidden", []),
+        approvals=values.get("approval", values.get("approvals", [])),
+        skills=values.get("skills", []),
+        agents=values.get("agent", values.get("agents", [])),
+        loops=values.get("loop", values.get("loops", [])),
+        secret_refs=values.get("secret references", values.get("secrets", [])),
+    )
+
+
 def parse_markdown(path: str | Path) -> GoopDocument:
     path = Path(path)
     raw = path.read_text(encoding="utf-8")
@@ -36,15 +56,18 @@ def parse_markdown(path: str | Path) -> GoopDocument:
     tags_match = re.search(r"tags\s*:\s*\[([^]]*)\]", metadata, re.I)
     tags = [x.strip().strip("'\"") for x in tags_match.group(1).split(",")] if tags_match else []
     links = [a or b for a, b in _LINK.findall(raw)]
+    sections = _sections(body)
+    declaration = _declaration(path, sections) if path.stem.isupper() else GoopDeclaration(name=path.stem)
     return GoopDocument(
         path=path,
         title=title,
         kind=kind,
-        sections=_sections(body),
+        sections=sections,
         tags=[x for x in tags if x],
         links=links,
         source_hash=hashlib.sha256(raw.encode()).hexdigest(),
         explicit_kind=explicit_kind,
+        declaration=declaration.__dict__,
     )
 
 

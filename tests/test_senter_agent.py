@@ -13,6 +13,15 @@ def test_all_caps_document_is_context(tmp_path: Path):
     assert "purpose" in parsed.sections
 
 
+def test_all_caps_document_extracts_declaration_without_secrets(tmp_path: Path):
+    doc = tmp_path / "WALLET.md"
+    doc.write_text("# Wallet\n\n## Purpose\n- Track masked cards\n\n## Forbidden\n- Reveal full card numbers\n\n## Secret References\n- bitwarden://wallet/cards\n", encoding="utf-8")
+    parsed = parse_markdown(doc)
+    assert parsed.declaration["purpose"] == ["Track masked cards"]
+    assert parsed.declaration["forbidden"] == ["Reveal full card numbers"]
+    assert parsed.declaration["secret_refs"] == ["bitwarden://wallet/cards"]
+
+
 def test_explicit_skill_and_cluster_proposals(tmp_path: Path):
     (tmp_path / "one.md").write_text("---\ntype: skill\ntags: [video]\n---\n# Cut video\n", encoding="utf-8")
     (tmp_path / "two.md").write_text("---\ntype: skill\ntags: [video]\n---\n# Render video\n", encoding="utf-8")
