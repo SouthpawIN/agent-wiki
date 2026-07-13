@@ -2,6 +2,15 @@
 
 > **Senter is the three-eyed owl.** The speech-to-speech interface is an unnamed, tool-free auxiliary task of Senter, not a separate agent.
 
+Senter Agent is the agent/runtime that interprets the markdown-native GOOP language defined by `SENTER.md`:
+
+```text
+SENTER.md = language/context layer
+Senter Agent = interpreter, comprehension engine, and orchestrator
+```
+
+The agent is personified in Herm by the three-eyed owl Eikon.
+
 Senter Agent is the runtime concept for a markdown-native GOOP system:
 
 ```text

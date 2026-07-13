@@ -5,7 +5,7 @@
 > **Senter is the three-eyed owl: a self-documenting, self-extending multi-agent system. The wiki IS the coordination layer.**
 >
 > Built on [Hermes Agent](https://github.com/NousResearch/hermes-agent) by [Nous Research](https://nousresearch.com).
-> Topics are miniature GOOP instances. Markdown is the API between human and machine.
+> Topics are miniature GOOP instances. `SENTER.md` is the language/context layer; Senter Agent is the interpreter and orchestrator.
 
 ---
 
