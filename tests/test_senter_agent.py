@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from senter_agent import build_plan, parse_markdown
+from senter_agent import build_plan, parse_markdown, write_queue
 from senter_agent.parser import parse_tree
 
 
@@ -43,3 +43,17 @@ def test_planner_does_not_apply_side_effects(tmp_path: Path):
     before = sorted(p.name for p in tmp_path.iterdir())
     build_plan(parse_tree(tmp_path))
     assert sorted(p.name for p in tmp_path.iterdir()) == before
+
+
+def test_queue_preserves_user_status(tmp_path: Path):
+    source = tmp_path / "one.md"
+    source.write_text("---\ntags: [video]\n---\n# Video\n", encoding="utf-8")
+    second = tmp_path / "two.md"
+    second.write_text("---\ntags: [video]\n---\n# Editing\n", encoding="utf-8")
+    queue = tmp_path / "proposals.md"
+    proposals = build_plan(parse_tree(tmp_path))
+    write_queue(queue, proposals)
+    original = queue.read_text(encoding="utf-8")
+    queue.write_text(original.replace("- [ ] `video-procedure`", "- [x] `video-procedure`"), encoding="utf-8")
+    write_queue(queue, proposals)
+    assert "- [x] `video-procedure`" in queue.read_text(encoding="utf-8")

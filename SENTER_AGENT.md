@@ -55,10 +55,10 @@ Context reconciliation should merge into existing topics rather than create redu
 From this repository:
 
 ```bash
-python -m senter_agent.cli . --json
+python -m senter_agent.cli . --json --queue .system/proposals.md
 ```
 
-The CLI inspects markdown and reports proposals without changing the tree.
+The CLI inspects markdown and can write/update a human-editable proposal queue. It never creates Hermes objects or changes the source documents.
 
 ## Roadmap
 
