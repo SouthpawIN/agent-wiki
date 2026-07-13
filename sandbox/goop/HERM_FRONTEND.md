@@ -7,8 +7,9 @@ Create a sandbox-only modified Herm TUI frontend for Senter Agent. Senter is the
 ## Default Identity
 
 - Default Eikon: Senter's three-eyed owl
-- Preserve the six-state mapping from the Senter Agent topic
-- Use the verified Eikon format already supported by Herm
+- Use the accepted embedded owl player as the animation reference
+- Preserve the six-state mapping in `EIKON.md`
+- Do not invent or redesign missing animation states
 - Keep the Eikon readable at terminal scale
 
 ## Sidebar
