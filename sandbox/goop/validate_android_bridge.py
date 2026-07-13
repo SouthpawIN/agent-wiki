@@ -17,8 +17,10 @@ def main() -> int:
     assert data["limits"] == {
         "max_actions_per_request": 1,
         "max_screenshot_bytes": 10000000,
+        "max_timeout_seconds": 15,
         "allow_raw_adb": False,
         "allow_host_paths": False,
+        "shell_mode": False,
     }
     assert "shell" in data["forbidden"]
     assert "install" in data["forbidden"]

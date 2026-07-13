@@ -53,6 +53,7 @@ def test_android_bridge_is_narrow_and_approval_gated():
     assert set(data["operations"]) == {"screenshot", "tap", "swipe", "text"}
     assert all(item["approval"] == "user" for item in data["operations"].values())
     assert data["limits"]["max_actions_per_request"] == 1
+    assert data["limits"]["max_timeout_seconds"] == 15
     assert data["limits"]["allow_raw_adb"] is False
     assert "shell" in data["forbidden"]
     assert "install" in data["forbidden"]

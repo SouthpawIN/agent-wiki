@@ -1,12 +1,13 @@
-"""Approval-gated Android ADB command planner.
+"""Approval-gated Android ADB command planner and executor.
 
-This module deliberately plans commands but never executes them. A future
-controlled endpoint can consume the returned argv after user approval.
+The default path only plans commands. Execution requires explicit approval and
+an injected runner, so this module never silently reaches the host or device.
 """
 from __future__ import annotations
 
 from dataclasses import dataclass
 import re
+from typing import Callable, Sequence
 
 
 class BridgeError(ValueError):
@@ -20,7 +21,14 @@ class Request:
     approved: bool = False
 
 
+@dataclass(frozen=True)
+class Result:
+    argv: tuple[str, ...]
+    output: bytes = b""
+
+
 _TEXT = re.compile(r"^[A-Za-z0-9 .,!?@_:/+\-=']{1,2000}$")
+Runner = Callable[[Sequence[str]], bytes]
 
 
 def plan(req: Request, serial: str = "android:5555") -> tuple[str, ...]:
@@ -46,6 +54,21 @@ def plan(req: Request, serial: str = "android:5555") -> tuple[str, ...]:
             raise BridgeError("text must be 1-2000 safe characters")
         return ("adb", "-s", serial, "shell", "input", "text", req.args[0])
     raise BridgeError(f"operation is forbidden: {req.operation}")
+
+
+def execute(req: Request, runner: Runner, serial: str = "android:5555") -> Result:
+    """Execute exactly one planned command through an injected runner.
+
+    The caller owns the approval decision. A production runner must use
+    subprocess with `shell=False`, a timeout, and an output-size limit.
+    """
+    argv = plan(req, serial)
+    output = runner(argv)
+    if not isinstance(output, bytes):
+        raise BridgeError("runner must return bytes")
+    if len(output) > 10_000_000:
+        raise BridgeError("bridge output exceeds 10 MB limit")
+    return Result(argv, output)
 
 
 def _coords(args: tuple[str, ...]) -> tuple[str, ...]:

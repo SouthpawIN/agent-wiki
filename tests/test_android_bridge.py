@@ -35,3 +35,28 @@ def test_rejects_invalid_coordinates_and_endpoint_injection():
         bridge.plan(bridge.Request("tap", ("-1", "4"), True))
     with pytest.raises(bridge.BridgeError):
         bridge.plan(bridge.Request("screenshot", approved=True), "android:5555;id")
+
+
+def test_execute_uses_only_injected_runner():
+    seen = []
+
+    def runner(argv):
+        seen.append(tuple(argv))
+        return b"PNG"
+
+    result = bridge.execute(bridge.Request("screenshot", approved=True), runner)
+    assert result.output == b"PNG"
+    assert seen == [result.argv]
+
+
+def test_execute_rejects_oversized_runner_output():
+    with pytest.raises(bridge.BridgeError, match="10 MB"):
+        bridge.execute(
+            bridge.Request("screenshot", approved=True),
+            lambda _argv: b"x" * 10_000_001,
+        )
+
+
+def test_execute_still_requires_approval():
+    with pytest.raises(bridge.BridgeError, match="approval"):
+        bridge.execute(bridge.Request("tap", ("1", "2")), lambda _argv: b"")

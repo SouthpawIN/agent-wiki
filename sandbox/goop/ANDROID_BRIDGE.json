@@ -42,7 +42,9 @@
   "limits": {
     "max_actions_per_request": 1,
     "max_screenshot_bytes": 10000000,
+    "max_timeout_seconds": 15,
     "allow_raw_adb": false,
-    "allow_host_paths": false
+    "allow_host_paths": false,
+    "shell_mode": false
   }
 }
