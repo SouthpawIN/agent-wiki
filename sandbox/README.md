@@ -71,6 +71,12 @@ adb connect 127.0.0.1:5555
 
 The service exposes ADB on `5555` and persists the disposable `android-home/` directory at the image's documented `/data` path; that directory is ignored by Git. This is an emulator/test device, not the physical-phone STS client. The bridge is explicitly disabled by default; when enabled later, its endpoint is `android:5555` on the Compose network. The future bridge allowlist is documented in `goop/ANDROID_BRIDGE.json`, `goop/android_bridge.py` provides planning plus an injected-runner seam, and `goop/android_runner.py` provides the constrained `shell=False` subprocess runner. Production execution requires a timeout of at most 15 seconds and the 10 MB output cap. The bridge permits one user-approved screenshot, tap, swipe, or bounded text action per request; no raw ADB, shell, install, file transfer, port forwarding, root, or credential access.
 
+With the emulator running, repeat the live screenshot smoke test from the host with:
+
+```bash
+python3 goop/smoke_android_bridge.py 127.0.0.1:5555
+```
+
 ## Current status
 
 The sandbox contract is documented. Hermes and Herm source checkouts, the accepted owl player reference, its validation script, and Docker packaging are in place; no live Hermes files are modified by this repository.
