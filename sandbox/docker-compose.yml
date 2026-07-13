@@ -19,3 +19,19 @@ services:
     stdin_open: true
     tty: true
     command: ["hermes", "--tui"]
+
+  # Optional disposable Android emulator. Disabled unless the android profile
+  # is explicitly selected. KVM is passed through only to this service.
+  android:
+    profiles: ["android"]
+    image: halimqarroum/docker-android:api-33
+    devices:
+      - /dev/kvm:/dev/kvm
+    ports:
+      - "5555:5555"
+      - "6080:6080"
+    volumes:
+      - ./android-home:/home/androidusr
+    environment:
+      EMULATOR_DEVICE: ${ANDROID_DEVICE:-Pixel_2}
+      WEBRTC: "true"

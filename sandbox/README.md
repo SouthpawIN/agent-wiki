@@ -60,6 +60,17 @@ The upstream Hermes repository contains the current TUI under `ui-tui/`; the Sou
 
 The Android checkout currently contains a prebuilt APK and Termux setup rather than modifiable Android source. `goop/ANDROID_SURFACE.json` is therefore the implementation contract for the future source checkout, and `validate_android_surface.py` checks the gesture, canvas, block, and permission boundaries without claiming that the APK implements them yet.
 
+## Optional Android emulator sidecar
+
+The sandbox includes an opt-in emulator service based on `halimqarroum/docker-android:api-33`. It is disabled by default and passes through `/dev/kvm` only when explicitly enabled:
+
+```bash
+docker compose --profile android up android
+adb connect 127.0.0.1:5555
+```
+
+The service exposes ADB on `5555` and a browser surface on `6080`, and persists only the disposable `android-home/` directory, which is ignored by Git. This is an emulator/test device, not the physical-phone STS client. Senter must use a future controlled Android bridge; the sidecar does not grant unrestricted phone control to the agent.
+
 ## Current status
 
 The sandbox contract is documented. Hermes and Herm source checkouts, the accepted owl player reference, its validation script, and Docker packaging are in place; no live Hermes files are modified by this repository.

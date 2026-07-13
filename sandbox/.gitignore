@@ -4,3 +4,4 @@ hermes-home/
 *.db
 *.db-*
 secrets/
+android-home/
