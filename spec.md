@@ -64,7 +64,7 @@ wiki/topics/<topic-slug>/
 ├── README.md                 ← FRONT END: human-readable dashboard
 ├── .system/                  ← BACK END: machine coordination (hidden by default)
 │   ├── continuity.md         ← Context's raw understanding from chat sessions
-│   ├── injections.md         ← messages queued for Nous Girl to surface
+│   ├── injections.md         ← messages queued for Senter's conversational surface
 │   └── queue.md              ← pending factory work items, tagged by factory
 ├── skills/                   ← skills scoped to this topic
 ├── agents/                   ← agent summaries serving this topic
@@ -96,12 +96,12 @@ wiki/topics/_global/
 
 From idea to working system, driven entirely by markdown reads and writes:
 
-1. Chris speaks an idea to Nous Girl — session auto-saved to Hermes session DB
-2. Context (cron, 30m) reads sessions via `session_search(profile='nous-girl')`, writes wiki pages
+1. Chris speaks an idea to Senter's unnamed STS auxiliary — session auto-saved to Hermes session DB
+2. Context reads Senter sessions via `session_search(profile='senter')`, writes wiki pages
 3. Context populates `queue.md` with tagged items: `[SKILLS]`, `[AGENTS]`, `[LOOPS]`
 4. Factories watch queue.md, claim items, spawn `delegate_task`, write artifacts
 5. Factories write status to `.system/injections.md`
-6. Nous Girl reads injections before responding, weaves status into conversation naturally
+6. Senter's conversational surface reads injections before responding, weaving status into conversation naturally
 
 ### The Queue Format
 
@@ -129,7 +129,7 @@ Factories read, claim (`[~]`), and mark done (`[x]`). Only Context creates entri
 [LOOPS] Cron deployed for pr-check. First run in 2 minutes.
 ```
 
-Nous Girl's system prompt: check all topics' `.system/injections.md` for `[UNREAD]` blocks.
+Senter's conversational surface checks all topics' `.system/injections.md` for `[UNREAD]` blocks.
 Weave the first one naturally into the next response, then move it to `[READ]`.
 
 ---
@@ -157,7 +157,7 @@ All factories use the same **4-stage pipeline**: Collect evidence → Generate c
 ### Context Factory
 
 **Trigger:** Every 30 minutes.
-**Input:** Nous Girl's session DB (`session_search(profile='nous-girl')`).
+**Input:** Senter's session DB (`session_search(profile='senter')`).
 **Output:** Wiki pages, queue items, README updates.
 
 Pipeline:
@@ -211,7 +211,7 @@ The Agent Wiki system uses only existing Hermes primitives:
 
 | Component | Hermes Primitive | Status |
 |---|---|---|
-| Nous Girl (chat surface) | Profile with stripped toolsets | Profile exists |
+| Senter (three-eyed owl + chat surface) | Profile plus unnamed STS auxiliary | Profile exists |
 | Context (context factory) | Cron job + `session_search()` + `write_file()` | Needs creation |
 | Skills (skill factory) | Cron job + `delegate_task()` + `skill_manage()` | Needs creation |
 | Agents (agent factory) | Cron job + `delegate_task()` + profile create | Needs creation |
@@ -229,8 +229,7 @@ The Agent Wiki system uses only existing Hermes primitives:
 # 1. Ensure wiki exists
 mkdir -p ~/.hermes/wiki/topics/_global/.system
 
-# 2. Strip tools from Nous Girl
-hermes -p nous-girl config set agent.toolsets "[]"
+# 2. The STS auxiliary is tool-free; Senter remains the unified agent.
 
 # 3. Context cron — reads chat, writes wiki
 hermes cron create "every 30m" \
@@ -238,7 +237,7 @@ hermes cron create "every 30m" \
   --prompt "You are the Context factory of the Agent Wiki system.
 
   EVERY TICK:
-  1. Read Nous Girl's latest sessions: session_search(profile='nous-girl', sort='newest', limit=5)
+  1. Read Senter's latest sessions: session_search(profile='senter', sort='newest', limit=5)
   2. Identify new: projects, entities, concepts, action items, pain points
   3. For each project/idea mentioned, create or update wiki/topics/<topic-slug>/
      - Write/update README.md (human-facing dashboard)
@@ -284,7 +283,7 @@ hermes cron create "every 15m" \
 
 | v1 Whitepaper | Agent Wiki |
 |---|---|
-| 6 persistent profiles | 1 profile (Nous Girl) + 4 cron jobs |
+| 6 persistent profiles | Senter + unnamed STS auxiliary + durable orchestration |
 | Continuity = separate JSONL daemon | Continuity = Hermes session DB (already built) |
 | Injection system = bespoke plugin | Injection = `.system/injections.md` + system prompt |
 | Factories as named agents with persistent memory | Factories as cron-triggered `delegate_task` roles |
@@ -303,5 +302,5 @@ hermes cron create "every 15m" \
 4. **Dot-prefix for machine internals.** `.system/` is hidden but accessible. Front end (README.md) is clean.
 5. **Topics are self-contained GOOP instances.** Each topic contains its own Context, Loops, Agents, and Skills.
 6. **Factories are thin.** Each factory is a cron job that spawns one `delegate_task`. No persistent factory profiles needed.
-7. **Injections keep the human in the loop.** Factories don't message the user. They write to a file. Nous Girl reads it.
+7. **Injections keep the human in the loop.** Background work writes to a file. Senter's conversational surface reads it.
 8. **No self-edit.** Agents cannot edit Agents. Context cannot rewrite its own continuity without user approval.

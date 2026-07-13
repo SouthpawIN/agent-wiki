@@ -14,9 +14,9 @@ Every agent in the fleet. Click any agent to see its SOUL. Edit to change behavi
 
 | Agent | Profile | Tools | Status |
 |---|---|---|---|
-| [[nous-girl|Nous Girl]] | `nous-girl` | none (chat-only) | 🟢 Active |
+| [[senter|Senter]] | `senter` | three-eyed owl; unified Agent Wiki | 🟢 Active |
 
-→ SOUL.md: `~/.hermes/profiles/nous-girl/SOUL.md`
+→ SOUL.md: `~/.hermes/profiles/senter/SOUL.md`
 
 ## Topic Agents
 

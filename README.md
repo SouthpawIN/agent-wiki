@@ -1,8 +1,8 @@
 ![Agent Wiki](assets/hero-agent-wiki.png)
 
-# Agent Wiki
+# Senter Agent
 
-> **A self-documenting, self-extending multi-agent system. The wiki IS the coordination layer.**
+> **Senter is the three-eyed owl: a self-documenting, self-extending multi-agent system. The wiki IS the coordination layer.**
 >
 > Built on [Hermes Agent](https://github.com/NousResearch/hermes-agent) by [Nous Research](https://nousresearch.com).
 > Topics are miniature GOOP instances. Markdown is the API between human and machine.
@@ -18,7 +18,7 @@ Agent Wiki organizes a multi-agent AI fleet as **a well-organized markdown vault
 - **Agents** — AI profiles that do the work
 - **Skills** — reusable procedures agents load on demand
 
-You chat with a friendly front-door agent. The system watches your conversations, comprehends what you want, and automatically creates the agents, skills, and workflows to make it happen. Progress flows back to you naturally in conversation.
+You chat with Senter through an unnamed, low-intelligence, tool-free speech-to-speech auxiliary task. Senter watches conversations, comprehends what you want, and proposes the skills, agents, and workflows to make it happen. Progress flows back naturally in conversation.
 
 **Every part of the system is a markdown file you can edit.** No config dashboards. No YAML wizards. Open the wiki, change what you want, and the system picks it up.
 
@@ -30,9 +30,8 @@ You chat with a friendly front-door agent. The system watches your conversations
 # Clone the wiki
 git clone https://github.com/SouthpawIN/agent-wiki.git ~/.hermes/wiki
 
-# Set up the front-door agent (chat surface)
-hermes profile create nous-girl
-hermes -p nous-girl config set agent.toolsets "[]"
+# Senter's front-end surface is an unnamed STS auxiliary task.
+# The three-eyed owl is Senter's Herm TUI identity.
 
 # Start the factory crons
 hermes cron create "every 30m" --name "context-factory" --prompt "..."
@@ -41,7 +40,7 @@ hermes cron create "every 15m" --name "agents-factory" --prompt "..."
 hermes cron create "every 15m" --name "loops-factory" --prompt "..."
 
 # Start chatting
-hermes -p nous-girl --tui
+hermes --tui
 ```
 
 → Full setup: [[spec|Agent Wiki Specification]]
@@ -69,10 +68,10 @@ Primitives nest: **Context** contains **Loops** which invoke **Agents** which lo
 
 From idea to working system — driven entirely by markdown reads and writes:
 
-1. **Chat** — You tell Nous Girl about an idea
+1. **Chat** — You tell Senter about an idea
 2. **Comprehend** — Context reads the chat, writes wiki pages
 3. **Create** — Factories (Skills, Agents, Loops) build skills, agents, and loops
-4. **Inject** — Status flows back to Nous Girl, who tells you what happened
+4. **Inject** — Status flows back through Senter's conversational surface
 
 ---
 
@@ -87,7 +86,7 @@ wiki/topics/<topic>/
 ├── README.md              ← human dashboard
 ├── .system/               ← machine coordination (hidden)
 │   ├── continuity.md      ← raw understanding
-│   ├── injections.md       ← messages for Nous Girl
+│   ├── injections.md       ← messages for Senter's conversational surface
 │   └── queue.md           ← pending factory work
 ├── skills/                ← skills for this topic
 ├── agents/                ← agents serving this topic
@@ -137,7 +136,7 @@ See everything at a glance. Edit anything directly:
 4. **Dot-prefix for machine internals** — `.system/` is hidden but accessible
 5. **Topics are self-contained** — each topic holds its own full GOOP stack
 6. **Factories are thin** — cron jobs that spawn one `delegate_task`
-7. **Injections keep you in the loop** — factories write to files, Nous Girl reads them
+7. **Injections keep you in the loop** — factories write to files, Senter's conversational surface reads them
 8. **No self-edit** — factories cannot modify themselves
 
 ---

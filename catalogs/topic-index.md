@@ -12,7 +12,7 @@ Every topic = one user interest with its own full GOOP stack.
 
 | Topic | Status | Agents | Skills | Loops |
 |---|---|---|---|---|
-| (no topics yet — chat with Nous Girl to create them) | | | | |
+| (no topics yet — chat with Senter to create them) | | | | |
 
 ## Topic Structure
 

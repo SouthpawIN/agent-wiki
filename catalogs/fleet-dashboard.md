@@ -14,13 +14,13 @@ tags: [goop, fleet, overview]
 
 | Topic | Status | Agents | Loops | Last Activity |
 |---|---|---|---|---|
-| (no topics yet — start chatting with Nous Girl!) | | | | |
+| (no topics yet — start chatting with Senter's STS auxiliary) | | | | |
 
 ## Agent Roster
 
 | Agent | Role | Status |
 |---|---|---|
-| [[nous-girl]] | Front door — chat surface | 🟢 Active |
+| [[senter]] | Three-eyed owl — unified Agent Wiki | 🟢 Active |
 
 ## Running Loops
 
@@ -33,7 +33,7 @@ tags: [goop, fleet, overview]
 
 ## Quick Actions
 
-- **New idea?** Tell Nous Girl — Context creates the topic automatically
+- **New idea?** Tell Senter through the unnamed STS auxiliary — Context creates the topic automatically
 - **Force a skill:** Edit `.system/queue.md` → add `[SKILLS] my-skill`
 - **Fix a misunderstanding:** Edit `.system/continuity.md` directly
 - **See what factories are doing:** Read `log.md`
