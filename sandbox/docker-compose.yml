@@ -1,0 +1,17 @@
+services:
+  senter-agent:
+    build:
+      context: ./hermes-agent
+      dockerfile: Dockerfile
+      args:
+        HERMES_UID: "1000"
+    image: senter-agent:hermes-sandbox
+    environment:
+      HERMES_HOME: /opt/data/.hermes
+      HERMES_TUI: "1"
+    volumes:
+      - ./hermes-home:/opt/data/.hermes
+      - ./goop:/opt/data/goop:ro
+    stdin_open: true
+    tty: true
+    command: ["hermes", "--tui"]

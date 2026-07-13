@@ -43,6 +43,20 @@ senter-agent:research
 
 Images must not bake in `.env`, OAuth credentials, session databases, or private keys. Inject secrets at runtime through a secret manager or explicitly configured environment mechanism.
 
+## Docker sandbox
+
+The Hermes-Agent checkout is pinned by Git history and the compose wrapper is versioned:
+
+```bash
+cd sandbox
+docker build -t senter-agent:hermes-sandbox -f Dockerfile .
+docker compose up --build
+```
+
+The compose service uses a disposable `sandbox/hermes-home/` volume and mounts `sandbox/goop/` read-only. Do not place credentials in either the image or committed files.
+
+The upstream Hermes repository contains the Herm TUI under `ui-tui/`; there is not a separate Herm TUI repository in the checkout. The first sandbox therefore builds Hermes-Agent's own pinned TUI. A custom sidebar/Eikon frontend can be developed in a later branch of this clean checkout.
+
 ## Current status
 
 The sandbox contract is documented. Hermes and Herm source checkouts, the owl Eikon frontend, and Docker packaging are the next integration stage; no live Hermes files are modified by this repository.
