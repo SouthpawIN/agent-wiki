@@ -1,6 +1,7 @@
 """Parse ordinary and all-caps GOOP markdown documents without executing them."""
 
 import hashlib
+import os
 import re
 from pathlib import Path
 
@@ -71,6 +72,19 @@ def parse_markdown(path: str | Path) -> GoopDocument:
     )
 
 
-def parse_tree(root: str | Path) -> list[GoopDocument]:
+def parse_tree(root: str | Path, sources: list[str | Path] | None = None) -> list[GoopDocument]:
     root = Path(root)
-    return [parse_markdown(path) for path in sorted(root.rglob("*.md"))]
+    if sources is None:
+        value = os.environ.get("SENTER_GOOP_SOURCES")
+        sources = [item.strip() for item in value.split(",") if item.strip()] if value else None
+    roots = [root / Path(source) for source in sources] if sources else [root]
+    ignored = {".git", "node_modules", "__pycache__", ".pytest_cache", "dist", "build"}
+    paths = []
+    for base in roots:
+        if not base.exists():
+            continue
+        paths.extend(
+            path for path in base.rglob("*.md")
+            if not any(part.startswith(".") or part in ignored for part in path.relative_to(root).parts)
+        )
+    return [parse_markdown(path) for path in sorted(set(paths))]

@@ -141,6 +141,12 @@ See everything at a glance. Edit anything directly:
 
 ---
 
+## Integrated Verification
+
+The complete system status and user-test matrix are maintained in [[INTEGRATED_STATUS.md|INTEGRATED_STATUS.md]]. This distinguishes specified contracts, implemented artifacts, exercised paths, and blocked live integrations.
+
+The unified live Wiki is `~/.hermes/wiki/`. Its entry point is `~/.hermes/wiki/index.md`; its conventions are in `SCHEMA.md` and operational history in `log.md`.
+
 ## Learn More
 
 - [[spec|Agent Wiki Specification]] — full architecture, setup, comparison to GOOP v1

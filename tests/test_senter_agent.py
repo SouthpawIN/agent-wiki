@@ -45,6 +45,20 @@ def test_planner_does_not_apply_side_effects(tmp_path: Path):
     assert sorted(p.name for p in tmp_path.iterdir()) == before
 
 
+def test_source_scope_ignores_dependencies_and_untagged_prose(tmp_path: Path):
+    (tmp_path / "node_modules/pkg").mkdir(parents=True)
+    (tmp_path / "node_modules/pkg/README.md").write_text("# Repeated\n", encoding="utf-8")
+    (tmp_path / "one.md").write_text("# Repeated\n", encoding="utf-8")
+    (tmp_path / "two.md").write_text("# Repeated\n", encoding="utf-8")
+    (tmp_path / "A.md").write_text("---\ntags: [owl]\n---\n# Owl\n", encoding="utf-8")
+    (tmp_path / "B.md").write_text("---\ntags: [owl]\n---\n# Owl two\n", encoding="utf-8")
+    docs = parse_tree(tmp_path)
+    assert not any("node_modules" in str(doc.path) for doc in docs)
+    proposals = build_plan(docs)
+    assert any(p.slug == "owl-procedure" for p in proposals)
+    assert not any(p.slug == "repeated-procedure" for p in proposals)
+
+
 def test_queue_preserves_user_status(tmp_path: Path):
     source = tmp_path / "one.md"
     source.write_text("---\ntags: [video]\n---\n# Video\n", encoding="utf-8")
