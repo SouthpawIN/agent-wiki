@@ -31,6 +31,9 @@ services:
     ports:
       - "5555:5555"
     volumes:
-      - ./android-home:/data
+      - android-data:/data
     environment:
       EMULATOR_DEVICE: ${ANDROID_DEVICE:-Pixel_2}
+
+volumes:
+  android-data:

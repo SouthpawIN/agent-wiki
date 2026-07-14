@@ -14,16 +14,15 @@ This is the verification map for the complete Senter Agent system. It deliberate
 | Petdex frame rendering | Hermes `pet.cells` backend + Herm `Petdex.tsx` | implemented | Sidebar test + full Herm suite |
 | Android UX | `sandbox/android-surface/` | prototype implemented | browser interaction test |
 | Android native client | `sandbox/hermes-android/` | prebuilt APK only | no source rebuild claimed |
-| Android bridge | `sandbox/goop/android_bridge.py` | approval-gated implementation | contract/unit tests; live device blocked |
+| Android bridge | `sandbox/goop/android_bridge.py` | approval-gated implementation | contract/unit tests + live emulator screenshot |
 | STS | `sandbox/goop/STS_CONFIG.json` | specified | whole-flow validator |
 | Eikon | Herm bundled/custom Eikon | implemented | avatar mapping tests/build |
 
 ## Known blockers
 
-- No Android device/emulator is currently connected to ADB.
+- Native APK install remains blocked by the emulator image's broken PackageManager service; the bridge itself is live-tested.
 - The native Android checkout has no Gradle source tree.
 - The owl reference HTML expected by `validate_owl_source.py` is absent from the checked-out workspace.
-- Live Android device/emulator testing remains blocked until ADB has a connected target.
 
 ## Commands
 
