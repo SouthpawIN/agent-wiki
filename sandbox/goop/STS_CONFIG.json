@@ -1,0 +1,11 @@
+{
+  "schema": "senter.sts.auxiliary.v1",
+  "mode": "tool-free",
+  "purpose": "Speech-to-text and text-to-speech event adapter for the Senter flow",
+  "input": {"sources": ["android.voice", "local.microphone"], "approval": "user", "max_seconds": 120},
+  "output": {"targets": ["android.response", "herm.prompt"], "approval": "user"},
+  "state_events": {"listening": "thinking", "transcribing": "thinking", "speaking": "speaking", "idle": "idle", "error": "speaking"},
+  "security": {"host_tools": false, "adb": false, "shell": false, "network": false, "credential_access": false},
+  "implementation": {"adapter": "senter_agent.sts", "runtime": "declarative_event_queue", "side_effects": "caller-owned"}
+}
+

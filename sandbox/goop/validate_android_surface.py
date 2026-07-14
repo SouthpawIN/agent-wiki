@@ -9,6 +9,12 @@ from pathlib import Path
 def main() -> int:
     path = Path(sys.argv[1]) if len(sys.argv) > 1 else Path("ANDROID_SURFACE.json")
     data = json.loads(path.read_text(encoding="utf-8"))
+    bridge_path = path.with_name("ANDROID_BRIDGE.json")
+    bridge = json.loads(bridge_path.read_text(encoding="utf-8"))
+    assert bridge["schema"] == "senter.android.bridge.v1"
+    assert bridge["default"] == "disabled"
+    assert bridge["limits"]["max_actions_per_request"] == 1
+    assert bridge["limits"]["allow_raw_adb"] is False
     assert data["schema"] == "senter.android.surface.v1"
     assert data["gesture_contract"] == {
         "side_button": "open_compact",

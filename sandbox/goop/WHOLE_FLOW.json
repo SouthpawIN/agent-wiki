@@ -1,0 +1,24 @@
+{
+  "schema": "senter.goop.whole-flow.v1",
+  "identity": "senter-sts-auxiliary",
+  "components": {
+    "senter": {"role": "comprehension", "artifact": "SENTER.md", "approval_boundary": "proposal"},
+    "herm": {"role": "terminal_surface", "artifact": "herm-sovth", "approval_boundary": "local_ui"},
+    "eikon": {"role": "avatar_animation", "format": "NDJSON .eikon", "states": ["idle", "thinking", "speaking"]},
+    "petdex": {"role": "mascot_registry", "source": "Hermes petdex skill", "fallback": "static owl", "presentation_only": true},
+    "android": {"role": "compact_surface", "artifact": "ANDROID_SURFACE.json", "approval_boundary": "user"},
+    "sts": {"role": "speech_auxiliary", "artifact": "STS_CONFIG.json", "approval_boundary": "user"}
+  },
+  "events": {
+    "input": {"source": ["android.text", "android.voice", "herm.prompt"], "target": "senter"},
+    "state": {"source": "senter", "target": ["herm.eikon", "android.response", "sts.tts"]},
+    "approval": {"source": "user", "target": ["android.bridge", "sts.capture", "sts.speak"]}
+  },
+  "invariants": [
+    "Android bridge is disabled unless the user approves one bounded operation.",
+    "STS is auxiliary and tool-free: it cannot execute host or Android operations.",
+    "Eikon assets are parsed, not converted or mutated at runtime.",
+    "Petdex is presentation-only and never grants execution permissions.",
+    "Adapters emit declarative events; side effects remain behind existing Hermes approval boundaries."
+  ]
+}
