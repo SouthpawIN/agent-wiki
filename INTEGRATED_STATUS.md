@@ -11,7 +11,7 @@ This is the verification map for the complete Senter Agent system. It deliberate
 | GOOP planner | `senter_agent/planner.py` | implemented, constrained | scoped source scan |
 | Herm TUI | `sandbox/herm-sovth/` | implemented | typecheck, tests, build, startup smoke |
 | Herm Petdex metadata | sidebar + `pet.info.meta` | implemented | Sidebar test |
-| Petdex frame rendering | Hermes `pet.cells` backend | specified/backend implemented | Herm frontend frame consumer remains open |
+| Petdex frame rendering | Hermes `pet.cells` backend + Herm `Petdex.tsx` | implemented | Sidebar test + full Herm suite |
 | Android UX | `sandbox/android-surface/` | prototype implemented | browser interaction test |
 | Android native client | `sandbox/hermes-android/` | prebuilt APK only | no source rebuild claimed |
 | Android bridge | `sandbox/goop/android_bridge.py` | approval-gated implementation | contract/unit tests; live device blocked |
@@ -23,7 +23,7 @@ This is the verification map for the complete Senter Agent system. It deliberate
 - No Android device/emulator is currently connected to ADB.
 - The native Android checkout has no Gradle source tree.
 - The owl reference HTML expected by `validate_owl_source.py` is absent from the checked-out workspace.
-- The Herm TUI does not yet render Petdex `pet.cells` frames; it only displays active Petdex metadata.
+- Live Android device/emulator testing remains blocked until ADB has a connected target.
 
 ## Commands
 
