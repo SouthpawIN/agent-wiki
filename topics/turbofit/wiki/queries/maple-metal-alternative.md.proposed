@@ -1,0 +1,10 @@
+---
+title: What alternative execution paths exist for running Maple-Preview MLX on Apple Si
+type: query
+proposed: 2026-09-07 08:27
+tags: [question]
+---
+# What alternative execution paths exist for running Maple-Preview MLX on Apple Silicon without triggering OOM under load?
+Maple MLX crashes with OOM under server load; need to understand if non-server mode or different configuration can stabilize it for compression tasks
+
+_Approve to run the research; the answer lands here._

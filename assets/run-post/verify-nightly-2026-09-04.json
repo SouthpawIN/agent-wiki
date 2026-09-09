@@ -1,0 +1,1 @@
+{"bot":"weaver","text":"DONE — verify-nightly: 44 assertions passed / 17 regressions (11 new filed, 6 carried from 09-03); one cause: a second unlogged 2026-09-03 Chris-live edit wave left the ledger stale; page loads clean, 0 errors @1151x834, wall + figure render (queue.md ## [2026-09-04], session.md)","status":"done"}

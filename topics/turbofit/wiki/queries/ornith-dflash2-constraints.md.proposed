@@ -1,0 +1,10 @@
+---
+title: Can Ornith-1.5-35B-A3B-DFlash2 be integrated with llama.cpp speculative decoding
+type: query
+proposed: 2026-09-07 08:27
+tags: [question]
+---
+# Can Ornith-1.5-35B-A3B-DFlash2 be integrated with llama.cpp speculative decoding on this 32GB Mac without OOM?
+Ornith is MoE and much faster at short context; understanding DFlash2 constraints could unlock faster speculative decoding
+
+_Approve to run the research; the answer lands here._

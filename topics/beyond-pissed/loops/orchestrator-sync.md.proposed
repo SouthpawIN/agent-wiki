@@ -1,0 +1,16 @@
+---
+type: loop
+name: orchestrator-sync
+proposed: 2026-09-07 18:49
+schedule: 0 */15 * * * *
+---
+# orchestrator-sync
+owner: senter-wiki-bot · cadence: every 15m · status: SUGGESTED
+**Want me to monitor the center wiki as an orchestrator for your projects?**
+
+## Prompt
+Check the center wiki for changes, verify it's functioning as orchestrator, report any reverted steps or missing fixes needed
+
+## Evidence
+> Center wiki is the live orchestrator across multiple simultaneous projects
+> The center wiki has reverts that must be recovered before it can safely serve as that orchestrator

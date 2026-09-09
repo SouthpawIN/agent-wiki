@@ -1,0 +1,10 @@
+---
+title: What supported MTPLX config/env keys replace the rejected `--memory-budget` CLI 
+type: query
+proposed: 2026-09-07 20:13
+tags: [question]
+---
+# What supported MTPLX config/env keys replace the rejected `--memory-budget` CLI flag on this M1 Mac, and do any of them actually change the 24.99 GB admission threshold observed in the live memory-guard event?
+The only attempted workaround still triggers `prefill_admission_shed`, so Chris needs the supported path to stabilize 65K+ generation.
+
+_Approve to run the research; the answer lands here._

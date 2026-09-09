@@ -1,0 +1,10 @@
+---
+title: For the OmniSenter model family, should HuggingFace model pages/README be treate
+type: query
+proposed: 2026-09-07 14:28
+tags: [question]
+---
+# For the OmniSenter model family, should HuggingFace model pages/README be treated as authoritative for run instructions, or should canonical metadata live elsewhere?
+The raw item shows HuggingFace lookup but no decided sourcing policy, and the wiki has an unresolved decision page with contested/low confidence.
+
+_Approve to run the research; the answer lands here._

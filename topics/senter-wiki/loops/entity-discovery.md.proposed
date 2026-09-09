@@ -1,0 +1,15 @@
+---
+type: loop
+name: entity-discovery
+proposed: 2026-09-07 20:07
+schedule: 15m
+---
+# entity-discovery
+owner: topic-agent · cadence: None · status: SUGGESTED
+**Want a loop that rescans topics/*/skills and proposed bots/loops every tick to feed the librarian view?**
+
+## Prompt
+Scan the vault for new/changed topics/*/skills/SKILL.md front-matter and proposed .proposed bot/loop files; update the discovery index the librarian reads
+
+## Evidence
+> progressive disclosure just like how skills are discovered by first through the font matter

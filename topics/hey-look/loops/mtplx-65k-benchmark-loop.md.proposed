@@ -1,0 +1,16 @@
+---
+type: loop
+name: mtplx-65k-benchmark-loop
+proposed: 2026-09-07 04:46
+schedule: weekly
+---
+# mtplx-65k-benchmark-loop
+owner: mtplx-speedwatch · cadence: once per week on demand · status: SUGGESTED
+**I see 65K is the only proven stable window — want a loop that reruns the same 685/5010/1015-token benchmark weekly?**
+
+## Prompt
+Each tick: restart MTPLX at 65K with the current session-budget override, run 685-token and 5010-token prompts, capture tok/s and memory_guard events, append dated results to the wiki benchmark page, alert only if values move >15% from the 8.43-9.43 tok/s baseline.
+
+## Evidence
+> Final test completed: **8.55 tok/s** for 685 tokens at 65K context. MTPLX is stable.
+> 5010 prompt tokens returned 8.43 tok/s with cache shedding enabled.

@@ -1,0 +1,16 @@
+---
+type: loop
+name: turbo-context-budget-watch
+proposed: 2026-09-07 08:45
+schedule: */5 * * * *
+---
+# turbo-context-budget-watch
+owner: turbofit-runtime-scout · cadence: every 5m · status: SUGGESTED
+**Want a repeatable check that compares Hermes prompt size against the stable 65K cap before each request so 131K only happens when you actually need long context?**
+
+## Prompt
+Inspect recent Hermes prompt lengths and warn if a candidate request would exceed 65K before firing it against MTPLX/Unleashed/Ornith; do not block, only surface the evidence.
+
+## Evidence
+> requested context 131072 exceeds the machine fit 8192
+> My recommendation: Lock in 65K context at ~7 tok/s as the daily driver.

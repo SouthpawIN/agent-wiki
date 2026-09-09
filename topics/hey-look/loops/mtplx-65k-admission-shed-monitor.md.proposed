@@ -1,0 +1,15 @@
+---
+type: loop
+name: mtplx-65k-admission-shed-monitor
+proposed: 2026-09-07 06:53
+schedule: every 2h
+---
+# mtplx-65k-admission-shed-monitor
+owner: mtplx-cap-prober · cadence: every 2h · status: SUGGESTED
+**Want a loop that watches 65K memory_guard admission-shed events under your exact large-prompt shapes?**
+
+## Prompt
+Run a 5K-prompt 65K generation, capture memory_guard admission-shed bytes and tok/s.
+
+## Evidence
+> A 5010-token 65K prompt triggered prefill_admission_shed with active_bytes 20.3GB and projected_bytes 25.0GB before cache clearing.

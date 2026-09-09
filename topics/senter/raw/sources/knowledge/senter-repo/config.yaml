@@ -1,0 +1,388 @@
+model:
+  base_url: ***
+  default: Darwin-28B-REASON
+  provider: nous
+
+custom_providers:
+  - name: llama-main
+    base_url: ***
+    api_key: ***
+  - name: llama-aux
+    base_url: ***
+    api_key: ***
+
+providers: {}
+fallback_providers: []
+credential_pool_strategies: {}
+toolsets:
+- hermes-cli
+agent:
+  max_turns: 90
+  gateway_timeout: 1800
+  restart_drain_timeout: 180
+  api_max_retries: 3
+  service_tier: ''
+  tool_use_enforcement: auto
+  gateway_timeout_warning: 900
+  gateway_notify_interval: 180
+  gateway_auto_continue_freshness: 3600
+  image_input_mode: auto
+  disabled_toolsets: []
+terminal:
+  backend: local
+  modal_mode: auto
+  cwd: .
+  timeout: 180
+  env_passthrough: []
+  shell_init_files: []
+  auto_source_bashrc: true
+  docker_image: nikolaik/python-nodejs:python3.11-nodejs20
+  docker_forward_env: []
+  docker_env: {}
+  singularity_image: docker://nikolaik/python-nodejs:python3.11-nodejs20
+  modal_image: nikolaik/python-nodejs:python3.11-nodejs20
+  daytona_image: nikolaik/python-nodejs:python3.11-nodejs20
+  vercel_runtime: node24
+  container_cpu: 1
+  container_memory: 5120
+  container_disk: 51200
+  container_persistent: true
+  docker_volumes: []
+  docker_mount_cwd_to_workspace: false
+  docker_run_as_host_user: false
+  persistent_shell: true
+browser:
+  inactivity_timeout: 120
+  command_timeout: 30
+  record_sessions: false
+  allow_private_urls: false
+  auto_local_for_private_urls: true
+  cdp_url: ''
+  dialog_policy: must_respond
+  dialog_timeout_s: 300
+  camofox:
+    managed_persistence: false
+  cloud_provider: browser-use
+checkpoints:
+  enabled: true
+  max_snapshots: 50
+  auto_prune: false
+  retention_days: 7
+  delete_orphans: true
+  min_interval_hours: 24
+file_read_max_chars: 100000
+tool_output:
+  max_bytes: 50000
+  max_lines: 2000
+  max_line_length: 2000
+tool_loop_guardrails:
+  warnings_enabled: true
+  hard_stop_enabled: false
+  warn_after:
+    exact_failure: 2
+    same_tool_failure: 3
+    idempotent_no_progress: 2
+  hard_stop_after:
+    exact_failure: 5
+    same_tool_failure: 8
+    idempotent_no_progress: 5
+compression:
+  enabled: true
+  threshold: 0.95
+  target_ratio: 0.2
+  protect_last_n: 20
+  hygiene_hard_message_limit: 400
+prompt_caching:
+  cache_ttl: 5m
+openrouter:
+  response_cache: true
+  response_cache_ttl: 300
+bedrock:
+  region: ''
+  discovery:
+    enabled: true
+    provider_filter: []
+    refresh_interval: 3600
+  guardrail:
+    guardrail_identifier: ''
+    guardrail_version: ''
+    stream_processing_mode: async
+    trace: disabled
+auxiliary:
+  vision:
+    provider: nous
+    model: qwen3.6-35b-a3b
+    base_url: ***
+    api_key: ***
+    timeout: 120
+    extra_body: {}
+    download_timeout: 30
+  web_extract:
+    provider: nous
+    model: qwen3.6-35b-a3b
+    base_url: ***
+    api_key: ***
+    timeout: 360
+    extra_body: {}
+  compression:
+    provider: nous
+    model: qwen3.6-35b-a3b
+    base_url: ***
+    api_key: ***
+    timeout: 120
+    extra_body: {}
+  session_search:
+    provider: nous
+    model: qwen3.6-35b-a3b
+    base_url: ***
+    api_key: ***
+    timeout: 30
+    extra_body: {}
+    max_concurrency: 3
+  skills_hub:
+    provider: nous
+    model: qwen3.6-35b-a3b
+    base_url: ***
+    api_key: ***
+    timeout: 30
+    extra_body: {}
+  approval:
+    provider: nous
+    model: qwen3.6-35b-a3b
+    base_url: ***
+    api_key: ***
+    timeout: 30
+    extra_body: {}
+  mcp:
+    provider: nous
+    model: qwen3.6-35b-a3b
+    base_url: ***
+    api_key: ***
+    timeout: 30
+    extra_body: {}
+  title_generation:
+    provider: nous
+    model: qwen3.6-35b-a3b
+    base_url: ***
+    api_key: ***
+    timeout: 30
+    extra_body: {}
+  curator:
+    provider: nous
+    model: qwen3.6-35b-a3b
+    base_url: ***
+    api_key: ***
+    timeout: 600
+    extra_body: {}
+display:
+  compact: false
+  personality: kawaii
+  resume_display: full
+  busy_input_mode: interrupt
+  tui_auto_resume_recent: false
+  bell_on_complete: false
+  show_reasoning: false
+  streaming: false
+  final_response_markdown: strip
+  inline_diffs: true
+  show_cost: false
+  skin: senter
+  language: en
+  tui_status_indicator: kaomoji
+  user_message_preview:
+    first_lines: 2
+    last_lines: 2
+  interim_assistant_messages: true
+  tool_progress_command: false
+  tool_progress_overrides: {}
+  tool_preview_length: 0
+  ephemeral_system_ttl: 0
+  platforms: {}
+  runtime_footer:
+    enabled: false
+    fields:
+    - model
+    - context_pct
+    - cwd
+  copy_shortcut: auto
+  tool_progress: new
+dashboard:
+  theme: default
+privacy:
+  redact_pii: false
+tts:
+  provider: openai
+  edge:
+    voice: en-US-AriaNeural
+  elevenlabs:
+    voice_id: pNInz6obpgDQGcFmaJgB
+    model_id: eleven_multilingual_v2
+  openai:
+    model: gpt-4o-mini-tts
+    voice: alloy
+  xai:
+    voice_id: eve
+    language: en
+    sample_rate: 24000
+    bit_rate: 128000
+  mistral:
+    model: voxtral-mini-tts-2603
+    voice_id: c69964a6-ab8b-4f8a-9465-ec0925096ec8
+  neutts:
+    ref_audio: ''
+    ref_text: ''
+    model: neuphonic/neutts-air-q4-gguf
+    device: cpu
+  piper:
+    voice: en_US-lessac-medium
+stt:
+  enabled: true
+  provider: local
+  local:
+    model: base
+    language: ''
+  openai:
+    model: whisper-1
+  mistral:
+    model: voxtral-mini-latest
+voice:
+  record_key: ctrl+b
+  max_recording_seconds: 120
+  auto_tts: false
+  beep_enabled: true
+  silence_threshold: 200
+  silence_duration: 3.0
+human_delay:
+  mode: 'off'
+  min_ms: 800
+  max_ms: 2500
+context:
+  engine: compressor
+memory:
+  memory_enabled: true
+  user_profile_enabled: true
+  memory_char_limit: 2200
+  user_char_limit: 1375
+  provider: ''
+delegation:
+  model: ''
+  provider: ''
+  base_url: ***
+  api_key: ***
+  inherit_mcp_toolsets: true
+  max_iterations: 50
+  child_timeout_seconds: 600
+  reasoning_effort: ''
+  max_concurrent_children: 3
+  max_spawn_depth: 1
+  orchestrator_enabled: true
+  subagent_auto_approve: false
+prefill_messages_file: ''
+goals:
+  max_turns: 20
+skills:
+  external_dirs: []
+  template_vars: true
+  inline_shell: false
+  inline_shell_timeout: 10
+  guard_agent_created: false
+curator:
+  enabled: true
+  interval_hours: 168
+  min_idle_hours: 2
+  stale_after_days: 30
+  archive_after_days: 90
+  backup:
+    enabled: true
+    keep: 5
+honcho: {}
+timezone: ''
+discord:
+  require_mention: true
+  free_response_channels: ''
+  allowed_channels: ''
+  auto_thread: true
+  reactions: true
+  channel_prompts: {}
+  server_actions: ''
+whatsapp: {}
+telegram:
+  reactions: false
+  channel_prompts: {}
+slack:
+  channel_prompts: {}
+mattermost:
+  channel_prompts: {}
+approvals:
+  mode: manual
+  timeout: 60
+  cron_mode: deny
+  mcp_reload_confirm: true
+command_allowlist: []
+quick_commands: {}
+hooks: {}
+hooks_auto_accept: false
+personalities: {}
+security:
+  allow_private_urls: false
+  redact_secrets: false
+  tirith_enabled: true
+  tirith_path: tirith
+  tirith_timeout: 5
+  tirith_fail_open: true
+  website_blocklist:
+    enabled: false
+    domains: []
+    shared_files: []
+cron:
+  wrap_response: true
+  max_parallel_jobs: null
+kanban:
+  dispatch_in_gateway: true
+  dispatch_interval_seconds: 60
+code_execution:
+  mode: project
+logging:
+  level: INFO
+  max_size_mb: 5
+  backup_count: 3
+model_catalog:
+  enabled: true
+  url: https://hermes-agent.nousresearch.com/docs/api/model-catalog.json
+  ttl_hours: 24
+  providers: {}
+network:
+  force_ipv4: false
+sessions:
+  auto_prune: false
+  retention_days: 90
+  vacuum_after_prune: true
+  min_interval_hours: 24
+onboarding:
+  seen:
+    busy_input_prompt: true
+updates:
+  pre_update_backup: false
+  backup_keep: 5
+_config_version: 23
+known_plugin_toolsets:
+  cli:
+  - spotify
+platform_toolsets:
+  cli:
+  - clarify
+  - cronjob
+  - delegation
+  - kanban
+  - memory
+  - messaging
+  - session_search
+  - skills
+  - todo
+  - web
+session_reset:
+  at_hour: 4
+  idle_minutes: 1440
+  mode: both
+web:
+  backend: firecrawl

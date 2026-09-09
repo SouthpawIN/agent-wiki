@@ -1,0 +1,16 @@
+---
+type: loop
+name: weaver
+proposed: 2026-09-08 09:50
+schedule: 0 9 * * *
+---
+# weaver
+owner: weaver · cadence: per session · status: SUGGESTED
+**Want me to show you the restored wiki vault dashboard with running indicator?**
+
+## Prompt
+Render the Senter Vault live dashboard from the updated wiki index, with running indicator at petdex pets bottom-left
+
+## Evidence
+> UI layout regression after diff view change
+> model-picker-persistence until fallback

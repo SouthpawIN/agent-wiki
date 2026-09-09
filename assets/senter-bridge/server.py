@@ -1,0 +1,766 @@
+#!/usr/bin/env python3
+"""senter-bridge server — loopback SSE + approval relay for the Senter Wiki.
+
+  GET  /events?token=T        SSE: replays last N events then tails events.jsonl
+  GET  /pending?token=T       JSON list of pending approvals
+  POST /approve/<id>?token=T  {"choice":"once|session|always"}  (default once)
+  POST /deny/<id>?token=T     {"reason":"..."}
+  POST /ask?token=T           {"text": "...", "context": ["..."], "model": "..."} -> 202 {id}
+         context items may be strings or {type,ref,text?}; file refs read server-side if text absent
+  POST /stt?token=T           audio/webm or wav body (or multipart) -> {transcript, success}
+  POST /tts?token=T           JSON {text, provider?, voice?, speed?} -> audio bytes (or JSON if ?format=json)
+  POST /wake/start?token=T    {surface?, persist?} -> gateway wake.start proxy
+  POST /wake/stop?token=T     {persist?} -> gateway wake.stop proxy
+  GET  /wake/status?token=T   -> gateway wake.status proxy
+  GET  /health                {"ok":true,"pid":...}
+  GET  /music/spotify/status?token=T      {ok, authed, device, now_playing} — proxies Hermes' native Spotify plugin
+  GET  /music/spotify/playlists?token=T   {ok, items:[{name,uri,id,image,tracks,owner}]}
+  GET  /music/spotify/search?token=T&q=.. {ok, tracks:[...], playlists:[...]}  (&type=track,playlist &limit=10)
+  POST /music/spotify/play?token=T        {uri | uris:[..] | context_uri, device_id?, position_ms?}
+  POST /music/spotify/pause|next|prev?token=T   {device_id?}
+       every Spotify route → {ok:false, needs_auth:true, auth_command:"hermes auth spotify"} when not authorized
+  GET  /music/youtube/playlist?token=T&id=PLAYLIST_ID  {ok, title, items:[{title,videoId,duration,thumbnail}]}
+       via yt-dlp --flat-playlist -J when installed, else the public page's ytInitialData; {needs_install:true} if neither
+
+Decisions are written to pending/<id>.decision; the plugin's waiter inside the bot process
+picks that up and resolves the blocked approval. Token: ~/.hermes/senter-bridge/token (per boot).
+CORS: the wiki is a file:// page → Origin "null"; allowed only with the token.
+
+/ask: wiki input bar → one serialized Senter turn in persistent session
+  `hermes -p senter chat --in ~ -c 'Wiki Chat' --create-if-missing -Q`. Emits
+  chris message immediately, runs turn under ASK_LOCK, captures final assistant
+  reply via session DB (fallback stdout), emits senter message. Errors become
+  senter message, never silence. Returns 202 {id}. Optional `model` → `hermes -m`.
+"""
+import json, os, secrets, sys, time, threading, uuid, tempfile, shutil
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from pathlib import Path
+from urllib.parse import urlparse, parse_qs
+
+BR = Path(os.environ.get("SENTER_BRIDGE_DATA") or os.path.expanduser("~/.hermes/senter-bridge")); PEND = BR / "pending"; EV = BR / "events.jsonl"
+BR.mkdir(parents=True, exist_ok=True); PEND.mkdir(exist_ok=True); EV.touch()
+TOKEN_FILE = BR / "token"
+if not TOKEN_FILE.exists() or "--new-token" in sys.argv:
+    TOKEN_FILE.write_text(secrets.token_urlsafe(24))
+TOKEN = TOKEN_FILE.read_text().strip()
+PORT = int(os.environ.get("SENTER_BRIDGE_PORT", "8643"))
+REPLAY = 60
+REPLAY_MSG = 40
+ASK_LOCK = threading.Lock()
+EV_LOCK = threading.Lock()
+
+# GET /file allowlist: vault + bridge dir only, resolved (symlinks/.. collapsed), token file excluded, 2 MB cap
+import mimetypes, re
+sys.path.insert(0, str(Path(__file__).resolve().parent)); import feed_sources
+FILE_ROOTS = [Path.home() / "Documents/Projects/Projects", BR]
+FILE_CAP = 2 * 1024 * 1024
+def _file_allowed(raw):
+    if not raw: return None
+    try:
+        p = Path(os.path.expanduser(raw))
+        if not p.is_absolute(): p = FILE_ROOTS[0] / p
+        real = p.resolve()
+    except Exception:
+        return None
+    if real == TOKEN_FILE.resolve() or real.name in (".env", "auth.json", "credential_pool.json"): return None
+    for root in FILE_ROOTS:
+        try:
+            real.relative_to(root.resolve()); return real
+        except ValueError:
+            continue
+    return None
+
+def _replayable(line):
+    """Skip approval/pending lines whose id is no longer in pending/ (already decided/expired)."""
+    try:
+        rec = json.loads(line)
+    except Exception:
+        return False
+    if rec.get("kind") == "approval" and rec.get("phase") == "pending":
+        return _is_pending(rec.get("id"))
+    return True
+
+def _is_pending(rid):
+    """Pending = record exists AND no decision written yet (the bot's waiter removes both; if it died, the .decision alone marks it decided)."""
+    return bool(rid) and (PEND / f"{rid}.json").exists() and not (PEND / f"{rid}.decision").exists()
+
+STATUSES = {"done", "blocked", "needs_chris", "working"}
+STATUS_LINE = re.compile(r"^\s*(DONE|BLOCKED|NEEDS[-_]CHRIS|WORKING)\b", re.I)
+STALE_AFTER = 300 + 60  # approvals.timeout default + slack: past this the agent side has given up
+def _sweep_pending():
+    """Retire orphaned pending cards (waiter process died before cleanup) and emit approval/timeout once."""
+    for p in list(PEND.glob("*.json")):
+        try:
+            rec = json.loads(p.read_text())
+            dec = PEND / (p.stem + ".decision")
+            if dec.exists() and time.time() - dec.stat().st_mtime > 30:
+                # decided, but the bot's waiter never collected it (process gone) — retire quietly
+                p.unlink(); dec.unlink(missing_ok=True); continue
+            if not dec.exists() and time.time() - float(rec.get("ts") or 0) > STALE_AFTER:
+                p.unlink()
+                _emit({"kind": "approval", "phase": "timeout", "id": rec.get("id", p.stem), "bot": rec.get("bot", "senter"), "swept": True})
+        except Exception:
+            continue
+def _pending_list():
+    _sweep_pending()
+    return [json.loads(p.read_text()) for p in sorted(PEND.glob("*.json")) if _is_pending(p.stem)]
+
+def _emit(rec):
+    rec["ts"] = rec.get("ts") or time.time()
+    line = json.dumps(rec, ensure_ascii=False, default=str)
+    with EV_LOCK:
+        with EV.open("a") as f:
+            f.write(line + "\n")
+
+def _caps_text(s, n=12000):
+    s = str(s)
+    return s if len(s) <= n else s[:n-1] + "…"
+
+def _read_context_items(raw):
+    """Normalize POST /ask context to list[str] — supports legacy [str] and new [{type,ref,text?}]."""
+    if raw is None:
+        return None
+    if not isinstance(raw, list):
+        return None
+    out = []
+    for it in raw[:30]:
+        if isinstance(it, str):
+            t = str(it).strip()
+            if t: out.append(t[:4000])
+        elif isinstance(it, dict):
+            # new shape {type, ref, text?}
+            txt = it.get("text")
+            if isinstance(txt, str) and txt.strip():
+                out.append(txt.strip()[:4000])
+                continue
+            ref = it.get("ref")
+            if isinstance(ref, str) and ref.strip():
+                # server-side file read if text absent
+                p = Path(os.path.expanduser(ref.strip())).expanduser() if ref.strip().startswith("~") else Path(ref.strip())
+                # allow vault-relative refs like topics/.../foo.md
+                if not p.is_absolute():
+                    # try vault, then home, then cwd
+                    for base in [Path.home() / "Documents/Projects/Projects", Path.home(), Path.cwd()]:
+                        cand = base / ref.strip()
+                        if cand.exists():
+                            p = cand; break
+                try:
+                    if p.exists() and p.is_file() and p.stat().st_size < 500_000:
+                        # block credential paths
+                        from agent.file_safety import get_read_block_error
+                        blocked = get_read_block_error(str(p))
+                        if not blocked:
+                            txt2 = p.read_text(encoding="utf-8", errors="ignore")
+                            if txt2.strip():
+                                out.append(f"[{ref}]\n{txt2.strip()[:3500]}")
+                except Exception:
+                    pass
+        else:
+            t = str(it).strip()
+            if t: out.append(t[:4000])
+    return out or None
+
+def _build_prompt(text, context):
+    parts = []
+    if context:
+        quoted = "\n".join(f"> {ln}" for c in context for ln in str(c).splitlines() or [""])
+        parts.append(f"Context from wiki page:\n{quoted}")
+    parts.append(str(text))
+    out = "\n\n".join(p for p in parts if p.strip())
+    return out if len(out) <= 18000 else out[:17999] + "…"
+
+def _read_last_assistant(session_title="Wiki Chat"):
+    try:
+        sys.path.insert(0, os.path.expanduser("~/.hermes/hermes-agent"))
+        from hermes_state import SessionDB
+        db = SessionDB()
+        sess = db.get_session_by_title(session_title)
+        if not sess:
+            sid = db.resolve_session_by_title(session_title)
+            if sid:
+                sess = {"session_id": sid}
+        if sess:
+            sid = sess.get("session_id") or sess.get("id")
+            if sid:
+                msgs = db.get_messages(sid, include_compacted=True)
+                for m in reversed(msgs):
+                    if m.get("role") == "assistant" and m.get("content"):
+                        c = m["content"]
+                        if isinstance(c, list):
+                            texts = [b.get("text","") for b in c if isinstance(b, dict) and b.get("type")=="text"]
+                            c = "".join(texts)
+                        if isinstance(c, str) and c.strip():
+                            return c.strip()
+    except Exception as e:
+        try:
+            _emit({"bot": "senter", "kind": "bridge", "phase": "ask-db-fallback", "error": str(e)[:200]})
+        except:
+            pass
+    return None
+
+def _run_one_ask(ask_id, text, context, model=None):
+    prompt = _build_prompt(text, context)
+    with ASK_LOCK:
+        _emit({"bot": "senter", "kind": "bridge", "phase": "ask-start", "id": ask_id, "prompt": _caps_text(prompt, 400), "model": model or ""})
+        tmp = None
+        try:
+            import subprocess
+            fd, tmp = tempfile.mkstemp(prefix="senter-ask-", suffix=".txt")
+            with os.fdopen(fd, "w", encoding="utf-8") as f:
+                f.write(prompt)
+            hermes_bin = os.path.expanduser("~/.hermes/hermes-agent/venv/bin/hermes")
+            if not os.path.exists(hermes_bin):
+                hermes_bin = "hermes"
+            cmd = [hermes_bin, "-p", "senter", "chat", "--in", "~", "-c", "Wiki Chat", "--create-if-missing", "-Q", "--query-file", tmp]
+            if model and isinstance(model, str) and model.strip():
+                # hermes -m <model> must precede chat subcommand
+                cmd = [hermes_bin, "-p", "senter", "-m", model.strip(), "chat", "--in", "~", "-c", "Wiki Chat", "--create-if-missing", "-Q", "--query-file", tmp]
+            r = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
+            stdout = (r.stdout or "").strip()
+            stderr = (r.stderr or "").strip()
+            reply = _read_last_assistant("Wiki Chat")
+            if not reply:
+                if stdout:
+                    reply = stdout.strip().split("\n\n")[-1].strip() if stdout.strip() else ""
+                if not reply and stderr:
+                    reply = f"[hermes error] {stderr[:2000]}"
+                if not reply:
+                    reply = "(no reply — Senter produced no output)"
+            _emit({"bot": "senter", "kind": "message", "summary": reply, "id": ask_id, "ask": True})
+        except subprocess.TimeoutExpired:
+            _emit({"bot": "senter", "kind": "message", "summary": "Error: Senter turn timed out after 120s.", "id": ask_id, "ask": True, "error": True})
+        except Exception as e:
+            _emit({"bot": "senter", "kind": "message", "summary": f"Error: {e}", "id": ask_id, "ask": True, "error": True})
+        finally:
+            if tmp:
+                try: os.unlink(tmp)
+                except: pass
+
+# ── wake proxy helpers: try gateway RPC, fall back to direct wake_word calls ──
+def _gateway_rpc(method, params):
+    """Best-effort gateway RPC via local HTTP if gateway's API server is up; else None."""
+    for port in [8787, 8080, 3000]:
+        try:
+            import http.client, json as _j
+            conn = http.client.HTTPConnection("127.0.0.1", port, timeout=2)
+            body = _j.dumps({"jsonrpc":"2.0","id":1,"method":method,"params":params}).encode()
+            conn.request("POST", "/rpc", body, {"Content-Type":"application/json"})
+            resp = conn.getresponse()
+            if resp.status == 200:
+                data = _j.loads(resp.read().decode() or "{}")
+                if "result" in data: return data["result"]
+                if "error" not in data: return data
+            conn.close()
+        except Exception:
+            continue
+    return None
+
+def _wake_start(params):
+    gw = _gateway_rpc("wake.start", params)
+    if gw is not None: return gw
+    # no gateway reachable — report why without trying to own the listener from bridge
+    # (bridge is not the gateway's audio surface; arming here would conflict)
+    try:
+        from tools.wake_word import check_wake_word_requirements, load_wake_word_config
+        cfg = load_wake_word_config()
+        req = check_wake_word_requirements(cfg)
+        if not req.get("available"):
+            return {"started": False, "reason": "unavailable", "hint": req.get("hint","")}
+        # gateway owns the listener; bridge can only report status
+        return {"started": False, "reason": "owned", "hint": "wake listener is owned by the gateway/TUI; arm from desktop or run `hermes gateway` with wake enabled", "available": True}
+    except Exception as e:
+        return {"started": False, "reason": "error", "hint": str(e)[:300]}
+
+def _wake_stop(params):
+    gw = _gateway_rpc("wake.stop", params)
+    if gw is not None: return gw
+    return {"stopped": False, "reason": "no gateway reachable; stop wake from desktop or TUI"}
+
+def _wake_status():
+    gw = _gateway_rpc("wake.status", {})
+    if gw is not None: return gw
+    try:
+        from tools.wake_word import check_wake_word_requirements, load_wake_word_config, wake_phrase
+        cfg = load_wake_word_config()
+        req = check_wake_word_requirements(cfg)
+        return {"available": bool(req.get("available")), "listening": False, "phrase": wake_phrase(cfg), "hint": req.get("hint",""), "provider": cfg.get("provider","")}
+    except Exception as e:
+        return {"available": False, "hint": str(e)[:200], "listening": False}
+
+# ── music: Spotify proxy (Hermes native plugin, real credential resolver) + YouTube playlist ──
+HERMES_AGENT = os.path.expanduser("~/.hermes/hermes-agent")
+SPOTIFY_AUTH_CMD = "hermes auth spotify"
+SPOTIFY_NEEDS_AUTH = {"ok": False, "authed": False, "needs_auth": True, "auth_command": SPOTIFY_AUTH_CMD}
+
+def _spotify_mod():
+    if HERMES_AGENT not in sys.path: sys.path.insert(0, HERMES_AGENT)
+    import plugins.spotify.client as m   # plugins/spotify/client.py → hermes_cli.auth.resolve_spotify_runtime_credentials
+    return m
+
+def _spotify_call(fn, playback=False):
+    """Run fn(client, mod) → (http_code, payload). Never fabricates: unauth → needs_auth, Spotify errors → ok:false + Spotify's own message."""
+    try:
+        m = _spotify_mod()
+    except Exception as e:
+        return 500, {"ok": False, "error": f"hermes spotify plugin import failed: {e}"[:400]}
+    try:
+        client = m.SpotifyClient()          # resolves ~/.hermes/auth.json providers.spotify, refreshes if expiring
+        out = fn(client, m)
+        if isinstance(out, dict) and "ok" not in out: out["ok"] = True
+        return 200, out
+    except m.SpotifyAuthRequiredError as e:
+        return 200, dict(SPOTIFY_NEEDS_AUTH, error=str(e), client_id_configured=_spotify_client_id_configured())
+    except m.SpotifyAPIError as e:
+        out = {"ok": False, "authed": True, "error": str(e), "status_code": e.status_code}
+        if e.status_code == 401: out.update(needs_auth=True, auth_command=SPOTIFY_AUTH_CMD, authed=False)
+        if e.status_code == 403 and playback: out["needs_premium"] = True     # playback control = Premium + active Connect device
+        if e.status_code == 404 and playback: out["no_device"] = True
+        return 200, out
+    except m.SpotifyError as e:
+        return 400, {"ok": False, "error": str(e)}
+    except Exception as e:
+        return 500, {"ok": False, "error": str(e)[:600]}
+
+def _spotify_client_id_configured():
+    try:
+        from hermes_cli.auth import _spotify_client_id
+        _spotify_client_id(); return True
+    except Exception:
+        return False
+
+def _sp_image(images):
+    try: return (images or [{}])[0].get("url")
+    except Exception: return None
+
+def _sp_track(t):
+    if not isinstance(t, dict): return None
+    album = t.get("album") or {}
+    return {"name": t.get("name"), "uri": t.get("uri"), "id": t.get("id"),
+            "artists": [a.get("name") for a in (t.get("artists") or []) if isinstance(a, dict)],
+            "album": album.get("name"), "image": _sp_image(album.get("images")),
+            "duration_ms": t.get("duration_ms"), "explicit": t.get("explicit"), "url": (t.get("external_urls") or {}).get("spotify")}
+
+def _sp_playlist(p):
+    if not isinstance(p, dict): return None
+    return {"name": p.get("name"), "uri": p.get("uri"), "id": p.get("id"), "image": _sp_image(p.get("images")),
+            "tracks": (p.get("tracks") or {}).get("total"), "owner": (p.get("owner") or {}).get("display_name"),
+            "public": p.get("public"), "url": (p.get("external_urls") or {}).get("spotify")}
+
+def _sp_device(d):
+    if not isinstance(d, dict): return None
+    return {"id": d.get("id"), "name": d.get("name"), "type": d.get("type"), "is_active": d.get("is_active"),
+            "volume_percent": d.get("volume_percent"), "is_restricted": d.get("is_restricted")}
+
+def _spotify_status(client, m):
+    devs = [_sp_device(d) for d in (client.get_devices() or {}).get("devices", []) or []]
+    active = next((d for d in devs if d and d.get("is_active")), None)
+    st = client.get_playback_state()
+    now = None
+    if isinstance(st, dict) and not st.get("empty") and st.get("item"):
+        now = {"is_playing": st.get("is_playing"), "progress_ms": st.get("progress_ms"), "track": _sp_track(st.get("item")),
+               "context_uri": (st.get("context") or {}).get("uri"), "shuffle": st.get("shuffle_state"), "repeat": st.get("repeat_state")}
+        if not active and st.get("device"): active = _sp_device(st.get("device"))
+    return {"ok": True, "authed": True, "device": active, "devices": devs, "now_playing": now,
+            "has_active_device": bool(active), "message": None if now else (st.get("message") if isinstance(st, dict) else None)}
+
+def _spotify_play(body):
+    def go(client, m):
+        uris = body.get("uris") or ([body["uri"]] if body.get("uri") else None)
+        ctx = body.get("context_uri")
+        if not uris and not ctx: raise m.SpotifyError("play needs a track `uri` (or `uris`) or a `context_uri` (playlist/album/artist).")
+        kw = {"device_id": body.get("device_id") or None, "position_ms": body.get("position_ms")}
+        if ctx:
+            kw["context_uri"] = m.normalize_spotify_uri(str(ctx))
+            if body.get("offset") is not None:
+                off = body["offset"]; kw["offset"] = off if isinstance(off, dict) else ({"uri": m.normalize_spotify_uri(str(off), "track")} if isinstance(off, str) and not str(off).isdigit() else {"position": int(off)})
+        else:
+            kw["uris"] = m.normalize_spotify_uris([str(u) for u in uris], "track")
+        client.start_playback(**kw)
+        return {"ok": True, "action": "play", "context_uri": kw.get("context_uri"), "uris": kw.get("uris")}
+    return _spotify_call(go, playback=True)
+
+def _spotify_simple(action, body):
+    def go(client, m):
+        dev = body.get("device_id") or None
+        {"pause": client.pause_playback, "next": client.skip_next, "prev": client.skip_previous}[action](device_id=dev)
+        return {"ok": True, "action": action}
+    return _spotify_call(go, playback=True)
+
+def _spotify_search(q, types, limit):
+    def go(client, m):
+        res = client.search(query=q, search_types=types, limit=limit) or {}
+        out = {"ok": True, "q": q}
+        if "tracks" in res: out["tracks"] = [x for x in map(_sp_track, (res["tracks"] or {}).get("items") or []) if x]
+        if "playlists" in res: out["playlists"] = [x for x in map(_sp_playlist, (res["playlists"] or {}).get("items") or []) if x]
+        if "albums" in res: out["albums"] = [{"name": a.get("name"), "uri": a.get("uri"), "image": _sp_image(a.get("images")), "artists": [x.get("name") for x in a.get("artists") or []]} for a in (res["albums"] or {}).get("items") or [] if isinstance(a, dict)]
+        if "artists" in res: out["artists"] = [{"name": a.get("name"), "uri": a.get("uri"), "image": _sp_image(a.get("images"))} for a in (res["artists"] or {}).get("items") or [] if isinstance(a, dict)]
+        return out
+    return _spotify_call(go)
+
+YT_ID = re.compile(r"^[A-Za-z0-9_-]{10,80}$")
+def _yt_playlist_id(raw):
+    raw = (raw or "").strip()
+    if "list=" in raw: raw = parse_qs(urlparse(raw).query).get("list", [""])[0]
+    return raw if YT_ID.match(raw) else None
+
+def _yt_item(e):
+    th = e.get("thumbnails") or []
+    thumb = (th[-1].get("url") if th else None) or (f"https://i.ytimg.com/vi/{e.get('id')}/hqdefault.jpg" if e.get("id") else None)
+    return {"title": e.get("title"), "videoId": e.get("id"), "duration": e.get("duration"), "thumbnail": thumb,
+            "channel": e.get("uploader") or e.get("channel"), "url": f"https://www.youtube.com/watch?v={e.get('id')}"}
+
+def _yt_via_ytdlp(url):
+    """yt-dlp --flat-playlist -J: binary on PATH, else the hermes venv's `python -m yt_dlp`. None if neither is installed."""
+    import subprocess
+    cmds = []
+    exe = shutil.which("yt-dlp")
+    if exe: cmds.append([exe])
+    vpy = os.path.join(HERMES_AGENT, "venv", "bin", "python")
+    if os.path.exists(vpy):
+        try:
+            if subprocess.run([vpy, "-c", "import yt_dlp"], capture_output=True, timeout=20).returncode == 0: cmds.append([vpy, "-m", "yt_dlp"])
+        except Exception: pass
+    if not cmds: return None
+    r = subprocess.run(cmds[0] + ["--flat-playlist", "-J", "--no-warnings", url], capture_output=True, text=True, timeout=90)
+    if r.returncode != 0 or not r.stdout.strip(): raise RuntimeError((r.stderr or "yt-dlp failed").strip()[:400])
+    data = json.loads(r.stdout)
+    items = [_yt_item(e) for e in data.get("entries") or [] if isinstance(e, dict) and e.get("id")]
+    return {"ok": True, "source": "yt-dlp", "title": data.get("title"), "channel": data.get("uploader") or data.get("channel"), "count": len(items), "items": items}
+
+def _yt_walk(node, key, out):
+    if isinstance(node, dict):
+        if key in node: out.append(node[key])
+        for v in node.values(): _yt_walk(v, key, out)
+    elif isinstance(node, list):
+        for v in node: _yt_walk(v, key, out)
+
+def _yt_via_page(pid):
+    """Public playlist page → embedded ytInitialData (first page, ≤100 items). Real YouTube data, no API key."""
+    import urllib.request
+    req = urllib.request.Request(f"https://www.youtube.com/playlist?list={pid}&hl=en",
+        headers={"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36",
+                 "Accept-Language": "en-US,en;q=0.9", "Cookie": "CONSENT=YES+cb; SOCS=CAI"})
+    html = urllib.request.urlopen(req, timeout=25).read().decode("utf-8", "ignore")
+    mm = re.search(r"ytInitialData\s*=\s*(\{.*?\})\s*;\s*</script>", html, re.S)
+    if not mm: raise RuntimeError("ytInitialData not found (private/removed playlist, or YouTube changed the page)")
+    data = json.loads(mm.group(1))
+    vids = []; _yt_walk(data, "playlistVideoRenderer", vids)
+    def txt(o):
+        if not isinstance(o, dict): return None
+        if o.get("simpleText"): return o["simpleText"]
+        return "".join(r.get("text", "") for r in o.get("runs") or []) or None
+    items = []
+    for v in vids:
+        vid = v.get("videoId")
+        if not vid: continue
+        th = (v.get("thumbnail") or {}).get("thumbnails") or []
+        items.append({"title": txt(v.get("title")), "videoId": vid,
+                      "duration": int(v["lengthSeconds"]) if str(v.get("lengthSeconds", "")).isdigit() else None,
+                      "duration_text": txt(v.get("lengthText")), "thumbnail": th[-1].get("url") if th else f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg",
+                      "channel": txt(v.get("shortBylineText")), "url": f"https://www.youtube.com/watch?v={vid}"})
+    if not items:
+        # 2025+ markup: each row is a lockupViewModel {contentId, metadata.lockupMetadataViewModel.title.content, contentImage.thumbnailViewModel}
+        locks = []; _yt_walk(data, "lockupViewModel", locks)
+        for l in locks:
+            vid = l.get("contentId")
+            if not vid or "VIDEO" not in str(l.get("contentType", "VIDEO")): continue
+            md = (l.get("metadata") or {}).get("lockupMetadataViewModel") or {}
+            title = (md.get("title") or {}).get("content")
+            tv = (l.get("contentImage") or {}).get("thumbnailViewModel") or {}
+            srcs = (tv.get("image") or {}).get("sources") or []
+            dur_text = None
+            badges = []; _yt_walk(tv.get("overlays") or [], "thumbnailBadgeViewModel", badges)
+            for b in badges:
+                t = b.get("text")
+                if isinstance(t, str) and re.match(r"^\d+(:\d\d)+$", t): dur_text = t; break
+            dur = None
+            if dur_text:
+                secs = 0
+                for part in dur_text.split(":"): secs = secs * 60 + int(part)
+                dur = secs
+            rows = ((md.get("metadata") or {}).get("contentMetadataViewModel") or {}).get("metadataRows") or []
+            chan = None
+            try: chan = rows[0]["metadataParts"][0]["text"]["content"]
+            except Exception: pass
+            items.append({"title": title, "videoId": vid, "duration": dur, "duration_text": dur_text,
+                          "thumbnail": srcs[-1].get("url") if srcs else f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg",
+                          "channel": chan, "url": f"https://www.youtube.com/watch?v={vid}"})
+    meta = (data.get("metadata") or {}).get("playlistMetadataRenderer") or {}
+    conts = []; _yt_walk(data, "continuationItemRenderer", conts); _yt_walk(data, "continuationItemViewModel", conts)
+    return {"ok": True, "source": "ytInitialData", "title": meta.get("title"), "count": len(items), "items": items, "truncated": bool(conts)}
+
+def _yt_playlist(raw):
+    pid = _yt_playlist_id(raw)
+    if not pid: return 400, {"ok": False, "error": "id must be a YouTube playlist id (PL…/UU…/OL…) or a URL containing list="}
+    url = f"https://www.youtube.com/playlist?list={pid}"
+    errs = {}
+    try:
+        r = _yt_via_ytdlp(url)
+        if r is not None:
+            if r["items"]: r["id"] = pid; return 200, r
+            errs["yt-dlp"] = "0 items"
+        else: errs["yt-dlp"] = "not installed"
+    except Exception as e: errs["yt-dlp"] = str(e)[:300]
+    try:
+        r = _yt_via_page(pid)
+        if r["items"]: r["id"] = pid; r["fallback"] = errs; return 200, r
+        errs["page"] = "0 items"
+    except Exception as e: errs["page"] = str(e)[:300]
+    out = {"ok": False, "id": pid, "errors": errs}
+    if errs.get("yt-dlp") == "not installed":
+        out.update(needs_install=True, install_hint="brew install yt-dlp   # or: ~/.hermes/hermes-agent/venv/bin/pip install yt-dlp")
+    return 200, out
+
+def _ok_origin(o):  # file:// pages send "null"; also allow same-host dev servers
+    return o in (None, "", "null") or o.startswith("http://127.0.0.1") or o.startswith("http://localhost") or o.startswith("file://")
+
+class H(BaseHTTPRequestHandler):
+    server_version = "senter-bridge/0.1"
+    def log_message(self, *a): pass
+    def handle(self):
+        try: super().handle()
+        except (ConnectionResetError, BrokenPipeError): pass
+    def _cors(self):
+        o = self.headers.get("Origin")
+        self.send_header("Access-Control-Allow-Origin", o if o and o != "null" else "*")
+        self.send_header("Access-Control-Allow-Headers", "Content-Type, X-Senter-Token")
+        self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+    def _json(self, code, obj):
+        b = json.dumps(obj).encode(); self.send_response(code); self._cors()
+        self.send_header("Content-Type", "application/json"); self.send_header("Content-Length", str(len(b))); self.end_headers(); self.wfile.write(b)
+    def _bytes(self, code, data, ctype="application/octet-stream"):
+        self.send_response(code); self._cors()
+        self.send_header("Content-Type", ctype); self.send_header("Content-Length", str(len(data))); self.end_headers(); self.wfile.write(data)
+    def _auth(self, q):
+        t = (q.get("token") or [None])[0] or self.headers.get("X-Senter-Token")
+        return t == TOKEN and _ok_origin(self.headers.get("Origin"))
+    def do_OPTIONS(self):
+        self.send_response(204); self._cors(); self.end_headers()
+    def do_GET(self):
+        u = urlparse(self.path); q = parse_qs(u.query)
+        if u.path == "/health": return self._json(200, {"ok": True, "pid": os.getpid(), "pending": len(_pending_list())})
+        if u.path == "/token" and self.client_address[0] in ("127.0.0.1", "::1") and _ok_origin(self.headers.get("Origin")):
+            return self._json(200, {"token": TOKEN})
+        if u.path in ("/wake/status", "/wake/status/"):
+            if not self._auth(q): return self._json(401, {"error": "token"})
+            return self._json(200, _wake_status())
+        if not self._auth(q): return self._json(401, {"error": "token"})
+        if u.path == "/feed/status":
+            return self._json(200, feed_sources.status())
+        if u.path == "/music/spotify/status":
+            return self._json(*_spotify_call(_spotify_status))
+        if u.path == "/music/spotify/playlists":
+            lim = max(1, min(int((q.get("limit") or ["50"])[0] or 50), 50))
+            return self._json(*_spotify_call(lambda c, m: {"ok": True, "items": [x for x in map(_sp_playlist, (c.get_my_playlists(limit=lim) or {}).get("items") or []) if x]}))
+        if u.path == "/music/spotify/search":
+            text = ((q.get("q") or [""])[0] or "").strip()
+            if not text: return self._json(400, {"ok": False, "error": "q required"})
+            types = [t for t in ((q.get("type") or ["track"])[0] or "track").split(",") if t in ("track", "album", "artist", "playlist")] or ["track"]
+            lim = max(1, min(int((q.get("limit") or ["10"])[0] or 10), 50))
+            return self._json(*_spotify_search(text, types, lim))
+        if u.path == "/music/youtube/playlist":
+            return self._json(*_yt_playlist((q.get("id") or q.get("url") or [""])[0]))
+        if u.path == "/pending":
+            return self._json(200, _pending_list())
+        if u.path == "/file":
+            # file:// pages can't fetch(file://) in Chromium — serve allowlisted vault/bridge files over loopback
+            raw = (q.get("path") or [""])[0]
+            real = _file_allowed(raw)
+            if real is None: return self._json(403, {"error": "path not allowed"})
+            if not real.is_file(): return self._json(404, {"error": "not found"})
+            if real.stat().st_size > FILE_CAP: return self._json(413, {"error": "too large"})
+            ctype = mimetypes.guess_type(str(real))[0] or ("application/json" if real.suffix == ".json" else "application/octet-stream")
+            return self._bytes(200, real.read_bytes(), ctype + ("; charset=utf-8" if ctype.startswith("text/") or ctype.endswith("json") else ""))
+        if u.path == "/events":
+            self.send_response(200); self._cors()
+            for k, v in (("Content-Type", "text/event-stream"), ("Cache-Control", "no-cache"), ("Connection", "keep-alive"), ("X-Accel-Buffering", "no")): self.send_header(k, v)
+            self.end_headers()
+            try:
+                with EV.open("r") as f:
+                    _sweep_pending()
+                    lines = f.readlines()
+                    # replay = last REPLAY events of any kind PLUS the last REPLAY_MSG message/approval records, in file order —
+                    # tool start/end chatter (dozens per turn) must not push FEED posts and approval history out of the window
+                    tail = lines[-REPLAY:]
+                    keep = set(id(x) for x in tail)
+                    msgs = [x for x in lines[:-REPLAY] if '"kind": "message"' in x or '"kind": "approval"' in x][-REPLAY_MSG:]
+                    for ln in msgs + tail:
+                        # #18b: never replay an approval/pending that has since been decided — it would recreate a gold card
+                        if not _replayable(ln): continue
+                        self.wfile.write(f"data: {ln.strip()}\n\n".encode())
+                    # authoritative current state after replay: the wiki derives its pending Map from this, not from raw history
+                    snap = {"kind": "approval", "phase": "snapshot", "ts": time.time(), "bot": "senter",
+                            "pending": _pending_list()}
+                    self.wfile.write(f"data: {json.dumps(snap, default=str)}\n\n".encode())
+                    self.wfile.write(b": ready\n\n"); self.wfile.flush()
+                    last_beat = time.time()
+                    while True:
+                        ln = f.readline()
+                        if ln:
+                            self.wfile.write(f"data: {ln.strip()}\n\n".encode()); self.wfile.flush()
+                        else:
+                            time.sleep(0.25)
+                            if time.time() - last_beat > 15:
+                                self.wfile.write(b": beat\n\n"); self.wfile.flush(); last_beat = time.time()
+            except (BrokenPipeError, ConnectionResetError):
+                return
+        return self._json(404, {"error": "no"})
+    def do_POST(self):
+        u = urlparse(self.path); q = parse_qs(u.query)
+        # wake start/stop are loopback+token gated like the rest
+        if u.path in ("/wake/start", "/wake/start/", "/wake/stop", "/wake/stop/"):
+            if not self._auth(q): return self._json(401, {"error": "token"})
+            n = int(self.headers.get("Content-Length") or 0); body = json.loads(self.rfile.read(n) or b"{}") if n else {}
+            if "start" in u.path: return self._json(200, _wake_start(body))
+            else: return self._json(200, _wake_stop(body))
+        # stt/tts also loopback+token
+        if u.path in ("/stt", "/stt/"):
+            if not self._auth(q): return self._json(401, {"error": "token"})
+            ctype = (self.headers.get("Content-Type") or "").lower()
+            n = int(self.headers.get("Content-Length") or 0)
+            raw = self.rfile.read(n) if n else b""
+            # multipart handling (simple)
+            if "multipart/form-data" in ctype:
+                # extract boundary and pull first file part
+                try:
+                    import re
+                    m = re.search(r'boundary=([^;]+)', ctype)
+                    if m:
+                        bnd = m.group(1).strip().strip('"')
+                        parts = raw.split(("--"+bnd).encode())
+                        for part in parts:
+                            if b"Content-Type: audio" in part or b"Content-Type: video" in part or b"filename=" in part:
+                                # find double CRLF
+                                idx = part.find(b"\r\n\r\n")
+                                if idx >= 0:
+                                    raw = part[idx+4:]
+                                    # strip trailing \r\n--
+                                    raw = raw.rstrip(b"\r\n-")
+                                    break
+                except Exception: pass
+            elif "application/json" in ctype:
+                try:
+                    j = json.loads(raw.decode() or "{}")
+                    # allow {audio: "base64..."} or {data: "..."}
+                    b64 = j.get("audio") or j.get("data") or j.get("content")
+                    if isinstance(b64, str) and len(b64) > 100:
+                        import base64
+                        raw = base64.b64decode(b64.strip())
+                except Exception: pass
+            if not raw or len(raw) < 100:
+                return self._json(400, {"error": "no audio body (send audio/webm or audio/wav bytes, or multipart file)"})
+            # write temp file with guessed suffix
+            suffix = ".webm"
+            if "wav" in ctype: suffix = ".wav"
+            elif "mp4" in ctype or "m4a" in ctype: suffix = ".m4a"
+            elif "ogg" in ctype: suffix = ".ogg"
+            elif "mpeg" in ctype or "mp3" in ctype: suffix = ".mp3"
+            fd, tmp = tempfile.mkstemp(suffix=suffix)
+            try:
+                with os.fdopen(fd, "wb") as f: f.write(raw)
+                sys.path.insert(0, os.path.expanduser("~/.hermes/hermes-agent"))
+                from tools.transcription_tools import transcribe_audio
+                res = transcribe_audio(tmp)
+                if res.get("success"):
+                    return self._json(200, {"ok": True, "transcript": res.get("transcript",""), "text": res.get("transcript","")})
+                else:
+                    return self._json(200, {"ok": False, "error": res.get("error","transcription failed"), "transcript": ""})
+            except Exception as e:
+                return self._json(500, {"ok": False, "error": str(e)[:800]})
+            finally:
+                try: os.unlink(tmp)
+                except: pass
+        if u.path in ("/tts", "/tts/"):
+            if not self._auth(q): return self._json(401, {"error": "token"})
+            n = int(self.headers.get("Content-Length") or 0); body = json.loads(self.rfile.read(n) or b"{}") if n else {}
+            text = (body.get("text") or body.get("content") or "").strip()
+            if not text:
+                return self._json(400, {"error": "text required"})
+            provider = body.get("provider")
+            speed = body.get("speed")
+            # also allow token in query ?format=json to get JSON instead of audio bytes
+            want_json = (q.get("format") or [""])[0] == "json"
+            try:
+                sys.path.insert(0, os.path.expanduser("~/.hermes/hermes-agent"))
+                from tools.tts_tool import text_to_speech_tool
+                res_raw = text_to_speech_tool(text=text, provider=provider, speed=speed)
+                # tool returns JSON string
+                try: res = json.loads(res_raw) if isinstance(res_raw, str) else res_raw
+                except: res = {"success": False, "error": res_raw[:800] if isinstance(res_raw, str) else "tts failed"}
+                if not res.get("success"):
+                    return self._json(500, {"ok": False, "error": res.get("error","tts failed")})
+                fpath = res.get("file_path") or (res.get("file_paths") or [""])[0]
+                if not fpath or not Path(fpath).exists():
+                    return self._json(500, {"ok": False, "error": "tts produced no file"})
+                if want_json:
+                    return self._json(200, {"ok": True, "file": fpath, "text": text})
+                data = Path(fpath).read_bytes()
+                # guess mime
+                ctype2 = "audio/mpeg"
+                if fpath.endswith(".ogg"): ctype2 = "audio/ogg"
+                elif fpath.endswith(".wav"): ctype2 = "audio/wav"
+                elif fpath.endswith(".mp3"): ctype2 = "audio/mpeg"
+                return self._bytes(200, data, ctype2)
+            except Exception as e:
+                return self._json(500, {"ok": False, "error": str(e)[:800]})
+        if not self._auth(q): return self._json(401, {"error": "token"})
+        n = int(self.headers.get("Content-Length") or 0); body = json.loads(self.rfile.read(n) or b"{}") if n else {}
+        parts = u.path.strip("/").split("/")
+        if len(parts) == 2 and parts[0] in ("approve", "deny"):
+            rid = parts[1]
+            if not (PEND / f"{rid}.json").exists(): return self._json(404, {"error": "unknown id"})
+            choice = (body.get("choice") or "once") if parts[0] == "approve" else "deny"
+            (PEND / f"{rid}.decision").write_text(json.dumps({"choice": choice, "reason": body.get("reason"), "by": body.get("by", "chris"), "ts": time.time()}))
+            return self._json(200, {"ok": True, "id": rid, "choice": choice})
+        if u.path == "/feed/poll":
+            return self._json(200, feed_sources.tick(_emit))
+        if u.path == "/music/spotify/play":
+            return self._json(*_spotify_play(body if isinstance(body, dict) else {}))
+        if u.path in ("/music/spotify/pause", "/music/spotify/next", "/music/spotify/prev"):
+            return self._json(*_spotify_simple(u.path.rsplit("/", 1)[1], body if isinstance(body, dict) else {}))
+        if u.path == "/post":
+            # optional status: done|blocked|needs_chris|working (weaver: working=pet animating, done=settle+green pulse, blocked=red hairline, needs_chris=gold)
+            rec = {"bot": body.get("bot", "chris"), "kind": "message", "summary": body.get("text", "")}
+            st = str(body.get("status") or "").strip().lower()
+            if st:
+                if st not in STATUSES: return self._json(400, {"error": "status must be one of " + "|".join(sorted(STATUSES))})
+                rec["status"] = st
+            elif STATUS_LINE.match(rec["summary"]):
+                rec["status"] = STATUS_LINE.match(rec["summary"]).group(1).lower().replace("-", "_")  # derive from the fleet-standard done line
+            if body.get("url"): rec["url"] = str(body["url"])[:2000]
+            _emit(rec)
+            return self._json(200, {"ok": True, "status": rec.get("status")})
+        if u.path == "/ask":
+            text = (body.get("text") or "").strip()
+            if not text:
+                return self._json(400, {"error": "text required"})
+            context = body.get("context")
+            # accept both legacy [str] and new [{type,ref,text?}] via shared normalizer
+            norm_ctx = _read_context_items(context) if context is not None else None
+            if context is not None and norm_ctx is None and isinstance(context, list) and len(context)>0:
+                # still allow empty normalization — means all refs unreadable, proceed with no context
+                norm_ctx = None
+            elif context is not None and not isinstance(context, list):
+                return self._json(400, {"error": "context must be array if present"})
+            text = text[:12000]
+            model = body.get("model")
+            if model is not None and not isinstance(model, str):
+                return self._json(400, {"error": "model must be string if present"})
+            if isinstance(model, str):
+                model = model.strip()[:120]
+                if not model: model = None
+            else: model = None
+            ask_id = uuid.uuid4().hex[:12]
+            _emit({"bot": "chris", "kind": "message", "summary": text, "id": ask_id, "ask": True, "model": model or ""})
+            threading.Thread(target=_run_one_ask, args=(ask_id, text, norm_ctx, model), daemon=True).start()
+            return self._json(202, {"ok": True, "id": ask_id})
+        return self._json(404, {"error": "no"})
+
+if __name__ == "__main__":
+    class Q(ThreadingHTTPServer):
+        def handle_error(self, request, client_address): pass
+    srv = Q(("127.0.0.1", PORT), H); srv.daemon_threads = True
+    print(f"senter-bridge on http://127.0.0.1:{PORT}  token={TOKEN_FILE}", flush=True)
+    with EV.open("a") as f: f.write(json.dumps({"ts": time.time(), "bot": "senter", "kind": "bridge", "phase": "server-up", "port": PORT}) + "\n")
+    feed_sources.start(_emit)   # GitHub / X / RSS → FEED posts every 5 min (only credentialed sources emit)
+    srv.serve_forever()

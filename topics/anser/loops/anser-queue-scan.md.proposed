@@ -1,0 +1,15 @@
+---
+type: loop
+name: anser-queue-scan
+proposed: 2026-09-07 11:02
+schedule: 30m
+---
+# anser-queue-scan
+owner: anser · cadence: every 30 minutes · status: SUGGESTED
+**Want a bot to scan for new anser-relevant support questions and surface them as cards?**
+
+## Prompt
+Check queued Discord Hermes support threads, classify as anser-relevant, and create actionable answer cards.
+
+## Evidence
+> BRIEF.md: anser scope = Hermes tech support moderation for Nous Discord

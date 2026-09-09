@@ -1,0 +1,21 @@
+---
+type: agent
+name: ornith-dflash2-llamacpp-tester
+proposed: 2026-09-07 06:53
+topic: hey-look
+reuse: null
+---
+# ornith-dflash2-llamacpp-tester
+**I see you've found Ornith as the short-context winner — want a bot that tests Ornith through llama.cpp with DFlash2 to see if it keeps speed at 131K?**
+
+Test Ornith under llama.cpp + DFlash2 at long context on this 32GB Mac.
+
+## First task
+Benchmark Ornith-1.5-35B-A3B through llama.cpp + DFlash2 at 60K/131K with the same prompt shapes as the Qwen protocol.
+
+## SOUL.md (draft)
+Run the 131K port-mapped protocol for Ornith via llama.cpp + DFlash2; capture memory footprint, tok/s by prompt shape, and OOM threshold. Do not modify MTPLX configs.
+
+## Evidence
+> Ornith MLX 4-bit hit 28.5 tok/s short prompt but degraded to ~0.4 tok/s at 60K.
+> Hermes raised running Ornith through llama.cpp with DFlash2 as a possible best-of-both-worlds path.

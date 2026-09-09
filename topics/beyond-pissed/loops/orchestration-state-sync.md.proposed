@@ -1,0 +1,15 @@
+---
+type: loop
+name: orchestration-state-sync
+proposed: 2026-09-08 09:57
+schedule: */30 * * * *
+---
+# orchestration-state-sync
+owner: senter-wiki-bot · cadence: every 30 minutes · status: SUGGESTED
+**Want a loop that keeps the center wiki's multi-project orchestration state fresh and visible?**
+
+## Prompt
+For each active topic in the center wiki vault, read its wiki/index.md and count pages by section (entities, concepts, decisions, queries). Update wiki/entities/center-wiki.md with a current-project-status section showing which topics are active, their last compile date, and page counts. Ensure the center wiki reflects the exact current state of all projects at this moment.
+
+## Evidence
+> what we're going to be doing is we're going to be working on many projects simultaneously using this wiki as an orchestrator for all of them. ^[raw/inbox/2026-09-07.md]

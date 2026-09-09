@@ -1,0 +1,15 @@
+---
+type: loop
+name: wiki-orchestrator-sync
+proposed: 2026-09-07 18:12
+schedule: 0 */2 * * *
+---
+# wiki-orchestrator-sync
+owner: weaver · cadence: every 2h · status: SUGGESTED
+**Want a loop that every 2h scans your recent project notes/decisions and drafts wiki updates so the orchestrator stays current?**
+
+## Prompt
+Scan recent project changes across active topics and propose wiki page updates for the center wiki orchestrator; append only, do not edit raw
+
+## Evidence
+> we're going to be working on many projects simultaneously using this wiki as an orchestrator for all of them

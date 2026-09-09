@@ -1,0 +1,10 @@
+---
+title: Which of the queued candidates have HuggingFace page notes that explicitly recom
+type: query
+proposed: 2026-09-07 09:43
+tags: [question]
+---
+# Which of the queued candidates have HuggingFace page notes that explicitly recommend Q3 near base model quality, and what MLX equivalents exist?
+Chris wants GGUF vs MLX compared and prefers Q3 when near base quality; the queued candidates are missing this evidence.
+
+_Approve to run the research; the answer lands here._

@@ -1,0 +1,16 @@
+---
+type: loop
+name: mtplx-effective-context-ceiling
+proposed: 2026-09-07 00:28
+schedule: 0 9 * * *
+---
+# mtplx-effective-context-ceiling
+owner: teknium · cadence: daily · status: SUGGESTED
+**Want a repeatable check that logs MTPLX's real usable context ceiling after each restart?**
+
+## Prompt
+Run the MTPLX effective-context probe: start server with current config, send a 4K-6K probe prompt, parse `remaining:` from logs, append one-line result to topics/hey-look/raw/inbox/ceiling-log.md with date and config hash.
+
+## Evidence
+> logs showed `remaining: 60526` for a 5020-token prompt — that's a 65K window, not 131K. MTPLX may be capping it.
+> Let me check.

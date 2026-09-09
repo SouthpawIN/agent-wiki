@@ -1,0 +1,15 @@
+---
+type: loop
+name: candidate-quant-comparator
+proposed: 2026-09-08 12:10
+schedule: 0 5 * * *
+---
+# candidate-quant-comparator
+owner: anser · cadence: on-demand · status: SUGGESTED
+**Want me to check the next candidate model's HuggingFace page for Q3 near-base-quality notes?**
+
+## Prompt
+For candidate models without GGUF vs MLX comparison, fetch HuggingFace page, check if description mentions Q3 near base quality, and compare with MLX 4-bit availability. Update wiki comparison page with findings.
+
+## Evidence
+> Chris wants GGUF vs MLX compared for new candidates; prefers Q3 when page notes place it near base quality

@@ -1,0 +1,22 @@
+---
+type: agent
+name: hermes-runtime-guard
+proposed: 2026-09-06 22:54
+topic: senter
+reuse: klerik
+---
+# hermes-runtime-guard
+**I see you're hitting Hermes runtime config landmines — want a bot that watches model-picker stickiness, TTS gateway freshness, and per-profile fallback chains so they don't silently drift again?**
+
+Fleet runtime-config watchdog for Hermes profiles and managed-gateway entitlements
+
+## First task
+Scan all Hermes profiles and verify fallback_providers lists z-ai/glm-5.3-flash first, auxiliary.compression is explicit, and auxiliary.vision is pinned with timeout; write findings to wiki/concepts/hermes-config-drift-audit.md.
+
+## SOUL.md (draft)
+SOUL.md draft (8-15 lines)
+
+## Evidence
+> my model keeps switching the step 3.7 flash
+> If I pick a model from The model picker that it should stay with that model until it needs to fall back. Also, the TTS is failing.
+> The `_info_from_valid_jwt` path reads the JWT claims locally without a server round-trip. If the JWT was minted before credits were added, it will say "not entitled" until it expires.

@@ -1,0 +1,21 @@
+---
+type: agent
+name: senter-wiki-readme-live
+proposed: 2026-09-06 22:36
+topic: senter-wiki
+reuse: senter-wiki-bot
+---
+# senter-wiki-readme-live
+**I see you want wiki topic headings to stay live when README.md changes — want a bot that re-renders the topic body through `mdRender` on open?**
+
+Re-render wiki topic bodies from live README.md via window.mdRender when opened in the editor.
+
+## First task
+Patch openEditor to fetch README.md for wiki topics and replace .tbody-inner with live mdRender output.
+
+## SOUL.md (draft)
+Owns vault-live.html topic-readme fidelity. On every wiki topic open, if the body is stale baked HTML, fetch README.md, run mdRender, inject .tbody-inner, preserve scroll and card state. Never touches dot geometry or boot bindings.
+
+## Evidence
+> 'I want to make sure that all the markdown actually renders. So the title is actually pop up as titles on this stuff within the context'
+> 'wiki topic bodies are baked HTML... I need to make the wiki topic body render through md() when opened'

@@ -1,0 +1,15 @@
+---
+type: loop
+name: optimization-flag-scan
+proposed: 2026-09-07 12:58
+schedule: every 2h
+---
+# optimization-flag-scan
+owner: looker · cadence: human phrase · status: SUGGESTED
+**I see you're chasing 131K through better research — want a loop that surfaces candidate optimization flags and quantization paths on a schedule?**
+
+## Prompt
+Search for new optimization flags, quantization methods, or backend configs that could reduce the artifact's size/resource footprint toward the 131K target; surface candidates with source and expected impact.
+
+## Evidence
+> ok so it needs to be 131K, and I think there'd more optimizations you can do if you research better

@@ -1,0 +1,16 @@
+---
+type: loop
+name: warmup-speed-test-loop
+proposed: 2026-09-07 09:31
+schedule: 30m
+---
+# warmup-speed-test-loop
+owner: turbosovth · cadence: human phrase · status: SUGGESTED
+**Want a repeatable loop that warms, benches, and records tok/s for each model as you add engines?**
+
+## Prompt
+Run the warmup prompt, then measure tok/s for the current model/engine candidate, append results to the wiki, and surface the next untested candidate.
+
+## Evidence
+> Remember to let each model do a warmup prompt and then test their speed while it's warm
+> Report tok/s for each test

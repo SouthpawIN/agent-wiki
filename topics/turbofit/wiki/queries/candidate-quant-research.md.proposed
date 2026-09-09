@@ -1,0 +1,10 @@
+---
+title: For each queued candidate, does the HuggingFace page recommend a Q3 or Q4 path, 
+type: query
+proposed: 2026-09-07 17:12
+tags: [question]
+---
+# For each queued candidate, does the HuggingFace page recommend a Q3 or Q4 path, and is there a matching MLX 4-bit package?
+Chris wants GGUF vs MLX compared and Q3 preferred when near base quality, but only Dirk had a Q3 path exercised so far.
+
+_Approve to run the research; the answer lands here._

@@ -1,0 +1,16 @@
+---
+type: loop
+name: hermes-model-change-detector
+proposed: 2026-09-08 12:10
+schedule: continuous
+---
+# hermes-model-change-detector
+owner: anser · cadence: real-time provider monitoring · status: SUGGESTED
+**Want me to watch for unexpected model switches and alert you before they affect your work?**
+
+## Prompt
+When Hermes logs show active model changed to non-local provider (nous, openai, etc.) while user expected local turbofit, capture desktop preview, verify the switch is unintended, and report status with CLAIM badge on wiki page
+
+## Evidence
+> Hermes switched to meituan/longcat-2.0:free, stepfun/step-3.7-flash:free without user intent
+> Chris explicitly wants Ornith via turbofit to stay active

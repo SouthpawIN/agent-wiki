@@ -1,0 +1,15 @@
+---
+type: loop
+name: librarian-daily-sync
+proposed: 2026-09-07 20:57
+schedule: 
+---
+# librarian-daily-sync
+owner: weaver · cadence: 0 9 * * * · status: SUGGESTED
+**Want a daily sync that keeps the librarian's index fresh as topics, skills, bots, and loops change?**
+
+## Prompt
+Run the librarian indexer against all topic frontmatter and skill frontmatter, update the vault discovery manifest, and publish any delta to the wiki dashboard.
+
+## Evidence
+> We can have a librarian watching the whole thing and progressively discovering, wiki skills, bots, and loops.

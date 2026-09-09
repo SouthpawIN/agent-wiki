@@ -1,0 +1,16 @@
+---
+type: loop
+name: mtplx-65k-stability-check
+proposed: 2026-09-07 01:11
+schedule: every 2h
+---
+# mtplx-65k-stability-check
+owner: mtplx-speedwatch · cadence: every 2h · status: SUGGESTED
+**Want a loop that keeps your working 65K setup honest — confirming speed and memory behavior stay stable after restarts or config changes?**
+
+## Prompt
+Run a 5K-token benchmark against the local MTPLX instance at 65K context; report tok/s, memory_guard events, and whether the result matches the 8-9 tok/s baseline.
+
+## Evidence
+> MTPLX at 65K context — stable, fast, no OOM
+> Final test completed: 8.55 tok/s for 685 tokens at 65K context. MTPLX is stable.

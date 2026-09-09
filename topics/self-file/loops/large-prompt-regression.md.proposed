@@ -1,0 +1,16 @@
+---
+type: loop
+name: large-prompt-regression
+proposed: 2026-09-07 10:23
+schedule: 0 9 * * *
+---
+# large-prompt-regression
+owner: teknium · cadence: once per server config change · status: SUGGESTED
+**Want a loop that replays progressively larger prompts against your local servers to catch SIGKILL or cache failures before you do?**
+
+## Prompt
+Send probe prompts of increasing token length to each local inference endpoint; record exit codes and cache stats; flag kills over 10k tokens.
+
+## Evidence
+> proc_6601b0a4a07e exited (exit code -9) while handling a prompt of 40011 tokens.
+> Prompt Cache: 8 sequences, 1.56 GB

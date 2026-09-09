@@ -1,0 +1,17 @@
+---
+type: loop
+name: local-music-runner-support
+proposed: 2026-09-07 14:22
+schedule: 0 */6 * * *
+---
+# local-music-runner-support
+owner: anser · cadence: every 6h · status: SUGGESTED
+**Want me to systematically test which runner runs each music model? — every 6h or on demand.**
+
+## Prompt
+For each candidate in [[topics/music/wiki/queries/local-music-runner-support|Which music candidates actually run under which runner?]], run a quick load test in isolation and record: memory used at load, memory used during generation, whether mlx_audio accepted it or rejected model type, whether TurboFit accepted it, whether soundfile was required. Output a table to ~/Documents/Projects/Projects/topics/music/wiki/queries/local-music-runner-support.md results section.
+
+## Evidence
+> 'ACE-Step couldn't load (model type not supported in mlx_audio), and then soundfile was missing.'
+> 'If it doesn't work with MLX, then you try something besides MLX... turbofit is supposed to support multiple.'
+> Existing loop: music-model-artifact-watch, music-download-verify, music-model-runtime-check

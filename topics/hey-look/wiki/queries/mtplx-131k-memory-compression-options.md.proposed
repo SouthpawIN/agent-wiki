@@ -1,0 +1,10 @@
+---
+title: Does MTPLX offer built-in KV-cache compression, quantization modes, or offloadin
+type: query
+proposed: 2026-09-07 01:11
+tags: [question]
+---
+# Does MTPLX offer built-in KV-cache compression, quantization modes, or offloading options that can reduce the 131K memory overcommit observed at ~27.3GB total?
+The raw record shows 131K is currently blocked by memory overcommit on 32GB; if MTPLX has compression knobs, they may unlock it without new hardware.
+
+_Approve to run the research; the answer lands here._

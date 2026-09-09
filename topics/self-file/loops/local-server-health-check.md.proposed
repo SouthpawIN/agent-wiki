@@ -1,0 +1,15 @@
+---
+type: loop
+name: local-server-health-check
+proposed: 2026-09-07 10:23
+schedule: 30m
+---
+# local-server-health-check
+owner: looker · cadence: every 30 minutes while servers are expected up · status: SUGGESTED
+**Want a recurring check that verifies your local mlx_lm endpoints are still bound on the right ports and haven't been killed mid-prompt?**
+
+## Prompt
+Check 127.0.0.1:11613 and the current ornith port; log state; alert on missing or mismatched bindings.
+
+## Evidence
+> The server on 11613 is MTPLX. Ornith is on 11622.

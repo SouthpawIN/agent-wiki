@@ -1,0 +1,10 @@
+---
+title: Is there a `Qwen3.8-27B-DFlash2` or equivalent DFlash2 variant for the base Qwen
+type: query
+proposed: 2026-09-07 04:46
+tags: [question]
+---
+# Is there a `Qwen3.8-27B-DFlash2` or equivalent DFlash2 variant for the base Qwen model on HuggingFace, and does it improve medium-prompt throughput at 131K on Apple Silicon?
+Chris wants to know whether a smaller draft-model path can replace or augment MTPLX's MTP head on this box.
+
+_Approve to run the research; the answer lands here._

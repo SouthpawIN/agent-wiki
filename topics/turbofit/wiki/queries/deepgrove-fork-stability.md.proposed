@@ -1,0 +1,10 @@
+---
+title: What do deepgrove-ai/mlx-lm-deepgrove maintainers say about prompt-cache growth 
+type: query
+proposed: 2026-09-06 22:41
+tags: [question]
+---
+# What do deepgrove-ai/mlx-lm-deepgrove maintainers say about prompt-cache growth and long-running server stability versus single-shot generate() on Apple Silicon?
+The current Maple aux works for generate but server-mode memory growth is the remaining root-cause gap for Hermes compression routing.
+
+_Approve to run the research; the answer lands here._

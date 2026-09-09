@@ -1,0 +1,6 @@
+# Wiki Log — object-important
+
+## [2026-09-07] create | wiki initialized (topic-wiki.py init)
+## [2026-09-07] compile | substantive facts extracted from raw/inbox/2026-09-07.md: Dirk-Qwen3.8-27B-MLX-oQ4e artifact filenames/paths; Ornith performance metrics; mtplx endpoint already covered; validator rejection treated as infra noise; created misrouted query for Tiel-Coder download under turbofit ownership; removed duplicate Tiel-Coder artifact entity from object-important.
+## [2026-09-07] compile | added Ornith performance metrics concept with observed tok/s numbers; noted second local endpoint on 11622; kept Tiel-Coder misrouted; validator rejection remains infra noise.
+## [2026-09-08] compile | extracted substantive facts from raw/inbox/2026-09-08.md: Hermes /file endpoint has FILE_CAP of 2MB but .system-live.json is 2.8MB, causing the route to reject serving the live-state JSON; created entity page hermes-file-endpoint-system-live.md and query page file-endpoint-cap-question-2026-09-08.md.

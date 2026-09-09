@@ -1,0 +1,10 @@
+---
+title: Has NousResearch/hermes-agent since added `force_fresh=True` for TTS/managed gat
+type: query
+proposed: 2026-09-06 22:54
+tags: [question]
+---
+# Has NousResearch/hermes-agent since added `force_fresh=True` for TTS/managed gateway resolution in any release after 2026-09-06?
+We can retire our fork patch once the upstream fix ships, per the PR-ledger policy.
+
+_Approve to run the research; the answer lands here._

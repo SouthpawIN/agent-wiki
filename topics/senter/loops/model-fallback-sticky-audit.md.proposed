@@ -1,0 +1,16 @@
+---
+type: loop
+name: model-fallback-sticky-audit
+proposed: 2026-09-06 23:03
+schedule: 0 8 * * *
+---
+# model-fallback-sticky-audit
+owner: klerik · cadence: each new session start · status: SUGGESTED
+**I see you just fixed model/TTS/vision session-boundary config — want a loop that audits fallback_providers and auxiliary.* pins in every profile so this surprise doesn't recur?**
+
+## Prompt
+Run a profile-by-profile audit: confirm fallback_providers lists the user's preferred model first, auxiliary.compression and auxiliary.vision are pinned explicitly, and tts resolution can force fresh entitlement checks; post one NEEDS-CHRIS card for any profile that drifts.
+
+## Evidence
+> If I pick a model from The model picker that it should stay with that model until it needs to fall back.
+> The main-model switch takes effect in a new session; this one stays on its current model.

@@ -1,0 +1,15 @@
+---
+type: loop
+name: inference-engine-smoke
+proposed: 2026-09-07 05:11
+schedule: 30m
+---
+# inference-engine-smoke
+owner: turbosovth · cadence: 30m · status: SUGGESTED
+**Want a quick parallel check every 30m for viable local inference engines on this Mac?**
+
+## Prompt
+Probe available local inference engine options, then run one lightweight sanity check on ACE-Step or Qwen 3.8 27B and report success or exact blocker.
+
+## Evidence
+> "Let me start with parallel research and system checks."

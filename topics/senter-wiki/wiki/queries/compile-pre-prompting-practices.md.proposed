@@ -1,0 +1,10 @@
+---
+title: What pre-planning step before writing pages (map each new raw item to 'update pa
+type: query
+proposed: 2026-09-05 19:27
+tags: [question]
+---
+# What pre-planning step before writing pages (map each new raw item to 'update page X' vs 'create slug Y' against the index) do the best LLM-wiki / knowledge-compile setups use, and which can be expressed as a shareable Hermes skill or native primitive rather than custom code?
+Chris asked at 19:18 for 'any kind of pre-prompting or pre-planning … when context is being sorted into the wiki' that is 'useful for anyone'; the 17 duplicate page pairs show the compiler writes without a plan.
+
+_Approve to run the research; the answer lands here._

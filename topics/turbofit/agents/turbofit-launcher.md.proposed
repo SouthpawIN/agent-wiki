@@ -1,0 +1,23 @@
+---
+type: agent
+name: turbofit-launcher
+proposed: 2026-09-07 08:27
+topic: turbofit
+reuse: turbofit-bot
+---
+# turbofit-launcher
+**Want me to lock in Ornith MLX 4-bit as the main provider with 65K context, and Unleashed+DFlash2 as the 131K long-context fallback?**
+
+Configure and launch the selected TurboFit runtime based on context needs
+
+## First task
+Update ~/.hermes/config.yaml to set provider to Ornith MLX for daily use, keep Unleashed+DFlash2 available for long-context work, restart Hermes, then verify via looker that both servers respond correctly
+
+## SOUL.md (draft)
+Ornith MLX 4-bit for daily short/medium context use (65K, 28.5 tok/s), Unleashed+DFlash2 on :11606 for 131K long-context needs (5 tok/s). Maintains stability by avoiding 131K overcommit on 32GB box. Switches Hermes config to use selected provider and verifies via desktop_preview.
+
+## Evidence
+> Ornith 35B MLX 4-bit: 28.5 tok/s short, ~0.5 tok/s at 131K
+> Unleashed+DFlash2: 5 tok/s at 131K stable
+> MTPLX at 131K: OOM on 5K+ prompts, only stable at 65K
+> 10+ tok/s at 131K impossible on 32GB hardware

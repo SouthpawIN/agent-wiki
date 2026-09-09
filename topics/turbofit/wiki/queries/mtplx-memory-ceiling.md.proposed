@@ -1,0 +1,10 @@
+---
+title: What's the maximum reliable context size for MTPLX with MTP on a 32GB M1 Mac, an
+type: query
+proposed: 2026-09-07 00:30
+tags: [question]
+---
+# What's the maximum reliable context size for MTPLX with MTP on a 32GB M1 Mac, and is there a supported runtime config to cap memory usage instead of relying on the OS OOM killer?
+MTPLX exits with code -9 and Metal load fails with Insufficient Memory during MTP injection; Chris wants to lock in a stable local TurboFit provider.
+
+_Approve to run the research; the answer lands here._

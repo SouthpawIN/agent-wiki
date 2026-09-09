@@ -1,0 +1,15 @@
+---
+type: loop
+name: mac-memory-watch
+proposed: 2026-09-06 22:41
+schedule: 30m
+---
+# mac-memory-watch
+owner: looker · cadence: human phrase · status: SUGGESTED
+**Watch your box memory while TurboFit runs, so we can catch server kills before you see them.**
+
+## Prompt
+Check active TurboFit server pids on :11606 and :11612, read current unified memory pressure, and report whether either process is being killed or swapped under load.
+
+## Evidence
+> 26GB used, 5.7GB free, heavy swapping. The model needs 23.6GB peak and my Mac doesn't have enough free RAM alongside the main 27B

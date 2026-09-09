@@ -1,0 +1,10 @@
+---
+title: What exact prompt shape, warmup duration, cache settings, and repeat count make 
+type: query
+proposed: 2026-09-07 00:07
+tags: [question]
+---
+# What exact prompt shape, warmup duration, cache settings, and repeat count make a single retest protocol stable for 131K on a 32GB Mac with MTPLX?
+Chris still wants one finalizable 131K figure, and the wiki shows speed is prompt-shape sensitive.
+
+_Approve to run the research; the answer lands here._

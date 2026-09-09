@@ -1,0 +1,10 @@
+---
+title: Does Hermes inherit root fallback_providers/auxiliary.* into profiles, or must e
+type: query
+proposed: 2026-09-06 23:03
+tags: [question]
+---
+# Does Hermes inherit root fallback_providers/auxiliary.* into profiles, or must every profile pin them explicitly?
+The session-boundary model/TTS/vision fixes depend on pinning; knowing the inheritance rule prevents manual drift audits.
+
+_Approve to run the research; the answer lands here._

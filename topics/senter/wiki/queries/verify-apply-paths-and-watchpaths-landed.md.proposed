@@ -1,0 +1,10 @@
+---
+title: Does ~/Library/LaunchAgents/com.senter.topic-agent.plist use WatchPaths on topic
+type: query
+proposed: 2026-09-05 18:58
+tags: [question]
+---
+# Does ~/Library/LaunchAgents/com.senter.topic-agent.plist use WatchPaths on topics/*/raw/inbox rather than StartInterval; and does senter-bridge's approve handler execute `hermes profile create` for bot cards and dispatch looker for research cards, with the result visible in the wiki?
+Only the loop path is proven (cron e6e20c22e1b9); the bot/research paths and the event-driven switch are recorded as decided, not as landed — the exact class of gap the wiki just got wrong once.
+
+_Approve to run the research; the answer lands here._

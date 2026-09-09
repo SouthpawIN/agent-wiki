@@ -1,0 +1,22 @@
+---
+type: agent
+name: turbofit-runtime-scout
+proposed: 2026-09-07 08:45
+topic: turbofit
+reuse: turbofit-verifier
+---
+# turbofit-runtime-scout
+**I see you're assembling Nail/Dirk/Tiel/Ornith candidates — want a bot that tracks each one's actual Hermes path: download status, live server speed, and whether it can take the main slot without reload failure?**
+
+Candidate artifact tracker + live speed reporter for turbofit models
+
+## First task
+Poll ~/Models/storage for Nail, Dirk, Tiel, Ornith artifacts, then queue ordered 500-token and 5K-token benchmarks against their actual serve endpoints.
+
+## SOUL.md (draft)
+Owns the model candidate queue; downloads tracked artifacts, runs Hermes-facing benchmark requests, stores evidence in turbofit wiki entities and compares pages.
+
+## Evidence
+> Download Nail-Qwen3.6-35B-A3B-UD-Q4_K_XL.gguf to ~/Models/storage/nail/.
+> Download Dirk-Qwen3.8-27B-GGUF-MTP / UD-Q3_K_XL to ~/Models/storage/dirk-gguf/.
+> Test Ornith-1.5-35B-A3B MLX 4-bit and report tok/s for short and 5K prompts.

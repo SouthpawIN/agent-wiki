@@ -1,0 +1,10 @@
+---
+title: Does the Qwen3.8 27B unleashed Q3K exile variant have an MLX/runtime path on M1,
+type: query
+proposed: 2026-09-07 19:51
+tags: [question]
+---
+# Does the Qwen3.8 27B unleashed Q3K exile variant have an MLX/runtime path on M1, and what exact batch/prefill tuning makes it fastest under local limits?
+Chris's next concrete step is optimizing a 27B model on M1 after rejecting 131K speed, and he wants research before implementation.
+
+_Approve to run the research; the answer lands here._

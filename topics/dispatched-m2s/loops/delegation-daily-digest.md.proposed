@@ -1,0 +1,16 @@
+---
+type: loop
+name: delegation-daily-digest
+proposed: 2026-09-07 14:09
+schedule: 0 9 * * *
+---
+# delegation-daily-digest
+owner: looker · cadence: review yesterday's batches each morning · status: SUGGESTED
+**Want a daily digest of delegation batch outcomes so you can spot owner-exit patterns without digging through logs?**
+
+## Prompt
+Scan the Hermes delegation cache and state.db for batches completed in the last 24 hours. Extract: batch ID, fan-out size, role, terminal result, duration if present. If any owner-exit errors are found, note them prominently. Append a 5-bullet digest to topics/dispatched-m2s/wiki/queries/query-index.md.
+
+## Evidence
+> Delegation owner exited before recording a terminal result; outcome unknown.
+> The batch did not complete successfully

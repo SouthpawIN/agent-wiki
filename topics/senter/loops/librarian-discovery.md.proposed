@@ -1,0 +1,15 @@
+---
+type: loop
+name: librarian-discovery
+proposed: 2026-09-07 20:00
+schedule: 30m
+---
+# librarian-discovery
+owner: senter · cadence: after new raw items appear · status: SUGGESTED
+**Want a repeating discovery sweep that checks for duplicate, stale, or missing wiki/skill/bot/loop artifacts and surfaces only one per tick?**
+
+## Prompt
+Scan the vault's newest raw activity. If a skill/bot/loop can already answer the signal, link it; if not, propose exactly one new artifact or question. Never surface the same proposal twice in a row.
+
+## Evidence
+> "We can have a librarian watching the whole thing and progressively discovering, wiki skills, bots, and loops."

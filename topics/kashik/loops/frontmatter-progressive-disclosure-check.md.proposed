@@ -1,0 +1,15 @@
+---
+type: loop
+name: frontmatter-progressive-disclosure-check
+proposed: 2026-09-07 18:19
+schedule: 30m
+---
+# frontmatter-progressive-disclosure-check
+owner: senter-wiki-bot · cadence: every build · status: SUGGESTED
+**Want a loop that verifies topic frontmatter stays consistent as you simplify filesystem structure?**
+
+## Prompt
+Each tick scans topic frontmatter for required SCHEMA fields and reports missing or inconsistent metadata so the vault stays navigable after restructuring
+
+## Evidence
+> Simplify filesystem via progressive disclosure frontmatter rather than deep nested folders

@@ -1,0 +1,10 @@
+---
+title: What artifact/configuration does the 131K target apply to, and what options besi
+type: query
+proposed: 2026-09-07 01:13
+tags: [question]
+---
+# What artifact/configuration does the 131K target apply to, and what options besides `--paged-kv-quantization q8` are available and verified?
+Chris wants further optimization research before rebuild, but the applicable flags and whether they satisfy 131K are unresolved.
+
+_Approve to run the research; the answer lands here._

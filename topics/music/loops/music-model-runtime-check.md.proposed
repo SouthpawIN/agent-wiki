@@ -1,0 +1,15 @@
+---
+type: loop
+name: music-model-runtime-check
+proposed: 2026-09-07 05:08
+schedule: every 2h
+---
+# music-model-runtime-check
+owner: teknium · cadence: every 2 hours · status: SUGGESTED
+**Want a loop that verifies whether a downloaded music model actually generates audio after dependency or runner changes?**
+
+## Prompt
+Check whether ACE-Step or MiniMax Music 3 can run given current MTPLX memory state and mlx_audio/soundfile availability; report exact blockers or successful output file.
+
+## Evidence
+> Beats folder is empty — the script failed before generating anything. ACE-Step couldn't load (model type not supported in mlx_audio), and then soundfile was missing.

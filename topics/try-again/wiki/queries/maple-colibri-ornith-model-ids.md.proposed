@@ -1,0 +1,10 @@
+---
+title: What are the exact runnable model IDs, commands, and expected tok/s for Maple Co
+type: query
+proposed: 2026-09-07 15:55
+tags: [question]
+---
+# What are the exact runnable model IDs, commands, and expected tok/s for Maple Colibri and Ornith 1.5 35A3B on Apple Silicon M1 32GB?
+Current wiki only notes approximate sizes; Chris needs exact IDs/commands/tok/s per approach.
+
+_Approve to run the research; the answer lands here._

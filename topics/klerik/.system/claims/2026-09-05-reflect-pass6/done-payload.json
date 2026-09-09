@@ -1,0 +1,5 @@
+{
+  "bot": "klerik",
+  "text": "klerik-queue-drain tick 8 DONE — claimed 2026-09-03 REFLECT pass 6 (four refinements). Veto-safe close: all apply steps are protected-file edits (AGENTS.md per the 2026-09-05 18:31 leave-AGENTS-md-alone veto; senter SOUL.md blocked headless). NONE applied; staged in topics/klerik/.system/session.md tick 8. Diagnose found: teknium AGENTS still has no PR policy; ~/.hermes/AGENTS.md does NOT exist (item 1's target ambiguous — needs Chris's ruling); senter profile has no AGENTS.md. Staged: senter SOUL.md live-fast-lane ruling + log-on-edit contract (items 3+4), teknium PR-policy guard (item 2), default-profile Tooling one-liner (item 1, pending target ruling). Also re-created .system/bridge-post.py (saved-script POST, no shell interpolation).",
+  "status": "done"
+}

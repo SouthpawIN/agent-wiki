@@ -1,0 +1,44 @@
+[
+  [
+    "MCP SERVERS",
+    "mcp",
+    "No MCP servers configured · add with hermes mcp add <name> --url <endpoint>",
+    "—",
+    "Plugins provide tools; MCP provides external tool bridges"
+  ],
+  [
+    "ENABLED PLUGINS",
+    "plugins",
+    "2 enabled · 18 available (browser-use, browserbase, firecrawl, chronos, basic)",
+    "enabled",
+    "hermes plugins list"
+  ],
+  [
+    "MESSAGING PLATFORMS",
+    "gateway",
+    "Gateway not running · no platforms configured",
+    "offline",
+    "hermes gateway run"
+  ],
+  [
+    "CREDENTIALS",
+    "credentials",
+    "nous: OAuth present · names only, never values",
+    "1 provider(s)",
+    "auth.json"
+  ],
+  [
+    "TURBOFIT LANE",
+    "turbofit",
+    "TurboFit active · qwen3-8-27b-unleashed-unleashedq3kxl262144-main · providers turbofit + fallback nous",
+    "qwen3-8-27b-unleashed-un",
+    "config.yaml"
+  ],
+  [
+    "SENTER-BRIDGE",
+    "bridge",
+    "senter-bridge live on 127.0.0.1:8643 · 0 pending",
+    "live",
+    "server.py"
+  ]
+]

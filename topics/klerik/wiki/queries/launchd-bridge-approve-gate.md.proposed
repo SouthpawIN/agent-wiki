@@ -1,0 +1,10 @@
+---
+title: When senter-bridge (launchd, :8643) writes ~/.hermes/profiles/<bot>/SOUL.md and 
+type: query
+proposed: 2026-09-05 18:51
+tags: [question]
+---
+# When senter-bridge (launchd, :8643) writes ~/.hermes/profiles/<bot>/SOUL.md and AGENTS.md via POST /approve with no interactive Hermes session, does any Hermes protected-file/security gate fire, get silently denied, or pass? Test on a throwaway profile and record the exact behaviour.
+Two attempts hit the gate from CLI sessions; the wiki-feed door is the intended one and has never been tried — it decides whether the deterministic path is truly one-click.
+
+_Approve to run the research; the answer lands here._

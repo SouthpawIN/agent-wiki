@@ -1,0 +1,16 @@
+---
+type: loop
+name: daily-131k-speed-check
+proposed: 2026-09-07 04:26
+schedule: 0 9 * * *
+---
+# daily-131k-speed-check
+owner: teknium · cadence: daily · status: SUGGESTED
+**Want a daily 9am benchmark that compares Unleashed vs DFlash2 at 131K and logs tok/s?**
+
+## Prompt
+Run the head-to-head benchmark on both servers, capture tok/s for 1000 tokens, and append results to topics/faster-without/log.md.
+
+## Evidence
+> Let me run the head-to-head comparison now.
+> Good, I can see both servers are running. Let me test performance on both existing servers.

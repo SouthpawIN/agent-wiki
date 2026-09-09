@@ -1,0 +1,512 @@
+{
+  "integrations": [
+    {
+      "name": "senter-bridge",
+      "kind": "plugin",
+      "state": "connected",
+      "credential_names_present": [],
+      "last_activity": null
+    },
+    {
+      "name": "turbofit",
+      "kind": "plugin",
+      "state": "connected",
+      "credential_names_present": [],
+      "last_activity": null
+    },
+    {
+      "name": "github",
+      "kind": "skill",
+      "state": "connected",
+      "credential_names_present": [
+        "GITHUB_TOKEN (gh:keyring)"
+      ],
+      "last_activity": "2026-08-26T17:25:13.758698Z"
+    },
+    {
+      "name": "mcp",
+      "kind": "mcp",
+      "state": "available",
+      "credential_names_present": [],
+      "last_activity": null
+    },
+    {
+      "name": "api_server",
+      "kind": "platform",
+      "state": "available",
+      "credential_names_present": [],
+      "last_activity": "2026-08-29T18:48:24.576690Z"
+    },
+    {
+      "name": "webhook",
+      "kind": "platform",
+      "state": "available",
+      "credential_names_present": [],
+      "last_activity": "2026-08-29T18:48:24.577841Z"
+    },
+    {
+      "name": "browser",
+      "kind": "plugin",
+      "state": "available",
+      "credential_names_present": [
+        "BROWSERBASE_ADVANCED_STEALTH",
+        "BROWSERBASE_PROXIES",
+        "BROWSER_INACTIVITY_TIMEOUT",
+        "BROWSER_SESSION_TIMEOUT"
+      ],
+      "last_activity": "2026-08-26T17:25:13.681829Z"
+    },
+    {
+      "name": "context_engine",
+      "kind": "plugin",
+      "state": "available",
+      "credential_names_present": [],
+      "last_activity": "2026-08-26T17:25:13.682379Z"
+    },
+    {
+      "name": "cron_providers",
+      "kind": "plugin",
+      "state": "available",
+      "credential_names_present": [],
+      "last_activity": "2026-08-26T17:25:13.682623Z"
+    },
+    {
+      "name": "disk-cleanup",
+      "kind": "plugin",
+      "state": "available",
+      "credential_names_present": [],
+      "last_activity": "2026-08-26T17:25:13.684349Z"
+    },
+    {
+      "name": "google_meet",
+      "kind": "plugin",
+      "state": "available",
+      "credential_names_present": [],
+      "last_activity": "2026-08-26T17:25:13.685945Z"
+    },
+    {
+      "name": "hermes-achievements",
+      "kind": "plugin",
+      "state": "available",
+      "credential_names_present": [],
+      "last_activity": "2026-08-26T17:25:13.689109Z"
+    },
+    {
+      "name": "image_gen",
+      "kind": "plugin",
+      "state": "available",
+      "credential_names_present": [],
+      "last_activity": "2026-08-26T17:25:13.691191Z"
+    },
+    {
+      "name": "kanban",
+      "kind": "plugin",
+      "state": "available",
+      "credential_names_present": [],
+      "last_activity": "2026-08-26T17:25:13.692559Z"
+    },
+    {
+      "name": "memory",
+      "kind": "plugin",
+      "state": "available",
+      "credential_names_present": [],
+      "last_activity": "2026-09-02T19:53:54.592981Z"
+    },
+    {
+      "name": "model-providers",
+      "kind": "plugin",
+      "state": "available",
+      "credential_names_present": [],
+      "last_activity": "2026-08-29T18:48:24.622967Z"
+    },
+    {
+      "name": "observability",
+      "kind": "plugin",
+      "state": "available",
+      "credential_names_present": [],
+      "last_activity": "2026-08-26T17:25:13.705381Z"
+    },
+    {
+      "name": "security-guidance",
+      "kind": "plugin",
+      "state": "available",
+      "credential_names_present": [],
+      "last_activity": "2026-08-26T17:25:13.719968Z"
+    },
+    {
+      "name": "spotify",
+      "kind": "plugin",
+      "state": "available",
+      "credential_names_present": [],
+      "last_activity": "2026-09-02T20:09:17.238031Z"
+    },
+    {
+      "name": "teams_pipeline",
+      "kind": "plugin",
+      "state": "available",
+      "credential_names_present": [],
+      "last_activity": "2026-08-26T17:25:13.721114Z"
+    },
+    {
+      "name": "video_gen",
+      "kind": "plugin",
+      "state": "available",
+      "credential_names_present": [],
+      "last_activity": "2026-08-26T17:25:13.721660Z"
+    },
+    {
+      "name": "web",
+      "kind": "plugin",
+      "state": "available",
+      "credential_names_present": [
+        "WEB_TOOLS_DEBUG"
+      ],
+      "last_activity": "2026-09-02T20:09:17.365522Z"
+    },
+    {
+      "name": "apple",
+      "kind": "skill",
+      "state": "available",
+      "credential_names_present": [],
+      "last_activity": "2026-08-26T17:25:13.734287Z"
+    },
+    {
+      "name": "arxiv",
+      "kind": "skill",
+      "state": "available",
+      "credential_names_present": [],
+      "last_activity": "2026-08-26T17:25:13.770182Z"
+    },
+    {
+      "name": "blogwatcher",
+      "kind": "skill",
+      "state": "available",
+      "credential_names_present": [],
+      "last_activity": "2026-08-26T17:25:13.770530Z"
+    },
+    {
+      "name": "maps",
+      "kind": "skill",
+      "state": "available",
+      "credential_names_present": [],
+      "last_activity": "2026-08-26T17:25:13.765685Z"
+    },
+    {
+      "name": "a2a",
+      "kind": "platform",
+      "state": "needs_login",
+      "credential_names_present": [],
+      "last_activity": "2026-09-02T20:09:17.521350Z"
+    },
+    {
+      "name": "bluebubbles",
+      "kind": "platform",
+      "state": "needs_login",
+      "credential_names_present": [],
+      "last_activity": "2026-08-27T16:51:16.088711Z"
+    },
+    {
+      "name": "buzz",
+      "kind": "platform",
+      "state": "needs_login",
+      "credential_names_present": [],
+      "last_activity": "2026-09-02T19:53:54.590422Z"
+    },
+    {
+      "name": "dingtalk",
+      "kind": "platform",
+      "state": "needs_login",
+      "credential_names_present": [],
+      "last_activity": "2026-09-02T19:53:54.583201Z"
+    },
+    {
+      "name": "discord",
+      "kind": "platform",
+      "state": "needs_login",
+      "credential_names_present": [],
+      "last_activity": "2026-09-02T19:53:54.583740Z"
+    },
+    {
+      "name": "email",
+      "kind": "platform",
+      "state": "needs_login",
+      "credential_names_present": [],
+      "last_activity": "2026-09-02T19:53:54.591322Z"
+    },
+    {
+      "name": "feishu",
+      "kind": "platform",
+      "state": "needs_login",
+      "credential_names_present": [],
+      "last_activity": "2026-09-02T19:53:54.584939Z"
+    },
+    {
+      "name": "google_chat",
+      "kind": "platform",
+      "state": "needs_login",
+      "credential_names_present": [],
+      "last_activity": "2026-09-02T19:53:54.584414Z"
+    },
+    {
+      "name": "homeassistant",
+      "kind": "platform",
+      "state": "needs_login",
+      "credential_names_present": [],
+      "last_activity": "2026-09-02T19:53:54.584096Z"
+    },
+    {
+      "name": "irc",
+      "kind": "platform",
+      "state": "needs_login",
+      "credential_names_present": [],
+      "last_activity": "2026-09-02T19:53:54.586405Z"
+    },
+    {
+      "name": "line",
+      "kind": "platform",
+      "state": "needs_login",
+      "credential_names_present": [],
+      "last_activity": "2026-09-02T19:53:54.587233Z"
+    },
+    {
+      "name": "matrix",
+      "kind": "platform",
+      "state": "needs_login",
+      "credential_names_present": [],
+      "last_activity": "2026-09-02T19:53:54.590951Z"
+    },
+    {
+      "name": "mattermost",
+      "kind": "platform",
+      "state": "needs_login",
+      "credential_names_present": [],
+      "last_activity": "2026-09-02T19:53:54.589278Z"
+    },
+    {
+      "name": "ntfy",
+      "kind": "platform",
+      "state": "needs_login",
+      "credential_names_present": [],
+      "last_activity": "2026-09-02T19:53:54.586727Z"
+    },
+    {
+      "name": "photon",
+      "kind": "platform",
+      "state": "needs_login",
+      "credential_names_present": [],
+      "last_activity": "2026-09-02T19:53:54.590084Z"
+    },
+    {
+      "name": "qqbot",
+      "kind": "platform",
+      "state": "needs_login",
+      "credential_names_present": [],
+      "last_activity": null
+    },
+    {
+      "name": "raft",
+      "kind": "platform",
+      "state": "needs_login",
+      "credential_names_present": [],
+      "last_activity": "2026-09-02T19:53:54.588149Z"
+    },
+    {
+      "name": "signal",
+      "kind": "platform",
+      "state": "needs_login",
+      "credential_names_present": [],
+      "last_activity": "2026-08-27T16:51:16.089598Z"
+    },
+    {
+      "name": "simplex",
+      "kind": "platform",
+      "state": "needs_login",
+      "credential_names_present": [],
+      "last_activity": "2026-09-02T19:53:54.587029Z"
+    },
+    {
+      "name": "slack",
+      "kind": "platform",
+      "state": "needs_login",
+      "credential_names_present": [],
+      "last_activity": "2026-09-02T19:53:54.589013Z"
+    },
+    {
+      "name": "sms",
+      "kind": "platform",
+      "state": "needs_login",
+      "credential_names_present": [],
+      "last_activity": "2026-09-02T19:53:54.584738Z"
+    },
+    {
+      "name": "teams",
+      "kind": "platform",
+      "state": "needs_login",
+      "credential_names_present": [],
+      "last_activity": "2026-09-02T19:53:54.588542Z"
+    },
+    {
+      "name": "telegram",
+      "kind": "platform",
+      "state": "needs_login",
+      "credential_names_present": [],
+      "last_activity": "2026-09-02T19:53:54.587730Z"
+    },
+    {
+      "name": "wecom",
+      "kind": "platform",
+      "state": "needs_login",
+      "credential_names_present": [],
+      "last_activity": "2026-09-02T19:53:54.586103Z"
+    },
+    {
+      "name": "weixin",
+      "kind": "platform",
+      "state": "needs_login",
+      "credential_names_present": [],
+      "last_activity": "2026-08-27T16:51:16.090242Z"
+    },
+    {
+      "name": "whatsapp",
+      "kind": "platform",
+      "state": "needs_login",
+      "credential_names_present": [],
+      "last_activity": "2026-09-02T19:53:54.591645Z"
+    },
+    {
+      "name": "whatsapp_cloud",
+      "kind": "platform",
+      "state": "needs_login",
+      "credential_names_present": [],
+      "last_activity": "2026-08-27T16:51:16.090515Z"
+    },
+    {
+      "name": "yuanbao",
+      "kind": "platform",
+      "state": "needs_login",
+      "credential_names_present": [],
+      "last_activity": "2026-08-29T18:48:24.578453Z"
+    },
+    {
+      "name": "airtable",
+      "kind": "skill",
+      "state": "needs_login",
+      "credential_names_present": [],
+      "last_activity": "2026-08-26T17:25:13.762870Z"
+    },
+    {
+      "name": "box",
+      "kind": "skill",
+      "state": "needs_login",
+      "credential_names_present": [],
+      "last_activity": "2026-08-26T17:25:13.763066Z"
+    },
+    {
+      "name": "gif-search",
+      "kind": "skill",
+      "state": "needs_login",
+      "credential_names_present": [],
+      "last_activity": "2026-08-26T17:25:13.759460Z"
+    },
+    {
+      "name": "google-workspace",
+      "kind": "skill",
+      "state": "needs_login",
+      "credential_names_present": [],
+      "last_activity": "2026-08-26T17:25:13.765187Z"
+    },
+    {
+      "name": "himalaya",
+      "kind": "skill",
+      "state": "needs_login",
+      "credential_names_present": [],
+      "last_activity": "2026-08-26T17:25:13.756862Z"
+    },
+    {
+      "name": "huggingface-hub",
+      "kind": "skill",
+      "state": "needs_login",
+      "credential_names_present": [],
+      "last_activity": "2026-08-26T17:25:13.761286Z"
+    },
+    {
+      "name": "notion",
+      "kind": "skill",
+      "state": "needs_login",
+      "credential_names_present": [],
+      "last_activity": "2026-08-26T17:25:13.766166Z"
+    },
+    {
+      "name": "openhue",
+      "kind": "skill",
+      "state": "needs_login",
+      "credential_names_present": [],
+      "last_activity": "2026-08-26T17:25:13.778196Z"
+    },
+    {
+      "name": "weights-and-biases",
+      "kind": "skill",
+      "state": "needs_login",
+      "credential_names_present": [],
+      "last_activity": null
+    },
+    {
+      "name": "xurl",
+      "kind": "skill",
+      "state": "needs_login",
+      "credential_names_present": [],
+      "last_activity": "2026-08-26T17:25:13.778392Z"
+    },
+    {
+      "name": "youtube-content",
+      "kind": "skill",
+      "state": "needs_login",
+      "credential_names_present": [],
+      "last_activity": "2026-08-26T17:25:13.759907Z"
+    }
+  ],
+  "rows": [
+    [
+      "MCP SERVERS",
+      "mcp",
+      "No MCP servers configured · add with hermes mcp add <name> --url <endpoint>",
+      "—",
+      "Plugins provide tools; MCP provides external tool bridges"
+    ],
+    [
+      "ENABLED PLUGINS",
+      "plugins",
+      "2 enabled · 18 available (browser-use, browserbase, firecrawl, chronos, basic)",
+      "enabled",
+      "hermes plugins list"
+    ],
+    [
+      "MESSAGING PLATFORMS",
+      "gateway",
+      "Gateway not running · no platforms configured",
+      "offline",
+      "hermes gateway run"
+    ],
+    [
+      "CREDENTIALS",
+      "credentials",
+      "nous: OAuth present · names only, never values",
+      "1 provider(s)",
+      "auth.json"
+    ],
+    [
+      "TURBOFIT LANE",
+      "turbofit",
+      "TurboFit active · qwen3-8-27b-unleashed-unleashedq3kxl262144-main · providers turbofit + fallback nous",
+      "qwen3-8-27b-unleashed-un",
+      "config.yaml"
+    ],
+    [
+      "SENTER-BRIDGE",
+      "bridge",
+      "senter-bridge live on 127.0.0.1:8643 · 0 pending",
+      "live",
+      "server.py"
+    ]
+  ]
+}

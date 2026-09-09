@@ -1,0 +1,10 @@
+---
+title: What does the bridge use to turn a YouTube pick into a seekable audio stream, ho
+type: query
+proposed: 2026-09-05 18:27
+tags: [question]
+---
+# What does the bridge use to turn a YouTube pick into a seekable audio stream, how often does that path break in practice, and is a Spotify (needs Dev-app client_id) or local-file fallback worth wiring now?
+The wiki's whole music surface now sits on one undocumented extraction path; raw has no record of how it fetches or what happens when YouTube changes.
+
+_Approve to run the research; the answer lands here._

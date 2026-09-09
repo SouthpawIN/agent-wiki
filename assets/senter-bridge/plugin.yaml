@@ -1,0 +1,5 @@
+name: senter-bridge
+version: 0.1.0
+description: "Senter Wiki live bridge — local event stream + approval relay on 127.0.0.1:8643"
+author: teknium
+kind: bridge

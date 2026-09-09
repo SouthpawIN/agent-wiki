@@ -1,0 +1,15 @@
+---
+type: loop
+name: apple-silicon-engine-smoke
+proposed: 2026-09-07 06:24
+schedule: 30m
+---
+# apple-silicon-engine-smoke
+owner: teknium · cadence: every 30 minutes · status: SUGGESTED
+**Want a 30-minute smoke loop that re-runs the fastest known engine config and catches regressions?**
+
+## Prompt
+Run the current fastest Qwen 3.8 27B Apple Silicon config and print engine, model ID, command, tok/s, and any errors.
+
+## Evidence
+> "Test llama.cpp with different quants, KV cache types, and speculative decoding."

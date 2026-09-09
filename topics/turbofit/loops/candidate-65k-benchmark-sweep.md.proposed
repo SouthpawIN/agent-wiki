@@ -1,0 +1,16 @@
+---
+type: loop
+name: candidate-65k-benchmark-sweep
+proposed: 2026-09-07 09:43
+schedule: 0 9 * * *
+---
+# candidate-65k-benchmark-sweep
+owner: turbosovth · cadence: human phrase · status: SUGGESTED
+**Want a daily sweep that benchmarks the next queued candidate at 65K and updates the engine report?**
+
+## Prompt
+Pick the next untested candidate from the Dirk/Nail/Tiel-Coder queue. Start its server on an unused port, run warmup, then short-prompt speed test at 65K. Record tok/s and any OOM/crash in wiki/queries/engine-speed-report.md. Stop if a candidate is too large for stable 65K.
+
+## Evidence
+> Test Tiel-Coder-35B-A3B-UD-Q4_K_XL.gguf with llama.cpp at 131K context.
+> Test Dirk-Qwen3.8-27B-UD-Q3_K_XL.gguf with llama.cpp at 131K context.

@@ -1,0 +1,10 @@
+---
+title: Which exact Q3K exile/deep flash artifacts exist for Qwen3.8 27B unleashed, and 
+type: query
+proposed: 2026-09-07 16:10
+tags: [question]
+---
+# Which exact Q3K exile/deep flash artifacts exist for Qwen3.8 27B unleashed, and what are the recommended llama.cpp/MLX settings for M1 32GB?
+Chris wants research-first implementation and the exact artifact/settings before tuning.
+
+_Approve to run the research; the answer lands here._

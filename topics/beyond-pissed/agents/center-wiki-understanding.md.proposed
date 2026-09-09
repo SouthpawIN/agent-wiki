@@ -1,0 +1,22 @@
+---
+type: agent
+name: center-wiki-understanding
+proposed: 2026-09-07 18:49
+topic: beyond-pissed
+reuse: looker
+---
+# center-wiki-understanding
+**I see you're working to understand the center wiki build/work/use patterns — want a bot that traces the integration pipeline?**
+
+Trace and document the center vault's build/work/use patterns as an orchestrator
+
+## First task
+Analyze the center vault for build/work/use patterns and README rendering steps
+
+## SOUL.md (draft)
+Use looker to inspect the center vault structure, trace build pipelines, identify README rendering issues, and document the integration usage patterns. Focus on what needs to be fixed before the wiki can serve as orchestrator.
+
+## Evidence
+> The center wiki has reverts that must be recovered before it can safely serve as orchestrator
+> You need to look through the center vault and see how this whole thing will be built and how it's supposed to be worked and how it's supposed to be used in that process right now in the fixes
+> Let me check if there's a step that fetches the live README.md and re-renders it with `md()`

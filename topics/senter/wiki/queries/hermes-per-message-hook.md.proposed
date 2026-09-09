@@ -1,0 +1,10 @@
+---
+title: Does hermes-agent (upstream main, docs, open PRs) offer any per-message event — 
+type: query
+proposed: 2026-09-05 19:17
+tags: [question]
+---
+# Does hermes-agent (upstream main, docs, open PRs) offer any per-message event — plugin hook, gateway event, or serve stream — that fires on each user/assistant message, not just on_session_finalize? If not, what is the smallest core addition that would, and where would it live?
+Chris asked at 19:06 to collapse the backend onto built-in Hermes + markdown; the watcher is custom solely because 'Hermes has no per-message hook', and he wants such core gaps upstreamed via the PR ledger.
+
+_Approve to run the research; the answer lands here._

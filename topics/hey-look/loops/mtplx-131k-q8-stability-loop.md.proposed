@@ -1,0 +1,16 @@
+---
+type: loop
+name: mtplx-131k-q8-stability-loop
+proposed: 2026-09-07 04:46
+schedule: weekly
+---
+# mtplx-131k-q8-stability-loop
+owner: mtplx-131k-stabilizer · cadence: after every session-budget change · status: SUGGESTED
+**I see q8/swap is the only known non-OOM 131K path — want a loop that confirms it stays stable for the 35-token/800-token and 5K/100-token jobs?**
+
+## Prompt
+Each tick: start MTPLX at 131K with `--paged-kv-quantization q8 --allow-swap` and current override env, run the 35/800 and 5K/100 prompt pair, record tok/s, OOM status, and memory usage, append to the 65K-vs-131K wiki page, fail open if OOM returns.
+
+## Evidence
+> **131K context now works with q8 KV cache!**
+> Results with `--paged-kv-quantization q8 --allow-swap`: 35 tokens -> 800 tokens = 6.9 tok/s; 5K tokens -> 100 tokens = 0.6 tok/s; No OOM.

@@ -1,0 +1,15 @@
+---
+type: loop
+name: 27b-speed-watch
+proposed: 2026-09-07 03:41
+schedule: 30m
+---
+# 27b-speed-watch
+owner: turbosovth · cadence: human phrase · status: SUGGESTED
+**Want a repeating loop that checks whether the 27B Q3 131K run hits your speed bar, so it doesn't just drift while you're working on something else?**
+
+## Prompt
+Each tick: inspect current local 27B/Q3/131K benchmark state, compare to Chris's 'fast enough' criterion, report delta, and surface only blockers/next parameter change.
+
+## Evidence
+> "We didn't go fast enough... then we need to focus back on Getting those 20 one of the 27b's optimized"

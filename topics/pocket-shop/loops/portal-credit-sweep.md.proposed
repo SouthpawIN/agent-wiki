@@ -1,0 +1,16 @@
+---
+type: loop
+name: portal-credit-sweep
+proposed: 2026-09-06 22:06
+schedule: 0 */2 * * *
+---
+# portal-credit-sweep
+owner: looker · cadence: every 2h · status: SUGGESTED
+**Want a loop that re-checks Portal credits for southpawinmusic@gmail.com every 2h and only speaks up when the balance changes?**
+
+## Prompt
+Check Portal usable credits for southpawinmusic@gmail.com org 'Christopher Hardwick's organisation'. If state differs from last known no_usable_credits/$0.00, report the new balance and whether the $2,000 landed.
+
+## Evidence
+> Retried and it's still down... usable $0.00.
+> The $2,000 hasn't landed on this account/org: either still pending, or it went to a different account.

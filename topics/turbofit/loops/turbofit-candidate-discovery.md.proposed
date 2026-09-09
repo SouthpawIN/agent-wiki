@@ -1,0 +1,15 @@
+---
+type: loop
+name: turbofit-candidate-discovery
+proposed: 2026-09-07 06:30
+schedule: 0 9 * * *
+---
+# turbofit-candidate-discovery
+owner: looker · cadence: daily · status: SUGGESTED
+**Want a loop that scans HuggingFace and known feeds for new Qwen/Ornith/Unleashed/DFlash2 artifacts matching the TurboFit candidate list?**
+
+## Prompt
+Check HuggingFace and model news feeds for new releases matching TurboFit candidate patterns; append discoveries to research/candidates.json and surface top 3 as wiki cards.
+
+## Evidence
+> Repaired discovery/benchmark campaigns

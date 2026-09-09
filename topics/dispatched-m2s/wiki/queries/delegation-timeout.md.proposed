@@ -1,0 +1,10 @@
+---
+title: What specific Hermes configuration or process causes the delegation owner to exi
+type: query
+proposed: 2026-09-07 10:02
+tags: [question]
+---
+# What specific Hermes configuration or process causes the delegation owner to exit prematurely, and how can reduced batch sizes prevent this?
+This failure mode has blocked a batch with unknown outcome and lacks debugging information
+
+_Approve to run the research; the answer lands here._

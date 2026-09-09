@@ -1,0 +1,10 @@
+---
+title: Which available inference runtime achieves the highest reliable tok/s at 65K on 
+type: query
+proposed: 2026-09-07 08:45
+tags: [question]
+---
+# Which available inference runtime achieves the highest reliable tok/s at 65K on M1 32 GB, and which exact flags/quants make it stable?
+Chris asked for a full llama.cpp/MLX/OMLX/FreeToken speed audit, and the current wiki only has partial in-session evidence without a locked winner.
+
+_Approve to run the research; the answer lands here._

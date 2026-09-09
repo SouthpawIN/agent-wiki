@@ -1,0 +1,14 @@
+# Queue — dispatched-m2s
+
+## [CONTEXT]
+- [ ] research owner-exit-root-cause — SUGGESTED 2026-09-07 14:09: Want me to look into the root cause of the Hermes delegation owner exit timeout?
+- [ ] research delegation-timeout — SUGGESTED 2026-09-07 10:02: Want me to look into why delegation owner exits before recording terminal results?
+- [~] research — dispatched 2026-09-07 05:42
+
+## [SKILLS]
+
+## [AGENTS]
+- [ ] delegation-auditor — SUGGESTED 2026-09-07 14:09: I see you're trying to separate owner-exit failures from batch-size effects — want a bot that instruments Hermes delegat → agents/delegation-auditor.md.proposed
+
+## [LOOPS]
+- [ ] delegation-daily-digest — SUGGESTED 2026-09-07 14:09: Want a daily digest of delegation batch outcomes so you can spot owner-exit patterns without digging through logs? → loops/delegation-daily-digest.md.proposed

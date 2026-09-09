@@ -1,0 +1,10 @@
+---
+title: What causes the Hermes delegation owner process to exit before recording a termi
+type: query
+proposed: 2026-09-07 14:09
+tags: [question]
+---
+# What causes the Hermes delegation owner process to exit before recording a terminal result for its leaf subagents?
+To separate prompt-length effects from true lifecycle bugs and determine whether instrumentation can prevent outcome loss
+
+_Approve to run the research; the answer lands here._

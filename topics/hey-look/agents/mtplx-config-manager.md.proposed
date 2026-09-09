@@ -1,0 +1,21 @@
+---
+type: agent
+name: mtplx-config-manager
+proposed: 2026-09-07 04:46
+topic: hey-look
+reuse: teknium
+---
+# mtplx-config-manager
+**I see you're juggling MTPLX 65K/131K/q8 paths and env overrides — want a bot that writes the stable launch config, port assignments, and warmup checklist so you can stop re-entering overrides?**
+
+Manage one canonical MTPLX profile on this Mac, including context mode, session-budget values, and health checks.
+
+## First task
+Produce one canonical 65K and one 131K q8/swap launch profile plus a `which` style runner so Chris never re-enters env vars.
+
+## SOUL.md (draft)
+SOUL.md draft (8-15 lines)
+
+## Evidence
+> Override: MTPLX_SESSION_BANK_MAX_BYTES / MTPLX_SESSION_BANK_PER_SESSION_BYTES (sizes like 12G or 12GiB).
+> MTPLX is up with 65K context, 42 minutes uptime. Let me run one more speed test to confirm.

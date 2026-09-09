@@ -1,0 +1,17 @@
+---
+type: loop
+name: music-download-verify
+proposed: 2026-09-07 06:15
+schedule: 30m
+---
+# music-download-verify
+owner: music-model-runner · cadence: after every music model download · status: SUGGESTED
+**Want a loop that verifies your downloaded model files are complete before you try to run them?**
+
+## Prompt
+Inspect ~/Models/storage/music/ for ACE-Step1.5-MLX-4bit.safetensors and minimax-music3-mlx.tar. Check sizes against expected values. If a file is partial or corrupted, report exact path, expected size, and actual size.
+
+## Evidence
+> Beats folder is empty — the script failed before generating anything.
+> Download MiniMax Music 3 (13GB) — we'll need to swap it in
+> MiniMax Music 3 (mxfp8): 13 GB — won't fit alongside MTPLX

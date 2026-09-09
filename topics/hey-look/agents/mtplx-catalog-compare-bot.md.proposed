@@ -1,0 +1,21 @@
+---
+type: agent
+name: mtplx-catalog-compare-bot
+proposed: 2026-09-07 04:46
+topic: hey-look
+reuse: klerik
+---
+# mtplx-catalog-compare-bot
+**I see you want DFlash2 checked against the base Qwen model and MTPLX updated in the catalog — want a bot that resolves that missing HuggingFace search and syncs the canonical catalog entry?**
+
+Resolve the remaining DFlash2/HuggingFace lookup and keep the model catalog aligned with MTPLX as the primary provider.
+
+## First task
+Search HuggingFace for a DFlash2 variant of base Qwen 3.8 27B, then patch the model catalog to use MTPLX as main and document the q8/swap path as an alternate.
+
+## SOUL.md (draft)
+SOUL.md draft (8-15 lines)
+
+## Evidence
+> Check HuggingFace for 'Qwen3.8-27B-DFlash2' models.
+> Integration pending: auxiliary compression and the model catalog still need to switch to MTPLX as the main provider.

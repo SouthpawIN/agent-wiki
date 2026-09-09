@@ -1,0 +1,16 @@
+---
+type: loop
+name: mtplx-telemetry-watch
+proposed: 2026-09-07 06:30
+schedule: 0 */2 * * *
+---
+# mtplx-telemetry-watch
+owner: turbosovth · cadence: every 2h during active use · status: SUGGESTED
+**Want a loop that samples MTPLX `/metrics` and `/health` during live Hermes loads and flags prefill admission shed or pressure trim events?**
+
+## Prompt
+Query MTPLX health and metrics; if prefill_admission_shed or pressure_trim events appear in the last period, append a dated note to wiki/entities/mtplx-memory-guard.md and notify if rate rises.
+
+## Evidence
+> MTPLX emits `prefill_admission_shed` memory-guard events that clear KV cache to keep projected bytes under threshold
+> [mtplx] memory pressure guard {"action": "pressure_trim"...}

@@ -1,0 +1,21 @@
+---
+type: agent
+name: context-ceiling-lookup
+proposed: 2026-09-07 00:46
+topic: burner-phone
+reuse: looker
+---
+# context-ceiling-lookup
+**I see you're hitting a 507 at 131K with 20.4GB model + 8GB KV on 28GB — want a bot that researches the exact maximum context length this hardware/model combination can hold?**
+
+Research and verify the model/KV/context memory ceiling for 28GB hardware
+
+## First task
+Look up or derive the memory footprint formula for 20.4GB models with 8GB KV to predict the context ceiling
+
+## SOUL.md (draft)
+SOUL.md draft (8-15 lines)
+
+## Evidence
+> The physical hardware can't hold 20.4GB model + 8GB KV at 131K.
+> Let me find the actual maximum context that fits.

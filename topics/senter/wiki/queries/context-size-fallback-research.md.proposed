@@ -1,0 +1,10 @@
+---
+title: Does Hermes config.yaml expose a context-size-based provider selector, or does c
+type: query
+proposed: 2026-09-07 00:56
+tags: [question]
+---
+# Does Hermes config.yaml expose a context-size-based provider selector, or does context-based fallback require a code change in core routing?
+The 65K Nous-cloud fallback is identified but unconfirmed as config vs code; knowing the native path prevents a bespoke patch.
+
+_Approve to run the research; the answer lands here._

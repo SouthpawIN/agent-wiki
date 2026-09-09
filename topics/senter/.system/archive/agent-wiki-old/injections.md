@@ -1,0 +1,31 @@
+# Injections
+
+## [READ]
+
+== absorbed from senter idea-wiki (2026-08-28) ==
+---
+title: agent-wiki
+created: 2026-07-12
+updated: 2026-07-12
+type: entity
+tags: [entity, idea-capture, provenance]
+sources: ["raw/github/agent-wiki-83f25069da.md"]
+confidence: medium
+---
+
+# agent-wiki
+
+## Current context
+
+A self-documenting, self-extending multi-agent system. Topics are miniature GOOP instances. Markdown is the API between human and machine. Built on Hermes Agent by Nous Research. # Senter Agent > **Senter is the three-eyed owl: a self-documenting, self-extending multi-agent system. The wiki IS the coordination layer.** > > Built on [Hermes Agent](https://github.com/NousResearch/hermes-agent) by [Nous Research](https://nousresearch.com). > Topics are miniature GOOP instances. `SENTER.md` is the language/context layer; Senter Agent is the interpreter and orchestrator. --- ## What is Agent Wiki? Agent Wiki organizes a multi-agent AI fleet as **a well-organized markdown vault**. Every topic you care about gets its own directory containing the full stack: - **Context** — what the system understands about your goal - **Loops** — cron jobs and workflows that run over time - **Agents** — AI profiles that do the work - **Skills** — reusable procedures agents load on demand You chat with Senter through an unnamed, low-intelligence, tool-free speech-to-speech auxiliary task. Senter watches conversations, comprehends what you want, and proposes the skills, agents, and workflows to make it happen. Progress flows back naturally in conversation. **Every part of the system is a markdown file you can edit.** No config dashboards. No YAML wizards. Open the wiki, change what you want, and the system picks it up. --- ## Quick Start → Full setup: [[spec|Agent Wiki Specification]] --- ## The Four Primitives | Primitive | Factory | What It Is | |---|---|---| | **Context** | Context | Wiki pages — raw understanding from chat, structured into knowledge | | **Loops** | Loops | Cron jobs, kanban tasks — execution that runs over time | | **Agents** | Agents | Hermes profiles — named entities with personality, tools, and skills | | **Skills** | Skills | SKILL.md bundles — reusable procedures loaded on demand | Primitives nest: **Context** contains **Loops** which invoke **Agents** which load **Skills**. --- ## The Flywheel From idea to working system — driven entirely by markdown reads and writes: 1. **Chat** — You tell Senter about an idea 2. **Comprehend** — Context reads the chat, writes wiki pages 3. **Create** — Factories (Skills, Agents, Loops) build skills, agents, and loops 4. **Inject** — Status flows back through Senter's conversational surface --- ## Topic Structure Every…
+
+## Version policy
+
+The latest available update marker is canonical: `https://github.com/SouthpawIN/agent-wiki` (`2026-07-13T03:55:47Z`). Earlier captures remain linked in the raw source inventory.
+
+## Related concepts
+
+- [[concepts/agent-fleet|Agent Fleet]]
+
+> The source README referenced a separate specification that was not captured as a standalone source.
+- [[concepts/personal-vision|Personal Vision]]

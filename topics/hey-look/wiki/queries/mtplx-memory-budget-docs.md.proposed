@@ -1,0 +1,10 @@
+---
+title: What does `--memory-budget` control for KV-cache sizing at 32GB, and does it fix
+type: query
+proposed: 2026-09-06 23:26
+tags: [question]
+---
+# What does `--memory-budget` control for KV-cache sizing at 32GB, and does it fix the 8.2 tok/s drop at 131K?
+Chris's next blocker is the unstable 131K figure; the memory-budget flag may be the missing config.
+
+_Approve to run the research; the answer lands here._

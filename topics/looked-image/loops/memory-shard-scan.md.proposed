@@ -1,0 +1,15 @@
+---
+type: loop
+name: memory-shard-scan
+proposed: 2026-09-06 22:01
+schedule: 0 9 * * *
+---
+# memory-shard-scan
+owner: looker · cadence: daily · status: SUGGESTED
+**Want a daily scan of your Pictures, project directories, and common backup locations for screenshots or state files that could be memory shards for this revert target?**
+
+## Prompt
+
+
+## Evidence
+

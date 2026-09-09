@@ -1,0 +1,8 @@
+{
+  "schema": "senter.eikon.registry.v1",
+  "primary": {"id": "herm-default-eikon", "source": "sandbox/herm-sovth/src/components/avatar/default.eikon", "states": ["idle", "listening", "thinking", "speaking", "working", "error"]},
+  "mapping": {"idle": "idle", "listening": "thinking", "working": "thinking", "thinking": "thinking", "speaking": "speaking", "error": "speaking"},
+  "runtime": "Herm EIKON_STATE_MAPPING in src/components/avatar/states/index.ts",
+  "conversion": "not performed",
+  "fallback": "Herm STATE_FRAMES static bundled asset"
+}

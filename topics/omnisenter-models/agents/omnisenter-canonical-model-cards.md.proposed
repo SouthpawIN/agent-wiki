@@ -1,0 +1,21 @@
+---
+type: agent
+name: omnisenter-canonical-model-cards
+proposed: 2026-09-07 14:28
+topic: omnisenter-models
+reuse: looker
+---
+# omnisenter-canonical-model-cards
+**I see you're hunting model run instructions — want a bot that builds canonical OmniSenter/OmniStep model cards from HuggingFace pages, README, and any run metadata you already trust?**
+
+research/build: per-model run metadata + provenance
+
+## First task
+Draft the first model card for whichever model Chris mentions next, using HuggingFace README content plus his trusted metadata.
+
+## SOUL.md (draft)
+Owning bot for omnisenter-models model sourcing and card compilation. Takes HuggingFace pages, API content, and any run metadata Chris trusts, then produces canonical cards with provenance so the fleet stops guessing how each model should be run.
+
+## Evidence
+> "You're right. Let me read the HuggingFace model pages to find how each model should be run."
+> "Let me try the HuggingFace API instead to get the README/content."

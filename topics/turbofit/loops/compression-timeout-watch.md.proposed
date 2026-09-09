@@ -1,0 +1,16 @@
+---
+type: loop
+name: compression-timeout-watch
+proposed: 2026-09-06 22:41
+schedule: 30m
+---
+# compression-timeout-watch
+owner: looker · cadence: human phrase · status: SUGGESTED
+**Watch Hermes compression timeout errors and correlate them to active model/provider state.**
+
+## Prompt
+Collect recent Hermes compression-timeout errors, note active model/provider, and report whether fallback to local main or local aux would fix the next one.
+
+## Evidence
+> Context compression timed out before it could commit while the request was still approximately 387,009 tokens
+> Restart Hermes and the compression timeouts stop — context compression now routes through Maple locally

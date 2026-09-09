@@ -1,0 +1,10 @@
+---
+title: Do MLX/quant builds exist for ACE-Step 1.5 and MiniMax Music 3, and does any cur
+type: query
+proposed: 2026-09-07 06:15
+tags: [question]
+---
+# Do MLX/quant builds exist for ACE-Step 1.5 and MiniMax Music 3, and does any current runner support their model types on macOS?
+Chris expects an MLX/quant path to exist; if it does, it changes both the runtime blocker and the memory/size comparison.
+
+_Approve to run the research; the answer lands here._

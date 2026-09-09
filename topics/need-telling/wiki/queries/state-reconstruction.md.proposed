@@ -1,0 +1,10 @@
+---
+title: What code path or Hermes feature generated each of these state artifacts, and is
+type: query
+proposed: 2026-09-06 22:51
+tags: [question]
+---
+# What code path or Hermes feature generated each of these state artifacts, and is there any persistent trace or hook that can reconstruct them?
+One line: knowing the origin lets us rebuild instead of re-creating from memory.
+
+_Approve to run the research; the answer lands here._

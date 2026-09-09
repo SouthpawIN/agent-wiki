@@ -1,0 +1,10 @@
+---
+title: Does D-flash affect 27B model inference speed at 131K context in llama.cpp, and 
+type: query
+proposed: 2026-09-06 21:53
+tags: [question]
+---
+# Does D-flash affect 27B model inference speed at 131K context in llama.cpp, and what alternatives exist that maintain full context length?
+Directly answers Chris's question about whether removing D-flash improves speed without sacrificing the 131K context requirement.
+
+_Approve to run the research; the answer lands here._

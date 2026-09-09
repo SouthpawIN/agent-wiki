@@ -1,0 +1,10 @@
+---
+title: What are the current fastest Apple Silicon inference engines and exact runnable 
+type: query
+proposed: 2026-09-07 09:31
+tags: [question]
+---
+# What are the current fastest Apple Silicon inference engines and exact runnable model IDs for Qwen 3.8 27B, Tiel Coder, and Dirk 27B on an M1 32GB?
+The sweep failed and only partial Tiel Coder numbers exist; Chris wants commands, model IDs, and tok/s per approach.
+
+_Approve to run the research; the answer lands here._

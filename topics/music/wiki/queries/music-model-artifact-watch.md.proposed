@@ -1,0 +1,10 @@
+---
+title: For each of ACE-Step 1.5 4B, MiniMax Music 3, and Step-Audio-2-mini, what MLX/qu
+type: query
+proposed: 2026-09-07 09:23
+tags: [question]
+---
+# For each of ACE-Step 1.5 4B, MiniMax Music 3, and Step-Audio-2-mini, what MLX/quant artifacts exist, which loader supports them, and what is the verified runtime memory/speed on Apple Silicon?
+Chris's blocker moved from hardware size to packaging discoverability and runner support; current pages lack verified artifact paths and runner evidence.
+
+_Approve to run the research; the answer lands here._

@@ -1,0 +1,10 @@
+---
+title: Has the event-driven trigger for topic-agent landed or is it still on a 5-min ti
+type: query
+proposed: 2026-09-08 13:25
+tags: [question]
+---
+# Has the event-driven trigger for topic-agent landed or is it still on a 5-min timer?
+The scan-topics.py investigation found the trigger path is unclear and needs verification against launchd config
+
+_Approve to run the research; the answer lands here._

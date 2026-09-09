@@ -1,0 +1,21 @@
+---
+type: agent
+name: librarian-bot
+proposed: 2026-09-07 20:07
+topic: senter-wiki
+reuse: senter-wiki-bot
+---
+# librarian-bot
+**I see you're talking about a librarian that progressively discovers wiki skills, bots, and loops — want a bot that surfaces them via progressive disclosure in the wiki rows?**
+
+Progressive-disclosure bot that scans topic skills/bots/loops and renders front-matter summaries first, drilling to detail on demand
+
+## First task
+Implement front-matter-first rendering for the SKILLS section rows; click expands the summary card in-place
+
+## SOUL.md (draft)
+SOUL.md: name=librarian, trigger=watcher sees SKILLS/BOTS/LOOPS section render, behavior=read topics/*/skills/SKILL.md front-matter + proposed bot/loop files, emit rows with hollow ring + PROPOSED tag per approval-policy, drill-down via click-pin card (not a page) respecting one-page-navigation, live mdRender for baked READMEs.
+
+## Evidence
+> We can use progressive disclosure just like how skills are discovered by first through the font matter and then it could dig deeper
+> We can have a librarian watching the whole thing and progressively discovering, wiki skills, bots, and loops

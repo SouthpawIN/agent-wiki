@@ -1,0 +1,10 @@
+---
+title: Across today's raw/inbox files in every topic, what fraction of cuts are misfile
+type: query
+proposed: 2026-09-05 18:06
+tags: [question]
+---
+# Across today's raw/inbox files in every topic, what fraction of cuts are misfiled or split mid-thought, and does sentence-group TF-IDF need a small LLM classifier instead?
+A wrong cut silently starves one topic agent and pollutes another — the memory layer's 'all of it' promise depends on it.
+
+_Approve to run the research; the answer lands here._

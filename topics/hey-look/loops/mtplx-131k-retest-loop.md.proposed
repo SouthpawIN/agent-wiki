@@ -1,0 +1,17 @@
+---
+type: loop
+name: mtplx-131k-retest-loop
+proposed: 2026-09-06 23:36
+schedule: 0 9 * * *
+---
+# mtplx-131k-retest-loop
+owner: mtplx-speedwatch · cadence: run once per config change · status: SUGGESTED
+**You've got two conflicting 131K numbers and an unfinished increase-size sweep — want a repeatable loop that locks one protocol, warms up once, then reruns at 131K on the same prompt class until the figures stabilize?**
+
+## Prompt
+Each tick: restart MTPLX with the current args from `topics/hey-look`; run the chosen 131K retest protocol; store tok/s decode, tok/s prefill, total prompt, reasoning-mode toggle, and session-cache flag; update `wiki/queries/mtplx-131k-systematic-retest.md` and `wiki/comparisons/mtplx-131k-speed-report-comparison.md`; mark `contested: false` only when two consecutive runs agree within 10%
+
+## Evidence
+> "5000 prompt tokens took 158s — the reasoning mode is burning the entire budget thinking."
+> "MTPLX is working at 131K context with `--no-ssd-session-cache`. The logs show 14-19 tok/s decode, 46 tok/s prefill."
+> "8.2 tok/s at 131K. Let me test with a large 131K prompt."

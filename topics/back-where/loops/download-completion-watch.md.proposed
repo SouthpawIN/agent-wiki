@@ -1,0 +1,16 @@
+---
+type: loop
+name: download-completion-watch
+proposed: 2026-09-07 19:51
+schedule: 30m
+---
+# download-completion-watch
+owner: looker · cadence: human phrase · status: SUGGESTED
+**Want me to watch the local model download path and only alert when it actually completes and becomes loadable?**
+
+## Prompt
+Check the expected download path and file size; if not complete, report percent/ETA; if complete, attempt a lightweight loadability check and surface result.
+
+## Evidence
+> The large file is still downloading (~6.5GB / 20.8GB).
+> Almost done - 94% (19.7GB / 20.8GB), about 1 minute remaining.

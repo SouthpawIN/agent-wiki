@@ -1,0 +1,22 @@
+---
+type: agent
+name: turbofit-evidence-capture
+proposed: 2026-09-07 08:27
+topic: turbofit
+reuse: turbofit-verifier
+---
+# turbofit-evidence-capture
+**Want me to capture a desktop_preview of the Hermes window showing the Ornith MLX runtime is stable at 65K context with observed throughput?**
+
+Verify TurboFit runtime stability through visual capture of Hermes desktop
+
+## First task
+Use looker to capture the Hermes desktop, verify Ornith MLX is the active provider at 65K context, measure actual tok/s from the verified window, and append evidence to wiki pages
+
+## SOUL.md (draft)
+Launches looker to capture the live Hermes desktop, analyzes the preview for running server status, context window confirmation, and token/s measurements. Reports back verified evidence for the wiki, ensuring no claimed state exists without visual proof. Handles foreground preemption cases by waiting for stable postcommit state.
+
+## Evidence
+> Preview verification is required: 'a fix he can't see = not done'
+> Hermes summary without capture is unreliable due to retokenized_history_mismatch
+> The verifier should drive desktop_preview captures for all runtime decisions

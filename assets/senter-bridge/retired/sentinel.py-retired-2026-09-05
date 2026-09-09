@@ -1,0 +1,104 @@
+#!/usr/bin/env python3
+"""senter-sentinel — the thing that makes 'Chris waits and nothing happens' impossible.
+
+Runs forever (launchd). Every 30s it checks the FOUR things that failed today and ACTS, not logs:
+  1. Undelivered work:  a queued dispatch item older than 3 min while its bot has capacity → spawn a
+                        Meeseeks for it directly (bypass the daemon) and mark it .sent.
+  2. Dead daemon:       dispatch.log's last line is a traceback OR the daemon pid is gone → kickstart it.
+  3. Stale preview:     vault-live.html version changed → print RELOAD <ver> (the coordinator's watcher
+                        acts on it) AND write ~/.hermes/senter-bridge/preview-reload-needed.
+  5. Parked on approval: a bot blocked on a pending card is a dead worker, not a busy one — it does NOT
+                        count against the cap; if that bot has queued/unclaimed work, spawn another instance for the
+                        next item immediately (Chris: 'things die when they go pending — that's when you spawn more').
+  4. Silent bot:        a bot with a live -q process that has emitted NO bridge event for 6 min → post a
+                        'stalled' message to the wiki so Chris sees it instead of waiting.
+Everything it does is posted to the bridge as bot 'senter' so it shows in the stream.
+"""
+import os, time, json, glob, subprocess, re, urllib.request
+H=os.path.expanduser("~/.hermes"); Q=f"{H}/senter-bridge/dispatch"; E=f"{H}/senter-bridge/events.jsonl"
+V=os.path.expanduser("~/Documents/Projects/Projects/vault-live.html")
+PY=f"{H}/hermes-agent/venv/bin/python"; HERMES=f"{H}/hermes-agent/venv/bin/hermes"
+CAP={"weaver":3,"teknium":2}
+def tok(): return open(f"{H}/senter-bridge/token").read().strip()
+def post(text,status="working",bot="senter"):
+    try: urllib.request.urlopen(urllib.request.Request(f"http://127.0.0.1:8643/post?token={tok()}",data=json.dumps({"bot":bot,"text":text,"status":status}).encode(),headers={"Content-Type":"application/json"}),timeout=3).read()
+    except Exception: pass
+def parked_pids():
+    """pids of bot processes currently blocked on a pending approval card (from pending/*.json)."""
+    out=set()
+    for f in glob.glob(f"{H}/senter-bridge/pending/*.json"):
+        try:
+            j=json.load(open(f)); pid=j.get("pid")
+            if pid: out.add(int(pid))
+        except Exception: pass
+    return out
+def live(bot):
+    # only real hermes chat processes for this profile — never shells, never the sentinel/dispatcher
+    out=subprocess.run("ps -axo pid=,command=",shell=True,capture_output=True,text=True).stdout
+    pids=[]
+    for line in out.splitlines():
+        parts=line.strip().split(None,1)
+        if len(parts)<2: continue
+        pid,cmd=parts
+        if "venv/bin/hermes" in cmd and " chat" in cmd and (f"-p {bot} " in cmd or f"profiles/{bot}" in cmd) and "sentinel.py" not in cmd and "dispatch.py" not in cmd and "/bin/sh" not in cmd:
+            pids.append(int(pid))
+    # parked-on-approval instances don't count as capacity
+    parked=parked_pids()
+    return [q for q in pids if q not in parked]
+def ver():
+    try: return (re.search(r"v1[45]\.\d+", open(V).read()) or re.search("x","x")).group(0)
+    except Exception: return "?"
+def last_event_ts(bot):
+    t=0
+    try:
+        for l in open(E).readlines()[-20000:]:
+            try: e=json.loads(l)
+            except Exception: continue
+            if e.get("bot")==bot: t=max(t,e["ts"])
+    except Exception: pass
+    return t
+def spawn_meeseeks(bot,path):
+    os.makedirs(f"{Q}/{bot}/.sent",exist_ok=True); sent=f"{Q}/{bot}/.sent/{os.path.basename(path)}"
+    os.rename(path,sent); log=sent+".log"
+    subprocess.Popen([HERMES,"chat","-q",open(sent).read()],env={**os.environ,"HERMES_HOME":f"{H}/profiles/{bot}"},stdout=open(log,"w"),stderr=subprocess.STDOUT,cwd="/tmp")
+    post(f"sentinel: spawned {bot} directly for a {int((time.time()-os.path.getmtime(f'{Q}/{bot}/.sent/'+os.path.basename(path)))//60)}-min-old item (daemon didn't)","working")
+WARNED=set()
+def main():
+    v0=ver(); print("sentinel on",v0,flush=True); post("sentinel online — undelivered work, dead daemon, stale preview, silent bots","working")
+    while True:
+        try:
+            # 1 undelivered
+            for bot in (os.listdir(Q) if os.path.isdir(Q) else []):
+                if bot.startswith("."): continue
+                for path in sorted(glob.glob(f"{Q}/{bot}/*.txt")):
+                    wait=30 if any(True for _ in parked_pids()) else 180
+                    if time.time()-os.path.getmtime(path)>wait and len(live(bot))<CAP.get(bot,1):
+                        spawn_meeseeks(bot,path); break
+            # 2 dead daemon
+            tail=subprocess.run(f"tail -3 {H}/senter-bridge/dispatch.log",shell=True,capture_output=True,text=True).stdout
+            alive=subprocess.run("pgrep -f 'dispatch.py run'",shell=True,capture_output=True,text=True).stdout.strip()
+            if ("Error" in tail and "senter-dispatch on" not in tail.splitlines()[-1:][0] if tail else False) or not alive:
+                subprocess.run(f"launchctl kickstart -k gui/{os.getuid()}/com.senter.dispatch",shell=True); post("sentinel: dispatch daemon was dead/crashed — restarted","blocked")
+            # 3 stale preview
+            v=ver()
+            if v!=v0:
+                print(f"RELOAD {v0} -> {v}",flush=True); open(f"{H}/senter-bridge/preview-reload-needed","w").write(v); v0=v
+            # 6 long-running Meeseeks: >12 min → nudge post; >20 min → post BLOCKED-by-sentinel (Chris sees it), leave the process (it may be finishing)
+            for bot in ["weaver","teknium"]:
+                for pid in live(bot):
+                    try: et=subprocess.run(f"ps -o etimes= -p {pid}",shell=True,capture_output=True,text=True).stdout.strip(); secs=int(et or 0)
+                    except Exception: continue
+                    key=("long",pid,secs//600)
+                    if secs>1200 and ("long20",pid) not in WARNED: WARNED.add(("long20",pid)); post(f"LONG-RUN {bot} pid {pid} at {secs//60} min — a single item should not take this long; check claims/heartbeat","blocked",bot)
+                    elif secs>720 and ("long12",pid) not in WARNED: WARNED.add(("long12",pid)); post(f"{bot} pid {pid} running {secs//60} min on one item","working",bot)
+            # 4 silent bot
+            for bot in ["weaver","teknium","klerik","anser","paladin"]:
+                pids=live(bot)
+                if not pids or time.time()-last_event_ts(bot)<=360: continue
+                key=(bot,tuple(sorted(pids)))
+                if key in WARNED: continue
+                WARNED.add(key)
+                post(f"{bot} has a live process ({pids[0]}) but no bridge activity for 6 min — possibly stalled (rate limit / approval wait)","blocked",bot)
+        except Exception as ex: print("sentinel err",ex,flush=True)
+        time.sleep(30)
+if __name__=="__main__": main()

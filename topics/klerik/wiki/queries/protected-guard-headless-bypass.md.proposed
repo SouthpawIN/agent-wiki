@@ -1,0 +1,10 @@
+---
+title: Is there a supported Hermes mechanism to pre-authorize protected-file writes for
+type: query
+proposed: 2026-09-05 18:47
+tags: [question]
+---
+# Is there a supported Hermes mechanism to pre-authorize protected-file writes for a non-interactive session, or is 'bridge writes, bot verifies' the only correct design — and if the latter, is it a core gap worth a ledger entry in topics/hermes-agent/prs/?
+Determines whether klerik can ever author profiles unattended or must stay a verifier.
+
+_Approve to run the research; the answer lands here._

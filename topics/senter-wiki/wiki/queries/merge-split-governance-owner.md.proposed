@@ -1,0 +1,10 @@
+---
+title: Given one agent per topic and the umbrella's cross-topic role absorbed, which co
+type: query
+proposed: 2026-09-05 18:39
+tags: [question]
+---
+# Given one agent per topic and the umbrella's cross-topic role absorbed, which component (topic agent, paladin, a _global page, or the card itself) should own merge/split proposals, using the 0.50 auto / 0.35 propose thresholds Chris locked on 09-02, and what does the veto file topics/_global/.system/keep-separate.md mean under that owner?
+The 0.65 AUTO-tier merge proposal has no owner to execute or retire it; the wiki flagged the gap and nothing answered it.
+
+_Approve to run the research; the answer lands here._

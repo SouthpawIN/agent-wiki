@@ -1,0 +1,10 @@
+---
+title: What is the calculated maximum context length for a 20.4GB model with 8GB KV on 
+type: query
+proposed: 2026-09-07 00:46
+tags: [question]
+---
+# What is the calculated maximum context length for a 20.4GB model with 8GB KV on 28GB total hardware budget?
+Chris's current blocker is a 507 at 131K context; a formula-based ceiling would replace trial-and-error with a concrete number.
+
+_Approve to run the research; the answer lands here._

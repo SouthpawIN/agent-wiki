@@ -1,0 +1,10 @@
+---
+title: What other Apple Silicon inference engines besides llama.cpp, MLX, OMLX, and Fre
+type: query
+proposed: 2026-09-07 06:24
+tags: [question]
+---
+# What other Apple Silicon inference engines besides llama.cpp, MLX, OMLX, and FreeToken can run Qwen 3.8 27B locally, and what are their expected tok/s?
+Chris explicitly asked to find any other backends and the initial pass failed.
+
+_Approve to run the research; the answer lands here._

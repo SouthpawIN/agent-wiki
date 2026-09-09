@@ -1,0 +1,17 @@
+---
+type: loop
+name: runtime-provider-drift-watch
+proposed: 2026-09-07 15:09
+schedule: 0 */2 * * *
+---
+# runtime-provider-drift-watch
+owner: looker · cadence: every 2h · status: SUGGESTED
+**Want a loop that checks whether Hermes is still on your approved provider instead of silently switching to a nous free model?**
+
+## Prompt
+Compare the hermes-agent wiki approved provider lock to the current active Hermes model. If they differ, append a drift card to the wiki and surface the exact active provider/model.
+
+## Evidence
+> 2026-09-07 11:19 active model changed to upstage/solar-pro4:free via provider nous.
+> 2026-09-07 12:02 active model changed again.
+> 2026-09-07 14:03 active model changed to ling-3.0-flash-fin-free via provider opencode-free.

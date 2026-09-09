@@ -1,0 +1,15 @@
+---
+type: loop
+name: pocket-shop-funding-check
+proposed: 2026-09-06 22:06
+schedule: 0 9 * * *
+---
+# pocket-shop-funding-check
+owner: anser · cadence: daily · status: SUGGESTED
+**Want a daily funding check that confirms whether pocket-shop's expected $2,000 is pending, rerouted, or cleared?**
+
+## Prompt
+Verify Portal credit status for southpawinmusic@gmail.com org 'Christopher Hardwick's organisation'. Summarize whether the missing $2,000 is pending, rerouted, or usable.
+
+## Evidence
+> The $2,000 hasn't landed on this account/org: either still pending, or it went to a different account.

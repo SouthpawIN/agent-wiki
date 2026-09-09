@@ -1,0 +1,15 @@
+---
+type: loop
+name: ace-step-run-check
+proposed: 2026-09-07 06:24
+schedule: 0 9 * * *
+---
+# ace-step-run-check
+owner: teknium · cadence: daily · status: SUGGESTED
+**Want a daily check that retries ACE-Step on the current engine and reports whether it boots?**
+
+## Prompt
+Attempt to run ACE-Step on this machine with the current best local inference backend; report success/failure and any error output.
+
+## Evidence
+> "Let me try to get it running."

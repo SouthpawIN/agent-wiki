@@ -1,0 +1,10 @@
+---
+title: Which Apple Silicon inference engines support Qwen 3.8 27B, what are their insta
+type: query
+proposed: 2026-09-07 05:11
+tags: [question]
+---
+# Which Apple Silicon inference engines support Qwen 3.8 27B, what are their installation paths, and what performance or memory constraints apply on this Mac?
+Turns the manual parallel search into an actionable engine shortlist for ACE-Step and future local runs.
+
+_Approve to run the research; the answer lands here._

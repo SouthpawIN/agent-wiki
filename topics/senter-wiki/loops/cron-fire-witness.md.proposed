@@ -1,0 +1,15 @@
+---
+type: loop
+name: cron-fire-witness
+proposed: 2026-09-05 19:00
+---
+# cron-fire-witness
+owner: looker · cadence: on new approved loop (watch loops/ for a dropped .proposed), then once per first tick · status: SUGGESTED
+**Three bots now have crons that 'actually fire' — want looker to watch each first tick land in your corner feed and post a capture of your window (or a BLOCKED card if nothing fires)?**
+
+## Prompt
+For each newly registered loop: confirm hermes cron registration + gateway for its bot, wait for the first scheduled tick, verify a feed card from that bot reached #chat .mini (wiki-feed-verify), capture Chris's real preview pane (wiki-look-verify), then write the loop name/bot/cadence into topics/senter-wiki/wiki/entities/launchd-services.md and post one done-line with the capture path; if no fire within 2× cadence post status=blocked.
+
+## Evidence
+> Both loops registered and gateways for paladin and looker auto-installed by the apply path. Three bots now have live crons that actually fire. Update the wiki's record and check the feed/UI state
+> prove a bot apply end-to-end on a real approval

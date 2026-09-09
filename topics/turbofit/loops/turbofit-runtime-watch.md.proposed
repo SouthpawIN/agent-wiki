@@ -1,0 +1,17 @@
+---
+type: loop
+name: turbofit-runtime-watch
+proposed: 2026-09-07 08:27
+schedule: 0 9 * * *
+---
+# turbofit-runtime-watch
+owner: turbofit-bot · cadence: daily at 09:00 · status: SUGGESTED
+**Want me to periodically test all three runtime paths (Ornith, Unleashed+DFlash2, MTPLX at 65K) and record tok/s metrics?**
+
+## Prompt
+Run speed_test.py for each runtime: 1) Ornith MLX at 65K context, 2) Unleashed+DFlash2 at 131K, 3) MTPLX at 65K. Record tok/s in wiki/queries/apple-silicon-runtime-benchmark.md. Alert if any runtime drops below 80% of expected speed.
+
+## Evidence
+> Ornith: 28.5 tok/s short, 4.3 tok/s at 5K
+> Unleashed+DFlash2: 5 tok/s at 131K
+> MTPLX: 7 tok/s at 65K stable

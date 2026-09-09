@@ -1,0 +1,15 @@
+
+## re-routed from kashik · 2026-09-08 10:14
+---
+ingested: 2026-09-08
+source: hermes state.db messages (watcher)
+---
+# raw inbox — kashik — 2026-09-08
+
+## 2026-09-08 09:51 · hermes · 20260903_001447_7bc70a · sim 0.07
+Wait, that's not right. Let me test:
+- `"context-fallback-pin.md".split(".md")[0]` = `"context-fallback-pin"` ✓
+- `"librarian.md".split(".md")[0]` = `"librarian"` ✓
+
+Actually the split should work. Let me check what's happening:
+

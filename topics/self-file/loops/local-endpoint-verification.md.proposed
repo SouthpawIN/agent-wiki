@@ -1,0 +1,16 @@
+---
+type: loop
+name: local-endpoint-verification
+proposed: 2026-09-07 14:31
+schedule: 30m
+---
+# local-endpoint-verification
+owner: local-inference-monitor · cadence: every 30m · status: SUGGESTED
+**Want a loop that verifies the ornith/MTPLX endpoint map every 30 minutes and flags drift?**
+
+## Prompt
+Check local inference endpoints, compare against last known map, and log only when the bound server or port changes.
+
+## Evidence
+> you aew running on ornith now
+> Ports are free. Start Ornith again.

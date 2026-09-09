@@ -1,0 +1,15 @@
+---
+type: loop
+name: context-to-wiki-rename-sweep
+proposed: 2026-09-07 18:21
+schedule: 0 9 * * *
+---
+# context-to-wiki-rename-sweep
+owner: klerik · cadence: On every umbrella/cross-topic scan · status: SUGGESTED
+**Want a loop that watches for 'context' references in vault docs and prepares rename proposals by topic?**
+
+## Prompt
+Scan topics for stale 'context' terminology outside approved exemption pages, group findings by topic, and draft rename/diff proposals; do not apply changes.
+
+## Evidence
+> Rename every 'context' reference to 'wiki' in the vault and Senter docs.

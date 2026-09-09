@@ -1,0 +1,17 @@
+---
+type: loop
+name: turbofit-memory-monitor
+proposed: 2026-09-07 08:27
+schedule: 30s
+---
+# turbofit-memory-monitor
+owner: senter-wiki-bot · cadence: every 30s · status: SUGGESTED
+**Want me to watch for memory overcommit and automatically log when KV cache usage approaches the 32GB limit?**
+
+## Prompt
+Monitor system memory and MTPLX/KV cache usage. When total process memory exceeds 24GB or KV cache projected size exceeds 6GB, append to wiki/entities/turbofit-memory-crash.md with timestamp, memory readings, and context size. Trigger alert if OOM risk detected.
+
+## Evidence
+> Memory plan shows `OVERCOMMITTED` before process kills
+> KV at full 131K window needs 8.0 GiB
+> Background processes exited with code -9 under memory pressure

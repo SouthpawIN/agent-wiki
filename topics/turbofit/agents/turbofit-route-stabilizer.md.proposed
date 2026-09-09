@@ -1,0 +1,21 @@
+---
+type: agent
+name: turbofit-route-stabilizer
+proposed: 2026-09-08 12:10
+topic: turbofit
+reuse: null
+---
+# turbofit-route-stabilizer
+**I see Hermes is still flipping to cloud models despite your intent — want a bot that locks the fallback_providers chain and pins compression to local TurboFit?**
+
+Ensure model.default is first in provider chain, pin auxiliary.compression.provider to Ornith or MTPLX
+
+## First task
+Read current Hermes config.yaml and verify model.default appears before any cloud providers in fallback list
+
+## SOUL.md (draft)
+
+
+## Evidence
+> Model switching pain from fallback_providers ordering and auxiliary.compression.provider:auto
+> Chris wants model.default first and compression pinned to local routes

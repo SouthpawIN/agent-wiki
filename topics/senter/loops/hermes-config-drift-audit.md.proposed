@@ -1,0 +1,17 @@
+---
+type: loop
+name: hermes-config-drift-audit
+proposed: 2026-09-06 22:54
+schedule: 0 */2 * * *
+---
+# hermes-config-drift-audit
+owner: klerik · cadence: every 2h · status: SUGGESTED
+**Want a loop that catches Hermes config drift before it silently switches models or breaks TTS?**
+
+## Prompt
+Each tick: read all profile configs; verify fallback_providers has z-ai/glm-5.3-flash first, auxiliary.compression is explicit, and auxiliary.vision is pinned; flag any drift and append findings to wiki/concepts/hermes-config-drift-audit.md.
+
+## Evidence
+> my model keeps switching the step 3.7 flash
+> The JWT-based entitlement cache... goes stale when credits are added
+> fix identified but not confirmed applied → teknium

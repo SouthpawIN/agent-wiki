@@ -1,0 +1,10 @@
+---
+title: Trace the 18:01 SUGGESTED entry in topics/klerik/.system/queue.md to the planner
+type: query
+proposed: 2026-09-05 18:21
+tags: [question]
+---
+# Trace the 18:01 SUGGESTED entry in topics/klerik/.system/queue.md to the planner/topic-agent that emitted it and find where the agents/*.md.proposed write was dropped — is the bot branch of the apply path silently failing at proposal time, before approval is even possible?
+If bot proposals never reach disk, no approval card can ever exist for them and the hermes profile create wire has nothing to fire on.
+
+_Approve to run the research; the answer lands here._

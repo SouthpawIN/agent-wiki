@@ -1,0 +1,15 @@
+---
+type: loop
+name: vault-diff
+proposed: 2026-09-06 22:51
+schedule: 0 * * * *
+---
+# vault-diff
+owner: paladin · cadence: every hour · status: SUGGESTED
+**Want a scheduled diff that catches drift between center vault and live wiki before it compounds?**
+
+## Prompt
+Run center-vault audit; if gaps found, append them to log.md under today's date and surface a one-line summary. If clean, no-op.
+
+## Evidence
+> "And telling me that you can't reconstruct it is not an answer."

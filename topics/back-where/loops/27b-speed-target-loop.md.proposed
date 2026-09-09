@@ -1,0 +1,16 @@
+---
+type: loop
+name: 27b-speed-target-loop
+proposed: 2026-09-07 19:51
+schedule: every 2h
+---
+# 27b-speed-target-loop
+owner: teknium · cadence: human phrase · status: SUGGESTED
+**Want a repeatable pass that benchmarks the 27B/unleashed tuning path on your M1 against your speed target instead of rerunning it ad hoc?**
+
+## Prompt
+Each tick: rerun the 27B optimization benchmark under current Hermes config; compare throughput/latency to Chris's target; if fallback occurs, capture prefill/batch evidence; if better, note delta.
+
+## Evidence
+> All right, never mind. We didn't go fast enough.
+> ...then we need to focus back on Getting those 20 one of the 27b's optimized

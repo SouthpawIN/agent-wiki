@@ -1,0 +1,10 @@
+---
+title: What `--memory-budget`, MTP depth, or cache settings do community reports show f
+type: query
+proposed: 2026-09-07 00:28
+tags: [question]
+---
+# What `--memory-budget`, MTP depth, or cache settings do community reports show for stable 131K MTPLX on 32GB Apple Silicon Macs?
+Chris needs to know whether 65K is the hard ceiling on current hardware or if a documented config can push usable context higher before buying new RAM.
+
+_Approve to run the research; the answer lands here._

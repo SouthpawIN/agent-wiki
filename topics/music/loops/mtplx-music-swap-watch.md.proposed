@@ -1,0 +1,15 @@
+---
+type: loop
+name: mtplx-music-swap-watch
+proposed: 2026-09-07 05:08
+schedule: 0 9 * * *
+---
+# mtplx-music-swap-watch
+owner: teknium · cadence: daily · status: SUGGESTED
+**Want a loop that watches MTPLX memory use and tells you exactly when MiniMax Music 3 could be swapped in without OOM?**
+
+## Prompt
+Measure MTPLX RAM footprint; if under threshold, propose a clean swap to MiniMax Music 3 and execute; otherwise report how much headroom is missing.
+
+## Evidence
+> MTPLX is eating ~20GB of your 32GB. Music models need 13-15GB. We can't run both at once without OOM.

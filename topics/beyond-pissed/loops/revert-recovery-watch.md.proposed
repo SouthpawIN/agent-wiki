@@ -1,0 +1,15 @@
+---
+type: loop
+name: revert-recovery-watch
+proposed: 2026-09-08 09:57
+schedule: 0 */2 * * *
+---
+# revert-recovery-watch
+owner: paladin · cadence: every 2 hours · status: SUGGESTED
+**Want a loop that continuously checks the center wiki for reverts and auto-notifies so they get recovered before becoming stale?**
+
+## Prompt
+Scan the center wiki directory tree for file mtime regressions vs git HEAD. For each file whose content has been reverted compared to the last committed version, log the revert with timestamp and affected path to wiki/decisions/pending-reverts.md. If any pending reverts exist, send a summary notification to Chris via the bridge (-q approval channel)
+
+## Evidence
+> The center wiki has reverts that must be recovered before it can safely serve as that orchestrator. ^[raw/inbox/2026-09-08.md]

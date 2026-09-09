@@ -1,0 +1,16 @@
+# senter-wiki dedupe · tick 2026-09-05 19:28 · WINNER FIRST (decided on pre-fold link counts, dry-run 19:30) · 13 of 17 pairs
+# deferred to next tick (fold not done — subagent 402): llm-wiki-topic-layout/two-layer-llm-wiki, verification-and-proof-methods/pane-driving-and-verification,
+#   2026-09-03-editor-is-a-card-not-a-page/2026-09-03-editor-is-a-hover-card, 2026-09-03-mvp-checkpoint-backend-phase/2026-09-03-mvp-checkpoint-ui-good-enough
+entities/hud-cluster.md entities/hud-cluster-gear-player-rocker.md
+entities/headphone-eq.md entities/headphone-eq-and-media-player.md
+entities/scan-topics.md entities/scan-topics-scanner.md
+entities/topic-worker.md entities/topic-worker-and-topic-wiki-compiler.md
+entities/wallpaper-girl.md entities/paper-palette-and-wallpaper-girl.md
+entities/fleet-bots.md entities/people-and-bots-in-this-topic.md
+concepts/goop-four-primitives.md concepts/four-primitives-goop.md
+concepts/chris-ui-working-rules.md concepts/chris-ui-working-style.md
+concepts/approval-policy.md concepts/proposal-and-approval-policy.md
+decisions/2026-09-05-every-topic-is-an-llm-wiki.md decisions/2026-09-05-topics-are-llm-wikis.md
+decisions/2026-09-05-per-message-watcher-one-profile-one-card.md decisions/2026-09-05-every-message-one-profile-one-card.md
+decisions/2026-09-05-keep-senter-and-senter-wiki-separate.md decisions/keep-senter-and-senter-wiki-separate.md
+queries/open-items-as-of-2026-09-05.md queries/open-items-2026-09-05.md

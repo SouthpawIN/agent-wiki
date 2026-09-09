@@ -1,0 +1,10 @@
+---
+title: What context-window value plus session-budget settings keep `mtplx serve` stable
+type: query
+proposed: 2026-09-07 00:42
+tags: [question]
+---
+# What context-window value plus session-budget settings keep `mtplx serve` stable without OS kill or swap thrash?
+The current 131K run auto-overcommitted and MTPLX exited -9; a concrete ceiling can guide provider config.
+
+_Approve to run the research; the answer lands here._

@@ -1,0 +1,24 @@
+# Generated files - don't commit
+.system-live.json
+dashboard.html
+*.log
+*.tmp
+__pycache__/
+*.pyc
+
+# IDE/Vault
+.obsidian/
+.senter-bridge/
+
+# Python
+*.egg-info/
+*.egg
+.pytest_cache/
+
+# Node
+node_modules/
+
+# OS
+.DS_Store
+*.swp
+*~

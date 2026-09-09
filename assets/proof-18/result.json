@@ -1,0 +1,79 @@
+{
+  "frames": [
+    {
+      "at": 0,
+      "t": 1675,
+      "cls": "dissipating",
+      "clip": "polygon(0px 0px, 100% 0px, 100% 100%, 0% 100%, 0px 100%)",
+      "dust": 16,
+      "receipt": true,
+      "png": "/Users/sovthpaw/Documents/Projects/Projects/assets/proof-18/frame-0.png"
+    },
+    {
+      "at": 200,
+      "t": 1876,
+      "cls": "dissipating",
+      "clip": "polygon(0px 0px, 100% 0px, 100% 100%, 83.7726% 100%, 0px 16.2274%)",
+      "dust": 16,
+      "receipt": true,
+      "png": "/Users/sovthpaw/Documents/Projects/Projects/assets/proof-18/frame-200.png"
+    },
+    {
+      "at": 400,
+      "t": 2076,
+      "cls": "dissipating",
+      "clip": "polygon(0px 0px, 100% 0px, 100% 100%, 99.7961% 100%, 0px 0.203885%)",
+      "dust": 16,
+      "receipt": true,
+      "png": "/Users/sovthpaw/Documents/Projects/Projects/assets/proof-18/frame-400.png"
+    },
+    {
+      "at": 600,
+      "t": 2276,
+      "cls": "dissipating",
+      "clip": "polygon(78.4557% 0px, 100% 0px, 100% 21.5443%, 100% 21.5443%, 78.4557% 0px)",
+      "dust": 16,
+      "receipt": true,
+      "png": "/Users/sovthpaw/Documents/Projects/Projects/assets/proof-18/frame-600.png"
+    },
+    {
+      "at": 800,
+      "t": 2475,
+      "cls": "dissipating",
+      "clip": "polygon(99.3407% 0px, 100% 0px, 100% 0.659321%, 100% 0.659321%, 99.3407% 0px)",
+      "dust": 16,
+      "receipt": true,
+      "png": "/Users/sovthpaw/Documents/Projects/Projects/assets/proof-18/frame-800.png"
+    }
+  ],
+  "post": [
+    {
+      "where": "feed",
+      "cls": "post approval done",
+      "border": "rgba(255, 255, 255, 0.2)",
+      "receipts": 1,
+      "dust": 0
+    },
+    {
+      "where": "mini",
+      "cls": "msg approval done",
+      "border": "rgba(255, 255, 255, 0.2)",
+      "receipts": 1,
+      "dust": 0
+    },
+    {
+      "where": "stream",
+      "cls": "msg approval done",
+      "border": "rgba(255, 255, 255, 0.2)",
+      "receipts": 1,
+      "dust": 0
+    }
+  ],
+  "stillGold": [
+    "rgba(255, 255, 255, 0.2)",
+    "rgba(255, 255, 255, 0.2)",
+    "rgba(255, 255, 255, 0.2)"
+  ],
+  "afterReload": 0,
+  "errors": []
+}

@@ -1,0 +1,17 @@
+---
+type: loop
+name: turbofit-health-check
+proposed: 2026-09-07 08:27
+schedule: */5 * * * *
+---
+# turbofit-health-check
+owner: senter-wiki-bot · cadence: every 5 minutes · status: SUGGESTED
+**Do you want a cron to verify both Ornith and Unleashed servers remain available at their expected ports?**
+
+## Prompt
+Check http://127.0.0.1:11612/v1/models (Ornith) and http://127.0.0.1:11606/v1/models (Unleashed). If either fails, append to wiki/entities/dflash2-arg-failures.md with failure timestamp and attempt restart. Verify restart succeeded by rechecking endpoint.
+
+## Evidence
+> Servers should remain stable: Ornith MLX at :11612, Unleashed at :11606
+> Both are required for context-based switching
+> Previous attempts showed port binding issues when servers crashed

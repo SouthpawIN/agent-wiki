@@ -1,0 +1,10 @@
+---
+title: Can Ornith MLX 4-bit plus jzinno/Ornith-1.5-35B-A3B-DFlash2 be packaged as a sta
+type: query
+proposed: 2026-09-07 06:30
+tags: [question]
+---
+# Can Ornith MLX 4-bit plus jzinno/Ornith-1.5-35B-A3B-DFlash2 be packaged as a stable Hermes local route without Metal OOM at 65K context?
+Ornith is the fastest short-context candidate on this box at 28.5 tok/s, but no live Hermes integration path has been verified.
+
+_Approve to run the research; the answer lands here._

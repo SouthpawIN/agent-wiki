@@ -1,0 +1,10 @@
+---
+title: Which DFlash2 settings can be tuned for speed at 131K context without breaking 2
+type: query
+proposed: 2026-09-07 04:26
+tags: [question]
+---
+# Which DFlash2 settings can be tuned for speed at 131K context without breaking 27B compatibility?
+Identifying config levers could explain the speed difference and guide the removal decision.
+
+_Approve to run the research; the answer lands here._

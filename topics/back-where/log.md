@@ -1,0 +1,11 @@
+# Wiki Log — back-where
+
+## [2026-09-06] create | wiki initialized (topic-wiki.py init)
+## [2026-09-06] compile | back-where wiki compiled from raw/inbox/2026-09-06.md
+## [2026-09-06] compile | back-where wiki compiled from raw/inbox/2026-09-06.md + raw/inbox/2026-09-06-from-klerik.md; added hermes-fallback-causes, auxiliary-model-binding, m1-mac-performance-expectation, end-to-end-verification, model-performance-on-m1; removed billing-and-tts-trail.md.proposed; no BRIEF.md present
+## [2026-09-06] compile | back-where wiki compiled from raw/inbox/2026-09-06.md + raw/inbox/2026-09-06-from-klerik.md; added recovery-background-process, recovery-repair-plan, tts-cache-freshness; cross-linked tts-credit-outage, hermes-fallback-causes, end-to-end-verification
+## [2026-09-07] compile | back-where wiki compiled from raw/inbox/2026-09-07.md; added Quantization detail to qwen3-8-27b-unleashed-selection, added tooling rejected (FreeToken NVIDIA-only), 08:43 timeline entry, hardware headroom note, retained-outputs folder, and FreeToken rejection; updated model-performance-on-m1 with Q3K exile query and 131K speed target; updated m1-mac-performance-expectation sources and related links; updated model-prefill-fallback sources and related links; retained duplicated Speed-test outcome as pre-existing
+## [2026-09-07] compile | back-where wiki compiled from raw/inbox/2026-09-07.md; added interrupted-calibri-bonsai-request; updated recovery-background-process with 2026-09-07 follow-up and Calibri/Bonsai provenance; no index.md changes
+## [2026-09-07] compile | back-where wiki compiled from raw/inbox/2026-09-07.md; added download completion verification query; updated model-performance-on-m1 with downstream question about 20.8GB model; retained prior pages unchanged
+## [2026-09-07] compile | consolidated 131K download timeline into hermes-model-download-in-progress.md, added 131K audition rejection decision page, verified download completion query, removed duplicate files, updated index.md with correct page count
+## [2026-09-08] compile | back-where wiki compiled from raw/inbox/2026-09-08.md; added token-startup-race.md and ui-restoration-verification-check.md; updated sources on ui-layout-regression.md, recovery-repair-plan.md, and end-to-end-verification.md; no index.md changes

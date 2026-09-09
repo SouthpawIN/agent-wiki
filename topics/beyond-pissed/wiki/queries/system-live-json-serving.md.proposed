@@ -1,0 +1,10 @@
+---
+title: How does the Hermes server's /file route serve .system-live.json, and what is th
+type: query
+proposed: 2026-09-08 09:57
+tags: [question]
+---
+# How does the Hermes server's /file route serve .system-live.json, and what is the exact mechanism by which --new-token invalidates the old token and what new token is written for the next session?
+Chris needs to understand the live file serving and token rotation to know how the center wiki maintains its live orchestrator state across sessions.
+
+_Approve to run the research; the answer lands here._

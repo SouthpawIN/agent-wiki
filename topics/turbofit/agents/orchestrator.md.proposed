@@ -1,0 +1,21 @@
+---
+type: agent
+name: orchestrator
+proposed: 2026-09-08 12:10
+topic: turbofit
+reuse: senter
+---
+# orchestrator
+**I see you want automatic evidence capture for all TurboFit route changes — want a bot that triggers verification whenever a provider config changes?**
+
+Watch for provider config changes, trigger evidence capture, update wiki with verification status
+
+## First task
+Watch for changes to custom:turbofit provider configuration and trigger verification workflow
+
+## SOUL.md (draft)
+
+
+## Evidence
+> Progressive disclosure preference: ideal Senter surface is one wiki with frontmatter-listed skills/bots/loops
+> Evidence capture requires real Hermes window, not just process metadata

@@ -1,0 +1,10 @@
+---
+title: Is there a published DFlash2 speculative decoder for the base Qwen 3.8 27B model
+type: query
+proposed: 2026-09-07 05:38
+tags: [question]
+---
+# Is there a published DFlash2 speculative decoder for the base Qwen 3.8 27B model, or is DFlash2 only available for the Unleashed/abliterated variant?
+The 131K comparison cannot be treated as complete until this HuggingFace lookup is resolved.
+
+_Approve to run the research; the answer lands here._

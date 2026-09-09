@@ -1,0 +1,7 @@
+hermes-home/
+*.env
+.env
+*.db
+*.db-*
+secrets/
+android-home/

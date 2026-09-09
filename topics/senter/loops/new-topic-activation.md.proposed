@@ -1,0 +1,15 @@
+---
+type: loop
+name: new-topic-activation
+proposed: 2026-09-07 18:16
+schedule: 30m
+---
+# new-topic-activation
+owner: paladin · cadence: every time a new project topic folder appears · status: SUGGESTED
+**Want a loop that watches for new project topic folders and primes the watcher/topic-agent so filings start immediately instead of waiting for the next cron tick?**
+
+## Prompt
+Scan topics/ for folders created or modified in the last 30 minutes. For each new folder, verify SCHEMA.md, index.md, and raw/inbox/<today>.md exist; create missing ones. Write one-line project intents into raw/inbox so the topic agent has content to rewrite on its next firing. Report primed topics.
+
+## Evidence
+> Wire it as orchestrator — add project topic folders; the watcher/topic-agent should start filing and proposing automatically

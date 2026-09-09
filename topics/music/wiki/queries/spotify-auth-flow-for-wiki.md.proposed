@@ -1,0 +1,10 @@
+---
+title: For a local, single-user wiki integration on macOS (Senter Vault Live), which Sp
+type: query
+proposed: 2026-09-05 19:13
+tags: [question]
+---
+# For a local, single-user wiki integration on macOS (Senter Vault Live), which Spotify Web API auth flow (PKCE vs. client-credentials vs. authorization-code) is required for now-playing/library/playback, what redirect URI and scopes must the Developer app be registered with, and does it need a client secret at all?
+The client ID is the last external blocker and only Chris can create it; knowing the exact registration settings up front means a single trip to the Spotify dashboard.
+
+_Approve to run the research; the answer lands here._

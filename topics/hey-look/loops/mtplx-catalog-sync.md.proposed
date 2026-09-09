@@ -1,0 +1,16 @@
+---
+type: loop
+name: mtplx-catalog-sync
+proposed: 2026-09-06 23:01
+schedule: 0 4 * * 1
+---
+# mtplx-catalog-sync
+owner: looker · cadence: weekly · status: SUGGESTED
+**Want a weekly sync that refreshes the model catalog entry from MTPLX docs?**
+
+## Prompt
+Read the MTPLX docs for the --memory-budget and context-size flags, and confirm the 262K context / 23.6 GB peak / 32 GB Mac claims. Update wiki/entities/qwen-27b-mtplx-optimized-speed.md and wiki/concepts/memory-budget-mtplx.md only where the documentation contradicts the current page, leaving the contested comparison untouched.
+
+## Evidence
+> The README says 23.6GB peak for 262K context on 32GB Macs
+> --memory-budget flag for exactly this

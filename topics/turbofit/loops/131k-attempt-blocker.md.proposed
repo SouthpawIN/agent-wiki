@@ -1,0 +1,17 @@
+---
+type: loop
+name: 131k-attempt-blocker
+proposed: 2026-09-07 09:43
+schedule: 30m
+---
+# 131k-attempt-blocker
+owner: turbofit-memory-monitor · cadence: human phrase · status: SUGGESTED
+**Want a watch that warns when a large candidate is queued or launched for 131K on this 32 GB box?**
+
+## Prompt
+Check active turbofit servers and queued candidate artifacts. If any artifact >12GB is running or queued for 131K, write a blocker note to wiki/concepts/131k-deferred-candidates.md and surface a warning.
+
+## Evidence
+> Dirk Q3_K_XL (13GB) + KV@131K q8 (~8GB) = OOM
+> Tiel-Coder Q4_K_XL (22GB) + KV@131K q8 (~8GB) = OOM
+> Nail Q4_K_XL (20.8GB) + KV@131K q8 (~8GB) = OOM

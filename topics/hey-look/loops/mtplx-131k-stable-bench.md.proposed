@@ -1,0 +1,17 @@
+---
+type: loop
+name: mtplx-131k-stable-bench
+proposed: 2026-09-06 23:01
+schedule: 0 3 * * *
+---
+# mtplx-131k-stable-bench
+owner: looker · cadence: every 2h · status: SUGGESTED
+**Want a nightly 131K benchmark that collapses the contested figures into one stable number?**
+
+## Prompt
+Run the Qwen 27B MTPLX Optimized Speed setup at exactly 131K context on the 32GB Mac with --memory-budget 32GB and a fixed large prompt. Record decode tok/s, prefill tok/s, and peak memory. If the run completes and the new figure differs from wiki/comparisons/mtplx-131k-speed-report-comparison.md by more than 15 percent, archive the old contested figures into a dated conflict note (keep contested: true) and write the new figure as the stable result.
+
+## Evidence
+> 14-19 tok/s decode, 46 tok/s prefill at 131K
+> 8.2 tok/s at 131K while testing with a large 131K prompt
+> There is a 131K result on record, but the reported figures are not consistent

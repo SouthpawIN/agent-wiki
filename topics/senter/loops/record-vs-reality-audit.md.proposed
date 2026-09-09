@@ -1,0 +1,15 @@
+---
+type: loop
+name: record-vs-reality-audit
+proposed: 2026-09-05 18:58
+---
+# record-vs-reality-audit
+owner: looker · cadence: on new wiki compile (log.md append), fallback daily 9am · status: SUGGESTED
+**The wiki just told its own agent a launchd job was deleted when it was still running — want looker to check every infra claim in the wiki (launchd jobs, crons, asset files) against what's actually running after each compile, and file a raw correction when they disagree?**
+
+## Prompt
+Read topics/*/wiki/entities/*.md and concepts/*.md for statements about com.senter.* launchd jobs, hermes cron ids, and assets/*.py scripts. Verify each with `launchctl list | grep com.senter`, `hermes cron list` per profile, and `ls assets/`. For any page stating something is deleted/running/every-N-min that reality contradicts, write raw/sources/<date>-<slug>.md (verbatim finding, who/what/when) so the topic agent recompiles it. Never edit wiki/ or raw/ existing files. Last line: DONE <n> claims checked, <m> corrections filed.
+
+## Evidence
+> The senter agent keeps pitching "governance has no owner" — because the wiki (its memory) says the umbrella was deleted, when in fact it still runs. Fix the record, not the pitch
+> Do not re-propose a governance loop; it exists. The pending topic-governance-rehome loop proposal is superseded by this fact.

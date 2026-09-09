@@ -1,0 +1,10 @@
+---
+title: Which exact Q3/deepflash artifacts exist for Qwen3.8 27B unleashed, and is there
+type: query
+proposed: 2026-09-07 05:22
+tags: [question]
+---
+# Which exact Q3/deepflash artifacts exist for Qwen3.8 27B unleashed, and is there an MLX build available?
+Chris wants research before implementation and needs the fastest viable artifact to optimize on this M1.
+
+_Approve to run the research; the answer lands here._

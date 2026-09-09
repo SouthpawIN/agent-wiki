@@ -1,0 +1,10 @@
+---
+title: What exact Q3 artifact, deep flash option, and llama.cpp/mlx settings does the H
+type: query
+proposed: 2026-09-07 03:41
+tags: [question]
+---
+# What exact Q3 artifact, deep flash option, and llama.cpp/mlx settings does the HuggingFace/unleashed page recommend for 131K context on Apple Silicon?
+Chris asked for research-first model validation before touching implementation.
+
+_Approve to run the research; the answer lands here._

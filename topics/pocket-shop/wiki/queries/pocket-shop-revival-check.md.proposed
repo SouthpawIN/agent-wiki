@@ -1,0 +1,10 @@
+---
+title: Do the pocket-shop and pocket-shop-pricing repos still run end-to-end (login, pr
+type: query
+proposed: 2026-09-05 18:22
+tags: [question]
+---
+# Do the pocket-shop and pocket-shop-pricing repos still run end-to-end (login, price lookup, listing) against today's TCGPlayer, MTGStocks, Scryfall and eBay, and which pieces broke since 2026-07-08?
+Repo is DORMANT since 2026-07-08 with zero words from Chris on why; the wiki can't tell if it's dead or paused, and site drift is the likeliest silent killer of a browser-automation trading loop (looker fits this).
+
+_Approve to run the research; the answer lands here._

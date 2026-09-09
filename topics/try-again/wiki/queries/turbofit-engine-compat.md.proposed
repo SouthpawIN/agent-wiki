@@ -1,0 +1,10 @@
+---
+title: Which local inference engines are compatible with TurboFit auxiliary mode on mac
+type: query
+proposed: 2026-09-06 22:38
+tags: [question]
+---
+# Which local inference engines are compatible with TurboFit auxiliary mode on macOS, and what setup do they require?
+Chris wants to expand auxiliary engines available on this machine without arbitrary limitations.
+
+_Approve to run the research; the answer lands here._

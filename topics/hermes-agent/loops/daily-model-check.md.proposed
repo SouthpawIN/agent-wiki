@@ -1,0 +1,15 @@
+---
+type: loop
+name: daily-model-check
+proposed: 2026-09-07 04:32
+schedule: 0 9 * * *
+---
+# daily-model-check
+owner: looker · cadence: daily during active model testing · status: SUGGESTED
+**Want a daily check that runs the compression test against the active model and alerts when tok/s or similarity drift?**
+
+## Prompt
+Run the model evaluation procedure against the current Hermes provider, capture tok/s and similarity delta, and post a one-line pass/fail with the numbers.
+
+## Evidence
+> checking out if this model works

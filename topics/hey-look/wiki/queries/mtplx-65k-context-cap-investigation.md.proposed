@@ -1,0 +1,10 @@
+---
+title: Is MTPLX enforcing an effective ~65K context window on this setup despite a 131K
+type: query
+proposed: 2026-09-07 00:14
+tags: [question]
+---
+# Is MTPLX enforcing an effective ~65K context window on this setup despite a 131K config, and what controls that cap?
+Current 131K speed numbers are inconsistent, and the new 65K observation suggests the bottleneck may be config/implementation, not measurement shape.
+
+_Approve to run the research; the answer lands here._

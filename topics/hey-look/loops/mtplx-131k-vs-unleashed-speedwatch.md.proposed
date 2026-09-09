@@ -1,0 +1,16 @@
+---
+type: loop
+name: mtplx-131k-vs-unleashed-speedwatch
+proposed: 2026-09-07 05:38
+schedule: 0 */2 * * *
+---
+# mtplx-131k-vs-unleashed-speedwatch
+owner: mtplx-speedwatch · cadence: every 2h · status: SUGGESTED
+**Want a repeatable 65K/131K speedwatch that only compares MTPLX vs Unleashed + DFlash2 on this exact setup?**
+
+## Prompt
+Run a fixed prompt-shape benchmark on port 11613 and 11606: short 500 tokens/200 completion, medium 5K tokens/100 completion, long 1000 tokens/500 completion. Record tok/s, end-to-end tok/s, finish_reason, prompt_tokens, active/cache/projected bytes if exposed. Only report; do not change config.
+
+## Evidence
+> Run speed tests: short prompt 500 tokens, medium 5K prompt 100 tokens, long generation 1000 tokens
+> Both at 131K context with q8 KV cache

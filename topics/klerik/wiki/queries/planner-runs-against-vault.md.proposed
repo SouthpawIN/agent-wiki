@@ -1,0 +1,10 @@
+---
+title: Locate the proposal-only planner in the vault, run it read-only against ~/Docume
+type: query
+proposed: 2026-09-05 18:01
+tags: [question]
+---
+# Locate the proposal-only planner in the vault, run it read-only against ~/Documents/Projects/Projects, and record: does it start, does it read topics/, what does it propose, does it attempt any writes?
+It was named 'the real engine' on 2026-09-05 with a stated intent to test it, and no result was ever recorded — the proposal stage of the whole pipeline is unverified.
+
+_Approve to run the research; the answer lands here._

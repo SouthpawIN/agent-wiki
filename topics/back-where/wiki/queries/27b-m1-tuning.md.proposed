@@ -1,0 +1,10 @@
+---
+title: What exact prefill/batch-size change lets the Qwen3.8 27B unleashed Q3 variant r
+type: query
+proposed: 2026-09-07 06:44
+tags: [question]
+---
+# What exact prefill/batch-size change lets the Qwen3.8 27B unleashed Q3 variant reach ~113 tok/s on this M1 MacBook 32GB with 262k contacts and D flash 2, without prefill-timeout fallback?
+Chris explicitly wants config evidence before re-auditioning the model, not another silent retry.
+
+_Approve to run the research; the answer lands here._

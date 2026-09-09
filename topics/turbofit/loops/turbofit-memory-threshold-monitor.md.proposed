@@ -1,0 +1,16 @@
+---
+type: loop
+name: turbofit-memory-threshold-monitor
+proposed: 2026-09-08 12:10
+schedule: continuous
+---
+# turbofit-memory-threshold-monitor
+owner: anser · cadence: live generation monitoring · status: SUGGESTED
+**Want me to watch for prefill_admission_shed events that indicate memory pressure before OOM kills?**
+
+## Prompt
+Watch for prefill_admission_shed or memory guard events during TurboFit generation, log the threshold_bytes and limit_bytes, and alert if threshold is within 10% of limit_bytes
+
+## Evidence
+> MTPLX memory guard shows threshold at ~24.99 GB on 25.77 GB limit
+> Code -9 exits correlated with memory guard triggering during 131K prompts

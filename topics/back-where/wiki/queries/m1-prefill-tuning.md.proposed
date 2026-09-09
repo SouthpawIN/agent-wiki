@@ -1,0 +1,10 @@
+---
+title: What exact batch-size or prefill-capacity change lets the chosen model load at Q
+type: query
+proposed: 2026-09-06 22:58
+tags: [question]
+---
+# What exact batch-size or prefill-capacity change lets the chosen model load at Q3 with 262k contacts and D flash 2 on an M1 MacBook with 32GB RAM without falling back due to prefill timeout?
+Chris wants local configuration evidence so the model runs without silent fallback.
+
+_Approve to run the research; the answer lands here._

@@ -1,0 +1,79 @@
+{"ts": 1788391909.179439, "v": "1.1.0", "event": "start", "approved_by": "chris", "absorbed": 50}
+{"ts": 1788391909.5561678, "v": "1.1.0", "event": "snapshot", "path": "topics/_archive/.snapshots/2026-09-02-pre-merge-topics.tar.gz"}
+{"ts": 1788391909.556347, "v": "1.1.0", "event": "rewrite", "file": "catalogs/agent-roster.md", "links": 9}
+{"ts": 1788391909.5571651, "v": "1.1.0", "event": "rewrite", "file": "catalogs/topic-index.md", "links": 42}
+{"ts": 1788391909.557516, "v": "1.1.0", "event": "rewrite", "file": "catalogs/fleet-dashboard.md", "links": 42}
+{"ts": 1788391909.557972, "v": "1.1.0", "event": "rewrite", "file": "topics/_global/.system/agent-roster.md", "links": 9}
+{"ts": 1788391909.5589771, "v": "1.1.0", "event": "target_updated", "topic": "pocket-shop", "absorbed": ["pocket-shop-pricing"]}
+{"ts": 1788391909.5593011, "v": "1.1.0", "event": "archive", "topic": "pocket-shop-pricing", "target": "pocket-shop", "to": "topics/_archive/pocket-shop-pricing"}
+{"ts": 1788391909.561407, "v": "1.1.0", "event": "target_updated", "topic": "turbofit", "absorbed": ["turbohaul-llmfit", "turbohaul-manager", "southpaw-turbohaul", "sirvir"]}
+{"ts": 1788391909.5617962, "v": "1.1.0", "event": "archive", "topic": "turbohaul-llmfit", "target": "turbofit", "to": "topics/_archive/turbohaul-llmfit"}
+{"ts": 1788391909.5620549, "v": "1.1.0", "event": "archive", "topic": "turbohaul-manager", "target": "turbofit", "to": "topics/_archive/turbohaul-manager"}
+{"ts": 1788391909.562331, "v": "1.1.0", "event": "archive", "topic": "southpaw-turbohaul", "target": "turbofit", "to": "topics/_archive/southpaw-turbohaul"}
+{"ts": 1788391909.5625641, "v": "1.1.0", "event": "archive", "topic": "sirvir", "target": "turbofit", "to": "topics/_archive/sirvir"}
+{"ts": 1788391909.565393, "v": "1.1.0", "event": "target_updated", "topic": "hermes-agent", "absorbed": ["hermes-android", "hermes-test-skill", "herm-sovth", "sovth-config", "nous-test", "test-bot", "openskills"]}
+{"ts": 1788391909.565737, "v": "1.1.0", "event": "archive", "topic": "hermes-android", "target": "hermes-agent", "to": "topics/_archive/hermes-android"}
+{"ts": 1788391909.565969, "v": "1.1.0", "event": "archive", "topic": "hermes-test-skill", "target": "hermes-agent", "to": "topics/_archive/hermes-test-skill"}
+{"ts": 1788391909.566242, "v": "1.1.0", "event": "archive", "topic": "herm-sovth", "target": "hermes-agent", "to": "topics/_archive/herm-sovth"}
+{"ts": 1788391909.566586, "v": "1.1.0", "event": "archive", "topic": "sovth-config", "target": "hermes-agent", "to": "topics/_archive/sovth-config"}
+{"ts": 1788391909.566827, "v": "1.1.0", "event": "archive", "topic": "nous-test", "target": "hermes-agent", "to": "topics/_archive/nous-test"}
+{"ts": 1788391909.567056, "v": "1.1.0", "event": "archive", "topic": "test-bot", "target": "hermes-agent", "to": "topics/_archive/test-bot"}
+{"ts": 1788391909.567277, "v": "1.1.0", "event": "archive", "topic": "openskills", "target": "hermes-agent", "to": "topics/_archive/openskills"}
+{"ts": 1788391909.569248, "v": "1.1.0", "event": "target_updated", "topic": "senter", "absorbed": ["senter-consolidation", "senter-archive", "senter-mcp-server", "senter-alignment-arxivddl", "dev-orch"]}
+{"ts": 1788391909.570053, "v": "1.1.0", "event": "archive", "topic": "senter-consolidation", "target": "senter", "to": "topics/_archive/senter-consolidation"}
+{"ts": 1788391909.570406, "v": "1.1.0", "event": "archive", "topic": "senter-archive", "target": "senter", "to": "topics/_archive/senter-archive"}
+{"ts": 1788391909.570673, "v": "1.1.0", "event": "archive", "topic": "senter-mcp-server", "target": "senter", "to": "topics/_archive/senter-mcp-server"}
+{"ts": 1788391909.571093, "v": "1.1.0", "event": "archive", "topic": "senter-alignment-arxivddl", "target": "senter", "to": "topics/_archive/senter-alignment-arxivddl"}
+{"ts": 1788391909.5713558, "v": "1.1.0", "event": "archive", "topic": "dev-orch", "target": "senter", "to": "topics/_archive/dev-orch"}
+{"ts": 1788391909.5720792, "v": "1.1.0", "event": "target_updated", "topic": "senter-wiki", "absorbed": ["hermes-wiki-dashboard"]}
+{"ts": 1788391909.5723572, "v": "1.1.0", "event": "archive", "topic": "hermes-wiki-dashboard", "target": "senter-wiki", "to": "topics/_archive/hermes-wiki-dashboard"}
+{"ts": 1788391909.574015, "v": "1.1.0", "event": "create_topic", "topic": "omnisenter-models"}
+{"ts": 1788391909.575888, "v": "1.1.0", "event": "target_updated", "topic": "omnisenter-models", "absorbed": ["sovthpaw-omni-senter-3b", "sovthpaw-omnisenter-base-16b", "sovthpaw-omnistep-12a3b", "sovthpaw-omnistep-new", "sovthpaw-senter-omni-data", "omnistep-fusion", "multimodal-expansion", "omnisenter-blog"]}
+{"ts": 1788391909.576204, "v": "1.1.0", "event": "archive", "topic": "sovthpaw-omni-senter-3b", "target": "omnisenter-models", "to": "topics/_archive/sovthpaw-omni-senter-3b"}
+{"ts": 1788391909.5765288, "v": "1.1.0", "event": "archive", "topic": "sovthpaw-omnisenter-base-16b", "target": "omnisenter-models", "to": "topics/_archive/sovthpaw-omnisenter-base-16b"}
+{"ts": 1788391909.578132, "v": "1.1.0", "event": "archive", "topic": "sovthpaw-omnistep-12a3b", "target": "omnisenter-models", "to": "topics/_archive/sovthpaw-omnistep-12a3b"}
+{"ts": 1788391909.578538, "v": "1.1.0", "event": "archive", "topic": "sovthpaw-omnistep-new", "target": "omnisenter-models", "to": "topics/_archive/sovthpaw-omnistep-new"}
+{"ts": 1788391909.5788329, "v": "1.1.0", "event": "archive", "topic": "sovthpaw-senter-omni-data", "target": "omnisenter-models", "to": "topics/_archive/sovthpaw-senter-omni-data"}
+{"ts": 1788391909.579314, "v": "1.1.0", "event": "archive", "topic": "omnistep-fusion", "target": "omnisenter-models", "to": "topics/_archive/omnistep-fusion"}
+{"ts": 1788391909.579734, "v": "1.1.0", "event": "archive", "topic": "multimodal-expansion", "target": "omnisenter-models", "to": "topics/_archive/multimodal-expansion"}
+{"ts": 1788391909.58001, "v": "1.1.0", "event": "archive", "topic": "omnisenter-blog", "target": "omnisenter-models", "to": "topics/_archive/omnisenter-blog"}
+{"ts": 1788391909.580964, "v": "1.1.0", "event": "create_topic", "topic": "evolutionary"}
+{"ts": 1788391909.5819762, "v": "1.1.0", "event": "target_updated", "topic": "evolutionary", "absorbed": ["evolutionary-model-merging", "evolutionary-training"]}
+{"ts": 1788391909.5822542, "v": "1.1.0", "event": "archive", "topic": "evolutionary-model-merging", "target": "evolutionary", "to": "topics/_archive/evolutionary-model-merging"}
+{"ts": 1788391909.58248, "v": "1.1.0", "event": "archive", "topic": "evolutionary-training", "target": "evolutionary", "to": "topics/_archive/evolutionary-training"}
+{"ts": 1788391909.5835469, "v": "1.1.0", "event": "create_topic", "topic": "music"}
+{"ts": 1788391909.5848582, "v": "1.1.0", "event": "target_updated", "topic": "music", "absorbed": ["ace-step-daw", "jammit", "hermes-music-lora-pipeline", "llmc", "evolutionary-radio", "veiled"]}
+{"ts": 1788391909.586195, "v": "1.1.0", "event": "archive", "topic": "ace-step-daw", "target": "music", "to": "topics/_archive/ace-step-daw"}
+{"ts": 1788391909.586733, "v": "1.1.0", "event": "archive", "topic": "jammit", "target": "music", "to": "topics/_archive/jammit"}
+{"ts": 1788391909.586991, "v": "1.1.0", "event": "archive", "topic": "hermes-music-lora-pipeline", "target": "music", "to": "topics/_archive/hermes-music-lora-pipeline"}
+{"ts": 1788391909.58723, "v": "1.1.0", "event": "archive", "topic": "llmc", "target": "music", "to": "topics/_archive/llmc"}
+{"ts": 1788391909.587475, "v": "1.1.0", "event": "archive", "topic": "evolutionary-radio", "target": "music", "to": "topics/_archive/evolutionary-radio"}
+{"ts": 1788391909.587969, "v": "1.1.0", "event": "archive", "topic": "veiled", "target": "music", "to": "topics/_archive/veiled"}
+{"ts": 1788391909.5895512, "v": "1.1.0", "event": "create_topic", "topic": "nous-community"}
+{"ts": 1788391909.5913548, "v": "1.1.0", "event": "target_updated", "topic": "nous-community", "absorbed": ["nous-girl", "nous-girl-agent", "nous-discord-archive", "nous-style-guide", "discordsam", "jestur"]}
+{"ts": 1788391909.591899, "v": "1.1.0", "event": "archive", "topic": "nous-girl", "target": "nous-community", "to": "topics/_archive/nous-girl"}
+{"ts": 1788391909.5921988, "v": "1.1.0", "event": "archive", "topic": "nous-girl-agent", "target": "nous-community", "to": "topics/_archive/nous-girl-agent"}
+{"ts": 1788391909.592483, "v": "1.1.0", "event": "archive", "topic": "nous-discord-archive", "target": "nous-community", "to": "topics/_archive/nous-discord-archive"}
+{"ts": 1788391909.5927129, "v": "1.1.0", "event": "archive", "topic": "nous-style-guide", "target": "nous-community", "to": "topics/_archive/nous-style-guide"}
+{"ts": 1788391909.592938, "v": "1.1.0", "event": "archive", "topic": "discordsam", "target": "nous-community", "to": "topics/_archive/discordsam"}
+{"ts": 1788391909.593668, "v": "1.1.0", "event": "archive", "topic": "jestur", "target": "nous-community", "to": "topics/_archive/jestur"}
+{"ts": 1788391909.595687, "v": "1.1.0", "event": "create_topic", "topic": "youtube"}
+{"ts": 1788391909.596513, "v": "1.1.0", "event": "target_updated", "topic": "youtube", "absorbed": ["southpawin-github-io", "benchmark-infographics"]}
+{"ts": 1788391909.596834, "v": "1.1.0", "event": "archive", "topic": "southpawin-github-io", "target": "youtube", "to": "topics/_archive/southpawin-github-io"}
+{"ts": 1788391909.5970728, "v": "1.1.0", "event": "archive", "topic": "benchmark-infographics", "target": "youtube", "to": "topics/_archive/benchmark-infographics"}
+{"ts": 1788391909.598068, "v": "1.1.0", "event": "create_topic", "topic": "dev-tooling"}
+{"ts": 1788391909.5994911, "v": "1.1.0", "event": "target_updated", "topic": "dev-tooling", "absorbed": ["dev-coder", "dev-review", "sidecar", "niwa", "flavored-nanocode"]}
+{"ts": 1788391909.599835, "v": "1.1.0", "event": "archive", "topic": "dev-coder", "target": "dev-tooling", "to": "topics/_archive/dev-coder"}
+{"ts": 1788391909.600116, "v": "1.1.0", "event": "archive", "topic": "dev-review", "target": "dev-tooling", "to": "topics/_archive/dev-review"}
+{"ts": 1788391909.600364, "v": "1.1.0", "event": "archive", "topic": "sidecar", "target": "dev-tooling", "to": "topics/_archive/sidecar"}
+{"ts": 1788391909.6006222, "v": "1.1.0", "event": "archive", "topic": "niwa", "target": "dev-tooling", "to": "topics/_archive/niwa"}
+{"ts": 1788391909.6009321, "v": "1.1.0", "event": "archive", "topic": "flavored-nanocode", "target": "dev-tooling", "to": "topics/_archive/flavored-nanocode"}
+{"ts": 1788391909.6021, "v": "1.1.0", "event": "create_topic", "topic": "legacy-bots"}
+{"ts": 1788391909.603787, "v": "1.1.0", "event": "target_updated", "topic": "legacy-bots", "absorbed": ["frieza", "chizul", "aichess"]}
+{"ts": 1788391909.6041758, "v": "1.1.0", "event": "archive", "topic": "frieza", "target": "legacy-bots", "to": "topics/_archive/frieza"}
+{"ts": 1788391909.604463, "v": "1.1.0", "event": "archive", "topic": "chizul", "target": "legacy-bots", "to": "topics/_archive/chizul"}
+{"ts": 1788391909.604712, "v": "1.1.0", "event": "archive", "topic": "aichess", "target": "legacy-bots", "to": "topics/_archive/aichess"}
+{"ts": 1788391909.608623, "v": "1.1.0", "event": "regen", "file": "catalogs/topic-index.md"}
+{"ts": 1788391909.608787, "v": "1.1.0", "event": "regen", "file": "catalogs/fleet-dashboard.md"}
+{"ts": 1788391909.6089332, "v": "1.1.0", "event": "regen", "file": "index.md"}
+{"ts": 1788391909.609338, "v": "1.1.0", "event": "done", "topics_after": 20}

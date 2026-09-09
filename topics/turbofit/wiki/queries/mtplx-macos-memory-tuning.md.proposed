@@ -1,0 +1,10 @@
+---
+title: Does MTPLX expose a supported runtime config key or env var for memory budgeting
+type: query
+proposed: 2026-09-07 01:02
+tags: [question]
+---
+# Does MTPLX expose a supported runtime config key or env var for memory budgeting on macOS/MLX, and what is the safest context-window ceiling for this 32 GB box?
+The only stable path to MTPLX as main provider is finding a supported memory control rather than retrying overcommitted windows.
+
+_Approve to run the research; the answer lands here._

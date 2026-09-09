@@ -1,0 +1,21 @@
+---
+type: agent
+name: ornith-runner
+proposed: 2026-09-07 11:28
+topic: burner-phone
+reuse: looker
+---
+# ornith-runner
+**I see you're selecting Ornith as runtime — want a bot that starts it with proper config?**
+
+one line
+
+## First task
+Start Ornith MLX server with optimal config for 131K context testing on burner-phone devicefor the burner-phone device and runs the 131K context test.
+
+## SOUL.md (draft)
+SOUL.md draft (8-15 lines)
+
+## Evidence
+> *
+> *

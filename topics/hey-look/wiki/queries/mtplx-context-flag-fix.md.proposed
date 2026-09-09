@@ -1,0 +1,10 @@
+---
+title: What is the correct --memory-budget and context-size combination for Qwen 27B MT
+type: query
+proposed: 2026-09-06 23:01
+tags: [question]
+---
+# What is the correct --memory-budget and context-size combination for Qwen 27B MTPLX Optimized Speed on a 32GB Mac to sustain 131K and 262K without dying near 19G/20.4G?
+The raw record shows a process stall at 19G/20.4G followed by a context-flag correction that enabled 262K, and the memory-budget concept is only understood from Hermes's in-session notes.
+
+_Approve to run the research; the answer lands here._

@@ -1,0 +1,11 @@
+name: senter
+version: 0.1.0
+description: "Hermes Agent profile: senter"
+author: SouthpawIN
+license: MIT
+hermes_requires: ">=0.12.0"
+env_requires: []
+distribution_owned:
+  - SOUL.md
+  - config.yaml
+  - skills/

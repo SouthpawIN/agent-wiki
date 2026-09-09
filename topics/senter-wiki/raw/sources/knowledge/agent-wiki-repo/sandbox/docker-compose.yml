@@ -1,0 +1,39 @@
+services:
+  senter-agent:
+    build:
+      context: ./hermes-agent
+      dockerfile: Dockerfile
+      args:
+        HERMES_UID: "1000"
+    image: senter-agent:hermes-sandbox
+    environment:
+      HERMES_HOME: /opt/data/.hermes
+      HERMES_TUI: "1"
+      SENTER_GOOP_ROOT: /opt/data/goop
+      SENTER_GOOP_PROFILE: /opt/data/goop/profiles/${GOOP_PROFILE:-base}
+      SENTER_ANDROID_BRIDGE: ${SENTER_ANDROID_BRIDGE:-disabled}
+    volumes:
+      - ./hermes-home:/opt/data/.hermes
+      - ./goop:/opt/data/goop:ro
+      - ./herm-sovth:/opt/data/herm-sovth:ro
+      - ./hermes-android:/opt/data/hermes-android:ro
+    stdin_open: true
+    tty: true
+    command: ["hermes", "--tui"]
+
+  # Optional disposable Android emulator. Disabled unless the android profile
+  # is explicitly selected. KVM is passed through only to this service.
+  android:
+    profiles: ["android"]
+    image: halimqarroum/docker-android:api-33
+    devices:
+      - /dev/kvm:/dev/kvm
+    ports:
+      - "5555:5555"
+    volumes:
+      - android-data:/data
+    environment:
+      EMULATOR_DEVICE: ${ANDROID_DEVICE:-Pixel_2}
+
+volumes:
+  android-data:

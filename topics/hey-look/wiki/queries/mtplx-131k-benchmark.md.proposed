@@ -1,0 +1,10 @@
+---
+title: What is the stable tok/s at 131K for Qwen 27B MTPLX on a 32GB+ Mac, including la
+type: query
+proposed: 2026-09-06 22:49
+tags: [question]
+---
+# What is the stable tok/s at 131K for Qwen 27B MTPLX on a 32GB+ Mac, including large-prompt behavior, and does that beat Unleashed for this workflow?
+Chris wants the exact speed at 131K and a clear winner between MTPLX and Unleashed for this system.
+
+_Approve to run the research; the answer lands here._

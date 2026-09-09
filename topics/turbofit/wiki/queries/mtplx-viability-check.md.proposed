@@ -1,0 +1,10 @@
+---
+title: Can Qwen3.8-27B-MTPLX-Optimized-Speed run stably under MTPLX on a 32 GB M1 Mac w
+type: query
+proposed: 2026-09-07 00:09
+tags: [question]
+---
+# Can Qwen3.8-27B-MTPLX-Optimized-Speed run stably under MTPLX on a 32 GB M1 Mac without OS kills or Hermes preemption artifacts, and what configuration changes would be required?
+MTPLX exited with code -9 under load, showed ~26 GB resident usage with heavy swapping, and generated foreground-preempted sessions with retokenized-history mismatch, making it currently unreliable as a TurboFit provider.
+
+_Approve to run the research; the answer lands here._

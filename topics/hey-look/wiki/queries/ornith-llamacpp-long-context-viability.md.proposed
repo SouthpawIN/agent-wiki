@@ -1,0 +1,10 @@
+---
+title: Can Ornith-1.5-35B-A3B via llama.cpp + DFlash2 maintain higher-than-0.4 tok/s at
+type: query
+proposed: 2026-09-07 06:53
+tags: [question]
+---
+# Can Ornith-1.5-35B-A3B via llama.cpp + DFlash2 maintain higher-than-0.4 tok/s at 60K+ context on an M1 32GB Mac?
+MLX server degraded to ~0.4 tok/s at 60K, but llama.cpp may handle KV cache better.
+
+_Approve to run the research; the answer lands here._

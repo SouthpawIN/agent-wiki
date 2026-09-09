@@ -1,0 +1,16 @@
+---
+type: loop
+name: mtplx-config-drift-check
+proposed: 2026-09-07 10:06
+schedule: 0 */3 * * *
+---
+# mtplx-config-drift-check
+owner: looker · cadence: every 3 hours · status: SUGGESTED
+**Want a loop that verifies the active MTPLX config hasn't drifted from the accepted 65K baseline and flags unconfirmed lock attempts?**
+
+## Prompt
+Read the active MTPLX provider config and compare it against the wiki decisions for stable context lock. If context is not 65K or the provider does not match the accepted lockpoint, create a wiki card or notification. If a provider lock appears without explicit confirmation of Qwen 3.8 27B and 10+ tok/s at 131K, mark it provisional and surface the contested state.
+
+## Evidence
+> Unleashed + DFlash2 is locked in as the main provider at 131K context.
+> 10+ tok/s at 131K is not achievable on M1 32GB with 27B.

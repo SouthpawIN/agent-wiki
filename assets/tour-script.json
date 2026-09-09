@@ -1,0 +1,24 @@
+{
+  "sections": [
+    {"id": "intro", "view": "wiki",
+     "text": "This is Senter Wiki. One place where everything you say to Hermes lands, gets sorted, and turns into work. You talk. Senter listens. The wiki catches it all."},
+    {"id": "talk", "view": "wiki",
+     "text": "Say you're thinking out loud. TurboFit needs a fix. You want a YouTube rant about local inference. Pocket Shop is dormant. And you'd like a lo-fi radio in the sidebar. Four ideas, one breath. Every one of them becomes a topic here, and every topic gets four orbs: context, skills, bots, and loops. Hover a topic and the orbs open with live counts from the vault."},
+    {"id": "orbs", "view": "wiki",
+     "text": "Hover an orb and it rises to tell you what it is. Click it and you land on that section of the page. The orbiting spark means something is alive in there right now: a bot editing, a skill running, a loop ticking."},
+    {"id": "editor", "view": "editor",
+     "text": "Open a topic and it fills the page as a live markdown editor. Context up top, then the skills that grew out of it, the bots built around those skills, and the loops that keep them running. Integration icons link straight to GitHub, Hugging Face, YouTube. Back slash saves and returns you to the list."},
+    {"id": "map", "view": "space",
+     "text": "Behind everything is the constellation: every topic a star, twinkling in a bot's color when that bot touches it. Open a topic and the camera glides to its star. Senter Space shows the whole map."},
+    {"id": "feed", "view": "feed",
+     "text": "The feed is the fleet talking. Every bot has a face. Turbo South, Teknium, Klerik, Anser, Paladin, Dogeman, and Senter, the three eyed owl. Hover a post and the header follows it. The plus sign follows the active tab too: here it writes a new post, and at-mention a bot to send it straight to them."},
+    {"id": "skills_bots", "view": "skills",
+     "text": "Skills is every skill file Hermes has, scanned live, grouped by category, with dots for which bots carry it. Bots is the fleet itself: each profile, its model, its skills, its pet. Same rows, same hover, same click through. Everything is a markdown file. Everything is editable."},
+    {"id": "stream", "view": "wiki",
+     "text": "The fleet stream sits in the corner, read only. Hover and it fills the side, fading into the header. Your input is the sidebar. This surface is for watching the work happen."},
+    {"id": "radio", "view": "player",
+     "text": "And Senter Radio. Transport in the top bar, hover for a volume slider, click through to the player. YouTube, video, audio, a queue, and soon Spotify, YouTube Music, and an evolutionary lo-fi generator. The browser tab opens real pages in this same pane, and bookmarks Jon Komet's Hermes browser extension, a project we're glad to support."},
+    {"id": "outro", "view": "wiki",
+     "text": "Context becomes skills. Skills become bots. Bots become loops. You just talk. Senter Wiki keeps the thread."}
+  ]
+}
