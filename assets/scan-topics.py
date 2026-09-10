@@ -69,7 +69,11 @@ def summary(readme, n=6):
     return out
 
 def name_of(p):
-    return p.stem if p.is_file() else p.name
+    n = p.stem if p.is_file() else p.name
+    # strip .md suffix from topic-level agent/loop spec filenames (e.g. "foo.md" → "foo")
+    # p.stem already strips the LAST extension only (foo.md.proposed → foo.md), so we need one more pass
+    if n.endswith(".md"): n = n[:-3]
+    return n
 
 def cadence(md):
     m = re.search(r"(?im)^\s*(?:\*\*)?(?:schedule|cadence|every|runs)(?:\*\*)?\s*:\s*(.+)$", md)
@@ -136,7 +140,7 @@ def scan_topics():
             for p in sorted((d / "agents").iterdir()):
                 if p.name.startswith("."): continue
                 md = p.read_text(errors="replace") if p.is_file() else ((p / "README.md").read_text(errors="replace") if (p / "README.md").is_file() else "")
-                bots.append({"name": name_of(p), "role": role(md)})
+                bots.append({"name": name_of(p), "role": role(md), "model": "", "skills": 0})
         loops = []; seen = set()
         if (d / "loops").is_dir():
             for p in sorted((d / "loops").iterdir(), key=lambda p: (p.is_dir(), p.name)):  # reflect.md wins over reflect/ (run dir)
@@ -220,8 +224,10 @@ def scan_vault_agents(bots):
         try: txt = md.read_text(errors="replace")
         except Exception: continue
         fm = frontmatter(txt); role = re.search(r"^#\s*.+\n+(.+)$", txt, re.M)
-        bots.append({"name": name, "role": (role.group(1).strip() if role else fm.get("role", ""))[:300], "text": txt[:8000], "skills": [],
-                     "topic": md.parent.parent.name, "path": str(md.relative_to(VAULT)), "proposed": md.name.endswith(".proposed"), "source": "vault"})
+        bots.append({"name": name, "role": (role.group(1).strip() if role else fm.get("role", ""))[:300], "model": "", "skills": 0,
+                     "text": txt[:8000], "topic": md.parent.parent.name, "path": str(md.relative_to(VAULT)),
+                     "proposed": md.name.endswith(".proposed"), "source": "vault", "color": PALETTE[sum(map(ord, name)) % len(PALETTE)],
+                     "avatar": (VAULT / "assets" / "avatars" / f"{name}.png").is_file()})
         have.add(name.lower())
     return bots
 
