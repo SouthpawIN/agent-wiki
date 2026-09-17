@@ -15,6 +15,18 @@ sources:
   - wiki/queries/
 ---
 
+## Integrations
+
+### Repositories
+
+| Repo | Link | Status | Stars |
+| --- | --- | --- | --- |
+| turbofit | [github.com/SouthpawIN/turbofit](https://github.com/SouthpawIN/turbofit) | ACTIVE | 83 |
+| turbohaul-llmfit | [github.com/SouthpawIN/turbohaul-llmfit](https://github.com/SouthpawIN/turbohaul-llmfit) | DORMANT | 2 |
+| turbohaul-manager | [github.com/SouthpawIN/turbohaul-manager](https://github.com/SouthpawIN/turbohaul-manager) | DORMANT | 1 |
+| southpaw-turbohaul | [github.com/SouthpawIN/southpaw-turbohaul](https://github.com/SouthpawIN/southpaw-turbohaul) | DORMANT | 7 |
+| sirvir | [github.com/SouthpawIN/sirvir](https://github.com/SouthpawIN/sirvir) | ACTIVE | 27 |
+
 ---
 
 ## Overview
@@ -31,24 +43,6 @@ model: auto
 ```
 
 **TurboFit Check** scans the machine — dedicated VRAM, unified/integrated memory, or RAM-only — and applies Auto or a selected compatible lane.
-
-## Integrations
-
-### Repositories
-
-| Repo | Link | Status | Stars |
-| --- | --- | --- | --- |
-| turbofit | [github.com/SouthpawIN/turbofit](https://github.com/SouthpawIN/turbofit) | ACTIVE | 83 |
-| turbohaul-llmfit | [github.com/SouthpawIN/turbohaul-llmfit](https://github.com/SouthpawIN/turbohaul-llmfit) | DORMANT | 2 |
-| turbohaul-manager | [github.com/SouthpawIN/turbohaul-manager](https://github.com/SouthpawIN/turbohaul-manager) | DORMANT | 1 |
-| southpaw-turbohaul | [github.com/SouthpawIN/southpaw-turbohaul](https://github.com/SouthpawIN/southpaw-turbohaul) | DORMANT | 7 |
-| sirvir | [github.com/SouthpawIN/sirvir](https://github.com/SouthpawIN/sirvir) | ACTIVE | 27 |
-
----
-
-
-
----
 
 ## Model Zoo
 
@@ -145,7 +139,6 @@ Comfortable: model_size + 2GB ≤ tier_size
 
 > ★ = on TurboFit List. Models without ★ are Model Zoo only.
 
-
 ---
 
 ## Entities
@@ -159,7 +152,6 @@ Comfortable: model_size + 2GB ≤ tier_size
 ### 131K Deferred Candidates
 
 Source: `wiki/concepts/131k-deferred-candidates.md`
-
 
 #### The Problem
 
@@ -244,7 +236,6 @@ Ornith MLX 4-bit wins because it's MoE (~3B active params) with MLX backend for 
 
 Source: `wiki/concepts/benchmark-taxonomy.md`
 
-
 > Common benchmarks tracked across all models. Each model page records scores where available.
 
 #### Reasoning & Knowledge
@@ -318,7 +309,6 @@ Models without data simply show "—" — this is expected and motivates future 
 
 Source: `wiki/concepts/compression-timeouts.md`
 
-
 #### What happened
 
 Hermes failed with:
@@ -353,7 +343,6 @@ Local main-model compression at very large context sizes is too slow for Hermes�
 ### DFlash2 Compatibility Boundary
 
 Source: `wiki/concepts/dflash2-compat-boundary.md`
-
 
 DFlash2 draft models are not interchangeable across runtimes. On this box the boundary is concrete: MTPLX cannot use DFlash2, and Unleashed+DFlash2 only works through the dedicated `dflash2-llama.cpp` fork with a narrow valid flag set ^[raw/inbox/2026-09-07.md, raw/inbox/2026-09-07-from-music.md].
 
@@ -390,7 +379,6 @@ At least one Unleashed+DFlash2 attempt failed with `couldn't bind HTTP server so
 ### DFlash2 Fork Flag Boundary
 
 Source: `wiki/concepts/dflash2-fork-flag-boundary.md`
-
 
 DFlash2 draft models are not interchangeable across runtimes. On this box the boundary is concrete: MTPLX cannot use DFlash2, and Unleashed+DFlash2 only works through the dedicated `dflash2-llama.cpp` fork with a narrow valid flag set.
 
@@ -458,7 +446,6 @@ After a DFlash warning: `dflash requires ctx_other to be set`. That artifact is 
 ### DFlash2 MTPLX Incompatibility
 
 Source: `wiki/concepts/dflash2-mplx-incompatibility.md`
-
 
 #### The Incompatibility
 
@@ -534,7 +521,6 @@ The incompatibility explains why:
 
 Source: `wiki/concepts/hermes-auto-route-stability.md`
 
-
 #### The Problem
 
 From `raw/inbox/2026-09-08-from-senter-wiki.md`:
@@ -576,7 +562,6 @@ This stability issue may be resolved by the [[topics/turbofit/wiki/decisions/fal
 
 Source: `wiki/concepts/hermes-model-switching-noise.md`
 
-
 The active Hermes model switched multiple times during TurboFit work without Chris initiating the changes . The switch chain was:
 
 1. `meituan/longcat-2.0:free` (Nous free tier)
@@ -607,7 +592,6 @@ Unrequested model changes can invalidate benchmark context, tool routing, and se
 ### Model Switching Pain
 
 Source: `wiki/concepts/model-switching-pain.md`
-
 
 The active Hermes model switched multiple times during TurboFit work without Chris initiating the changes.
 
@@ -653,7 +637,6 @@ Contributing causes identified in [[topics/turbofit/wiki/concepts/compression-ti
 
 Source: `wiki/concepts/mtplx-32gb-memory-and-evidence-reliability.md`
 
-
 Captures two distinct reliability concerns for MTPLX on this box: 131K memory overcommit, and postcommit artifacts that can't be treated as finished TurboFit evidence without a real Hermes window capture .
 
 #### Memory overcommit
@@ -683,7 +666,6 @@ Postcommit records show `cross_session_foreground_preempted` and `foreground_pre
 ### MPTX Context Overcommit
 
 Source: `wiki/concepts/mtplx-context-overcommit.md`
-
 
 On the 32 GB Mac, `mtplx serve` with `--context-window 131072` loads the model in 6-9s and installs the native MTP draft head, but the printed memory plan marks `OVERCOMMITTED` and warns that the requested context exceeds the machine fit.
 
@@ -728,7 +710,6 @@ Total needed:
 
 Source: `wiki/concepts/mtplx-foreground-preemption.md`
 
-
 When MTPLX handles long-running Hermes foreground work, postcommit records show `cross_session_foreground_preempted` and `foreground_preempted_postcommit`, and idle async sessions can end with `stored: false` because of `unsafe_reason: retokenized_history_mismatch` .
 
 #### Evidence
@@ -751,7 +732,6 @@ When MTPLX handles long-running Hermes foreground work, postcommit records show 
 
 Source: `wiki/concepts/turbofit-session-mismatch.md`
 
-
 MTLPX generation events show foreground/preemption behavior and session-store mismatch that make some TurboFit captures unreliable as finished-state evidence .
 
 #### Signals
@@ -770,7 +750,6 @@ MTLPX generation events show foreground/preemption behavior and session-store mi
 
 - [[topics/turbofit/wiki/entities/turbofit-verifier-bridge.md|TurboFit Verifier Bridge]]
 - [[topics/turbofit/wiki/concepts/model-switching-pain.md|Model Switching Pain]]
-
 
 #### Research Request
 
@@ -1113,7 +1092,6 @@ requested context 131072 exceeds the machine fit 8192: KV at the full window nee
 
 Source: `wiki/decisions/aux-model-selection.md`
 
-
 #### What
 
 Auxiliary and compression routing is Maple MLX on `127.0.0.1:11612`, 131k context, served with `deepgrove-ai/mlx-lm-deepgrove` .
@@ -1145,7 +1123,6 @@ Multiple Hermes turns declared Maple MLX unstable or impossible before the deepg
 
 Source: `wiki/decisions/candidate-quant-preference.md`
 
-
 **Decision/Preference:** When comparing GGUF vs MLX for new local candidates, prefer the Q3 quant when model pages describe it as near base-model quality.
 
 #### Rationale
@@ -1175,7 +1152,6 @@ A reusable quant-selection rule for candidate research: if page notes say "near 
 
 Source: `wiki/decisions/context-sizing.md`
 
-
 #### What
 
 Local TurboFit contexts are set to 131,072 tokens for both main and aux .
@@ -1203,7 +1179,6 @@ Set 2026-09-06 after multiple compression timeout errors during end-to-end testi
 ### Context Window Decision
 
 Source: `wiki/decisions/context-window-decision.md`
-
 
 **Decision**: Lock in 65K context as the stable daily driver on M1 MacBook 32GB, with 131K reserved for rare long-context needs where speed is not critical.
 
@@ -1255,7 +1230,6 @@ M1 MacBook 32GB unified memory:
 
 Source: `wiki/decisions/fallback-model-order.md`
 
-
 #### What
 
 The active model preference order should preserve explicit user choice and avoid silently switching to `stepfun/step-3.7-flash:free` .
@@ -1281,7 +1255,6 @@ Diagnosed 2026-09-06 02:20–02:25 UTC; config correction attempted in-session b
 ### TurboFit Local Main Provider Decision
 
 Source: `wiki/decisions/local-main-provider.md`
-
 
 What Chris wanted: the smartest feasible local runtime as Hermes main, with verified evidence, not just Hermes internal logs.
 
@@ -1317,7 +1290,6 @@ Final TurboFit evidence requires a real Hermes window capture plus the primary v
 ### Main Model Selection
 
 Source: `wiki/decisions/main-model-selection.md`
-
 
 #### What
 
@@ -1361,7 +1333,6 @@ Multiple provider switches occurred during the session:
 ### MT_PlX Main Provider
 
 Source: `wiki/decisions/mtplx-main-provider.md`
-
 
 Make `Youssofal/Qwen3.8-27B-MTPLX-Optimized-Speed` via `mtplx serve` the main TurboFit provider and remove Maple/Unleashed as co-resident models to reclaim disk space.
 
@@ -1452,7 +1423,6 @@ Ornith was selected as the main provider because:
 - Compile, download, or estimated fit is NOT a winner
 - Evidence must come from actual benchmark runs on the target hardware
 - Hermes window capture required for contested results (not just internal logs)
-
 
 ---
 
