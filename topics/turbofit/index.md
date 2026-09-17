@@ -257,55 +257,56 @@ MTPLX is an alternative runtime for M1 Macs. Use 65K context for stable operatio
 
 ## SKILLS
 
-Topic skills in `topics/turbofit/skills/`:
+Topic skills stored in this wiki at `topics/turbofit/skills/`:
 
-| Skill | Use |
-| --- | --- |
-| `candidate-quant-comparison` | Compare GGUF vs MLX artifacts, prefer Q3 when near base quality |
-| `dflash2-fork-flag-boundary` | Test DFlash2 speculative decoding, record exact flag set |
-| `maple-mlx-server-runtime` | Run Maple MLX on Apple Silicon for aux/compression |
-| `mtplx-32gb-macos-tuning` | Tune MTPLX on 32GB macOS, validate context window |
-| `turbo-artifact-download-spec` | Download GGUF/MLX candidates with size verification |
-| `turbo-fit-evidence-capture` | Capture performance evidence from Hermes window |
-| `turbo-model-store-cleanup` | Free TurboFit storage, delete wiki-marked obsolete artifacts |
+- **[candidate-quant-comparison](skills/candidate-quant-comparison/SKILL.md)** — Use when evaluating new local TurboFit candidates. Compare GGUF vs MLX artifacts and prefer Q3 when page notes say near base quality.
+- **[dflash2-fork-flag-boundary](skills/dflash2-fork-flag-boundary/SKILL.md)** — Use when testing DFlash2 speculative decoding with the dflash2-llama.cpp fork. Record the exact flag set that succeeds/fails to avoid retrying invalid combinations.
+- **[maple-mlx-server-runtime](skills/maple-mlx-server-runtime/SKILL.md)** — Use when running or testing Maple MLX on Apple Silicon for Hermes aux or compression. Use deepgrove-ai fork flags and cache limits; avoid generic mlx_lm server mode.
+- **[mtplx-32gb-macos-tuning](skills/mtplx-32gb-macos-tuning/SKILL.md)** — Use when tuning MTPLX on 32GB macOS. Check runtime config instead of unsupported CLI flags; validate context window against machine-bound memory plan before relying on tok/s claims.
+- **[turbo-artifact-download-spec](skills/turbo-artifact-download-spec/SKILL.md)** — Use when downloading new TurboFit GGUF/MLX candidate artifacts. Build a reproducible curl-backed download record with size verification and wiki-ready evidence.
+- **[turbo-fit-evidence-capture](skills/turbo-fit-evidence-capture/SKILL.md)** — Use when capturing TurboFit performance or behavior evidence. Capture from Chris's actual Hermes window using desktop_preview, never from process metadata or postcommit summaries.
+- **[turbo-model-store-cleanup](skills/turbo-model-store-cleanup/SKILL.md)** — Use when freeing TurboFit storage. Delete only wiki-marked obsolete artifacts.
 
-Related Hermes skills (in `~/.hermes/skills/`):
+Related skills stored globally in `~/.hermes/skills/`:
 
-| Skill | Use |
-| --- | --- |
-| `turbofit` | Rules for Turbofit Wiki |
-| `turbofit-runtime-setup` | Set up or fix Turbofit local runtime |
-| `serving-llms-vllm` | vLLM high-throughput LLM serving |
-| `llama-cpp` | llama.cpp local GGUF inference + HF Hub discovery |
-| `huggingface-hub` | HuggingFace CLI: search/download/upload models |
+- **[turbofit](https://github.com/NousResearch/hermes-agent)** — Rules for Turbofit Wiki
+- **[turbofit-runtime-setup](https://github.com/NousResearch/hermes-agent)** — Use when setting up or fixing the Turbofit local runtime
+- **[serving-llms-vllm](https://github.com/NousResearch/hermes-agent)** — vLLM: high-throughput LLM serving
+- **[llama-cpp](https://github.com/NousResearch/hermes-agent)** — llama.cpp local GGUF inference + HF Hub model discovery
+- **[huggingface-hub](https://github.com/NousResearch/hermes-agent)** — HuggingFace hf CLI: search/download/upload models, datasets
 
 ---
 
 ## BOTS
 
-### Turbofit Verifier Bridge
+Bots stored in this wiki at `topics/turbofit/agents/`:
 
-`turbofit-verifier` is the topic bot for TurboFit. Drives verification through `desktop_preview` on a real Hermes window instead of summary claims.
+- **[candidate-benchmark-scout](agents/candidate-benchmark-scout.md.proposed)** — Proposed: Discovers and benchmarks new model candidates from HuggingFace
+- **[mtplx-runtime-scout](agents/mtplx-runtime-scout.md.proposed)** — Proposed: Monitors MTPLX runtime stability and performance
+- **[orchestrator](agents/orchestrator.md.proposed)** — Proposed: Coordinates multi-model TurboFit pipeline
+- **[turbofit-benchmark](agents/turbofit-benchmark.md.proposed)** — Proposed: Automated benchmark runner for TurboFit models
+- **[turbofit-bot](agents/turbofit-bot.md.proposed)** — Proposed: General-purpose TurboFit topic bot
+- **[turbofit-evidence-capture](agents/turbofit-evidence-capture.md.proposed)** — Proposed: Captures performance evidence from live Hermes sessions
+- **[turbofit-launcher](agents/turbofit-launcher.md.proposed)** — Proposed: Manages model launch and context sizing
+- **[turbofit-route-stabilizer](agents/turbofit-route-stabilizer.md.proposed)** — Proposed: Prevents Hermes from switching to cloud providers
+- **[turbofit-runtime-scout](agents/turbofit-runtime-scout.md.proposed)** — Proposed: Scouts runtime stability across platforms
+- **[turbofit-verifier](agents/turbofit-verifier.md.proposed)** — Proposed: Verification bot using desktop_preview for evidence
 
-**Responsibilities:**
-- Verify benchmark claims against actual Hermes sessions
-- Validate model performance evidence
-- Run DFlash2 integration tests with correct flag sets
+Loops stored in this wiki at `topics/turbofit/loops/`:
 
-**Bot location:** `topics/senter/profiles/` (managed by Klerik)
-
-### Async Research Agents
-
-TurboFit delegates to fleet profiles for specialized work:
-
-| Profile | Role | Use |
-| --- | --- | --- |
-| `looker` | Research | Model discovery, benchmark research, HuggingFace scouting |
-| `teknium` | Inference | llama.cpp builds, quantization, runtime optimization |
-| `paladin` | Testing | Model benchmarking, evidence capture, validation |
-| `turbosovth` | Training | LoRA adapters, custom model fine-tuning |
-
-**Dispatch pattern:** Orchestrator (this wiki) delegates via `delegate_task` to the appropriate specialist profile.
+- **[131k-attempt-blocker](loops/131k-attempt-blocker.md.proposed)** — Proposed: Blocks 131K context attempts that would OOM
+- **[candidate-65k-benchmark-sweep](loops/candidate-65k-benchmark-sweep.md.proposed)** — Proposed: Sweep benchmarks all candidates at 65K
+- **[candidate-quant-comparator](loops/candidate-quant-comparator.md.proposed)** — Proposed: Compares quant variants for each candidate
+- **[compression-timeout-watch](loops/compression-timeout-watch.md.proposed)** — Proposed: Watches for Hermes compression timeouts
+- **[hermes-model-change-detector](loops/hermes-model-change-detector.md.proposed)** — Proposed: Detects and reports Hermes model switches
+- **[mac-memory-watch](loops/mac-memory-watch.md.proposed)** — Proposed: Monitors memory usage on macOS
+- **[mtplx-telemetry-watch](loops/mtplx-telemetry-watch.md.proposed)** — Proposed: Watches MTPLX memory-guard events
+- **[turbo-context-budget-watch](loops/turbo-context-budget-watch.md.proposed)** — Proposed: Monitors context window vs memory budget
+- **[turbofit-candidate-discovery](loops/turbofit-candidate-discovery.md.proposed)** — Proposed: Discovers new model candidates from HuggingFace
+- **[turbofit-health-check](loops/turbofit-health-check.md.proposed)** — Proposed: Periodic health check of all TurboFit runtimes
+- **[turbofit-memory-monitor](loops/turbofit-memory-monitor.md.proposed)** — Proposed: Monitors model memory usage across devices
+- **[turbofit-memory-threshold-monitor](loops/turbofit-memory-threshold-monitor.md.proposed)** — Proposed: Alerts when memory approaches threshold
+- **[turbofit-runtime-watch](loops/turbofit-runtime-watch.md.proposed)** — Proposed: Watches all runtime processes for crashes
 
 ---
 

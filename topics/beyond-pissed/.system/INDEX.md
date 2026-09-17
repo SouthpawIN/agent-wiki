@@ -1,5 +1,5 @@
 # INDEX — topics/beyond-pissed
-_28 files · 33 KB · regenerate: `python3 assets/build-index.py`_
+_27 files · 33 KB · regenerate: `python3 assets/build-index.py`_
 
 Read order for an agent: this file → pick a file below → its outline → `read_file offset=<line> limit=<n>`. Sessions under `.system/sessions/` are full transcripts (largest; go by outline).
 
@@ -10,8 +10,7 @@ Read order for an agent: this file → pick a file below → its outline → `re
     - L7 ## Status
 
 ## .system
-- `.system/agent.cursor` — 1 KB, 20 lines — raw/inbox/2026-09-06.md@229865d6d73c
-- `.system/agent.lock` — 0 KB, 1 lines — 58352
+- `.system/agent.cursor` — 1 KB, 21 lines — raw/inbox/2026-09-06.md@229865d6d73c
 - `.system/continuity.md` — 0 KB, 3 lines — Continuity — beyond-pissed
     - L1 # Continuity — beyond-pissed
 - `.system/injections.md` — 3 KB, 25 lines — Injections — beyond-pissed

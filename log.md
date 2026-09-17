@@ -1063,3 +1063,4 @@ Chris: "rip the bandaid off… everything live, get everything hooked up." Built
 2026-09-17 09:31: topic-agent life-links · 1 raw → 1 pages (index 5) · bot:clickable-integrations, bot:front-matter-clickable-render, brief+1
 2026-09-17 09:52: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
 2026-09-17 10:22: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-17 10:46: topic-agent beyond-pissed · 1 raw → 1 pages (index 25) · brief+1

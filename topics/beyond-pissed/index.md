@@ -1,6 +1,6 @@
 # beyond-pissed — wiki index
 > One line per page. The wiki row's CONTEXT section renders this file.
-> Last updated: 2026-09-17 | Total pages: 24
+> Last updated: 2026-09-17 | Total pages: 25
 
 ## Entities
 - [[topics/beyond-pissed/wiki/entities/agent-wiki|Agent Wiki]] — The `agent-wiki` repo at `~/gh-sync/agent-wiki`, a git repository that is structurally related to but not currently connected to the center vault at `~/Document
@@ -14,6 +14,7 @@
 - [[topics/beyond-pissed/wiki/concepts/execute-code-timeout-behavior|Execute Code Timeout Behavior]] — When Hermes runs `python3` via the `terminal` tool (or `execute_code`), the shell wrapper sometimes emits `[Command timed out...]` before the actual output arri
 - [[topics/beyond-pissed/wiki/concepts/model-selection-routing|Model Selection Routing (O'Marki → MacBook)]] — On 2026-09-15 16:59 Chris stated a goal not yet acted on: he wants to be able to **select which models are served from his Oh My Archi ("O'Marki") home lab to t
 - [[topics/beyond-pissed/wiki/concepts/multi-project-orchestration|Multi-Project Orchestration]] — Chris intends to work on many projects simultaneously, using the center wiki as the orchestrator for all of them. The wiki is therefore not just documentation b
+- [[topics/beyond-pissed/wiki/concepts/readme-as-orchestration-layer|README as Orchestration Layer]] — The vault README.md plays a dual role: it is a human-facing README **and** the orchestration layer that Hermes agents consume.
 - [[topics/beyond-pissed/wiki/concepts/readme-rendering-issue|README Rendering Issue]] — A suspected failure in fetching and re-rendering the live README.md surfaced during Hermes troubleshooting on 2026-09-06.
 - [[topics/beyond-pissed/wiki/concepts/repository-sync-discrepancy|Repository Synchronization Discrepancy]] — The gap between the center vault working directory (`~/Documents/Projects/Projects`) and the `agent-wiki` git repository (`~/gh-sync/agent-wiki`) that prevents 
 - [[topics/beyond-pissed/wiki/concepts/scan-loop-schema-fix|Scan Loop Schema Fix]] — The `scan-topics.py` script had a bug in its bot schema: it wrote `skills` as an empty list `[]` instead of an integer `0`, omitted the `model` field entirely, 

@@ -1,5 +1,5 @@
 # INDEX — topics/hermes-agent
-_21 files · 78 KB · regenerate: `python3 assets/build-index.py`_
+_22 files · 78 KB · regenerate: `python3 assets/build-index.py`_
 
 Read order for an agent: this file → pick a file below → its outline → `read_file offset=<line> limit=<n>`. Sessions under `.system/sessions/` are full transcripts (largest; go by outline).
 
@@ -15,6 +15,7 @@ Read order for an agent: this file → pick a file below → its outline → `re
 
 ## .system
 - `.system/agent.cursor` — 1 KB, 31 lines — raw/inbox/2026-09-06-from-back-where.md@9d5caa691ef8
+- `.system/agent.lock` — 0 KB, 1 lines — 58352
 - `.system/continuity.md` — 0 KB, 7 lines — Continuity — hermes-agent
     - L1 # Continuity — hermes-agent
 - `.system/injections.md` — 3 KB, 32 lines — Injections
