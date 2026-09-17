@@ -8,9 +8,9 @@ redirect: topics/senter/index.md
 
 # Senter Wiki
 
-> MERGED into [[Sentry Index]].
+> MERGED into [[Senter Index]].
 
-The Sentry Wiki topic has been consolidated into the primary Sentry wiki. All content preserved there.
+The Senter Wiki topic has been consolidated into the primary Sentry wiki. All content preserved there.
 
 ---
 
@@ -18,28 +18,28 @@ The Sentry Wiki topic has been consolidated into the primary Sentry wiki. All co
 
 ### CONTEXT
 
-The Sentry Wiki UI (`vault-live.html`) is the visual surface of the vault. It renders in the Hermes desktop preview pane and is steered live by Chris via voice.
+The Senter Wiki UI (`vault-live.html`) is the visual surface of the vault. It renders in the Hermes desktop preview pane and is steered live by Chris via voice.
 
-See [[Sentry Index]] for full content.
+See [[Senter Index]] for full content.
 
 ### CONTINUATION
 
-See [[Sentry Index]].
+See [[Senter Index]].
 
 ---
 
 ## SKILLS
 
-See [[Sentry Index]].
+See [[Senter Index]].
 
 ---
 
 ## BOTS
 
-See [[Sentry Index]].
+See [[Senter Index]].
 
 ---
 
 ## LOOPS
 
-See [[Sentry Index]].
+See [[Senter Index]].

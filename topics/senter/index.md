@@ -70,7 +70,7 @@ This wiki is fed by:
 | **Looker** | ACTIVE | UI-QA service bot |
 | **Teknium** | ACTIVE | Hermes-Agent builder |
 | **Paladin** | ACTIVE | Vault structure warden |
-| **Weaver** | ACTIVE | Sentry Wiki UI builder |
+| **Weaver** | ACTIVE | Senter Wiki UI builder |
 | **Dogeman** | ACTIVE | YouTube/content studio |
 | **Turbosovth** | ACTIVE | TurboFit support agent |
 | **Music** | ACTIVE | Music generation |
@@ -86,7 +86,7 @@ This wiki is fed by:
 
 #### Further Reading
 
-- [Sentry Wiki](topics/sentry-wiki/index.md) — UI and build skills
+- [Senter Wiki](topics/sentry-wiki/index.md) — UI and build skills
 - [Turbofit](topics/turbofit/index.md) — model research
 - [Hermes Agent](topics/hermes-agent/index.md) — runtime config
 - [Archive](topics/_archive/) — absorbed topics, preserved verbatim

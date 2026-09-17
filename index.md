@@ -40,7 +40,7 @@ This vault is fed by:
 | **Looker** | ACTIVE | UI-QA service bot |
 | **Teknium** | ACTIVE | Hermes-Agent builder, core fixes |
 | **Paladin** | ACTIVE | Vault structure warden |
-| **Weaver** | ACTIVE | Sentry Wiki UI builder |
+| **Weaver** | ACTIVE | Senter Wiki UI builder |
 | **Dogeman** | ACTIVE | YouTube/content studio |
 | **Turbosovth** | ACTIVE | TurboFit support agent |
 | **Music** | ACTIVE | Music generation and AI |
@@ -154,5 +154,5 @@ The Senter flywheel runs on **five parts** (locked 2026-09-05):
 - [Senter](topics/senter/index.md) — fleet architecture
 - [Turbofit](topics/turbofit/index.md) — model research
 - [Hermes Agent](topics/hermes-agent/index.md) — runtime config
-- [Sentry Wiki](topics/senter-wiki/index.md) — UI and build
+- [Senter Wiki](topics/senter-wiki/index.md) — UI and build
 - [Archive](topics/_archive/) — absorbed topics, preserved verbatim
