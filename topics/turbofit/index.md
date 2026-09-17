@@ -3,6 +3,10 @@ title: Turbofit Wiki
 created: 2026-09-16
 updated: 2026-09-16
 type: wiki
+links:
+  github: https://github.com/SouthpawIN/turbofit
+  huggingface_turbofit: https://huggingface.co/SouthpawIN
+  omarchy: https://github.com/SouthpawIN/omarchy
 sources:
   - index.md
   - BRIEF.md
@@ -13,20 +17,6 @@ sources:
   - wiki/decisions/
   - wiki/comparisons/
   - wiki/queries/
----
-
-## Integrations
-
-### Repositories
-
-| Repo | Link | Status | Stars |
-| --- | --- | --- | --- |
-| turbofit | [github.com/SouthpawIN/turbofit](https://github.com/SouthpawIN/turbofit) | ACTIVE | 83 |
-| turbohaul-llmfit | [github.com/SouthpawIN/turbohaul-llmfit](https://github.com/SouthpawIN/turbohaul-llmfit) | DORMANT | 2 |
-| turbohaul-manager | [github.com/SouthpawIN/turbohaul-manager](https://github.com/SouthpawIN/turbohaul-manager) | DORMANT | 1 |
-| southpaw-turbohaul | [github.com/SouthpawIN/southpaw-turbohaul](https://github.com/SouthpawIN/southpaw-turbohaul) | DORMANT | 7 |
-| sirvir | [github.com/SouthpawIN/sirvir](https://github.com/SouthpawIN/sirvir) | ACTIVE | 27 |
-
 ---
 
 ## Overview
