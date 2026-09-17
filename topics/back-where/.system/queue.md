@@ -1,6 +1,7 @@
 # Queue — back-where
 
 ## [CONTEXT]
+- [ ] research gsq-task-lossless-verify — SUGGESTED 2026-09-17 13:03: Want me to look into whether the GSQ RCO IQ3S is genuinely task-lossless versus FP16 on your M1 before we commit to it?
 - [ ] research gsq-task-lossless-verification — SUGGESTED 2026-09-17 01:31: You picked the GSQ RCO IQ3S because the vendor claims 0 task loss versus FP16 — want me to look into whether that claim 
 - [ ] research turbofit-persistence-research — SUGGESTED 2026-09-15 19:01: Want me to look into why your TurboFit options don't survive a desktop-app restart — and how to make them persist?
 - [ ] research double-gpu-co-run-tuning — SUGGESTED 2026-09-15 10:43: Want me to look into what batch-size, GPU split, and prefill settings let the Unleashed Q3K XL stay at Q3 on your double

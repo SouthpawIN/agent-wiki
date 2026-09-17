@@ -8,6 +8,8 @@
 | wiki-dedupe-sweep | paladin | every 30m | on |
 | weaver verify-nightly | senter | 30 3 * * * | on |
 | anser REFLECT loop | senter | 0 */2 * * * | off |
+| fit-table-tok-s-benchmark-tracker | turbosovth |  | PROPOSED |
+| fit-table-tok-s-updater | turbosovth |  | PROPOSED |
 | model-benchmark-tracker | turbosovth |  | PROPOSED |
 | turbo-fit-tok-s-updater | turbosovth |  | PROPOSED |
 | anser-queue-scan | anser |  | PROPOSED |

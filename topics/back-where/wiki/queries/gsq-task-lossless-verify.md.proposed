@@ -1,0 +1,10 @@
+---
+title: Does the GSQ RCO IQ3S quant of the Qwen3.8 27B unleashed variant actually match 
+type: query
+proposed: 2026-09-17 13:03
+tags: [question]
+---
+# Does the GSQ RCO IQ3S quant of the Qwen3.8 27B unleashed variant actually match FP16 output on Chris's 32GB M1 MacBook, and at what batch/prefill settings does it run fast enough with high context + D Flash 2 headroom?
+Chris's GSQ RCO IQ3S preference is explicitly conditional on the task-lossless claim being true and is still unverified on his hardware
+
+_Approve to run the research; the answer lands here._
