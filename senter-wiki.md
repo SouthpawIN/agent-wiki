@@ -27,20 +27,15 @@ The Senter Wiki is the **master orchestration layer** for everything Chris cares
 
 ### Core Sections
 
-#### Inspiration & Integrations
-Everything that feeds data into the wiki — GitHub repos, HuggingFace models, raw inbox cuts from Hermes sessions, cron outputs, webhooks, kanban state. This is the *sensory layer*: without integrations, the wiki has no input.
+| Section | Name & Description | Full Definition |
+|---------|-------------------|-----------------|
+| **Inspiration & Integrations** | Data sources that feed the wiki — GitHub, HF, raw inbox, cron outputs, webhooks, kanban state. The *sensory layer*. | [Inspiration & Integrations](inspiration-integrations/index.md) |
+| **Topics & Wiki** | Every subject Chris cares about — evidence, decisions, action items. Progressive disclosure: scan → click → drill. | [Topics & Wiki](topics-wiki/index.md) |
+| **Skills & Capabilities** | Reusable procedures Hermes knows how to run. Each is a SKILL.md with frontmatter. The *verbs* of the system. | [Skills & Capabilities](skills-capabilities/index.md) — *symlinked to Hermes* |
+| **Bots & Profiles** | Autonomous Hermes agents, each with its own SOUL.md. The *nouns* of the system. | [Bots & Profiles](bots-profiles/index.md) — *symlinked to Hermes* |
+| **Triggers & Loops** | Scheduled automations (cron jobs), kanban tasks, webhooks. The *temporal* dimension. | [Triggers & Loops](triggers-loops/index.md) |
 
-#### Wiki & Topics
-The knowledge itself. Every subject Chris cares about gets its own topic with evidence, decisions, and action items. Topics are organized via progressive disclosure — scan the table of contents, click to dive deep, drill into specifics.
-
-#### Skills & Capabilities
-Reusable procedures Hermes knows how to run. Each skill is a SKILL.md file with frontmatter (name, description, when to use it). Skills are the *verbs* of the system — what Hermes can *do*.
-
-#### Bots & Profiles
-Autonomous Hermes agents, each with its own SOUL.md defining its role, behavior, and boundaries. Bots are the *nouns* of the system — who does the work.
-
-#### Triggers & Loops
-Scheduled automations (cron jobs), kanban tasks, and webhooks. Loops are the *temporal* dimension — what runs when, how often, and what it checks.
+> **Progressive Disclosure:** Each entry above shows the name and description. Click the link to see the full definition. Skills and Bots are symlinked to Hermes — editing in vault updates Hermes live.
 
 ### What This Is
 
@@ -166,14 +161,22 @@ No need to read everything. Navigate by relevance.
 
 ---
 
-## SKILLS
+## INSPIRATION & INTEGRATIONS
 
-See [Skills](skills/index.md) for all 21 Hermes skills. Each links to its SKILL.md — edit in vault, updates Hermes live.
+See [Inspiration & Integrations](inspiration-integrations/index.md).
 
-## BOTS
+## TOPICS & WIKI
 
-See [Bots](bots/index.md) for all 11 Hermes profiles. Each links to its SOUL.md — edit in vault, updates the bot live.
+Current topics listed above. See [Topics & Wiki](topics-wiki/index.md) for details.
 
-## LOOPS
+## SKILLS & CAPABILITIES
 
-See [Loops](loops/index.md) for all cron jobs and kanban tasks.
+See [Skills & Capabilities](skills-capabilities/index.md) — 21 skills, symlinked to Hermes. Edit in vault, updates Hermes live.
+
+## BOTS & PROFILES
+
+See [Bots & Profiles](bots-profiles/index.md) — 11 profiles, symlinked to Hermes. Edit in vault, updates the bot live.
+
+## TRIGGERS & LOOPS
+
+See [Triggers & Loops](triggers-loops/index.md) — cron jobs and kanban tasks.
