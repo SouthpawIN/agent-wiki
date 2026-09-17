@@ -10,7 +10,7 @@ Read order for an agent: this file → pick a file below → its outline → `re
     - L39 ## Status
 
 ## .system
-- `.system/agent.cursor` — 0 KB, 2 lines — raw/inbox/2026-09-12.md@d3d763c35ec4
+- `.system/agent.cursor` — 0 KB, 3 lines — raw/inbox/2026-09-12.md@d3d763c35ec4
 - `.system/continuity.md` — 0 KB, 14 lines — Continuity — restore-hdiutil
     - L1 # Continuity — restore-hdiutil
 - `.system/injections.md` — 1 KB, 8 lines — Injections — restore-hdiutil

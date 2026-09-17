@@ -1,5 +1,5 @@
 # INDEX — topics/object-important
-_10 files · 8 KB · regenerate: `python3 assets/build-index.py`_
+_9 files · 8 KB · regenerate: `python3 assets/build-index.py`_
 
 Read order for an agent: this file → pick a file below → its outline → `read_file offset=<line> limit=<n>`. Sessions under `.system/sessions/` are full transcripts (largest; go by outline).
 
@@ -10,8 +10,7 @@ Read order for an agent: this file → pick a file below → its outline → `re
     - L11 ## Status
 
 ## .system
-- `.system/agent.cursor` — 1 KB, 17 lines — raw/inbox/2026-09-07.md@1c7f30bbf423
-- `.system/agent.lock` — 0 KB, 1 lines — 54033
+- `.system/agent.cursor` — 1 KB, 18 lines — raw/inbox/2026-09-07.md@1c7f30bbf423
 - `.system/continuity.md` — 0 KB, 6 lines — Continuity — object-important
     - L1 # Continuity — object-important
 - `.system/injections.md` — 1 KB, 9 lines — Injections — object-important

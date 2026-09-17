@@ -1019,3 +1019,7 @@ Chris: "rip the bandaid off… everything live, get everything hooked up." Built
 2026-09-16 21:52: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
 2026-09-16 22:00: topic-agent hermes-agent · 1 raw → 1 pages (index 26) · bot:hotkeys-command, bot:hotkeys-command, brief+1
 2026-09-16 22:22: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 22:41: topic-agent object-important · 1 raw → 0 pages (index 14) · brief+1
+2026-09-16 22:48: topic-agent restore-hdiutil · 1 raw → 1 pages (index 7) · no suggestions
+2026-09-16 22:52: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 23:22: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed

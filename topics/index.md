@@ -3,6 +3,10 @@ title: Turbofit Wiki
 created: 2026-09-16
 updated: 2026-09-16
 type: wiki
+links:
+  github: https://github.com/SouthpawIN/turbofit
+  huggingface_turbofit: https://huggingface.co/SouthpawIN
+  omarchy: https://github.com/SouthpawIN/omarchy
 sources:
   - index.md
   - BRIEF.md
@@ -13,8 +17,6 @@ sources:
   - wiki/decisions/
   - wiki/comparisons/
   - wiki/queries/
----
-
 ---
 
 ## Overview
@@ -32,57 +34,29 @@ model: auto
 
 **TurboFit Check** scans the machine — dedicated VRAM, unified/integrated memory, or RAM-only — and applies Auto or a selected compatible lane.
 
-## Integrations
-
-### Repositories
-
-| Repo | Link | Status | Stars |
-| --- | --- | --- | --- |
-| turbofit | [github.com/SouthpawIN/turbofit](https://github.com/SouthpawIN/turbofit) | ACTIVE | 83 |
-| turbohaul-llmfit | [github.com/SouthpawIN/turbohaul-llmfit](https://github.com/SouthpawIN/turbohaul-llmfit) | DORMANT | 2 |
-| turbohaul-manager | [github.com/SouthpawIN/turbohaul-manager](https://github.com/SouthpawIN/turbohaul-manager) | DORMANT | 1 |
-| southpaw-turbohaul | [github.com/SouthpawIN/southpaw-turbohaul](https://github.com/SouthpawIN/southpaw-turbohaul) | DORMANT | 7 |
-| sirvir | [github.com/SouthpawIN/sirvir](https://github.com/SouthpawIN/sirvir) | ACTIVE | 27 |
-
-### HuggingFace Models
-
-| Model | Repository |
-| --- | --- |
-| Maple Preview | [deepgrove/maple-preview](https://huggingface.co/deepgrove/maple-preview) |
-| Cyber Tiel Coder | [peculiar-ragdoll/...](https://huggingface.co/peculiar-ragdoll/Cyber-Tiel-Coder-35B-A3B-GGUF-MTP) |
-| Qwen 3.8 GSQ-RCO | [ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF](https://huggingface.co/ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF) |
-| Qwen 3.8 Flash Next | [ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-GGUF](https://huggingface.co/ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-GGUF) |
-| DeepSeek V4.1 Flash | [vcruz305/DeepSeek-V4.1-Flash-GGUF](https://huggingface.co/vcruz305/DeepSeek-V4.1-Flash-GGUF) |
-
----
-
-
-
----
-
 ## Model Zoo
 
 > All models discovered during research. ★ = on TurboFit List.
 
-| Model | Type | System | Parameters | AIME26 | GPQA-D | DeepSWE | LCBv6 | TB4.0 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [[Maple Preview]] ★ | Aux LLM (Ternary MoE) | Omarchy | 20B-A1B | 87.5% | 73.5% | - | 75.1% | - |
-| [[Cyber Tiel Coder]] ★ | Code LLM (MoE) | Omarchy, MacBook | 35B-A3B | - | - | - | - | - |
-| [[Qwen 3.8 GSQ-RCO]] ★ | LLM (Quantized) | Omarchy | 27B | - | 89.2% | 42.2% | 90.3% | - |
-| [[Qwen 3.8 Flash Next]] ★ | MoE (Qwen4 Preview) | Omarchy | 180B / 6B | - | 91.7% | 58.7% | 91.9% | - |
-| [[DeepSeek V4.1 Flash]] ★ | MoE | Omarchy | 763B / 16B | - | 90.9% | 74.2% | - | 31.2% |
-| [[Ace Step 1.5]] | Music Generation | Omarchy | 4B | - | - | - | - | - |
-| [[Bonsai 27B]] | LLM (Ternary) | Omarchy | 27B | - | - | - | - | - |
-| [[Cosmos 37B]] | LLM | Omarchy | 37B | - | - | - | - | - |
-| [[Cyber Tiel Coder MTP]] | Code LLM (MTP) | Omarchy | 35B-A3B | - | - | - | - | - |
-| [[DAXZEIT GRM]] | Reasoning LLM (MTP) | Omarchy | 27B | - | - | - | - | - |
-| [[NVIDIA Nemotron 3.5]] | Enterprise LLM (MoE) | Omarchy | 30B-A3B | - | - | - | - | - |
-| [[Qwen 3.8 Unleashed]] | General LLM | Omarchy, MacBook | 27B | - | - | - | - | - |
-| [[Super Qwen]] | Uncensored LLM | Omarchy | 27B | - | - | - | - | - |
-| [[Qwen 2.5 Omni]] | Multimodal VLM | Omarchy | 3B | - | - | - | - | - |
-| [[Soprano]] | Creative Micro | Omarchy | 80M | - | - | - | - | - |
-| [[Qwen 3.8 Base]] | Base LLM | Omarchy, MacBook | 27B | - | - | - | - | - |
-| [[Ornith 1.5]] | Code LLM (Legacy) | MacBook | 35B-A3B | - | - | - | - | - |
+| Model | Type | System | Parameters | AIME26 | GPQA-D | DeepSWE | LCBv6 | TB4.0 | HuggingFace |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [[Maple Preview]] ★ | Aux LLM (Ternary MoE) | Omarchy | 20B-A1B | 87.5% | 73.5% | - | 75.1% | - | [maple-preview](https://huggingface.co/deepgrove/maple-preview) |
+| [[Cyber Tiel Coder]] ★ | Code LLM (MoE) | Omarchy, MacBook | 35B-A3B | - | - | - | - | - | [Cyber-Tiel-Coder-GGUF](https://huggingface.co/peculiar-ragdoll/Cyber-Tiel-Coder-35B-A3B-GGUF-MTP) |
+| [[Qwen 3.8 GSQ-RCO]] ★ | LLM (Quantized) | Omarchy | 27B | - | 89.2% | 42.2% | 90.3% | - | [GSQ-RCO-GGUF](https://huggingface.co/ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF) |
+| [[Qwen 3.8 Flash Next]] ★ | MoE (Qwen4 Preview) | Omarchy | 180B / 6B | - | 91.7% | 58.7% | 91.9% | - | [Flash-Next-GSQ-RCO](https://huggingface.co/ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-GGUF) |
+| [[DeepSeek V4.1 Flash]] ★ | MoE | Omarchy | 763B / 16B | - | 90.9% | 74.2% | - | 31.2% | [V4.1-Flash-GGUF](https://huggingface.co/vcruz305/DeepSeek-V4.1-Flash-GGUF) |
+| [[Ace Step 1.5]] | Music Generation | Omarchy | 4B | - | - | - | - | - | [ACE-Step-1.5-GGUF](https://huggingface.co/ACE-Step/ACE-Step-1.5-GGUF) |
+| [[Bonsai 27B]] | LLM (Ternary) | Omarchy | 27B | - | - | - | - | - | [Bonsai-27B-gguf](https://huggingface.co/prism-ml/Bonsai-27B-gguf) |
+| [[Cosmos 37B]] | LLM | Omarchy | 37B | - | - | - | - | - | [Cosmos-37b-BASE-i1-GGUF](https://huggingface.co/mradermacher/Cosmos-37b-BASE-i1-GGUF) |
+| [[Cyber Tiel Coder MTP]] | Code LLM (MTP) | Omarchy | 35B-A3B | - | - | - | - | - | [Cyber-Tiel-MTP](https://huggingface.co/peculiar-ragdoll/Cyber-Tiel-Coder-35B-A3B-GGUF-MTP) |
+| [[DAXZEIT GRM]] | Reasoning LLM (MTP) | Omarchy | 27B | - | - | - | - | - | [DAXZEIT-GRM-2.6-Plus-MTP](https://huggingface.co/mradermacher/DAXZEIT_GRM-2.6-Plus-0628-MTP-reasoning-i1-GGUF) |
+| [[NVIDIA Nemotron 3.5]] | Enterprise LLM (MoE) | Omarchy | 30B-A3B | - | - | - | - | - | [NVIDIA-Nemotron-3.5-Lightning-30B-A3B](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-GGUF) |
+| [[Qwen 3.8 Unleashed]] | General LLM | Omarchy, MacBook | 27B | - | - | - | - | - | [Qwen3.8-Unleashed-GGUF](https://huggingface.co/outsourc-e/Qwen3.8-27B-Unleashed-GGUF) |
+| [[Super Qwen]] | Uncensored LLM | Omarchy | 27B | - | - | - | - | - | [SuperQwen3.8-27b-abliterated](https://huggingface.co/Jiunsong/SuperQwen3.8-27b-abliterated-GGUF) |
+| [[Qwen 2.5 Omni]] | Multimodal VLM | Omarchy | 3B | - | - | - | - | - | [Qwen2.5-Omni-3B](https://huggingface.co/unsloth/Qwen2.5-Omni-3B-GGUF) |
+| [[Soprano]] | Creative Micro | Omarchy | 80M | - | - | - | - | - | [Soprano-1.1-80M](https://huggingface.co/WalkingCat/Soprano-1.1-80M-GGUF) |
+| [[Qwen 3.8 Base]] | Base LLM | Omarchy, MacBook | 27B | - | - | - | - | - | [Qwen3.8-27B](https://huggingface.co/Qwen/Qwen3.8-27B) |
+| [[Ornith 1.5]] | Code LLM (Legacy) | MacBook | 35B-A3B | - | - | - | - | - | [Ornith-1.5-35B-A3B](https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B) |
 
 > **Note:** GSQ-RCO IQ3_S scores shown (AIME25 100%, GPQA-D 89.2%, DeepSWE 42.2%, LCBv6 90.3%). Maple LCBv6 score is from LiveCodeBench v6.
 
@@ -92,13 +66,13 @@ model: auto
 
 > 5 models suitable for running Hermes Agent locally. Ordered by capability.
 
-| Order | Model | Type | Parameters | Optimal Quant | Size | AIME26 | GPQA-D | DeepSWE | LCBv6 | TB4.0 |
+| Model | Tok/s | Parameters | Optimal Quant | Size | AIME26 | GPQA-D | DeepSWE | LCBv6 | TB4.0 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | **Maple Preview** | Ternary MoE | 20B-A1B | TQ2_0-head-Q4_K | 5.5 GiB | 87.5% | 73.5% | - | 75.1% | - |
-| 2 | **Cyber Tiel Coder** | Code LLM (MoE) | 35B-A3B | UD-Q4_K_XL | 22.4 GiB | - | - | - | - | - |
-| 3 | **Qwen 3.8 GSQ-RCO** | LLM (Quantized) | 27B | IQ3_S | 11.8 GiB | - | 89.2% | 42.2% | 90.3% | - |
-| 4 | **Qwen 3.8 Flash Next** | MoE (Qwen4 Preview) | 180B / 6B | IQ3_XXS | 47 GiB | - | 91.7% | 58.7% | 91.9% | - |
-| 5 | **DeepSeek V4.1 Flash** | MoE | 763B / 16B | FP8 / UD-Q4_K_XL | 160 / ~40 GiB | - | 90.9% | 74.2% | - | 31.2% |
+| **Maple Preview** | 218 tok/s (MTPLX M4) | 20B-A1B | TQ2_0-head-Q4_K | 5.5 GiB | 87.5% | 73.5% | - | 75.1% | - |
+| **Cyber Tiel Coder** | 23 tok/s (MacBook 65K) | 35B-A3B | UD-Q4_K_XL | 22.4 GiB | - | - | - | - | - |
+| **Qwen 3.8 GSQ-RCO** | 85 tok/s (Omarchy GPU) | 27B | IQ3_S | 11.8 GiB | - | 89.2% | 42.2% | 90.3% | - |
+| **Qwen 3.8 Flash Next** | 70-85 tok/s (Omarchy GPU) | 180B / 6B | IQ3_XXS | 47 GiB | - | 91.7% | 58.7% | 91.9% | - |
+| **DeepSeek V4.1 Flash** | TBD | 763B / 16B | FP8 / UD-Q4_K_XL | 160 / ~40 GiB | - | 90.9% | 74.2% | - | 31.2% |
 
 > **Note:** GSQ-RCO IQ3_S benchmark scores (AIME25 100%, GPQA-D 89.2%, DeepSWE 42.2%, LCBv6 90.3%) are from the model card. Maple LCBv6 score is from LiveCodeBench v6.
 
@@ -112,49 +86,48 @@ Comfortable: model_size + 2GB ≤ tier_size
 
 ### GPU (NVIDIA/AMD VRAM — ≤16GB assumes system RAM available for MoE offload and KV cache)
 
-| Tier | Model | Quant | Size | VRAM Used | Context | Engine | Flags | Notes |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| <8 GB | Maple | TQ2_0 | 5.5 GiB | ~6 GiB | 131K native, 262K w/ RoPE | llama.cpp | `--ctx-size 262144 --n-gpu-layers 999 --mlock` | SSD streaming via ssdmoe. System RAM for KV cache. |
-| 16 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~12 GiB | 131K-262K | llama.cpp | `--ctx-size 262144 --n-gpu-layers 999 --mlock` | Near-lossless. Cyber-Tiel Q3_K_M also fits (~14 GiB). |
-| 24 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~12 GiB | 262K | llama.cpp | `--ctx-size 262144 --n-gpu-layers 999 --mlock` | Same near-lossless model, more KV headroom |
-| 32 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~12 GiB | 262K+ | llama.cpp | `--ctx-size 262144 --n-gpu-layers 999 --mlock` | Same. Bigger KV cache. Consider Cyber-Tiel for code |
-| 48 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~12 GiB | 262K+ | llama.cpp | `--ctx-size 262144 --n-gpu-layers 999 --mlock` | Still IQ3_S. More context headroom |
-| 64 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~16 GiB | 262K+ | llama.cpp | `--ctx-size 262144 --n-gpu-layers 999 --mlock` | Near-lossless. 52GB free for KV cache, DFlash2 draft. |
-| 96 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 262K native, 1M w/ YaRN | llama.cpp | `--ctx-size 1048576 --n-gpu-layers 999 --mlock` | Qwen4 preview, beats Claude Opus 4.6 |
-| 128 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 1M | llama.cpp | `--ctx-size 1048576 --n-gpu-layers 999 --mlock` | Max context for Flash Next |
-| 256 GB | DeepSeek V4.1 Flash | FP8 | 160 GiB | ~162 GiB | 1M | llama.cpp | `--ctx-size 1048576 --n-gpu-layers 999 --mlock` | Top capability. SSD streaming for Engram |
+| Tier | Model | Quant | Size | VRAM Used | Context | Engine | Flags | Tok/s | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| <8 GB | Maple | TQ2_0 | 5.5 GiB | ~6 GiB | 131K native, 262K w/ RoPE | llama.cpp | `--ctx-size 262144 --n-gpu-layers 999 --mlock` | ~10 tok/s (est.) | SSD streaming via ssdmoe. System RAM for KV cache. |
+| 16 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~12 GiB | 131K-262K | llama.cpp | `--ctx-size 262144 --n-gpu-layers 999 --mlock` | ~85 tok/s (Omarchy) | Near-lossless. Cyber-Tiel Q3_K_M also fits (~14 GiB). |
+| 24 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~12 GiB | 262K | llama.cpp | `--ctx-size 262144 --n-gpu-layers 999 --mlock` | ~85 tok/s (Omarchy) | Same near-lossless model, more KV headroom |
+| 32 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~12 GiB | 262K+ | llama.cpp | `--ctx-size 262144 --n-gpu-layers 999 --mlock` | ~85 tok/s (Omarchy) | Same. Bigger KV cache. Consider Cyber-Tiel for code |
+| 48 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~12 GiB | 262K+ | llama.cpp | `--ctx-size 262144 --n-gpu-layers 999 --mlock` | ~85 tok/s (Omarchy) | Still IQ3_S. More context headroom |
+| 64 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~16 GiB | 262K+ | llama.cpp | `--ctx-size 262144 --n-gpu-layers 999 --mlock` | ~85 tok/s (Omarchy) | Near-lossless. 52GB free for KV cache, DFlash2 draft. |
+| 96 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 262K native, 1M w/ YaRN | llama.cpp | `--ctx-size 1048576 --n-gpu-layers 999 --mlock` | ~70-85 tok/s (Omarchy) | Qwen4 preview, beats Claude Opus 4.6 |
+| 128 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 1M | llama.cpp | `--ctx-size 1048576 --n-gpu-layers 999 --mlock` | ~70-85 tok/s (Omarchy) | Max context for Flash Next |
+| 256 GB | DeepSeek V4.1 Flash | FP8 | 160 GiB | ~162 GiB | 1M | llama.cpp | `--ctx-size 1048576 --n-gpu-layers 999 --mlock` | TBD | Top capability. SSD streaming for Engram |
 
 > IQ3_S = near-lossless. Recommended for all tiers where it fits. Only move to FP16 at 64GB+.
 > Flash Next QSA gives ~4.9x decode speedup vs dense attention at 262K. IQ3_XXS is the sweet spot for 96GB+.
 
 ### CPU (System RAM — model + KV must fit in RAM)
 
-| Tier | Model | Quant | Size | RAM Used | Context | Engine | Flags | Notes |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| <8 GB | Maple | TQ2_0 | 5.5 GiB | ~6 GiB | 131K native | llama.cpp | `--ctx-size 131072 --no-mmap --mlock` | Minimum viable |
-| 16 GB | Cyber-Tiel Coder | Q3_K_M | ~14 GiB | ~16 GiB | 262K native | llama.cpp | `--ctx-size 262144 --no-mmap --mlock` | MoE, 3B active. Faster than GSQ-RCO on CPU. |
-| 32 GB | Cyber-Tiel Coder | UD-Q4_K_XL | 22.4 GiB | ~23 GiB | 262K native | llama.cpp | `--ctx-size 262144 --no-mmap --mlock` | MoE, 3B active, fast on CPU |
-| 48 GB | Cyber-Tiel Coder | UD-Q4_K_XL | 22.4 GiB | ~23 GiB | 262K+ | llama.cpp | `--ctx-size 262144 --no-mmap --mlock` | More KV headroom |
-| 64 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~16 GiB | 262K+ | llama.cpp | `--ctx-size 262144 --no-mmap --mlock` | Near-lossless. Low power, high context headroom. |
-| 96 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 262K native | llama.cpp | `--ctx-size 1048576 --no-mmap --mlock` | Flash Next entry tier |
-| 128 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 1M w/ YaRN | llama.cpp | `--ctx-size 1048576 --no-mmap --mlock` | Max context |
-| 256 GB | DeepSeek V4.1 Flash | FP8 | 160 GiB | ~162 GiB | 1M | llama.cpp | `--ctx-size 1048576 --no-mmap --mlock` | Max tier |
+| Tier | Model | Quant | Size | RAM Used | Context | Engine | Flags | Tok/s | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| <8 GB | Maple | TQ2_0 | 5.5 GiB | ~6 GiB | 131K native | llama.cpp | `--ctx-size 131072 --no-mmap --mlock` | ~8 tok/s (est.) | Minimum viable |
+| 16 GB | Cyber-Tiel Coder | Q3_K_M | ~14 GiB | ~16 GiB | 262K native | llama.cpp | `--ctx-size 262144 --no-mmap --mlock` | ~23 tok/s (MacBook) | MoE, 3B active. Faster than GSQ-RCO on CPU. |
+| 32 GB | Cyber-Tiel Coder | UD-Q4_K_XL | 22.4 GiB | ~23 GiB | 262K native | llama.cpp | `--ctx-size 262144 --no-mmap --mlock` | ~23 tok/s (MacBook) | MoE, 3B active, fast on CPU |
+| 48 GB | Cyber-Tiel Coder | UD-Q4_K_XL | 22.4 GiB | ~23 GiB | 262K+ | llama.cpp | `--ctx-size 262144 --no-mmap --mlock` | ~23 tok/s | More KV headroom |
+| 64 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~16 GiB | 262K+ | llama.cpp | `--ctx-size 262144 --no-mmap --mlock` | ~12 tok/s (65K ctx) | Near-lossless. Low power, high context headroom. |
+| 96 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 262K native | llama.cpp | `--ctx-size 1048576 --no-mmap --mlock` | TBD | Flash Next entry tier |
+| 128 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 1M w/ YaRN | llama.cpp | `--ctx-size 1048576 --no-mmap --mlock` | TBD | Max context |
+| 256 GB | DeepSeek V4.1 Flash | FP8 | 160 GiB | ~162 GiB | 1M | llama.cpp | `--ctx-size 1048576 --no-mmap --mlock` | TBD | Max tier |
 
 ### Unified Memory (Apple Silicon — shared CPU/GPU RAM)
 
-| Tier | Model | Quant | Size | RAM Used | Context | Engine | Flags | Notes |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| <8 GB | Maple | TQ2_0 | 5.5 GiB | ~6 GiB | 131K native | MTPLX | `--context-length 131072` | 218 tok/s on M4 Mac mini |
-| 16 GB | Cyber-Tiel Coder | Q3_K_M | ~14 GiB | ~16 GiB | 262K native | MTPLX | `--context-length 262144` | MoE, 3B active. Faster than GSQ-RCO on Apple Silicon. |
-| 32 GB | Cyber-Tiel Coder | UD-Q4_K_XL | 22.4 GiB | ~23 GiB | 262K native | MTPLX | `--context-length 262144` | 22+4=26GB ✓, fast MoE on Apple Silicon |
-| 48 GB | Cyber-Tiel Coder | UD-Q4_K_XL | 22.4 GiB | ~23 GiB | 262K+ | MTPLX | `--context-length 262144` | M2 Max/Ultra territory |
-| 64 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~16 GiB | 262K+ | MTPLX | `--context-length 262144` | Near-lossless. Low power, high context headroom. |
-| 96 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 262K native | MTPLX | `--context-length 1048576` | M4 Ultra |
-| 128 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 1M w/ YaRN | MTPLX | `--context-length 1048576` | Max Flash Next |
-| 256 GB | DeepSeek V4.1 Flash | FP8 | 160 GiB | ~162 GiB | 1M | llama.cpp | `--ctx-size 1048576` | Max tier |
+| Tier | Model | Quant | Size | RAM Used | Context | Engine | Flags | Tok/s | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| <8 GB | Maple | TQ2_0 | 5.5 GiB | ~6 GiB | 131K native | MTPLX | `--context-length 131072` | 218 tok/s (M4 mini) | 218 tok/s on M4 Mac mini |
+| 16 GB | Cyber-Tiel Coder | Q3_K_M | ~14 GiB | ~16 GiB | 262K native | MTPLX | `--context-length 262144` | ~23 tok/s (MacBook) | MoE, 3B active. Faster than GSQ-RCO on Apple Silicon. |
+| 32 GB | Cyber-Tiel Coder | UD-Q4_K_XL | 22.4 GiB | ~23 GiB | 262K native | MTPLX | `--context-length 262144` | ~23 tok/s (MacBook) | 22+4=26GB ✓, fast MoE on Apple Silicon |
+| 48 GB | Cyber-Tiel Coder | UD-Q4_K_XL | 22.4 GiB | ~23 GiB | 262K+ | MTPLX | `--context-length 262144` | ~23 tok/s | M2 Max/Ultra territory |
+| 64 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~16 GiB | 262K+ | MTPLX | `--context-length 262144` | ~8-12 tok/s (65K) | Near-lossless. Low power, high context headroom. |
+| 96 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 262K native | MTPLX | `--context-length 1048576` | TBD | M4 Ultra |
+| 128 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 1M w/ YaRN | MTPLX | `--context-length 1048576` | TBD | Max Flash Next |
+| 256 GB | DeepSeek V4.1 Flash | FP8 | 160 GiB | ~162 GiB | 1M | llama.cpp | `--ctx-size 1048576` | TBD | Max tier |
 
 > ★ = on TurboFit List. Models without ★ are Model Zoo only.
-
 
 ---
 
@@ -169,7 +142,6 @@ Comfortable: model_size + 2GB ≤ tier_size
 ### 131K Deferred Candidates
 
 Source: `wiki/concepts/131k-deferred-candidates.md`
-
 
 #### The Problem
 
@@ -254,7 +226,6 @@ Ornith MLX 4-bit wins because it's MoE (~3B active params) with MLX backend for 
 
 Source: `wiki/concepts/benchmark-taxonomy.md`
 
-
 > Common benchmarks tracked across all models. Each model page records scores where available.
 
 #### Reasoning & Knowledge
@@ -328,7 +299,6 @@ Models without data simply show "—" — this is expected and motivates future 
 
 Source: `wiki/concepts/compression-timeouts.md`
 
-
 #### What happened
 
 Hermes failed with:
@@ -363,7 +333,6 @@ Local main-model compression at very large context sizes is too slow for Hermes�
 ### DFlash2 Compatibility Boundary
 
 Source: `wiki/concepts/dflash2-compat-boundary.md`
-
 
 DFlash2 draft models are not interchangeable across runtimes. On this box the boundary is concrete: MTPLX cannot use DFlash2, and Unleashed+DFlash2 only works through the dedicated `dflash2-llama.cpp` fork with a narrow valid flag set ^[raw/inbox/2026-09-07.md, raw/inbox/2026-09-07-from-music.md].
 
@@ -400,7 +369,6 @@ At least one Unleashed+DFlash2 attempt failed with `couldn't bind HTTP server so
 ### DFlash2 Fork Flag Boundary
 
 Source: `wiki/concepts/dflash2-fork-flag-boundary.md`
-
 
 DFlash2 draft models are not interchangeable across runtimes. On this box the boundary is concrete: MTPLX cannot use DFlash2, and Unleashed+DFlash2 only works through the dedicated `dflash2-llama.cpp` fork with a narrow valid flag set.
 
@@ -468,7 +436,6 @@ After a DFlash warning: `dflash requires ctx_other to be set`. That artifact is 
 ### DFlash2 MTPLX Incompatibility
 
 Source: `wiki/concepts/dflash2-mplx-incompatibility.md`
-
 
 #### The Incompatibility
 
@@ -544,7 +511,6 @@ The incompatibility explains why:
 
 Source: `wiki/concepts/hermes-auto-route-stability.md`
 
-
 #### The Problem
 
 From `raw/inbox/2026-09-08-from-senter-wiki.md`:
@@ -586,7 +552,6 @@ This stability issue may be resolved by the [[topics/turbofit/wiki/decisions/fal
 
 Source: `wiki/concepts/hermes-model-switching-noise.md`
 
-
 The active Hermes model switched multiple times during TurboFit work without Chris initiating the changes . The switch chain was:
 
 1. `meituan/longcat-2.0:free` (Nous free tier)
@@ -617,7 +582,6 @@ Unrequested model changes can invalidate benchmark context, tool routing, and se
 ### Model Switching Pain
 
 Source: `wiki/concepts/model-switching-pain.md`
-
 
 The active Hermes model switched multiple times during TurboFit work without Chris initiating the changes.
 
@@ -663,7 +627,6 @@ Contributing causes identified in [[topics/turbofit/wiki/concepts/compression-ti
 
 Source: `wiki/concepts/mtplx-32gb-memory-and-evidence-reliability.md`
 
-
 Captures two distinct reliability concerns for MTPLX on this box: 131K memory overcommit, and postcommit artifacts that can't be treated as finished TurboFit evidence without a real Hermes window capture .
 
 #### Memory overcommit
@@ -693,7 +656,6 @@ Postcommit records show `cross_session_foreground_preempted` and `foreground_pre
 ### MPTX Context Overcommit
 
 Source: `wiki/concepts/mtplx-context-overcommit.md`
-
 
 On the 32 GB Mac, `mtplx serve` with `--context-window 131072` loads the model in 6-9s and installs the native MTP draft head, but the printed memory plan marks `OVERCOMMITTED` and warns that the requested context exceeds the machine fit.
 
@@ -738,7 +700,6 @@ Total needed:
 
 Source: `wiki/concepts/mtplx-foreground-preemption.md`
 
-
 When MTPLX handles long-running Hermes foreground work, postcommit records show `cross_session_foreground_preempted` and `foreground_preempted_postcommit`, and idle async sessions can end with `stored: false` because of `unsafe_reason: retokenized_history_mismatch` .
 
 #### Evidence
@@ -761,7 +722,6 @@ When MTPLX handles long-running Hermes foreground work, postcommit records show 
 
 Source: `wiki/concepts/turbofit-session-mismatch.md`
 
-
 MTLPX generation events show foreground/preemption behavior and session-store mismatch that make some TurboFit captures unreliable as finished-state evidence .
 
 #### Signals
@@ -780,7 +740,6 @@ MTLPX generation events show foreground/preemption behavior and session-store mi
 
 - [[topics/turbofit/wiki/entities/turbofit-verifier-bridge.md|TurboFit Verifier Bridge]]
 - [[topics/turbofit/wiki/concepts/model-switching-pain.md|Model Switching Pain]]
-
 
 #### Research Request
 
@@ -1123,7 +1082,6 @@ requested context 131072 exceeds the machine fit 8192: KV at the full window nee
 
 Source: `wiki/decisions/aux-model-selection.md`
 
-
 #### What
 
 Auxiliary and compression routing is Maple MLX on `127.0.0.1:11612`, 131k context, served with `deepgrove-ai/mlx-lm-deepgrove` .
@@ -1155,7 +1113,6 @@ Multiple Hermes turns declared Maple MLX unstable or impossible before the deepg
 
 Source: `wiki/decisions/candidate-quant-preference.md`
 
-
 **Decision/Preference:** When comparing GGUF vs MLX for new local candidates, prefer the Q3 quant when model pages describe it as near base-model quality.
 
 #### Rationale
@@ -1185,7 +1142,6 @@ A reusable quant-selection rule for candidate research: if page notes say "near 
 
 Source: `wiki/decisions/context-sizing.md`
 
-
 #### What
 
 Local TurboFit contexts are set to 131,072 tokens for both main and aux .
@@ -1213,7 +1169,6 @@ Set 2026-09-06 after multiple compression timeout errors during end-to-end testi
 ### Context Window Decision
 
 Source: `wiki/decisions/context-window-decision.md`
-
 
 **Decision**: Lock in 65K context as the stable daily driver on M1 MacBook 32GB, with 131K reserved for rare long-context needs where speed is not critical.
 
@@ -1265,7 +1220,6 @@ M1 MacBook 32GB unified memory:
 
 Source: `wiki/decisions/fallback-model-order.md`
 
-
 #### What
 
 The active model preference order should preserve explicit user choice and avoid silently switching to `stepfun/step-3.7-flash:free` .
@@ -1291,7 +1245,6 @@ Diagnosed 2026-09-06 02:20–02:25 UTC; config correction attempted in-session b
 ### TurboFit Local Main Provider Decision
 
 Source: `wiki/decisions/local-main-provider.md`
-
 
 What Chris wanted: the smartest feasible local runtime as Hermes main, with verified evidence, not just Hermes internal logs.
 
@@ -1327,7 +1280,6 @@ Final TurboFit evidence requires a real Hermes window capture plus the primary v
 ### Main Model Selection
 
 Source: `wiki/decisions/main-model-selection.md`
-
 
 #### What
 
@@ -1371,7 +1323,6 @@ Multiple provider switches occurred during the session:
 ### MT_PlX Main Provider
 
 Source: `wiki/decisions/mtplx-main-provider.md`
-
 
 Make `Youssofal/Qwen3.8-27B-MTPLX-Optimized-Speed` via `mtplx serve` the main TurboFit provider and remove Maple/Unleashed as co-resident models to reclaim disk space.
 
@@ -1462,7 +1413,6 @@ Ornith was selected as the main provider because:
 - Compile, download, or estimated fit is NOT a winner
 - Evidence must come from actual benchmark runs on the target hardware
 - Hermes window capture required for contested results (not just internal logs)
-
 
 ---
 

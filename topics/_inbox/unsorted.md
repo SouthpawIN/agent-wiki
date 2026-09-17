@@ -1244,3 +1244,15 @@ The extraction approach keeps dropping table rows. Let me do targeted patches in
 All 39 tables fixed with proper `| --- |` separators. Wiki committed at `c2c733c`.
 
 **Wiki structure:**
+
+## 2026-09-16 23:15 · hermes · 20260914_200308_f9b029 · best faster-without 0.06
+Wiki checkpoint committed at `48bbbf0`.
+
+## 2026-09-16 23:17 · chris · 20260914_200308_f9b029 · best want-version 0.03
+So this will be like leaderboards for each one.
+
+## 2026-09-16 23:15 · hermes · 20260914_200308_f9b029 · best faster-without 0.06
+Wiki checkpoint committed at `48bbbf0`.
+
+## 2026-09-16 23:17 · chris · 20260914_200308_f9b029 · best want-version 0.03
+So this will be like leaderboards for each one.

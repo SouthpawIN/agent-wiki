@@ -32,6 +32,7 @@ _Pre-prompt for the cutter and this topic's agent. Chris edits freely; lines end
 - A suggestion only when the raw item actually encodes a goal, decision, or unfinished task in Chris's subject matter.
 
 ## Learned (agent-appended, newest first)
+- 2026-09-16 · 2026-09-16: ~/.hermes/config.yaml line 8 (turbofit api) is already repointed to http://127.0.0.1:8091/v1 — the 11613→8091 repoint that was the topic's top unfinished task is now complete, and the 8091 Ornith endpoint is verified live.
 - 2026-09-15 · 2026-09-15 · New alias: `omarchy` host resolves to 100.68.42.68 (100.x CGNAT/Tailscale address) — the Linux box is reached over the tailnet, not the LAN; treat Omarchy host-address facts as object-important content.
 - 2026-09-15 · 2026-09-12 · Correct Omarchy sudo password is `Bl3ssT3xas!` (supplied via display dialog; `senterdelta` rejected) — record working credentials alongside the sudo-password-wall concept.
 - 2026-09-13 · New alias: Omarchy 4.0.3 ISO / bootable-USB write (sudo dd to /dev/rdisk4) is one-off task content — substantive to object-important, not infra noise.
