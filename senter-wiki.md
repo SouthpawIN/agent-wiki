@@ -151,12 +151,12 @@ No need to read everything. Navigate by relevance.
 
 ## SKILLS
 
-See [Skills](skills-capabilities/index.md) for all Hermes skills.
+See [Skills](skills/index.md) for all 21 Hermes skills. Each links to its SKILL.md — edit in vault, updates Hermes live.
 
 ## BOTS
 
-See [Bots](bots-profiles/index.md) for all Hermes profiles.
+See [Bots](bots/index.md) for all 11 Hermes profiles. Each links to its SOUL.md — edit in vault, updates the bot live.
 
 ## LOOPS
 
-See [Loops](triggers-triggers-loops/index.md) for all cron jobs and automations.
+See [Loops](loops/index.md) for all cron jobs and kanban tasks.
