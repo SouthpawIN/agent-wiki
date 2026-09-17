@@ -82,13 +82,13 @@ model: auto
 
 > 5 models suitable for running Hermes Agent locally. Ordered by capability.
 
-| Order | Model | Type | Parameters | Optimal Quant | Size | AIME26 | GPQA-D | DeepSWE | LCBv6 | TB4.0 |
+| Order | Model | Parameters | Optimal Quant | Size | AIME26 | GPQA-D | DeepSWE | LCBv6 | TB4.0 | Tok/s |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | **Maple Preview** | Ternary MoE | 20B-A1B | TQ2_0-head-Q4_K | 5.5 GiB | 87.5% | 73.5% | - | 75.1% | - |
-| 2 | **Cyber Tiel Coder** | Code LLM (MoE) | 35B-A3B | UD-Q4_K_XL | 22.4 GiB | - | - | - | - | - |
-| 3 | **Qwen 3.8 GSQ-RCO** | LLM (Quantized) | 27B | IQ3_S | 11.8 GiB | - | 89.2% | 42.2% | 90.3% | - |
-| 4 | **Qwen 3.8 Flash Next** | MoE (Qwen4 Preview) | 180B / 6B | IQ3_XXS | 47 GiB | - | 91.7% | 58.7% | 91.9% | - |
-| 5 | **DeepSeek V4.1 Flash** | MoE | 763B / 16B | FP8 / UD-Q4_K_XL | 160 / ~40 GiB | - | 90.9% | 74.2% | - | 31.2% |
+| 1 | **Maple Preview** | 20B-A1B | TQ2_0-head-Q4_K | 5.5 GiB | 87.5% | 73.5% | - | 75.1% | - | 218 tok/s (MTPLX M4) |
+| 2 | **Cyber Tiel Coder** | 35B-A3B | UD-Q4_K_XL | 22.4 GiB | - | - | - | - | - | 23 tok/s (MacBook 65K) |
+| 3 | **Qwen 3.8 GSQ-RCO** | 27B | IQ3_S | 11.8 GiB | - | 89.2% | 42.2% | 90.3% | - | 85 tok/s (Omarchy GPU) |
+| 4 | **Qwen 3.8 Flash Next** | 180B / 6B | IQ3_XXS | 47 GiB | - | 91.7% | 58.7% | 91.9% | - | 70-85 tok/s (Omarchy GPU) |
+| 5 | **DeepSeek V4.1 Flash** | 763B / 16B | FP8 / UD-Q4_K_XL | 160 / ~40 GiB | - | 90.9% | 74.2% | - | 31.2% | TBD |
 
 > **Note:** GSQ-RCO IQ3_S benchmark scores (AIME25 100%, GPQA-D 89.2%, DeepSWE 42.2%, LCBv6 90.3%) are from the model card. Maple LCBv6 score is from LiveCodeBench v6.
 
