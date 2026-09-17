@@ -255,6 +255,60 @@ MTPLX is an alternative runtime for M1 Macs. Use 65K context for stable operatio
 
 ---
 
+## SKILLS
+
+Topic skills in `topics/turbofit/skills/`:
+
+| Skill | Use |
+| --- | --- |
+| `candidate-quant-comparison` | Compare GGUF vs MLX artifacts, prefer Q3 when near base quality |
+| `dflash2-fork-flag-boundary` | Test DFlash2 speculative decoding, record exact flag set |
+| `maple-mlx-server-runtime` | Run Maple MLX on Apple Silicon for aux/compression |
+| `mtplx-32gb-macos-tuning` | Tune MTPLX on 32GB macOS, validate context window |
+| `turbo-artifact-download-spec` | Download GGUF/MLX candidates with size verification |
+| `turbo-fit-evidence-capture` | Capture performance evidence from Hermes window |
+| `turbo-model-store-cleanup` | Free TurboFit storage, delete wiki-marked obsolete artifacts |
+
+Related Hermes skills (in `~/.hermes/skills/`):
+
+| Skill | Use |
+| --- | --- |
+| `turbofit` | Rules for Turbofit Wiki |
+| `turbofit-runtime-setup` | Set up or fix Turbofit local runtime |
+| `serving-llms-vllm` | vLLM high-throughput LLM serving |
+| `llama-cpp` | llama.cpp local GGUF inference + HF Hub discovery |
+| `huggingface-hub` | HuggingFace CLI: search/download/upload models |
+
+---
+
+## BOTS
+
+### Turbofit Verifier Bridge
+
+`turbofit-verifier` is the topic bot for TurboFit. Drives verification through `desktop_preview` on a real Hermes window instead of summary claims.
+
+**Responsibilities:**
+- Verify benchmark claims against actual Hermes sessions
+- Validate model performance evidence
+- Run DFlash2 integration tests with correct flag sets
+
+**Bot location:** `topics/senter/profiles/` (managed by Klerik)
+
+### Async Research Agents
+
+TurboFit delegates to fleet profiles for specialized work:
+
+| Profile | Role | Use |
+| --- | --- | --- |
+| `looker` | Research | Model discovery, benchmark research, HuggingFace scouting |
+| `teknium` | Inference | llama.cpp builds, quantization, runtime optimization |
+| `paladin` | Testing | Model benchmarking, evidence capture, validation |
+| `turbosovth` | Training | LoRA adapters, custom model fine-tuning |
+
+**Dispatch pattern:** Orchestrator (this wiki) delegates via `delegate_task` to the appropriate specialist profile.
+
+---
+
 ## CONTINUATION
 
 ### Issues & Roadblocks
@@ -300,20 +354,6 @@ Stock llama.cpp flags (`--draft-model`, `--draft-ngl`, `--low-vram`) do not work
 1. **Model + KV Cache ≤ Tier Size** — never recommend a model that doesn't fit
 2. **IQ3_S is the Default** — near-lossless, runs on less power
 3. **Evidence Before Winner** — every claim needs a source
-
-### Skills
-
-#### Hermes Skills for Turbofit
-
-- `turbofit` — Rules for Turbofit Wiki
-- `turbofit-runtime-setup` — Use when setting up or fixing the Turbofit local runtime
-- `turbo-model-store-cleanup` — Use when freeing TurboFit storage
-
-#### Related Hermes Skills
-
-- `serving-llms-vllm` — vLLM: high-throughput LLM serving
-- `llama-cpp` — llama.cpp local GGUF inference + HF Hub model discovery
-- `huggingface-hub` — HuggingFace hf CLI: search/download/upload models, datasets
 
 ### Absorbed Topics
 
