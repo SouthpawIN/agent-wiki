@@ -1,10 +1,10 @@
 ---
 title: Open questions — pocket-shop
 created: 2026-09-05
-updated: 2026-09-06
+updated: 2026-09-13
 type: query
-tags: [question, plan, money]
-sources: [raw/inbox/2026-09-05.md, README.md, raw/inbox/2026-09-06.md, raw/inbox/2026-09-08.md]
+tags: [question, plan, money, ui, infra]
+sources: [raw/inbox/2026-09-05.md, README.md, raw/inbox/2026-09-06.md, raw/inbox/2026-09-08.md, raw/inbox/2026-09-12.md]
 confidence: low
 ---
 

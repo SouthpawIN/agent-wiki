@@ -12,7 +12,7 @@ Read order for an agent: this file → pick a file below → its outline → `re
     - L26 ## Claim protocol
 
 ## .system
-- `.system/agent.cursor` — 0 KB, 13 lines — raw/inbox/2026-09-05-legacy-inbox.md@79437d3a39a4
+- `.system/agent.cursor` — 1 KB, 20 lines — raw/inbox/2026-09-05-legacy-inbox.md@79437d3a39a4
 - `.system/bridge-post.py` — 1 KB, 17 lines — !/usr/bin/env python3
 - `.system/continuity.md` — 1 KB, 14 lines — Continuity — klerik
     - L1 # Continuity — klerik

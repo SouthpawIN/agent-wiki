@@ -1,0 +1,10 @@
+---
+title: Given deleg_e76115bb (1 subagent, owner-exit failure) vs deleg_56809b77 (4), del
+type: query
+proposed: 2026-09-16 21:20
+tags: [question]
+---
+# Given deleg_e76115bb (1 subagent, owner-exit failure) vs deleg_56809b77 (4), deleg_dc36df32 (2), and deleg_7418fbf4 (5) all succeeding, which variable — prompt length, model, role, or fan-out — predicts success, and is batch size ever the factor?
+The batch-size mitigation pattern is now disproven, but the true cause of owner-exit failures is still unknown and gates how reliably Chris can delegate.
+
+_Approve to run the research; the answer lands here._

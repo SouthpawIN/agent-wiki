@@ -2,6 +2,9 @@
 _Spec format. The sidebar reads `[UNREAD]` before responding, weaves the first one in naturally, moves it to `[READ]`._
 
 ## [UNREAD]
+[LOOPS] Want a loop that watches .system-live.json for bot schema drift (skills as list vs int) and posts when stale scan-topics processes may be overwriting good data?
+[LOOPS] Want a loop that auto-pulls remote changes into the vault and restarts scan-topics so updates never 'keep failing' again?
+[AGENTS] I see you need the layout fixed so bots and sessions visibly render in the BOTS section — want a bot that patches renderBots()/'mkTopic() stale data-k keys and watches your Hermes preview pane to confirm the rows populate live?
 [LOOPS] Want a loop that rescans topics/*/skills and proposed bots/loops every tick to feed the librarian view?
 [AGENTS] I see you're talking about a librarian that progressively discovers wiki skills, bots, and loops — want a bot that surfaces them via progressive disclosure in the wiki rows?
 [AGENTS] I see you want wiki topic headings to stay live when README.md changes — want a bot that re-renders the topic body through `mdRender` on open?

@@ -1060,12 +1060,12 @@ function wireHoverCards(t,name){
       hbody.innerHTML=''; const ic=icon.querySelector('.icard'); if(ic){ movedCard={node:ic,home:icon}; hbody.appendChild(ic); } else hbody.innerHTML=none(); return; }
     const d=(await topicData())[key]||{};
     if(active!==icon) return;
-    if(k==='ctx'){ hhead.innerHTML='<span>context</span><span class="n">README</span>'; hbody.innerHTML='<div class="hp">…</div>'; const lines=await topicSummary(key); if(active!==icon) return;
+    if(k==='wiki'){ hhead.innerHTML='<span>wiki</span><span class="n">README</span>'; hbody.innerHTML='<div class="hp">…</div>'; const lines=await topicSummary(key); if(active!==icon) return;
       hbody.innerHTML=lines.length? lines.map((l,i)=>'<div class="hp'+(i===0?' lead':'')+'">'+esc(l)+'</div>').join('') : none(); }
     else if(k==='skills'){ const sk=d.skills||[]; hhead.innerHTML='<span>skills</span><span class="n">'+sk.length+'</span>';
       hbody.innerHTML=sk.length? sk.map(s=>{ const live=((window.LIVE&&LIVE.skills)||[]).find(x=>x.name===s); const dots=live?(live.profiles||[]).map(p=>'<span class="bd" style="background:'+(BOTCOLOR2[p]||'#8a8a8a')+'" title="'+esc(p)+'"></span>').join(''):'';
         return row('<span class="nm">'+esc(s)+'</span>'+(dots?'<span class="sub" style="display:inline-flex;gap:4px;align-items:center">'+dots+'</span>':'')); }).join('') : none(); }
-    else if(k==='agents'){ const bs=d.bots||[]; hhead.innerHTML='<span>bots</span><span class="n">'+bs.length+'</span>';
+    else if(k==='bots'){ const bs=d.bots||[]; hhead.innerHTML='<span>bots</span><span class="n">'+bs.length+'</span>';
       hbody.innerHTML=bs.length? bs.map(b=>row(av(b.name,'sm')+'<span class="nm">'+esc(b.name)+'</span>'+(b.role?'<span class="sub wrap">'+esc(b.role)+'</span>':''))).join('') : none(); }
     else if(k==='loops'){ const ls=d.loops||[]; hhead.innerHTML='<span>loops</span><span class="n">'+ls.length+'</span>';
       hbody.innerHTML=ls.length? ls.map(l=>row('<span class="nm">'+esc(l.name)+'</span>'+(l.cadence?'<span class="sub">'+esc(l.cadence)+'</span>':''))).join('') : none(); }
@@ -1377,7 +1377,7 @@ function esc(s){ return String(s||'').replace(/[&<>"]/g,ch=>({'&':'&amp;','<':'&
 function fmtDiff(n){ if(n==null||Number.isNaN(n)) return ''; const sign=n>0?'+':''; const cls=n>0?'up':n<0?'dn':''; return '<span class="diffbadge '+cls+'">' + sign + n + '</span>'; }
 function mkTopic({name,path,overview,meta,leading,tags,body,orbs,diffbadge,usage}){
   const t=document.createElement('div'); t.className='topic'; t.dataset.path=path; t.dataset.overview=overview; t.dataset.meta=meta||'';
-  const o=orbs||{}; const orbHtml='<span class="orbs">'+['ctx','skills','agents','loops'].map(k=>'<span class="orb" data-k="'+k+'" data-label="'+(k==='ctx'?'context':k==='agents'?'bots':k)+'"><span class="v">'+(o[k]??0)+'</span></span>').join('')+'</span>';
+  const o=orbs||{}; const orbHtml='<span class="orbs">'+['wiki','skills','bots','loops'].map(k=>'<span class="orb" data-k="'+k+'" data-label="'+k+'"><span class="v">'+(o[k]??0)+'</span></span>').join('')+'</span>';
   const diffEl=diffbadge!=null?fmtDiff(diffbadge):''; const usageEl=usage!=null?'<span class="usage">'+usage+'</span>':''; t.innerHTML='<div class="thead">'+(leading||'<span class="chev">●</span>')+'<span class="tname">'+esc(name)+'</span>'+usageEl+diffEl+'<span class="leader"></span>'+orbHtml
     +(tags&&tags.length?'<span class="sdots">'+tags.map(([label,col])=>'<span class="tag" style="color:'+col+'">'+esc(label)+'</span>').join('')+'</span>':'')
     +'</div><div class="tbody"><div class="tbody-inner">'+body+'</div></div>';
@@ -1396,7 +1396,7 @@ function renderSkills(skills){
     if(cat!==lastCat){ lastCat=cat; const h=document.createElement('div'); h.className='crumb'; h.textContent=(cat||'fleet').toUpperCase(); h.style.cssText='margin:26px 0 6px;letter-spacing:.14em'; skillsList.appendChild(h); }
     const t=mkTopic({name:n, path:'skills/'+(cat?cat+'/':'')+n+'/SKILL.md', overview:desc||'(no description in SKILL.md frontmatter)',
       meta:'SKILL · '+(cat||'fleet')+' · carried by bots: '+profs.join(', '),
-      tags:profs.map(p=>[p,BOTCOLOR2[p]||'#8a8a8a']), orbs:{ctx:Math.max(1,Math.round((desc||'').length/4)),skills:1,agents:profs.length,loops:0},
+      tags:profs.map(p=>[p,BOTCOLOR2[p]||'#8a8a8a']), orbs:{wiki:1,skills:1,bots:profs.length,loops:0},
       body:'<div class="sec">DESCRIPTION</div><p>'+esc(desc||'—')+'</p><div class="sec">CARRIED BY</div><p>'+esc(profs.join(' · '))+'</p><div class="sec">SOURCE</div><p>~/.hermes/'+(profs[0]==='default'?'':'profiles/'+profs[0]+'/')+'skills/'+esc((cat?cat+'/':'')+n)+'/SKILL.md — full body loads here when senter opens it.</p>'});
     skillsList.appendChild(t); t.dataset.kind='skill'; t.dataset.cat=cat||''; t.dataset.skill=n; t.dataset.src='~/.hermes/'+(profs[0]==='default'?'':'profiles/'+profs[0]+'/')+'skills/'+(cat?cat+'/':'')+n+'/SKILL.md'; initTopic(t);
   });
@@ -1411,7 +1411,7 @@ function renderBots(bots){
       : '<span class="avatar sm mono" style="font-size:.6em">'+esc((name[0]||'?').toUpperCase())+'</span>';
     const st=(LIVE_STATUS[name]&&LIVE_STATUS[name].state)||'idle';
     const t=mkTopic({name, path:'~/.hermes/profiles/'+name+'/SOUL.md', overview:desc||'(no description in SOUL.md)', meta:'BOT · '+model+' · '+cnt+' skills · '+st,
-      leading:pet+'<span class="ldot" data-state="'+st+'" title="'+st+'"></span>', tags:[[model,col]], orbs:{ctx:Math.max(1,Math.round((desc||'').length/4)),skills:cnt,agents:1,loops:0},
+      leading:pet+'<span class="ldot" data-state="'+st+'" title="'+st+'"></span>', tags:[[model,col]], orbs:{wiki:1,skills:cnt,bots:1,loops:0},
       body:'<div class="sec">ROLE</div><p>'+esc(desc||'no description in SOUL.md')+'</p><div class="sec">MODEL</div><p>'+esc(model)+'</p><div class="sec">SKILLS</div><p>'+cnt+' installed</p><div class="sec">FILES</div><p>SOUL.md · '+(b.agents_md===false?'':'AGENTS.md · ')+'config.yaml — senter loads the real contents into this editor on open.</p>'});
     t.querySelector('.tname').style.color=col; t.dataset.bot=name; t.dataset.kind='bot';
     botsList.appendChild(t); initTopic(t);
@@ -1421,7 +1421,7 @@ function renderBots(bots){
 function refreshWikiOrbs(topics, usage){ // WIKI rows are built at vault-build time; their skills/bots/loops orb VALUES + usage + diff badges follow the live topic snapshot
   document.querySelectorAll('#view-wiki .topic').forEach(t=>{ const nm=t.querySelector('.tname'); const d=nm&&topics[nm.textContent.trim().toLowerCase()]; if(!d) return;
     const set=(k,v)=>{ const o=t.querySelector('.orb[data-k="'+k+'"] .v'); if(o&&String(o.textContent)!==String(v)) o.textContent=v; };
-    set('skills',(d.skills||[]).length); set('agents',(d.bots||[]).length); set('loops',(d.loops||[]).length);
+    set('skills',(d.skills||[]).length); set('bots',(d.bots||[]).length); set('loops',(d.loops||[]).length);
     // row order: name, usage, diff, dotted leader, orbs (flush right, clear of the chat)
     const u=usage&&usage.topics?usage.topics[nm.textContent.trim().toLowerCase()]:null;
     const thead=t.querySelector('.thead'), orbs=t.querySelector('.orbs');
@@ -1614,14 +1614,14 @@ window.edW=(function(){
   let linked=false; window.addEventListener('live/loaded',()=>{ if(!linked) linked=deepLink(); }); setTimeout(()=>{ if(!linked) linked=deepLink(); },400);
   return {open, save, close, md: window.mdRender, toMd, fileMd, state:()=>cur};
 })();
-/* ACTIVITY → subtle opacity pulse (.orb.on) on the matching orb; the orbit satellite is gone (v14.73). setOrbActive(topic, kind, on) ; botActivity marks agents */
+/* ACTIVITY → subtle opacity pulse (.orb.on) on the matching orb; the orbit satellite is gone (v14.73). setOrbActive(topic, kind, on) ; botActivity marks bots */
 window.setOrbActive=function(topic,kind,on){ document.querySelectorAll('#view-wiki .topic').forEach(t=>{ if(t.querySelector('.tname').textContent.trim().toLowerCase()!==String(topic).toLowerCase()) return;
   const o=t.querySelector('.orb[data-k="'+kind+'"]'); if(o) o.classList.toggle('on', on!==false); }); };
 (function(){ const _ba=window.botActivity; window.botActivity=function(who){ try{ _ba&&_ba(who); }catch(e){}
   const t={turbosovth:'turbofit',teknium:'hermes-agent',senter:'senter',klerik:'anser',anser:'anser',paladin:'senter',dogeman:'pocket-shop'}[who]; if(!t) return;
-  setOrbActive(t,'agents',true); setTimeout(()=>setOrbActive(t,'agents',false),9000); }; })();
+  setOrbActive(t,'bots',true); setTimeout(()=>setOrbActive(t,'bots',false),9000); }; })();
 /* demo state until the live event bus lands */
-setOrbActive('turbofit','agents',true); setOrbActive('turbofit','loops',true); setOrbActive('senter','skills',true); setOrbActive('anser','agents',true);
+setOrbActive('turbofit','bots',true); setOrbActive('turbofit','loops',true); setOrbActive('senter','skills',true); setOrbActive('anser','bots',true);
 /* INTEGRATIONS — live Hermes Agent integration state. Snapshot via assets/scan-integrations.py → .system/live-integrations.json */
 (function(){
   const list=document.getElementById('intList');
@@ -1643,7 +1643,7 @@ setOrbActive('turbofit','agents',true); setOrbActive('turbofit','loops',true); s
     rows.forEach(r=>{
       const [name,cat,overview,meta,body]=r;
       if(cat!==lastCat){ lastCat=cat; const h=document.createElement('div'); h.className='crumb'; h.textContent=cat.toUpperCase(); h.style.cssText='margin:26px 0 6px;letter-spacing:.14em'; list.appendChild(h); }
-      const t=mkTopic({name,path:'integrations/'+cat+'/'+name.toLowerCase().replace(/[^a-z0-9]+/g,'-'),overview,meta,tags:[[cat, cat==='mcp'?'#7aa2f7':cat==='plugins'?'#bb9af7':cat==='gateway'?'#9ece6a':cat==='credentials'?'#e0af68':cat==='turbofit'?'#9ece6a':'#fff']],orbs:{ctx:Math.round(overview.length/4),skills:1,agents:1,loops:0},body:'<div class="sec">STATUS</div><p>'+esc(meta)+'</p><div class="sec">DETAILS</div><p>'+esc(body)+'</p><div class="sec">OVERVIEW</div><p>'+esc(overview)+'</p>'});
+      const t=mkTopic({name,path:'integrations/'+cat+'/'+name.toLowerCase().replace(/[^a-z0-9]+/g,'-'),overview,meta,tags:[[cat, cat==='mcp'?'#7aa2f7':cat==='plugins'?'#bb9af7':cat==='gateway'?'#9ece6a':cat==='credentials'?'#e0af68':cat==='turbofit'?'#9ece6a':'#fff']],orbs:{wiki:1,skills:1,bots:1,loops:0},body:'<div class="sec">STATUS</div><p>'+esc(meta)+'</p><div class="sec">DETAILS</div><p>'+esc(body)+'</p><div class="sec">OVERVIEW</div><p>'+esc(overview)+'</p>'});
       list.appendChild(t); initTopic(t);
     });
   }
@@ -2261,8 +2261,8 @@ if(localStorage.getItem('sw.mm')==='off') document.getElementById('mindmap').sty
     try{ if(ev.bot&&window.botStatus){ const st= ev.kind==='approval'? (ev.phase==='pending'?'needs_chris':'working') : ev.kind==='message'? (ev.status||null) : ev.kind==='turn'&&ev.phase==='end'? (ev.status||'idle') : (ev.kind==='tool'||ev.kind==='turn'||ev.kind==='skill')? 'working' : null; if(st) botStatus(ev.bot, st==='done'?'idle':st); } }catch(e){} // Y: live status dot on BOTS rows
     const topic=ev.topic||BOT_TOPIC[ev.bot];
     if(ev.topic&&fresh&&(ev.kind==='tool'||ev.kind==='skill'||ev.kind==='turn')&&window.heroActivity){ try{ heroActivity(ev.topic); }catch(e){} } // AG: a bot touching topics/<t>/ → that topic's hero for 6s (live tail only, not replay)
-    if(ev.kind==='tool'){ if(ev.phase==='start'){ try{ botActivity(ev.bot); }catch(e){} if(topic){ setOrbActive(topic,'agents',true); if(/skill/i.test(ev.summary||'')||ev.tool==='skill_view') setOrbActive(topic,'skills',true); } }
-      else if(topic){ setTimeout(()=>{ setOrbActive(topic,'agents',false); setOrbActive(topic,'skills',false); },4000); } }
+    if(ev.kind==='tool'){ if(ev.phase==='start'){ try{ botActivity(ev.bot); }catch(e){} if(topic){ setOrbActive(topic,'bots',true); if(/skill/i.test(ev.summary||'')||ev.tool==='skill_view') setOrbActive(topic,'skills',true); } }
+      else if(topic){ setTimeout(()=>{ setOrbActive(topic,'bots',false); setOrbActive(topic,'skills',false); },4000); } }
     else if(ev.kind==='skill'){ if(topic) { setOrbActive(topic,'skills',true); setTimeout(()=>setOrbActive(topic,'skills',false),6000); } mmPulse(topic||'senter','#7aa2f7'); }
     else if(ev.kind==='turn'){ if(ev.phase==='start'){ try{ botActivity(ev.bot); }catch(e){} } }
     else if(ev.kind==='bridge'&&ev.phase==='surface'){ notify(ev.bot,'online'+(topic?' · '+topic:'')); }

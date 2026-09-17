@@ -1,3 +1,6 @@
 # Wiki Log — omnisenter-models
 
 ## [2026-09-05] create | wiki initialized (topic-wiki.py init)
+## [2026-09-13] compile | added sources raw/inbox/2026-09-12.md to huggingface-model-pages (entity) and model-run-metadata-source (decision). Raw items are hermes-side working: 14:27 continued investigating HF model pages (no ruling), 19:32 desktop-capture snag (element-click needs snapshot_id; ISO write via raw device path w/ sudo) — infrastructure, not topic content.
+## [2026-09-15] compile | compiled raw/inbox/2026-09-14.md (2 items, 22:31–22:32). New entity acestep-org: agent hypothesized the core OmniStep/OmniSenter model + training scripts live under the "acestep" HuggingFace org/user — hermes-side search, unconfirmed, low confidence. Added acestep-org → huggingface-model-pages link. No Chris decision, no new ruling on the sourcing question.
+## [2026-09-15] compile | re-confirmed raw/inbox/2026-09-14.md against wiki: acestep-org entity already faithfully carries both quotes (22:31 "search GitHub for the acestep org/repos", 22:32 "official acestep user's repos — core model + training scripts live") as hermes-side working, low confidence; huggingface-model-pages already cites this raw + links acestep-org. No new page needed. Reinforces: acestep = tentative lead, not a Chris decision or confirmed sourcing rule.

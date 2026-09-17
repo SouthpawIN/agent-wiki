@@ -1,6 +1,6 @@
 # memento — wiki index
 > One line per page. The wiki row's CONTEXT section renders this file.
-> Last updated: 2026-09-07 | Total pages: 4
+> Last updated: 2026-09-14 | Total pages: 4
 
 ## Entities
 - [[topics/memento/wiki/entities/hermes-state|hermes state]] — Repeated Hermes-state reroute and port-conflict activity filed into `memento` on 2026-09-07. These messages are infra noise rather than memento-specific content

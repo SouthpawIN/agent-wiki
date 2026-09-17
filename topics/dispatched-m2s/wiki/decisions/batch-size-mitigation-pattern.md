@@ -4,7 +4,7 @@ created: 2026-09-07
 updated: 2026-09-07
 type: decision
 tags: [decision, infra, delegation, pattern]
-sources: [raw/inbox/2026-09-07.md]
+sources: [raw/inbox/2026-09-07.md, raw/inbox/2026-09-16.md]
 confidence: low
 ---
 
@@ -31,6 +31,8 @@ When dispatching async delegations, use short prompts paired with smaller batch 
 ## Contested
 
 The initial failed batch used only 1 subagent, yet still failed, suggesting batch size alone is not the sole factor. The remediation note at 09:16 suggested checking logs "and try with reduced batch sizes," but no outcome was recorded for that remediation attempt.
+
+^[raw/inbox/2026-09-16.md] The hypothesis is now further weakened: [[entities/delegation-batch-7418fbf4|batch deleg_7418fbf4]] succeeded at a fan-out of `5` subagents on 2026-09-16 — larger than every earlier successful batch (4 and 2). If smaller batches were the mitigation, no larger batch should have succeeded, yet this one did. Batch size appears to be at most one of several factors, not the driver.
 
 ## Related
 

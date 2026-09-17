@@ -1,0 +1,10 @@
+---
+title: Why are Hermes state.db message IDs reused across unrelated message contents wit
+type: query
+proposed: 2026-09-09 20:14
+tags: [question]
+---
+# Why are Hermes state.db message IDs reused across unrelated message contents with different simulation scores on different days?
+ID reuse across unrelated content contradicts the earlier retry hypothesis and threatens reliable batch/message correlation in the dispatched-m2s topic.
+
+_Approve to run the research; the answer lands here._

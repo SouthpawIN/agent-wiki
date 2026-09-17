@@ -1,0 +1,10 @@
+---
+title: Can the Bonsai MLX backend serve Chris's ornith model on his hardware, and if so
+type: query
+proposed: 2026-09-15 21:03
+tags: [question]
+---
+# Can the Bonsai MLX backend serve Chris's ornith model on his hardware, and if so, on what port/config, or is it another mlx_lm-incompatible target like Colibri?
+It's the last named inference alternative with no viability result, and a working local backend is Chris's ongoing goal
+
+_Approve to run the research; the answer lands here._

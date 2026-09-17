@@ -9,6 +9,7 @@ tags:
   - question
 sources:
   - raw/inbox/2026-09-07.md
+  - raw/inbox/2026-09-15.md
 confidence: high
 ---
 
@@ -48,3 +49,4 @@ This query is downstream from the broader question of M1 model performance and t
 - [[topics/back-where/wiki/entities/qwen3-8-27b-unleashed-selection|Qwen3.8 27B unleashed model selection]]
 - [[topics/back-where/wiki/entities/hermes-model-download-in-progress|Hermes model download in progress]]
 - [[topics/back-where/wiki/decisions/131k-audition-rejection|131K audition rejection and speed target]]
+- [[topics/back-where/wiki/entities/q3k-xl-double-gpu-gaming-choice|Q3K XL / Unleashed chosen as game-adjacent model]]

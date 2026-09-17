@@ -53,6 +53,8 @@ The Senter wiki is the memory layer for Chris's live-acting second brain. Markdo
 - [[topics/senter/wiki/decisions/2026-09-08-bridge-scan-topics-bot-name-parsing|2026-09-08 bridge scan-topics.py bot name parsing]]
 - [[topics/senter/wiki/decisions/2026-09-06-model-picker-sticky-and-tts-gateway|2026-09-06 model picker sticky]]
 - [[topics/senter/wiki/decisions/2026-09-08-context-fallback-threshold|2026-09-08 context fallback threshold]]
+- [[topics/senter/wiki/decisions/2026-09-09-autonomous-senter-wiki-completion-continuation|2026-09-09 autonomous completion continuation]]
+- [[topics/senter/wiki/decisions/2026-09-09-live-data-pipeline-verification|2026-09-09 live data pipeline verification]]
 
 ## Open Questions
 - [[topics/senter/wiki/queries/event-driven-trigger-gaps-2026-09-08|Event-driven trigger gaps]]

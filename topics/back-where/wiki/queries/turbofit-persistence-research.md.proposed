@@ -1,0 +1,10 @@
+---
+title: Why do TurboFit options disappear when the Hermes desktop app is restarted on th
+type: query
+proposed: 2026-09-15 19:01
+tags: [question]
+---
+# Why do TurboFit options disappear when the Hermes desktop app is restarted on the M1 MacBook, and what stores/loads them so they can be made to persist across restarts?
+Chris loses his TurboFit-tuned model configuration on every restart, which breaks the double-GPU setup he just settled on
+
+_Approve to run the research; the answer lands here._

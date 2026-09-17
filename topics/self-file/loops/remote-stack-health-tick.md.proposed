@@ -1,0 +1,15 @@
+---
+type: loop
+name: remote-stack-health-tick
+proposed: 2026-09-15 15:47
+schedule: */30 * * * *
+---
+# remote-stack-health-tick
+owner: local-server-health-check · cadence: every 30m · status: SUGGESTED
+**Want a loop that pings your remote inference stack (nginx :8080, model server :8100 over Tailscale) every 30m and alerts you only when an endpoint drops or GPU memory spikes?**
+
+## Prompt
+Probe nginx :8080 and model server :8100, confirm Tailscale reachability from the Mac, and snapshot GPU memory per process; message Chris only if an endpoint is down, a process is consuming abnormal VRAM, or a background process has exited with code 7 or an OOM code.
+
+## Evidence
+> nginx is up on 8080, model server healthy on 8100, Tailscale reachable from Mac.

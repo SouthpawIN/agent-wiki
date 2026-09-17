@@ -1,7 +1,7 @@
 ---
 title: "Token desync — 2026-09-08 server restart"
 created: 2026-09-08
-updated: 2026-09-08
+updated: 2026-09-09
 type: decision
 tags: [decision, infra, pain, person]
 sources: [raw/inbox/2026-09-08.md]
@@ -26,10 +26,16 @@ A stale server process (PID 63522) outlived the intended restart. Because the ol
 
 ## Outcome
 
-Hermes started a fresh server with PID 64361 and a new token. The desync remains contested: true because there is no follow-up verification that PID 64361 actually owns the port and that `/token` now returns the new value consistently. ^[raw/inbox/2026-09-08.md]
+Hermes started a fresh server with PID 64361 and a new token, using patched code. The desync remains contested: true because there is no follow-up verification that PID 64361 actually owns the port and that `/token` now returns the new value consistently. ^[raw/inbox/2026-09-08.md]
+
+## Additional context — 2026-09-08 09:28–09:43
+
+Hermes reported that both servers were running and the initial problem was that curl was waiting for input, producing empty model-endpoint responses. ^[raw/inbox/2026-09-08.md] Hermes then inspected the vault-live.html `loadLive` function to compare what it expects against what the server actually serves. ^[raw/inbox/2026-09-08.md]
+
+A PID discrepancy was noted: Hermes observed PID 63983, not 64044, suggesting a launchd-managed process or another instance was involved. ^[raw/inbox/2026-09-08.md]
 
 ## Implication
 
-A repeatable compatibility-check procedure should include killing orphans by PID before reading `/token`. This reinforces the pattern noted in `server-compatibility-constraints`: endpoint/config management is coupled to whether the correct process owns the port.
+A repeatable compatibility-check procedure should include killing orphans by PID before reading `/token`. This reinforces the pattern noted in `server-compatibility-constraints`: endpoint/config management is coupled to whether the correct process owns the port. The curl input-waiting issue also shows that endpoint probing can produce false empties that mimic a desync but are actually a client-syntax problem.
 
 Related: [[topics/self-file/wiki/entities/hermes|Hermes]], [[topics/self-file/wiki/entities/ornith-server|ornith server]], [[topics/self-file/wiki/queries/bonsai-mlx-viability|Bonsai MLX viability]], [[topics/self-file/wiki/concepts/server-compatibility-constraints|server compatibility constraints]].

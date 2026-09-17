@@ -29,6 +29,10 @@ Ornith is the local inference/runtime target for this topic's model work. ^[raw/
 - The 507 context-fit ceiling is still under investigation; Ornith is part of the live attempt to find the actual maximum context that fits. ^[raw/inbox/2026-09-07.md]
 - Tested fallback: the model runs with `-ngl 0` (all on CPU); a previous attempt timed out before this restart. ^[raw/inbox/2026-09-07.md]
 - 131K context testing is pending a full rerun after the `-ngl 0` fallback success. ^[raw/inbox/2026-09-07.md]
+- GPU offload root cause (2026-09-15): `-ngl 9999` fails because `CUDA_VISIBLE_DEVICES=1` is not respected through `su`; both the env var and the `su` handling were targeted for fix. ^[raw/inbox/2026-09-15.md]
+- The original working service uses a **different llama.cpp build (qwen4, v0.4.0-dev)** with flags `-ngl -c -t`; the plan was to revert to that config and fix DFlash2 there. ^[raw/inbox/2026-09-15.md]
+- Operational note (2026-09-15): the qwen4 v0.4.0-dev build lived in **`/tmp`**, which was **wiped on restart**, losing it; the plan was to check persistent runtimes and rebuild. ^[raw/inbox/2026-09-15.md]
+- Omarchy 27B confirmed working (test echo: "2+2 equals 4, no more.") before testing Ornith locally. ^[raw/inbox/2026-09-15.md]
 - Startup path is entangled with port/restart/config-write issues: Bonsai MLX occupied **11623**, Hermes direct config writes were blocked, and a patch attempt was made before restart+config update. ^[raw/inbox/2026-09-07.md]
 - **Contested:** one log line claims Ornith MLX is *"confirmed working at 131K context"* ^[raw/inbox/2026-09-07.md], but the surrounding state still lists 131K as pending and unfinished, so that claim is not treated as verified. ^[raw/inbox/2026-09-07.md]
 

@@ -1,0 +1,16 @@
+---
+type: loop
+name: vault-refresh-loop
+proposed: 2026-09-16 20:51
+schedule: every 15m
+---
+# vault-refresh-loop
+owner: weaver · cadence: every 15 minutes · status: SUGGESTED
+**You said you don't see updates to the wiki in the live preview — want a loop that has weaver re-render and re-stage the vault so changes show up without you hunting for them?**
+
+## Prompt
+Re-render the central-asked wiki into the live preview pane and re-stage it so any raw/wiki updates appear to Chris without him having to look in the wrong index.
+
+## Evidence
+> I don't see any updates to it.
+> I'm looking at the index under triple fit and I looking in the wrong place.

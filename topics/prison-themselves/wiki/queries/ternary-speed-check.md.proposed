@@ -1,0 +1,10 @@
+---
+title: Is the 2-bit ternary Bonsai MLX variant measurably faster than the standard MLX 
+type: query
+proposed: 2026-09-15 15:20
+tags: [question]
+---
+# Is the 2-bit ternary Bonsai MLX variant measurably faster than the standard MLX variant on Chris's Mac, and at what quality cost?
+Chris added the ternary variant specifically because it 'might be faster' — worth verifying the claim.
+
+_Approve to run the research; the answer lands here._

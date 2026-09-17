@@ -1,21 +1,21 @@
 # INDEX — topics/turbofit
-_42 files · 80 KB · regenerate: `python3 assets/build-index.py`_
+_42 files · 79 KB · regenerate: `python3 assets/build-index.py`_
 
 Read order for an agent: this file → pick a file below → its outline → `read_file offset=<line> limit=<n>`. Sessions under `.system/sessions/` are full transcripts (largest; go by outline).
 
 ## root
-- `README.md` — 6 KB, 103 lines — title: turbofit
-    - L10 # turbofit
-    - L16 ## Facts
-    - L26 ## From the README
-    - L28 # Turbofit
-    - L43 ## 2.4 lineup
-    - L76 ## Mac local run — 2026-09-06 (M1 32 GB unified)
-    - L87 ## Absorbed
-    - L95 ## Repos
+- `README.md` — 5 KB, 126 lines — Turbofit
+    - L1 # Turbofit
+    - L18 ## Agentic Model Lineup (TurboFit List)
+    - L34 ## Model Zoo
+    - L54 ## Hardware Tiers
+    - L88 ## Visual Reference
+    - L102 ## Integrations
+    - L114 ## Rules
+    - L123 ## License
 
 ## .system
-- `.system/agent.cursor` — 1 KB, 26 lines — raw/inbox/2026-09-06.md@42b5a66c92cd
+- `.system/agent.cursor` — 1 KB, 34 lines — raw/inbox/2026-09-06.md@42b5a66c92cd
 - `.system/continuity.md` — 1 KB, 15 lines — Continuity — turbofit
     - L1 # Continuity — turbofit
 - `.system/critical-gaps.md` — 1 KB, 23 lines — Critical gaps — TurboFit self-install promises (audit 2026-08-27)

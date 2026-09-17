@@ -28,6 +28,8 @@ _Pre-prompt for the cutter and this topic's agent. Chris edits freely; lines end
 - One line, phrased as a question Chris can say yes to, tied to a quote from him, naming the bot that would do it.
 
 ## Learned (agent-appended, newest first)
+- 2026-09-15 · 2026-09-14 · Chris located the official kashik repos (SouthpawIN/kashik) and moved to clone the key ones to read their documentation as source rather than paraphrase
+- 2026-09-09 · Slug generation uses .split(".md")[0] pattern — Chris verified this works for progressive disclosure frontmatter
 - 2026-09-07 · 2026-09-07 · librarian progressively discovers wiki skills, bots, and loops
 - 2026-09-07 · introduced librarian concept as cross-topic discovery governance
 - 2026-09-07 · filesystem simplification via progressive disclosure frontmatter is a decided direction

@@ -1,10 +1,10 @@
 ---
 title: delegation batch deleg_e76115bb
 created: 2026-09-07
-updated: 2026-09-07
+updated: 2026-09-10
 type: entity
 tags: [bot, infra, delegation, failure]
-sources: [raw/inbox/2026-09-07.md]
+sources: [raw/inbox/2026-09-07.md, raw/inbox/2026-09-09.md, raw/inbox/2026-09-10.md]
 confidence: low
 ---
 
@@ -35,6 +35,12 @@ From the raw inbox, subsequent batches completed successfully:
 ^[raw/inbox/2026-09-07.md] At `2026-09-07 10:08`, `[ASYNC DELEGATION BATCH COMPLETE — deleg_56809b77]` with 4 subagents in fan-out. The short prompt benefits from better relative throughput. Full live transcript available at `/Users/sovthpaw/.hermes/cache/delegation/live/deleg_56809b77/task-3.log`.
 
 ^[raw/inbox/2026-09-07.md] At `2026-09-07 10:39`, `[ASYNC DELEGATION BATCH COMPLETE — deleg_dc36df32]` with 2 subagents in fan-out.
+
+## ID reuse
+
+The ID `20260903_001447_7bc70a` was reused on 2026-09-09 to carry an unrelated git-commit-success message (simulation `0.07`),
+suggesting this message ID is not unique to this batch. On 2026-09-10, the same ID carried shell tool inconsistency messages, further confirming reuse across unrelated content. See [[entities/hermes-message-20260903-001447-7bc70a|Hermes state.db message 20260903_001447_7bc70a]]
+and [[entities/delegation-message-20260903-7bc70a|Hermes message 20260903_001447_7bc70a]].
 
 ## Relationship
 

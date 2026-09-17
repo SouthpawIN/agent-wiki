@@ -1,5 +1,5 @@
 # INDEX — topics/nous-community
-_5 files · 6 KB · regenerate: `python3 assets/build-index.py`_
+_6 files · 6 KB · regenerate: `python3 assets/build-index.py`_
 
 Read order for an agent: this file → pick a file below → its outline → `read_file offset=<line> limit=<n>`. Sessions under `.system/sessions/` are full transcripts (largest; go by outline).
 
@@ -10,6 +10,7 @@ Read order for an agent: this file → pick a file below → its outline → `re
     - L25 ## Repos
 
 ## .system
+- `.system/agent.cursor` — 0 KB, 2 lines — raw/inbox/2026-09-11.md@5acabd385dbe
 - `.system/continuity.md` — 0 KB, 6 lines — Continuity — nous-community
     - L1 # Continuity — nous-community
 - `.system/injections.md` — 0 KB, 4 lines — Injections — nous-community

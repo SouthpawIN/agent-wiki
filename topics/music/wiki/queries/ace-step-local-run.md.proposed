@@ -1,0 +1,10 @@
+---
+title: What is the smallest/working way to run ACE-Step 1.5 4B for LoRA training on a 3
+type: query
+proposed: 2026-09-15 14:57
+tags: [question]
+---
+# What is the smallest/working way to run ACE-Step 1.5 4B for LoRA training on a 32 GB Mac alongside or without MTPLX?
+The pipeline is gated on ACE-Step running at all; the 2026-09-07 mlx_audio rejection may still block it.
+
+_Approve to run the research; the answer lands here._

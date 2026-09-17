@@ -1,0 +1,10 @@
+---
+title: What's the best way to share a 16 TB storage hub across an iPhone/iPad, Google D
+type: query
+proposed: 2026-09-16 01:18
+tags: [question]
+---
+# What's the best way to share a 16 TB storage hub across an iPhone/iPad, Google Drive and other devices over Tailscale — SMB, NFS, or local file sharing — so Chris can actually free up his phone and drives?
+His stated goal is to consolidate media onto the Omarchy and off his phone and Google drives, but how devices mount the shared store is still undefined
+
+_Approve to run the research; the answer lands here._

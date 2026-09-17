@@ -1,0 +1,17 @@
+---
+type: loop
+name: git-vault-sync
+proposed: 2026-09-10 14:49
+schedule: */15 * * * *
+---
+# git-vault-sync
+owner: paladin · cadence: every 15m · status: SUGGESTED
+**Want a loop that auto-pulls remote changes into the vault and restarts scan-topics so updates never 'keep failing' again?**
+
+## Prompt
+Check if ~/Documents/Projects/Projects has a git remote with new commits. If so, git pull --rebase and post a bridge card to /post with status 'working' and text 'Auto-pulled remote changes, restarting scan-topics'. Then restart com.senter.scanwatch (launchctl kickstart) so .system-live.json regenerates with fresh data. If the pull fails, post a 'blocked' card with the git error. Never commit or push — only pull.
+
+## Evidence
+> "My updates keep failing. I think that's something to do with the project that we're working on." ^[raw/inbox/2026-09-09.md]
+> "fix the update" ^[raw/inbox/2026-09-10.md]
+> git was initialized in the Projects folder, remote set to SouthpawIN/agent-wiki, first commit 6b217cb — updates path restored but no auto-sync loop exists yet ^[raw/inbox/2026-09-09.md]

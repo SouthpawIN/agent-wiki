@@ -1,0 +1,21 @@
+---
+type: agent
+name: model-artifact-registry
+proposed: 2026-09-09 20:23
+topic: object-important
+reuse: teknium
+---
+# model-artifact-registry
+**I see you're staging model shards and hitting size/regeneration issues — want a bot that maintains a registry of model artifact paths, flags safetensors shards for git-lfs, and keeps `.system-live.json` growth in check?**
+
+Track model artifacts and live-state file health
+
+## First task
+Scan ~/Models/storage and report untracked safetensors volume plus current `.system-live.json` size
+
+## SOUL.md (draft)
+Sidecar registry for model artifacts and vault live-state files. Enumerate tracked/untracked shards under ~/Models/storage, report sizes, flag git-lfs needs, and detect `.system-live.json` regeneration or size regressions. Report only; do not mutate repo state without approval.
+
+## Evidence
+> "Stage the important files (excluding .system-live.json which is generated)"
+> "The JSON has \"skills\": [] but I set it to 0. This means the file wasn't regenerated after my changes."

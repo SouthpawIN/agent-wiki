@@ -10,3 +10,5 @@
 - [ ] bot · turbofit-bot — 3 skills, no agent → agents/turbofit-bot.md.proposed (2026-09-07 01:14)
 - [ ] bot · back-where-bot — 3 skills, no agent → agents/back-where-bot.md.proposed (2026-09-07 06:45)
 - [ ] bot · hermes-agent-bot — 3 skills, no agent → agents/hermes-agent-bot.md.proposed (2026-09-07 10:16)
+- [ ] dedupe · grounded-citations.bak→grounded-citations — body overlap 1.00; fold `grounded-citations.bak` (looker) into `grounded-citations` (default, anser, dogeman, fleet-orchestrator, klerik, paladin, senter, senter-wiki-bot, teknium, turbosovth, weaver) (2026-09-10 15:10)
+- [ ] dedupe · grounded-citations→grounded-citations.bak — body overlap 0.96; fold `grounded-citations` (looker) into `grounded-citations.bak` (default, anser, dogeman, fleet-orchestrator, klerik, paladin, senter, senter-wiki-bot, teknium, turbosovth, weaver) (2026-09-10 15:40)

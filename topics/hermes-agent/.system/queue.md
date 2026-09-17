@@ -7,6 +7,8 @@
 - [ ] live-model-evaluation — distilled 2026-09-07 04:32 → skills/live-model-evaluation/SKILL.md (auto-applied)
 - [ ] *(empty)*
 ## [AGENTS]
+- [ ] hotkeys-command — SUGGESTED 2026-09-16 22:00: I see you asked for a /hotkeys slash command on 2026-09-15 and it's still unbuilt — want teknium to implement it? → agents/hotkeys-command.md.proposed
+- [ ] hotkeys-command — SUGGESTED 2026-09-16 22:00: I see you've been asking for a /hotkeys slash command since 2026-09-15 and it still isn't built — want a Hermes builder  → agents/hotkeys-command.md.proposed
 - [ ] provider-lock-reconciler — SUGGESTED 2026-09-07 15:09: I see you're cycling through Unleashed, DFlash2, Ornith, and nous free models — want a bot that reconciles your wiki's a → agents/provider-lock-reconciler.md.proposed
 - [ ] clean-model-test — SUGGESTED 2026-09-07 06:48: I see you're testing the same model path on a dirty stack — want a bot that removes Maple, deletes uncensored variants,  → agents/clean-model-test.md.proposed
 - [ ] model-evaluator — SUGGESTED 2026-09-07 04:32: I see you're running live compression tests to validate model behavior — want a bot that automates the big-essay summari → agents/model-evaluator.md.proposed
@@ -258,6 +260,8 @@ Evidence: `topics/senter/loops/reflect/2026-09-03-10.md`.
 1. **[DETECTOR 4/6] GitHub feed still emits no-op lines + "create" noise — 7 passes old.** ~11 "pushed 0 commit(s)" (teknium1 ×7, kshitijk4poor ×3, itsflownium ×1) + 9 "create" (kshitijk4poor ×6, teknium1 ×2, itsflownium ×1) this 88-min window. Flagged pass 4/5/6/7/8/9 and STILL unshipped. Drop no-op lines, dedup (one real event per poll), finish PUSH-EVERYWHERE. Priority bump only — no new work.
 
 ## [CONTEXT]
+- [ ] research mtp-large-context-feasibility — SUGGESTED 2026-09-15 22:29: Want me to look into whether the MTP/DFlash2 setup that hit 81.2 tok/s at 262K can be replicated at 131K on a 64GB+ host
+- [ ] research dhh-linux-distro — SUGGESTED 2026-09-14 17:58: Want me to look into the latest DHH Linux distro and whether its latest update ships Hermes Agent as a native AI, so you
 - [ ] research m1-27b-131k-hardware-floor — SUGGESTED 2026-09-07 19:54: Want me to look into whether any current M-series Mac under $3K can fit Qwen 3.8 27B + 131K KV cache + DFlash2 + Hermes 
 - [ ] research mtplx-131k-offloading-options — SUGGESTED 2026-09-07 15:09: Want me to look into whether MTPLX supports Apple Silicon memory offloading or alternative KV cache quantization paths f
 - [ ] research 32gb-131k-feasibility — SUGGESTED 2026-09-07 10:06: Want me to look into whether any Hermes/MTPLX flag or quantization combo can fit 131K KV cache + Qwen 3.8 27B on 32GB M1

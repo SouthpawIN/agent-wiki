@@ -1,0 +1,10 @@
+---
+title: What does a discoverable, tail-scale model look like in practice, and are there 
+type: query
+proposed: 2026-09-15 20:51
+tags: [question]
+---
+# What does a discoverable, tail-scale model look like in practice, and are there existing patterns for surfacing rare/low-probability cases at scale?
+Chris named the need but not the shape; research gives the bot something concrete to draft.
+
+_Approve to run the research; the answer lands here._

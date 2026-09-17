@@ -1,0 +1,10 @@
+---
+title: For a raw Linux distro ISO written to USB on a UEFI HP, what write method (dd vs
+type: query
+proposed: 2026-09-15 15:31
+tags: [question]
+---
+# For a raw Linux distro ISO written to USB on a UEFI HP, what write method (dd vs makehybrid vs the .dmg) produces a boot entry named for the distro rather than a generic UEFI/Ubuntu entry?
+Chris's Etcher write succeeded but presented as UEFI Ubuntu, blocking the whole install.
+
+_Approve to run the research; the answer lands here._

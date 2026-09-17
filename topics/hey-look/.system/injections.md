@@ -1,6 +1,7 @@
 # Injections — hey-look
 
 ## [UNREAD]
+[AGENTS] I see you're trying to get DFlash2 working on Omarchy but the qwen4 llama.cpp build only has --hf-repo-draft (downloads from HuggingFace) — want a bot that gets DFlash2 running on Omarchy via --hf-repo-draft?
 [LOOPS] Want a loop that watches 65K memory_guard admission-shed events under your exact large-prompt shapes?
 [AGENTS] I see you've found Ornith as the short-context winner — want a bot that tests Ornith through llama.cpp with DFlash2 to see if it keeps speed at 131K?
 [LOOPS] Want a repeatable 65K/131K speedwatch that only compares MTPLX vs Unleashed + DFlash2 on this exact setup?

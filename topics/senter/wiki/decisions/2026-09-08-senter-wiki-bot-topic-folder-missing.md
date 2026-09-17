@@ -4,7 +4,7 @@ created: 2026-09-08
 updated: 2026-09-08
 type: decision
 tags: [decision, infra, bot,Clarification]
-sources: [raw/inbox/2026-09-07.md, raw/inbox/2026-09-08.md]
+sources: [raw/inbox/2026-09-07.md, raw/inbox/2026-09-08.md, raw/inbox/2026-09-09.md]
 confidence: high
 ---
 
@@ -38,5 +38,7 @@ topics/senter-wiki/
 **Check needed.** Verify that the `senter-wiki-bot` profile is correctly configured to serve the `senter-wiki` topic. This may require updating the bot's SOUL or AGENTS to point to the correct topic name.
 
 **Related.** [[topics/senter/wiki/entities/senter|siten]]; [[topics/senter/wiki/entities/senter-wiki-ui|senter-wiki-ui]]; [[topics/senter/wiki/concepts/topics-are-the-work-units|topics are work units]].
+
+**Verified live (2026-09-09 13:32).** The 2026-09-09 pipeline check confirmed the `senter-wiki` topic is properly populated: "senter-wiki topic now properly populated" in the `/system-live.json` served by `com.senter.bridge`. ^[raw/inbox/2026-09-09.md]
 
 ^[raw/inbox/2026-09-07.md] ^[raw/inbox/2026-09-08.md]

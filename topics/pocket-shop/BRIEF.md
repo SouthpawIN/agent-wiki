@@ -30,6 +30,7 @@ _Pre-prompt for the cutter and this topic's agent. Chris edits freely; lines end
 - One line, phrased as a question Chris can say yes to, tied to a quote from him, naming the bot that would do it.
 
 ## Learned (agent-appended, newest first)
+- 2026-09-13 · 2026-09-13 · pocket-shop's first real Chris quote; prior raw inbox lines were all stray Hermes lines about the compile mechanism, not subject matter.
 - 2026-09-08 · 2026-09-08 · raw inbox lines about the topic-agent compile mechanism itself (not pocket-shop subject matter) are misfiled Hermes evidence; tag on source lists but produce no new wiki content.
 - 2026-09-06 · pocket-shop funding depends on Portal usable credits for southpawinmusic@gmail.com org 'Christopher Hardwick's organisation'; track credit-state changes as live funding signals.
 - 2026-09-08 · raw inbox lines about the topic-agent compile mechanism itself (not pocket-shop subject matter) are misfiled Hermes evidence; tag on source lists but produce no new wiki content.

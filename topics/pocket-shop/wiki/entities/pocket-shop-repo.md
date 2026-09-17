@@ -1,10 +1,10 @@
 ---
 title: pocket-shop (repo)
 created: 2026-09-05
-updated: 2026-09-05
+updated: 2026-09-13
 type: entity
-tags: [repo, bot, loop, money, plan]
-sources: [README.md, .system/continuity.md, raw/inbox/2026-09-05.md, raw/inbox/2026-09-08.md]
+tags: [repo, bot, loop, money, plan, ui, infra]
+sources: [README.md, .system/continuity.md, raw/inbox/2026-09-05.md, raw/inbox/2026-09-08.md, raw/inbox/2026-09-12.md]
 confidence: medium
 ---
 
@@ -34,6 +34,10 @@ Note: the repo's "senter" is the pocket-shop orchestrator role, not the Senter s
 Gmail, TCGPlayer, MTGStocks, Scryfall, eBay. ^[.system/continuity.md]
 
 ## What Chris has said
-Nothing yet. The only raw inbox item so far (raw/inbox/2026-09-05.md, watcher similarity 0.08) is a stray Hermes line about the topic-agent loop itself, not about pocket-shop — see [[topics/pocket-shop/wiki/queries/open-questions|Open questions]]. Everything above is from GitHub metadata and the repo README, not from Chris's own words. ^[raw/inbox/2026-09-05.md]
+First real Chris quote about pocket-shop (2026-09-12): "I see the browser tab but it doesn't seem to be working like a real browser.
+Isn't there a browser within Hermes or just a browser that we can just open within this window instead of making our own. That's gonna
+be a whole extra project making a working browser and I'm pretty sure Hermes has these kinds of tools already in it that we can use."
+— a lean toward reusing Hermes's built-in `<webview>`/Chromium for the shop's TCGPlayer/MTGStocks/ebay/Gmail automation instead of a
+custom build. See [[topics/pocket-shop/wiki/decisions/use-hermes-native-browser|Use Hermes-native browser]]. ^[raw/inbox/2026-09-12.md]
 
 Related: [[topics/pocket-shop/wiki/queries/open-questions|Open questions]] · [[topics/pocket-shop/README|topic README]]

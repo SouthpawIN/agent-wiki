@@ -3,7 +3,7 @@ title: scan-topics.py — the vault scanner
 aliases:
   - scan-topics.py scanner + .system-live.json
 created: 2026-09-05
-updated: 2026-09-05
+updated: 2026-09-10
 type: entity
 tags: [tool, infra]
 sources:
@@ -12,6 +12,7 @@ sources:
   - raw/sources/knowledge/ref-vault-live-ui-2026-09-03.md
   - raw/sources/knowledge/ref-vault-live-concept-2026-09-03.md
   - raw/inbox/2026-09-05-legacy-inbox.md
+  - raw/inbox/2026-09-10.md
 confidence: high
 ---
 
@@ -34,6 +35,7 @@ Chris's framing: *"the spec's primary skill location was invisible."* Same day: 
 
 ## Pitfalls
 - A stale `--watch` process kept overwriting `.system-live.json` with pre-change fields → `pgrep -fl scan-topics`, kill, relaunch (launchd now prevents this). ^[raw/sources/knowledge/skill-agent-wiki-vault.md]
+- 2026-09-10: a stale watch process was overwriting `.system-live.json` with pre-fix bot schema (`skills: []` instead of `skills: 0`). Kill the old process (`pgrep -fl scan-topics`), then restart via launchd so the corrected scanner runs. ^[raw/inbox/2026-09-10.md]
 - Add every new snapshot key to the watcher's changed-keys tuple or the UI never refreshes it. ^[raw/sources/knowledge/skill-agent-wiki-vault.md]
 - Restarting (`launchctl kickstart -k gui/$(id -u)/com.senter.scanwatch`) needs Chris's approval each time — it kills running agents; batch scanner edits and restart once. ^[raw/sources/knowledge/skill-agent-wiki-vault.md]
 - After writing lane files, confirm in `.system-live.json` that the topic's `text` contains a phrase from the new file and the loops appear in `loops[]`; if not, the include list or the 40k cap is the bug. ^[raw/sources/knowledge/skill-agent-wiki-vault.md]

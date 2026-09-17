@@ -1,0 +1,10 @@
+---
+title: Does vault-live.html loadLive() read the bridge-served /.system-live.json from 1
+type: query
+proposed: 2026-09-09 21:16
+tags: [question]
+---
+# Does vault-live.html loadLive() read the bridge-served /.system-live.json from 127.0.0.1:8643/FILE_ROOTS, or a stale local copy in the vault root?
+The session ended without confirming the source file, leaving the schema patch's effective target unknown.
+
+_Approve to run the research; the answer lands here._

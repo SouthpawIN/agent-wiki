@@ -16,3 +16,6 @@ Keep decisions as separate pages; quote Chris verbatim when possible; do not rew
 - Ornith port mapping remains contested between `11620` and `11622`; MTPLX still anchors `11613`; port churn through Colibri download and ornith restarts is now explicit in `local-servers-2026-09-07`.
 - Colibri is now recorded as a separate ruling: incompatible with standard `mlx_lm`; Bonsai MLX is the next named alternative but has no viability result yet.
 - A repeatable compatibility-check procedure is emerging: probe candidate backend against `mlx_lm server` endpoints before switching Hermes config.
+- Stale-process token desync is now a documented incident class: PID 63522 outlived `--new-token` restart and served old token; fresh PID 64361 required patched code. Endpoint probing can false-empty due to curl input-waiting, not just stale processes.
+- PID tracking must distinguish launchd-managed processes (63983 vs 64044 discrepancy) from `mlx_lm` direct spawns during restarts.
+- Watch-process stale-data overwrite is a second stale-process incident class parallel to token desync; the compatibility-check procedure now includes loadLive inspection and /file endpoint probing with `.system-live.json` before switching Hermes config.

@@ -1,6 +1,6 @@
 # klerik — wiki index
 > One line per page. The wiki row's CONTEXT section renders this file.
-> Last updated: 2026-09-08 | Total pages: 44
+> Last updated: 2026-09-14 | Total pages: 44
 
 ## Entities
 - [[topics/klerik/wiki/entities/klerik-queue-drain-loop|klerik-queue-drain — the 30-minute queue-drain loop (approved; FIRST TICK 18:50:25 — LIVE)]] — **What it is.** A proposed loop (`loops/klerik-queue-drain.md`, proposed 2026-09-05 18:01) giving klerik a cadence: every 30 minutes, claim the oldest unchecked

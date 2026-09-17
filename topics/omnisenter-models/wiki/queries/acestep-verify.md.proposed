@@ -1,0 +1,10 @@
+---
+title: Is 'acestep' the correct HuggingFace org/user for the OmniStep/OmniSenter base m
+type: query
+proposed: 2026-09-15 20:33
+tags: [question]
+---
+# Is 'acestep' the correct HuggingFace org/user for the OmniStep/OmniSenter base model and training scripts, and which repo is which?
+It's the one open lead tying the HF-model-pages sourcing thread to a concrete repo, still unconfirmed since 2026-09-14.
+
+_Approve to run the research; the answer lands here._

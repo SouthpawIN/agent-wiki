@@ -9,6 +9,7 @@ tags:
   - preference
 sources:
   - raw/inbox/2026-09-07.md
+  - raw/inbox/2026-09-15.md
 confidence: high
 ---
 
@@ -43,3 +44,4 @@ Chris explicitly asked for generated outputs from the rejected 131K audition to 
 - [[topics/back-where/wiki/queries/model-performance-on-m1|Model performance on M1]]
 - [[topics/back-where/wiki/entities/m1-mac-performance-expectation|M1 Mac performance expectation]]
 - [[topics/back-where/wiki/entities/recovery-background-process|Recovery background process mid-run]]
+- [[topics/back-where/wiki/entities/q3k-xl-double-gpu-gaming-choice|Q3K XL / Unleashed chosen as game-adjacent model]]

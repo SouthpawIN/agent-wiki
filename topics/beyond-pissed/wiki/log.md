@@ -1,0 +1,4 @@
+# beyond-pissed — log
+
+## [2026-09-10] compile | Processed the 2026-09-10 raw item documenting Hermes verifying git state and .system-live.json serving. Added new concept page wiki/concepts/vault-live-html-load-verification.md capturing the live HTML inspection, loadLive function verification, /file route, and scan-topics.py --watch 20 loop. Updated center-vault.md and fix-discrepancy-to-updates.md with 2026-09-10 state. Added brief entries: "Hermes verified vault-live.html loadLive function and BOTS view as part of live-file-serving investigation" and "scan-topics.py --watch 20 is repacking data every 20 seconds as a continuous loop."
+## [2026-09-15] compile | Added wiki/concepts/venv-ownership-root-cause.md (root-owned venv interpreter symlink under /root breaks the user CLI; fix = rebuild venv as user via script). Added 09-15 source to beyond-pissed.md.

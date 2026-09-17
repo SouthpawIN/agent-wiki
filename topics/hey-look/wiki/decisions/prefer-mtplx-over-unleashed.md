@@ -25,9 +25,13 @@ Hermes later tested Unleashed + DFlash2 head-to-head with MTPLX at 131K on the s
 
 In the same raw slice, Hermes tested Ornith-1.5-35B-A3B MLX 4-bit as an alternative path; it reached 28.5 tok/s on short prompts on this box, but dropped to ~0.4 tok/s at 60K context and OOM'd at 131K with q8_0 KV cache, after which Hermes explored reduced GPU layers as a mitigation.^[raw/inbox/2026-09-07.md] That result reopened the trade-off: Ornith is the fastest short-context option, but it is not a stable 131K path in MLX server mode on this hardware.^[raw/inbox/2026-09-07.md]
 
+## 2026-09-15 confirmation
+
+The Unleashed + DFlash2 path was actually made to work through Hermes on the Mac on 2026-09-15 after a reasoning-budget problem (empty content) was resolved with `--reasoning off` (85.7 tok/s).^[raw/inbox/2026-09-15.md] Both models now respond through Hermes with reasoning traces, DFlash2 is set up as an alternative service, and the 81 tok/s MTP config remains the default — consistent with keeping MTPLX as the primary speed path while Unleashed+DFlash2 is available as a fallback.^[raw/inbox/2026-09-15.md] The earlier empty-content failures are now understood to have been a token-budget cause, not a draft-method cause; see [[concepts/unleashed-dflash2-reasoning-budget|Unleashed + DFlash2 reasoning-budget constraint]].
+
 ## Why it matters
 
-Chris’s constraint is a 32GB Mac; the decision implies a local-model serving choice that directly affects throughput, RAM headroom, censorship behavior, and operational simplicity for long-context work.^[raw/inbox/2026-09-06.md]
+Chris's constraint is a 32GB Mac; the decision implies a local-model serving choice that directly affects throughput, RAM headroom, censorship behavior, and operational simplicity for long-context work.^[raw/inbox/2026-09-06.md]
 
 ## Next state
 

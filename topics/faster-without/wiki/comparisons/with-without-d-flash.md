@@ -12,4 +12,6 @@ Chris is comparing the current D-flash-enabled state against a hypothetical fast
 
 A captured observation notes 8.4 tok/s for 1000 tokens, described as faster than Unleashed, with stated intent to test at 131K context; no confirmed 131K result is recorded yet. ^[raw/inbox/2026-09-06.md#L20]
 
+The 81 tok/s build (09-15) is Chris's new "excellent" benchmark and the strongest candidate yet for the much-faster state he remembers; whether that build is itself the no-D-flash configuration remains unconfirmed. ^[raw/inbox/2026-09-15.md#L13]
+
 See [[topics/faster-without/wiki/concepts/d-flash-tradeoff|D-Flash Tradeoff]], [[topics/faster-without/wiki/concepts/measured-performance|Measured Performance]], and [[topics/faster-without/wiki/entities/unleashed|Unleashed]].

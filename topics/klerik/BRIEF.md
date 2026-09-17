@@ -28,6 +28,10 @@ Hermes Agent meta-profile for reviewing, correcting, and spawning other agent pr
 - One line, phrased as a question Chris can say yes to, tied to a quote from him, naming the bot that would do it.
 
 ## Learned (agent-appended, newest first)
+- 2026-09-10 · 2026-09-10 · BRIEF.md anti-scope: Senter-wiki UI probes misrouted here → route to senter-wiki
+- 2026-09-10 · 2026-09-10 · raw item 2026-09-10.md (hermes state.db): skills=0 field in live-data is Hermes working evidence, not Chris request; route to infra
+- 2026-09-09 · 2026-09-09 scan_loops/scan_vault_agents debug traces (suffix handling .md.proposed, JSON skills=0 vs []) are Hermes working evidence, not Chris requests — route to infra per anti-scope
+- 2026-09-09 · 2026-09-09 raw items are hermes working evidence (scan_loops/scan_vault_agents debug, .md.proposed stem handling) not Chris requests; route by anti-scope to infra and append log entry.
 - 2026-09-08 · 2026-09-08 · Raw items that are purely Hermes working evidence (file-cap, bot-count 68-vs-11) should not be re-wikified; route by anti-scope to infra and only append log entry.
 - 2026-09-07 · 2026-09-07 · Config-write security restriction attempts (config blocked → patch-tool workaround) are Hermes working evidence, not Chris requests — wikify as concept + comparison only, no bots/loops/research/skills.
 - 2026-09-06 · 2026-09-06 · Raw items that are purely Hermes working evidence with no Chris ask should not be re-wikified; route them by anti-scope and only append a log entry.

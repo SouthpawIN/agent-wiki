@@ -29,6 +29,12 @@ _Pre-prompt for the cutter and this topic's agent. Chris edits freely; lines end
 - One line, phrased as a question Chris can say yes to, tied to a quote from him, naming the bot that would do it.
 
 ## Learned (agent-appended, newest first)
+- 2026-09-15 · 2026-09-15 · Build runtimes in a persistent location, not `/tmp` — the qwen4 v0.4.0-dev build was wiped on restart and lost.
+- 2026-09-15 · 2026-09-15 · DFlash2 integration flag `--hf-repo-draft` recorded; integration against the qwen4 v0.4.0-dev service (`-ngl -c -t`) still unverified after an empty response (reasoning consumed the budget).
+- 2026-09-15 · 2026-09-15 · `-ngl 9999` root cause = `CUDA_VISIBLE_DEVICES=1` not honored through `su` (env var + su handling both targeted).
+- 2026-09-15 · 2026-09-15 · Omarchy 27B confirmed working (echo '2+2 equals 4, no more'); local runtime probe continues on Ornith.
+- 2026-09-15 · 2026-09-15: DFlash2 speculative-decoding integration requires both `--spec-draft-model` (full model) and `--ctx-other`; the original working service is a qwen4 llama.cpp v0.4.0-dev build with `-ngl -c -t` flags.
+- 2026-09-09 · 2026-09-08 raw/inbox contained only Hermes internal tooling/state noise; treat as non-content until substantive burner-phone raw appears.
 - 2026-09-08 · 2026-09-08 raw/inbox contained only Hermes internal tooling/state noise (pseudocode for `data-k` JS edits, server restart chatter, sim 0.07–0.09); zero substantive burner-phone content — treat as non-content.
 - 2026-09-08 · Ornith/DFlash2/507 work continues to be the live burner-phone thread; next real compile is gated on new substantive raw (per BRIEF, treat as noise).
 - 2026-09-07 · 2026-09-07 · Colibri does not work with the MLX server format; Ornith is the only viable local runtime path in this setup.

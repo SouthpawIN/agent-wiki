@@ -1,7 +1,7 @@
 ---
 title: vault-live.html (the Senter Wiki surface)
 created: 2026-09-05
-updated: 2026-09-06
+updated: 2026-09-10
 type: entity
 tags: [tool, ui, repo, spec]
 sources:
@@ -11,6 +11,8 @@ sources:
   - raw/inbox/2026-09-05-legacy-inbox.md
   - raw/inbox/2026-09-05.md
   - raw/inbox/2026-09-06.md
+  - raw/inbox/2026-09-09.md
+  - raw/inbox/2026-09-10.md
 confidence: high
 contested: true
 ---
@@ -69,5 +71,16 @@ Clicking the player or feed never cancels the wiki's performance or closes a car
 - Temp hooks are tagged `TEMP-…` and stripped with an `assert 'TEMP-' not in s`. ^[raw/sources/knowledge/skill-agent-wiki-vault.md]
 
 ## MVP checkpoint
-2026-09-03 ~20:40 — Chris: *\"the UI is at a good enough spot that we can start working on the back end.\"* UI asks from there are polish, not redesign
+2026-09-03 ~20:40 — Chris: *"the UI is at a good enough spot that we can start working on the back end."* UI asks from there are polish, not redesign
 ([[topics/senter-wiki/wiki/decisions/2026-09-03-mvp-checkpoint-backend-phase|MVP checkpoint decision]]). ^[raw/sources/knowledge/skill-agent-wiki-vault.md]
+
+## Terminology rename — context → wiki, agents → bots (2026-09-08/09)
+Chris: "So one I want to once again rename everything that is context into wiki I think … want that to just be the wiki for that topic." The static HTML rows were fully renamed: `data-k="context"`→`data-k="wiki"`, button label "Add context"→"Add to wiki", orb labels `ctx`→`wiki`, `agents`→`bots`. The JS factory `mkTopic()` at line 1380 initially still used the old key array `['ctx','skills','agents','loops']` with a label ternary — this was fixed on 2026-09-09 13:33 alongside all four stale call sites and downstream references (line 1424 `set('agents')`→`set('bots')`, lines 1063/1068 popup header checks, lines 1622/1624/2264/2265 `setOrbActive('agents')`→`setOrbActive('bots')`). See [[topics/senter-wiki/wiki/entities/orb-label-renaming|orb label renaming]] for the full fix chain. ^[raw/inbox/2026-09-08.md] ^[raw/inbox/2026-09-09.md]
+
+## Bot schema fix (2026-09-10)
+The bot schema in `.system-live.json` was inconsistent: `skills` appeared as a list (`[]`) in some entries and an integer in others, and `model` was missing from bot objects. `scan-topics.py` was patched (see [[topics/senter-wiki/wiki/decisions/2026-09-10-bot-schema-consistency-fix|bot schema consistency fix]]) to emit `skills: 0` (int) and `model: ""` uniformly across `scan_topics()` and `scan_vault_agents()`, and `name_of()` now strips `.md` suffixes from spec filenames. A stale `--watch` process was killing the fix by overwriting the JSON with pre-change fields — identified and killed on 2026-09-10. ^[raw/inbox/2026-09-10.md]
+
+## Footer backlink (2026-09-08)
+
+A footer comment was added linking the theoretical backbone: `Theoretical backbone: https://github.com/SouthpawIN/agent-wiki` ^[raw/inbox/2026-09-09.md]. The repo was consolidated into SouthpawIN/Senter on 2026-08-29 ([[topics/senter-wiki/wiki/decisions/2026-08-29-consolidate-repos-into-senter|decision 2026-08-29]]).
+The remote naming conflict (agent-wiki vs Senter) is contested — see [[topics/senter-wiki/wiki/concepts/git-and-remote-renaming-conflict|concept page]].

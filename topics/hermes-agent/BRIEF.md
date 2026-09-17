@@ -29,6 +29,10 @@ _Pre-prompt for the cutter and this topic's agent. Chris edits freely; lines end
 - One line, phrased as a question Chris can say yes to, tied to a quote from him, naming the bot that would do it.
 
 ## Learned (agent-appended, newest first)
+- 2026-09-16 · 2026-09-16 · On 2026-09-16 21:09 Hermes began replacing the topic's root index.md with a clean entry point (session 20260916_210048_949ca0, sim 0.07); the restructure is in-progress and its outcome is not yet verified in the wiki.
+- 2026-09-14 · 2026-09-13 · Ornith (`ornith-1-5-35a3b`) is an xai-provider model, correcting an earlier TurboFit-style placement — provider assignments stay provisional until a verified config write confirms them.
+- 2026-09-14 · 2026-09-13 · Active-model churn spans xai, nous, and opencode-free with the same session id `20260903_001447_7bc70a` reused across providers, so `sim 0.09` cannot yet be attributed to any single comparable run.
+- 2026-09-10 · New raw item 2026-09-10.md is fully captured in the existing session-20260910-sim-009 entity; no new scope needed for topic.
 - 2026-09-08 · 131K at 10+ tok/s on M1 32GB is physically impossible regardless of quantization/offloading — 64GB+ Mac is the hardware floor; 65K context is the stable lockpoint.
 - 2026-09-08 · Provider locks recorded by Hermes-side tooling are provisional until a verified config write via hermes CLI confirms the exact model variant and throughput target.
 - 2026-09-08 · The streaming tok/s measurement rule (separate prompt processing from generation time) is already captured as a wiki concept; no separate skill needed since live-model-evaluation covers the workflow.

@@ -1,0 +1,10 @@
+---
+title: What is the reliable macOS procedure to write an Arch Linux ISO to a USB (sudo d
+type: query
+proposed: 2026-09-15 13:29
+tags: [question]
+---
+# What is the reliable macOS procedure to write an Arch Linux ISO to a USB (sudo dd to /dev/rdiskN after unmounting, or an alternative) without hitting PermissionError, and does Oh My Archi need any post-flash step to boot?
+The /dev/rdisk4 PermissionError is blocking the home-lab install that Chris is frustrated about right now.
+
+_Approve to run the research; the answer lands here._

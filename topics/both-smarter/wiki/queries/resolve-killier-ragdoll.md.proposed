@@ -1,0 +1,10 @@
+---
+title: What Hugging Face model does "Killier Ragdoll" transcribe to, and does it run on
+type: query
+proposed: 2026-09-15 18:40
+tags: [question]
+---
+# What Hugging Face model does "Killier Ragdoll" transcribe to, and does it run on Apple unified-memory hardware?
+It's the one unresolved thread in Chris's model search; the other two candidates (Ornith-1.5-35B-A3B, Omarchy Unleashed 27B) are already confirmed running.
+
+_Approve to run the research; the answer lands here._

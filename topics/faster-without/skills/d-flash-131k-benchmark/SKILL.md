@@ -11,8 +11,9 @@ topic: faster-without
 3. Run head-to-head speed test on both servers.
 4. Record tok/s for 1000 tokens and note any errors.
 5. Append results to topics/faster-without/log.md with timestamps.
+6. To engage DFlash2 as a spec-draft on qwen4: confirm downloads complete, restart the server with DFlash2 as draft for the Unleashed model (qwen4 supports spec-draft), keep D-flash **disabled**, hold 131K. With D-flash off, both MTP and DFlash2 produce full responses at high speed.
 
-Pitfalls: do not change server configs; if a server is unreachable, log the failure and stop.
+Pitfalls: the 81 tok/s build must be checkpointed before any DFlash2 change (save-checkpoint-before-experiment); confirm the checkpoint was actually saved, don't assume. The DFlash2 high-speed result carries no tok/s figure — always re-benchmark against the 81 tok/s control.
 
 ## Evidence
 > Unleashed + DFlash2 is up at 131K! Let me warm up, then test speed.

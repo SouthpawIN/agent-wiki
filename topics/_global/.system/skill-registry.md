@@ -3,6 +3,8 @@
 |---|---|---|---|
 | 131k-llm-tuning-on-m1 | senter | Tune 27B models for 131K context on M1 32GB. | live |
 | 27b-m1-tuning-research | topic:back-where | Use when tuning 27B models for M1. Research HF page, test Q3 prefill/batch, emit real tok/s. | live |
+| ace-step-doc-research | topic:music | Use when building the ACE-Step 1.5 4B LoRA pipeline and need to ground every step in AceStep's own d | live |
+| acestep-lora-pipeline | default | Train LoRA adapters on AceStep 1.5 from audio files. | live |
 | agent-oversight | turbosovth | Use when supervising teammate agents doing machine work. | live |
 | agent-wiki-vault | default | Use when working in the user's agent-wiki Obsidian vault. | live |
 | agent-wiki-vault-ui | looker, senter, weaver | Use when iterating the Senter vault-live dashboard UI. | live |
@@ -35,6 +37,7 @@
 | computer-use | default, anser, dogeman, fleet-orchestrator, klerik, looker, paladin, senter, senter-wiki-bot, teknium, turbosovth, weaver | Drive the desktop background-first; escalate on signal. | live |
 | d-flash-131k-benchmark | topic:faster-without | Use when benchmarking D-flash variants for the 27B model at 131K context. | live |
 | design-md | default, anser, dogeman, fleet-orchestrator, klerik, looker, paladin, senter, senter-wiki-bot, teknium, turbosovth, weaver | Author/validate/export Google's DESIGN.md token spec files. | live |
+| device-model-lane-selection | topic:both-smarter | Use when running or choosing a model on Chris's unified-memory MacBook and it is slow, swapping, or  | live |
 | dflash2-fork-flag-boundary | topic:turbofit | Use when testing DFlash2 speculative decoding with the dflash2-llama.cpp fork. Record the exact flag | live |
 | document-to-action-items | default, anser, dogeman, fleet-orchestrator, klerik, looker, paladin, senter, senter-wiki-bot, teknium, turbosovth, weaver | Extract cited obligations, deadlines, tasks from documents. | live |
 | docx | default, anser, dogeman, fleet-orchestrator, klerik, looker, paladin, senter, senter-wiki-bot, teknium, turbosovth, weaver | Create, read, edit, template, and review Word .docx files. | live |
@@ -46,6 +49,8 @@
 | evaluating-llms-harness | default, anser, dogeman, klerik, looker, paladin, senter, teknium, turbosovth, weaver | lm-eval-harness: benchmark LLMs (MMLU, GSM8K, etc.). | live |
 | excalidraw | default, anser, dogeman, klerik, looker, paladin, senter, teknium, turbosovth, weaver | Hand-drawn Excalidraw JSON diagrams (arch, flow, seq). | live |
 | findmy | default, anser, dogeman, fleet-orchestrator, klerik, looker, paladin, senter, senter-wiki-bot, teknium, turbosovth, weaver | Track Apple devices/AirTags via FindMy.app on macOS. | live |
+| flash-raw-linux-iso-to-usb | topic:restore-hdiutil | Use when writing a raw Linux distro ISO (.iso) to a USB so it boots as the right distro on macOS. St | live |
+| get-may-omarchy-setup-notes | senter | Use when working inside Chris's get-may topic and he wants the working steps for his Omarchy documen | live |
 | gif-search | default, anser, dogeman, fleet-orchestrator, klerik, looker, paladin, senter, senter-wiki-bot, teknium, turbosovth, weaver | Search/download GIFs from Tenor via curl + jq. | live |
 | github | default, anser, dogeman, fleet-orchestrator, klerik, looker, paladin, senter, senter-wiki-bot, teknium, turbosovth, weaver | GitHub via gh CLI: PRs, issues, reviews, repos, auth. | live |
 | github-auth | default, anser, dogeman, klerik, looker, paladin, senter, teknium, turbosovth, weaver | GitHub auth setup: HTTPS tokens, SSH keys, gh CLI login. | live |
@@ -57,7 +62,8 @@
 | godmode | klerik | Jailbreak LLMs: Parseltongue, GODMODE, ULTRAPLINIAN. | live |
 | google-workspace | default, anser, dogeman, fleet-orchestrator, klerik, looker, paladin, senter, senter-wiki-bot, teknium, turbosovth, weaver | Google OAuth2 client credentials (downloaded from Google Cloud Console) | live |
 | granular-recovery | topic:need-telling | Use when a rebuild is blocked or state is lost. Backtrack and rebuild from source. | live |
-| grounded-citations | default, anser, dogeman, fleet-orchestrator, klerik, looker, paladin, senter, senter-wiki-bot, teknium, turbosovth, weaver | Ground answers and documents in cited, verifiable sources. | live |
+| grounded-citations | default, anser, dogeman, fleet-orchestrator, klerik, paladin, senter, senter-wiki-bot, teknium, turbosovth, weaver | Ground answers and documents in cited, verifiable sources. | live |
+| grounded-citations.bak | looker | Ground answers and documents in cited, verifiable sources. | live |
 | half-made-profile-check | topic:klerik | Use when a bot build/spawn is reported done or 'in progress'. Verify the protected files really chan | live |
 | hermes-agent | default, anser, dogeman, fleet-orchestrator, klerik, looker, paladin, senter, senter-wiki-bot, teknium, turbosovth, weaver | Use, configure, theme, extend, and orchestrate Hermes Agent. | live |
 | hermes-agent-skill-authoring | default, anser, dogeman, fleet-orchestrator, klerik, looker, paladin, senter, senter-wiki-bot, teknium, turbosovth, weaver | Author in-repo SKILL.md files: frontmatter and structure. | live |
@@ -68,7 +74,9 @@
 | hermes-fleet-ops | default | Use when creating or orchestrating Hermes bot fleets. | live |
 | hermes-native-first-backend | senter, topic:senter | Use when a Senter backend piece is custom code. Go native. | live |
 | hermes-plugin-ops | teknium | Use when building Hermes plugins or fixing defaults. | live |
+| hermes-python-env-isolation | topic:back-where | Use when debugging scan-topics.py or any Hermes tooling change. The execute_code kernel and command- | live |
 | hermes-runtime-config-fixes | topic:senter | Use when fixing Hermes runtime config issues for model-picker stickiness, TTS gateway entitlement, o | live |
+| hermes-update | default | Use when updating Hermes or diagnosing blocked updates. | live |
 | himalaya | default, anser, dogeman, fleet-orchestrator, klerik, looker, paladin, senter, senter-wiki-bot, teknium, turbosovth, weaver | Himalaya CLI: IMAP/SMTP email from terminal. | live |
 | huggingface-hub | default, anser, dogeman, klerik, looker, paladin, senter, teknium, turbosovth, weaver | HuggingFace hf CLI: search/download/upload models, datasets. | live |
 | humanizer | default, anser, dogeman, fleet-orchestrator, klerik, looker, paladin, senter, senter-wiki-bot, teknium, turbosovth, weaver | Humanize text: strip AI-isms and add real voice. | live |
@@ -86,6 +94,8 @@
 | mac-gaming-setup | turbosovth | Use when installing Steam or games on a Mac. | live |
 | macos-app-setup | turbosovth | Use when installing or debugging a GUI app on macOS. | live |
 | macos-gaming-setup | turbosovth | Use when installing Steam, games, or Wine layers on a Mac. | live |
+| macos-sudo-password-test | senter, topic:bl3sst3xas-check | Test a macOS sudo password the agent blocks, manually. | live |
+| macos-sudo-recovery | senter | Use when Chris forgot his MacBook sudo password. Recover. | live |
 | macos-system-settings | default | Change macOS settings via defaults, restart, verify. | live |
 | manim-video | default, anser, dogeman, fleet-orchestrator, klerik, looker, paladin, senter, senter-wiki-bot, teknium, turbosovth, weaver | Manim CE animations: 3Blue1Brown math/algo videos. | live |
 | maple-mlx-server-runtime | topic:turbofit | Use when running or testing Maple MLX on Apple Silicon for Hermes aux or compression. Use deepgrove- | live |
@@ -102,8 +112,10 @@
 | mtplx-32gb-macos-tuning | topic:turbofit | Use when tuning MTPLX on 32GB macOS. Check runtime config instead of unsupported CLI flags; validate | live |
 | mtplx-memory-budget-override | topic:hey-look | Use when manually sizing MTPLX memory on a memory-constrained Mac. Set session-budget env vars with  | live |
 | mtplx-model-setup | senter, topic:hey-look | Use when setting up MTPLX for a local model on Mac. | live |
+| mtplx-reasoning-budget-troubleshoot | topic:hey-look | Use when a local-serving model returns empty content or stalls on Mac. Behaviour: diagnose the token | live |
 | mtplx-streaming-count | senter, topic:burner-phone | Use when counting MTPLX tokens. Use final chunk usage. | live |
 | mtplx-streaming-token-counting | senter | Use when testing MTPLX streaming responses. | live |
+| music-model-fit-calc | senter | Use when a music model may or may not fit a tier cap. | live |
 | music-model-test | topic:music | Use when setting up or validating a local generative music model on Chris's Mac. Check memory budget | live |
 | nano-pdf | default, anser, dogeman, klerik, looker, paladin, senter, teknium, turbosovth, weaver | Edit text in existing PDFs via natural-language prompts. | live |
 | native-mcp | klerik | MCP client: connect servers, register tools (stdio/HTTP). | live |
@@ -112,6 +124,9 @@
 | notion | default, anser, dogeman, fleet-orchestrator, klerik, looker, paladin, senter, senter-wiki-bot, teknium, turbosovth, weaver | Notion API + ntn CLI: pages, databases, markdown, Workers. | live |
 | obsidian | default, anser, dogeman, fleet-orchestrator, klerik, looker, paladin, senter, senter-wiki-bot, teknium, turbosovth, weaver | Read, search, create, and edit notes in the Obsidian vault. | live |
 | ocr-and-documents | default, anser, dogeman, klerik, looker, paladin, senter, teknium, turbosovth, weaver | Extract text from PDFs/scans (pymupdf, marker-pdf). | live |
+| omarchy-no-shell-diagnosis | senter | Use when an x86 Omarchy-style box is reachable on Tailscale but has no SSH shell and the 443 control | live |
+| omarchy-remote-desktop-setup | senter | Use to repair remote desktop/VNC into Chris's Omarchy. | live |
+| omarchy-tailscale-setup | senter | Use when configuring remote desktop/VNC + OBS for Chris's Omarchy (arch Linux) over Tailscale from h | live |
 | opencode | default, anser, dogeman, fleet-orchestrator, klerik, looker, paladin, senter, senter-wiki-bot, teknium, turbosovth, weaver | Delegate coding to OpenCode CLI (features, PR review). | live |
 | openhue | default, anser, dogeman, klerik, looker, paladin, senter, teknium, turbosovth, weaver | Control Philips Hue lights, scenes, rooms via OpenHue CLI. | live |
 | p5js | default, anser, dogeman, fleet-orchestrator, klerik, looker, paladin, senter, senter-wiki-bot, teknium, turbosovth, weaver | p5.js sketches: gen art, shaders, interactive, 3D. | live |
@@ -133,7 +148,7 @@
 | qwen-research-first-implementation | topic:back-where | Use when implementing a HuggingFace model variant for local runtime. Research the model page and unl | live |
 | recovery-repair-pattern | topic:back-where | Use when fixing Hermes runtime crashes on local M1 hardware. Follow Chris's verification-first repai | live |
 | reddit-reading | default, anser, dogeman, fleet-orchestrator, klerik, looker, paladin, senter, senter-wiki-bot, teknium, turbosovth, weaver | Read Reddit: subreddits, search, threads, users. No browser. | live |
-| remote-linux-ops | default | Use when administering a remote Linux box over SSH. | live |
+| remote-linux-ops | default | Use when administering any device on the user's Tailnet (macOS, Linux, Android) — SSH, Tailscale, AD | live |
 | remote-os-install | turbosovth | Use when installing an OS on a remote machine over SSH. | live |
 | requesting-code-review | default, anser, dogeman, fleet-orchestrator, klerik, looker, paladin, senter, senter-wiki-bot, teknium, turbosovth, weaver | Pre-commit review: security scan, quality gates, auto-fix. | live |
 | reroute-noise-extraction | topic:memento | Use when a raw item contains duplicated Hermes-state reroute or port-conflict noise. Retain only sub | live |
@@ -148,6 +163,7 @@
 | senter-proposal-pipeline | senter-wiki-bot, topic:senter-wiki | Use when a worker/umbrella emits or Chris acts on a wiki proposal. Write `.proposed` artifacts, surf | live |
 | senter-watcher | senter-wiki-bot, topic:senter-wiki | Use when the watcher (com.senter.watcher) misfiles, stalls, or needs tuning. Per-message filing of H | live |
 | serving-llms-vllm | default, anser, dogeman, klerik, looker, paladin, senter, teknium, turbosovth, weaver | vLLM: high-throughput LLM serving, OpenAI API, quantization. | live |
+| session-handoff-latest-message-wins | topic:back-where | Use when a context compaction handoff appears. Only act on the latest message after the summary; dis | live |
 | session-librarian | default, anser, dogeman, klerik, looker, paladin, senter, teknium, turbosovth, weaver | Organize sessions by prompt: find, rename, archive, prune. | live |
 | sidebar-rubber-duck | fleet-orchestrator, topic:senter | Use when acting as the Senter sidebar chat. Converse only, yes-and, extract ideas; never do tasks; r | live |
 | simplify-code | default, anser, dogeman, fleet-orchestrator, klerik, looker, paladin, senter, senter-wiki-bot, teknium, turbosovth, weaver | Parallel 4-agent cleanup of recent code changes. | live |
@@ -156,6 +172,7 @@
 | songsee | default, anser, dogeman, fleet-orchestrator, klerik, looker, paladin, senter, senter-wiki-bot, teknium, turbosovth, weaver | Audio spectrograms/features (mel, chroma, MFCC) via CLI. | live |
 | songwriting-and-ai-music | default, anser, dogeman, fleet-orchestrator, klerik, looker, paladin, senter, senter-wiki-bot, teknium, turbosovth, weaver | Songwriting craft and Suno AI music prompts. | live |
 | spike | default, anser, dogeman, fleet-orchestrator, klerik, looker, paladin, senter, senter-wiki-bot, teknium, turbosovth, weaver | Throwaway experiments to validate an idea before build. | live |
+| stale-process-kill-rescan | topic:self-file | When a watch/scan process overwrites files with stale data after a code update, kill it by PID and r | live |
 | systematic-debugging | default, anser, dogeman, fleet-orchestrator, klerik, looker, paladin, senter, senter-wiki-bot, teknium, turbosovth, weaver | 4-phase root cause debugging: understand bugs before fixing. | live |
 | teams-meeting-pipeline | default, anser, dogeman, fleet-orchestrator, klerik, looker, paladin, senter, senter-wiki-bot, teknium, turbosovth, weaver | Teams meeting summaries, job replay, Graph subscriptions. | live |
 | termux-workflows | anser, looker | Consolidated umbrella for android skills: termux-tts-voice-fix, ffmpeg-music-video | live |
@@ -169,8 +186,10 @@
 | turbo-artifact-download-spec | topic:turbofit | Use when downloading new TurboFit GGUF/MLX candidate artifacts. Build a reproducible curl-backed dow | live |
 | turbo-fit-evidence-capture | topic:turbofit | Use when capturing TurboFit performance or behavior evidence. Capture from Chris's actual Hermes win | live |
 | turbo-model-store-cleanup | default, anser, dogeman, fleet-orchestrator, klerik, looker, paladin, senter, senter-wiki-bot, teknium, turbosovth, weaver, topic:turbofit | Use when freeing TurboFit storage. Delete only wiki-marked. | live |
-| turbofit | default, anser, dogeman, fleet-orchestrator, klerik, looker, paladin, senter, senter-wiki-bot, teknium, turbosovth, weaver | Hardware-aware adaptive Hermes runtime using portable Turbofiles, total usable memory, owned native  | live |
+| turbofit | default, anser, dogeman, fleet-orchestrator, klerik, looker, paladin, senter, senter-wiki-bot, teknium, turbosovth, weaver | Rules for Turbofit Wiki. Use when editing. | live |
 | turbofit-runtime-setup | default | Use when setting up or fixing the Turbofit local runtime. | live |
+| vault-artifact-staging-procedure | topic:object-important | Use when staging vault files for commit while excluding generated live-state JSON. | live |
+| venv-rebuild-as-user | topic:beyond-pissed | Fix a root-owned Python venv that the normal user can't traverse (symlink points into /root). | live |
 | wallpaper-compositing | default | Composite line art over dark plates into wallpapers. | live |
 | warmup-before-benchmark | topic:try-again | Use when benchmarking local inference on Apple Silicon. Run a warmup prompt before measuring tok/s. | live |
 | watcher-per-message-filing | fleet-orchestrator, topic:senter | Use when building or tuning the Senter watcher. File every Hermes message into a topic inbox as it l | live |
@@ -195,7 +214,9 @@
 | wiki-page-quality-check | senter, senter-wiki-bot, topic:senter-wiki | Use after a topic-wiki compile. Check one page, scan dupes. | live |
 | wiki-player-audio-path | topic:youtube | Use when changing the Senter wiki music player's audio element or source. Apply state on creation, t | live |
 | wiki-real-audio-pipeline | senter-wiki-bot, topic:senter-wiki | Use when the wiki player, EQ, or volume misbehaves. Real audio only: yt-dlp proxy → <audio> → analys | live |
+| wiki-resume-orientation | senter | Read schema, index, log before editing an existing wiki. | live |
 | wiki-safe-edit-contract | topic:senter-wiki | Use when editing vault-live.html. Preserve boot bindings, row geometry, and dot centering. | live |
+| wiki-terminology-rename-contract | senter | Use when renaming a UI term across both baked HTML markup and the JS factory + downstream references | live |
 | wiki-tone-measure | senter-wiki-bot, topic:senter-wiki | Use when Chris says cream/warm/gray/filter/doesn't match the girl. Measure pixel triples before and  | live |
 | wiki-ui-knobs | senter-wiki-bot, topic:senter-wiki | Use when Chris asks to move, resize, recolour or re-time anything in vault-live.html. Every knob, wh | live |
 | windows-games-on-mac | turbosovth | Use when installing Windows Steam games on a Mac via Wine. | live |

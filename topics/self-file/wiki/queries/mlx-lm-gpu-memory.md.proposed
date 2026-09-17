@@ -1,0 +1,10 @@
+---
+title: What context-length, cache, and quantization settings minimize GPU memory pressu
+type: query
+proposed: 2026-09-15 15:47
+tags: [question]
+---
+# What context-length, cache, and quantization settings minimize GPU memory pressure for mlx_lm server serving ornith, and what triggers the SIGKILL after ~40k tokens?
+Chris keeps hitting GPU memory walls (16 GB process, OOM kills, SIGKILL after 40k tokens) that break inference sessions.
+
+_Approve to run the research; the answer lands here._

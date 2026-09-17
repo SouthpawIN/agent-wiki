@@ -1,9 +1,9 @@
 # talked-architecture — wiki index
 > One line per page. The wiki row's CONTEXT section renders this file.
-> Last updated: 2026-09-08 | Total pages: 6
+> Last updated: 2026-09-09 | Total pages: 7
 
 ## Entities
-
+- [[topics/talked-architecture/wiki/entities/architecture|architecture.md]] — Chris worked on an external artifact named `architecture.md` and added **explicit skill vs bot vs loop decision criteria** to it.
 
 ## Concepts
 - [[topics/talked-architecture/wiki/concepts/model-architecture|Model Architecture]] — Chris raised the topic of "the architecture of the model" in the context of a discussion where he was correcting someone for speaking about it without having re

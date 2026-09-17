@@ -49,8 +49,14 @@ The Senter system itself: the fleet of Hermes bots, how they coordinate, the wat
 - One line, phrased as a question Chris can say yes to, tied to a quote from him, naming the bot that would do it.
 
 ## Learned (agent-appended, newest first)
-- 2026-09-09 · 2026-09-09 · raw/2026-09-09.md contained only hermes: working lines about gh-sync repo structure (agent-wiki/klerik/senter); vault-to-repo link status unresolved, filed as infrastructure evidence
-- 2026-09-09 · raw/2026-09-09.md contained only hermes: working lines about gh-sync repo structure (agent-wiki/klerik/senter); vault-to-repo link status unresolved, filed as infrastructure evidence
+- 2026-09-09 · 2026-09-09 · raw/inbox/2026-09-09-from-legacy-bots.md contains only Hermes working lines from scan debugging — compile as evidence only, not a new Chris decision or request.
+- 2026-09-09 · 2026-09-09 · bridge scan-topics.py shows a real schema/merge bug in snapshot(): topic bots lack model, scan_vault_agents() has duplicate skills assignments, and topic/profile scan paths normalize skills types differently.
+- 2026-09-09 · 2026-09-09 · raw/inbox/2026-09-09-from-wiki-want.md contains only hermes working lines from scan debugging — no new Chris decisions extracted.
+- 2026-09-09 · 2026-09-09 20:05–20:33 bridge scan debugging exposed a real schema/merge bug in `scan-topics.py`: topic bots lack `model`, and vault/profile `skills` types can still desync despite the earlier naming fix.
+- 2026-09-09 · 2026-09-09 raw items already fully compiled — no new wiki content extracted
+|- 2026-09-09 · 2026-09-09 · Layout inspection gap: Hermes DOM probing for bot/sessions visibility was blocked ("browser isn't running"); the live-data contract (7bridge serves 69 bots) is senter, but the vault-live.html layout rendering belongs to senter-wiki per anti-scope
+|- 2026-09-09 · 2026-09-09 · git-init fix resolves "updates keep failing" root cause (Projects folder was NOT a git repo); bridge health verified 2026-09-09 (35 topics/69 bots/201 skills/81 loops); gh-sync repo structure (agent-wiki/klerik/senter) evidence; vault-to-repo link (symlink/clone/worktree) still unresolved
+|- 2026-09-09 · 2026-09-09 · raw/2026-09-09.md + raw/2026-09-09-from-senter-wiki.md: Chris 08:45 "continuing toward your standing goal" re-activates 2026-09-08 autonomous completion; live pipeline verified (35 topics/69 bots/201 skills/81 loops, bridge healthy); git initialized in Projects folder fixing "updates keep failing"; gh-sync repo structure (agent-wiki/klerik/senter) evidence; vault-to-repo link (symlink/clone/worktree) still unresolved
 - 2026-09-08 · senter-wiki topic folder already existed with proper structure — investigation on scan-topics.py was premature
 - 2026-09-08 · 2026-09-08 · scan-topics.py bot name parsing `split(".md")` correctly strips extensions — kashik test confirmed on 2026-09-08 09:51
 - 2026-09-08 · Chris authorizes autonomous completion of Senter Wiki front and backend with standing approval extended for this task

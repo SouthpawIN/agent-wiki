@@ -1,5 +1,5 @@
 # INDEX — topics/burner-phone
-_11 files · 10 KB · regenerate: `python3 assets/build-index.py`_
+_13 files · 15 KB · regenerate: `python3 assets/build-index.py`_
 
 Read order for an agent: this file → pick a file below → its outline → `read_file offset=<line> limit=<n>`. Sessions under `.system/sessions/` are full transcripts (largest; go by outline).
 
@@ -15,7 +15,7 @@ Read order for an agent: this file → pick a file below → its outline → `re
     - L84 ## Quick Start
 
 ## .system
-- `.system/agent.cursor` — 0 KB, 7 lines — raw/inbox/2026-09-07.md@22373c8bd48c
+- `.system/agent.cursor` — 1 KB, 15 lines — raw/inbox/2026-09-07.md@22373c8bd48c
 - `.system/continuity.md` — 0 KB, 7 lines — Continuity — burner-phone
     - L1 # Continuity — burner-phone
 - `.system/injections.md` — 3 KB, 32 lines — Injections
@@ -25,17 +25,19 @@ Read order for an agent: this file → pick a file below → its outline → `re
     - L18 ## Current context
     - L22 ## Version policy
     - L26 ## Related concepts
-- `.system/queue.md` — 1 KB, 17 lines — Queue
+- `.system/queue.md` — 2 KB, 20 lines — Queue
     - L1 # Queue
     - L3 ## [SKILLS]
     - L6 ## [AGENTS]
-    - L10 ## [LOOPS]
-    - L13 ## [CONTEXT]
+    - L12 ## [LOOPS]
+    - L15 ## [CONTEXT]
 
 ## agents
 - `agents/.gitkeep` — 0 KB, 1 lines — 
 - `agents/context-ceiling-lookup.md.proposed` — 1 KB, 22 lines — type: agent
+- `agents/dflash2-integrator.md.proposed` — 3 KB, 45 lines — type: agent
 - `agents/ornith-runner.md.proposed` — 0 KB, 22 lines — type: agent
+- `agents/ornith-runtime-keeper.md.proposed` — 2 KB, 32 lines — type: agent
 
 ## loops
 - `loops/.gitkeep` — 0 KB, 1 lines — 

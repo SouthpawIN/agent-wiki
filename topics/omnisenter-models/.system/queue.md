@@ -9,4 +9,5 @@
 - [ ] *(empty)*
 
 ## [CONTEXT]
+- [ ] research acestep-verify — SUGGESTED 2026-09-15 20:33: I see we still don't know if 'acestep' is the real HuggingFace org for the OmniSenter/OmniStep core — want me to look in
 - [ ] research omnisenter-hf-sourcing-policy — SUGGESTED 2026-09-07 14:28: Want me to look into whether HuggingFace model cards should be the authoritative run-metadata source for OmniSenter/Omni

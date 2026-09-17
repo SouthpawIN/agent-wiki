@@ -1,0 +1,10 @@
+---
+title: Can Hermes's built-in <webview>/Chromium be driven headlessly or within the app 
+type: query
+proposed: 2026-09-13 16:57
+tags: [question]
+---
+# Can Hermes's built-in <webview>/Chromium be driven headlessly or within the app to perform real TCGPlayer/MTGStocks/ebay/Gmail automation, and how (Playwright/CDP) — vs. pocket-shop's custom browser approach?
+Chris explicitly wants to reuse Hermes's engine rather than build one; this is the missing fact needed to unblock the browser-automation layer.
+
+_Approve to run the research; the answer lands here._

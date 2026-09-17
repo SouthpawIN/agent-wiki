@@ -41,16 +41,20 @@ The investigation was in progress at filing time; the relationship between
   and dispatch/sentinel status depends on a coherent git working tree per the
   [[topics/senter/wiki/decisions/2026-09-02-upstream-pr-policy|upstream PR policy]].
 
-## what to check
+## status (2026-09-09 13:17+ resolution)
+Hermes diagnosed: *\"The Projects folder is NOT a git repository, but it contains files that should be. This is why 'updates keep failing' — there's no git to track or push changes. The user wants to be able to update AND keep the project (which is the wiki/vault).\"* ^[raw/inbox/2026-09-09-from-senter-wiki.md]
 
-1. Is `~/Documents/Projects/Projects` a git repo? (`git -C ~/Documents/Projects/Projects rev-parse --show-toplevel`)
-2. Is it a symlink to `gh-sync/agent-wiki`? (`readlink`, `ls -la ~/Documents/Projects`)
-3. Is there git remote config tying the working directory to the `agent-wiki` repo URL?
+Hermes then **initialized git** and connected it to the remote `https://github.com/SouthpawIN/agent-wiki` ^[raw/inbox/2026-09-09.md]. Verified at session end:
+- `~/Documents/Projects/Projects` is a real git repo (not a symlink — `readlink -f` resolves to itself)
+- Remote: `origin https://github.com/SouthpawIN/agent-wiki`
+- Git initialized **resolves the "updates keep failing" root cause**: the bridge/file-serving path and wiki writes can now be tracked and committed
+
+### What remains unresolved
+The exact relationship between the working directory and the `gh-sync` directory's three repos (`agent-wiki`, `klerik`, `senter`) — whether the vault is a worktree, clone, or loose copy of `agent-wiki`. Hermes noted at 13:15: *\"This might be a symlink, or the Projects folder might be a different location\"* — confirmed it is NOT a symlink, but the sync mechanism to the gh-sync repos is not recorded.
 
 ## related
-
-- [[topics/senter/wiki/concepts/vault-repo-mapping|vault-to-repo mapping]]
-- [[topics/senter/wiki/entities/senter-repo|senter repo]]
-- [[topics/senter/wiki/entities/senter-bridge|senter-bridge]]
-- [[topics/senter/wiki/decisions/2026-09-02-upstream-pr-policy|upstream PR policy]]
-- [[topics/senter/wiki/queries/verify-apply-paths-and-watchpaths-landed|verify apply paths and WatchPaths landed]]
+|- [[topics/senter/wiki/concepts/vault-repo-mapping|vault-to-repo mapping]]
+|- [[topics/senter/wiki/entities/senter-repo|senter repo]]
+|- [[topics/senter/wiki/entities/senter-bridge|senter-bridge]] — bridge health verification 2026-09-09 (35 topics / 69 bots / 201 skills / 81 loops)
+|- [[topics/senter/wiki/decisions/2026-09-02-upstream-pr-policy|upstream PR policy]]
+|- [[topics/senter/wiki/queries/verify-apply-paths-and-watchpaths-landed|verify apply paths and WatchPaths landed]]

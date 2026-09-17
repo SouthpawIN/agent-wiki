@@ -1,0 +1,10 @@
+---
+title: What does the Omarchy OS control-plane API on port 443 offer, and how should Her
+type: query
+proposed: 2026-09-14 22:18
+tags: [question]
+---
+# What does the Omarchy OS control-plane API on port 443 offer, and how should Hermes drive this box over HTTPS instead of SSH?
+Chris is setting up an x86-style only-device box; the access story changes from SSH to a control-plane handshake.
+
+_Approve to run the research; the answer lands here._

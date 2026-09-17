@@ -22,3 +22,5 @@ Record what Chris actually experienced and decided, not the build process around
 - Chris's M1 MacBook 32GB should run the chosen model at Q3 with 262k contacts and D flash 2 given sufficient batch/prefill tuning.
 - Interrupted turns may leave a short follow-up request; inspect on-disk state before re-executing Calibri/Bonsai or any next step.
 - Token startup race condition: during UI restoration, token reads may occur before the server is ready; treat server readiness as the prerequisite before retrying auth.
+- Context compaction handoff pattern recurs across session boundaries (2026-09-08, 2026-09-09); treat latest message after handoff as the only active task.
+- Python execute_code runs in an isolated kernel; changes may not propagate to command-line execution.

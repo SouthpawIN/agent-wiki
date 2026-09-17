@@ -1,0 +1,10 @@
+---
+title: Should ~/Documents/Projects/Projects be a submodule, worktree, or separate repos
+type: query
+proposed: 2026-09-09 20:09
+tags: [question]
+---
+# Should ~/Documents/Projects/Projects be a submodule, worktree, or separate repository synced with ~/gh-sync/agent-wiki?
+The update pipeline fails because Projects has no git repo, creating a discrepancy between working directory and upstream agent-wiki.
+
+_Approve to run the research; the answer lands here._

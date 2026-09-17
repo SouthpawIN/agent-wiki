@@ -1,5 +1,5 @@
 # INDEX — topics/back-where
-_23 files · 24 KB · regenerate: `python3 assets/build-index.py`_
+_28 files · 33 KB · regenerate: `python3 assets/build-index.py`_
 
 Read order for an agent: this file → pick a file below → its outline → `read_file offset=<line> limit=<n>`. Sessions under `.system/sessions/` are full transcripts (largest; go by outline).
 
@@ -10,19 +10,19 @@ Read order for an agent: this file → pick a file below → its outline → `re
     - L7 ## Status
 
 ## .system
-- `.system/agent.cursor` — 1 KB, 15 lines — raw/inbox/2026-09-06-from-klerik.md@35afa5582376
+- `.system/agent.cursor` — 1 KB, 27 lines — raw/inbox/2026-09-06-from-klerik.md@35afa5582376
 - `.system/continuity.md` — 0 KB, 3 lines — Continuity — back-where
     - L1 # Continuity — back-where
-- `.system/injections.md` — 2 KB, 17 lines — Injections — back-where
+- `.system/injections.md` — 2 KB, 20 lines — Injections — back-where
     - L1 # Injections — back-where
     - L3 ## [UNREAD]
-    - L16 ## [READ]
-- `.system/queue.md` — 5 KB, 37 lines — Queue — back-where
+    - L19 ## [READ]
+- `.system/queue.md` — 6 KB, 46 lines — Queue — back-where
     - L1 # Queue — back-where
     - L3 ## [CONTEXT]
-    - L15 ## [SKILLS]
-    - L23 ## [AGENTS]
-    - L31 ## [LOOPS]
+    - L19 ## [SKILLS]
+    - L29 ## [AGENTS]
+    - L40 ## [LOOPS]
 
 ## agents
 - `agents/27b-optimizer.md.proposed` — 1 KB, 23 lines — type: agent
@@ -30,8 +30,11 @@ Read order for an agent: this file → pick a file below → its outline → `re
 - `agents/m1-27b-audit-bot.md.proposed` — 1 KB, 22 lines — type: agent
 - `agents/m1-27b-prep-bot.md.proposed` — 1 KB, 23 lines — type: agent
 - `agents/m1-27b-tuner.md.proposed` — 1 KB, 22 lines — type: agent
+- `agents/obs-omarchy-stream-bot.md.proposed` — 2 KB, 30 lines — type: agent
 - `agents/state-recovery-bot.md.proposed` — 1 KB, 23 lines — type: agent
+- `agents/steam-play-hp-bot.md.proposed` — 2 KB, 30 lines — type: agent
 - `agents/teknium.md.proposed` — 1 KB, 22 lines — type: agent
+- `agents/turbofit-watch-bot.md.proposed` — 1 KB, 30 lines — type: agent
 
 ## loops
 - `loops/27b-speed-target-loop.md.proposed` — 1 KB, 17 lines — type: loop
@@ -44,6 +47,11 @@ Read order for an agent: this file → pick a file below → its outline → `re
 - `skills/27b-m1-tuning-research/SKILL.md` — 1 KB, 19 lines — name: 27b-m1-tuning-research
     - L8 # 27b-m1-tuning-research
     - L16 ## Evidence
+
+## skills/hermes-python-env-isolation
+- `skills/hermes-python-env-isolation/SKILL.md` — 1 KB, 14 lines — name: hermes-python-env-isolation
+    - L8 # hermes-python-env-isolation
+    - L11 ## Evidence
 
 ## skills/latest-message-wins-task-handling
 - `skills/latest-message-wins-task-handling/SKILL.md` — 1 KB, 18 lines — name: latest-message-wins-task-handling
@@ -64,6 +72,11 @@ Read order for an agent: this file → pick a file below → its outline → `re
 - `skills/research-first-27b-model-implementation/SKILL.md` — 1 KB, 19 lines — name: research-first-27b-model-implementation
     - L8 # research-first-27b-model-implementation
     - L16 ## Evidence
+
+## skills/session-handoff-latest-message-wins
+- `skills/session-handoff-latest-message-wins/SKILL.md` — 1 KB, 14 lines — name: session-handoff-latest-message-wins
+    - L8 # session-handoff-latest-message-wins
+    - L11 ## Evidence
 
 ## skills/tts-fresh-entitlement-retry
 - `skills/tts-fresh-entitlement-retry/SKILL.md` — 1 KB, 17 lines — name: tts-fresh-entitlement-retry

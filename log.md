@@ -738,3 +738,284 @@ Chris: "rip the bandaid off… everything live, get everything hooked up." Built
 2026-09-09 13:17: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
 2026-09-09 13:17: topic-agent beyond-pissed · 1 raw → 1 pages (index 10) · research:discrepancy-investigation, brief+1
 2026-09-09 13:22: topic-agent senter · 1 raw → 2 pages (index 94) · brief+1
+2026-09-09 13:25: topic-agent senter-wiki · 1 raw → 2 pages (index 95) · brief+1, reroute→senter
+2026-09-09 13:27: topic-agent beyond-pissed · 1 raw → 2 pages (index 10) · brief+1
+2026-09-09 13:29: topic-agent dispatched-m2s · 1 raw → 2 pages (index 9) · no suggestions
+2026-09-09 13:31: topic-agent object-important · 1 raw → 1 pages (index 11) · research:git-lfs-model-storage-inventory, brief+1
+2026-09-09 13:47: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-09 14:13: topic-agent back-where · 1 raw → 1 pages (index 27) · no suggestions
+2026-09-09 14:16: topic-agent need-telling · 1 raw → 1 pages (index 7) · no suggestions
+2026-09-09 14:17: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-09 14:34: topic-agent try-again · 1 raw → 2 pages (index 17) · brief+1
+2026-09-09 14:47: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-09 15:17: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-09 15:47: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-09 16:17: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-09 16:34: topic-agent senter-wiki · 1 raw → 5 pages (index 99) · brief+1
+2026-09-09 16:46: topic-agent senter · 2 raw → 0 pages (index 98) · brief+1
+2026-09-09 16:47: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-09 17:17: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-09 17:47: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-09 18:17: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-09 18:47: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-09 19:17: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-09 19:47: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-09 20:09: topic-agent beyond-pissed · 2 raw → 5 pages (index 12) · research:repo-sync-arch, brief+2
+2026-09-09 20:10: topic-agent burner-phone · 1 raw → 0 pages (index 13) · brief+1, reroute→senter
+2026-09-09 20:12: topic-agent crow · 1 raw → 2 pages (index 2) · brief+2
+2026-09-09 20:14: topic-agent dispatched-m2s · 1 raw → 1 pages (index 9) · research:message-id-reuse-audit
+2026-09-09 20:15: topic-agent hermes-agent · 1 raw → 0 pages (index 17) · reroute→senter
+2026-09-09 20:16: topic-agent kashik · 1 raw → 2 pages (index 7) · brief+1
+2026-09-09 20:17: topic-agent klerik · 2 raw → 2 pages (index 44) · brief+1
+2026-09-09 20:17: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-09 20:17: topic-agent legacy-bots · 1 raw → 0 pages (index 0) · no suggestions
+2026-09-09 20:22: topic-agent need-telling · 2 raw → 1 pages (index 7) · brief+2
+2026-09-09 20:23: topic-agent object-important · 2 raw → 3 pages (index 11) · bot:model-artifact-registry, loop:live-json-size-watch, research:vault-git-lfs-audit, skill:vault-artifact-staging-procedure, brief+2
+2026-09-09 20:38: topic-agent senter · 4 raw → 0 pages (index 98) · bot:scan-topics-schema-fixer, loop:snapshot-schema-audit, research:snapshot-stale-cache-research, brief+1, reroute→hermes-agent
+2026-09-09 20:47: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-09 20:47: topic-agent talked-architecture · 1 raw → 1 pages (index 7) · bot:idea-classifier, loop:criteria-audit, research:classification-patterns
+2026-09-09 20:49: topic-agent try-again · 2 raw → 0 pages (index 17) · brief+1
+2026-09-09 20:49: topic-agent turbofit · 2 raw → 0 pages (index 61) · brief+1, reroute→senter-wiki, reroute→senter-wiki
+2026-09-09 20:50: topic-agent wiki-want · 1 raw → 0 pages (index 7) · reroute→senter
+2026-09-09 20:51: topic-agent youtube · 1 raw → 0 pages (index 6) · reroute→senter-wiki
+2026-09-09 20:51: topic-agent anser · 1 raw → 0 pages (index 4) · brief+1
+2026-09-09 20:52: topic-agent back-where · 2 raw → 0 pages (index 27) · brief+1
+2026-09-09 20:54: topic-agent beyond-pissed · 1 raw → 6 pages (index 12) · brief+1
+2026-09-09 20:55: topic-agent crow · 1 raw → 2 pages (index 2) · brief+1
+2026-09-09 20:56: topic-agent hermes-agent · 1 raw → 0 pages (index 17) · no suggestions
+2026-09-09 21:00: topic-agent klerik · 1 raw → 0 pages (index 44) · brief+1
+2026-09-09 21:02: topic-agent music · 1 raw → 0 pages (index 20) · no suggestions
+2026-09-09 21:16: topic-agent senter · 1 raw → 2 pages (index 98) · research:system-live-source-audit, brief+2
+2026-09-09 21:17: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-09 21:31: topic-agent legacy-bots · 1 raw → 0 pages (index 0) · reroute→senter
+2026-09-09 21:32: topic-agent object-important · 1 raw → 0 pages (index 11) · no suggestions
+2026-09-09 21:32: topic-agent self-file · 2 raw → 0 pages (index 13) · brief+1
+2026-09-09 21:34: topic-agent senter · 1 raw → 1 pages (index 98) · research:hermes-snapshot-schema-upstream, brief+1
+2026-09-09 21:47: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-09 22:15: topic-agent senter-wiki · 4 raw → 4 pages (index 107) · brief+2, reroute→turbofit
+2026-09-09 22:16: topic-agent turbofit · 1 raw → 0 pages (index 61) · brief+1, reroute→senter-wiki
+2026-09-09 22:17: topic-agent senter-wiki · 1 raw → 0 pages (index 107) · reroute→turbofit
+2026-09-09 22:17: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-09 22:17: topic-agent turbofit · 1 raw → 0 pages (index 61) · brief+1, reroute→senter-wiki
+2026-09-09 22:17: topic-agent senter-wiki · 1 raw → 0 pages (index 107) · reroute→turbofit
+2026-09-09 22:18: topic-agent turbofit · 1 raw → 0 pages (index 61) · reroute→senter-wiki
+2026-09-10 06:44: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-10 09:54: topic-agent senter-wiki · 2 raw → 1 pages (index 109) · brief+1, reroute→turbofit
+2026-09-10 09:56: topic-agent turbofit · 1 raw → 0 pages (index 61) · reroute→senter-wiki
+2026-09-10 10:10: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-10 10:36: topic-agent klerik · 1 raw → 44 pages (index 44) · brief+2
+2026-09-10 10:40: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-10 11:10: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-10 11:40: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-10 12:08: topic-agent anser · 1 raw → 2 pages (index 6) · brief+1
+2026-09-10 12:10: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-10 12:20: topic-agent back-where · 2 raw → 2 pages (index 29) · skill:session-handoff-latest-message-wins, skill:hermes-python-env-isolation, brief+2
+2026-09-10 12:40: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-10 13:05: topic-agent dispatched-m2s · 1 raw → 4 pages (index 9) · no suggestions
+2026-09-10 13:10: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-10 13:11: topic-agent klerik · 1 raw → 0 pages (index 44) · no suggestions
+2026-09-10 13:13: topic-agent legacy-bots · 1 raw → 0 pages (index 0) · brief+1, reroute→senter
+2026-09-10 13:17: topic-agent music · 1 raw → 0 pages (index 20) · brief+1
+2026-09-10 13:19: topic-agent need-telling · 1 raw → 1 pages (index 7) · brief+2
+2026-09-10 13:24: topic-agent object-important · 1 raw → 1 pages (index 11) · brief+1
+2026-09-10 13:30: topic-agent self-file · 2 raw → 1 pages (index 14) · loop:local-watch-process-monitor, research:scan-topics-py-write-function, skill:stale-process-kill-rescan
+2026-09-10 13:40: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-10 14:10: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-10 14:10: topic-agent beyond-pissed · 2 raw → 18 pages (index 18) · bot:watch-process-restart, bot:git-upstream-setter, bot:commit-scan-topics-fix, loop:verification-loop, loop:watch-loop-sync, research:sync-verifier, brief+1
+2026-09-10 14:12: topic-agent crow · 1 raw → 2 pages (index 2) · no suggestions
+2026-09-10 14:13: topic-agent hermes-agent · 1 raw → 3 pages (index 18) · brief+1
+2026-09-10 14:40: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-10 14:49: topic-agent senter-wiki · 3 raw → 3 pages (index 112) · bot:vault-layout-fixer, loop:git-vault-sync, loop:bot-schema-watch, research:m1-131k-performance-model, brief+5, reroute→turbofit
+2026-09-10 14:53: topic-agent try-again · 2 raw → 4 pages (index 18) · brief+2
+2026-09-10 15:01: topic-agent turbofit · 2 raw → 0 pages (index 61) · reroute→senter-wiki, reroute→senter-wiki
+2026-09-10 15:10: umbrella pass · 1 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-10 15:40: umbrella pass · 1 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-10 21:24: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-11 04:47: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-11 10:38: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-11 15:48: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-11 18:43: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-12 02:39: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-12 11:19: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-12 14:29: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-12 14:59: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-12 15:29: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-12 15:59: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-12 16:29: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-12 16:59: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-12 17:29: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-12 17:59: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-12 18:29: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-12 18:59: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-12 19:29: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-12 19:59: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-12 20:29: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-12 20:59: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-12 21:29: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-12 21:59: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-12 22:29: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-13 05:56: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-13 09:35: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-13 10:05: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-13 10:35: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-13 11:05: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-13 11:36: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-13 12:26: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-13 13:34: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-13 14:30: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-13 15:11: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-13 16:02: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-13 16:32: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-13 16:44: topic-agent omnisenter-models · 1 raw → 2 pages (index 2) · no suggestions
+2026-09-13 16:50: topic-agent only-device · 2 raw → 4 pages (index 4) · research:usb-not-booting-hp
+2026-09-13 16:57: topic-agent pocket-shop · 1 raw → 1 pages (index 4) · research:hermes-browser-automation, brief+1
+2026-09-13 17:02: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-13 17:06: topic-agent anser · 1 raw → 0 pages (index 6) · brief+1
+2026-09-13 17:32: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-13 21:35: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-13 21:36: topic-agent bl3sst3xas-check · 1 raw → 3 pages (index 3) · skill:macos-sudo-password-test
+2026-09-14 05:39: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-14 06:29: topic-agent burner-phone · 3 raw → 0 pages (index 13) · no suggestions
+2026-09-14 11:44: topic-agent click-options · 1 raw → 2 pages (index 2) · research:turbofit-provider-gone
+2026-09-14 12:20: topic-agent dev-tooling · 1 raw → 1 pages (index 3) · reroute→senter
+2026-09-14 13:22: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-14 13:23: topic-agent dispatched-m2s · 1 raw → 0 pages (index 9) · reroute→only-device
+2026-09-14 17:31: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-14 17:58: topic-agent hermes-agent · 4 raw → 4 pages (index 22) · research:dhh-linux-distro, brief+2
+2026-09-14 18:38: topic-agent klerik · 2 raw → 0 pages (index 44) · no suggestions
+2026-09-14 18:43: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-14 18:46: topic-agent memento · 1 raw → 0 pages (index 4) · brief+1, reroute→senter
+2026-09-14 19:30: topic-agent music · 2 raw → 0 pages (index 20) · brief+1
+2026-09-14 20:11: topic-agent need-telling · 2 raw → 3 pages (index 10) · brief+3
+2026-09-14 21:11: topic-agent nous-community · 1 raw → 2 pages (index 2) · brief+1, reroute→senter
+2026-09-14 21:49: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-14 22:18: topic-agent only-device · 2 raw → 1 pages (index 5) · research:omarchy-control-plane
+2026-09-14 22:37: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-15 02:33: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-15 09:20: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-15 09:50: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-15 10:02: topic-agent back-where · 4 raw → 2 pages (index 35) · bot:steam-play-hp-bot, bot:obs-omarchy-stream-bot, research:proton-for-armored-core-6, research:stream-omarchy-to-macbook-obs, brief+2
+2026-09-15 10:20: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-15 10:43: topic-agent back-where · 1 raw → 1 pages (index 36) · research:double-gpu-co-run-tuning
+2026-09-15 10:50: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-15 11:20: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-15 11:23: topic-agent both-smarter · 4 raw → 4 pages (index 8) · research:model-candidate-scout
+2026-09-15 11:33: topic-agent burner-phone · 2 raw → 3 pages (index 13) · research:ornith-35a3b-dflash2-compat, brief+1
+2026-09-15 11:41: topic-agent central-asked · 4 raw → 5 pages (index 5) · no suggestions
+2026-09-15 11:48: topic-agent click-options · 2 raw → 2 pages (index 4) · no suggestions
+2026-09-15 11:50: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-15 11:52: topic-agent crow · 1 raw → 0 pages (index 2) · brief+1
+2026-09-15 12:00: topic-agent don-need · 1 raw → 1 pages (index 3) · no suggestions
+2026-09-15 12:10: topic-agent faster-without · 1 raw → 3 pages (index 13) · brief+2
+2026-09-15 12:20: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-15 12:50: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-15 13:15: topic-agent what-mean · 1 raw → 3 pages (index 10) · bot:benchmark-bot, bot:download-watch-bot, research:reasoning-benchmark-probe
+2026-09-15 13:20: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-15 13:24: topic-agent ball-bat · 1 raw → 4 pages (index 4) · bot:reasoning-probe, bot:trap-bank, research:bat-ball-solver-audit
+2026-09-15 13:29: topic-agent beyond-pissed · 4 raw → 0 pages (index 23) · bot:oh-marki-flasher, bot:omarki-latest-fetcher, research:oh-marki-macos-flash, brief+2
+2026-09-15 13:41: topic-agent burner-phone · 1 raw → 3 pages (index 13) · bot:dflash2-integrator, brief+2
+2026-09-15 13:43: topic-agent crow · 1 raw → 0 pages (index 2) · brief+1
+2026-09-15 13:45: topic-agent don-need · 1 raw → 1 pages (index 4) · no suggestions
+2026-09-15 13:50: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-15 14:09: topic-agent both-smarter · 1 raw → 0 pages (index 9) · bot:model-lane-server, bot:killier-ragdoll-lookup, loop:model-lane-health, loop:unified-memory-model-watch, research:ornith-35b-benchmarks, skill:device-model-lane-selection
+2026-09-15 14:13: topic-agent click-options · 1 raw → 2 pages (index 6) · bot:turbofit-provider-watch, research:tailscale-models-in-hermes
+2026-09-15 14:20: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-15 14:46: topic-agent hey-look · 1 raw → 2 pages (index 28) · bot:hey-look-dflash2-omarchy-setup, skill:mtplx-reasoning-budget-troubleshoot, brief+2
+2026-09-15 14:49: topic-agent kashik · 1 raw → 1 pages (index 8) · research:kashik-docs-digest, brief+1
+2026-09-15 14:50: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-15 14:57: topic-agent music · 2 raw → 2 pages (index 22) · bot:ace-step-lora, bot:ace-step-notepad-loop, research:ace-step-local-run, skill:ace-step-doc-research
+2026-09-15 14:59: topic-agent need-telling · 2 raw → 0 pages (index 10) · research:gaming-and-connection-scout, brief+1
+2026-09-15 15:02: topic-agent nous-community · 1 raw → 1 pages (index 3) · brief+1
+2026-09-15 15:07: topic-agent object-important · 4 raw → 1 pages (index 14) · bot:omarchy-sudo-runner, research:omarchy-network-setup, brief+2
+2026-09-15 15:20: topic-agent prison-themselves · 1 raw → 7 pages (index 7) · bot:model-fleet-keeper, bot:model-family-researcher, loop:fleet-health-tick, research:ternary-speed-check
+2026-09-15 15:20: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-15 15:23: topic-agent process-important · 1 raw → 3 pages (index 3) · no suggestions
+2026-09-15 15:31: topic-agent restore-hdiutil · 2 raw → 6 pages (index 6) · bot:omarchy-flasher, bot:hdiutil-restore-detect, research:boot-omarchy-usb-research, skill:flash-raw-linux-iso-to-usb
+2026-09-15 15:47: topic-agent self-file · 4 raw → 2 pages (index 17) · bot:remote-stack-watchdog, bot:gpu-memory-tuner, bot:prompt-cache-cleanup, loop:remote-stack-health-tick, loop:gpu-memory-watch, research:mlx-lm-gpu-memory, brief+4
+2026-09-15 15:50: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-15 16:20: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-15 16:50: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-15 17:20: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-15 17:31: topic-agent beyond-pissed · 1 raw → 2 pages (index 24) · bot:model-routing-bot, bot:served-models-check, research:model-routing-options, brief+1
+2026-09-15 17:50: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-15 18:20: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-15 18:40: topic-agent both-smarter · 1 raw → 0 pages (index 9) · research:resolve-killier-ragdoll
+2026-09-15 18:50: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-15 19:01: topic-agent back-where · 1 raw → 1 pages (index 37) · bot:turbofit-watch-bot, research:turbofit-persistence-research, brief+2
+2026-09-15 19:13: topic-agent click-options · 1 raw → 1 pages (index 7) · loop:turbofit-picker-watch, research:turbofit-picker-registration
+2026-09-15 19:18: topic-agent don-need · 1 raw → 1 pages (index 4) · research:expose-model-visibility
+2026-09-15 19:20: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-15 19:50: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-15 20:21: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-15 20:33: topic-agent omnisenter-models · 1 raw → 0 pages (index 3) · research:acestep-verify, brief+1
+2026-09-15 20:51: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-15 20:51: topic-agent restarted-seeing · 1 raw → 2 pages (index 2) · bot:tail-scale-model, bot:tail-scan, research:tail-scale-model-research
+2026-09-15 21:03: topic-agent self-file · 1 raw → 2 pages (index 17) · bot:omarchy-plugin-ui, bot:bonsai-mlx-probe, research:bonsai-mlx-feasibility, research:remote-stack-live-confirmation, brief+2
+2026-09-15 21:21: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-15 21:47: topic-agent burner-phone · 1 raw → 3 pages (index 13) · bot:ornith-runtime-keeper, brief+2
+2026-09-15 21:51: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-15 21:57: topic-agent faster-without · 1 raw → 0 pages (index 14) · bot:d-flash2-setup-research, brief+3
+2026-09-15 22:21: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-15 22:29: topic-agent hermes-agent · 2 raw → 0 pages (index 25) · research:mtp-large-context-feasibility
+2026-09-15 22:51: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-15 22:54: topic-agent prison-themselves · 1 raw → 0 pages (index 7) · no suggestions
+2026-09-15 23:21: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-15 23:51: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 00:21: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 00:51: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 01:18: topic-agent get-may · 4 raw → 0 pages (index 15) · bot:storage-organizer, bot:streaming-pilot, research:tailnet-storage-sharing
+2026-09-16 01:21: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 01:22: topic-agent object-important · 1 raw → 0 pages (index 14) · no suggestions
+2026-09-16 01:29: topic-agent only-device · 2 raw → 0 pages (index 8) · bot:omarchy-watch, bot:omarchy-control-plane-dig
+2026-09-16 01:51: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 02:21: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 02:51: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 03:21: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 03:51: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 04:21: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 04:51: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 05:21: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 05:51: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 06:21: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 06:51: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 07:21: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 07:51: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 08:21: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 08:51: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 09:21: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 09:51: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 10:21: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 10:51: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 11:21: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 11:51: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 12:21: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 12:51: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 13:21: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 13:51: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 14:21: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 14:51: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 15:22: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 15:52: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 16:22: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 16:52: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 17:22: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 17:52: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 18:22: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 18:52: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 19:22: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 19:52: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 19:55: topic-agent add-one · 1 raw → 2 pages (index 2) · research:table-domain-research
+2026-09-16 20:09: topic-agent back-where · 1 raw → 1 pages (index 37) · no suggestions
+2026-09-16 20:22: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 20:39: topic-agent both-smarter · 1 raw → 3 pages (index 11) · bot:model-benchmarks, bot:model-benchmark-refresh, bot:common-benchmark-audit, brief+2
+2026-09-16 20:51: topic-agent central-asked · 1 raw → 1 pages (index 6) · loop:vault-refresh-loop
+2026-09-16 20:52: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 20:59: topic-agent click-options · 1 raw → 2 pages (index 9) · bot:turbofit-roster-check, loop:turbofit-roster-daily
+2026-09-16 21:10: topic-agent crow · 1 raw → 1 pages (index 3) · research:crow-hermes-lore, brief+2
+2026-09-16 21:20: topic-agent dispatched-m2s · 1 raw → 1 pages (index 10) · research:delegation-failure-root-cause
+2026-09-16 21:22: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 21:28: topic-agent don-need · 1 raw → 2 pages (index 6) · bot:model-inventory, bot:model-sync, bot:omarky-standardize
+2026-09-16 21:49: topic-agent faster-without · 1 raw → 2 pages (index 14) · research:dflash2-setup-and-benchmark
+2026-09-16 21:52: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 22:00: topic-agent hermes-agent · 1 raw → 1 pages (index 26) · bot:hotkeys-command, bot:hotkeys-command, brief+1
+2026-09-16 22:22: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed

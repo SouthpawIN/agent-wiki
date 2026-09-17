@@ -3,6 +3,7 @@ Owner: weaver · Coordinator: senter · Format: `- [ ] [KIND] item — acceptanc
 Only Context (watcher/umbrella/Chris) creates entries; factories claim and close them.
 
 ## [CONTEXT]
+- [ ] research m1-131k-performance-model — SUGGESTED 2026-09-10 14:49: Want me to look into what's actually achievable at 131K context on a 32GB M1 before we commit to a local model choice?
 - [ ] research librarian-ux — SUGGESTED 2026-09-07 20:07: Want me to look into how other wiki/linker tools handle progressive disclosure of entities?
 - [ ] research wiki-compile-pre-planning-research — SUGGESTED 2026-09-06 22:36: Want me to look into lightweight pre-planning techniques that reduce duplicate wiki pages without heavy infrastructure?
 - [ ] research compile-pre-prompting-practices — SUGGESTED 2026-09-05 19:27: Want me to look into which pre-planning / pre-prompting techniques (Karpathy's LLM-wiki practice, plan-then-write, schem
@@ -32,12 +33,15 @@ Only Context (watcher/umbrella/Chris) creates entries; factories claim and close
 - [x] topic-worker-distil — first real pass produced 5 .proposed skills (2026-09-05) — inbox.md → 3–5 SKILL.md candidates → rubric → `.proposed` — acceptance: a real proposed skill in a topic
 
 ## [AGENTS]
+- [ ] vault-layout-fixer — SUGGESTED 2026-09-10 14:49: I see you need the layout fixed so bots and sessions visibly render in the BOTS section — want a bot that patches render → agents/vault-layout-fixer.md.proposed
 - [ ] librarian-bot — SUGGESTED 2026-09-07 20:07: I see you're talking about a librarian that progressively discovers wiki skills, bots, and loops — want a bot that surfa → agents/librarian-bot.md.proposed
 - [ ] senter-wiki-readme-live — SUGGESTED 2026-09-06 22:36: I see you want wiki topic headings to stay live when README.md changes — want a bot that re-renders the topic body throu → agents/senter-wiki-readme-live.md.proposed
 - [ ] sidebar — the conversational surface (default profile) with the new SOUL; zero tools that "do"
 - [ ] topic-worker — `hermes -p senter <topic>` invocation contract (cwd, claim, outputs) documented in agents/topic-worker.md
 
 ## [LOOPS]
+- [ ] bot-schema-watch — SUGGESTED 2026-09-10 14:49: Want a loop that watches .system-live.json for bot schema drift (skills as list vs int) and posts when stale scan-topics → loops/bot-schema-watch.md.proposed
+- [ ] git-vault-sync — SUGGESTED 2026-09-10 14:49: Want a loop that auto-pulls remote changes into the vault and restarts scan-topics so updates never 'keep failing' again → loops/git-vault-sync.md.proposed
 - [ ] entity-discovery — SUGGESTED 2026-09-07 20:07: Want a loop that rescans topics/*/skills and proposed bots/loops every tick to feed the librarian view? → loops/entity-discovery.md.proposed
 - [ ] cron-fire-witness — SUGGESTED 2026-09-05 19:00: Three bots now have crons that 'actually fire' — want looker to watch each first tick land in your corner feed and post  → loops/cron-fire-witness.md.proposed
 - [x] compile-quality-gate — SUGGESTED 2026-09-05 18:39: Want the compile loop to run the new wiki-page-quality-check on one page every tick and put the 5/5 result on the feed c → loops/compile-quality-gate.md.proposed — superseded 2026-09-05 (build-process chatter or already done)

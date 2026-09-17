@@ -10,19 +10,19 @@ Read order for an agent: this file → pick a file below → its outline → `re
     - L10 ## Status
 
 ## .system
-- `.system/agent.cursor` — 0 KB, 3 lines — raw/inbox/2026-09-07.md@2a29a7e5d572
+- `.system/agent.cursor` — 0 KB, 8 lines — raw/inbox/2026-09-07.md@2a29a7e5d572
 - `.system/continuity.md` — 0 KB, 6 lines — Continuity — dispatched-m2s
     - L1 # Continuity — dispatched-m2s
 - `.system/injections.md` — 0 KB, 8 lines — Injections — dispatched-m2s
     - L1 # Injections — dispatched-m2s
     - L3 ## [UNREAD]
     - L7 ## [READ]
-- `.system/queue.md` — 1 KB, 15 lines — Queue — dispatched-m2s
+- `.system/queue.md` — 1 KB, 17 lines — Queue — dispatched-m2s
     - L1 # Queue — dispatched-m2s
     - L3 ## [CONTEXT]
-    - L8 ## [SKILLS]
-    - L10 ## [AGENTS]
-    - L13 ## [LOOPS]
+    - L10 ## [SKILLS]
+    - L12 ## [AGENTS]
+    - L15 ## [LOOPS]
 
 ## agents
 - `agents/delegation-auditor.md.proposed` — 1 KB, 23 lines — type: agent

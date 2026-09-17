@@ -15,6 +15,8 @@ This constraint is the root cause of the swap strategy: MiniMax Music 3 is desir
 
 Chris later signaled that the expected path is not raw-size filtering, but an MLX/quant build that should exist for the desired models. If such a build changes runtime footprint, the budget calculation may change. ^[raw/inbox/2026-09-07.md]
 
+On 2026-09-16 Chris formalized this budget into an explicit fit-calculation system (model size + KV cache ≤ tier size, checked against every tier) instead of a rough headroom estimate. See [[topics/music/wiki/concepts/music-model-fit-calculation|Music model fit-calculation system]]. ^[raw/inbox/2026-09-16.md]
+
 ## What would change the budget
 - A smaller quant of the desired music model.
 - An MLX/quant build that materially reduces runtime memory vs the reported base size.

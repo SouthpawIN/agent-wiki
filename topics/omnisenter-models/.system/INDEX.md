@@ -10,12 +10,12 @@ Read order for an agent: this file → pick a file below → its outline → `re
     - L27 ## Repos
 
 ## .system
-- `.system/agent.cursor` — 0 KB, 1 lines — raw/inbox/2026-09-07.md@3d3bfeb8db7e
+- `.system/agent.cursor` — 0 KB, 3 lines — raw/inbox/2026-09-07.md@3d3bfeb8db7e
 - `.system/continuity.md` — 0 KB, 6 lines — Continuity — omnisenter-models
     - L1 # Continuity — omnisenter-models
 - `.system/injections.md` — 0 KB, 4 lines — Injections — omnisenter-models
     - L1 # Injections — omnisenter-models
-- `.system/queue.md` — 1 KB, 13 lines — Queue
+- `.system/queue.md` — 1 KB, 14 lines — Queue
     - L1 # Queue
     - L3 ## [SKILLS]
     - L5 ## [AGENTS]

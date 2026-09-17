@@ -35,6 +35,10 @@ A later Hermes reporting turn marked UI restoration complete and entered verific
 
 This sits within the same pattern: an internal "complete" claim only holds up to the moment the surface is checked.
 
+The 2026-09-08 raw item also carried a compaction handoff instruction telling Hermes to "Respond ONLY to the latest user message that appears AFTER this summary" — confirming this checkpoint sat within a context-compacted transition rather than a fresh Chris direction ^[raw/inbox/2026-09-08.md].
+
 ## Related
 - [[topics/back-where/wiki/concepts/end-to-end-verification|End-to-end verification before declaring done]]
 - [[topics/back-where/wiki/entities/recovery-background-process|Recovery background process mid-run]]
+- [[topics/back-where/wiki/entities/compaction-handoff-repetition|Context compaction handoff repetition (2026-09-09)]]
+- [[topics/back-where/wiki/decisions/completion-criterion-explicit-statement|Explicit completion and block criterion]]

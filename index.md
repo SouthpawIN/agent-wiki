@@ -8,6 +8,11 @@ type: index
 
 > The wiki IS the coordination layer. Markdown is the API. Structure follows [[agent-wiki-spec]].
 
+## Quick Links
+
+- [[wiki-overview|Wiki Overview]] — all 40+ topics at a glance
+- **[[topics/turbofit/index|Turbofit]]** — model research, pipelines, hardware tiers (NEW)
+
 ## Catalogs
 - [[catalogs/fleet-dashboard|Fleet Dashboard]] — everything at a glance
 - [[catalogs/topic-index|Topic Index]] — 20 topics · 60 repos

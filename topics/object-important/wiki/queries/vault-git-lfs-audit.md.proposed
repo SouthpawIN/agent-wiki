@@ -1,0 +1,10 @@
+---
+title: Is git-lfs initialized in the vault, and what is the total size of untracked mod
+type: query
+proposed: 2026-09-09 20:23
+tags: [question]
+---
+# Is git-lfs initialized in the vault, and what is the total size of untracked model artifact paths under ~/Models/storage?
+This tells whether the 2608-file staged commit can absorb model artifacts without manual cleanup, and whether `.system-live.json` size concerns extend to shard storage.
+
+_Approve to run the research; the answer lands here._

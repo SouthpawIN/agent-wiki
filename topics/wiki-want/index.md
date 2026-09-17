@@ -1,6 +1,6 @@
 # wiki-want — wiki index
 > One line per page. The wiki row's CONTEXT section renders this file.
-> Last updated: 2026-09-08 | Total pages: 7
+> Last updated: 2026-09-15 | Total pages: 7
 
 ## Entities
 

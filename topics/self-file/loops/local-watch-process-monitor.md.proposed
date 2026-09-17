@@ -1,0 +1,16 @@
+---
+type: loop
+name: local-watch-process-monitor
+proposed: 2026-09-10 13:30
+schedule: */10 * * * *
+---
+# local-watch-process-monitor
+owner: klerik · cadence: every 10m · status: SUGGESTED
+**Want me to set up a loop that checks every 10m whether the watch/scan process is running current code, and if it finds a stale process, kills it, runs a fresh scan, and restarts with fixed code?**
+
+## Prompt
+Check if the current watch/scan process PID matches the latest scan-topics.py git HEAD. If a stale process is detected (PID outlives a code update), kill it, run a fresh scan to restore correct JSON state, then restart the watch process with fixed code. Log any schema mismatches (e.g. skills field type) and verify JSON output matches PRINT output. Alert via POST if a kill-and-rescan was performed.
+
+## Evidence
+> When it runs, it overwrites the file with the old data! I need to restart this watch process with the updated code, or kill it and let it be restarted properly
+> The scan output shows skills=0 but the file has skills=[]

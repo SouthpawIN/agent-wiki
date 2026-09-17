@@ -1,0 +1,21 @@
+---
+type: agent
+name: model-benchmark-refresh
+proposed: 2026-09-16 20:39
+topic: both-smarter
+reuse: null
+---
+# model-benchmark-refresh
+**I see you want those benchmarks kept fresh without you nudging — want a daily job that searches the web for each model's latest published benchmarks and updates the widget?**
+
+
+
+## First task
+
+
+## SOUL.md (draft)
+
+
+## Evidence
+> "we should also have other kinds of sub agents for maintenance."
+> "keep track of what we can find just off the web for each one of these models. is a good initial performance check"

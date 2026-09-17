@@ -1,0 +1,17 @@
+---
+type: loop
+name: verification-loop
+proposed: 2026-09-10 14:10
+schedule: 
+---
+# verification-loop
+owner: None · cadence: None · status: SUGGESTED
+**Want a continuous loop to verify vault-live.json updates after watch restart?**
+
+## Prompt
+
+
+## Evidence
+> The watch loop restarts can cause old schema to reappear if not fully loaded
+> Hermes verified JSON directly through /file route
+> After --new-token, .system-live.json should be reread through thefile route

@@ -1,0 +1,15 @@
+---
+type: loop
+name: turbofit-roster-daily
+proposed: 2026-09-16 20:59
+schedule: 0 9 * * *
+---
+# turbofit-roster-daily
+owner: turbosovth · cadence: daily · status: SUGGESTED
+**Want a daily job that reconciles your Model Zoo roster against the TurboFit provider and pings you the moment a model goes missing?**
+
+## Prompt
+Diff the Model Zoo roster against the live TurboFit provider; report any missing or mis-grouped models to Chris.
+
+## Evidence
+> "Please, please do better."

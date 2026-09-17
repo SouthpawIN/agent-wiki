@@ -1,6 +1,6 @@
 # dev-tooling — wiki index
 > One line per page. The wiki row's CONTEXT section renders this file.
-> Last updated: 2026-09-07 | Total pages: 3
+> Last updated: 2026-09-14 | Total pages: 3
 
 ## Entities
 

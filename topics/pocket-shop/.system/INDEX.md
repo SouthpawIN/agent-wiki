@@ -1,5 +1,5 @@
 # INDEX — topics/pocket-shop
-_12 files · 11 KB · regenerate: `python3 assets/build-index.py`_
+_12 files · 12 KB · regenerate: `python3 assets/build-index.py`_
 
 Read order for an agent: this file → pick a file below → its outline → `read_file offset=<line> limit=<n>`. Sessions under `.system/sessions/` are full transcripts (largest; go by outline).
 
@@ -13,7 +13,7 @@ Read order for an agent: this file → pick a file below → its outline → `re
     - L83 ## Repos
 
 ## .system
-- `.system/agent.cursor` — 0 KB, 3 lines — raw/inbox/2026-09-05.md@1b27e3588ab2
+- `.system/agent.cursor` — 0 KB, 4 lines — raw/inbox/2026-09-05.md@1b27e3588ab2
 - `.system/continuity.md` — 0 KB, 7 lines — Continuity — pocket-shop
     - L1 # Continuity — pocket-shop
 - `.system/injections.md` — 3 KB, 32 lines — Injections
@@ -23,7 +23,7 @@ Read order for an agent: this file → pick a file below → its outline → `re
     - L18 ## Current context
     - L22 ## Version policy
     - L26 ## Related concepts
-- `.system/queue.md` — 1 KB, 16 lines — Queue
+- `.system/queue.md` — 1 KB, 17 lines — Queue
     - L1 # Queue
     - L3 ## [SKILLS]
     - L5 ## [AGENTS]

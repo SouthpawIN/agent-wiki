@@ -10,7 +10,7 @@ Read order for an agent: this file → pick a file below → its outline → `re
     - L24 ## Repos
 
 ## .system
-- `.system/agent.cursor` — 0 KB, 3 lines — raw/inbox/2026-09-07-from-youtube.md@7e216f576dd1
+- `.system/agent.cursor` — 0 KB, 4 lines — raw/inbox/2026-09-07-from-youtube.md@7e216f576dd1
 - `.system/continuity.md` — 0 KB, 6 lines — Continuity — dev-tooling
     - L1 # Continuity — dev-tooling
 - `.system/injections.md` — 0 KB, 4 lines — Injections — dev-tooling

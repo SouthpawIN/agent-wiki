@@ -1,0 +1,16 @@
+---
+type: loop
+name: snapshot-schema-audit
+proposed: 2026-09-09 20:38
+schedule: 30m
+---
+# snapshot-schema-audit
+owner: paladin · cadence: 30m · status: SUGGESTED
+**Want a 30-minute fleet audit that re-runs the live snapshot and cards any `.md` suffixes, missing `model`, or non-int `skills`?**
+
+## Prompt
+Run scan_topics snapshot; assert no .md suffixes in bot names, all profile bots have model, and skills is int; post a discrepancy card if any fail.
+
+## Evidence
+> In `scan_topics()`, the bots are scanned with: ... But in the final print at line 408, it expects `'model'`
+> The `scan_vault_agents()` function receives the bots from `scan_bots()` which have profile-level bots with integer skills, AND it ADDS to that list with vault bots.

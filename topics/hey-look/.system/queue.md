@@ -16,12 +16,14 @@
 - [~] research — dispatched 2026-09-06 21:11
 
 ## [SKILLS]
+- [ ] mtplx-reasoning-budget-troubleshoot — distilled 2026-09-15 14:46 → skills/mtplx-reasoning-budget-troubleshoot/SKILL.md (auto-applied)
 - [ ] mtplx-131k-q8-swap-runbook — distilled 2026-09-07 04:46 → skills/mtplx-131k-q8-swap-runbook/SKILL.md (auto-applied)
 - [ ] mtplx-memory-budget-override — distilled 2026-09-07 01:11 → skills/mtplx-memory-budget-override/SKILL.md (auto-applied)
 - [ ] mtplx-131k-retest-protocol — distilled 2026-09-06 23:36 → skills/mtplx-131k-retest-protocol/SKILL.md (auto-applied)
 - [ ] mtplx-model-setup — distilled 2026-09-06 21:58 → skills/mtplx-model-setup/SKILL.md (auto-applied)
 
 ## [AGENTS]
+- [ ] hey-look-dflash2-omarchy-setup — SUGGESTED 2026-09-15 14:46: I see you're trying to get DFlash2 working on Omarchy but the qwen4 llama.cpp build only has --hf-repo-draft (downloads  → agents/hey-look-dflash2-omarchy-setup.md.proposed
 - [ ] ornith-dflash2-llamacpp-tester — SUGGESTED 2026-09-07 06:53: I see you've found Ornith as the short-context winner — want a bot that tests Ornith through llama.cpp with DFlash2 to s → agents/ornith-dflash2-llamacpp-tester.md.proposed
 - [ ] mtplx-dflash2-base-model-researcher — SUGGESTED 2026-09-07 05:38: I see you're waiting on the DFlash2-for-base-Qwen lookup — want a bot that checks HuggingFace and tells you whether a DF → agents/mtplx-dflash2-base-model-researcher.md.proposed
 - [ ] mtplx-catalog-compare-bot — SUGGESTED 2026-09-07 04:46: I see you want DFlash2 checked against the base Qwen model and MTPLX updated in the catalog — want a bot that resolves t → agents/mtplx-catalog-compare-bot.md.proposed

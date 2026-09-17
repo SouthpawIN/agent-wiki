@@ -17,6 +17,9 @@ A 2.06 GB MLX-quantized music model that Chris chose as the first local generati
 - Output folder `Beats/` is empty. ^[raw/inbox/2026-09-07.md]
 - Chris later noted that an MLX/quant build "should be" available, signaling he expects this path to exist. ^[raw/inbox/2026-09-07.md]
 
+## Standing goal (2026-09-14)
+ACE-Step 1.5 4B is now the base of a standing LoRA pipeline Chris wants to build: on "go," produce a LoRA of the mp3s in his folder plus a batch of AceStep-style prompts defining that style. The pipeline must be grounded in AceStep's own documentation (via `/learn`, following links), with a notepad for follow-up questions that loops back until exhausted. See [[topics/music/wiki/decisions/2026-09-14-ace-step-lora-pipeline|2026-09-14 ACE-Step LoRA pipeline standing goal]] and [[topics/music/wiki/concepts/ace-step-lora-pipeline|ACE-Step 1.5 4B LoRA pipeline]]. ^[raw/inbox/2026-09-14.md]
+
 ## Assumptions Chris stated
 - "A-C-E-S-T-E-P, you've got to find the model, download it and get it going... step 1.54-B, the largest one on there, should work just fine on here." ^[raw/inbox/2026-09-07.md]
 - "If minimax music 3 does not work, I would actually like you to get both of those and get them running on this machine." ^[raw/inbox/2026-09-07.md]

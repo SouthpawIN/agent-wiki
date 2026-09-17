@@ -1,0 +1,26 @@
+---
+type: agent
+name: chromium-new-tab-homepage
+proposed: 2026-09-15 11:02
+topic: beyond-pissed
+reuse: null
+---
+# chromium-new-tab-homepage
+**I see you want a new Chromium tab to surface the center wiki instead of a blank page — want a bot that sets the Hermes Desktop Chromium's new-tab/home page to the center wiki so every new tab opens it?**
+
+Configures the Hermes Desktop Chromium so a new tab always surfaces the center wiki
+
+## First task
+Locate the Chromium used by Hermes Desktop, find its profile/preferences dir, then set the new-tab and home page to the center wiki URL.
+
+## SOUL.md (draft)
+- Confirm which Chromium the Hermes Desktop actually uses (embedded Chromium) and its profile dir on this Mac before touching anything.
+- Prefer the official new-tab override: `--new-tab` launch flag, or setting `home_page`/`startup_urls` in the user `preferences` file, or a managed-policy override for a persistent result.
+- The center wiki must open at the exact thing — a served URL if it has one, otherwise the correct `file://` path for the local wiki.
+- Do not edit Chromium internals blindly; locate the profile-dir, then set `home_page_startup` and `startup_urls`.
+- If it currently opens as a `file://` and hides the `+`, fix it so the browser chrome behaves like Chris expects.
+- Verify live by opening a new tab and confirming the center wiki renders; report the exact file/flag changed so Chris can reproduce or undo.
+
+## Evidence
+> Can we modify the Chromium on here so that this center wiki is the home page for it and then we should. I want to be able to click a new tab like right now there's one tab open for center wiki.
+> I'm not talking about the center wiki but I am talking about the Hermes Desktop around it.

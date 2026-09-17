@@ -1,5 +1,5 @@
 # INDEX — topics/hey-look
-_27 files · 31 KB · regenerate: `python3 assets/build-index.py`_
+_29 files · 36 KB · regenerate: `python3 assets/build-index.py`_
 
 Read order for an agent: this file → pick a file below → its outline → `read_file offset=<line> limit=<n>`. Sessions under `.system/sessions/` are full transcripts (largest; go by outline).
 
@@ -10,22 +10,23 @@ Read order for an agent: this file → pick a file below → its outline → `re
     - L7 ## Status
 
 ## .system
-- `.system/agent.cursor` — 1 KB, 16 lines — raw/inbox/2026-09-06.md@20ca687236bf
+- `.system/agent.cursor` — 1 KB, 17 lines — raw/inbox/2026-09-06.md@20ca687236bf
 - `.system/continuity.md` — 0 KB, 3 lines — Continuity — hey-look
     - L1 # Continuity — hey-look
-- `.system/injections.md` — 3 KB, 23 lines — Injections — hey-look
+- `.system/injections.md` — 3 KB, 24 lines — Injections — hey-look
     - L1 # Injections — hey-look
     - L3 ## [UNREAD]
-    - L22 ## [READ]
-- `.system/queue.md` — 6 KB, 44 lines — Queue — hey-look
+    - L23 ## [READ]
+- `.system/queue.md` — 7 KB, 46 lines — Queue — hey-look
     - L1 # Queue — hey-look
     - L3 ## [CONTEXT]
     - L18 ## [SKILLS]
-    - L24 ## [AGENTS]
-    - L34 ## [LOOPS]
+    - L25 ## [AGENTS]
+    - L36 ## [LOOPS]
 
 ## agents
 - `agents/hey-look-bot.md.proposed` — 1 KB, 16 lines — type: agent
+- `agents/hey-look-dflash2-omarchy-setup.md.proposed` — 2 KB, 22 lines — type: agent
 - `agents/mtplx-131k-stabilizer.md.proposed` — 1 KB, 23 lines — type: agent
 - `agents/mtplx-cap-prober.md.proposed` — 1 KB, 22 lines — type: agent
 - `agents/mtplx-catalog-compare-bot.md.proposed` — 1 KB, 22 lines — type: agent
@@ -73,4 +74,12 @@ Read order for an agent: this file → pick a file below → its outline → `re
     - L11 ## Steps
     - L19 ## Pitfalls
     - L24 ## Evidence
+
+## skills/mtplx-reasoning-budget-troubleshoot
+- `skills/mtplx-reasoning-budget-troubleshoot/SKILL.md` — 2 KB, 30 lines — name: mtplx-reasoning-budget-troubleshoot
+    - L8 # mtplx-reasoning-budget-troubleshoot
+    - L9 # Reasoning-budget troubleshooting
+    - L13 ## Steps
+    - L21 ## Pitfalls
+    - L26 ## Evidence
 

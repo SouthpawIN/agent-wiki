@@ -1,7 +1,7 @@
 ---
 title: senter-bridge (127.0.0.1:8643)
 created: 2026-09-05
-updated: 2026-09-05
+updated: 2026-09-10
 type: entity
 tags: [tool, infra, ui]
 sources:
@@ -9,6 +9,8 @@ sources:
   - raw/inbox/2026-09-05-legacy-inbox.md
   - raw/sources/knowledge/ref-vault-live-ui-2026-09-03.md
   - raw/inbox/2026-09-05.md
+  - raw/inbox/2026-09-09.md
+  - raw/inbox/2026-09-10.md
 confidence: high
 ---
 
@@ -41,3 +43,16 @@ you working."* ^[raw/sources/knowledge/skill-agent-wiki-vault.md]
 `/approve` is the working stand-in for `hermes serve approval.*` (`approval.pending` / `approval.respond`, or `register_approval_transport`) — see loop
 `approval-relay`. Bot→sidebar messages have no inject route in the desktop backend; the relay script + `senter-fleet-feed` cron was the working path,
 to be replaced by `hermes kanban watch` (loop `fleet-feed`). ^[raw/sources/knowledge/ref-vault-live-ui-2026-09-03.md]
+
+## FILE_CAP bypass for .system-live.json (2026-09-09)
+The bridge server initially rejected `.system-live.json` with HTTP 413 because the file is ~2.8 MB and the `/file` route enforced a 2 MB `FILE_CAP`
+limit. Hermes patched the `/file` route to bypass the size cap for `.system-live.json` specifically, since it is the live data contract — not user content.
+^[raw/inbox/2026-09-09.md]
+
+**Broader guardrails concern.** The FILE_CAP bypass for `.system-live.json` is a recurring infra constraint — the 2 MB limit may need broader guardrails across the bridge `/file` route for other large generated files, not just the live snapshot. ^[raw/inbox/2026-09-09.md]
+
+**Misrouted infra evidence.** The 2026-09-10 turbofit message contains a re-summary of the FILE_CAP bypass context — it is infra working evidence, not a wiki surface request. The live data concern (35 topics, 69 bots, 201 skills, 81 loops served via `/file`) remains valid. ^[raw/inbox/2026-09-10.md]
+
+## Related
+|- [[topics/senter-wiki/wiki/entities/vault-live-html|vault-live.html]]
+|- [[topics/senter-wiki/wiki/entities/launchd-services|Launchd services]]

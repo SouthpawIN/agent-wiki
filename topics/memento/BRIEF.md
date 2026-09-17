@@ -28,6 +28,7 @@ _Pre-prompt for the cutter and this topic's agent. Chris edits freely; lines end
 - One line, phrased as a question Chris can say yes to, tied to a quote from him, naming the bot that would do it.
 
 ## Learned (agent-appended, newest first)
+- 2026-09-14 · 2026-09-13 · a lone `hermes:` infra line ('Port 8443 is now open on the HP! Let me try it:') carries no substantive memento signal; the single-line hermes-only pattern (not just multi-dup) routes to senter immediately without wiki creation
 - 2026-09-07 · Future raw `memento` items containing duplicated `Port conflict.` lines or Hermes-state reroute headers are misrouted to `senter`; skip duplicate noise pages and extract only substantive Chris statements.
 - 2026-09-07 · 2026-09-07 · `memento` raw items remain Hermes-state/port-conflict noise when no substantive subject signal is present; treat as misrouted to `senter` rather than compiling noise.
 - 2026-09-07 · Repeated `memento` raw items containing duplicated Hermes-state/port-conflict blocks are still noise; the substantive signal remains the 2026-09-07 18:15 progressive-disclosure librarian quote.

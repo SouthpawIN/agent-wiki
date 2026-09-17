@@ -1,0 +1,10 @@
+---
+title: How does Hermes detect and display Tailscale models in the provider/model picker
+type: query
+proposed: 2026-09-15 14:13
+tags: [question]
+---
+# How does Hermes detect and display Tailscale models in the provider/model picker, and is there a config gap preventing them from appearing alongside local models?
+Chris explicitly wants Tailscale models detected and shown in Hermes; their current visibility is unconfirmed.
+
+_Approve to run the research; the answer lands here._

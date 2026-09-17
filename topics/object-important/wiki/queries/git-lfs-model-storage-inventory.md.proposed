@@ -1,0 +1,10 @@
+---
+title: How much total storage do the safetensors shards, tokenizer files, and indexes a
+type: query
+proposed: 2026-09-09 13:31
+tags: [question]
+---
+# How much total storage do the safetensors shards, tokenizer files, and indexes across ~/Models/storage/consume, and which would need tracking under git-lfs?
+The 2026-09-09 raw item reports 2608 staged files with large untracked model binaries; quantify the LFS surface to decide whether a storage/strategy change is needed.
+
+_Approve to run the research; the answer lands here._

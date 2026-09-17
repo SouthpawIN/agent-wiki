@@ -1,4 +1,4 @@
-# Senter Timeline (2026-08-27 → 2026-09-08)
+# Senter Timeline (2026-08-27 → 2026-09-10)
 
 Filed query: "what happened when?" across all raw items. Times are CDT where given. ^[raw/sources/knowledge/skill-senter-fleet-coordination.md]
 
@@ -58,8 +58,7 @@ Filed query: "what happened when?" across all raw items. Times are CDT where giv
 - **00:43** File `raw/inbox/2026-09-07-from-anser.md` ingested by watcher from anser reroute.
 - **00:51** MTPLX warmup, generation, and memory-guard events observed. **Misrouted to turbofit** — local inference runtime, not senter. ^[raw/inbox/2026-09-07.md]
 - **05:38–05:42** Three async delegation batch completion notices (`deleg_a5be7b3b`, `deleg_92f9c264`, `deleg_e76115bb`) arrive without task summaries. No new decision/entity/action extracted; filed as background process noise. ^[raw/inbox/2026-09-07.md]
-- **10:36–10:41** Repeated runtime messages state context compression timed out without dropping messages; evidence points to `auxiliary.compression` rather than a new vendor issue. ^[raw/inbox/2026-09-07-from-anser.md]
-- **10:45, 14:28** Compaction handoff system messages repeat the same protected-tail rule: latest user message wins; Historical Task Snapshot is stale; do not resume old work unless the new message explicitly asks. ^[raw/inbox/2026-09-07.md]
+- **05:51, 14:28** Repeated runtime messages state context compression timed out without dropping messages; evidence points to `auxiliary.compression` rather than a new vendor issue. ^[raw/inbox/2026-09-07-from-anser.md]
 - **11:19** Port-conflict message from `memento` arrives ("Let me kill everything and restart fresh."). **Misrouted to memento.** ^[raw/inbox/2026-09-07-from-memento.md]
 - **18:10** Hermes summarized **still-likely gaps** in the event-driven path: topic-agent trigger (still on timer), governance orphans (wiki said umbrella deleted), settings page/path issues (DOM-proving needed).
 - **18:15** Chris reframed progressive disclosure as active watch/discovery loop → librarian concept. [[topics/senter/wiki/entities/librarian|librarian]] created for anser's proposed progressive discovery loop.
@@ -70,7 +69,7 @@ Filed query: "what happened when?" across all raw items. Times are CDT where giv
 - **Ongoing 18:28–19:00** Hermes investigation of scan-topics.py, bridge server, topic-agent trigger path (09:22–09:56 local time next day).
 
 ## 2026-09-08 — autonomous completion authorized
-- **08:45** Chris: "please continue until the UI is restored to what I want... finish both the front and back end for Senter Wiki entirely without needing my confirmation. Understand that we can undo choices you make easily, so do not be afraid to make them."
+- **08:45** Chris: "please continue until the UI is restored to what I want... finish both the front and back end for Senter Wiki entirely without needing my confirmation. Underestand that we can undo choices you make easily, so do not be afraid to make them."
 - **08:46** Chris: "At the same time this center wiki still needs to be finished and in fact a few steps were even reverted so there are some things we even need to fix to get back to where we were. So we need to be simultaneously understanding, using and building the center wiki and other projects with the center wiki."
 - **Standing approval extended**: Chris authorizes autonomous completion of Senter Wiki front and backend with standing approval (extend for this task).
 
@@ -82,3 +81,57 @@ Filed query: "what happened when?" across all raw items. Times are CDT where giv
 - **Vault agents vs profile bots**: Clarify distinction between proposed vault specs and live profile bots; see [[topics/senter/wiki/concepts/vault-agents-vs-profile-bots|concept]]
 
 ^[raw/inbox/2026-09-07.md]
+
+## 2026-09-09 — continuation authorized, pipeline verified
+- **08:45** Chris: "Goal: please continue until the UI is restored to what I want (read through this session to find clues and specs), and finish both the front and back end for Senter Wiki entirely without needing my confirmation. Undertand that we can undo choices you make easily, so do not be afraid to make them. Continue working toward this goal." — re-activates the 2026-09-08 autonomous completion authorization without resetting fleet progress. See [[topics/senter/wiki/decisions/2026-09-09-autonomous-senter-wiki-completion-continuation|decision]].
+- **13:15–13:17** Hermes: gh-sync repo structure identified — `agent-wiki` (main repo), `klerik`, `senter` as separate repos; working directory `~/Documents/Projects/Projects` relationship to agent-wiki unresolved (symlink/clone/worktree).
+- **13:17** Hermes: "The Projects folder is NOT a git repository" — root cause of "updates keep failing"; git initialized to fix.
+- **13:32** Hermes: "Live Data Pipeline Verified — Bridge server is running and healthy; `/system-live.json` is served correctly via `/file` endpoint; Data shows: 35 topics, 69 bots, 201 skills, 81 loops; senter-wiki topic now properly populated." See [[topics/senter/wiki/decisions/2026-09-09-live-data-pipeline-verification|decision]].
+
+### Open items (carried from 2026-09-08 + new, still active)
+- **Layout inspection (bot/sessions visibility)**: Chris 13:01 asks how running bots/sessions appear in the Hermes Desktop layout; Hermes 13:02 DOM inspection blocked ("browser isn't running"); 13:33 plans to inspect desktop preview + vault-live view-switching paths. Data contract verified (7bridge serves 69 bots); UI rendering in vault-live.html belongs to senter-wiki. See [[topics/senter/wiki/decisions/2026-09-09-bot-sessions-layout-inspection|decision]].
+- **Senter Wiki UI restoration**: [[topics/senter/wiki/entities/senter-wiki-ui|Senter Wiki UI]] needs restoration to Chris's exact preferences; verify live preview state — now in active continuation
+- **Event-driven topic-agent trigger**: Landed state unclear; see [[topics/senter/wiki/queries/event-driven-trigger-gaps-2026-09-08|query]]
+- **Context fallback threshold**: Requires `auxiliary.compression` pin before >65K threshold works; see [[topics/senter/wiki/decisions/2026-09-08-context-fallback-threshold|decision]]
+- **Vault-to-repo link**: Whether `~/Documents/Projects/Projects` is a git worktree, symlink, or clone of the `agent-wiki` repo — unresolved
+
+^[raw/inbox/2026-09-09.md] ^[raw/inbox/2026-09-09-from-senter-wiki.md]
+
+## 2026-09-09 20:00–20:33 — bridge snapshot debugging (scan-topics.py)
+- **20:02** Chris re-issues the continuation directive: finish both Senter Wiki front and back end without confirmation. See [[topics/senter/wiki/decisions/2026-09-09-autonomous-senter-wiki-completion-continuation|decision]]. ^[raw/inbox/2026-09-09.md]
+- **20:03** Hermes pivots to live Hermes Desktop DOM/CSS inspection and bot/session visibility patches. ^[raw/inbox/2026-09-09.md]
+- **20:05–20:08** Hermes inspects bridge config (`BASE`/token), then notices bot names in the `senter` topic still carry `.md` suffixes in `.system-live.json`. Traces it to `scan-topics.py` naming logic: topic-level `scan_topics()` bots lack a `model` field; `snapshot()` merging profile-level and vault bots can leave mixed `skills` types; bridge `vaultFetch()`/`loadLive()` data paths confirmed. ^[raw/inbox/2026-09-09.md]
+- **20:10** Hermes identifies the merge bug: `scan_bots()` returns profile bots with `model`, but `scan_topics()` creates topic bots without `model`, and `snapshot()` prints assuming all bots have it. ^[raw/inbox/2026-09-09.md]
+- **20:11–20:16** Follow-on fix attempts: `scan_vault_agents()` skills type coercion, duplicate `skills` keys, stale `/Users/sovthpaw/Documents/Projects/Projects/.system-live.json` vs bridge-served path investigation. ^[raw/inbox/2026-09-09.md]
+- **20:17** Confirmed bridge serves `.system-live.json` via `/file` from `FILE_ROOTS`; Hermes Desktop `loadLive()` fetches `http://127.0.0.1:8643/.system-live.json`. ^[raw/inbox/2026-09-09.md]
+- **20:23–20:33** Bridge health confirmed running; curl/token access timeouts observed; investigation of why a vault bot (`senter-wiki-readme-live`) still shows `skills=[]` after patch attempted. Session ends mid-debug. ^[raw/inbox/2026-09-09.md]
+
+### Open items (2026-09-09 20:33)
+- `scan-topics.py` snapshot normalization: confirm whether `scan_topics()` bots need `model`; confirm patch application to all three scan paths (`scan_topics`, `scan_vault_agents`, loop scan); verify which `.system-live.json` the wiki UI is reading.
+- Bot/sessions layout visibility in Hermes Desktop — still unresolved; data contract is live (69 bots served), UI rendering path under inspection. See [[topics/senter/wiki/decisions/2026-09-09-bot-sessions-layout-inspection|decision]].
+- Vault-to-repo relationship (`~/Documents/Projects/Projects` ↔ `gh-sync/agent-wiki`) — still unresolved.
+
+^[raw/inbox/2026-09-09.md]
+
+## 2026-09-10 — continuation of scan-topics.py debugging
+- **10:23** Hermes: "The update mechanism is the git repository. The git repo is there. Let me verify the current JSON file has the correct structure by checking if the bridge can serve it:" ^[raw/inbox/2026-09-10.md]
+- **10:29** Hermes: "Let me check the bots section of the JSON file for the senter-wiki-readme-live bot:" ^[raw/inbox/2026-09-10.md]
+- **10:30** Hermes: "The issue might be that the Hermes Desktop is showing old data because the bridge might be serving a cached version, or there's something wrong with how the BOTS view renders in vault-live.html. Let me check the vault-live.html to see if there are any issues with the renderBots function:" ^[raw/inbox/2026-09-10.md]
+
+The 2026-09-10 raw items (1335 b + 1189 b) are Hermes working output from the same debugging session — no new Chris decisions. They continue evidence on the scan-topics.py schema debugging and the bot/sessions visibility path.
+
+### Status: schema fix landed in committed code
+
+The committed `assets/scan-topics.py` now has uniform bot schemas across all three scan functions:
+- `scan_topics()` line 143: `{"name": ..., "role": ..., "model": "", "skills": 0}`
+- `scan_vault_agents()` line 227: `{"name": ..., "role": ..., "model": "", "skills": 0, ...}`
+- `scan_bots()` line 185: `{"name": ..., "role": ..., "model": model, "skills": nskills, ...}`
+
+All bot objects now have `model` (string) and `skills` (integer). The `snapshot()` print lines 408/410 work against uniform objects. The schema normalization bug from the 2026-09-09 debug session is **resolved** in committed code.
+
+### Open items (carried from 2026-09-09 20:33 + 2026-09-10)
+- **Bot/sessions layout visibility** in Hermes Desktop — still unresolved; data contract is live (69 bots served via bridge), UI rendering path in `vault-live.html` belongs to senter-wiki per BRIEF anti-scope. See [[topics/senter/wiki/decisions/2026-09-09-bot-sessions-layout-inspection|decision]].
+- **Vault-to-repo link**: Whether `~/Documents/Projects/Projects` is a git worktree, symlink, or clone of `agent-wiki` — unresolved (confirmed NOT a symlink; git initialized, remote = `SouthpawIN/agent-wiki`).
+- **Event-driven topic-agent trigger**: Still on 5-min timer; WatchPaths event-driven firing not confirmed landed. See [[topics/senter/wiki/queries/event-driven-topic-agent-trigger|query]].
+
+^[raw/inbox/2026-09-10.md] ^[raw/inbox/2026-09-10-from-legacy-bots.md]

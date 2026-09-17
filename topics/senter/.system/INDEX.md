@@ -1,5 +1,5 @@
 # INDEX — topics/senter
-_200 files · 861 KB · regenerate: `python3 assets/build-index.py`_
+_202 files · 864 KB · regenerate: `python3 assets/build-index.py`_
 
 Read order for an agent: this file → pick a file below → its outline → `read_file offset=<line> limit=<n>`. Sessions under `.system/sessions/` are full transcripts (largest; go by outline).
 
@@ -15,7 +15,7 @@ Read order for an agent: this file → pick a file below → its outline → `re
     - L58 ## Hermes-native map (2026-09-04, from the Anser interview — every item verified in Hermes so
 
 ## .system
-- `.system/agent.cursor` — 4 KB, 76 lines — raw/inbox/2026-09-05-legacy-inbox.md@fef50387782b
+- `.system/agent.cursor` — 4 KB, 84 lines — raw/inbox/2026-09-05-legacy-inbox.md@fef50387782b
 - `.system/architecture.md` — 10 KB, 120 lines — Senter — the architecture (Chris, 2026-09-05, verbatim-derived)
     - L1 # Senter — the architecture (Chris, 2026-09-05, verbatim-derived)
     - L7 ## The five parts
@@ -81,15 +81,15 @@ Read order for an agent: this file → pick a file below → its outline → `re
     - L18 ## Current context
     - L22 ## Version policy
     - L26 ## Related concepts
-- `.system/queue.md` — 12 KB, 91 lines — Queue
+- `.system/queue.md` — 13 KB, 96 lines — Queue
     - L1 # Queue
     - L3 ## [SKILLS]
     - L22 ## [AGENTS]
-    - L35 ## [LOOPS]
-    - L53 ## 2026-09-03 — live-session steering items (from Chris, default-profile chat)
-    - L64 ## 2026-09-03 — batch 2 (from Chris, live)
-    - L71 ## [CONTEXT]
-    - L84 ## [2026-09-05 18:33] closed today
+    - L36 ## [LOOPS]
+    - L55 ## 2026-09-03 — live-session steering items (from Chris, default-profile chat)
+    - L66 ## 2026-09-03 — batch 2 (from Chris, live)
+    - L73 ## [CONTEXT]
+    - L89 ## [2026-09-05 18:33] closed today
 - `.system/rules.md` — 23 KB, 121 lines — Senter Wiki — Rulebook
     - L1 # Senter Wiki — Rulebook
     - L4 ## UI rules — vault-live.html
@@ -116,6 +116,7 @@ Read order for an agent: this file → pick a file below → its outline → `re
 - `agents/hermes-runtime-guard.md.proposed` — 1 KB, 23 lines — type: agent
 - `agents/librarian.md.proposed` — 1 KB, 22 lines — type: agent
 - `agents/project-topic-scaffolder.md.proposed` — 1 KB, 22 lines — type: agent
+- `agents/scan-topics-schema-fixer.md.proposed` — 1 KB, 22 lines — type: agent
 - `agents/sidebar-soul-rewrite.md` — 2 KB, 34 lines — type: agent
     - L8 # sidebar-soul-rewrite
     - L13 ## First task
@@ -152,6 +153,7 @@ Read order for an agent: this file → pick a file below → its outline → `re
     - L7 ## Replaces
     - L10 ## Cadence
     - L13 ## Status
+- `loops/snapshot-schema-audit.md.proposed` — 1 KB, 17 lines — type: loop
 
 ## loops/reflect
 - `loops/reflect/.analysis.py` — 2 KB, 72 lines — import json, collections, sys

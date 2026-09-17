@@ -1,0 +1,15 @@
+---
+type: loop
+name: fleet-health-tick
+proposed: 2026-09-15 15:20
+schedule: every 30m
+---
+# fleet-health-tick
+owner: model-fleet-keeper · cadence: every 30 minutes · status: SUGGESTED
+**I see your models keep dropping — want a loop that checks :11613 and :11623 every 30 minutes and restarts anything down?**
+
+## Prompt
+Probe each MLX port; restart any that are down and confirm it's back; log status.
+
+## Evidence
+> Only Bonsai is running. Let me restart Ornith MLX

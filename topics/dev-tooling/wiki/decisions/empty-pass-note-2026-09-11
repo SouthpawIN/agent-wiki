@@ -1,0 +1,18 @@
+---
+title: 2026-09-11 Pass Note
+created: 2026-09-11
+updated: 2026-09-14
+type: decision
+tags:
+  - decision
+  - question
+sources:
+  - raw/inbox/2026-09-11.md
+confidence: high
+---
+
+## 2026-09-11 Pass Note
+
+This pass contained no substantive dev-tooling content — only a `hermes:` working note about opening the wiki on one tab and Discord on another, with the ⌘K → "Reload desktop plugins" command to load desktop plugins. No new coding-assistant/sidecar/niwa decisions, preferences, pains, or tools were recorded.
+
+This is a question Chris has not yet answered: the raw note is an open question ("You can open your wiki on one tab, Discord on another, etc.") about whether he wants a multi-window wiki workflow.

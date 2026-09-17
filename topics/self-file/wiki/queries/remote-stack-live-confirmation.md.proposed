@@ -1,0 +1,10 @@
+---
+title: Is the nginx :8080 → model server :8100 stack over Tailscale really reachable an
+type: query
+proposed: 2026-09-15 21:03
+tags: [question]
+---
+# Is the nginx :8080 → model server :8100 stack over Tailscale really reachable and serving ornith at ctx=65536 from Chris's Mac, or is the 16:28 'stable' report stale?
+The converged stack is the operational inference path but remains contested: true pending live confirmation
+
+_Approve to run the research; the answer lands here._

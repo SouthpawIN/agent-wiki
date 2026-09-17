@@ -10,7 +10,7 @@ Read order for an agent: this file → pick a file below → its outline → `re
     - L21 ## Repos
 
 ## .system
-- `.system/agent.cursor` — 0 KB, 7 lines — raw/inbox/2026-09-05-legacy-inbox.md@d9803177830c
+- `.system/agent.cursor` — 0 KB, 8 lines — raw/inbox/2026-09-05-legacy-inbox.md@d9803177830c
 - `.system/continuity.md` — 1 KB, 16 lines — Continuity — youtube
     - L1 # Continuity — youtube
     - L7 ## learned 2026-09-05 17:30 (worker, from 2 inbox blocks)

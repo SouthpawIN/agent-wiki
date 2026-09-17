@@ -29,3 +29,4 @@ _Pre-prompt for the cutter and this topic's agent. Chris edits freely; lines end
 - One line, phrased as a question Chris can say yes to, tied to a quote from him, naming the bot that would do it.
 
 ## Learned (agent-appended, newest first)
+- 2026-09-10 · The 2026-09-09 raw item about scan_topics() schema is misrouted—it's Hermes debug output from a bridge scan session already documented in topics/senter/wiki

@@ -93,6 +93,9 @@ All five were answered by the same evidence: no quantization, offloading, or fla
 
 See also [[topics/hermes-agent/wiki/decisions/stable-context-lock-2026-09-07|Stable Context Lock — 2026-09-07]] and [[topics/hermes-agent/wiki/comparisons/65k-vs-131k-context|65K vs 131K Context Comparison]].
 
+## Later high-throughput data point (not comparable to M1)
+On `2026-09-15`, `Unleashed 27B Q3_K_XL` at `262K` context reached `81.2 tok/s` with MTP — on a **GPU** machine (GPU1, 24 GB free), not on the `M1 32GB` host. This confirms large-context high throughput is achievable with GPU offload + MTP, but it does **not** reopen the M1 32GB conclusion (which remains a physical 32 GB RAM ceiling). See [[topics/hermes-agent/wiki/entities/session-20260915-262k-81tok|262K / 81.2 tok/s Milestone — 2026-09-15]].
+
 ## Related
 - [[topics/hermes-agent/wiki/decisions/stable-context-lock-2026-09-07|Stable Context Lock — 2026-09-07]]
 - [[topics/hermes-agent/wiki/decisions/targeted-27b-131k-2026-09-07|Targeted 27B at 131K — 2026-09-07]]

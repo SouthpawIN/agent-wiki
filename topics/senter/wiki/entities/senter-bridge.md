@@ -1,10 +1,10 @@
 ---
 title: senter-bridge (approval cards into the wiki)
 created: 2026-09-05
-updated: 2026-09-05
+updated: 2026-09-09
 type: entity
 tags: [tool, infra, timeline]
-sources: [raw/inbox/2026-09-05.md, raw/sources/knowledge/skill-senter-fleet-coordination.md, raw/sources/knowledge/weaver-SOUL.md, raw/sources/knowledge/looker-SOUL.md, raw/sources/knowledge/paladin-AGENTS.md, raw/inbox/2026-09-05-legacy-inbox.md]
+sources: [raw/inbox/2026-09-05.md, raw/sources/knowledge/skill-senter-fleet-coordination.md, raw/sources/knowledge/weaver-SOUL.md, raw/sources/knowledge/looker-SOUL.md, raw/sources/knowledge/paladin-AGENTS.md, raw/inbox/2026-09-05-legacy-inbox.md, raw/inbox/2026-09-09.md]
 confidence: high
 ---
 
@@ -32,6 +32,9 @@ The topic agents write pages under `topics/<t>/wiki/`, and the wiki pane opens t
 
 ## Still custom, by design (19:12)
 Under Chris's [[topics/senter/wiki/decisions/2026-09-05-backend-as-builtin-hermes-plus-markdown|backend-as-built-in-Hermes decision]] the bridge is one of three pieces that stay custom for now: "the bridge (SSE + file proxy for the UI)" — the browser pane needs a live event stream and vault files served, which no Hermes built-in provides. The UI it serves is explicitly exempt from rollback. See [[topics/senter/wiki/comparisons/native-hermes-vs-custom-backend|native vs custom backend]]. ^[raw/inbox/2026-09-05.md]
+
+## Health verification (2026-09-09 13:32)
+Hermes confirmed the bridge server is running and healthy: `com.senter.bridge` on `127.0.0.1:8643`, `/system-live.json` served correctly via the `/file` endpoint, data showing 35 topics / 69 bots / 201 skills / 81 loops, and the `senter-wiki` topic properly populated. ^[raw/inbox/2026-09-09.md]
 
 ## Chris on approvals (2026-09-05)
 "These are the things that I don't want to have to give approval on or edits to the wiki" — the bridge's next stage is `hermes serve approval.*` so yes/no is a click in the sidebar, and wiki edits stop generating cards at all ([[topics/senter/wiki/decisions/2026-09-05-no-approval-for-wiki-edits|decision]]). ^[raw/inbox/2026-09-05-legacy-inbox.md]

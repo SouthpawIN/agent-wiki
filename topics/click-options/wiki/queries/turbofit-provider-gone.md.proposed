@@ -1,0 +1,10 @@
+---
+title: Why does the TurboFit provider disappear from the desktop model/provider picker 
+type: query
+proposed: 2026-09-14 11:44
+tags: [question]
+---
+# Why does the TurboFit provider disappear from the desktop model/provider picker next to the input bar, and what restores it?
+It was working earlier that day, so this is a regression, not a fresh setup, and it blocks your local-model work.
+
+_Approve to run the research; the answer lands here._

@@ -16,7 +16,7 @@ Read order for an agent: this file → pick a file below → its outline → `re
     - L76 # after changing worker code: systemctl --user restart memento-worker
 
 ## .system
-- `.system/agent.cursor` — 1 KB, 21 lines — raw/inbox/2026-09-07-from-senter.md@0784c5509a8d
+- `.system/agent.cursor` — 1 KB, 22 lines — raw/inbox/2026-09-07-from-senter.md@0784c5509a8d
 - `.system/continuity.md` — 0 KB, 7 lines — Continuity — memento
     - L1 # Continuity — memento
 - `.system/injections.md` — 0 KB, 4 lines — Injections

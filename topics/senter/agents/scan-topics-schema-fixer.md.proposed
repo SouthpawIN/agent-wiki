@@ -1,0 +1,21 @@
+---
+type: agent
+name: scan-topics-schema-fixer
+proposed: 2026-09-09 20:38
+topic: senter
+reuse: teknium
+---
+# scan-topics-schema-fixer
+**I see the live snapshot still has schema holes — want a builder bot to normalize `scan-topics.py` so every bot object has `model` and `skills` is always an int?**
+
+Normalize scan-topics.py snapshot schema so vault-live consumers see uniform bot objects.
+
+## First task
+audit scan_topics(), scan_vault_agents(), and loop scan paths, then patch so every bot dict includes model and skills count as int, and rerun snapshot to confirm .system-live.json is clean.
+
+## SOUL.md (draft)
+8-15 lines focused builder SOUL: scan the three scan paths, patch snapshot normalization, rerun snapshot, verify .system-live.json clean, report exact file hashes.
+
+## Evidence
+> `scan_topics()` creates topic bots with only `name`/`role`; `scan_bots()` creates profile bots with `name`/`role`/`model`; `snapshot()` then assumes every bot has `model`.
+> The `snapshot()` function calls: `scan_bots()` returns bots WITH model field; `scan_vault_agents(scan_bots())` combines topic-level bots with profile-level bots

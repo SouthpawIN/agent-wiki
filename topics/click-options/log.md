@@ -1,0 +1,8 @@
+# Wiki Log — click-options
+
+## [2026-09-14] create | wiki initialized (topic-wiki.py init)
+## [2026-09-14] compile | 1 raw item (raw/inbox/2026-09-13.md). Recovery Mode password reset procedure + outcome; TurboFit provider disappeared issue.
+## [2026-09-15] compile | 2 raw items (raw/inbox/2026-09-14.md, raw/inbox/2026-09-15.md). New-tab quick fixes (scrolled-off-screen + tab-bar-hides-when-empty); runtime config fixes — wayvnc 5s timeout → persistent systemd service, and Hermes https-on-HTTP provider endpoints corrected.
+## [2026-09-15] compile | 1 raw item (raw/inbox/2026-09-15.md, second pass). Chris's acceptance gate: test TurboFit models **through Hermes as a user**, not the raw endpoint; all TurboFit models grouped under the TurboFit provider alongside detected Tailscale + local models; both models confirmed working through Hermes by 13:21.
+## [2026-09-15] compile | 1 raw item (raw/inbox/2026-09-15.md, third pass). Escalation: TurboFit provider **still missing** from the Hermes desktop picker after backend fixes — Chris frustrated ("fucking asked for", "Come on now"). 16:34 picker shows only news portal, open code free, xai. Reframes the gap as picker-registration, not the scheme fix. New page: TurboFit Provider Still Missing from the Desktop Picker (2026-09-15).
+## [2026-09-16] compile | 1 raw item (raw/inbox/2026-09-16.md). Hermes note (duplicated at same timestamp): refresh Obsidian pointed at ~/wiki to see updated index.md listing all models. Chris complaint (20:40): he gave a Model Zoo list to put on the TurboFit list and it came back incomplete — "Please, please do better." New page: Model Zoo Models for the TurboFit List; Obsidian Index Refresh concept.

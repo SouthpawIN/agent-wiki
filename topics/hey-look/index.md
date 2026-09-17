@@ -1,11 +1,13 @@
 # hey-look — wiki index
 > One line per page. The wiki row's CONTEXT section renders this file.
-> Last updated: 2026-09-07 | Total pages: 25
+> Last updated: 2026-09-15 | Total pages: 28
 
 ## Entities
+- [[topics/hey-look/wiki/entities/hey-look-local-server-episode|hey-look local-serving episode — 2026-09-15]] — A same-day episode on 2026-09-15 in which Hermes got the Unleashed + DFlash2 path actually working through Hermes on the Mac, after first resolving a reasoning-
 - [[topics/hey-look/wiki/entities/ornith-135b-mlx-35b-moe|Ornith-1.5-35B-A3B MLX 4-bit]] — An alternative 35B/3B-active MoE model tested on the same 32GB Mac on 2026-09-07, with a DFlash2 draft model also available.^[raw/inbox/2026-09-07.md]
 - [[topics/hey-look/wiki/entities/qwen-27b-mtplx-optimized-speed|Qwen 27B MTPLX Optimized Speed]] — A Hugging Face model Chris asked about because it is advertised as specifically for Macs with 32 GB of RAM and up.^[raw/inbox/2026-09-06.md]
 - [[topics/hey-look/wiki/entities/unleashed-dflash2-131k-path|Unleashed + DFlash2 131K Path]] — An alternate Apple Silicon path tested head-to-head with MTPLX on 2026-09-07, running on port 11606 during Chris's specified retest protocol.^[raw/inbox/2026-09
+- [[topics/hey-look/wiki/entities/unleashed-dflash2-working-through-hermes|Unleashed + DFlash2 working through Hermes on the Mac (2026-09-15)]] — On 2026-09-15 Hermes got the Unleashed + DFlash2 path actually working through Hermes on the Mac, after diagnosing that earlier empty-content runs were caused b
 
 ## Concepts
 - [[topics/hey-look/wiki/concepts/memory-budget-mtplx|MTPLX Memory Budget]] — A memory-control concept that emerged late in the raw record when Hermes corrected its throughput assumption and looked for a MTPLX-specific sizing control.^[ra
@@ -16,6 +18,7 @@
 - [[topics/hey-look/wiki/concepts/mtplx-memory-guard-admission-shed|MTPLX memory_guard prefill_admission_shed]] — An exact memory-pressure event recorded during a 65K-context test on the 32GB Mac, showing that large prompts can trip MTPLX's admission shedder before generati
 - [[topics/hey-look/wiki/concepts/mtplx-q8-kv-cache-swap|q8 KV cache + swap]] — A configuration path observed on 2026-09-07 that changed the operating envelope for 131K context on the 32GB Mac.^[raw/inbox/2026-09-07.md]
 - [[topics/hey-look/wiki/concepts/mtplx|MTPLX]] — A serving/setup path Hermes used while installing and testing the Qwen 27B model Chris asked about.^[raw/inbox/2026-09-06.md]
+- [[topics/hey-look/wiki/concepts/unleashed-dflash2-reasoning-budget|Unleashed + DFlash2 reasoning-budget constraint]] — The bottleneck for the Unleashed + DFlash2 path on 2026-09-15 was not the draft-decoding method but the token **budget** Hermes assigned to reasoning.^[raw/inbo
 
 ## Decisions
 - [[topics/hey-look/wiki/decisions/context-benchmark-request|Context benchmark request]] — Chris asked for the speed of the Qwen 27B MTPLX setup at ~131K context, after Hermes had already reported 58 tok/s.^[raw/inbox/2026-09-06.md]

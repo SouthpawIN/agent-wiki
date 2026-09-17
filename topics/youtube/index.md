@@ -1,6 +1,6 @@
 # youtube — wiki index
 > One line per page. The wiki row's CONTEXT section renders this file.
-> Last updated: 2026-09-07 | Total pages: 6
+> Last updated: 2026-09-15 | Total pages: 6
 
 ## Entities
 - [[topics/youtube/wiki/entities/senter-audio-bridge|Senter audio bridge (YouTube → <audio>)]] — The **bridge** is the local component that turns a YouTube pick into a plain HTML `<audio>` element inside the Senter wiki player, replacing the earlier embedde

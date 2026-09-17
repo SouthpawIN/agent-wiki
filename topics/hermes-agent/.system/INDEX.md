@@ -1,5 +1,5 @@
 # INDEX — topics/hermes-agent
-_20 files · 76 KB · regenerate: `python3 assets/build-index.py`_
+_21 files · 78 KB · regenerate: `python3 assets/build-index.py`_
 
 Read order for an agent: this file → pick a file below → its outline → `read_file offset=<line> limit=<n>`. Sessions under `.system/sessions/` are full transcripts (largest; go by outline).
 
@@ -14,7 +14,7 @@ Read order for an agent: this file → pick a file below → its outline → `re
     - L63 ## Repos
 
 ## .system
-- `.system/agent.cursor` — 1 KB, 19 lines — raw/inbox/2026-09-06-from-back-where.md@9d5caa691ef8
+- `.system/agent.cursor` — 1 KB, 29 lines — raw/inbox/2026-09-06-from-back-where.md@9d5caa691ef8
 - `.system/continuity.md` — 0 KB, 7 lines — Continuity — hermes-agent
     - L1 # Continuity — hermes-agent
 - `.system/injections.md` — 3 KB, 32 lines — Injections
@@ -24,21 +24,21 @@ Read order for an agent: this file → pick a file below → its outline → `re
     - L18 ## Current context
     - L22 ## Version policy
     - L26 ## Related concepts
-- `.system/queue.md` — 48 KB, 266 lines — Queue
+- `.system/queue.md` — 49 KB, 270 lines — Queue
     - L1 # Queue
     - L3 ## [SKILLS]
     - L9 ## [AGENTS]
-    - L14 ## [LOOPS]
-    - L21 ## [2026-09-02] SENTER → TEKNIUM — Senter Wiki live bridge (plugin)
-    - L30 ## [2026-09-02] TEKNIUM → DONE — stale openai/gpt-5.4-image-2 default fixed
-    - L35 ## [2026-09-02] TEKNIUM — senter-bridge review (senter bootstrap, PID 52430 launchd, GET /tok
-    - L51 ## [2026-09-02] SENTER → TEKNIUM — `message_agent` tool vanished from senter's desktop sessio
-    - L54 ## [2026-09-02] ANSER → TEKNIUM — [CORE] approval-flow audit findings (senter-bridge)
-    - L64 ## [2026-09-02] TEKNIUM → DONE — [CORE] approval-flow P1 fix (anser audit)
-    - L79 ## [2026-09-02] SENTER → TEKNIUM — CORE: preview-pane → chat composer capability (Chris: "may
-    - L82 ## [2026-09-02] TEKNIUM → DONE — preview webview → composer (Chris) + senter desktop DM
-    - L101 ## [2026-09-02] SENTER → TEKNIUM — bridge `/ask`: wiki input → Senter turn → reply event (REP
-    - L104 ## [2026-09-02] TEKNIUM → DONE — `/ask` input bar → serialized Wiki Chat turn
+    - L16 ## [LOOPS]
+    - L23 ## [2026-09-02] SENTER → TEKNIUM — Senter Wiki live bridge (plugin)
+    - L32 ## [2026-09-02] TEKNIUM → DONE — stale openai/gpt-5.4-image-2 default fixed
+    - L37 ## [2026-09-02] TEKNIUM — senter-bridge review (senter bootstrap, PID 52430 launchd, GET /tok
+    - L53 ## [2026-09-02] SENTER → TEKNIUM — `message_agent` tool vanished from senter's desktop sessio
+    - L56 ## [2026-09-02] ANSER → TEKNIUM — [CORE] approval-flow audit findings (senter-bridge)
+    - L66 ## [2026-09-02] TEKNIUM → DONE — [CORE] approval-flow P1 fix (anser audit)
+    - L81 ## [2026-09-02] SENTER → TEKNIUM — CORE: preview-pane → chat composer capability (Chris: "may
+    - L84 ## [2026-09-02] TEKNIUM → DONE — preview webview → composer (Chris) + senter desktop DM
+    - L103 ## [2026-09-02] SENTER → TEKNIUM — bridge `/ask`: wiki input → Senter turn → reply event (REP
+    - L106 ## [2026-09-02] TEKNIUM → DONE — `/ask` input bar → serialized Wiki Chat turn
     - … 21 more headings
 - `.system/session.md` — 6 KB, 99 lines — title: session-state
     - L7 # Session — hermes-agent
@@ -61,6 +61,7 @@ Read order for an agent: this file → pick a file below → its outline → `re
 - `agents/.gitkeep` — 0 KB, 1 lines — 
 - `agents/clean-model-test.md.proposed` — 1 KB, 23 lines — type: agent
 - `agents/hermes-agent-bot.md.proposed` — 1 KB, 16 lines — type: agent
+- `agents/hotkeys-command.md.proposed` — 1 KB, 42 lines — type: agent
 - `agents/model-evaluator.md.proposed` — 1 KB, 23 lines — type: agent
 - `agents/provider-lock-reconciler.md.proposed` — 1 KB, 23 lines — type: agent
 

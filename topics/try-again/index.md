@@ -1,6 +1,6 @@
 # try-again — wiki index
 > One line per page. The wiki row's CONTEXT section renders this file.
-> Last updated: 2026-09-08 | Total pages: 16
+> Last updated: 2026-09-15 | Total pages: 18
 
 ## Entities
 - [[topics/try-again/wiki/entities/ace-step|ACE-Step]] — Chris has ACE-Step downloaded locally (2.2 GB) and wants to "try to get it running." ^[raw/inbox/2026-09-07.md]
@@ -27,5 +27,6 @@
 - [[topics/try-again/wiki/comparisons/2026-09-07-candidate-narrowing|2026-09-07 Candidate Narrowing]] — Chris narrowed the benchmark sweep from an open engine sweep for Qwen 3.8 27B to a focused model comparison among Bonsai, Colibri, and Ornith. ^[raw/inbox/2026-
 
 ## Queries
-
+- [[topics/try-again/wiki/queries/2026-09-09-tool-blocking|2026-09-09 Tool Invocation Blocking]] — Evidence of a recurring operational friction: Hermes agents in this topic are blocked from modifying files via `shell`-launched `sed` commands, and fall back to
+- [[topics/try-again/wiki/queries/2026-09-10-tool-blocking-continued|2026-09-10 Tool Invocation Blocking (Continued)]] — Continuation of the recurring operational friction first documented on 2026-09-09, now extending to shell availability, git push, and remote configuration in th
 

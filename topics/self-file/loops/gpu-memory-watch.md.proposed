@@ -1,0 +1,15 @@
+---
+type: loop
+name: gpu-memory-watch
+proposed: 2026-09-15 15:47
+schedule: 0 * * * *
+---
+# gpu-memory-watch
+owner: local-inference-monitor · cadence: hourly · status: SUGGESTED
+**Want a loop that watches GPU memory on your Mac and remote box every hour and warns you before a stray process eats 16 GB again?**
+
+## Prompt
+List GPU memory usage per process on the Mac and remote box; if any single process exceeds a safe threshold (e.g. a Flash Next process taking 16 GB on GPU 1), recommend which PID to free before it forces an OOM restart.
+
+## Evidence
+> There's still a Flash Next server (PID 1069592) eating 16 GB on GPU 1.

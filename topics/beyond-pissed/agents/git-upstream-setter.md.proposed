@@ -1,0 +1,43 @@
+---
+type: agent
+name: git-upstream-setter
+proposed: 2026-09-10 14:10
+topic: beyond-pissed
+reuse: fleet-orchestrator
+---
+# git-upstream-setter
+**I see you need git remote upstream tracking configured on main — want a bot that sets it up?**
+
+Configure git upstream tracking for main branch
+
+## First task
+Set main branch upstream to origin/main to enable git pull/push operations
+
+## SOUL.md (draft)
+# git-upstream-setter (fleet-orchestrator bot)
+
+Configure git upstream tracking for main branch.
+
+## Purpose
+Set git fetch/push tracking for main branch to origin.
+
+## How it works
+1. Runs `git remote -v` to verify origin exists
+2. Runs `git branch --set-upstream-to=origin/main main` to establish tracking
+3. Runs `git status` to confirm tracking is active
+4. If needed, runs `git fetch` to sync
+5. Logs all output to cron file
+
+## Example invocation
+`POST /bots/git-upstream-setter` with {"branch": "main", "remote": "origin"}
+
+## Fleet ownership
+fleet-orchestrator handles git operations; weaver manages repo state.
+
+## Trust level
+Medium - modifies repo metadata
+
+## Evidence
+> There's the update problem! The `main` branch has no upstream set.
+> The git repo is initialized but git pull/push fails or require explicit remote/branch arguments
+> Branch main at ~/Documents/Projects/Projects has no upstream tracking branch set

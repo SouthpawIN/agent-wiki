@@ -32,6 +32,13 @@ _Pre-prompt for the cutter and this topic's agent. Chris edits freely; lines end
 - A suggestion only when the raw item actually encodes a goal, decision, or unfinished task in Chris's subject matter.
 
 ## Learned (agent-appended, newest first)
+- 2026-09-15 · 2026-09-15 · New alias: `omarchy` host resolves to 100.68.42.68 (100.x CGNAT/Tailscale address) — the Linux box is reached over the tailnet, not the LAN; treat Omarchy host-address facts as object-important content.
+- 2026-09-15 · 2026-09-12 · Correct Omarchy sudo password is `Bl3ssT3xas!` (supplied via display dialog; `senterdelta` rejected) — record working credentials alongside the sudo-password-wall concept.
+- 2026-09-13 · New alias: Omarchy 4.0.3 ISO / bootable-USB write (sudo dd to /dev/rdisk4) is one-off task content — substantive to object-important, not infra noise.
+- 2026-09-10 · Stale .system-live.json write is a merge-write bug (live.update(snap) at line 320) that preserves old field values — substantive to object-important as a live-state entity fact.
+- 2026-09-09 · 2026-09-09: `.system-live.json` regeneration lag is substantive to object-important — stale live-state after edits is an entity fact, not infra noise.
+- 2026-09-09 · 2026-09-09: repeatable git staging procedure (user config → exclude generated live JSON → commit) is substantive workflow content and should be captured as a skill.
+- 2026-09-09 · New alias: 'git-lfs model storage' background sessions (2608 staged files, .system-live.json exclusion, safetensors shard volume) are substantive to object-important, not infra noise — treat model-artifact staging as concept content.
 - 2026-09-08 · New alias: '/file' route with FILE_CAP capacity mismatch against .system-live.json — treat server endpoint capacity bugs as object-important entity content, not infra noise.
 - 2026-09-07 · Ornith performance metrics should be captured as a concept page when raw items include observed tok/s numbers from local inference runs.
 - 2026-09-07 · When raw files contain multiple local endpoint pings, record healthy and unresponsive addresses separately.

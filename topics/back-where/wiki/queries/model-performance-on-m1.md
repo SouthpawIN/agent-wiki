@@ -11,6 +11,7 @@ sources:
   - raw/inbox/2026-09-06.md
   - raw/inbox/2026-09-06-from-klerik.md
   - raw/inbox/2026-09-07.md
+  - raw/inbox/2026-09-15.md
 confidence: high
 ---
 

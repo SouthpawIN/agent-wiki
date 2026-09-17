@@ -29,4 +29,5 @@ _Pre-prompt for the cutter and this topic's agent. Chris edits freely; lines end
 - One line, phrased as a question Chris can say yes to, tied to a quote from him, naming the bot that would do it.
 
 ## Learned (agent-appended, newest first)
+- 2026-09-15 · acestep is a tentative lead (agent's hypothesis that the core OmniStep/OmniSenter model + training scripts live under the 'acestep' HuggingFace org/user), not a Chris decision or confirmed sourcing rule — keep treating it as unverified.
 - 2026-09-07 · Raw evidence was Hermes-side actions, not Chris decisions; treat HuggingFace model pages/README content as a tentative run-metadata source, not a confirmed sourcing rule.

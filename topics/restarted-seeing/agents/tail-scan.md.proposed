@@ -1,0 +1,20 @@
+---
+type: agent
+name: tail-scan
+proposed: 2026-09-15 20:51
+topic: restarted-seeing
+reuse: null
+---
+# tail-scan
+**I see you want the tail-scale stuff to be discoverable — want a loop that periodically scans for rare/long-tail items and makes them surface instead of hiding?**
+
+
+
+## First task
+
+
+## SOUL.md (draft)
+
+
+## Evidence
+> I'm not seeing the discoverable tail scale model. I need that

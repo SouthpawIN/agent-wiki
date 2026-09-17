@@ -20,6 +20,7 @@
 - [ ] sidebar-rubber-duck — PROPOSED 2026-09-05 17:05 → skills/sidebar-rubber-duck/SKILL.md.proposed (approve: drop .proposed)
 - [ ] *(empty)*
 ## [AGENTS]
+- [ ] scan-topics-schema-fixer — SUGGESTED 2026-09-09 20:38: I see the live snapshot still has schema holes — want a builder bot to normalize `scan-topics.py` so every bot object ha → agents/scan-topics-schema-fixer.md.proposed
 - [ ] librarian — SUGGESTED 2026-09-07 20:00: I see you're talking about a vault-wide discovery layer — want a bot that progressively surfaces the right wiki/skill/bo → agents/librarian.md.proposed
 - [ ] vault-librarian — SUGGESTED 2026-09-07 18:21: I see you're talking about watching the whole vault and progressively surfacing wiki/skills/bots/loops — want a bot that → agents/vault-librarian.md.proposed
 - [ ] project-topic-scaffolder — SUGGESTED 2026-09-07 18:16: I see you want the watcher/topic-agent wired as an orchestrator over your actual projects — want a bot that scaffolds pr → agents/project-topic-scaffolder.md.proposed
@@ -33,6 +34,7 @@
   - Follow `## Working a topic queue` claim protocol; outcomes → `.system/session.md`.
 - [x] **topic-similarity (2026-09-02, from senter) — Build `assets/topic-similarity.py` per `topics/senter/plans/similarity-governance-2026-09-02.md`: embed every topic, pairwise cosine, cluster, write `.system-live.json`.similarity; propose thresholds as needs_chris card with real top-20 pairs.**
 ## [LOOPS]
+- [ ] snapshot-schema-audit — SUGGESTED 2026-09-09 20:38: Want a 30-minute fleet audit that re-runs the live snapshot and cards any `.md` suffixes, missing `model`, or non-int `s → loops/snapshot-schema-audit.md.proposed
 - [ ] librarian-discovery — SUGGESTED 2026-09-07 20:00: Want a repeating discovery sweep that checks for duplicate, stale, or missing wiki/skill/bot/loop artifacts and surfaces → loops/librarian-discovery.md.proposed
 - [ ] context-to-wiki-rename-sweep — SUGGESTED 2026-09-07 18:21: Want a loop that watches for 'context' references in vault docs and prepares rename proposals by topic? → loops/context-to-wiki-rename-sweep.md.proposed
 - [ ] new-topic-activation — SUGGESTED 2026-09-07 18:16: Want a loop that watches for new project topic folders and primes the watcher/topic-agent so filings start immediately i → loops/new-topic-activation.md.proposed
@@ -69,6 +71,9 @@ DONE topic-similarity paladin 2026-09-02T23:37:11Z
 - [x] [LOOPS] scan-topics watcher made durable (launchd com.senter.scanwatch) — the live snapshot never goes stale again. DONE.
 
 ## [CONTEXT]
+- [ ] research hermes-snapshot-schema-upstream — SUGGESTED 2026-09-09 21:34: Want me to look into whether Hermes Agent already has a planned path for unified live-snapshot bot schema merging, so we
+- [ ] research system-live-source-audit — SUGGESTED 2026-09-09 21:16: Want me to look into which .system-live.json the Hermes Desktop UI actually reads?
+- [ ] research snapshot-stale-cache-research — SUGGESTED 2026-09-09 20:38: Want me to look into why `senter-wiki-readme-live` still shows `skills=[]` after a patch — is the bridge serving a stale
 - [ ] research verify-event-driven-trigger — SUGGESTED 2026-09-08 13:25: Want me to look into the topic-agent trigger path?
 - [ ] research verify-live-preview — SUGGESTED 2026-09-08 08:58: Want me to look into the live preview state for the UI elements (background image, Q-in-headphones, dot alignment)?
 - [ ] research wiki-to-project-bridge-research — SUGGESTED 2026-09-07 20:00: Want me to look into the minimal set of explicit bridges needed for the center wiki to use the agent-wiki GitHub repo as

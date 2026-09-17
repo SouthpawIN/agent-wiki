@@ -1,0 +1,10 @@
+---
+title: What config lets the chosen Unleashed Q3K XL model run in the background on a do
+type: query
+proposed: 2026-09-15 10:43
+tags: [question]
+---
+# What config lets the chosen Unleashed Q3K XL model run in the background on a double-GPU M1 device without starving a game in the foreground?
+He bound Unleashed Q3K XL specifically because it co-runs with a game; the concrete tuning that makes that work serves the selection directly.
+
+_Approve to run the research; the answer lands here._

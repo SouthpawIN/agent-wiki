@@ -1,0 +1,10 @@
+---
+title: Why does the UEFI boot-from-file menu on this x86/HP machine surface only the in
+type: query
+proposed: 2026-09-13 16:50
+tags: [question]
+---
+# Why does the UEFI boot-from-file menu on this x86/HP machine surface only the internal SATA hard drive (PciRoot(0x0)/Pci(0x1F,0x2)/Sata(0x1,0x0,0x0,)/HD(1,GPT…)) and not the USB drive, and what port/setting (USB 2.0 vs 3.0, Secure Boot, boot order) blocks it?
+Chris was actively stuck on this on 2026-09-12 and the USB simply isn't registering as a boot device.
+
+_Approve to run the research; the answer lands here._

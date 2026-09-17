@@ -9,6 +9,7 @@ tags:
   - question
 sources:
   - raw/inbox/2026-09-07.md
+  - raw/inbox/2026-09-12.md
 confidence: low
 contested: true
 ---
@@ -25,3 +26,4 @@ No explicit decision is recorded in this raw item; the statements show direction
 ## Still open
 - Whether model pages should be treated as authoritative source, checked list, or one fallback among several.
 - Where to keep the resulting run metadata when compiled.
+- 2026-09-12 — hermes-side follow-up (09-12 14:27) continued investigating the model pages; still no ruling from Chris.

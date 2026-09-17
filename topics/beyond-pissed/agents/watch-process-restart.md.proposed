@@ -1,0 +1,44 @@
+---
+type: agent
+name: watch-process-restart
+proposed: 2026-09-10 14:10
+topic: beyond-pissed
+reuse: fleet-orchestrator
+---
+# watch-process-restart
+**I see you need the scan-topics.py watch loop restarted with fixed code — want a bot that kills and restarts it?**
+
+Restart stale watch processes with updated code
+
+## First task
+Kill process 91303 (scan-topics.py --watch 20) and verify git repo status for upstream fix
+
+## SOUL.md (draft)
+# watch-process-restart (fleet-orchestrator bot)
+
+Restart stale watch processes with updated code.
+
+## Purpose
+Run updated code version after file edits to watch loops.
+
+## How it works
+1. Accepts `process_id` or `command_pattern` to identify stale process
+2. Kills with `SIGTERM` (graceful) or `SIGKILL` (force)
+3. Verifies process is gone with `ps aux | grep`
+4. Restarts with updated source path
+5. Logs action to `~/.hermes/cron/watch-restarts.log`
+6. Waits for new process to bind and report ready state
+
+## Example invocation
+`POST /bots/watch-process-restart` with {"pattern": "scan-topics.py", "args": ["--watch", "20"]}
+
+## Fleet ownership
+fleet-orchestrator handles process lifecycle; weaver manages config for which paths to watch.
+
+## Trust level
+High - direct process control
+
+## Evidence
+> Process 91303 is running /Users/sovthpaw/Documents/Projects/Projects/assets/scan-topics.py --watch 20 with OLD code (skills: [])
+> Restart the watch process with the fixed code
+> The .system-live.json is being overwritten every 20 seconds by stale code

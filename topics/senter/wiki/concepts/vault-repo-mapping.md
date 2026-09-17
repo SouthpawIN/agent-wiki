@@ -48,6 +48,12 @@ to the remote."
 No resolution is recorded — the investigation was in progress at the time the
 raw file was filed.
 
+## git-init resolution (2026-09-09 13:17)
+
+Hermes diagnosed the "updates keep failing" root cause: **the Projects folder was NOT a git repository**, so there was no git to track or push changes. Hermes initialized git and connected it to the remote `https://github.com/SouthpawIN/agent-wiki`. The working directory resolves to itself under `readlink -f` (NOT a symlink). However, the exact relationship between the vault and the `gh-sync` directory's three repos (`agent-wiki`, `klerik`, `senter`) — whether the vault is a worktree, clone, or loose copy — remains unresolved. ^[raw/inbox/2026-09-09.md] ^[raw/inbox/2026-09-09-from-senter-wiki.md]
+
+See [[topics/senter/wiki/queries/vault-repo-link-status|query: vault-repo link status]] for the standing question and [[topics/senter/wiki/decisions/2026-09-09-live-data-pipeline-verification|live data pipeline verification]] for the bridge health check that confirmed 35 topics / 69 bots / 201 skills / 81 loops.
+
 ## what this means for senter-repo.md
 
 [[topics/senter/wiki/entities/senter-repo|senter-repo]] documents

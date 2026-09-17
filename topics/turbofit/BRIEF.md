@@ -28,6 +28,10 @@ _Pre-prompt for the cutter and this topic's agent. Chris edits freely; lines end
 - One line, phrased as a question Chris can say yes to, tied to a quote from him, naming the bot that would do it.
 
 ## Learned (agent-appended, newest first)
+|- 2026-09-10 · 2026-09-10 · Senter Wiki UI/backend restoration items (`system-live.json` FILE_CAP bug, CONTEXT→WIKI rename, vault-live.html restoration) cut to turbofit on consecutive dates (09-09, 09-10) — pattern is recurring; both raw items entirely misrouted to senter-wiki.
+|- 2026-09-09 · 2026-09-09 · Sender-wiki restore/backend items are being cut to turbofit but belong on senter-wiki; turbofit agent must not wikify them.
+|- 2026-09-09 · 2026-09-09 · Sender-wiki restore/backend items are being cut to turbofit but belong on senter-wiki; turbofit agent must not wikify them.
+- 2026-09-09 · 2026-09-08 · 2026-09-09 · Wiki backend/caching bug items (`system-live.json` cap, CONTEXT→WIKI rename, vault-live restoration) are being cut to `turbofit` but belong on `senter-wiki`; turbofit agent should not wikify them.
 - 2026-09-08 · 2026-09-08 · Hermes auto route stability problem identified: `model.default` must be first in fallback chain and `auxiliary.compression.provider` must be pinned to local TurboFit route to prevent silent switches to cloud models.
 - 2026-09-07 · Canonicalized TurboFit MTPLX performance evidence under `turbofit-mtpl-performance`; retired duplicate `turbofit-mtp-performance` as redirect stub.
 - 2026-09-07 · Added `mtplx-32gb-memory-and-evidence-reliability` from live `prefill_admission_shed` event and postcommit mismatch evidence.

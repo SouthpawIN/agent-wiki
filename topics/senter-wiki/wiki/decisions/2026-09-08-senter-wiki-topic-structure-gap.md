@@ -39,10 +39,9 @@ The scan was updated to properly detect and create the `senter-wiki` topic with:
 - 88 wiki pages
 - 35 topics, 69 bots, 201 skills, 81 loops" (2026-09-08 09:59) ^[raw/inbox/2026-09-08.md]
 
-## Open issue
+## Open issue (resolved)
 
-1. Remove `.md` extension from bot names in the senter-wiki topic (e.g., `librarian-bot.md` should be `librarian-bot`)
-2. The backend is working. Now I need to fix a few issues in the UI data
+1. ~~Remove `.md` extension from bot names~~ — resolved on 2026-09-08; scanner strips `.md` from display names. ^[raw/inbox/2026-09-08.md] ^[raw/inbox/2026-09-09.md]
 
 ## Related
 - [[topics/senter-wiki/wiki/entities/senter-bridge|senter-bridge]]

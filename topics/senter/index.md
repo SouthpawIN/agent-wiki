@@ -1,6 +1,6 @@
 # senter — wiki index
 > One line per page. The wiki row's CONTEXT section renders this file.
-> Last updated: 2026-09-09 | Total pages: 94
+> Last updated: 2026-09-15 | Total pages: 101
 
 ## Entities
 - [[topics/senter/wiki/entities/anser|Anser (redundancy gate / Discord support)]] — **Anser** (Chris says "answer") has two lives. Its installed SOUL (v1.1.0) is a **Discord tech-support + project-planning** agent; in [[topics/senter/wiki/entit
@@ -16,7 +16,7 @@
 - [[topics/senter/wiki/entities/senter-dispatch-and-sentinel|senter-dispatch + senter-sentinel (self-healing pipeline)]] — [2026-09-05, t_f1b1eba1: the SENTINEL is retired — daemon unplugged, `sentinel.py` deleted; the kanban dispatcher + fleet-tick replaced it. Dispatch remains liv
 - [[topics/senter/wiki/entities/senter-repo|senter repo (SouthpawIN/senter — legacy triage orchestrator)]] — The public repo `https://github.com/SouthpawIN/senter` (install: `hermes profile install https://github.com/SouthpawIN/senter`; run: `hermes chat --profile sent
 - [[topics/senter/wiki/entities/senter-wiki-ui|Senter Wiki UI (vault-live.html)]] — The **Senter Wiki** is a single self-contained HTML file, `~/Documents/Projects/Projects/vault-live.html` + `assets/`, rendered in the Hermes desktop **preview 
-- [[topics/senter/wiki/entities/senter|Senter (the bot)]] — **Senter** — "the center line." The one Hermes profile [[topics/senter/wiki/entities/chris|Chris]] talks to; the single surface through which every idea flows f
+- [[topics/senter/wiki/entities/senter|senter (the bot)]] — **Senter** — "the center line." The one Hermes profile [[topics/senter/wiki/entities/chris|Chris]] talks to; the single surface through which every idea flows f
 - [[topics/senter/wiki/entities/skill-senter-fleet-coordination|Skill — senter-fleet-coordination]] — `senter-fleet-coordination` is [[topics/senter/wiki/entities/senter|Senter]]'s operating playbook: "Use when routing fleet ideas, bots, or vault logs. Senter co
 - [[topics/senter/wiki/entities/teknium|Teknium (Hermes-Agent builder)]] — **Teknium** (Chris says "tech meme"/"technium"/"tectium") is the fleet's Hermes-Agent builder: triage, core fixes, PRs against `hermes-agent` — "core fixes, not
 - [[topics/senter/wiki/entities/topic-agent|Topic agent (assets/topic-agent.py — one intelligence per topic)]] — The **topic agent** is the single intelligence that owns one vault topic end to end. Introduced 2026-09-05 17:53 as the direct answer to [[topics/senter/wiki/en
@@ -89,6 +89,12 @@
 - [[topics/senter/wiki/decisions/2026-09-08-complete-senter-wiki-autonomously|Complete Senter Wiki front and backend autonomously]] — **What.** Chris, 08:45: *"please continue until the UI is restored to what I want (read through this session to find clues and specs), and finish both the front
 - [[topics/senter/wiki/decisions/2026-09-08-context-fallback-threshold|Context fallback threshold (>65K) requires auxiliary.compression pin]] — **The claim.** [[topics/senter/wiki/entities/anser|Anser]] (2026-09-07 00:35): *"Use Nous cloud fallback for contexts >65K"*
 - [[topics/senter/wiki/decisions/2026-09-08-senter-wiki-bot-topic-folder-missing|Senter-wiki-bot topic folder missing (clarified: folder exists)]] — **The initial gap.** The `senter-wiki-bot` profile exists but on 2026-09-08 09:56 the scan-topics.py investigation suggested it had no topic folder with proper 
+- [[topics/senter/wiki/decisions/2026-09-09-autonomous-senter-wiki-completion-continuation|2026-09-09 — Autonomous Senter Wiki front + backend completion continues (standing approval confirmed)]] — Chris, 2026-09-09 (continuing toward his standing goal): **"Goal: please continue until the UI is restored to what I want (read through this session to find clu
+- [[topics/senter/wiki/decisions/2026-09-09-bot-sessions-layout-inspection|2026-09-09 — Bot/sessions layout visibility inspection (ongoing after pipeline verification)]] — From the re-routed `senter-wiki` raw item, Chris, 2026-09-09 13:01: **"ok so how do I see my bots and sessions in this layout? Look at the Hermes Desktop and fi
+- [[topics/senter/wiki/decisions/2026-09-09-live-data-pipeline-verification|Live data pipeline verification (2026-09-09) — bridge / git / gh-sync]] — Hermes confirmed the Senter backend infrastructure is live and healthy:
+- [[topics/senter/wiki/decisions/2026-09-10-desktop-layout-tabbed-browser|2026-09-10 — Desktop layout: tabbed browser main zone + bot options above sidebar]] — Chris, 2026-09-10 15:22: **"I want you to bring back the options that were here, such as the sidebar. I really wish that that had the tabs on top of it to open 
+- [[topics/senter/wiki/decisions/2026-09-10-hermes-update-parked-branch|2026-09-10 — Hermes update blocked by parked branch + dirty tree (Senter Wiki is a separate repo)]] — Chris, 2026-09-10 14:26: **"I need you to find what is blocking Hermes-Agent from updating, it might be my project here, which I do not want erased for the sake
+- [[topics/senter/wiki/decisions/2026-09-14-gateway-context-reset-on-overflow|2026-09-14 — Gateway chat resets on context overflow; continue with /new]] — 2026-09-14 22:38, a gateway chat **refused to continue the partial response** because the request no longer fit the model's context window:
 
 ## Comparisons
 - [[topics/senter/wiki/comparisons/delegate-task-vs-hermes-q-meeseeks|Dispatch — delegate_task children vs shell-spawned `hermes -q` Meeseeks]] — Chris: "don't queue tasks, don't make me wait several minutes for a task to start… many in parallel." Measured on 2026-09-02 across the same class of work (3-li
@@ -99,10 +105,11 @@
 - [[topics/senter/wiki/comparisons/topic-pipeline-16-37-vs-17-46|Topic pipeline shapes — worker + umbrella + compiler (16:37) vs one topic agent (17:46)]] — Two designs for "how does a topic turn Chris's talk into wiki + action", both from the same afternoon. The second replaced the first within ~70 minutes after [[
 
 ## Queries
+- [[topics/senter/wiki/queries/event-driven-topic-agent-trigger|Event-driven topic-agent trigger verification (2026-09-09)]] — **The question.** The topic agent (`assets/topic-agent.py`) still fires on a 5-min timer, not on WatchPaths-triggered new inbox writes. This gap, identified at 
 - [[topics/senter/wiki/queries/event-driven-trigger-gaps-2026-09-07|Event-driven trigger gaps identified 2026-09-07]] — Hermes summarized **still-likely gaps** in the event-driven path on 2026-09-07 18:10. These gaps are work, not questions.
 - [[topics/senter/wiki/queries/event-driven-trigger-gaps-2026-09-08|Event-driven trigger gaps (2026-09-08 investigation)]] — **The gap.** The topic agent (`assets/topic-agent.py`) should fire on new watcher cuts (event-driven) not on a 5-minute timer. This was identified as work at 20
 - [[topics/senter/wiki/queries/latest-user-message-preempt-2026-09-07|Latest user-message preemption rule from compaction handoff]] — A 2026-09-07 compaction handoff arrived multiple times in later raw items with explicit instruction: **the latest user message after a summary is the single sou
 - [[topics/senter/wiki/queries/senter-timeline|senter-timeline]] — Filed query: "what happened when?" across all raw items. Times are CDT where given. ^[raw/sources/knowledge/skill-senter-fleet-coordination.md]
 - [[topics/senter/wiki/queries/vault-repo-link-status|Verify vault-to-repo link status (gh-sync / agent-wiki)]] — Hermes observed on 2026-09-09 13:15 that a `gh-sync` directory contains
-- [[topics/senter/wiki/queries/verify-apply-paths-and-watchpaths-landed|Verify apply paths and WatchPaths landed]] — Only the loop path is proven (cron `e6e20c22e1b9`); the bot/research paths and the event-driven switch are recorded as decided, not as landed — the exact class 
+- [[topics/senter/wiki/queries/verify-apply-paths-and-watchpaths-landed|Verify apply paths and WatchPaths landed]] — **Loop apply path** — proven. The cron `e6e20c22e1b9` runs successfully. ✓
 

@@ -1,5 +1,5 @@
 # INDEX — topics/senter-wiki
-_57 files · 566 KB · regenerate: `python3 assets/build-index.py`_
+_59 files · 572 KB · regenerate: `python3 assets/build-index.py`_
 
 Read order for an agent: this file → pick a file below → its outline → `read_file offset=<line> limit=<n>`. Sessions under `.system/sessions/` are full transcripts (largest; go by outline).
 
@@ -15,8 +15,7 @@ Read order for an agent: this file → pick a file below → its outline → `re
     - L44 ## Debugger
 
 ## .system
-- `.system/agent.cursor` — 4 KB, 57 lines — raw/inbox/2026-09-05-legacy-inbox.md@d39fa11a8198
-- `.system/agent.lock` — 0 KB, 1 lines — 71133
+- `.system/agent.cursor` — 4 KB, 70 lines — raw/inbox/2026-09-05-legacy-inbox.md@d39fa11a8198
 - `.system/concept.md` — 3 KB, 40 lines — Senter Wiki — concept (2026-09-03)
     - L1 # Senter Wiki — concept (2026-09-03)
     - L9 ## Navigation model (current — supersedes all earlier page-based models)
@@ -63,29 +62,29 @@ Read order for an agent: this file → pick a file below → its outline → `re
     - L48 ## 2026-09-04 15:25 · hermes · 20260903_001447_7bc70a · sim 0.10
     - L51 ## 2026-09-04 15:25 · hermes · 20260903_001447_7bc70a · sim 0.16
     - … 24 more headings
-- `.system/injections.md` — 4 KB, 25 lines — Injections — senter-wiki
+- `.system/injections.md` — 4 KB, 28 lines — Injections — senter-wiki
     - L1 # Injections — senter-wiki
     - L4 ## [UNREAD]
-    - L23 ## [READ]
+    - L26 ## [READ]
 - `.system/live-integrations-v2.json` — 13 KB, 512 lines — "integrations": [
 - `.system/live-integrations.json` — 1 KB, 44 lines — [
 - `.system/log.md` — 0 KB, 3 lines — senter-wiki log
     - L1 # senter-wiki log
-- `.system/queue.md` — 113 KB, 650 lines — Queue — senter-wiki
+- `.system/queue.md` — 114 KB, 654 lines — Queue — senter-wiki
     - L1 # Queue — senter-wiki
     - L5 ## [CONTEXT]
-    - L16 ## [SKILLS]
-    - L34 ## [AGENTS]
-    - L40 ## [LOOPS]
-    - L50 ## [FIXES] (carried from 2026-09-02, still open unless struck)
-    - L57 ## [FEATURES] (carried)
-    - L71 ## [AGENTS] — profile finalize (klerik → senter desktop session, 2026-09-02)
-    - L76 # Weaver — the Weaver (Senter Wiki UI builder)
-    - L84 ## Fleet
-    - L94 ## First run (and every cold start)
-    - L102 ## Hard rules
-    - L119 # Weaver — Agent Workflows
-    - L121 ## Role
+    - L17 ## [SKILLS]
+    - L35 ## [AGENTS]
+    - L42 ## [LOOPS]
+    - L54 ## [FIXES] (carried from 2026-09-02, still open unless struck)
+    - L61 ## [FEATURES] (carried)
+    - L75 ## [AGENTS] — profile finalize (klerik → senter desktop session, 2026-09-02)
+    - L80 # Weaver — the Weaver (Senter Wiki UI builder)
+    - L88 ## Fleet
+    - L98 ## First run (and every cold start)
+    - L106 ## Hard rules
+    - L123 # Weaver — Agent Workflows
+    - L125 ## Role
     - … 26 more headings
 - `.system/rules.md` — 3 KB, 42 lines — Senter Wiki — rules (Chris's standing corrections, 2026-09-03)
     - L1 # Senter Wiki — rules (Chris's standing corrections, 2026-09-03)
@@ -153,6 +152,7 @@ Read order for an agent: this file → pick a file below → its outline → `re
     - L17 ## Status
     - L20 ## Applied 2026-09-05 18:49
 - `agents/senter-wiki-readme-live.md.proposed` — 1 KB, 22 lines — type: agent
+- `agents/vault-layout-fixer.md.proposed` — 2 KB, 30 lines — type: agent
 
 ## loops
 - `loops/approval-relay.md` — 1 KB, 16 lines — Loop: approval-relay (owner: senter · hermes serve)
@@ -161,6 +161,7 @@ Read order for an agent: this file → pick a file below → its outline → `re
     - L8 ## Replaces
     - L11 ## Cadence
     - L14 ## Status
+- `loops/bot-schema-watch.md.proposed` — 1 KB, 17 lines — type: loop
 - `loops/cron-fire-witness.md.proposed` — 1 KB, 16 lines — type: loop
 - `loops/entity-discovery.md.proposed` — 1 KB, 16 lines — type: loop
 - `loops/fleet-feed.md` — 1 KB, 16 lines — Loop: fleet-feed (owner: senter · hermes kanban watch)
@@ -169,6 +170,7 @@ Read order for an agent: this file → pick a file below → its outline → `re
     - L8 ## Replaces
     - L11 ## Cadence
     - L14 ## Status
+- `loops/git-vault-sync.md.proposed` — 1 KB, 18 lines — type: loop
 - `loops/scan-watch.md` — 1 KB, 15 lines — Loop: scan-watch (owner: senter · custom, KEEP)
     - L1 # Loop: scan-watch (owner: senter · custom, KEEP)
     - L4 ## Why custom (verified 2026-09-04, Anser turn 3)

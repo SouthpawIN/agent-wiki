@@ -10,4 +10,5 @@
 - [ ] *(empty)*
 
 ## [CONTEXT]
+- [ ] research kashik-docs-digest — SUGGESTED 2026-09-15 14:49: You're cloning the official kashik repos to read their docs properly — want me to look into the SouthpawIN/kashik repo a
 - [ ] research progressive-disclosure-wiki-research — SUGGESTED 2026-09-07 18:19: Want me to look into progressive disclosure patterns for wiki organization?

@@ -1,10 +1,10 @@
 ---
 title: Multi-Project Orchestration
 created: 2026-09-07
-updated: 2026-09-08
+updated: 2026-09-15
 type: concept
 tags: [plan, tool, infra, preference]
-sources: [raw/inbox/2026-09-07.md, raw/inbox/2026-09-08.md]
+sources: [raw/inbox/2026-09-07.md, raw/inbox/2026-09-08.md, raw/inbox/2026-09-12.md]
 confidence: high
 ---
 
@@ -20,4 +20,12 @@ Chris emphasized using "current file/system state for exact details" — never o
 ## Reverts to Recover
 The center wiki has reverts that must be recovered before it can safely serve as the orchestrator across multiple projects^[raw/inbox/2026-09-08.md].
 
-See also: [[topics/beyond-pissed/wiki/entities/center-wiki|Center Wiki]], [[topics/beyond-pissed/wiki/decisions/ship-today|Ship Today]], [[topics/beyond-pissed/wiki/concepts/beyond-pissed|Beyond Pissed]], [[topics/beyond-pissed/wiki/decisions/finish-center-wiki-and-orchestrate|Finish Center Wiki and Orchestrate]]
+## Awareness of the Whole Sequence (2026-09-12)
+
+Beyond orchestrating inside the wiki, Chris asked that Hermes be aware of an ordered multi-project sequence without running it all at once — partly so Chris himself can keep track:
+
+> Okay, so I have an order of operations of things I want to do next and it's going to be a couple projects So you don't need to do this all in one run, but you want you to be aware of the whole thing It's partly so I can keep track too. ^[raw/inbox/2026-09-12.md]
+
+The first project on that list is finishing the Oh My Archi home-lab install. See [[topics/beyond-pissed/wiki/decisions/multi-project-order-of-operations|Multi-Project Order of Operations]].
+
+See also: [[topics/beyond-pissed/wiki/entities/center-wiki|Center Wiki]], [[topics/beyond-pissed/wiki/decisions/ship-today|Ship Today]], [[topics/beyond-pissed/wiki/concepts/beyond-pissed|Beyond Pissed]], [[topics/beyond-pissed/wiki/decisions/finish-center-wiki-and-orchestrate|Finish Center Wiki and Orchestrate]], [[topics/beyond-pissed/wiki/entities/oh-my-archi|Oh My Archi]], [[topics/beyond-pissed/wiki/concepts/chromium-new-tab-homepage|Chromium New Tab / Home Page]]

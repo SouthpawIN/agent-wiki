@@ -1,0 +1,16 @@
+---
+type: loop
+name: live-json-size-watch
+proposed: 2026-09-09 20:23
+schedule: 30m
+---
+# live-json-size-watch
+owner: teknium · cadence: every 30 minutes · status: SUGGESTED
+**Want a recurring check that warns when `.system-live.json` approaches or exceeds `/file`'s 2MB cap before it breaks vault-live?**
+
+## Prompt
+Measure `.system-live.json` size and compare against 2MB. If it exceeds or nears the cap, report the size and the affected `/file` endpoint risk. If regeneration lag is detected, flag that the live state may be stale.
+
+## Evidence
+> "FILE_CAP is 2MB, and `.system-live.json` is 2.8MB"
+> "This means the file wasn't regenerated after my changes."

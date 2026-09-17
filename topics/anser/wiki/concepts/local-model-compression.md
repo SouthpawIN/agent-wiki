@@ -25,4 +25,5 @@ This page records a filed support case about Hermes local-model compression slow
 
 ## Links
 - [[topics/anser/wiki/entities/anser|anser]]
+- [[topics/anser/wiki/entities/anser-workflow|anser workflow — Discord moderation patterns]]
 - [[topics/anser/wiki/entities/compression-support-case|Compression support case — 2026-09-06]]

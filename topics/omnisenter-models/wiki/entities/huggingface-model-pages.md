@@ -9,6 +9,8 @@ tags:
   - preference
 sources:
   - raw/inbox/2026-09-07.md
+  - raw/inbox/2026-09-12.md
+  - raw/inbox/2026-09-14.md
 confidence: medium
 ---
 
@@ -27,3 +29,4 @@ Evidence was gathered from the system side rather than from a decided sourcing p
 ## Open questions
 - Is HuggingFace page scraping the canonical source of truth for run metadata, or a fallback?
 - Should per-model provenance be stored in the wiki or in source artifacts?
+- The 2026-09-14 agent hypothesized that the canonical model + training scripts live under the "acestep" HuggingFace org/user — unconfirmed; see [[topics/omnisenter-models/wiki/entities/acestep-org|AceStep Org / User]].

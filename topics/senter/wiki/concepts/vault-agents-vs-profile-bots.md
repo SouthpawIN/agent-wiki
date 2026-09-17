@@ -1,10 +1,10 @@
 ---
 title: Vault agents vs profile bots (proposed vs live)
 created: 2026-09-08
-updated: 2026-09-08
+updated: 2026-09-09
 type: concept
 tags: [concept, bot, infra, spec]
-sources: [raw/inbox/2026-09-08.md]
+sources: [raw/inbox/2026-09-08.md, raw/inbox/2026-09-09.md]
 confidence: high
 ---
 
@@ -36,8 +36,11 @@ Actual running bots live in `~/.hermes/profiles/<name>/` — each has a SOUL.md 
 ## The `.system-live.json` structure
 
 The live data snapshot distinguishes:
+
 - **`bots`** (root array, 68 entries): all live profile bots with SOUL.md
 - **`<topic>.bots`** (per-topic array): vault agent specs from `topics/<topic>/agents/` — these are *proposed* bots that may not yet be live profiles
+
+The 2026-09-09 pipeline verification confirmed the live data serving is healthy: `com.senter.bridge` running on `127.0.0.1:8643`, `/system-live.json` served correctly via the `/file` endpoint, data showing **35 topics / 69 bots / 201 skills / 81 loops**, and the `senter-wiki` topic properly populated. ^[raw/inbox/2026-09-09.md]
 
 Hermes noted the confusion on 2026-09-08 09:47: *"Looking at `scan_vault_agents()`: This function reads BOTH `.md` AND `.md.proposed` files from `agents/` directories. But the current output shows it's picking up ALL `.md` files, not just the agent specs."* ^[raw/inbox/2026-09-08.md]
 

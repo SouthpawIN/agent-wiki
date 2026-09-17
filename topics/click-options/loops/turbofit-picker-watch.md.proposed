@@ -1,0 +1,17 @@
+---
+type: loop
+name: turbofit-picker-watch
+proposed: 2026-09-15 19:13
+schedule: every 2h
+---
+# turbofit-picker-watch
+owner: looker · cadence: every 2h · status: SUGGESTED
+**I see you've had to click the provider dropdown three times today and TurboFit still isn't there — want a bot that watches the picker and pings you the moment TurboFit (or its models) is back, so you don't have to keep clicking?**
+
+## Prompt
+Snapshot the Hermes desktop provider/model picker (arrow-on-desktop next to the input bar); check whether the TurboFit provider and every TurboFit model are present and grouped under it; ping Chris in one line only when something is missing or when it reappears after a gap.
+
+## Evidence
+> I don't see the turbo fit at all in Hermes desktop providers like I fucking asked for
+> I still don't see it when I click the drop down menu from the input bar I only see news portal followed by open code free followed by xai. Those are the only providers that I have
+> Yeah, okay, so I still don't see it. You've had it there before. Come on now

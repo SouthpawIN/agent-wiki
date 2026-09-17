@@ -1,0 +1,10 @@
+---
+title: How does the write() function in scan-topics.py handle the skills field type, an
+type: query
+proposed: 2026-09-10 13:30
+tags: [question]
+---
+# How does the write() function in scan-topics.py handle the skills field type, and what does scan_usage do with the bots input that may cause array-vs-integer schema mismatches?
+The root cause of the skills-field mismatch is in scan-topics.py's write() and scan_usage functions, which haven't been directly inspected yet.
+
+_Approve to run the research; the answer lands here._

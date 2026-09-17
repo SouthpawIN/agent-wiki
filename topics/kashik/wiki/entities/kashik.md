@@ -1,7 +1,7 @@
 ---
 title: kashik
 created: 2026-09-07
-updated: 2026-09-07
+updated: 2026-09-16
 type: entity
 tags:
   - person
@@ -9,6 +9,8 @@ tags:
   - concept
 sources:
   - raw/inbox/2026-09-07.md
+  - raw/inbox/2026-09-14.md
+  - raw/inbox/2026-09-16.md
 confidence: high
 ---
 

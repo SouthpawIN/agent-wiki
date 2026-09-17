@@ -1,0 +1,10 @@
+---
+title: Why does the TurboFit provider fail to appear in the Hermes desktop provider/mod
+type: query
+proposed: 2026-09-15 19:13
+tags: [question]
+---
+# Why does the TurboFit provider fail to appear in the Hermes desktop provider/model picker (arrow-on-desktop next to the input bar) even though both models respond correctly through the Hermes runtime, and what configuration change is needed to make it register alongside the existing news portal, open code free, and xai providers?
+Backend works (13:21) but the picker shows only three providers (18:05) — the live blocker on getting all his TurboFit models grouped under the TurboFit provider.
+
+_Approve to run the research; the answer lands here._

@@ -35,3 +35,5 @@ As of 2026-09-07, the TurboFit-engine work is partly blocked by system-level wri
 - [[topics/try-again/wiki/concepts/turbofit-engine-options|Turbofit Engine Options]]
 - [[topics/try-again/wiki/decisions/benchmark-protocol|Benchmark Protocol]]
 - [[topics/try-again/wiki/comparisons/2026-09-07-candidate-narrowing|2026-09-07 Candidate Narrowing]]
+- [[topics/try-again/wiki/queries/2026-09-09-tool-blocking|2026-09-09 Tool Invocation Blocking]]
+- [[topics/try-again/wiki/queries/2026-09-10-tool-blocking-continued|2026-09-10 Tool Invocation Blocking (Continued)]]

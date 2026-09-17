@@ -28,6 +28,9 @@ _Pre-prompt for the cutter and this topic's agent. Chris edits freely; lines end
 - One line, phrased as a question Chris can say yes to, tied to a quote from him, naming the bot that would do it.
 
 ## Learned (agent-appended, newest first)
+- 2026-09-13 · 2026-09-13 · Treated the 2026-09-13 'Config is done. Full verification of the complete chain' status markers as Hermes operational noise (sim 0.08, hermes state.db source), not anser moderation content, unless Chris re-binds it.
+- 2026-09-10 · 2026-09-09 raw item is Hermes infrastructure evidence (scan fix for bot/loop naming), not anser moderation content — misrouted to Hermes/route
+- 2026-09-09 · Treated duplicate 2026-09-09 Hermes `.md`-suffix scan fix as Hermes/route evidence, not new anser moderation content.
 - 2026-09-07 · 2026-09-07 · Treated 2026-09-07 Hermes architecture-update lines as support evidence unless Chris explicitly re-binds them to anser.
 - 2026-09-07 · 2026-09-07 · Continued treating Hermes compression-threshold lines ('>65K → Nous cloud fallback') as Hermes/route evidence unless Chris explicitly re-binds them to anser.
 - 2026-09-07 · 2026-09-07 · Continued treating Hermes compression-threshold lines ('>65K → Nous cloud fallback') as Hermes/route evidence unless Chris explicitly re-binds them to anser.

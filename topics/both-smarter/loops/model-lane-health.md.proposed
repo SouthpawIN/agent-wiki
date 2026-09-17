@@ -1,0 +1,15 @@
+---
+type: loop
+name: model-lane-health
+proposed: 2026-09-15 14:09
+schedule: 0 */6 * * *
+---
+# model-lane-health
+owner: looker · cadence: every 6 hours · status: SUGGESTED
+**I see your MacBook models keep swapping at large context windows — want a loop that periodically checks each lane fits in your device memory and flags any that start swapping?**
+
+## Prompt
+For each model lane in the both-smarter topic, re-check the model footprint + context window against the current device memory, confirm it still runs without swapping, and report any lane that has regressed or any better-fitting unified-memory model on Hugging Face.
+
+## Evidence
+> we do need to have separate lanes depending on the type of, you know, my device, which is something that we need to build out and make more refined.

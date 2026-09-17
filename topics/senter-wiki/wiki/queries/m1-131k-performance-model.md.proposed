@@ -1,0 +1,10 @@
+---
+title: What are the realistic token/s throughput targets and model selections for 131K 
+type: query
+proposed: 2026-09-10 14:49
+tags: [question]
+---
+# What are the realistic token/s throughput targets and model selections for 131K context inference on an M1 Max with 32GB unified memory, and which MTPLX/MTPLL variants stay within budget without crashing?
+Chris accepted 10+ tok/s at 131K is 'physically impossible on current hardware' but needs a performance model to pick the right local backend — this shapes every wiki infra decision.
+
+_Approve to run the research; the answer lands here._

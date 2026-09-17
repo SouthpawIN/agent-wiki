@@ -1,0 +1,10 @@
+---
+title: Does Hermes Agent have existing planned support for uniform live-snapshot bot sc
+type: query
+proposed: 2026-09-09 21:34
+tags: [question]
+---
+# Does Hermes Agent have existing planned support for uniform live-snapshot bot schema merging across scan paths, or should this be filed as a gap?
+Chris wants fleet-found core gaps upstreamed via the PR ledger, and the scan_topics/snapshot schema mismatch is a live-data contract gap affecting bot visibility.
+
+_Approve to run the research; the answer lands here._

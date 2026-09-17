@@ -1,0 +1,15 @@
+---
+type: loop
+name: criteria-audit
+proposed: 2026-09-09 20:47
+schedule: 0 9 * * *
+---
+# criteria-audit
+owner: paladin · cadence: human phrase · status: SUGGESTED
+**Want a periodic check that existing fleet items still match the skill/bot/loop criteria in architecture.md?**
+
+## Prompt
+Review wiki/ and fleet listings, flag items whose type contradicts architecture.md criteria, and post a card with mismatches.
+
+## Evidence
+> Added explicit **skill vs bot vs loop decision criteria** to `architecture.md`

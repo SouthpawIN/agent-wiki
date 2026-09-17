@@ -1,6 +1,10 @@
 # Queue — back-where
 
 ## [CONTEXT]
+- [ ] research turbofit-persistence-research — SUGGESTED 2026-09-15 19:01: Want me to look into why your TurboFit options don't survive a desktop-app restart — and how to make them persist?
+- [ ] research double-gpu-co-run-tuning — SUGGESTED 2026-09-15 10:43: Want me to look into what batch-size, GPU split, and prefill settings let the Unleashed Q3K XL stay at Q3 on your double
+- [ ] research stream-omarchy-to-macbook-obs — SUGGESTED 2026-09-15 10:02: Want me to look into how to stream from the Omarchy into OBS on the MacBook — network stream, USB capture, or VNC — so t
+- [ ] research proton-for-armored-core-6 — SUGGESTED 2026-09-15 10:02: Want me to look into the best Steam Play/Proton build for Armored Core 6 so we're chasing the right version instead of g
 - [ ] research qwen3-27b-unleashed-runtime-research — SUGGESTED 2026-09-07 19:51: Want me to look into whether the Qwen3.8 27B unleashed Q3K exile variant has an MLX/runtime path on M1 and what config g
 - [ ] research q3k-exile-artifact-research — SUGGESTED 2026-09-07 16:10: Want me to look into the exact Qwen3.8 27B unleashed Q3K exile artifact names, deep flash options, and llama.cpp/MLX set
 - [ ] research qwen3-27b-unleashed-m1-tuning-path — SUGGESTED 2026-09-07 09:54: Want me to look into the exact llama.cpp or MLX config to run Qwen3.8 27B unleashed Q3K exile at 131K on your M1 32GB wi
@@ -13,6 +17,8 @@
 - [~] research — dispatched 2026-09-06 01:25
 
 ## [SKILLS]
+- [ ] hermes-python-env-isolation — distilled 2026-09-10 12:20 → skills/hermes-python-env-isolation/SKILL.md (auto-applied)
+- [ ] session-handoff-latest-message-wins — distilled 2026-09-10 12:20 → skills/session-handoff-latest-message-wins/SKILL.md (auto-applied)
 - [ ] recovery-repair-pattern — distilled 2026-09-08 09:50 → skills/recovery-repair-pattern/SKILL.md (auto-applied)
 - [ ] latest-message-wins-task-handling — distilled 2026-09-07 19:51 → skills/latest-message-wins-task-handling/SKILL.md (auto-applied)
 - [ ] qwen-research-first-implementation — distilled 2026-09-07 16:10 → skills/qwen-research-first-implementation/SKILL.md (auto-applied)
@@ -21,6 +27,9 @@
 - [ ] tts-fresh-entitlement-retry — distilled 2026-09-06 21:51 → skills/tts-fresh-entitlement-retry/SKILL.md (auto-applied)
 
 ## [AGENTS]
+- [ ] turbofit-watch-bot — SUGGESTED 2026-09-15 19:01: I see your TurboFit options disappear every time you restart the desktop app — want a bot that checks they're still ther → agents/turbofit-watch-bot.md.proposed
+- [ ] obs-omarchy-stream-bot — SUGGESTED 2026-09-15 10:02: I see you want OBS on the MacBook to manage streaming while you play Armored Core 6 on the Omarchy, and that's still pen → agents/obs-omarchy-stream-bot.md.proposed
+- [ ] steam-play-hp-bot — SUGGESTED 2026-09-15 10:02: I see you're mid-OS-setup on the HP with Steam Play (Proton) 'having a hard time' — want a bot that drives the HP's Stea → agents/steam-play-hp-bot.md.proposed
 - [ ] m1-27b-audit-bot — SUGGESTED 2026-09-07 19:51: I see you're trying to validate the 27B/unleashed path on M1 — want a bot that checks Hermes runtime binding, model-list → agents/m1-27b-audit-bot.md.proposed
 - [ ] m1-27b-prep-bot — SUGGESTED 2026-09-07 16:10: I see you're focused on getting one of the 27B models optimized on M1 — want a bot that uses the retained 131K outputs a → agents/m1-27b-prep-bot.md.proposed
 - [ ] 27b-optimizer — SUGGESTED 2026-09-07 05:22: I see you're refocusing on the 27B models after the 131K speed miss — want a bot that finds the fastest viable Q3 27B co → agents/27b-optimizer.md.proposed

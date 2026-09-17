@@ -4,7 +4,7 @@ created: 2026-09-08
 updated: 2026-09-08
 type: query
 tags: [question, loop, bug, gap, investigation]
-sources: [raw/inbox/2026-09-07.md, raw/inbox/2026-09-08.md, raw/inbox/2026-09-08-from-hermes-agent.md]
+sources: [raw/inbox/2026-09-07.md, raw/inbox/2026-09-08.md, raw/inbox/2026-09-08-from-hermes-agent.md, raw/inbox/2026-09-09.md]
 confidence: medium
 ---
 
@@ -47,13 +47,8 @@ confidence: medium
 | 09:51 | kashik `.split(".md")` test confirms correct behavior | Parsing works for simple cases |
 | 09:56 | senter-wiki-bot topic folder missing | Structure gap needs scaffolding |
 
-## What needs landing
-
-1. **Create `topics/senter-wiki/`** with standard anatomy (wiki/, skills/, bots/, loops/) per [[topics/senter/wiki/concepts/topics-are-the-work-units|topics are work units]]
-2. **Verify topic-agent trigger mechanism** — whether the topic agent fires on file system events (WatchPaths) or timer
-3. **Audit scan-topics.py for consistency** between `name_of()` and `split(".md")` approaches
-
-## Proposal
+## 2026-09-08 resolution
+Item 1 (senter-wiki folder) was resolved on 2026-09-08 — the folder already existed with proper structure (see [[topics/senter/wiki/decisions/2026-09-08-senter-wiki-bot-topic-folder-missing|decision]]). The proposal to create it is **superseded**.
 
 Want a bot that checks if the event-driven topic-agent trigger has landed? Or want me to look into the `scan-topics.py` / launchd configuration to implement it?
 
@@ -67,4 +62,4 @@ Want a bot that checks if the event-driven topic-agent trigger has landed? Or wa
 - [[topics/senter/wiki/concepts/vault-agents-vs-profile-bots|vault agents vs profile bots]]
 - [[topics/senter/wiki/entities/senter|siten]]
 
-^[raw/inbox/2026-09-07.md] ^[raw/inbox/2026-09-08.md]
+|^[raw/inbox/2026-09-07.md] ^[raw/inbox/2026-09-08.md] ^[raw/inbox/2026-09-09.md]

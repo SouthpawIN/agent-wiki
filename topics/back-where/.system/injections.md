@@ -1,6 +1,9 @@
 # Injections — back-where
 
 ## [UNREAD]
+[AGENTS] I see your TurboFit options disappear every time you restart the desktop app — want a bot that checks they're still there after a restart and restores them?
+[AGENTS] I see you want OBS on the MacBook to manage streaming while you play Armored Core 6 on the Omarchy, and that's still pending — want a bot that builds the capture-and-stream path from Omarchy to the MacBook?
+[AGENTS] I see you're mid-OS-setup on the HP with Steam Play (Proton) 'having a hard time' — want a bot that drives the HP's Steam/Proton troubleshooting end to end?
 [LOOPS] Want me to show you the restored wiki vault dashboard with running indicator?
 [LOOPS] Want me to capture and verify your restored UI state in the Hermes preview window?
 [LOOPS] Want me to watch the local model download path and only alert when it actually completes and becomes loadable?

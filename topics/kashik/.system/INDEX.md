@@ -16,7 +16,7 @@ Read order for an agent: this file → pick a file below → its outline → `re
     - L81 ## Key Features
 
 ## .system
-- `.system/agent.cursor` — 0 KB, 3 lines — raw/inbox/2026-09-07.md@0686801d1387
+- `.system/agent.cursor` — 0 KB, 5 lines — raw/inbox/2026-09-07.md@0686801d1387
 - `.system/continuity.md` — 0 KB, 7 lines — Continuity — kashik
     - L1 # Continuity — kashik
 - `.system/injections.md` — 3 KB, 32 lines — Injections
@@ -26,7 +26,7 @@ Read order for an agent: this file → pick a file below → its outline → `re
     - L18 ## Current context
     - L22 ## Version policy
     - L26 ## Related concepts
-- `.system/queue.md` — 1 KB, 14 lines — Queue
+- `.system/queue.md` — 1 KB, 15 lines — Queue
     - L1 # Queue
     - L3 ## [SKILLS]
     - L5 ## [AGENTS]

@@ -1,0 +1,16 @@
+---
+type: loop
+name: bot-schema-watch
+proposed: 2026-09-10 14:49
+schedule: */5 * * * *
+---
+# bot-schema-watch
+owner: paladin · cadence: every 5m · status: SUGGESTED
+**Want a loop that watches .system-live.json for bot schema drift (skills as list vs int) and posts when stale scan-topics processes may be overwriting good data?**
+
+## Prompt
+Read .system-live.json. For each bot in bots[], check that skills is an int and model is a string. If any bot has skills as a list or is missing model, post a bridge /post card via /stage with status 'working' and text 'Bot schema drift detected — stale scan-topics process may be overwriting JSON. PID: <pgrep result>'. Log the violation. Do not kill.
+
+## Evidence
+> "The JSON file now correctly shows skills=0 as an integer for the vault bot." ^[raw/inbox/2026-09-10.md]
+> stale --watch process was overwriting .system-live.json with pre-fix bot schema (skills: [] instead of skills: 0) ^[raw/inbox/2026-09-10.md]

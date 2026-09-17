@@ -1,0 +1,17 @@
+---
+type: loop
+name: watch-loop-sync
+proposed: 2026-09-10 14:10
+schedule: 
+---
+# watch-loop-sync
+owner: None · cadence: None · status: SUGGESTED
+**Want a loop to keep the watch process in sync with repo updates?**
+
+## Prompt
+
+
+## Evidence
+> Process 91303 is running the OLD version of the code (with skills: [])
+> A watch loop is repacking data every 20 seconds
+> The scan-topics.py fix was committed - watch process needs to reload it

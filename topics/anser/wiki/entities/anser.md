@@ -26,5 +26,6 @@ contested: false
 - Watcher filings for `anser` are dominated by Hermes infrastructure signals; those are treated as support evidence, not direct moderation activity. ^[raw/inbox/2026-09-06.md, raw/inbox/2026-09-07-from-senter.md]
 
 ## Links
+- [[topics/anser/wiki/entities/anser-workflow|anser workflow — Discord moderation patterns]]
 - [[topics/anser/wiki/concepts/local-model-compression|Local-model context compression → route to Nous]]
 - [[topics/anser/wiki/concepts/native-map-architecture-update|Native-map architecture update — 2026-09-07]]

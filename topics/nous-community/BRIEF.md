@@ -29,3 +29,5 @@ _Pre-prompt for the cutter and this topic's agent. Chris edits freely; lines end
 - One line, phrased as a question Chris can say yes to, tied to a quote from him, naming the bot that would do it.
 
 ## Learned (agent-appended, newest first)
+- 2026-09-15 · 2026-09-15 · Hermes CLI fix on Omarchy (verifying CLI+desktop status) is a one-off repair, not a recurring pain — recorded as a concept, no skill yet
+- 2026-09-14 · Scope boundary learned: a Nous-token reset on someone else's Hermes Desktop is general troubleshooting (belongs to `senter`), not a nous-community matter — the anti-scope's 'general Hermes/fleet' clause applies, not the 'tools' clause.

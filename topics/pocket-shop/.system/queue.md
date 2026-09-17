@@ -11,5 +11,6 @@
 - [ ] *(empty)*
 
 ## [CONTEXT]
+- [ ] research hermes-browser-automation — SUGGESTED 2026-09-13 16:57: Want me to look into what built-in browser-automation Hermes already ships (the native webview, Playwright, or CDP) so p
 - [ ] research portal-credit-trace — SUGGESTED 2026-09-06 22:06: Want me to look into whether Portal shows the missing $2,000 as pending or rerouted for Christopher Hardwick's organisat
 - [ ] research pocket-shop-revival-check — SUGGESTED 2026-09-05 18:22: Want me to look into whether pocket-shop's TCGPlayer/MTGStocks/eBay browser automations still work after two months dorm

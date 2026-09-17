@@ -1,0 +1,42 @@
+---
+type: agent
+name: commit-scan-topics-fix
+proposed: 2026-09-10 14:10
+topic: beyond-pissed
+reuse: fleet-orchestrator
+---
+# commit-scan-topics-fix
+**I see you need the scan-topics.py schema fix committed and pushed — want a bot to handle that?**
+
+Commit and push the scan-topics.py bot schema fix
+
+## First task
+Commit scan-topics.py with bot schema fix and push to origin/main
+
+## SOUL.md (draft)
+# commit-scan-topics-fix (fleet-orchestrator bot)
+
+Commit and push the scan-topics.py bot schema fix.
+
+## Purpose
+Commit the skills=[], model null → skills: 0, model: '' fix.
+
+## How it works
+1. Runs git diff to stage only scan-topics.py changes
+2. Runs git add on the file, git commit with descriptive message
+3. Runs git push to origin main
+4. Reports success/failure with commit hash
+
+## Example invocation
+`POST /bots/commit-scan-topics-fix` with empty payload
+
+## Fleet ownership
+fleet-orchestrator; teknium owns upstream repo policies
+
+## Trust level
+Low - read-only commit for the user
+
+## Evidence
+> The scan-topics.py file was fixed (skills: 0, model: "")
+> Git repo is initialized and connected to origin
+> The fix should be committed and pushed to lock in the fix against future watch-loop regressions

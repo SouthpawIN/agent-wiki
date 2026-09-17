@@ -1,22 +1,25 @@
 ---
 title: "Model Check — 20260903_001447_7bc70a"
 created: 2026-09-06
-updated: 2026-09-07
+updated: 2026-09-13
 type: entity
-tags: [person, tool, decision, question]
-sources: ["raw/inbox/2026-09-06.md", "raw/inbox/2026-09-07.md"]
-confidence: high
+tags: [person, tool, decision, question, contested]
+sources: ["raw/inbox/2026-09-06.md", "raw/inbox/2026-09-07.md", "raw/inbox/2026-09-10.md", "raw/inbox/2026-09-13.md"]
+confidence: medium
+contested: true
 ---
 
 # Model Check — 20260903_001447_7bc70a
 
-Chris is actively checking a specific model/session by id `20260903_001447_7bc70a` against realistic compression behavior, and on 2026-09-07 he asked for a clean test environment for the `27B` model.^[raw/inbox/2026-09-06.md] ^[raw/inbox/2026-09-07.md]
+Chris is actively checking a specific model/session by id `20260903_001447_7bc70a` against realistic compression behavior.^[raw/inbox/2026-09-06.md] ^[raw/inbox/2026-09-07.md] ^[raw/inbox/2026-09-10.md]
 
-## Session
+## Session identifier
 - session: `20260903_001447_7bc70a`
-- similarity: `0.07 → 0.06`
-- timestamps: `2026-09-06 18:15`, `19:34`
-- additional observation: `2026-09-07 00:08` — similarity `0.27` noted alongside environment cleanup request.
+
+## Environment cleanup requirement
+- `2026-09-07 00:08` — Chris: "I would really rather you be testing this 27B with as clean of a hard drive as you can... take off maple... delete that if it's still here."^[raw/inbox/2026-09-07.md]
+- `2026-09-07 01:02` — same cleanup request repeated verbatim.^[raw/inbox/2026-09-07.md]
+- `2026-09-07 01:03` — same cleanup request repeated verbatim again.^[raw/inbox/2026-09-07.md]
 
 ## Performance — 2026-09-07
 - Model: `MTPLX Qwen 3.8 27B`
@@ -39,7 +42,7 @@ Chris is actively checking a specific model/session by id `20260903_001447_7bc70
 - Memory math: `Qwen 3.8 27B Q3_K_XL = 12.3GB`, `131K KV cache with q8 = ~8GB`, `DFlash2 draft = 1GB`, `macOS + Hermes Agent = 6-8GB`. Total exceeds 32GB on M1.^[raw/inbox/2026-09-07.md]
 - Unsettled lock-in: despite Hermes-side provider lock attempts, the active provider/model changed multiple times during the session, indicating the lock was not stable or cleanly applied.^[raw/inbox/2026-09-07.md]
 - Ornith proposal: at `2026-09-07 10:12`, Hermes proposed stopping Tiel-Coder and locking in Ornith as main provider, contradicting the earlier Unleashed + DFlash2 lock.^[raw/inbox/2026-09-07.md]
-- Config-write friction: at `2026-09-07 13:51`, Hermes reported the tool was refusing to write to Hermes config and needed to use the Hermes CLI instead.^[raw/inbox/2026-09-07.md]
+- Config-write friction: at `2026-09-07 13:51`, Hermes reported the tool was refusing to write to the Hermes config and needed to use the Hermes CLI instead.^[raw/inbox/2026-09-07.md]
 - Runtime model changes: system logged active-model changes to `upstage/solar-pro4:free via provider nous` at `11:19`, `12:02`, `13:59`, and `inclusionai/ling-3.0-flash-sante:free via provider nous` at `14:03`.^[raw/inbox/2026-09-07.md]
 
 ## Session 20260907-030601
@@ -47,6 +50,16 @@ Chris is actively checking a specific model/session by id `20260903_001447_7bc70
 - Requirements: `Qwen 3.8 27B` variant, `10+ tok/s` at `131K` context, after clean environment.^[raw/inbox/2026-09-07.md]
 - Outcome: session interrupted at `05:38` after `20` API calls and `3400.36s` without a summarized conclusion.^[raw/inbox/2026-09-07.md]
 - The interrupted session did not change earlier memory-cap evidence; it repeated the same target without producing new measurement data.^[raw/inbox/2026-09-07.md]
+
+## 2026-09-10 — new similarity observation
+- `2026-09-10 10:06` — session `20260903_001447_7bc70a`, similarity `sim 0.09`.^[raw/inbox/2026-09-10.md]
+- `[System]` — "The active model for this chat has changed to grok-4.6 via provider xai. From this point forward, use this runtime metadata when answering questions about what model/provider is active."^[raw/inbox/2026-09-10.md]
+- Note: this session continues to be referenced in new raw items, but the `sim 0.09` value is not yet integrated into the prior `0.07 → 0.06` progression recorded on 2026-09-06. The active model has also shifted to `grok-4.6 via provider xai` as of this entry, which differs from the `Qwen 3.8 27B` under evaluation on 2026-09-07.^[raw/inbox/2026-09-07.md] ^[raw/inbox/2026-09-10.md]
+|- Contested: the session id `20260903_001447_7bc70a` is being reused across multiple evaluation windows with differing active providers and similarity measurements; treat the similarity trajectory as provisional until Chris confirms which run the `0.09` value belongs to.
+
+## 2026-09-13 — same id, yet another active model
+- The same session id `20260903_001447_7bc70a` is referenced again on `2026-09-13 16:43/16:52` with active model `ornith-1-5-35a3b` via provider `xai`, and `2026-09-13 16:44/16:53` with `longcat-2.0:free` via nous.^[raw/inbox/2026-09-13.md]
+- This continues the reuse-of-one-session-id-across-different-providers pattern and further decouples the `sim 0.09` reading from any single comparable run. Reinforces the provisional-lock / provisional-similarity rule.
 
 ## Evidence
 - `2026-09-06 18:15` — system-side note: "Now a realistic compression test — big essay summarization"^[raw/inbox/2026-09-06.md]
@@ -59,12 +72,11 @@ Chris is actively checking a specific model/session by id `20260903_001447_7bc70
 - `2026-09-07 05:35` — Hermes stated `10+ tok/s at 131K` is not achievable on `M1 32GB` with `27B`; recommended `65K at ~7 tok/s` as daily driver and `64GB+` for the 131K target.^[raw/inbox/2026-09-07.md]
 - `2026-09-07 05:38` — interrupted evaluation session ended without summary while repeating the same Qwen 3.8 27B / 10+ tok/s at 131K target.^[raw/inbox/2026-09-07.md]
 - `2026-09-07 05:42` — Hermes returned to direct memory-cap explanation: `Qwen 3.8 27B Q3_K_XL = 12.3GB`, `131K KV cache = ~8GB`, `DFlash2 = 1GB`, macOS+Hermes = `6-8GB`; total `32GB` budget.^[raw/inbox/2026-09-07.md]
+- `2026-09-10 10:06` — session `20260903_001447_7bc70a`, similarity `sim 0.09`; system notes active model changed to `grok-4.6 via provider xai`.^[raw/inbox/2026-09-10.md]
 
 ## Related
 - [[topics/hermes-agent/wiki/entities/session-20260907-030601|Session Check — 20260907_030601_6012ee]]
 - [[topics/hermes-agent/wiki/decisions/clean-model-test-precondition-2026-09-07|Clean Model Test Precondition — 2026-09-07]]
-
-## Related Pages
 - [[topics/hermes-agent/wiki/concepts/model-evaluation-2026-09-06|Model Evaluation — 2026-09-06]]
 - [[topics/hermes-agent/wiki/decisions/compression-test-2026-09-06|Compression Test — 2026-09-06]]
 - [[topics/hermes-agent/wiki/decisions/main-provider-lock-2026-09-07|Main Provider Lock — 2026-09-07]]

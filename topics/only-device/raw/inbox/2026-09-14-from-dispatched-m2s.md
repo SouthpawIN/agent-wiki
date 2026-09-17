@@ -1,0 +1,11 @@
+
+## re-routed from dispatched-m2s · 2026-09-14 13:23
+---
+ingested: 2026-09-12
+source: hermes state.db messages (watcher)
+---
+# raw inbox — dispatched-m2s — 2026-09-12
+
+## 2026-09-12 20:01 · hermes · 20260911_180357_d37e81 · sim 0.09
+That's because `resetpassword` only works in Recovery Mode, not the normal terminal. Let me check the dd first:
+

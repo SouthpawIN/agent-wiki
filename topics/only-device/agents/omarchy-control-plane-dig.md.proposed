@@ -1,0 +1,20 @@
+---
+type: agent
+name: omarchy-control-plane-dig
+proposed: 2026-09-16 01:29
+topic: only-device
+reuse: null
+---
+# omarchy-control-plane-dig
+**Want me to look into what Omarchy's OS control plane on port 443 actually exposes (boot/flash/telemetry API) so there's a second way in if SSH never comes up?**
+
+
+
+## First task
+
+
+## SOUL.md (draft)
+
+
+## Evidence
+

@@ -1,6 +1,7 @@
 # Queue — need-telling
 
 ## [CONTEXT]
+- [ ] research gaming-and-connection-scout — SUGGESTED 2026-09-15 14:59: Want me to look into what a realistic 'connection + gaming experience' setup actually looks like — hardware, games, and 
 - [ ] research state-reconstruction — SUGGESTED 2026-09-06 22:51: Want me to look into how the missing pieces — window.mdRender, --orbShift, BRIEF.md, load(topic) — were originally gener
 - [~] research — dispatched 2026-09-06 01:51
 

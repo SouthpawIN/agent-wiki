@@ -1,0 +1,10 @@
+---
+title: How exactly is DFlash2 hooked up as a spec-draft for qwen4, and does it hold the
+type: query
+proposed: 2026-09-16 21:49
+tags: [question]
+---
+# How exactly is DFlash2 hooked up as a spec-draft for qwen4, and does it hold the 81 tok/s (or better) at 131K context when engaged?
+The 09-15 next move was research-then-test, and the high-speed DFlash2 result carried no tok/s figure to confirm it held the baseline.
+
+_Approve to run the research; the answer lands here._

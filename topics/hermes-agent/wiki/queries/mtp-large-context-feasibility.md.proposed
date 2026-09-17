@@ -1,0 +1,10 @@
+---
+title: Can Unleashed 27B with MTP/DFlash2 achieve 131K context at usable tok/s on a 64G
+type: query
+proposed: 2026-09-15 22:29
+tags: [question]
+---
+# Can Unleashed 27B with MTP/DFlash2 achieve 131K context at usable tok/s on a 64GB+ M-series or GPU host, and what config/quant makes it stable?
+The 262K/81.2 tok/s result is the first large-context-27B win and directly tests the ceiling the M1 32GB not-now verdict hit
+
+_Approve to run the research; the answer lands here._

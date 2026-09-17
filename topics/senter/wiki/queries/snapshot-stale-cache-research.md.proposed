@@ -1,0 +1,10 @@
+---
+title: Does the bridge cache `/file` responses, or does Hermes Desktop `loadLive()` rea
+type: query
+proposed: 2026-09-09 20:38
+tags: [question]
+---
+# Does the bridge cache `/file` responses, or does Hermes Desktop `loadLive()` read a different `.system-live.json` path than the one scan-topics.py writes?
+The 20:33 debug ended before confirming which file the UI reads; a root-cause answer unblocks the schema fix.
+
+_Approve to run the research; the answer lands here._

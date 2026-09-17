@@ -16,7 +16,7 @@ Read order for an agent: this file → pick a file below → its outline → `re
     - L93 ## Key Statistics
 
 ## .system
-- `.system/agent.cursor` — 0 KB, 1 lines — raw/inbox/2026-09-08.md@d57c24d620d5
+- `.system/agent.cursor` — 0 KB, 7 lines — raw/inbox/2026-09-08.md@82e933bb40d5
 - `.system/continuity.md` — 0 KB, 7 lines — Continuity — crow
     - L1 # Continuity — crow
 - `.system/injections.md` — 3 KB, 30 lines — Injections
@@ -26,11 +26,12 @@ Read order for an agent: this file → pick a file below → its outline → `re
     - L18 ## Current context
     - L22 ## Version policy
     - L26 ## Related concepts
-- `.system/queue.md` — 0 KB, 9 lines — Queue
+- `.system/queue.md` — 0 KB, 12 lines — Queue
     - L1 # Queue
     - L3 ## [SKILLS]
     - L5 ## [AGENTS]
     - L7 ## [LOOPS]
+    - L10 ## [CONTEXT]
 
 ## agents
 - `agents/.gitkeep` — 0 KB, 1 lines — 
