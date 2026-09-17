@@ -7,7 +7,7 @@ links:
   github: https://github.com/SouthpawIN/Senter
   vault: ~/Documents/Projects/Projects
 sources:
-  - README.md
+  - senter-wiki.md
   - BRIEF.md
   - topics/
 ---
