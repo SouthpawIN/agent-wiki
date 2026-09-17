@@ -38,13 +38,23 @@ model: auto
 
 ---
 
-## WIKI
+## INTEGRATIONS
 
-### CONTEXT
+This wiki is fed by:
+
+- **GitHub:** [SouthpawIN/turbofit](https://github.com/SouthpawIN/turbofit) — code, issues, PRs
+- **HuggingFace:** [SouthpawIN](https://huggingface.co/SouthpawIN) — model repos
+- **Omarchy:** [SouthpawIN/omarchy](https://github.com/SouthpawIN/omarchy) — primary GPU server
+- **Raw inbox:** `raw/inbox/` — daily cuts from Hermes sessions
+- **Sessions:** `topics/senter-wiki/.system/sessions/` — full conversation transcripts
+
+---
+
+## README
 
 This section covers HOW TurboFit works: architecture, runtime selection, provider configuration, and the integration paths that make local inference stable.
 
-#### Runtime Selection
+### Runtime Selection
 
 TurboFit supports multiple inference backends. Selection depends on platform and model:
 
@@ -55,7 +65,7 @@ TurboFit supports multiple inference backends. Selection depends on platform and
 | **MTPLX** | MacBook (M1) | Qwen 3.8, Unleashed | 12.4 tok/s short, 7-12 tok/s at 65K | Memory guard at 131K |
 | **MLX** | MacBook (M1) | Ornith 1.5, Maple | 28.5 tok/s short | Apple-native, fastest on M1 |
 
-#### Hermes Provider Integration
+### Hermes Provider Integration
 
 TurboFit registers as `custom:turbofit` in Hermes Agent. Configuration is in `config.yaml`:
 
@@ -66,7 +76,7 @@ model: auto
 
 **Auto mode** scans available hardware and selects the best model from the TurboFit List. Manual selection locks a specific model.
 
-#### Model + Context Sizing
+### Model + Context Sizing
 
 Local contexts are set to **131,072 tokens** as the stable sweet spot. Evidence:
 - 262K+ pre-fills slowly on M1 32GB and stresses Metal heap
@@ -75,7 +85,7 @@ Local contexts are set to **131,072 tokens** as the stable sweet spot. Evidence:
 
 On Omarchy (256GB+ VRAM), 262K+ contexts are viable with DFlash2 draft models.
 
-#### Provider Fallback Order
+### Provider Fallback Order
 
 To prevent silent switching to cloud providers:
 
@@ -85,7 +95,7 @@ To prevent silent switching to cloud providers:
 
 This addresses the Hermes auto-route stability issue where `stepfun/step-3.7-flash:free` was selected without explicit choice.
 
-#### DFlash2 Speculative Decoding
+### DFlash2 Speculative Decoding
 
 DFlash2 is a draft model for accelerating long-context inference. Key facts:
 
@@ -94,7 +104,7 @@ DFlash2 is a draft model for accelerating long-context inference. Key facts:
 - **Valid flags**: `--spec-draft-model`, `--spec-draft-ngl 999`, `--spec-draft-n-max 7`, `--spec-type draft-dflash`
 - **Invalid flags** that fail: `--draft-model`, `--draft-ngl`, `--draft-ctx-size`, `--low-vram`, `--model-draft`
 
-#### Memory Management
+### Memory Management
 
 **MTPLX Memory Guard** — emits `prefill_admission_shed` events when a prompt would exceed memory threshold, clearing KV cache to stay under limit.
 
@@ -102,11 +112,11 @@ DFlash2 is a draft model for accelerating long-context inference. Key facts:
 
 **Crash pattern**: `mtplx serve` exits with code -9 when memory plan is marked `OVER`. Exit code 1 with `RuntimeError: [METAL] Command buffer execution failed: Insufficient Memory` during MTP injection.
 
-#### Verifier Bridge
+### Verifier Bridge
 
 `turbofit-verifier` drives verification through `desktop_preview` on a real Hermes window instead of summary claims.
 
-#### Model Zoo
+### Model Zoo
 
 > All models discovered during research. ★ = on TurboFit List.
 
@@ -132,9 +142,9 @@ DFlash2 is a draft model for accelerating long-context inference. Key facts:
 
 > **Note:** GSQ-RCO IQ3_S scores shown (AIME25 100%, GPQA-D 89.2%, DeepSWE 42.2%, LCBv6 90.3%). Maple LCBv6 score is from LiveCodeBench v6.
 
-#### TurboFit List
+### TurboFit List
 
-##### Agentic Model Lineup
+#### Agentic Model Lineup
 
 | Model | Tok/s | Parameters | Best For |
 | --- | --- | --- | --- |
@@ -144,9 +154,9 @@ DFlash2 is a draft model for accelerating long-context inference. Key facts:
 | [[Qwen 3.8 Flash Next]] | 70-85 tok/s (Omarchy GPU) | 180B / 6B | Maximum capability |
 | [[DeepSeek V4.1 Flash]] | TBD | 763B / 16B | Next-gen capability |
 
-##### Fit Calculation System
+#### Fit Calculation System
 
-###### GPU (NVIDIA/AMD VRAM)
+##### GPU (NVIDIA/AMD VRAM)
 
 | Tier | Model | Quant | Context | Flags | Tok/s | Notes |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -155,7 +165,7 @@ DFlash2 is a draft model for accelerating long-context inference. Key facts:
 | 96+ GB | Flash Next | IQ3_XXS | 524K | `--ctx-size 524288 --n-gpu-layers 999 --mlock` | TBD | |
 | 256 GB | DeepSeek V4.1 | FP8 | 1M | `--ctx-size 1048576 --n-gpu-layers 999 --mlock` | TBD | |
 
-###### CPU (System RAM)
+##### CPU (System RAM)
 
 | Tier | Model | Quant | Context | Flags | Tok/s | Notes |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -163,7 +173,7 @@ DFlash2 is a draft model for accelerating long-context inference. Key facts:
 | 16-48 GB | Cyber-Tiel | IQ3_S | 262K | `--ctx-size 262144 --no-mmap --mlock` | ~23 tok/s | MoE, 3B active |
 | 64 GB | GSQ-RCO | IQ3_S | 262K | `--ctx-size 262144 --no-mmap --mlock` | ~12 tok/s | Low power |
 
-###### Unified Memory (Apple Silicon)
+##### Unified Memory (Apple Silicon)
 
 | Tier | Model | Quant | Context | Engine | Tok/s | Notes |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -171,13 +181,13 @@ DFlash2 is a draft model for accelerating long-context inference. Key facts:
 | 16-48 GB | Cyber-Tiel | IQ3_S | 262K | MTPLX | ~23 tok/s (MacBook) | |
 | 64 GB | GSQ-RCO | IQ3_S | 262K | MTPLX | ~8-12 tok/s (65K) | |
 
-#### Key Concepts
+### Key Concepts
 
-##### 131K Deferred Candidates
+#### 131K Deferred Candidates
 
 Newly downloaded candidate artifacts not benchmarked at 131K because model-plus-KV exceeds 32GB Mac fit before testing begins.
 
-##### Benchmark Taxonomy
+#### Benchmark Taxonomy
 
 | Tier | Use Case | Models |
 | --- | --- | --- |
@@ -186,7 +196,7 @@ Newly downloaded candidate artifacts not benchmarked at 131K because model-plus-
 | High Capability | Maximum quality | DeepSeek V4.1 Flash |
 | Aux/Compression | Background tasks | Maple Preview |
 
-##### Speculative Decoding Architectures
+#### Speculative Decoding Architectures
 
 | Architecture | Runtimes | Draft Type | Speed Boost |
 | --- | --- | --- | --- |
@@ -194,11 +204,11 @@ Newly downloaded candidate artifacts not benchmarked at 131K because model-plus-
 | MTP (Multi-Token) | MLX, llama.cpp | Native heads | ~2x |
 | MTPLX | MTPLX only | Native MLX MTP | ~2.5x |
 
-##### Hermes Auto Route Stability
+#### Hermes Auto Route Stability
 
 See Issues section for problem details and resolution.
 
-##### Model Selection Decision Tree
+#### Model Selection Decision Tree
 
 ```
 Start
@@ -208,17 +218,17 @@ Start
   └─ Need max capability? → DeepSeek V4.1 Flash on Omarchy
 ```
 
-#### Decisions
+### Decisions
 
-##### Aux Model Selection
+#### Aux Model Selection
 
 **Maple Preview** selected for aux/compression tasks. Reasoning ON by default; token budgets sized for thinking models (4000+).
 
-##### Candidate Quant Preference
+#### Candidate Quant Preference
 
 **IQ3_S is the default recommendation** for all tiers where it fits (near-lossless, runs on less power). Only move to FP16 at 64GB+ when you have the VRAM and want every last %.
 
-##### Context Sizing
+#### Context Sizing
 
 Local TurboFit contexts are set to **131,072 tokens** for both main and aux.
 
@@ -229,11 +239,11 @@ Local TurboFit contexts are set to **131,072 tokens** for both main and aux.
 - "Context compression timed out before it could commit while the request was still approximately 270,285 tokens"
 - "131k is the stable sweet spot for this 32 GB box"
 
-##### Context Window Decision
+#### Context Window Decision
 
 **131K native, 262K native, 1M with YaRN extrapolation** depending on hardware tier.
 
-##### Fallback Model Order
+#### Fallback Model Order
 
 The active model preference order should preserve explicit user choice and avoid silently switching to `stepfun/step-3.7-flash:free`.
 
@@ -241,7 +251,7 @@ The active model preference order should preserve explicit user choice and avoid
 
 **Fix:** Pin compression to local route; ensure `model.default` is first.
 
-##### TurboFit Local Main Provider Decision
+#### TurboFit Local Main Provider Decision
 
 **Lock in Qwen 3.8 GSQ-RCO IQ3_S** as the recommended main provider for daily driver use on Omarchy and MacBook.
 
@@ -250,7 +260,7 @@ The active model preference order should preserve explicit user choice and avoid
 - MacBook: 23 tok/s at 65K context
 - Near-lossless IQ3_S quantization
 
-##### Main Model Selection
+#### Main Model Selection
 
 Initial decision: Unleashed 27B + DFlash2 draft on `127.0.0.1:11606`, Metal, 131K context.
 
@@ -261,15 +271,13 @@ Updated 2026-09-07 after benchmark sweep: **Qwen 3.8 GSQ-RCO** is the recommende
 - **GSQ-RCO IQ3_S**: 85 tok/s on Omarchy GPU
 - **Unleashed + DFlash2**: ~5 tok/s stable at 131K
 
-##### MT_PlX Main Provider
+#### MT_PlX Main Provider
 
 MTPLX is an alternative runtime for M1 Macs. Use 65K context for stable operation. 131K triggers memory-guard events.
 
-### CONTINUATION
+### Issues & Roadblocks
 
-#### Issues & Roadblocks
-
-##### Hermes Model Switching
+#### Hermes Model Switching
 
 **Problem:** Hermes flips active model to StepFun 3.7 Flash without explicit user choice.
 
@@ -277,27 +285,27 @@ MTPLX is an alternative runtime for M1 Macs. Use 65K context for stable operatio
 
 **Fix:** Pin `auxiliary.compression.provider` to local TurboFit route; ensure `model.default` is first.
 
-##### Compression Timeouts
+#### Compression Timeouts
 
 At 262K+ tokens on the main model, Hermes compression timed out before committing. Resolved by capping context at 131K on M1 32GB.
 
-##### MTPLX 131K Instability
+#### MTPLX 131K Instability
 
 MTPLX at 131K context triggers memory-guard events and crashes. Use 65K for stable MTPLX operation. 131K long-context needs llama.cpp + DFlash2 instead.
 
-##### MPLX Service Args
+#### MPLX Service Args
 
 `mtplx serve` does not accept `--memory-budget 32GB`. Only documented flags are accepted; undocumented flags exit with `unrecognized arguments`.
 
-##### DFlash2 Port Conflicts
+#### DFlash2 Port Conflicts
 
 `couldn't bind HTTP server socket, hostname: 127.0.0.1, port: 11606` — port already in use. Not a model issue, a port conflict.
 
-##### DFlash2 Flag Incompatibilities
+#### DFlash2 Flag Incompatibilities
 
 Stock llama.cpp flags (`--draft-model`, `--draft-ngl`, `--low-vram`) do not work with the dflash2 fork. Use the spec-flagged variants instead.
 
-##### Unleashed IQ3_XXS Corruption
+#### Unleashed IQ3_XXS Corruption
 
 `Qwen3.8-27B-Unleashed-UD-IQ3_XXS.gguf` failed to load with `tensor 'blk.2.attn_qkv.weight' data is not within the file bounds`. This quant is not usable on the dflash2 fork.
 
@@ -334,11 +342,11 @@ Topic skills stored in this wiki at `topics/turbofit/skills/`:
 
 Related skills stored globally in `~/.hermes/skills/`:
 
-- **[turbofit](https://github.com/NousResearch/hermes-agent)** — Rules for Turbofit Wiki
-- **[turbofit-runtime-setup](https://github.com/NousResearch/hermes-agent)** — Use when setting up or fixing the Turbofit local runtime
-- **[serving-llms-vllm](https://github.com/NousResearch/hermes-agent)** — vLLM: high-throughput LLM serving
-- **[llama-cpp](https://github.com/NousResearch/hermes-agent)** — llama.cpp local GGUF inference + HF Hub model discovery
-- **[huggingface-hub](https://github.com/NousResearch/hermes-agent)** — HuggingFace hf CLI: search/download/upload models, datasets
+- **turbofit** — Rules for Turbofit Wiki
+- **turbofit-runtime-setup** — Use when setting up or fixing the Turbofit local runtime
+- **serving-llms-vllm** — vLLM: high-throughput LLM serving
+- **llama-cpp** — llama.cpp local GGUF inference + HF Hub model discovery
+- **huggingface-hub** — HuggingFace hf CLI: search/download/upload models, datasets
 
 ---
 
