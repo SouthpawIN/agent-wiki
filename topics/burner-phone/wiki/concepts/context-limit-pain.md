@@ -1,7 +1,7 @@
 ---
 title: 507 / context-fit ceiling on 28GB hardware
 created: 2026-09-07
-updated: 2026-09-07
+updated: 2026-09-16
 type: concept
 tags:
   - pain
@@ -27,6 +27,14 @@ Chris said: *"The 507 error persists even with 28GB budget. The physical hardwar
 ## Supersedes
 
 Trial-and-error context increases without measuring the physical memory ceiling.
+
+## Fit-calculation approach (2026-09-16)
+
+Chris shifted from trial 507s to a **fit calculation** over the 28GB hardware. ^[raw/inbox/2026-09-16.md]
+
+- A model fits a tier only if `model_size (quant) + KV_cache <= tier_size`; comfortable fit is `model_size + 2GB <= tier_size`. ^[raw/inbox/2026-09-16.md]
+- KV cache is computed at the real context length and dominates at long context; check **every** tier (CPU-only and unified-memory). ^[raw/inbox/2026-09-16.md]
+- On 2026-09-16 Chris was updating the CPU and Unified tier tables to follow Rule 1. ^[raw/inbox/2026-09-16.md]
 
 ## Open questions
 

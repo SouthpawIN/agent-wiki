@@ -1,0 +1,10 @@
+---
+title: What are the exact setup requirements and hook-up steps for enabling DFlash2 as 
+type: query
+proposed: 2026-09-17 04:15
+tags: [question]
+---
+# What are the exact setup requirements and hook-up steps for enabling DFlash2 as a spec-draft on the qwen4/Unleashed model at 131K context, with D-flash disabled?
+The 09-15 plan was to research DFlash2's exact setup requirements and test it; the hook-up is resolved in principle (spec-draft) but never pinned down in practice.
+
+_Approve to run the research; the answer lands here._

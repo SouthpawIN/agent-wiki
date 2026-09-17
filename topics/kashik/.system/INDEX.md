@@ -1,5 +1,5 @@
 # INDEX — topics/kashik
-_10 files · 9 KB · regenerate: `python3 assets/build-index.py`_
+_11 files · 11 KB · regenerate: `python3 assets/build-index.py`_
 
 Read order for an agent: this file → pick a file below → its outline → `read_file offset=<line> limit=<n>`. Sessions under `.system/sessions/` are full transcripts (largest; go by outline).
 
@@ -16,7 +16,7 @@ Read order for an agent: this file → pick a file below → its outline → `re
     - L81 ## Key Features
 
 ## .system
-- `.system/agent.cursor` — 0 KB, 5 lines — raw/inbox/2026-09-07.md@0686801d1387
+- `.system/agent.cursor` — 0 KB, 6 lines — raw/inbox/2026-09-07.md@0686801d1387
 - `.system/continuity.md` — 0 KB, 7 lines — Continuity — kashik
     - L1 # Continuity — kashik
 - `.system/injections.md` — 3 KB, 32 lines — Injections
@@ -26,12 +26,12 @@ Read order for an agent: this file → pick a file below → its outline → `re
     - L18 ## Current context
     - L22 ## Version policy
     - L26 ## Related concepts
-- `.system/queue.md` — 1 KB, 15 lines — Queue
+- `.system/queue.md` — 1 KB, 16 lines — Queue
     - L1 # Queue
     - L3 ## [SKILLS]
-    - L5 ## [AGENTS]
-    - L8 ## [LOOPS]
-    - L12 ## [CONTEXT]
+    - L6 ## [AGENTS]
+    - L9 ## [LOOPS]
+    - L13 ## [CONTEXT]
 
 ## agents
 - `agents/.gitkeep` — 0 KB, 1 lines — 
@@ -43,4 +43,13 @@ Read order for an agent: this file → pick a file below → its outline → `re
 
 ## skills
 - `skills/.gitkeep` — 0 KB, 1 lines — 
+
+## skills/wiki-orientation-procedure
+- `skills/wiki-orientation-procedure/SKILL.md` — 2 KB, 32 lines — name: wiki-orientation-procedure
+    - L8 # wiki-orientation-procedure
+    - L9 # Wiki orientation procedure
+    - L13 ## Steps
+    - L20 ## Why
+    - L23 ## Pitfalls
+    - L28 ## Evidence
 

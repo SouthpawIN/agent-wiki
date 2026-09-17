@@ -1,0 +1,15 @@
+---
+type: loop
+name: preview-wiki-combine-check
+proposed: 2026-09-17 03:16
+schedule: 0 9 * * *
+---
+# preview-wiki-combine-check
+owner: weaver · cadence: every day at 9am · status: SUGGESTED
+**Want weaver to re-render every topic wiki as one combined page on a schedule so the index/full-wiki split never creeps back?**
+
+## Prompt
+For each topic wiki, verify the preview renders a single combined index+full-wiki page and re-stage if the split (index -> get hub -> full wiki) has reappeared.
+
+## Evidence
+> there should not be a index and then a full wiki.

@@ -1,0 +1,10 @@
+---
+title: What are published tokens-per-second inference benchmarks for the specific model
+type: query
+proposed: 2026-09-17 00:01
+tags: [question]
+---
+# What are published tokens-per-second inference benchmarks for the specific models in the add-one table, and how do they compare to TurboFit's results?
+Gives Chris an independent yardstick for whether TurboFit's tok/s is competitive, and helps him pick the fastest model per use case.
+
+_Approve to run the research; the answer lands here._

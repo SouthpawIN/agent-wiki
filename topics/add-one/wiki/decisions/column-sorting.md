@@ -22,3 +22,5 @@ Hermes's response (state.db message, sim 0.08) confirms the plan: build an **HTM
 
 ## Related
 - [[decisions/add-parameters-category|Add "parameters" as a new table category]]
+- [[decisions/column-ordering|Column ordering]]
+- [[decisions/turbo-fit-tokens-per-second-column|TurboFit tok/s column]]

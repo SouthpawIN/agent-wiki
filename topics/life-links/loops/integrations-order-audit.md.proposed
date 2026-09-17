@@ -1,0 +1,15 @@
+---
+type: loop
+name: integrations-order-audit
+proposed: 2026-09-17 06:04
+schedule: 0 9 * * 0
+---
+# integrations-order-audit
+owner: integrations-above-overview · cadence: weekly · status: SUGGESTED
+**I see you want integrations reading index-like at the top — want a loop that audits pages for integrations-blocks below the overview and reorders them on a schedule?**
+
+## Prompt
+Audit every wiki page for integrations/repositories/table blocks below the overview and reorder them to first-position; log changes.
+
+## Evidence
+> move the integrations with repositories and table to above the overview so that's going to be kind of like you know that should almost be part of the index

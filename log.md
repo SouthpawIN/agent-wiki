@@ -1023,3 +1023,42 @@ Chris: "rip the bandaid off… everything live, get everything hooked up." Built
 2026-09-16 22:48: topic-agent restore-hdiutil · 1 raw → 1 pages (index 7) · no suggestions
 2026-09-16 22:52: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
 2026-09-16 23:22: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-16 23:52: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-17 00:01: topic-agent add-one · 1 raw → 3 pages (index 7) · loop:turbo-fit-tok-s-updater, loop:model-benchmark-tracker, research:model-tok-s-benchmarks
+2026-09-17 00:22: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-17 00:52: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-17 01:22: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-17 01:31: topic-agent back-where · 1 raw → 0 pages (index 40) · research:gsq-task-lossless-verification, brief+2
+2026-09-17 01:52: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-17 02:22: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-17 02:43: topic-agent both-smarter · 1 raw → 1 pages (index 14) · bot:maple-lookup, bot:maple-lookup, loop:benchmark-refresh-watch, loop:benchmark-refresh-watch, research:common-benchmark-set, brief+3
+2026-09-17 02:52: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-17 03:07: topic-agent burner-phone · 1 raw → 3 pages (index 13) · bot:ornith-context-prober, research:ornith-262k-fit, brief+1
+2026-09-17 03:11: topic-agent case-macbook · 1 raw → 1 pages (index 4) · bot:download-queue-tender, bot:case-shopper, research:best-matte-black-14-case
+2026-09-17 03:16: topic-agent central-asked · 1 raw → 1 pages (index 7) · bot:combine-wiki-render, bot:preview-wiki-watchdog, loop:preview-wiki-combine-check
+2026-09-17 03:22: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-17 03:37: topic-agent click-options · 1 raw → 2 pages (index 11) · bot:turbofit-roster-reconcile, bot:turbofit-picker-watch, loop:turbofit-picker-watch-daily, research:turbofit-picker-registration-root-cause, skill:click-options-turbofit-user-path-verify
+2026-09-17 03:52: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-17 04:02: topic-agent dispatched-m2s · 1 raw → 1 pages (index 11) · bot:turbofit-builder, bot:turbofit-consolidator, loop:turbofit-page-sync, research:turbofit-model-setup
+2026-09-17 04:15: topic-agent faster-without · 1 raw → 1 pages (index 15) · bot:d-flash-checkpoint, bot:d-flash2-benchmark, loop:d-flash2-checkpoint-watch, loop:d-flash2-daily-speed-watch, research:d-flash2-spec-draft-verify, brief+2
+2026-09-17 04:22: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-17 04:22: topic-agent hermes-agent · 1 raw → 0 pages (index 26) · research:best-free-nous-daily, brief+1
+2026-09-17 04:33: topic-agent kashik · 1 raw → 0 pages (index 9) · skill:wiki-orientation-procedure, brief+2
+2026-09-17 04:52: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-17 04:54: topic-agent music · 1 raw → 1 pages (index 23) · bot:music-model-fit-maintainer, bot:music-model-fit-inputs, brief+1
+2026-09-17 05:22: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-17 05:47: topic-agent beyond-pissed · 1 raw → 0 pages (index 24) · bot:omarki-model-servant, bot:format-compat-watch, research:format-compatibility-check, brief+2
+2026-09-17 05:52: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-17 05:55: topic-agent crow · 1 raw → 0 pages (index 4) · no suggestions
+2026-09-17 06:04: topic-agent life-links · 1 raw → 0 pages (index 4) · bot:integrations-maintainer, bot:integrations-above-overview, loop:integrations-reconcile, loop:integrations-order-audit, research:front-matter-integrations-feasibility, brief+2
+2026-09-17 06:22: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-17 06:44: topic-agent need-telling · 1 raw → 0 pages (index 11) · bot:gaming-scout, bot:gaming-scout, brief+1
+2026-09-17 06:52: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-17 07:22: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-17 07:52: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-17 08:22: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-17 08:52: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-17 09:16: topic-agent hermes-agent · 1 raw → 1 pages (index 26) · brief+1
+2026-09-17 09:22: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed
+2026-09-17 09:31: topic-agent life-links · 1 raw → 1 pages (index 5) · bot:clickable-integrations, bot:front-matter-clickable-render, brief+1
+2026-09-17 09:52: umbrella pass · 0 proposal cards · 1 merge pairs ≥0.35 · catalogs+INDEX refreshed

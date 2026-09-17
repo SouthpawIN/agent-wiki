@@ -1,0 +1,10 @@
+---
+title: Does the Senter wiki's page front-matter schema support an arbitrary `integratio
+type: query
+proposed: 2026-09-17 06:04
+tags: [question]
+---
+# Does the Senter wiki's page front-matter schema support an arbitrary `integrations:` key, and if so, what structure (list of links, structured objects) do the UI and dedupe/catalog jobs expect?
+The whole front-matter half of Chris's goal is conditional on this being yes — it's the open query blocking a decision.
+
+_Approve to run the research; the answer lands here._

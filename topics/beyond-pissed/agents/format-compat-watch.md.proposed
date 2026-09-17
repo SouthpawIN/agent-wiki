@@ -1,0 +1,20 @@
+---
+type: agent
+name: format-compat-watch
+proposed: 2026-09-17 05:47
+topic: beyond-pissed
+reuse: anser
+---
+# format-compat-watch
+**I see you're trying to pin down which model formats actually run on that CUDA llama.cpp runtime — want a daily bot that watches for which formats stay compatible as you add models?**
+
+Watches model-format compatibility for the O'Marki CUDA llama.cpp runtime
+
+## First task
+
+
+## SOUL.md (draft)
+
+
+## Evidence
+> Also a rad goes models of format that will work on my omarchy home lab then

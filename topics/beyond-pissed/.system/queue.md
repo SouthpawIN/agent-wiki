@@ -1,6 +1,7 @@
 # Queue — beyond-pissed
 
 ## [CONTEXT]
+- [ ] research format-compatibility-check — SUGGESTED 2026-09-17 05:47: Want me to look into which model formats will actually run on your CUDA llama.cpp runtime (the qwen4 fork)?
 - [ ] research model-routing-options — SUGGESTED 2026-09-15 17:31: Want me to look into how to select which models O'Marki serves to the MacBook?
 - [ ] research oh-marki-macos-flash — SUGGESTED 2026-09-15 13:29: Want me to look into the correct, reliable way to flash an Arch-based ISO to a USB on macOS — the sudo dd vs. rdisk4 per
 - [ ] research sync-verifier — SUGGESTED 2026-09-10 14:10: Want me to look into the exact sync mechanics between Projects and agent-wiki?
@@ -15,6 +16,8 @@
 - [ ] center-wiki-orchestration — distilled 2026-09-08 09:57 → skills/center-wiki-orchestration/SKILL.md (auto-applied)
 
 ## [AGENTS]
+- [ ] format-compat-watch — SUGGESTED 2026-09-17 05:47: I see you're trying to pin down which model formats actually run on that CUDA llama.cpp runtime — want a daily bot that  → agents/format-compat-watch.md.proposed
+- [ ] omarki-model-servant — SUGGESTED 2026-09-17 05:47: I see you want to pick which models O'Marki serves to this MacBook — want a bot that curates and routes model selection  → agents/omarki-model-servant.md.proposed
 - [ ] served-models-check — SUGGESTED 2026-09-15 17:31: Want a loop that checks which models O'Marki is currently serving to the MacBook and flags anything that shouldn't be? → agents/served-models-check.md.proposed
 - [ ] model-routing-bot — SUGGESTED 2026-09-15 17:31: I see you want to select which models O'Marki serves to this MacBook — want a bot that helps you pick and route which mo → agents/model-routing-bot.md.proposed
 - [ ] omarki-latest-fetcher — SUGGESTED 2026-09-15 13:29: I see you asked for the latest Oh My Archi and the install hasn't finished — want a bot that pulls the newest Oh My Arch → agents/omarki-latest-fetcher.md.proposed

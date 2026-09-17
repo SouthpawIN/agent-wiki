@@ -1,0 +1,6 @@
+# Wiki Log — life-links
+
+## [2026-09-17] create | wiki initialized (topic-wiki.py init)
+## [2026-09-17] compile | compiled 1/1 raw (2026-09-16 inbox) into 4 pages: concepts/life-links, concepts/front-matter-integrations, queries/life-links-in-front-matter, decisions/integrations-above-overview; added BRIEF.md Learned; index.md untouched.
+## [2026-09-17] compile | recompiled 2026-09-16 inbox; content already fully represented in the 4 existing pages (no new pages added); index.md untouched.
+## [2026-09-17] compile | recompiled 2026-09-17 inbox (3 items): front-matter question restated; integrations-not-clickable pain; inline clickable-integrations resolution. Added concepts/clickable-integrations; cross-linked clickable-integrations to front-matter/life-links/query pages; noted 09-17 restatement on the query page; added BRIEF.md Learned; index.md untouched.

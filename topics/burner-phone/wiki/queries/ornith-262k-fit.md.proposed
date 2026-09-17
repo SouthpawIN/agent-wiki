@@ -1,0 +1,10 @@
+---
+title: Does the ~18GB Ornith quant fit 262K context (KV ~2-4GB at q8_0) inside 28GB alo
+type: query
+proposed: 2026-09-17 03:07
+tags: [question]
+---
+# Does the ~18GB Ornith quant fit 262K context (KV ~2-4GB at q8_0) inside 28GB alongside DFlash2's footprint on both CPU and Unified tiers?
+262K is the long-context workload the fit-calc method targets; confirming the ceiling closes the what-runs-on-28gb query.
+
+_Approve to run the research; the answer lands here._

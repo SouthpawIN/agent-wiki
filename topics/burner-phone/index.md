@@ -1,6 +1,6 @@
 # burner-phone — wiki index
 > One line per page. The wiki row's CONTEXT section renders this file.
-> Last updated: 2026-09-15 | Total pages: 13
+> Last updated: 2026-09-17 | Total pages: 13
 
 ## Entities
 - [[topics/burner-phone/wiki/entities/burner-phone|burner-phone]] — Topic entity for the **burner-phone** skill: control an Android device with an agent. This page collects the topic's current pains, decisions, and open question

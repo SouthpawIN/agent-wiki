@@ -8,6 +8,8 @@
 | wiki-dedupe-sweep | paladin | every 30m | on |
 | weaver verify-nightly | senter | 30 3 * * * | on |
 | anser REFLECT loop | senter | 0 */2 * * * | off |
+| model-benchmark-tracker | turbosovth |  | PROPOSED |
+| turbo-fit-tok-s-updater | turbosovth |  | PROPOSED |
 | anser-queue-scan | anser |  | PROPOSED |
 | 27b-speed-target-loop | teknium |  | PROPOSED |
 | 27b-speed-watch | turbosovth |  | PROPOSED |
@@ -20,12 +22,18 @@
 | verification-loop | none |  | PROPOSED |
 | watch-loop-sync | none |  | PROPOSED |
 | wiki-orchestrator-sync | weaver |  | PROPOSED |
+| benchmark-refresh-watch | looker |  | PROPOSED |
 | model-lane-health | looker |  | PROPOSED |
 | unified-memory-model-watch | looker |  | PROPOSED |
+| preview-wiki-combine-check | weaver |  | PROPOSED |
 | vault-refresh-loop | weaver |  | PROPOSED |
+| turbofit-picker-watch-daily | looker |  | PROPOSED |
 | turbofit-picker-watch | looker |  | PROPOSED |
 | turbofit-roster-daily | turbosovth |  | PROPOSED |
 | delegation-daily-digest | looker |  | PROPOSED |
+| turbofit-page-sync | turbosovth |  | PROPOSED |
+| d-flash2-checkpoint-watch | d-flash-benchmarker |  | PROPOSED |
+| d-flash2-daily-speed-watch | d-flash-benchmarker |  | PROPOSED |
 | daily-131k-speed-check | teknium |  | PROPOSED |
 | daily-model-check | looker |  | PROPOSED |
 | mtplx-config-drift-check | looker |  | PROPOSED |
@@ -40,6 +48,8 @@
 | mtplx-catalog-sync | looker |  | PROPOSED |
 | mtplx-effective-context-ceiling | teknium |  | PROPOSED |
 | frontmatter-progressive-disclosure-check | senter-wiki-bot |  | PROPOSED |
+| integrations-order-audit | integrations-above-overview |  | PROPOSED |
+| integrations-reconcile | integrations-maintainer |  | PROPOSED |
 | memory-shard-scan | looker |  | PROPOSED |
 | optimization-flag-scan | looker |  | PROPOSED |
 | librarian-daily-sync | weaver |  | PROPOSED |

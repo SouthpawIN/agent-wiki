@@ -304,3 +304,110 @@ Unleashed Q3_K_XL remains the **only viable 131K solution** on this 32 GB hardwa
 
 - [[concepts/benchmark-taxonomy|Benchmark Taxonomy]]
 - [[topics/turbofit/wiki/index|Wiki Index]]
+
+### From entity: dirk-gguf
+
+`Dirk-Qwen3.8-27B-UD-Q3_K_XL.gguf` (12.24 GB) is the requested Q3 Dirk artifact at `~/Models/storage/dirk-gguf/`, selected because Chris prefers Q3 when it is described as near base-model quality and because 13 GB fits the short-context candidate path better than heavier quants on this 32 GB box ^[raw/inbox/2026-09-07.md].
+
+## Status
+
+- Downloaded and verified on disk (12.24 GB, GGUF magic number confirmed)
+- No benchmark evidence yet; 131K testing deferred because Dirk is a dense 27B model
+- Chris explicitly wanted GGUF vs MLX compared, with preference for Q3 when near base quality
+
+## Memory Impact
+
+Dirk is a **dense 27B model** (not MoE), so:
+- Model weights: 12.24 GB (Q3_K_XL)
+- KV cache at 131K (q8): ~8 GB
+- Total: ~20 GB + macOS/Hermes (~8 GB) = ~28 GB at 32K context
+
+**Result**: OOM expected above 32K context window.
+
+## Repo Correction
+
+- Requested: `peculiar-ragdoll/Dirk-Qwen3.8-27B-GGUF-MTP` (returned 404)
+- Actual: `peculiar-ragdoll/Dirk-Qwen3.8-27B-GGUF` (MTP is a model capability, not repo name)
+
+## Runtimes Tested
+
+| Runtime | Status | Notes |
+|---------|--------|-------|
+| llama.cpp stock | ❌ Incompatible | `unknown model architecture: 'maple'` (Maple only) |
+| llama.cpp Qwen branch | ✅ | Works with Q3_K_XL |
+| MLX | 🔄 Pending | Would need 131K streaming verification |
+
+## Related
+
+- [[topics/turbofit/wiki/entities/dirk-qwen38-27b.md|Dirk Qwen 3.8 27B GGUF]]
+- [[topics/turbofit/wiki/decisions/candidate-quant-preference.md|Candidate Quant Preference]]
+- [[topics/turbofit/wiki/queries/apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
+- [[topics/turbofit/wiki/entities/unleashed-27b.md|Unleashed 27B]]
+
+### From entity: dirk-qwen38-27b
+
+Chris requested Dirk GGUF downloads for local comparison. The actual repo is `peculiar-ragdoll/Dirk-Qwen3.8-27B-GGUF` because MTP is a model capability, not a repo suffix ^[raw/inbox/2026-09-07.md].
+
+## Requested artifacts
+
+- `Dirk-Qwen3.8-27B-UD-Q3_K_XL.gguf` (~12.24 GB) downloaded to `~/Models/storage/dirk-gguf/` and verified on disk ^[raw/inbox/2026-09-07.md].
+- `Dirk-Qwen3.8-27B-GGUF-MTP` repo lookup returned 404 before the correction ^[raw/inbox/2026-09-07.md].
+
+## Status
+
+- Q3_K_XL downloaded; no speed evidence yet. 131K benchmark was deferred because larger candidates OOM on this box before Dirk was exercised.
+- Chris wants GGUF vs MLX compared for each candidate, with a preference for Q3 when near base quality ^[raw/inbox/2026-09-07.md].
+
+## Related
+
+- [[topics/turbofit/wiki/entities/dirk-gguf.md|Dirk GGUF Q3_K_XL]]
+- [[topics/turbofit/wiki/decisions/candidate-quant-preference.md|Candidate Quant Preference]]
+- [[topics/turbofit/wiki/queries/apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
+- [[topics/turbofit/wiki/entities/unleashed-27b.md|Unleashed 27B]]
+
+### From entity: unleashed-27b
+
+Qwen3.8-27B-Unleashed in `UD-Q3_K_XL.gguf` with the Unleashed vision projector and DFlash2 draft. This is the main model in TurboFit ^[raw/inbox/2026-09-06.md].
+
+## Served config
+
+- **Runtime**: `llama.cpp` Metal build (`dflash2-llama.cpp-...`).
+- **Port**: `11606`.
+- **Context**: `131072`.
+- **Draft**: `Qwen3.8-27B-DFlash2-Q4_K_M.gguf`, `--spec-type draft-dflash --spec-draft-n-max 7`.
+- **KV cache**: `q4_0` k/v.
+- **Batch**: `-b 512 -ub 256`.
+- **Performance**: ~4.4–5.1 tok/s decode on this box ^[raw/inbox/2026-09-06.md].
+
+## Role
+
+- Main inference and vision provider.
+- Stable under long context and large prompt ingest.
+- Holds the DFlash2 draft path that earlier failed with wrong draft flags (`--draft-max`) and tensor mismatch before being aligned to the fork’s `--spec-draft-*` args ^[raw/inbox/2026-09-06.md].
+
+## Related
+
+- [[topics/turbofit/wiki/entities/turbofit.md|TurboFit]]
+- [[topics/turbofit/wiki/entities/dflash2-draft.md|DFlash2 Draft]]
+- [[topics/turbofit/wiki/decisions/main-model-selection.md|Main Model Selection]]
+
+### From entity: unleashed-iq3-xxs-load-failure
+
+`Qwen3.8-27B-Unleashed-UD-IQ3_XXS.gguf` failed to load in the `dflash2-llama.cpp` fork Metal server after a DFlash warning about missing `ctx_other` and then a tensor bounds failure ^[raw/inbox/2026-09-07.md].
+
+## Evidence
+
+- Warning: `dflash requires ctx_other to be set`
+- Error: `tensor 'blk.2.attn_qkv.weight' data is not within the file bounds, model is corrupted or incomplete`
+- Same load path repeated for `blk.2.ffn_down.weight`
+- Server exited due to model loading error
+
+## Note
+
+This failure is specific to this quant artifact and this fork load path. It does not invalidate `Q3_K_XL`, which has served as the stable long-context backup in earlier evidence.
+
+## Related
+
+- [[topics/turbofit/wiki/entities/unleashed-27b|Unleashed 27B]]
+- [[topics/turbofit/wiki/decisions/unleashed-backup|Unleashed Backup]]
+- [[topics/turbofit/wiki/concepts/dflash2-compat-boundary|DFlash2 Compatibility Boundary]]

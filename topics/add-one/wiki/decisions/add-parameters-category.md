@@ -20,3 +20,5 @@ The request arrived alongside a second, separate request — clickable column so
 
 ## Related
 - [[decisions/column-sorting|Column sorting by click]]
+- [[decisions/column-ordering|Column ordering]]
+- [[decisions/turbo-fit-tokens-per-second-column|TurboFit tok/s column]]

@@ -1,6 +1,10 @@
 # Injections — both-smarter
 
 ## [UNREAD]
+[LOOPS] I see you want benchmarks kept current for every model off the web — want a loop that refreshes each model's benchmarks on a schedule?
+[LOOPS] I see you want benchmarks kept current for every model off the web — want a loop that refreshes each model's benchmarks on a schedule?
+[AGENTS] I see you've dropped another near-indecipherable alias — "maple" for the lowest model tier — want a lookup bot like Killier Ragdoll's to resolve it against real Hugging Face cards?
+[AGENTS] I see you've dropped another near-indecipherable alias — "maple" for the lowest model tier — want a lookup bot like Killier Ragdoll's to resolve it against real Hugging Face cards?
 [AGENTS] Want me to look into what the most common benchmarks are for comparing these models, and gather the best concrete benchmarks for each?
 [AGENTS] I see you want those benchmarks kept fresh without you nudging — want a daily job that searches the web for each model's latest published benchmarks and updates the widget?
 [AGENTS] I see you're after concrete benchmarks for each model — want a bot that defines the common cross-model benchmark set and researches the best published benchmarks (beyond tok/s) for every model in your widget?

@@ -5,6 +5,8 @@
 - [ ] music-model-test — distilled 2026-09-07 05:08 → skills/music-model-test/SKILL.md (auto-applied)
 - [ ] *(empty)*
 ## [AGENTS]
+- [ ] music-model-fit-inputs — SUGGESTED 2026-09-17 04:54: Want me to look up the hidden_size, layers, and available quant bit-widths for ACE-Step 1.5 4B, MiniMax Music 3, Step-Au → agents/music-model-fit-inputs.md.proposed
+- [ ] music-model-fit-maintainer — SUGGESTED 2026-09-17 04:54: I see you built a fit-calculation system and want engine + flags tracked to optimize which models fit which tiers — want → agents/music-model-fit-maintainer.md.proposed
 - [ ] ace-step-notepad-loop — SUGGESTED 2026-09-15 14:57: I see you want the research to keep going until it answers its own follow-ups — want a loop that ticks the AceStep doc-r → agents/ace-step-notepad-loop.md.proposed
 - [ ] ace-step-lora — SUGGESTED 2026-09-15 14:57: I see you want a LoRA of your mp3s on one word — want a bot that, on 'go', trains the AceStep 1.5 4B LoRA and writes the → agents/ace-step-lora.md.proposed
 - [ ] music-model-discovery — SUGGESTED 2026-09-07 06:15: I see you're blocked on whether an MLX/quant build exists for ACE-Step and MiniMax — want a bot that hunts down runnable → agents/music-model-discovery.md.proposed

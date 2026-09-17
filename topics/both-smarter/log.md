@@ -23,3 +23,8 @@
 ## [2026-09-16] compile | raw/inbox/2026-09-16.md
 - Created: wiki/concepts/wiki-portal-model-pages.md, wiki/concepts/benchmark-maintenance-plan.md
 - Updated: wiki/entities/model-candidates.md (ranked widget list 2026-09-16: Cyber Tiel Coder 35B-A3B / GSQ-RCO Qwen 3.8 27B / Flash Next GSQ-RCO 125B-6B; portal concept cross-link)
+
+## [2026-09-17] compile | raw/inbox/2026-09-16.md (re-pass)
+- Confirmed all 7 raw lines compiled across: wiki/concepts/wiki-portal-model-pages.md, wiki/concepts/benchmark-maintenance-plan.md, wiki/concepts/model-zoo-table-with-hf-links.md, wiki/decisions/quantization-lane-rules-2026-09-16.md, wiki/decisions/turbo-fit-rule-tracking-2026-09-16.md, wiki/entities/model-candidates.md.
+- Accounting fix: quantization-lane-rules-2026-09-16.md, turbo-fit-rule-tracking-2026-09-16.md and model-zoo-table-with-hf-links.md were created but never logged — now recorded.
+- Added "maple" lowest-tier alias (unresolved) to wiki/entities/model-candidates.md.

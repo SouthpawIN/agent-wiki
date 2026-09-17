@@ -1,5 +1,5 @@
 # INDEX — topics/back-where
-_29 files · 33 KB · regenerate: `python3 assets/build-index.py`_
+_28 files · 33 KB · regenerate: `python3 assets/build-index.py`_
 
 Read order for an agent: this file → pick a file below → its outline → `read_file offset=<line> limit=<n>`. Sessions under `.system/sessions/` are full transcripts (largest; go by outline).
 
@@ -10,20 +10,19 @@ Read order for an agent: this file → pick a file below → its outline → `re
     - L7 ## Status
 
 ## .system
-- `.system/agent.cursor` — 1 KB, 27 lines — raw/inbox/2026-09-06-from-klerik.md@35afa5582376
-- `.system/agent.lock` — 0 KB, 1 lines — 81928
+- `.system/agent.cursor` — 1 KB, 28 lines — raw/inbox/2026-09-06-from-klerik.md@35afa5582376
 - `.system/continuity.md` — 0 KB, 3 lines — Continuity — back-where
     - L1 # Continuity — back-where
 - `.system/injections.md` — 2 KB, 20 lines — Injections — back-where
     - L1 # Injections — back-where
     - L3 ## [UNREAD]
     - L19 ## [READ]
-- `.system/queue.md` — 6 KB, 46 lines — Queue — back-where
+- `.system/queue.md` — 6 KB, 47 lines — Queue — back-where
     - L1 # Queue — back-where
     - L3 ## [CONTEXT]
-    - L19 ## [SKILLS]
-    - L29 ## [AGENTS]
-    - L40 ## [LOOPS]
+    - L20 ## [SKILLS]
+    - L30 ## [AGENTS]
+    - L41 ## [LOOPS]
 
 ## agents
 - `agents/27b-optimizer.md.proposed` — 1 KB, 23 lines — type: agent

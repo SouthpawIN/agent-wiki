@@ -1,0 +1,15 @@
+---
+type: loop
+name: d-flash2-daily-speed-watch
+proposed: 2026-09-17 04:15
+schedule: every 2h
+---
+# d-flash2-daily-speed-watch
+owner: d-flash-benchmarker · cadence: daily · status: SUGGESTED
+**I see the DFlash2 draft is still pending and conditions keep improving — want a loop that logs the daily 131K speed so the moment DFlash2 is engaged we have a number to compare?**
+
+## Prompt
+Log the current faster-without build's 131K tok/s to measured-performance so the DFlash2 high-speed result can later be quantified against the baseline.
+
+## Evidence
+> "More KV cache room, lower power, faster inference, room for DFlash2 draft."

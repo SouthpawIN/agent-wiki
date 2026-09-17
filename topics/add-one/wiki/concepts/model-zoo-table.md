@@ -17,6 +17,8 @@ The **Model Zoo table** is the dashboard table that compares machine-learning mo
 - Categories are columns; a **parameters** category was requested to be added. ^[raw/inbox/2026-09-16.md]
 - A **HuggingFace** column was added, replacing a separate "HuggingFace Models" section, with a named link to each model's repository. ^[raw/inbox/2026-09-16.md]
 - Columns are meant to be sortable by clicking the column title. ^[raw/inbox/2026-09-16.md]
+- Settled column order is **Model → tokens (tok/s) → parameters**; the separate **order** column was removed. ^[raw/inbox/2026-09-16.md]
+- A **tokens-per-second** column records the best tok/s each model has achieved (see [[decisions/turbo-fit-tokens-per-second-column|TurboFit tok/s column]]). ^[raw/inbox/2026-09-16.md]
 
 The table's domain (exactly which models, and what the categories compare) is still unspecified — see [[queries/table-domain-research|table domain research]]. ^[raw/inbox/2026-09-16.md]
 

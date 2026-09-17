@@ -24,3 +24,5 @@ Record what Chris actually experienced and decided, not the build process around
 - Token startup race condition: during UI restoration, token reads may occur before the server is ready; treat server readiness as the prerequisite before retrying auth.
 - Context compaction handoff pattern recurs across session boundaries (2026-09-08, 2026-09-09); treat latest message after handoff as the only active task.
 - Python execute_code runs in an isolated kernel; changes may not propagate to command-line execution.
+- Quant selection yardstick is accuracy-per-watt, not parameter count: a Q2 quant is too broken to beat a smaller full-precision model; a task-lossless-at-lower-power quant (GSQ) is preferred.
+- Compaction handoff now enumerates reverse signals ('stop', 'undo', 'roll back', 'just verify', 'don't do that anymore', 'never mind', a new topic) that must immediately end any in-flight compacted work.

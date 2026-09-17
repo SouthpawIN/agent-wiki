@@ -1,6 +1,6 @@
 # beyond-pissed — wiki index
 > One line per page. The wiki row's CONTEXT section renders this file.
-> Last updated: 2026-09-16 | Total pages: 24
+> Last updated: 2026-09-17 | Total pages: 24
 
 ## Entities
 - [[topics/beyond-pissed/wiki/entities/agent-wiki|Agent Wiki]] — The `agent-wiki` repo at `~/gh-sync/agent-wiki`, a git repository that is structurally related to but not currently connected to the center vault at `~/Document

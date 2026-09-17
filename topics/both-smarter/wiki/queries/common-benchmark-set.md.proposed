@@ -1,0 +1,10 @@
+---
+title: What are the most common cross-model benchmarks (beyond tokens/second) that can 
+type: query
+proposed: 2026-09-17 02:43
+tags: [question]
+---
+# What are the most common cross-model benchmarks (beyond tokens/second) that can be compared across these models, and where are their official/authoritative numbers?
+Chris wants one defined benchmark set pinned once so per-model tracking is consistent and benchmarks-over-vibes holds.
+
+_Approve to run the research; the answer lands here._

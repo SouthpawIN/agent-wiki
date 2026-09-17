@@ -30,6 +30,9 @@ The "**Killier Ragdoll**" in the original clue is almost certainly a transcripti
 ## Ranked widget list (2026-09-16)
 The model widget presents a ranked list; as of 2026-09-16 20:17 the visible portion shows **Cyber Tiel Coder (35B-A3B)** at the top, then **GSQ-RCO Qwen 3.8 (27B)** (#3) and **Flash Next GSQ-RCO (125B/6B)** (#4), with a #5 cut off. ^[raw/inbox/2026-09-16.md] The list sorts as tok/s and benchmarks are filled in per model. ^[raw/inbox/2026-09-16.md]
 
+## Lowest-tier aliases (2026-09-16)
+For the 8/16 GB GPU tier, Chris said the lowest slot "may still have to have **maple**," then backtracked ("never mind"). Like **Killier Ragdoll**, "maple" is an unresolved transcription-alias for a low-tier model and needs a real model-card lookup before it is trusted. ^[raw/inbox/2026-09-16.md]
+
 ## Related
 - [[wiki-portal-model-pages|Wiki Portal — Clickable Model Pages]]
 - [[research-source-policy|Research Source Policy]]

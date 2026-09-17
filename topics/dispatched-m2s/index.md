@@ -1,6 +1,6 @@
 # dispatched-m2s — wiki index
 > One line per page. The wiki row's CONTEXT section renders this file.
-> Last updated: 2026-09-16 | Total pages: 10
+> Last updated: 2026-09-17 | Total pages: 11
 
 ## Entities
 - [[topics/dispatched-m2s/wiki/entities/delegation-batch-56809b77|delegation batch deleg_56809b77]] — A Hermes async delegation batch that completed successfully on `2026-09-07 10:08`, demonstrating the larger-fan-out success pattern noted after earlier owner-ex
@@ -15,6 +15,7 @@
 
 ## Decisions
 - [[topics/dispatched-m2s/wiki/decisions/batch-size-mitigation-pattern|batch size mitigation pattern]] — **What**: Reduce async delegation batch sizes to improve reliability and throughput.
+- [[topics/dispatched-m2s/wiki/decisions/turbofit-model-pages|TurboFit per-model wiki pages and consolidation]] — **What**: Use this wiki as the source for building TurboFit — give each model its own page, collect setup-relevant nuggets about each model, and consolidate red
 
 ## Comparisons
 - [[topics/dispatched-m2s/wiki/comparisons/owner-exit-success-patterns|owner-exit vs smaller-fan-out outcomes]] — This page compares the failing owner-exit batch against the later successful batches to separate true failure causes from coincidence.

@@ -18,4 +18,6 @@ Status update: the enabling path resolved to **spec-draft** ("qwen4 supports spe
 
 Follow-up (16:29): the bot then said it would "research DFlash2's exact setup requirements and test it," ^[raw/inbox/2026-09-15.md#L19] i.e. pin down the precise configuration and then benchmark — the step after the hook-up was resolved. This keeps the research-then-test action open as the topic's stated next move.
 
+On **2026-09-16** the move was put on hold pending housekeeping: Chris ordered "fix all the tables" then "fix your checkpoint with what we have currently" before moving further, including the DFlash2 draft. See [[topics/faster-without/wiki/decisions/fix-tables-then-checkpoint|Fix Tables Then Checkpoint]]. ^[raw/inbox/2026-09-16.md#L11]
+
 See [[topics/faster-without/wiki/entities/d-flash2|DFlash2]], [[topics/faster-without/wiki/entities/81-tok-s-build|81 tok/s Build]], [[topics/faster-without/wiki/concepts/checkpoint-before-experiment|Save Checkpoint Before Experiment]], [[topics/faster-without/wiki/entities/unleashed|Unleashed]], and [[topics/faster-without/wiki/comparisons/dflash2-without-dflash-high-speed|DFlash2 Without D-Flash — High Speed]].

@@ -14,23 +14,32 @@
 | benchmark-bot | **I see you're benchmarking your local 27B/Ornith model — want a bot that runs fair benchmarks at the context length Her | PROPOSED |
 | bonsai-mlx-probe | **I see you've been chasing a local inference backend that isn't standard mlx_lm — want a bot that probes Bonsai MLX aga | PROPOSED |
 | candidate-benchmark-scout | **I see you're queuing Dirk, Nail, and Tiel-Coder with a Q3 preference — want a bot that benchmarks each candidate on 65 | PROPOSED |
+| case-shopper | **I see you were shopping for a matte black 14-inch MacBook Pro case and we never recorded whether you bought one — want | PROPOSED |
 | center-vault-auditor | **I see you're trying to prevent the same overwrite from silently killing live state — want a bot that continuously diff | PROPOSED |
 | center-wiki-intake | **I see you're planning to run many projects through the center wiki — want a bot that turns new project notes and decis | PROPOSED |
 | center-wiki-monitor | **I see you're using the center wiki as a live orchestrator across projects — want a bot that continuously monitors and  | PROPOSED |
 | center-wiki-understanding | **I see you're working to understand the center wiki build/work/use patterns — want a bot that traces the integration pi | PROPOSED |
 | chromium-new-tab-homepage | **I see you want a new Chromium tab to surface the center wiki instead of a blank page — want a bot that sets the Hermes | PROPOSED |
 | clean-model-test | **I see you're testing the same model path on a dirty stack — want a bot that removes Maple, deletes uncensored variants | PROPOSED |
+| clickable-integrations | **I see you're frustrated that your page integrations show as a non-clickable JSON list — want a bot that renders them a | PROPOSED |
+| combine-wiki-render | **I see you're tired of the preview pane showing the index and then a separate full-wiki page — want me to have weaver m | PROPOSED |
 | commit-scan-topics-fix | **I see you need the scan-topics.py schema fix committed and pushed — want a bot to handle that?** | PROPOSED |
 | common-benchmark-audit | **Want me to look into what the most common benchmarks are for comparing these models, and gather the best concrete benc | PROPOSED |
 | context-ceiling-lookup | **I see you're hitting a 507 at 131K with 20.4GB model + 8GB KV on 28GB — want a bot that researches the exact maximum c | PROPOSED |
 | context-fallback-pin | **I see you're setting a 65K context fallback to Nous cloud — want a bot that scans every profile and pins this rule in  | PROPOSED |
 | d-flash-benchmarker | **I see you're weighing D-flash removal for speed — want a bot that benchmarks 27B@131K with/without D-flash and reports | PROPOSED |
+| d-flash-checkpoint | **I see you're about to engage the DFlash2 spec-draft but the 81 tok/s checkpoint save is unconfirmed and you said don't | PROPOSED |
+| d-flash2-benchmark | **I see the DFlash2 high-speed result ('both MTP and DFlash2 produce full responses at high speed') has no tok/s number  | PROPOSED |
 | d-flash2-setup-research | **Want me to look into exactly how DFlash2's spec-draft is configured for qwen4 at 131K — the precise setup requirements | PROPOSED |
 | delegation-auditor | **I see you're trying to separate owner-exit failures from batch-size effects — want a bot that instruments Hermes deleg | PROPOSED |
 | dflash2-integrator | **I see you're still trying to get DFlash2 speculative decoding working with Ornith — want a bot that runs the `--spec-d | PROPOSED |
 | dogeman | You are Dogeman, one of the boss pets on this machine — an artsy, game-making, content-obsessed creative director who li | live |
+| download-queue-tender | **I see you're running a big local-model download queue and 4 of those downloads came back empty — want a bot that watch | PROPOSED |
 | download-watch-bot | **I see model downloads just finished (Omarchy ~21GB) — want a bot that watches model downloads and confirms completion  | PROPOSED |
 | fleet-orchestrator | You are fleet-orchestrator, the orchestrator of Chris's Senter fleet (Hermes profiles under ~/.hermes/profiles, board at | live |
+| format-compat-watch | **I see you're trying to pin down which model formats actually run on that CUDA llama.cpp runtime — want a daily bot tha | PROPOSED |
+| front-matter-clickable-render | **Want me to look into how the Senter wiki UI would render integrations as clickable links, and whether front-matter int | PROPOSED |
+| gaming-scout | **I see you keep trying to set up the gaming experience you want but 'connection' and 'gaming experience' are both still | PROPOSED |
 | git-upstream-setter | **I see you need git remote upstream tracking configured on main — want a bot that sets it up?** | PROPOSED |
 | gpu-memory-tuner | **I see your local and remote inference keeps hitting GPU memory walls — want a bot that profiles mlx_lm and Flash Next  | PROPOSED |
 | hdiutil-restore-detect | **I see the `hdiutil restore` verb keeps getting rejected on your Mac even though the man page lists it — want a bot tha | PROPOSED |
@@ -40,6 +49,8 @@
 | hey-look-dflash2-omarchy-setup | **I see you're trying to get DFlash2 working on Omarchy but the qwen4 llama.cpp build only has --hf-repo-draft (download | PROPOSED |
 | hotkeys-command | **I see you asked for a /hotkeys slash command on 2026-09-15 and it's still unbuilt — want teknium to implement it?** | PROPOSED |
 | idea-classifier | **I see you just added skill/bot/loop decision criteria to architecture.md — want a bot that applies those criteria to n | PROPOSED |
+| integrations-above-overview | **I see you want the integrations/repositories/table block to sit above the overview and read index-like — want a bot th | PROPOSED |
+| integrations-maintainer | **I see you're talking about making integrations a structured front-matter property — want a bot that maintains the `int | PROPOSED |
 | killier-ragdoll-lookup | **I see the 'Killier Ragdoll' from your Hugging Face clue was never verified against a real model card — want a bot that | PROPOSED |
 | klerik | Meta-agent that reviews and surgically corrects other Hermes agent profiles — SOUL.md, AGENTS.md, config, skills, memory | live |
 | klerik-bot | Owns the `klerik` topic: runs its skills, answers for it, proposes its loops. | PROPOSED |
@@ -52,6 +63,7 @@
 | m1-27b-audit-bot | **I see you're trying to validate the 27B/unleashed path on M1 — want a bot that checks Hermes runtime binding, model-li | PROPOSED |
 | m1-27b-prep-bot | **I see you're focused on getting one of the 27B models optimized on M1 — want a bot that uses the retained 131K outputs | PROPOSED |
 | m1-27b-tuner | **I see you're trying to make the 27B Q3 path usable at 131K — want a bot that tunes local llama.cpp/prefill settings fo | PROPOSED |
+| maple-lookup | **I see you've dropped another near-indecipherable alias — "maple" for the lowest model tier — want a lookup bot like Ki | PROPOSED |
 | model-artifact-registry | **I see you're staging model shards and hitting size/regeneration issues — want a bot that maintains a registry of model | PROPOSED |
 | model-benchmark-refresh | **I see you want those benchmarks kept fresh without you nudging — want a daily job that searches the web for each model | PROPOSED |
 | model-benchmarks | **I see you're after concrete benchmarks for each model — want a bot that defines the common cross-model benchmark set a | PROPOSED |
@@ -71,6 +83,8 @@
 | mtplx-runtime-scout | **I see you're trying to pin a stable MTPLX config — want a bot that finds the supported runtime knob for memory budgeti | PROPOSED |
 | mtplx-speedwatch | **I see you're tracking Qwen 27B MTPLX throughput on your 32GB Mac — want a bot that retests at 131K/262K and files a si | PROPOSED |
 | music-model-discovery | **I see you're blocked on whether an MLX/quant build exists for ACE-Step and MiniMax — want a bot that hunts down runnab | PROPOSED |
+| music-model-fit-inputs | **Want me to look up the hidden_size, layers, and available quant bit-widths for ACE-Step 1.5 4B, MiniMax Music 3, Step- | PROPOSED |
+| music-model-fit-maintainer | **I see you built a fit-calculation system and want engine + flags tracked to optimize which models fit which tiers — wa | PROPOSED |
 | music-model-runner | **I see you're trying to get ACE-Step and MiniMax Music 3 both runnable on this Mac — want a bot that executes each cand | PROPOSED |
 | none | **None** | PROPOSED |
 | obs-omarchy-stream-bot | **I see you want OBS on the MacBook to manage streaming while you play Armored Core 6 on the Omarchy, and that's still p | PROPOSED |
@@ -81,14 +95,17 @@
 | omarchy-sudo-runner | **I see you keep hitting the sudo-password wall on privileged one-off tasks (USB writes, config edits) — want a bot that | PROPOSED |
 | omarchy-watch | **I see you're still locked out of the Omarchy box — want a bot that watches port 22 (and 443) and pings you the instant | PROPOSED |
 | omarki-latest-fetcher | **I see you asked for the latest Oh My Archi and the install hasn't finished — want a bot that pulls the newest Oh My Ar | PROPOSED |
+| omarki-model-servant | **I see you want to pick which models O'Marki serves to this MacBook — want a bot that curates and routes model selectio | PROPOSED |
 | omarky-standardize | **Want me to look into how to connect and standardize your model servers across the current machine, HP, and Omarky/Omar | PROPOSED |
 | omnisenter-canonical-model-cards | **I see you're hunting model run instructions — want a bot that builds canonical OmniSenter/OmniStep model cards from Hu | PROPOSED |
 | orchestrator | **I see you want automatic evidence capture for all TurboFit route changes — want a bot that triggers verification whene | PROPOSED |
+| ornith-context-prober | **I see the fit-calc says Ornith fits at some context — want a bot that then actually runs Ornith at that computed conte | PROPOSED |
 | ornith-dflash2-llamacpp-tester | **I see you've found Ornith as the short-context winner — want a bot that tests Ornith through llama.cpp with DFlash2 to | PROPOSED |
 | ornith-runner | **I see you're selecting Ornith as runtime — want a bot that starts it with proper config?** | PROPOSED |
 | ornith-runtime-keeper | **I see Ornith's working build keeps getting lost to `/tmp` wipes and port conflicts — want a keeper bot to pin Ornith t | PROPOSED |
 | paladin | You are Paladin — the fleet's repo and vault structure standards keeper. You own the structural integrity of the agent-w | live |
 | portal-credit-watcher | **I see you're blocked on the missing $2,000 — want a bot that watches the Portal credits for southpawinmusic@gmail.com  | PROPOSED |
+| preview-wiki-watchdog | **I see the preview keeps showing the wrong wiki (TurbFit) or a stale split view — want a bot that watches the preview p | PROPOSED |
 | project-topic-scaffolder | **I see you want the watcher/topic-agent wired as an orchestrator over your actual projects — want a bot that scaffolds  | PROPOSED |
 | prompt-cache-cleanup | **I see your Mac's prompt cache fills from accumulated test history and forces restarts — want a bot that clears and sch | PROPOSED |
 | provider-lock-reconciler | **I see you're cycling through Unleashed, DFlash2, Ornith, and nous free models — want a bot that reconciles your wiki's | PROPOSED |
@@ -110,11 +127,15 @@
 | trap-bank | **Since you're clearly interested in which solvers fall for reasoning traps — want a loop that feeds the fleet a rotatin | PROPOSED |
 | turbofit-benchmark | **I see you're collecting Apple Silicon runtime speed data — want a bot that runs controlled tok/s benchmarks on the dow | PROPOSED |
 | turbofit-bot | Owns the `turbofit` topic: runs its skills, answers for it, proposes its loops. | PROPOSED |
+| turbofit-builder | **I see you're building TurboFit from this wiki — want a bot that reads each model's page and builds/updates the TurboFi | PROPOSED |
+| turbofit-consolidator | **I see redundant notes piling up as each model page gets built — want a bot that periodically consolidates sat-down red | PROPOSED |
 | turbofit-engine-aux | **I see you're talking about expanding Turbofit's auxiliary engines — want a bot that enumerates and configures alternat | PROPOSED |
 | turbofit-evidence-capture | **Want me to capture a desktop_preview of the Hermes window showing the Ornith MLX runtime is stable at 65K context with | PROPOSED |
 | turbofit-launcher | **Want me to lock in Ornith MLX 4-bit as the main provider with 65K context, and Unleashed+DFlash2 as the 131K long-cont | PROPOSED |
+| turbofit-picker-watch | **I see TurboFit keeps dropping out of the Hermes picker like it did on 09-13 — want a watcher that pings you the moment | PROPOSED |
 | turbofit-provider-watch | **I see you're keeping all your TurboFit models grouped under the TurboFit provider in Hermes — want a bot that watches  | PROPOSED |
 | turbofit-roster-check | **I see you handed over a Model Zoo list for the TurboFit list and it came back incomplete — want a bot that reconciles  | PROPOSED |
+| turbofit-roster-reconcile | **I see your Model Zoo roster came back incomplete on the TurboFit list — want a bot that diffs your full roster against | PROPOSED |
 | turbofit-route-stabilizer | **I see Hermes is still flipping to cloud models despite your intent — want a bot that locks the fallback_providers chai | PROPOSED |
 | turbofit-runtime-scout | **I see you're assembling Nail/Dirk/Tiel/Ornith candidates — want a bot that tracks each one's actual Hermes path: downl | PROPOSED |
 | turbofit-verifier | **I see you’re testing end-to-end TurboFit stability — want a bot that runs a live 131K compression probe against :11606 | PROPOSED |

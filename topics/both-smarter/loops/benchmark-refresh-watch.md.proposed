@@ -1,0 +1,15 @@
+---
+type: loop
+name: benchmark-refresh-watch
+proposed: 2026-09-17 02:43
+schedule: 0 9 */2 * *
+---
+# benchmark-refresh-watch
+owner: looker · cadence: every 2 days · status: SUGGESTED
+**I see you want benchmarks kept current for every model off the web — want a loop that refreshes each model's benchmarks on a schedule?**
+
+## Prompt
+For each model in the widget, re-check the web for the most common cross-model benchmarks (beyond tok/s) and update the per-model benchmark data so it stays current.
+
+## Evidence
+> "we should also have other kinds of sub agents for maintenance." ^[raw/inbox/2026-09-16.md]

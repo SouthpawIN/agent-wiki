@@ -1,0 +1,20 @@
+---
+type: agent
+name: music-model-fit-inputs
+proposed: 2026-09-17 04:54
+topic: music
+reuse: null
+---
+# music-model-fit-inputs
+**Want me to look up the hidden_size, layers, and available quant bit-widths for ACE-Step 1.5 4B, MiniMax Music 3, Step-Audio-2-mini and the 27B candidates so the fit calc has real inputs instead of guessed ones?**
+
+
+
+## First task
+
+
+## SOUL.md (draft)
+
+
+## Evidence
+

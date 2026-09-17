@@ -14,7 +14,7 @@ Read order for an agent: this file → pick a file below → its outline → `re
     - L63 ## Repos
 
 ## .system
-- `.system/agent.cursor` — 1 KB, 29 lines — raw/inbox/2026-09-06-from-back-where.md@9d5caa691ef8
+- `.system/agent.cursor` — 1 KB, 31 lines — raw/inbox/2026-09-06-from-back-where.md@9d5caa691ef8
 - `.system/continuity.md` — 0 KB, 7 lines — Continuity — hermes-agent
     - L1 # Continuity — hermes-agent
 - `.system/injections.md` — 3 KB, 32 lines — Injections
@@ -24,7 +24,7 @@ Read order for an agent: this file → pick a file below → its outline → `re
     - L18 ## Current context
     - L22 ## Version policy
     - L26 ## Related concepts
-- `.system/queue.md` — 49 KB, 270 lines — Queue
+- `.system/queue.md` — 49 KB, 271 lines — Queue
     - L1 # Queue
     - L3 ## [SKILLS]
     - L9 ## [AGENTS]

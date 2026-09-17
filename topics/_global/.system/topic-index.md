@@ -25,6 +25,7 @@
 | [[topics/kashik/README|kashik]] | kashik |
 | [[topics/klerik/README|klerik]] | klerik — Profile Factory |
 | [[topics/legacy-bots/README|legacy-bots]] | legacy-bots |
+| [[topics/life-links/README|life-links]] | life-links |
 | [[topics/looked-image/README|looked-image]] | looked-image |
 | [[topics/memento/README|memento]] | memento |
 | [[topics/music/README|music]] | music |

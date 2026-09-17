@@ -260,6 +260,7 @@ Evidence: `topics/senter/loops/reflect/2026-09-03-10.md`.
 1. **[DETECTOR 4/6] GitHub feed still emits no-op lines + "create" noise — 7 passes old.** ~11 "pushed 0 commit(s)" (teknium1 ×7, kshitijk4poor ×3, itsflownium ×1) + 9 "create" (kshitijk4poor ×6, teknium1 ×2, itsflownium ×1) this 88-min window. Flagged pass 4/5/6/7/8/9 and STILL unshipped. Drop no-op lines, dedup (one real event per poll), finish PUSH-EVERYWHERE. Priority bump only — no new work.
 
 ## [CONTEXT]
+- [ ] research best-free-nous-daily — SUGGESTED 2026-09-17 04:22: Want me to look into which free nous model (ling-3.0-flash-sante, longcat-2.0, solar-pro4, deepseek-v4-flash) is actuall
 - [ ] research mtp-large-context-feasibility — SUGGESTED 2026-09-15 22:29: Want me to look into whether the MTP/DFlash2 setup that hit 81.2 tok/s at 262K can be replicated at 131K on a 64GB+ host
 - [ ] research dhh-linux-distro — SUGGESTED 2026-09-14 17:58: Want me to look into the latest DHH Linux distro and whether its latest update ships Hermes Agent as a native AI, so you
 - [ ] research m1-27b-131k-hardware-floor — SUGGESTED 2026-09-07 19:54: Want me to look into whether any current M-series Mac under $3K can fit Qwen 3.8 27B + 131K KV cache + DFlash2 + Hermes 

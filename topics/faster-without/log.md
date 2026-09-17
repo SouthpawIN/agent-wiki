@@ -11,3 +11,4 @@
 ## [2026-09-15] compile | recompiled raw/inbox/2026-09-15.md; content already captured in d-flash2, 81-tok-s-build, checkpoint-before-experiment, dflash2-spec-draft-hookup, dflash2-without-dflash-high-speed, measured-performance — verified provenance, no new pages
 
 ## [2026-09-16] compile | expanded measured-performance and d-flash2 from raw/inbox/2026-09-16.md (2026-09-16 status: more KV cache room, lower power, faster inference, room for DFlash2 draft); no new pages (continuation of 09-15 DFlash2 run)
+## [2026-09-17] compile | created wiki/decisions/fix-tables-then-checkpoint.md from raw/inbox/2026-09-16.md; expanded measured-performance, checkpoint-before-experiment, d-flash2, dflash2-spec-draft-hookup with 09-16 ordering (fix tables, then checkpoint with current build, then move on); no other new pages

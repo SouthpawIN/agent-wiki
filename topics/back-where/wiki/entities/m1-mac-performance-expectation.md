@@ -35,6 +35,11 @@ Chris noted that 32 GB RAM should leave enough room to do a speed/audition step 
 
 > "You have 32 gigabytes, um, and the other one is testing in the background. You should have enough space to at least do a step and not get in the way." ^[raw/inbox/2026-09-07.md]
 
+## 2026-09-16 GSQ headroom expectation
+Chris's headroom expectation now extends to the GSQ RCO IQ3S: he expects it to fit a higher context length and run fast enough to leave room for later options such as D Flash 2. The same 32 GB machine is expected to run a task-lossless-at-lower-power quant rather than the oversized FP16 S64. ^[raw/inbox/2026-09-16.md]
+
+> "let's do the GSQ RCO IQ3S because... if we can fit a higher context length and run it faster, and possibly have more room for more options like D Flash 2..." ^[raw/inbox/2026-09-16.md]
+
 ## Audition target
 The next explicit baseline is the 131K configuration re-audition for speed, not a new architecture. Chris expected sufficient RAM to complete at least one step of that audition.
 

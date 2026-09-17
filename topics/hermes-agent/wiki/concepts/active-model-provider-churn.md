@@ -1,10 +1,10 @@
 ---
 title: "Active Model / Provider Churn"
 created: 2026-09-13
-updated: 2026-09-13
+updated: 2026-09-17
 type: concept
 tags: [tool, preference, infra, contested, timeline]
-sources: ["raw/inbox/2026-09-07.md", "raw/inbox/2026-09-10.md", "raw/inbox/2026-09-11.md", "raw/inbox/2026-09-12.md", "raw/inbox/2026-09-13.md", "raw/inbox/2026-09-15.md"]
+sources: ["raw/inbox/2026-09-07.md", "raw/inbox/2026-09-10.md", "raw/inbox/2026-09-11.md", "raw/inbox/2026-09-12.md", "raw/inbox/2026-09-13.md", "raw/inbox/2026-09-15.md", "raw/inbox/2026-09-16.md", "raw/inbox/2026-09-17.md"]
 confidence: high
 ---
 
@@ -26,7 +26,9 @@ Across consecutive sessions the active Hermes model and provider never settled �
 - `2026-09-15 09:18` — `[System]` active model → `meituan/longcat-2.0:free` via provider `nous` (session `20260914_200308_f9b029`, `sim 0.17`). Same provider as the 262K/81.2 tok/s run later that day.^[raw/inbox/2026-09-15.md]
 - `2026-09-15 13:04` — same session `20260914_200308_f9b029`: after the `81.2 tok/s @ 262K` MTP run, Hermes switched the draft model from MTP to `DFlash2` to test it through Hermes (MTP "works through Hermes (26s)").^[raw/inbox/2026-09-15.md]
 - `2026-09-15 16:33` — operation interrupted; `16:50` Hermes: "Let me get everything stable and verify the full setup" (session still settling).^[raw/inbox/2026-09-15.md]
-- `2026-09-15 12:41` — Hermes observed its own config: model set to `"auto"`, provider `"custom"` (the runtime picks the underlying model).^[raw/inbox/2026-09-15.md]
+|- `2026-09-15 12:41` — Hermes observed its own config: model set to `"auto"`, provider `"custom"` (the runtime picks the underlying model).^[raw/inbox/2026-09-15.md]
+- `2026-09-16 23:35` — `[System]` active model → `inclusionai/ling-3.0-flash-sante:free` via provider `nous` (session `20260914_200308_f9b029`, `sim 0.16`). Continues the churn; the same session id reappears with a different free nous model.^[raw/inbox/2026-09-16.md]
+- `2026-09-17 08:37` — `[System]` active model → `meituan/longcat-2.0:free` via provider `nous` (session `20260914_200308_f9b029`, `sim 0.17`). Same session id flips again to yet another free nous model — the never-settling free-nous churn continues.^[raw/inbox/2026-09-17.md]
 
 ## What it means
 - The lock was never stable or cleanly applied, despite multiple Hermes-side lock attempts.^[raw/inbox/2026-09-07.md]

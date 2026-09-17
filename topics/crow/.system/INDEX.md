@@ -16,7 +16,7 @@ Read order for an agent: this file → pick a file below → its outline → `re
     - L93 ## Key Statistics
 
 ## .system
-- `.system/agent.cursor` — 0 KB, 7 lines — raw/inbox/2026-09-08.md@82e933bb40d5
+- `.system/agent.cursor` — 0 KB, 8 lines — raw/inbox/2026-09-08.md@82e933bb40d5
 - `.system/continuity.md` — 0 KB, 7 lines — Continuity — crow
     - L1 # Continuity — crow
 - `.system/injections.md` — 3 KB, 30 lines — Injections

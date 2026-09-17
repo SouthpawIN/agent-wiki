@@ -1,0 +1,15 @@
+---
+type: loop
+name: integrations-reconcile
+proposed: 2026-09-17 06:04
+schedule: 0 9 * * *
+---
+# integrations-reconcile
+owner: integrations-maintainer · cadence: daily · status: SUGGESTED
+**I see you want integrations as a clean structured property across all pages — want a loop that re-checks every wiki page for prose-only integrations and reconciles them into front matter on a schedule?**
+
+## Prompt
+Re-scan every wiki page for integrations present in body prose but missing from the front-matter `integrations:` property, reconcile, and log changes.
+
+## Evidence
+> Can life links be in the front matter? If so, then we should just make the integrations a property in that.

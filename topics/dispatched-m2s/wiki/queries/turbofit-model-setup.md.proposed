@@ -1,0 +1,10 @@
+---
+title: What model-specific settings (context window, quantization, batch/prompt behavio
+type: query
+proposed: 2026-09-17 04:02
+tags: [question]
+---
+# What model-specific settings (context window, quantization, batch/prompt behavior) does each model in the wiki need to be set up correctly under TurboFit?
+Chris wants the wiki to be the source for building TurboFit, but the model pages currently lack the setup nuggets that would make that actionable.
+
+_Approve to run the research; the answer lands here._

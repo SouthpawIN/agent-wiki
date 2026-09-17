@@ -1,6 +1,7 @@
 # Queue
 
 ## [SKILLS]
+- [ ] wiki-orientation-procedure — distilled 2026-09-17 04:33 → skills/wiki-orientation-procedure/SKILL.md (auto-applied)
 - [ ] *(empty)*
 ## [AGENTS]
 - [ ] wiki-librarian — SUGGESTED 2026-09-07 18:19: I see you're introducing a librarian concept for cross-topic discovery — want a bot that audits aliases, anti-scope boun → agents/wiki-librarian.md.proposed

@@ -1,6 +1,6 @@
 # case-macbook — wiki index
 > One line per page. The wiki row's CONTEXT section renders this file.
-> Last updated: 2026-09-16 | Total pages: 4
+> Last updated: 2026-09-17 | Total pages: 4
 
 ## Entities
 - [[topics/case-macbook/wiki/entities/macbook-pro-14|MacBook Pro 14-inch (M1 Pro, 2021)]] — Chris's laptop. He's shopping for a protective case for it, so exact model identity matters — a case must match this chassis, not just any "14-inch MacBook Pro.

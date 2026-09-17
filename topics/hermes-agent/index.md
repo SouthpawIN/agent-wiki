@@ -1,6 +1,6 @@
 # hermes-agent — wiki index
 > One line per page. The wiki row's CONTEXT section renders this file.
-> Last updated: 2026-09-16 | Total pages: 26
+> Last updated: 2026-09-17 | Total pages: 26
 
 ## Entities
 - [[topics/hermes-agent/wiki/entities/model-check-20260903|Model Check — 20260903_001447_7bc70a]] — Chris is actively checking a specific model/session by id `20260903_001447_7bc70a` against realistic compression behavior.^[raw/inbox/2026-09-06.md] ^[raw/inbox

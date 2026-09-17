@@ -29,6 +29,7 @@ _Pre-prompt for the cutter and this topic's agent. Chris edits freely; lines end
 - One line, phrased as a question Chris can say yes to, tied to a quote from him, naming the bot that would do it.
 
 ## Learned (agent-appended, newest first)
+- 2026-09-17 · 2026-09-16 · Chris moved from trial 507s to a fit-calculation approach over 28GB: model_size + KV_cache <= tier_size; comfortable-fit model_size + 2GB <= tier_size; KV at real context length; check EVERY tier (CPU + Unified).
 - 2026-09-15 · 2026-09-15 · Build runtimes in a persistent location, not `/tmp` — the qwen4 v0.4.0-dev build was wiped on restart and lost.
 - 2026-09-15 · 2026-09-15 · DFlash2 integration flag `--hf-repo-draft` recorded; integration against the qwen4 v0.4.0-dev service (`-ngl -c -t`) still unverified after an empty response (reasoning consumed the budget).
 - 2026-09-15 · 2026-09-15 · `-ngl 9999` root cause = `CUDA_VISIBLE_DEVICES=1` not honored through `su` (env var + su handling both targeted).
@@ -49,3 +50,4 @@ _Pre-prompt for the cutter and this topic's agent. Chris edits freely; lines end
 - 2026-09-07 · Ornith CPU fallback (-ngl 0) works after a timeout; 131K context test is pending a full rerun.
 - 2026-09-07 · Chris's local 507 failure mode is framed as a physical-capacity/context-fit problem, not a network error; prefer root-cause model/KV/context limits over band-aids.
 - 2026-09-07 · Active goal phrase to anchor bot/loop suggestions: "find the actual maximum context that fits."
+- 2026-09-16 · Chris moved from trial 507s to a fit-calculation approach over 28GB hardware: model_size + KV_cache <= tier_size; comfortable-fit model_size + 2GB <= tier_size; KV at real context length; check EVERY tier (CPU + Unified).

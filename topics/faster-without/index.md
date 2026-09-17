@@ -1,6 +1,6 @@
 # faster-without — wiki index
 > One line per page. The wiki row's CONTEXT section renders this file.
-> Last updated: 2026-09-16 | Total pages: 14
+> Last updated: 2026-09-17 | Total pages: 15
 
 ## Entities
 - [[topics/faster-without/wiki/entities/27b-model|27B Model]] — The 27B model is the concrete inference target in this topic. Chris’s standing requirement is that it run at a minimum 131K context length, even if D-flash is r
@@ -16,6 +16,7 @@
 - [[topics/faster-without/wiki/concepts/performance-target|27B at 131K]] — Chris’s explicit requirement is that the 27B model run at a minimum 131K context length. ^[raw/inbox/2026-09-06.md#L17] This target holds even when reconsiderin
 
 ## Decisions
+- [[topics/faster-without/wiki/decisions/fix-tables-then-checkpoint|Fix Tables Then Checkpoint]] — On **2026-09-16**, Chris gave a **sequencing rule** for what to finish before the topic moves on: fix the wiki's tables first, then rebuild the checkpoint to ma
 - [[topics/faster-without/wiki/decisions/retain-131k-context|Retain 131K Context]] — Chris decided that any speed change must preserve the hard floor of 131K context length for the 27B model. ^[raw/inbox/2026-09-06.md#L17]
 
 ## Comparisons

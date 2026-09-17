@@ -25,6 +25,11 @@ Within the Q3 family, Chris specifically cited Q3K exile as the most accurate qu
 
 > "...the q3k exiles the most accurate one and it's uncensored and it's smaller..." ^[raw/inbox/2026-09-07.md]
 
+## 2026-09-16 supersede to GSQ RCO IQ3S
+On 2026-09-16 Chris moved his quantization preference away from Q3K exile to the **GSQ RCO IQ3S**, conditioned on the GSQ version being genuinely near task-lossless versus FP16 while drawing less power. See the contested note in [[topics/back-where/wiki/decisions/gsq-rco-iq3s-selection-preference|GSQ RCO IQ3S selection preference]]. The Q3K exile selection is now superseded by a conditional, unverified preference rather than confirmed.
+
+> "let's do the GSQ RCO IQ3S because if it's near task lossless, or if it is task lossless, if it takes less kilowatts an hour to run, and if we can fit a higher context length and run it faster, and possibly have more room for more options like D Flash 2..." ^[raw/inbox/2026-09-16.md]
+
 ## Research requirements
 Before implementation, Chris wants a habit of researching the unleashed page and HuggingFace page before proceeding with model implementation. The 131K configuration should be reused as the baseline speed test, not skipped.
 

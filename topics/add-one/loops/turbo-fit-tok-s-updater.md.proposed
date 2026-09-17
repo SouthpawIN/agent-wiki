@@ -1,0 +1,15 @@
+---
+type: loop
+name: turbo-fit-tok-s-updater
+proposed: 2026-09-17 00:01
+schedule: 30m
+---
+# turbo-fit-tok-s-updater
+owner: turbosovth · cadence: after each run · status: SUGGESTED
+**Every time TurboFit runs a model, want me to loop in the best tok/s it hit and update that column on your TurboFit list?**
+
+## Prompt
+Read the latest TurboFit run results and update the best tok/s value in the tok/s column of the TurboFit list, dropping any stale higher figure.
+
+## Evidence
+> On the turbo fit list, remove the type column, but instead replace that with a tokens per second column, which will show the best tokens per second that we've achieved with each one of those.

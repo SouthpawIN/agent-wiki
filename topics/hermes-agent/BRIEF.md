@@ -29,6 +29,8 @@ _Pre-prompt for the cutter and this topic's agent. Chris edits freely; lines end
 - One line, phrased as a question Chris can say yes to, tied to a quote from him, naming the bot that would do it.
 
 ## Learned (agent-appended, newest first)
+- 2026-09-17 · The pending `best-free-nous-daily.md.proposed` query is still unresolved and is the open thread behind the churn — resolve it before adding another lock attempt.
+- 2026-09-17 · 2026-09-16 23:35 active model → inclusionai/ling-3.0-flash-sante:free via provider nous (session 20260914_200308_f9b029, sim 0.16) — same session id reappears with yet another free nous model, continuing the never-settling churn thread
 - 2026-09-16 · 2026-09-16 · On 2026-09-16 21:09 Hermes began replacing the topic's root index.md with a clean entry point (session 20260916_210048_949ca0, sim 0.07); the restructure is in-progress and its outcome is not yet verified in the wiki.
 - 2026-09-14 · 2026-09-13 · Ornith (`ornith-1-5-35a3b`) is an xai-provider model, correcting an earlier TurboFit-style placement — provider assignments stay provisional until a verified config write confirms them.
 - 2026-09-14 · 2026-09-13 · Active-model churn spans xai, nous, and opencode-free with the same session id `20260903_001447_7bc70a` reused across providers, so `sim 0.09` cannot yet be attributed to any single comparable run.

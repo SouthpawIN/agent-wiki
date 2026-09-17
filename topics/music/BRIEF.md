@@ -29,6 +29,7 @@ _Pre-prompt for the cutter and this topic's agent. Chris edits freely; lines end
 - One line, phrased as a question Chris can say yes to, tied to a quote from him, naming the bot that would do it.
 
 ## Learned (agent-appended, newest first)
+- 2026-09-17 · Fit-calculation tables must carry two extra per-model columns — engine used + flags used — so optimization can be tracked across runs (2026-09-16 22:24).
 - 2026-09-14 · 2026-09-14 · raw/inbox/2026-09-13.md's Chris line is about Steam games / remote Steam Play / AirPlay to TV on the MacBook — gaming, not music; cutter should route that line (and its keywords) to the games topic, not music.
 - 2026-09-10 · 2026-09-10 · raw/inbox/2026-09-09.md contains only Hermes internal state output (line number references) with no music evidence or Chris quotes.
 - 2026-09-07 · MLX/quant builds are expected by Chris but not yet discoverable in the runner/pipeline; runner support (not memory size) is now the primary blocker for all downloaded candidates.

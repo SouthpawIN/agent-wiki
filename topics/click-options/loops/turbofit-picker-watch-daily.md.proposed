@@ -1,0 +1,15 @@
+---
+type: loop
+name: turbofit-picker-watch-daily
+proposed: 2026-09-17 03:37
+schedule: 0 9 * * *
+---
+# turbofit-picker-watch-daily
+owner: looker · cadence: daily · status: SUGGESTED
+**Want a daily watch that checks the Hermes picker and pings you only if TurboFit or its models have dropped off again like they did on 09-13?**
+
+## Prompt
+Snapshot the Hermes desktop provider/model picker; check whether the TurboFit provider and every TurboFit model are present and grouped under it; ping Chris in one line only when something is missing.
+
+## Evidence
+> "I still don't see it when I click the drop down menu from the input bar I only see news portal followed by open code free followed by xai."

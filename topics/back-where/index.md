@@ -1,10 +1,11 @@
 # back-where — wiki index
 > One line per page. The wiki row's CONTEXT section renders this file.
-> Last updated: 2026-09-16 | Total pages: 37
+> Last updated: 2026-09-17 | Total pages: 40
 
 ## Entities
 - [[topics/back-where/wiki/entities/compaction-handoff-repetition|Context compaction handoff repetition (2026-09-09)]] — The context compaction handoff instruction first appeared in the 2026-09-08 session transition and repeated identically in the 2026-09-09 raw filing. The handof
 - [[topics/back-where/wiki/entities/freetoken-rejected-nvidia-only|FreeToken rejected as NVIDIA-only]] — **FreeToken** was investigated and rejected because it supports only NVIDIA RTX 30/40/50 hardware and will not run on Chris's Mac. The decision was made explici
+- [[topics/back-where/wiki/entities/gsq-rco-iq3s-and-bonsai-mlx-snapshot|GSQ RCO IQ3S picked and Bonsai MLX snapshot pending]] — On 2026-09-16 Chris selected the **GSQ RCO IQ3S** as the working quant, displacing the earlier Q3K exile preference. His reasoning bundled accuracy, power, cont
 - [[topics/back-where/wiki/entities/hardware-headroom-note|Hardware headroom note for M1 32GB]] — Chris treated the 32GB M1 MacBook as available headroom rather than a hard ceiling during recovery. He said the machine should have enough space to run an audit
 - [[topics/back-where/wiki/entities/hermes-commit-completion-stub|Hermes commit-completion stub (2026-09-09)]] — The watcher captured a truncated Hermes internal log line after a commit step, ending mid-sentence at a sim score of 0.08.
 - [[topics/back-where/wiki/entities/hermes-fallback-causes|Hermes fallback causes]] — The runtime loaded a backup model instead of the explicitly chosen one, and later records showed automatic model changes during the session.
@@ -30,6 +31,7 @@
 - [[topics/back-where/wiki/concepts/model-prefill-fallback|Prefill timeout triggering model fallback]] — Chris observed that the runtime swapped models during the session. He concluded the cause was prefill taking too long, not true incompatibility, and wanted a co
 - [[topics/back-where/wiki/concepts/ornith-1-5-goal|Ornith 1.5 as a smarter-model goal]] — Chris stated a goal — that there should be an **Ornith 1.5** on the system that is "actually smarter than the model we are using now." ^[raw/inbox/2026-09-13.md
 - [[topics/back-where/wiki/concepts/ornith-startup-priority|Ornith startup priority]] — During recovery, Chris explicitly requested that Ornith be started before addressing Calibri and Bonsai. This appeared as a pre-requisite request when previous 
+- [[topics/back-where/wiki/concepts/quantization-by-tier-philosophy|Quantization selection by hardware tier]] — On 2026-09-16 Chris laid out a tier-based rule for choosing quantization: there is no single best quant, only the optimal quant *for each hardware tier*. The jo
 - [[topics/back-where/wiki/concepts/recovery-repair-plan|Recovery repair plan]] — The session moved from repeated failure retries to a vault-spec rebuild. The operative rule was to stop touching files until the target was rebuilt from the vau
 - [[topics/back-where/wiki/concepts/tts-cache-freshness|TTS cache-freshness failure]] — TTS entitlement checks used stale cached account info or a JWT that was minted before the $2,000 credit top-up, so entitlement remained negative even after paym
 - [[topics/back-where/wiki/concepts/tts-credit-outage|TTS failure during credit outage]] — TTS stopped working because the image-analysis model ran out of credits. Chris noted that a $2,000 top-up had been added, so enough balance should exist, yet TT
@@ -40,6 +42,7 @@
 - [[topics/back-where/wiki/decisions/completion-criterion-explicit-statement|Explicit completion and block criterion]] — Chris defined an explicit criterion for how Hermes should signal the end of a task: completion must be stated explicitly and then stop, or blockage must be stat
 - [[topics/back-where/wiki/decisions/config-editing-permission-authorization|Config-editing and permission authorization]] — On 2026-09-13 Chris explicitly authorized Hermes to edit permission configs and to send permissions his way when a gate is hit, saying this is how every permiss
 - [[topics/back-where/wiki/decisions/credit-top-up-tts-restoration|$2,000 credit top-up for TTS restoration]] — Chris added $2,000 in credits to restore TTS functionality, which had failed after the image-analysis model exhausted its allocation. The payment was made, but 
+- [[topics/back-where/wiki/decisions/gsq-rco-iq3s-selection-preference|GSQ RCO IQ3S selection preference]] — On 2026-09-16 Chris moved his quantization preference from Q3K exile to the **GSQ RCO IQ3S** quant, pending proof that it is genuinely near task-lossless. ^[raw
 - [[topics/back-where/wiki/decisions/qwen3-27b-optimization-priority|Qwen3.8 27B optimization priority]] — After rejecting the 131K speed audition for being too slow, Chris explicitly redirected priority to optimizing one of the 27B models instead of continuing the 1
 
 ## Comparisons

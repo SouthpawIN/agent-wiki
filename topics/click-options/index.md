@@ -1,9 +1,9 @@
 # click-options — wiki index
 > One line per page. The wiki row's CONTEXT section renders this file.
-> Last updated: 2026-09-16 | Total pages: 9
+> Last updated: 2026-09-17 | Total pages: 11
 
 ## Entities
-
+- [[topics/click-options/wiki/entities/turbofit-picker-registration-gap|TurboFit Picker-Registration Gap]] — TurboFit models work **through the Hermes runtime** (confirmed 13:21 on 2026-09-15), but they never **persist into the Hermes desktop provider/model picker** — 
 
 ## Concepts
 - [[topics/click-options/wiki/concepts/obsidian-index-refresh-2026-09-16|Obsidian Index Refresh (2026-09-16)]] — On **2026-09-16 18:28** a Hermes working message (transcript `20260914_200308_f9b029`) advised refreshing the Obsidian vault view.
@@ -19,7 +19,7 @@
 - [[topics/click-options/wiki/decisions/test-through-hermes-not-endpoint|Test Through Hermes, Not Straight to the Endpoint]] — On **2026-09-15 12:40** Chris set the acceptance criterion for testing TurboFit models: they must be exercised **through Hermes itself**, not against the raw en
 
 ## Comparisons
-
+- [[topics/click-options/wiki/comparisons/turbofit-provider-recurring-disappearance|TurboFit Provider — Recurring Disappearance Pattern]] — Across three days the TurboFit provider (and the models nested under it) has failed to survive in the Hermes **desktop provider/model picker** — the arrow-on-de
 
 ## Queries
 

@@ -1,7 +1,7 @@
 ---
 title: burner-phone
 created: 2026-09-07
-updated: 2026-09-07
+updated: 2026-09-16
 type: entity
 tags:
   - bot
@@ -23,7 +23,8 @@ Topic entity for the **burner-phone** skill: control an Android device with an a
 - DFlash2 is downloaded as a 1GB speculative-decoder artifact and needs to be integrated with Ornith for the device; integration config now identified as `--spec-draft-model` + `--ctx-other` + `--hf-repo-draft`, run against the original qwen4 v0.4.0-dev service (`-ngl -c -t`), still unverified after an empty response (reasoning consumed the budget). ^[raw/inbox/2026-09-07.md] ^[raw/inbox/2026-09-15.md]
 - GPU-offload root cause (2026-09-15): `-ngl 9999` fails because `CUDA_VISIBLE_DEVICES=1` isn't honored through `su`. ^[raw/inbox/2026-09-15.md]
 - Omarchy 27B confirmed working (test echo: "2+2 equals 4, no more.") 2026-09-15; the local runtime probe continues on Ornith. ^[raw/inbox/2026-09-15.md]
-- Runtime rebuild (2026-09-15): `/tmp` was wiped on restart, losing the qwen4 v0.4.0-dev build; checking persistent runtimes and rebuilding. ^[raw/inbox/2026-09-15.md]
+|- Runtime rebuild (2026-09-15): `/tmp` was wiped on restart, losing the qwen4 v0.4.0-dev build; checking persistent runtimes and rebuilding. ^[raw/inbox/2026-09-15.md]
+|- Fit calculation (2026-09-16): moved from trial 507s to a fit-calc approach over 28GB hardware — `model_size + KV_cache <= tier_size`, comfortable-fit `model_size + 2GB <= tier_size`, check every tier (CPU + Unified). ^[raw/inbox/2026-09-16.md]
 
 ## Links
 

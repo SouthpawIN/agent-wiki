@@ -1,6 +1,6 @@
 # music — wiki index
 > One line per page. The wiki row's CONTEXT section renders this file.
-> Last updated: 2026-09-16 | Total pages: 23
+> Last updated: 2026-09-17 | Total pages: 23
 
 ## Entities
 - [[topics/music/wiki/entities/ace-step|ACE-Step 1.5 4B (MLX 4bit)]] — A 2.06 GB MLX-quantized music model that Chris chose as the first local generation candidate on his 32 GB Mac because it fits alongside existing workloads. Herm

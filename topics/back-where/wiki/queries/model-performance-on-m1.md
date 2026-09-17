@@ -27,6 +27,9 @@ Can the Qwen3.8 27B unleashed Q3K exile variant reach acceptable speed at 131K o
 
 What exact tuning is needed to make the 131K unleashed configuration fast enough on this hardware, given Chris explicitly rejected the current speed as insufficient?
 
+## 2026-09-16 quantization pivot
+The tuning question widened on 2026-09-16 from one config to a tier-based selection rule: there is no single best quant, only the optimal quant per hardware tier. The deciding factor is power efficiency when accuracy is preserved — a GSQ version claiming 0 task loss from FP16 is preferred because it "does effectively the same job at a lower power requirement." The concrete target became the **GSQ RCO IQ3S**, chosen if it is near task-lossless, draws less power, fits a higher context length, runs faster, and leaves headroom for later options like D Flash 2. ^[raw/inbox/2026-09-16.md] The earlier Q3K exile preference is superseded by this conditional GSQ preference (see contested note in GSQ RCO IQ3S selection preference). ^[raw/inbox/2026-09-16.md]
+
 ## Rejected baseline
 
 The 131K unleashed audition was attempted and explicitly rejected as too slow on 2026-09-07, despite Chris expecting enough RAM to complete at least one step. Outputs from that run were retained for later use rather than discarded.

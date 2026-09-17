@@ -1,0 +1,10 @@
+---
+title: Which model formats and quantizations are compatible with a CUDA-enabled llama.c
+type: query
+proposed: 2026-09-17 05:47
+tags: [question]
+---
+# Which model formats and quantizations are compatible with a CUDA-enabled llama.cpp built from a qwen4 fork on Chris's O'Marki home lab?
+It's the format-level complement to his routing goal — he needs to know which models he can actually serve once formats are right.
+
+_Approve to run the research; the answer lands here._

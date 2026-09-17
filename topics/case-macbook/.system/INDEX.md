@@ -1,5 +1,5 @@
 # INDEX — topics/case-macbook
-_3 files · 1 KB · regenerate: `python3 assets/build-index.py`_
+_7 files · 4 KB · regenerate: `python3 assets/build-index.py`_
 
 Read order for an agent: this file → pick a file below → its outline → `read_file offset=<line> limit=<n>`. Sessions under `.system/sessions/` are full transcripts (largest; go by outline).
 
@@ -10,12 +10,21 @@ Read order for an agent: this file → pick a file below → its outline → `re
     - L7 ## Status
 
 ## .system
+- `.system/agent.cursor` — 0 KB, 1 lines — raw/inbox/2026-09-16.md@b59b3e908907
 - `.system/continuity.md` — 0 KB, 3 lines — Continuity — case-macbook
     - L1 # Continuity — case-macbook
-- `.system/queue.md` — 0 KB, 11 lines — Queue — case-macbook
+- `.system/injections.md` — 0 KB, 8 lines — Injections — case-macbook
+    - L1 # Injections — case-macbook
+    - L3 ## [UNREAD]
+    - L7 ## [READ]
+- `.system/queue.md` — 1 KB, 14 lines — Queue — case-macbook
     - L1 # Queue — case-macbook
     - L3 ## [CONTEXT]
-    - L6 ## [SKILLS]
-    - L8 ## [AGENTS]
-    - L10 ## [LOOPS]
+    - L7 ## [SKILLS]
+    - L9 ## [AGENTS]
+    - L13 ## [LOOPS]
+
+## agents
+- `agents/case-shopper.md.proposed` — 1 KB, 24 lines — type: agent
+- `agents/download-queue-tender.md.proposed` — 1 KB, 28 lines — type: agent
 

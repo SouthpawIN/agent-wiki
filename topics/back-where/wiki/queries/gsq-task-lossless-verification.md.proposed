@@ -1,0 +1,10 @@
+---
+title: Does the GSQ (Google-Sponsored Quantization) RCO IQ3S quantization of Qwen3.8 27
+type: query
+proposed: 2026-09-17 01:31
+tags: [question]
+---
+# Does the GSQ (Google-Sponsored Quantization) RCO IQ3S quantization of Qwen3.8 27B unleashed actually match FP16 output quality on real tasks, or is the '0 task loss' claim marketing?
+It is the single unverified condition on Chris's current GSQ RCO IQ3S selection preference.
+
+_Approve to run the research; the answer lands here._

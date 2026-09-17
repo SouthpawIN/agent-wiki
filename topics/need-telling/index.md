@@ -1,6 +1,6 @@
 # need-telling — wiki index
 > One line per page. The wiki row's CONTEXT section renders this file.
-> Last updated: 2026-09-16 | Total pages: 11
+> Last updated: 2026-09-17 | Total pages: 11
 
 ## Entities
 - [[topics/need-telling/wiki/entities/gaming-experience|Gaming Experience]] — The concrete standing goal Chris is actively pushing an agent toward on 2026-09-13: make a connection and set up the gaming experience he wants. This is the fir

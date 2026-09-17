@@ -1,7 +1,7 @@
 ---
 title: Music model fit-calculation system
 created: 2026-09-16
-updated: 2026-09-16
+updated: 2026-09-17
 type: concept
 tags: [pref, music, infra, spec]
 sources: [raw/inbox/2026-09-16.md]
@@ -32,6 +32,13 @@ Concretely, at 262K context in q8_0 the KV cache runs ~2–4 GB for most models.
 - "Can't exceed tier size. Check EVERY tier." — the fit check must run against every tier, not just the largest or the current one. ^[raw/inbox/2026-09-16.md]
 - Rule of thumb for comfortable fit: `model_size + 2GB ≤ tier_size`. ^[raw/inbox/2026-09-16.md]
 - If a model does not fit: drop to a smaller quant, or record "doesn't fit" rather than forcing it. ^[raw/inbox/2026-09-16.md]
+
+## Table tracking columns
+
+On 2026-09-16 (22:24) Chris asked that the fit-calculation tables carry two extra per-model columns so optimization can be tracked over time: the engine used for each run and the flags used. ^[raw/inbox/2026-09-16.md] The explicit intent is a record that will "help us optimize better" as models and tiers are tested. ^[raw/inbox/2026-09-16.md]
+
+- Each model row should record: model size (quant), KV cache, tier fit, the engine used, and the flags used. ^[raw/inbox/2026-09-16.md]
+- These columns turn the fit check from a one-off go/no-go into a running optimization log. ^[raw/inbox/2026-09-16.md]
 
 ## Why this matters
 

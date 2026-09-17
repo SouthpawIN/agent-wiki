@@ -1,0 +1,15 @@
+---
+type: loop
+name: turbofit-page-sync
+proposed: 2026-09-17 04:02
+schedule: every 2h
+---
+# turbofit-page-sync
+owner: turbosovth · cadence: every 2h · status: SUGGESTED
+**Want a bot that syncs the model pages as new TurboFit settings get built, so the wiki and the config never drift?**
+
+## Prompt
+Read each model's wiki page, compare against the current TurboFit config, reconcile any drift, and note discrepancies on the page.
+
+## Evidence
+> "we're going to be using this this wiki to build turbo" — raw/inbox/2026-09-16.md

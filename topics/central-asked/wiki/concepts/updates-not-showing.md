@@ -20,4 +20,4 @@ Two things are entangled here:
 - **Wrong index / wrong place:** "I'm looking at the index under triple fit" — Chris was browsing the TurbFit (he said "triple fit") index rather than the central-asked index, and concluded he's "looking in the wrong place."^[raw/inbox/2026-09-16.md]
 
 ## Related
-The underlying component is the [[preview-pane|preview pane]]; the new-tab chrome question is [[plus-sign-disappears|plus-sign query]].
+The underlying component is the [[preview-pane|preview pane]]; the new-tab chrome question is [[plus-sign-disappears|plus-sign query]]. The second half of the same 2026-09-16 complaint — that the index and full wiki should be ONE page — is [[combine-index-and-full-wiki|combine index and full wiki]].

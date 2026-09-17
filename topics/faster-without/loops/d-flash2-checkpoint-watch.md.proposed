@@ -1,0 +1,16 @@
+---
+type: loop
+name: d-flash2-checkpoint-watch
+proposed: 2026-09-17 04:15
+schedule: 0 9 * * *
+---
+# d-flash2-checkpoint-watch
+owner: d-flash-benchmarker · cadence: every morning · status: SUGGESTED
+**I see the checkpoint-before-experiment rule keeps needing enforcement and the 81 tok/s save was never confirmed — want a loop that checks the current fast build still has a valid checkpoint before you move on?**
+
+## Prompt
+Check whether the current fast build in faster-without has a current checkpoint; if not, flag it so the fix-tables-then-checkpoint ordering is honored before any DFlash2 move.
+
+## Evidence
+> "before you do that save this 81 tokens a second build because that is excellent. I don't want to lose this Save this as a checkpoint"
+> "fix your checkpoint with what we have currently before we move any further."

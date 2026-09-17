@@ -30,6 +30,7 @@
 | claude-code | default, anser, dogeman, fleet-orchestrator, klerik, looker, paladin, senter, senter-wiki-bot, teknium, turbosovth, weaver | Delegate coding to Claude Code CLI (features, PRs). | live |
 | claude-design | default, anser, dogeman, fleet-orchestrator, klerik, looker, paladin, senter, senter-wiki-bot, teknium, turbosovth, weaver | Design one-off HTML artifacts (landing, deck, prototype). | live |
 | clean-environment-model-evaluation | topic:hermes-agent | Use when evaluating a model in a live Hermes session. Behavior: enforce a clean test environment, us | live |
+| click-options-turbofit-user-path-verify | senter, topic:click-options | Verify TurboFit provider/model changes in Hermes. | live |
 | codebase-inspection | default, anser, dogeman, fleet-orchestrator, klerik, looker, paladin, senter, senter-wiki-bot, teknium, turbosovth, weaver | Inspect codebases w/ pygount: LOC, languages, ratios. | live |
 | codex | default, anser, dogeman, fleet-orchestrator, klerik, looker, paladin, senter, senter-wiki-bot, teknium, turbosovth, weaver | Delegate coding to OpenAI Codex CLI (features, PRs). | live |
 | comfyui | default, anser, dogeman, klerik, looker, paladin, senter, teknium, turbosovth, weaver | Generate images, video, and audio via diffusion workflows. | live |
@@ -185,6 +186,7 @@
 | tts-fresh-entitlement-retry | topic:back-where | Use when TTS fails after a credit top-up or entitlement error. Retry audio-client resolution with fr | live |
 | turbo-artifact-download-spec | topic:turbofit | Use when downloading new TurboFit GGUF/MLX candidate artifacts. Build a reproducible curl-backed dow | live |
 | turbo-fit-evidence-capture | topic:turbofit | Use when capturing TurboFit performance or behavior evidence. Capture from Chris's actual Hermes win | live |
+| turbo-fit-lane-rules | topic:both-smarter | Use when choosing a quantization/model for a device lane on Chris's hardware or tracking his TurboFi | live |
 | turbo-model-store-cleanup | default, anser, dogeman, fleet-orchestrator, klerik, looker, paladin, senter, senter-wiki-bot, teknium, turbosovth, weaver, topic:turbofit | Use when freeing TurboFit storage. Delete only wiki-marked. | live |
 | turbofit | default, anser, dogeman, fleet-orchestrator, klerik, looker, paladin, senter, senter-wiki-bot, teknium, turbosovth, weaver | Rules for Turbofit Wiki. Use when editing. | live |
 | turbofit-runtime-setup | default | Use when setting up or fixing the Turbofit local runtime. | live |
@@ -210,6 +212,7 @@
 | wiki-live-music-hookup | fleet-orchestrator, topic:senter | Use when wiring music into the Senter wiki. Play real audio (Spotify/YouTube) and drive the EQ + hea | live |
 | wiki-look-verify | looker, senter, senter-wiki-bot, weaver, topic:senter-wiki | Verify Senter Wiki visuals via Chris's real window. | live |
 | wiki-media-hud-hitzones | fleet-orchestrator, topic:senter | Use when touching the wiki music HUD volume/mute/transport. Enforces Chris's locked rocker look and  | live |
+| wiki-orientation-procedure | topic:kashik | Use before ingesting, querying, or linting an existing topic wiki. Always orient first: read SCHEMA. | live |
 | wiki-overlay-z-order | fleet-orchestrator, topic:senter | Use when any wiki UI change touches layering. Keep chat + music HUD topmost and hit-test-prove it. | live |
 | wiki-page-quality-check | senter, senter-wiki-bot, topic:senter-wiki | Use after a topic-wiki compile. Check one page, scan dupes. | live |
 | wiki-player-audio-path | topic:youtube | Use when changing the Senter wiki music player's audio element or source. Apply state on creation, t | live |

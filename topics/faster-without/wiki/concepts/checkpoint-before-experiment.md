@@ -14,4 +14,6 @@ He said it mid-direction, as the bot moved toward enabling DFlash2: "before you 
 
 The intent is a safety checkpoint on the fast (81 tok/s) baseline specifically — not a general checkpoint policy. ^[raw/inbox/2026-09-15.md#L13]
 
-See [[topics/faster-without/wiki/entities/81-tok-s-build|81 tok/s Build]], [[topics/faster-without/wiki/entities/d-flash2|DFlash2]], and [[topics/faster-without/wiki/comparisons/with-without-d-flash|With vs Without D-Flash]].
+On **2026-09-16** this was extended into a broader pre-move ordering: before any further experiment (including the pending DFlash2 draft), "fix all the tables" and then "fix your checkpoint with what we have currently" — i.e. refresh the checkpoint to the current build. See [[topics/faster-without/wiki/decisions/fix-tables-then-checkpoint|Fix Tables Then Checkpoint]]. ^[raw/inbox/2026-09-16.md#L11]
+
+See [[topics/faster-without/wiki/entities/81-tok-s-build|81 tok/s Build]], [[topics/faster-without/wiki/entities/d-flash2|DFlash2]], [[topics/faster-without/wiki/comparisons/with-without-d-flash|With vs Without D-Flash]], and [[topics/faster-without/wiki/decisions/fix-tables-then-checkpoint|Fix Tables Then Checkpoint]].

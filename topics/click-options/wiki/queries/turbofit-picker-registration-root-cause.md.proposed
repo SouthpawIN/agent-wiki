@@ -1,0 +1,10 @@
+---
+title: What config file/registry does the Hermes desktop provider/model picker read to 
+type: query
+proposed: 2026-09-17 03:37
+tags: [question]
+---
+# What config file/registry does the Hermes desktop provider/model picker read to build its provider list, and why is the TurboFit provider not written into it even though it's registered in the runtime config?
+The recurring 09-13→09-16 gap is picker-registration, not model loading — until that one root is found every day produces a new variant of the missing-provider symptom.
+
+_Approve to run the research; the answer lands here._

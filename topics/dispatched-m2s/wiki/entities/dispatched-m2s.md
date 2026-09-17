@@ -38,6 +38,10 @@ From the same raw inbox, two successful batches completed later in the day:
 
 - [[concepts/delegation-timeout|delegation owner exit timeout]] - the failure mode that affected batch deleg_e76115bb
 
+## TurboFit wiki plan
+
+^[raw/inbox/2026-09-16.md] At `2026-09-16 23:35`, Chris directed that this wiki be used to build TurboFit: each model gets its own page, useful setup-relevant nuggets about each model are collected, and redundant notes that have been "sat a couple times" are consolidated without losing useful information. See [[decisions/turbofit-model-pages|TurboFit per-model wiki pages and consolidation]].
+
 ## Open questions
 
 - What was the actual leaf subagent goal, model, and duration?

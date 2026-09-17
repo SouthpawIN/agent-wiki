@@ -9,6 +9,8 @@
 - [ ] granular-recovery — distilled 2026-09-06 22:51 → skills/granular-recovery/SKILL.md (auto-applied)
 
 ## [AGENTS]
+- [ ] gaming-scout — SUGGESTED 2026-09-17 06:44: I see you keep trying to set up the gaming experience you want but 'connection' and 'gaming experience' are both still u → agents/gaming-scout.md.proposed
+- [ ] gaming-scout — SUGGESTED 2026-09-17 06:44: I see you keep trying to set up the gaming experience you want but 'connection' and 'gaming experience' are both still u → agents/gaming-scout.md.proposed
 - [ ] center-vault-auditor — SUGGESTED 2026-09-06 22:51: I see you're trying to prevent the same overwrite from silently killing live state — want a bot that continuously diffs  → agents/center-vault-auditor.md.proposed
 
 ## [LOOPS]

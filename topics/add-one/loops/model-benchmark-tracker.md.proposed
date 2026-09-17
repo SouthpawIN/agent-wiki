@@ -1,0 +1,15 @@
+---
+type: loop
+name: model-benchmark-tracker
+proposed: 2026-09-17 00:01
+schedule: 0 9 * * *
+---
+# model-benchmark-tracker
+owner: turbosovth · cadence: daily · status: SUGGESTED
+**Want a loop that periodically checks each model's best tokens-per-second across your runs and flags which one is fastest now?**
+
+## Prompt
+Compare the current best tok/s per model against the previous run and report any model that has improved or been overtaken, so the TurboFit list stays current.
+
+## Evidence
+> which will show the best tokens per second that we've achieved with each one of those.

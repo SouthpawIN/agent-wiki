@@ -1,6 +1,8 @@
 # Injections — beyond-pissed
 
 ## [UNREAD]
+[AGENTS] I see you're trying to pin down which model formats actually run on that CUDA llama.cpp runtime — want a daily bot that watches for which formats stay compatible as you add models?
+[AGENTS] I see you want to pick which models O'Marki serves to this MacBook — want a bot that curates and routes model selection between the Arch lab and the Mac?
 [AGENTS] Want a loop that checks which models O'Marki is currently serving to the MacBook and flags anything that shouldn't be?
 [AGENTS] I see you want to select which models O'Marki serves to this MacBook — want a bot that helps you pick and route which models O'Marki's home lab serves here?
 [AGENTS] I see you asked for the latest Oh My Archi and the install hasn't finished — want a bot that pulls the newest Oh My Archi release to ~/tmp/omarchy/ so you're flashing current, not stale?

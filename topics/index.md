@@ -3,9 +3,9 @@ title: Turbofit Wiki
 created: 2026-09-16
 updated: 2026-09-16
 type: wiki
-links:
+integrations:
   github: https://github.com/SouthpawIN/turbofit
-  huggingface_turbofit: https://huggingface.co/SouthpawIN
+  huggingface: https://huggingface.co/SouthpawIN
   omarchy: https://github.com/SouthpawIN/omarchy
 sources:
   - index.md
@@ -17,6 +17,14 @@ sources:
   - wiki/decisions/
   - wiki/comparisons/
   - wiki/queries/
+---
+
+## Integrations
+
+- **GitHub:** [SouthpawIN/turbofit](https://github.com/SouthpawIN/turbofit)
+- **HuggingFace:** [SouthpawIN](https://huggingface.co/SouthpawIN)
+- **Omarchy:** [SouthpawIN/omarchy](https://github.com/SouthpawIN/omarchy)
+
 ---
 
 ## Overview
@@ -33,6 +41,70 @@ model: auto
 ```
 
 **TurboFit Check** scans the machine — dedicated VRAM, unified/integrated memory, or RAM-only — and applies Auto or a selected compatible lane.
+
+## Implementation
+
+### DFlash2 Integration
+
+DFlash2 draft models are not interchangeable across runtimes. On this box the boundary is concrete: MTPLX cannot use DFlash2, and Unleashed+DFlash2 only works through the dedicated `dflash2-llama.cpp` fork with a narrow valid flag set.
+
+**Key facts:**
+- MTPLX uses native MLX MTP heads
+- DFlash2 is a CUDA/llama.cpp/vLLM/sglang diffusion draft model
+- DFlash2 is incompatible with MTPLX's native MLX MTP heads
+
+**Valid launch for Unleashed+DFlash2:**
+- Runtime: `dflash2-llama.cpp` fork
+- Flag: `--model-draft` for draft model path
+- Context: 131072
+- Port: 11606
+
+**Common failures:**
+- `couldn't bind HTTP server socket` — port already in use
+- DFlash2 flag incompatibilities with stock llama.cpp
+- Memory pressure at 131K context
+
+### MTPLX Speed Optimization
+
+`Youssofal/Qwen3.8-27B-MTPLX-Optimized-Speed` is the candidate Hermes TurboFit provider. Served via `~/turbofit/.venv/bin/mtplx serve` with OpenAI-compatible endpoint.
+
+**Performance:**
+- Short-context: ~12.4 tok/s (2.5x faster than Unleashed Q3_K_XL)
+- 65K context: ~7-12 tok/s
+- 131K context: Memory guard triggers, OOM risk
+
+### Nail Qwen 3.6 35B
+
+`Nail-Qwen3.6-35B-A3B-UD-Q4_K_XL.gguf` (~20.82 GB) with `mmproj-F16.gguf` (~858 MB). MoE architecture (3B active params per token).
+
+### MTP Performance
+
+MTP (Multi-Token Prediction) is a model capability for speculative decoding. Dirk-Qwen3.8-27B-GGUF includes MTP support.
+
+### MTPLX Performance
+
+Evidence-observed performance of `Youssofit/Qwen3.8-27B-MTPLX-Optimized-Speed` on 32GB M1 Mac:
+- Short-context throughput: ~12.4 tok/s
+- Long-context overcommit: Memory guard triggers at 131K
+- Live memory-guard behavior: `prefill_admission_shed` events
+
+### Verifier Bridge
+
+`turbofit-verifier` is the existing TurboFit topic bot. Should drive verification through `desktop_preview` on a real Hermes window instead of summary claims.
+
+## Issues
+
+### MPLX Metal Failures
+
+`mtplx serve --download` background process exited with code 1 after 42.2s due to `RuntimeError: [METAL] Command buffer execution failed: Insufficient Memory (00000008:***)` during MTP injection.
+
+### MTPLX Configuration
+
+`mtplx serve` with `--memory-budget 32GB` exits with error. MTPLX's CLI does not accept `--memory-budget` as a flag.
+
+### Memory Crashes
+
+A `mtplx serve` background process exited with code -9 during TurboFit testing. Memory plan marked `OVER` before crash.
 
 ## Model Zoo
 
@@ -130,10 +202,6 @@ Comfortable: model_size + 2GB ≤ tier_size
 > ★ = on TurboFit List. Models without ★ are Model Zoo only.
 
 ---
-
-## Entities
-
-> All 26 entities from the entity catalog. Each entry preserves the full content of its source file.
 
 ## Concepts
 

@@ -30,4 +30,4 @@ Chris found a **matte black case for "MacBook Pro 14 inch" on Amazon** and asked
 ## See also
 - [[topics/case-macbook/wiki/comparisons/case-compatibility|Case Compatibility]]
 - [[topics/case-macbook/wiki/queries/amazon-matte-black-case|Amazon Matte Black Case Query]]
-- [[topics/case-macbook/wiki/decisions/macbook-case-purchase|MacBook Case Purchase Status]]
+- [[topics/case-macbook/wiki/decisions/macbook-case-status|MacBook Case Status & Compatibility Decision]]

@@ -23,4 +23,5 @@ The table is the topic's Model Zoo (see [[concepts/model-zoo-table|Model Zoo tab
 ## Related
 - [[decisions/column-sorting|Column sorting by click]]
 - [[decisions/add-parameters-category|Add "parameters" as a new table category]]
+- [[decisions/column-ordering|Column ordering]]
 - [[concepts/model-zoo-table|Model Zoo table]]

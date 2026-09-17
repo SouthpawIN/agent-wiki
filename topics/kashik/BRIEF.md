@@ -28,6 +28,8 @@ _Pre-prompt for the cutter and this topic's agent. Chris edits freely; lines end
 - One line, phrased as a question Chris can say yes to, tied to a quote from him, naming the bot that would do it.
 
 ## Learned (agent-appended, newest first)
+- 2026-09-17 · 2026-09-17 · The wiki orientation procedure was restated verbatim in the watcher's filing and is now codified as a real skill (skills/wiki-orientation-procedure/SKILL.md) so it auto-applies on every compile
+- 2026-09-17 · 2026-09-17 · The companion 'Initializing a New Wiki' procedure is still incomplete in source (stops at step 1) — fill it in when Chris actually starts a new topic wiki
 - 2026-09-15 · 2026-09-14 · Chris located the official kashik repos (SouthpawIN/kashik) and moved to clone the key ones to read their documentation as source rather than paraphrase
 - 2026-09-09 · Slug generation uses .split(".md")[0] pattern — Chris verified this works for progressive disclosure frontmatter
 - 2026-09-07 · 2026-09-07 · librarian progressively discovers wiki skills, bots, and loops

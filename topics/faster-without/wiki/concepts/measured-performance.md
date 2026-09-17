@@ -16,4 +16,6 @@ On the same date the DFlash2 experiment produced a positive high-speed result: w
 
 On **2026-09-16**, the follow-up run reported the enabling conditions had improved: "**More KV cache room, lower power, faster inference, room for DFlash2 draft.**" ^[raw/inbox/2026-09-16.md#L7] The line frames the trajectory as a continuing speed-up — more KV cache headroom and lower power draw are read as levers toward the "much faster" state Chris remembered — and notes DFlash2's spec-draft path is still open ("room for DFlash2 draft"). ^[raw/inbox/2026-09-16.md#L7] It is a hermes status note (no Chris quote, no numeric benchmark), so it records intent/observation only.
 
-See [[topics/faster-without/wiki/entities/unleashed|Unleashed]] and [[topics/faster-without/wiki/decisions/retain-131k-context|Retain 131K Context]].
+On that date Chris also imposed a **stop-before-new-experiment ordering** (see [[topics/faster-without/wiki/decisions/fix-tables-then-checkpoint|Fix Tables Then Checkpoint]]): before any further move — including the still-pending DFlash2 draft — the wiki tables must be fixed and the checkpoint refreshed to the current build. ^[raw/inbox/2026-09-16.md#L11]
+
+See [[topics/faster-without/wiki/entities/unleashed|Unleashed]], [[topics/faster-without/wiki/decisions/retain-131k-context|Retain 131K Context]], and [[topics/faster-without/wiki/decisions/fix-tables-then-checkpoint|Fix Tables Then Checkpoint]].

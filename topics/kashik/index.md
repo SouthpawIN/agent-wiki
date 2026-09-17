@@ -1,6 +1,6 @@
 # kashik — wiki index
 > One line per page. The wiki row's CONTEXT section renders this file.
-> Last updated: 2026-09-16 | Total pages: 9
+> Last updated: 2026-09-17 | Total pages: 9
 
 ## Entities
 - [[topics/kashik/wiki/entities/kashik|kashik]] — kashik is Chris's silent historian and librarian for the Senter wiki. It watches agent activity and maintains per-agent `llm-wiki` documentation for Chris's sec
