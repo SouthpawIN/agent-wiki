@@ -55,7 +55,7 @@ model: auto
 > All models discovered during research. ★ = on TurboFit List.
 
 | Model | Type | System | Parameters | AIME26 | GPQA-D | DeepSWE | LCBv6 | TB4.0 | HuggingFace |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | [[Maple Preview]] ★ | Aux LLM (Ternary MoE) | Omarchy | 20B-A1B | 87.5% | 73.5% | - | 75.1% | - | [maple-preview](https://huggingface.co/deepgrove/maple-preview) |
 | [[Cyber Tiel Coder]] ★ | Code LLM (MoE) | Omarchy, MacBook | 35B-A3B | - | - | - | - | - | [Cyber-Tiel-Coder-GGUF](https://huggingface.co/peculiar-ragdoll/Cyber-Tiel-Coder-35B-A3B-GGUF-MTP) |
 | [[Qwen 3.8 GSQ-RCO]] ★ | LLM (Quantized) | Omarchy | 27B | - | 89.2% | 42.2% | 90.3% | - | [GSQ-RCO-GGUF](https://huggingface.co/ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF) |
@@ -83,7 +83,7 @@ model: auto
 > 5 models suitable for running Hermes Agent locally. Ordered by capability.
 
 | Order | Model | Type | Parameters | Optimal Quant | Size | AIME26 | GPQA-D | DeepSWE | LCBv6 | TB4.0 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 | **Maple Preview** | Ternary MoE | 20B-A1B | TQ2_0-head-Q4_K | 5.5 GiB | 87.5% | 73.5% | - | 75.1% | - |
 | 2 | **Cyber Tiel Coder** | Code LLM (MoE) | 35B-A3B | UD-Q4_K_XL | 22.4 GiB | - | - | - | - | - |
 | 3 | **Qwen 3.8 GSQ-RCO** | LLM (Quantized) | 27B | IQ3_S | 11.8 GiB | - | 89.2% | 42.2% | 90.3% | - |
@@ -102,46 +102,46 @@ Comfortable: model_size + 2GB ≤ tier_size
 
 ### GPU (NVIDIA/AMD VRAM — ≤16GB assumes system RAM available for MoE offload and KV cache)
 
-| Tier | Model | Quant | Size | VRAM Used | Context | Engine | Flags | Notes |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| <8 GB | Maple | TQ2_0 | 5.5 GiB | ~6 GiB | 131K native, 262K w/ RoPE | llama.cpp | `--ctx-size 262144 --n-gpu-layers 999 --mlock` | SSD streaming via ssdmoe. System RAM for KV cache. |
-| 16 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~12 GiB | 131K-262K | llama.cpp | `--ctx-size 262144 --n-gpu-layers 999 --mlock` | Near-lossless. Cyber-Tiel Q3_K_M also fits (~14 GiB). |
-| 24 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~12 GiB | 262K | llama.cpp | `--ctx-size 262144 --n-gpu-layers 999 --mlock` | Same near-lossless model, more KV headroom |
-| 32 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~12 GiB | 262K+ | llama.cpp | `--ctx-size 262144 --n-gpu-layers 999 --mlock` | Same. Bigger KV cache. Consider Cyber-Tiel for code |
-| 48 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~12 GiB | 262K+ | llama.cpp | `--ctx-size 262144 --n-gpu-layers 999 --mlock` | Still IQ3_S. More context headroom |
-| 64 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~16 GiB | 262K+ | llama.cpp | `--ctx-size 262144 --n-gpu-layers 999 --mlock` | Near-lossless. 52GB free for KV cache, DFlash2 draft. |
-| 96 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 262K native, 1M w/ YaRN | llama.cpp | `--ctx-size 1048576 --n-gpu-layers 999 --mlock` | Qwen4 preview, beats Claude Opus 4.6 |
-| 128 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 1M | llama.cpp | `--ctx-size 1048576 --n-gpu-layers 999 --mlock` | Max context for Flash Next |
-| 256 GB | DeepSeek V4.1 Flash | FP8 | 160 GiB | ~162 GiB | 1M | llama.cpp | `--ctx-size 1048576 --n-gpu-layers 999 --mlock` | Top capability. SSD streaming for Engram |
+| Tier | Model | Quant | Size | VRAM Used | Context | Engine | Flags | Tok/s | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| <8 GB | Maple | TQ2_0 | 5.5 GiB | ~6 GiB | 131K native, 262K w/ RoPE | llama.cpp | `--ctx-size 262144 --n-gpu-layers 999 --mlock` | ~10 tok/s (est.) | SSD streaming via ssdmoe. System RAM for KV cache. |
+| 16 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~12 GiB | 131K-262K | llama.cpp | `--ctx-size 262144 --n-gpu-layers 999 --mlock` | ~85 tok/s (Omarchy) | Near-lossless. Cyber-Tiel Q3_K_M also fits (~14 GiB). |
+| 24 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~12 GiB | 262K | llama.cpp | `--ctx-size 262144 --n-gpu-layers 999 --mlock` | ~85 tok/s (Omarchy) | Same near-lossless model, more KV headroom |
+| 32 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~12 GiB | 262K+ | llama.cpp | `--ctx-size 262144 --n-gpu-layers 999 --mlock` | ~85 tok/s (Omarchy) | Same. Bigger KV cache. Consider Cyber-Tiel for code |
+| 48 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~12 GiB | 262K+ | llama.cpp | `--ctx-size 262144 --n-gpu-layers 999 --mlock` | ~85 tok/s (Omarchy) | Still IQ3_S. More context headroom |
+| 64 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~16 GiB | 262K+ | llama.cpp | `--ctx-size 262144 --n-gpu-layers 999 --mlock` | ~85 tok/s (Omarchy) | Near-lossless. 52GB free for KV cache, DFlash2 draft. |
+| 96 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 262K native, 1M w/ YaRN | llama.cpp | `--ctx-size 1048576 --n-gpu-layers 999 --mlock` | ~70-85 tok/s (Omarchy) | Qwen4 preview, beats Claude Opus 4.6 |
+| 128 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 1M | llama.cpp | `--ctx-size 1048576 --n-gpu-layers 999 --mlock` | ~70-85 tok/s (Omarchy) | Max context for Flash Next |
+| 256 GB | DeepSeek V4.1 Flash | FP8 | 160 GiB | ~162 GiB | 1M | llama.cpp | `--ctx-size 1048576 --n-gpu-layers 999 --mlock` | TBD | Top capability. SSD streaming for Engram |
 
 > IQ3_S = near-lossless. Recommended for all tiers where it fits. Only move to FP16 at 64GB+.
 > Flash Next QSA gives ~4.9x decode speedup vs dense attention at 262K. IQ3_XXS is the sweet spot for 96GB+.
 
 ### CPU (System RAM — model + KV must fit in RAM)
 
-| Tier | Model | Quant | Size | RAM Used | Context | Engine | Flags | Notes |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| <8 GB | Maple | TQ2_0 | 5.5 GiB | ~6 GiB | 131K native | llama.cpp | `--ctx-size 131072 --no-mmap --mlock` | Minimum viable |
-| 16 GB | Cyber-Tiel Coder | Q3_K_M | ~14 GiB | ~16 GiB | 262K native | llama.cpp | `--ctx-size 262144 --no-mmap --mlock` | MoE, 3B active. Faster than GSQ-RCO on CPU. |
-| 32 GB | Cyber-Tiel Coder | UD-Q4_K_XL | 22.4 GiB | ~23 GiB | 262K native | llama.cpp | `--ctx-size 262144 --no-mmap --mlock` | MoE, 3B active, fast on CPU |
-| 48 GB | Cyber-Tiel Coder | UD-Q4_K_XL | 22.4 GiB | ~23 GiB | 262K+ | llama.cpp | `--ctx-size 262144 --no-mmap --mlock` | More KV headroom |
-| 64 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~16 GiB | 262K+ | llama.cpp | `--ctx-size 262144 --no-mmap --mlock` | Near-lossless. Low power, high context headroom. |
-| 96 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 262K native | llama.cpp | `--ctx-size 1048576 --no-mmap --mlock` | Flash Next entry tier |
-| 128 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 1M w/ YaRN | llama.cpp | `--ctx-size 1048576 --no-mmap --mlock` | Max context |
-| 256 GB | DeepSeek V4.1 Flash | FP8 | 160 GiB | ~162 GiB | 1M | llama.cpp | `--ctx-size 1048576 --no-mmap --mlock` | Max tier |
+| Tier | Model | Quant | Size | RAM Used | Context | Engine | Flags | Tok/s | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| <8 GB | Maple | TQ2_0 | 5.5 GiB | ~6 GiB | 131K native | llama.cpp | `--ctx-size 131072 --no-mmap --mlock` | ~8 tok/s (est.) | Minimum viable |
+| 16 GB | Cyber-Tiel Coder | Q3_K_M | ~14 GiB | ~16 GiB | 262K native | llama.cpp | `--ctx-size 262144 --no-mmap --mlock` | ~23 tok/s (MacBook) | MoE, 3B active. Faster than GSQ-RCO on CPU. |
+| 32 GB | Cyber-Tiel Coder | UD-Q4_K_XL | 22.4 GiB | ~23 GiB | 262K native | llama.cpp | `--ctx-size 262144 --no-mmap --mlock` | ~23 tok/s (MacBook) | MoE, 3B active, fast on CPU |
+| 48 GB | Cyber-Tiel Coder | UD-Q4_K_XL | 22.4 GiB | ~23 GiB | 262K+ | llama.cpp | `--ctx-size 262144 --no-mmap --mlock` | ~23 tok/s | More KV headroom |
+| 64 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~16 GiB | 262K+ | llama.cpp | `--ctx-size 262144 --no-mmap --mlock` | ~12 tok/s (65K ctx) | Near-lossless. Low power, high context headroom. |
+| 96 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 262K native | llama.cpp | `--ctx-size 1048576 --no-mmap --mlock` | TBD | Flash Next entry tier |
+| 128 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 1M w/ YaRN | llama.cpp | `--ctx-size 1048576 --no-mmap --mlock` | TBD | Max context |
+| 256 GB | DeepSeek V4.1 Flash | FP8 | 160 GiB | ~162 GiB | 1M | llama.cpp | `--ctx-size 1048576 --no-mmap --mlock` | TBD | Max tier |
 
 ### Unified Memory (Apple Silicon — shared CPU/GPU RAM)
 
-| Tier | Model | Quant | Size | RAM Used | Context | Engine | Flags | Notes |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| <8 GB | Maple | TQ2_0 | 5.5 GiB | ~6 GiB | 131K native | MTPLX | `--context-length 131072` | 218 tok/s on M4 Mac mini |
-| 16 GB | Cyber-Tiel Coder | Q3_K_M | ~14 GiB | ~16 GiB | 262K native | MTPLX | `--context-length 262144` | MoE, 3B active. Faster than GSQ-RCO on Apple Silicon. |
-| 32 GB | Cyber-Tiel Coder | UD-Q4_K_XL | 22.4 GiB | ~23 GiB | 262K native | MTPLX | `--context-length 262144` | 22+4=26GB ✓, fast MoE on Apple Silicon |
-| 48 GB | Cyber-Tiel Coder | UD-Q4_K_XL | 22.4 GiB | ~23 GiB | 262K+ | MTPLX | `--context-length 262144` | M2 Max/Ultra territory |
-| 64 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~16 GiB | 262K+ | MTPLX | `--context-length 262144` | Near-lossless. Low power, high context headroom. |
-| 96 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 262K native | MTPLX | `--context-length 1048576` | M4 Ultra |
-| 128 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 1M w/ YaRN | MTPLX | `--context-length 1048576` | Max Flash Next |
-| 256 GB | DeepSeek V4.1 Flash | FP8 | 160 GiB | ~162 GiB | 1M | llama.cpp | `--ctx-size 1048576` | Max tier |
+| Tier | Model | Quant | Size | RAM Used | Context | Engine | Flags | Tok/s | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| <8 GB | Maple | TQ2_0 | 5.5 GiB | ~6 GiB | 131K native | MTPLX | `--context-length 131072` | 218 tok/s (M4 mini) | 218 tok/s on M4 Mac mini |
+| 16 GB | Cyber-Tiel Coder | Q3_K_M | ~14 GiB | ~16 GiB | 262K native | MTPLX | `--context-length 262144` | ~23 tok/s (MacBook) | MoE, 3B active. Faster than GSQ-RCO on Apple Silicon. |
+| 32 GB | Cyber-Tiel Coder | UD-Q4_K_XL | 22.4 GiB | ~23 GiB | 262K native | MTPLX | `--context-length 262144` | ~23 tok/s (MacBook) | 22+4=26GB ✓, fast MoE on Apple Silicon |
+| 48 GB | Cyber-Tiel Coder | UD-Q4_K_XL | 22.4 GiB | ~23 GiB | 262K+ | MTPLX | `--context-length 262144` | ~23 tok/s | M2 Max/Ultra territory |
+| 64 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~16 GiB | 262K+ | MTPLX | `--context-length 262144` | ~8-12 tok/s (65K) | Near-lossless. Low power, high context headroom. |
+| 96 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 262K native | MTPLX | `--context-length 1048576` | TBD | M4 Ultra |
+| 128 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 1M w/ YaRN | MTPLX | `--context-length 1048576` | TBD | Max Flash Next |
+| 256 GB | DeepSeek V4.1 Flash | FP8 | 160 GiB | ~162 GiB | 1M | llama.cpp | `--ctx-size 1048576` | TBD | Max tier |
 
 > ★ = on TurboFit List. Models without ★ are Model Zoo only.
 
