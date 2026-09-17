@@ -3,9 +3,9 @@ title: Turbofit Wiki
 created: 2026-09-16
 updated: 2026-09-16
 type: wiki
-links:
+integrations:
   github: https://github.com/SouthpawIN/turbofit
-  huggingface_turbofit: https://huggingface.co/SouthpawIN
+  huggingface: https://huggingface.co/SouthpawIN
   omarchy: https://github.com/SouthpawIN/omarchy
 sources:
   - index.md
