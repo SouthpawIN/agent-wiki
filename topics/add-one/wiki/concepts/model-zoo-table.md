@@ -26,4 +26,6 @@ The table's domain (exactly which models, and what the categories compare) is st
 - [[decisions/huggingface-column|HuggingFace column]]
 - [[decisions/add-parameters-category|Add "parameters" as a new table category]]
 - [[decisions/column-sorting|Column sorting by click]]
+- [[decisions/highest-recorded-tok-s-after-flags|Highest recorded tok/s after flags]]
 - [[queries/table-domain-research|table domain research]]
+- [[concepts/fit-calculation-system-tables|Fit calculation system tables]]

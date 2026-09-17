@@ -1,0 +1,15 @@
+---
+type: loop
+name: fit-table-tok-s-benchmark-tracker
+proposed: 2026-09-17 12:03
+schedule: 0 9 * * *
+---
+# fit-table-tok-s-benchmark-tracker
+owner: turbosovth · cadence: daily · status: SUGGESTED
+**You track best tok/s after flags across GPU, CPU, and unified — want a loop that flags which model is now fastest on each hardware class?**
+
+## Prompt
+Compare the current highest-recorded tok/s per model on the GPU, CPU, and unified fit tables against the previous run and report any model that improved or was overtaken on any hardware class.
+
+## Evidence
+> for GPU, CPU, and unified for recorded tokens per second, put it after flags. ... this will be the highest one recorded.

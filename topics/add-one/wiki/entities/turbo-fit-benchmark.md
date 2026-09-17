@@ -19,4 +19,6 @@ The tok/s column sits between **Model** and **parameters** in the settled order,
 ## Related
 - [[decisions/turbo-fit-tokens-per-second-column|Add a tokens-per-second column to the TurboFit list]]
 - [[decisions/column-ordering|Column ordering]]
+- [[decisions/highest-recorded-tok-s-after-flags|Highest recorded tok/s after flags]]
 - [[concepts/model-zoo-table|Model Zoo table]]
+- [[concepts/fit-calculation-system-tables|Fit calculation system tables]]

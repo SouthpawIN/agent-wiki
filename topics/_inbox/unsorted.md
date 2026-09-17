@@ -1265,3 +1265,27 @@ So this will be like leaderboards for each one.
 
 ## 2026-09-17 11:27 · chris · 20260914_200308_f9b029 · best klerik 0.04
 I'm using voice detects
+
+## 2026-09-17 11:58 · hermes · 20260917_115826_c46b7e · best case-macbook 0.05
+I'll start by examining the reference format and listing all topic directories.
+
+## 2026-09-17 11:59 · hermes · 20260917_115826_c46b7e · best beyond-pissed 0.06
+Let me examine a few sample files to understand the old format:
+
+## 2026-09-17 12:00 · hermes · 20260917_115826_c46b7e · best whoa-there 0.06
+Now I have a clear picture. Let me write a comprehensive conversion script.
+
+## 2026-09-17 12:00 · hermes · 20260917_115826_c46b7e · best back-where 0.06
+All 49 converted. Let me verify a few to make sure they look right:
+
+## 2026-09-17 12:06 · hermes · 20260917_115826_c46b7e · best crow 0.05
+Now let me redo the full conversion with the fix for `.md.proposed` files:
+
+## 2026-09-17 12:08 · hermes · 20260917_115826_c46b7e · best beyond-pissed 0.06
+I see the issue - the third conversion run read already-converted files and lost the README content. I need to restore from git and redo:
+
+## 2026-09-17 12:08 · hermes · 20260917_115826_c46b7e · best ball-bat 0.06
+Now let me redo the conversion properly in one pass with the correct regex:
+
+## 2026-09-17 12:09 · hermes · 20260917_115826_c46b7e · best self-file 0.04
+Let me verify the converted files look correct:

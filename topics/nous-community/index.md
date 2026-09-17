@@ -1,20 +1,56 @@
-# nous-community — wiki index
-> One line per page. The wiki row's CONTEXT section renders this file.
-> Last updated: 2026-09-15 | Total pages: 3
+---
+title: nous-community
+created: 2026-09-17
+updated: 2026-09-17
+type: wiki
+sources:
+  - index.md
+  - wiki/
+  - raw/inbox/
+  - .system/
+---
 
-## Entities
+# nous-community
 
+Last updated: 2026-09-15 | Total pages: 3
 
-## Concepts
-- [[topics/nous-community/wiki/concepts/hermes-cli-omarchy|Hermes CLI on Omarchy]] — On 2026-09-15 09:29 a `hermes:` working line recorded that the **Hermes CLI is fixed on Omarchy**, and that Chris was about to verify the full status including 
-- [[topics/nous-community/wiki/concepts/hermes-desktop-token|Hermes Desktop Nous token]] — The Nous token is the authentication credential for a Hermes Desktop instance. It can become invalid and require a **reset** to restore access.
+---
 
-## Decisions
-- [[topics/nous-community/wiki/decisions/nous-token-reset-troubleshooting|Nous token reset (troubleshooting someone else's Hermes Desktop)]] — On 2026-09-11 10:35 Chris noted he was "troubleshooting someone else's Hermes Desktop" and that "they need to reset their Nous token" — explicitly framing it as
+## INTEGRATIONS
 
-## Comparisons
+This wiki is fed by:
 
+- **Raw inbox:** `raw/inbox/` — daily cuts from Hermes sessions
+- **Sessions:** `.system/sessions/` — full conversation transcripts
+- **Wiki pages:** `wiki/` — structured knowledge base
 
-## Queries
+---
 
+## README
 
+### Concepts
+
+- [Hermes CLI on Omarchy](wiki/hermes-cli-omarchy.md) — On 2026-09-15 09:29 a `hermes:` working line recorded that the **Hermes CLI is fixed on Omarchy**, and that Chris was about to verify the full status including
+- [Hermes Desktop Nous token](wiki/hermes-desktop-token.md) — The Nous token is the authentication credential for a Hermes Desktop instance. It can become invalid and require a **reset** to restore access.
+
+### Decisions
+
+- [Nous token reset (troubleshooting someone else's Hermes Desktop)](wiki/nous-token-reset-troubleshooting.md) — On 2026-09-11 10:35 Chris noted he was "troubleshooting someone else's Hermes Desktop" and that "they need to reset their Nous token" — explicitly framing it as
+
+---
+
+## SKILLS
+
+No topic skills yet.
+
+---
+
+## BOTS
+
+No bots yet.
+
+---
+
+## LOOPS
+
+No loops yet.

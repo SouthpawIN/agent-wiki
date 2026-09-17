@@ -24,4 +24,6 @@ So the settled order on the table is **Model → tokens (tok/s) → parameters**
 - [[decisions/turbo-fit-tokens-per-second-column|Add a tokens-per-second column to the TurboFit list]]
 - [[decisions/add-parameters-category|Add "parameters" as a new table category]]
 - [[decisions/column-sorting|Column sorting by click]]
+- [[decisions/highest-recorded-tok-s-after-flags|Highest recorded tok/s after flags]]
 - [[concepts/model-zoo-table|Model Zoo table]]
+- [[concepts/fit-calculation-system-tables|Fit calculation system tables]]

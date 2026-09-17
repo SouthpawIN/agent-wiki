@@ -1,5 +1,5 @@
 # INDEX — topics/senter
-_203 files · 864 KB · regenerate: `python3 assets/build-index.py`_
+_202 files · 864 KB · regenerate: `python3 assets/build-index.py`_
 
 Read order for an agent: this file → pick a file below → its outline → `read_file offset=<line> limit=<n>`. Sessions under `.system/sessions/` are full transcripts (largest; go by outline).
 
@@ -16,7 +16,6 @@ Read order for an agent: this file → pick a file below → its outline → `re
 
 ## .system
 - `.system/agent.cursor` — 4 KB, 84 lines — raw/inbox/2026-09-05-legacy-inbox.md@fef50387782b
-- `.system/agent.lock` — 0 KB, 1 lines — 58352
 - `.system/architecture.md` — 10 KB, 120 lines — Senter — the architecture (Chris, 2026-09-05, verbatim-derived)
     - L1 # Senter — the architecture (Chris, 2026-09-05, verbatim-derived)
     - L7 ## The five parts

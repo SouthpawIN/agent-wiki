@@ -1,5 +1,5 @@
 # INDEX — topics/add-one
-_7 files · 3 KB · regenerate: `python3 assets/build-index.py`_
+_9 files · 5 KB · regenerate: `python3 assets/build-index.py`_
 
 Read order for an agent: this file → pick a file below → its outline → `read_file offset=<line> limit=<n>`. Sessions under `.system/sessions/` are full transcripts (largest; go by outline).
 
@@ -10,14 +10,14 @@ Read order for an agent: this file → pick a file below → its outline → `re
     - L7 ## Status
 
 ## .system
-- `.system/agent.cursor` — 0 KB, 2 lines — raw/inbox/2026-09-16.md@0859e944788d
+- `.system/agent.cursor` — 0 KB, 3 lines — raw/inbox/2026-09-16.md@0859e944788d
 - `.system/continuity.md` — 0 KB, 3 lines — Continuity — add-one
     - L1 # Continuity — add-one
-- `.system/injections.md` — 0 KB, 8 lines — Injections — add-one
+- `.system/injections.md` — 1 KB, 10 lines — Injections — add-one
     - L1 # Injections — add-one
     - L3 ## [UNREAD]
-    - L7 ## [READ]
-- `.system/queue.md` — 1 KB, 15 lines — Queue — add-one
+    - L9 ## [READ]
+- `.system/queue.md` — 1 KB, 17 lines — Queue — add-one
     - L1 # Queue — add-one
     - L3 ## [CONTEXT]
     - L8 ## [SKILLS]
@@ -25,6 +25,8 @@ Read order for an agent: this file → pick a file below → its outline → `re
     - L12 ## [LOOPS]
 
 ## loops
+- `loops/fit-table-tok-s-benchmark-tracker.md.proposed` — 1 KB, 16 lines — type: loop
+- `loops/fit-table-tok-s-updater.md.proposed` — 1 KB, 17 lines — type: loop
 - `loops/model-benchmark-tracker.md.proposed` — 1 KB, 16 lines — type: loop
 - `loops/turbo-fit-tok-s-updater.md.proposed` — 1 KB, 16 lines — type: loop
 

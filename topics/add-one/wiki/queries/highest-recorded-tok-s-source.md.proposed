@@ -1,0 +1,10 @@
+---
+title: Where does the highest recorded tok/s on the fit calculation tables come from each run
+type: query
+proposed: 2026-09-17 00:01
+tags: [question]
+---
+# Where does the highest recorded tok/s on the fit calculation tables come from each run?
+The fit tables (GPU/CPU/unified) now ask for the highest tok/s recorded after flags — but the source of that figure (TurboFit run output, a manual entry, or a running best kept across runs) is unspecified. Without it, a bot or loop that fills the column would guess.
+
+_Approve to run the research; the answer lands here._

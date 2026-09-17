@@ -1,0 +1,16 @@
+---
+type: loop
+name: fit-table-tok-s-updater
+proposed: 2026-09-17 12:03
+schedule: 30m
+---
+# fit-table-tok-s-updater
+owner: turbosovth · cadence: after each run · status: SUGGESTED
+**I see you now track the highest recorded tok/s after flags on your GPU, CPU, and unified fit tables — want a loop that updates those after each TurboFit run?**
+
+## Prompt
+Read the latest TurboFit run results and write the best tok/s into the highest-recorded-tok/s column after flags on the GPU, CPU, and unified fit calculation tables, dropping any stale higher figure on any of them.
+
+## Evidence
+> add a column to all of the fit calculation system tables. I mean for GPU, CPU, and unified for recorded tokens per second, put it after flags.
+> with these flags we got this tokens per second and this will be the highest one recorded.

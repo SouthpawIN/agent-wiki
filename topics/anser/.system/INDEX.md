@@ -17,7 +17,7 @@ Read order for an agent: this file → pick a file below → its outline → `re
     - L113 ## Example Use Cases
 
 ## .system
-- `.system/agent.cursor` — 0 KB, 8 lines — raw/inbox/2026-09-06.md@398183ba421e
+- `.system/agent.cursor` — 0 KB, 9 lines — raw/inbox/2026-09-06.md@398183ba421e
 - `.system/continuity.md` — 0 KB, 7 lines — Continuity — anser
     - L1 # Continuity — anser
 - `.system/injections.md` — 3 KB, 30 lines — Injections
