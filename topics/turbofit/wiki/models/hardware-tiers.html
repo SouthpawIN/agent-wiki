@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Turbofit Hardware Tiers</title>
+<style>
+:root {
+  --fg: var(--foreground, #e8e8f0);
+  --muted: var(--muted-foreground, #888899);
+  --accent: var(--accent, #FFE45A);
+  --border: var(--border, #333344);
+  --card: var(--card, #181820);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--card);
+  color: var(--fg);
+  padding: 12px;
+  font-size: 12px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.header h1 {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Three column layout */
+.tier-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.tier-col {
+  border: 1px solid var(--border);
+  background: rgba(0,0,0,0.2);
+}
+
+.tier-header {
+  background: var(--border);
+  padding: 6px 8px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 11px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tier-row {
+  display: flex;
+  align-items: center;
+  padding: 4px 6px;
+  border-bottom: 1px solid rgba(51, 51, 68, 0.4);
+  font-size: 10px;
+}
+
+.tier-row:last-child {
+  border-bottom: none;
+}
+
+.ram-label {
+  width: 42px;
+  flex-shrink: 0;
+  font-weight: 600;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.model-list {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+}
+
+.model-chip {
+  display: inline-block;
+  padding: 1px 4px;
+  border-radius: 2px;
+  font-size: 9px;
+  font-weight: 500;
+  background: rgba(255, 228, 90, 0.1);
+  color: var(--accent);
+  border: 1px solid rgba(255, 228, 90, 0.2);
+  white-space: nowrap;
+}
+
+.model-chip.cpu {
+  background: rgba(80, 180, 255, 0.1);
+  color: #50b4ff;
+  border-color: rgba(80, 180, 255, 0.2);
+}
+
+.model-chip.unified {
+  background: rgba(180, 100, 255, 0.1);
+  color: #b464ff;
+  border-color: rgba(180, 100, 255, 0.2);
+}
+
+.recommended {
+  background: var(--accent);
+  color: var(--card);
+  font-weight: 700;
+  padding: 0 3px;
+  border-radius: 2px;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Turbofit Lineup by Hardware Tier</h1>
+</div>
+
+<div class="tier-grid">
+
+<!-- GPU Column -->
+<div class="tier-col">
+  <div class="tier-header">GPU (VRAM)</div>
+  <div class="tier-row"><span class="ram-label">8 GB</span><div class="model-list"><span class="model-chip">Soprano 80M</span><span class="model-chip">Qwen2.5 Omni 3B</span></div></div>
+  <div class="tier-row"><span class="ram-label">12 GB</span><div class="model-list"><span class="model-chip">Soprano 80M</span><span class="model-chip">Qwen2.5 Omni 3B</span><span class="model-chip">Maple 8B</span><span class="model-chip">Cyber Tiel 3B</span></div></div>
+  <div class="tier-row"><span class="ram-label">16 GB</span><div class="model-list"><span class="model-chip">Soprano 80M</span><span class="model-chip">Qwen2.5 Omni 3B</span><span class="model-chip">Maple 8B</span><span class="model-chip">Cyber Tiel 3B</span><span class="model-chip">Qwen3.8 27B<span class="recommended">★</span></span></div></div>
+  <div class="tier-row"><span class="ram-label">24 GB</span><div class="model-list"><span class="model-chip">Soprano 80M</span><span class="model-chip">Qwen2.5 Omni 3B</span><span class="model-chip">Maple 8B</span><span class="model-chip">Cyber Tiel 3B</span><span class="model-chip">Qwen3.8 27B</span><span class="model-chip">Bonsai 27B</span><span class="model-chip">SuperQwen 27B</span><span class="model-chip">Unleashed 27B<span class="recommended">★</span></span></div></div>
+  <div class="tier-row"><span class="ram-label">32 GB</span><div class="model-list"><span class="model-chip">Soprano 80M</span><span class="model-chip">Qwen2.5 Omni 3B</span><span class="model-chip">Maple 8B</span><span class="model-chip">Cyber Tiel 3B</span><span class="model-chip">Qwen3.8 27B</span><span class="model-chip">Bonsai 27B</span><span class="model-chip">SuperQwen 27B</span><span class="model-chip">Unleashed 27B<span class="recommended">★</span></span></div></div>
+  <div class="tier-row"><span class="ram-label">48 GB</span><div class="model-list"><span class="model-chip">Soprano 80M</span><span class="model-chip">Qwen2.5 Omni 3B</span><span class="model-chip">Maple 8B</span><span class="model-chip">Cyber Tiel 3B</span><span class="model-chip">Qwen3.8 27B</span><span class="model-chip">Bonsai 27B</span><span class="model-chip">SuperQwen 27B</span><span class="model-chip">Unleashed 27B<span class="recommended">★</span></span><span class="model-chip">GSQ-RCO</span><span class="model-chip">Nemotron 3.5</span></div></div>
+  <div class="tier-row"><span class="ram-label">64 GB</span><div class="model-list"><span class="model-chip">Soprano 80M</span><span class="model-chip">Qwen2.5 Omni 3B</span><span class="model-chip">Maple 8B</span><span class="model-chip">Cyber Tiel 3B</span><span class="model-chip">Qwen3.8 27B</span><span class="model-chip">Bonsai 27B</span><span class="model-chip">SuperQwen 27B</span><span class="model-chip">Unleashed 27B<span class="recommended">★</span></span><span class="model-chip">GSQ-RCO</span><span class="model-chip">Nemotron 3.5</span><span class="model-chip">GRM MTP</span></div></div>
+  <div class="tier-row"><span class="ram-label">96 GB</span><div class="model-list"><span class="model-chip">Soprano 80M</span><span class="model-chip">Qwen2.5 Omni 3B</span><span class="model-chip">Maple 8B</span><span class="model-chip">Cyber Tiel 3B</span><span class="model-chip">Qwen3.8 27B</span><span class="model-chip">Bonsai 27B</span><span class="model-chip">SuperQwen 27B</span><span class="model-chip">Unleashed 27B<span class="recommended">★</span></span><span class="model-chip">GSQ-RCO</span><span class="model-chip">Nemotron 3.5</span><span class="model-chip">GRM MTP</span><span class="model-chip">DeepSeek V4<span class="recommended">★</span></span><span class="model-chip">Cyber Tiel MTP</span></div></div>
+  <div class="tier-row"><span class="ram-label">128 GB</span><div class="model-list"><span class="model-chip">Soprano 80M</span><span class="model-chip">Qwen2.5 Omni 3B</span><span class="model-chip">Maple 8B</span><span class="model-chip">Cyber Tiel 3B</span><span class="model-chip">Qwen3.8 27B</span><span class="model-chip">Bonsai 27B</span><span class="model-chip">SuperQwen 27B</span><span class="model-chip">Unleashed 27B</span><span class="model-chip">GSQ-RCO</span><span class="model-chip">Nemotron 3.5</span><span class="model-chip">GRM MTP</span><span class="model-chip">DeepSeek V4</span><span class="model-chip">Cyber Tiel MTP</span><span class="model-chip">Cosmos 37B<span class="recommended">★</span></div></div>
+  <div class="tier-row"><span class="ram-label">256 GB</span><div class="model-list"><span class="model-chip">Soprano 80M</span><span class="model-chip">Qwen2.5 Omni 3B</span><span class="model-chip">Maple 8B</span><span class="model-chip">Cyber Tiel 3B</span><span class="model-chip">Qwen3.8 27B</span><span class="model-chip">Bonsai 27B</span><span class="model-chip">SuperQwen 27B</span><span class="model-chip">Unleashed 27B</span><span class="model-chip">GSQ-RCO</span><span class="model-chip">Nemotron 3.5</span><span class="model-chip">GRM MTP</span><span class="model-chip">DeepSeek V4</span><span class="model-chip">Cyber Tiel MTP</span><span class="model-chip">Cosmos 37B</span><span class="model-chip">Flash Next<span class="recommended">★</span></div></div>
+</div>
+
+<!-- CPU Column -->
+<div class="tier-col">
+  <div class="tier-header">CPU (RAM)</div>
+  <div class="tier-row"><span class="ram-label">8 GB</span><div class="model-list"><span class="model-chip cpu">Soprano 80M<span class="recommended">★</span></span><span class="model-chip cpu">Qwen2.5 Omni 3B</span></div></div>
+  <div class="tier-row"><span class="ram-label">12 GB</span><div class="model-list"><span class="model-chip cpu">Soprano 80M</span><span class="model-chip cpu">Qwen2.5 Omni 3B</span><span class="model-chip cpu">Maple 8B<span class="recommended">★</span></span><span class="model-chip cpu">Cyber Tiel 3B</span></div></div>
+  <div class="tier-row"><span class="ram-label">16 GB</span><div class="model-list"><span class="model-chip cpu">Soprano 80M</span><span class="model-chip cpu">Qwen2.5 Omni 3B</span><span class="model-chip cpu">Maple 8B</span><span class="model-chip cpu">Cyber Tiel 3B<span class="recommended">★</span></span><span class="model-chip cpu">Qwen3.8 27B</span></div></div>
+  <div class="tier-row"><span class="ram-label">24 GB</span><div class="model-list"><span class="model-chip cpu">Soprano 80M</span><span class="model-chip cpu">Qwen2.5 Omni 3B</span><span class="model-chip cpu">Maple 8B</span><span class="model-chip cpu">Cyber Tiel 3B</span><span class="model-chip cpu">Qwen3.8 27B</span><span class="model-chip cpu">Bonsai 27B<span class="recommended">★</span></span><span class="model-chip cpu">SuperQwen 27B</span></div></div>
+  <div class="tier-row"><span class="ram-label">32 GB</span><div class="model-list"><span class="model-chip cpu">Soprano 80M</span><span class="model-chip cpu">Qwen2.5 Omni 3B</span><span class="model-chip cpu">Maple 8B</span><span class="model-chip cpu">Cyber Tiel 3B</span><span class="model-chip cpu">Qwen3.8 27B</span><span class="model-chip cpu">Bonsai 27B</span><span class="model-chip cpu">SuperQwen 27B</span><span class="model-chip cpu">Unleashed 27B<span class="recommended">★</span></span></div></div>
+  <div class="tier-row"><span class="ram-label">48 GB</span><div class="model-list"><span class="model-chip cpu">Soprano 80M</span><span class="model-chip cpu">Qwen2.5 Omni 3B</span><span class="model-chip cpu">Maple 8B</span><span class="model-chip cpu">Cyber Tiel 3B</span><span class="model-chip cpu">Qwen3.8 27B</span><span class="model-chip cpu">Bonsai 27B</span><span class="model-chip cpu">SuperQwen 27B</span><span class="model-chip cpu">Unleashed 27B</span><span class="model-chip cpu">GSQ-RCO</span><span class="model-chip cpu">Nemotron 3.5</span></div></div>
+  <div class="tier-row"><span class="ram-label">64 GB</span><div class="model-list"><span class="model-chip cpu">Soprano 80M</span><span class="model-chip cpu">Qwen2.5 Omni 3B</span><span class="model-chip cpu">Maple 8B</span><span class="model-chip cpu">Cyber Tiel 3B</span><span class="model-chip cpu">Qwen3.8 27B</span><span class="model-chip cpu">Bonsai 27B</span><span class="model-chip cpu">SuperQwen 27B</span><span class="model-chip cpu">Unleashed 27B</span><span class="model-chip cpu">GSQ-RCO</span><span class="model-chip cpu">Nemotron 3.5</span><span class="model-chip cpu">GRM MTP<span class="recommended">★</span></span></div></div>
+  <div class="tier-row"><span class="ram-label">96 GB</span><div class="model-list"><span class="model-chip cpu">Soprano 80M</span><span class="model-chip cpu">Qwen2.5 Omni 3B</span><span class="model-chip cpu">Maple 8B</span><span class="model-chip cpu">Cyber Tiel 3B</span><span class="model-chip cpu">Qwen3.8 27B</span><span class="model-chip cpu">Bonsai 27B</span><span class="model-chip cpu">SuperQwen 27B</span><span class="model-chip cpu">Unleashed 27B</span><span class="model-chip cpu">GSQ-RCO</span><span class="model-chip cpu">Nemotron 3.5</span><span class="model-chip cpu">GRM MTP</span><span class="model-chip cpu">DeepSeek V4<span class="recommended">★</span></span><span class="model-chip cpu">Cyber Tiel MTP</span></div></div>
+  <div class="tier-row"><span class="ram-label">128 GB</span><div class="model-list"><span class="model-chip cpu">Soprano 80M</span><span class="model-chip cpu">Qwen2.5 Omni 3B</span><span class="model-chip cpu">Maple 8B</span><span class="model-chip cpu">Cyber Tiel 3B</span><span class="model-chip cpu">Qwen3.8 27B</span><span class="model-chip cpu">Bonsai 27B</span><span class="model-chip cpu">SuperQwen 27B</span><span class="model-chip cpu">Unleashed 27B</span><span class="model-chip cpu">GSQ-RCO</span><span class="model-chip cpu">Nemotron 3.5</span><span class="model-chip cpu">GRM MTP</span><span class="model-chip cpu">DeepSeek V4</span><span class="model-chip cpu">Cyber Tiel MTP</span><span class="model-chip cpu">Cosmos 37B<span class="recommended">★</span></div></div>
+  <div class="tier-row"><span class="ram-label">256 GB</span><div class="model-list"><span class="model-chip cpu">Soprano 80M</span><span class="model-chip cpu">Qwen2.5 Omni 3B</span><span class="model-chip cpu">Maple 8B</span><span class="model-chip cpu">Cyber Tiel 3B</span><span class="model-chip cpu">Qwen3.8 27B</span><span class="model-chip cpu">Bonsai 27B</span><span class="model-chip cpu">SuperQwen 27B</span><span class="model-chip cpu">Unleashed 27B</span><span class="model-chip cpu">GSQ-RCO</span><span class="model-chip cpu">Nemotron 3.5</span><span class="model-chip cpu">GRM MTP</span><span class="model-chip cpu">DeepSeek V4</span><span class="model-chip cpu">Cyber Tiel MTP</span><span class="model-chip cpu">Cosmos 37B</span><span class="model-chip cpu">Flash Next<span class="recommended">★</span></div></div>
+</div>
+
+<!-- Unified Memory Column -->
+<div class="tier-col">
+  <div class="tier-header">Unified (Apple Silicon)</div>
+  <div class="tier-row"><span class="ram-label">8 GB</span><div class="model-list"><span class="model-chip unified">Soprano 80M<span class="recommended">★</span></span><span class="model-chip unified">Qwen2.5 Omni 3B</span></div></div>
+  <div class="tier-row"><span class="ram-label">12 GB</span><div class="model-list"><span class="model-chip unified">Soprano 80M</span><span class="model-chip unified">Qwen2.5 Omni 3B</span><span class="model-chip unified">Maple 8B<span class="recommended">★</span></span><span class="model-chip unified">Cyber Tiel 3B</span></div></div>
+  <div class="tier-row"><span class="ram-label">16 GB</span><div class="model-list"><span class="model-chip unified">Soprano 80M</span><span class="model-chip unified">Qwen2.5 Omni 3B</span><span class="model-chip unified">Maple 8B</span><span class="model-chip unified">Cyber Tiel 3B</span><span class="model-chip unified">Qwen3.8 27B<span class="recommended">★</span></span></div></div>
+  <div class="tier-row"><span class="ram-label">24 GB</span><div class="model-list"><span class="model-chip unified">Soprano 80M</span><span class="model-chip unified">Qwen2.5 Omni 3B</span><span class="model-chip unified">Maple 8B</span><span class="model-chip unified">Cyber Tiel 3B</span><span class="model-chip unified">Qwen3.8 27B</span><span class="model-chip unified">Bonsai 27B</span><span class="model-chip unified">SuperQwen 27B</span><span class="model-chip unified">Unleashed 27B<span class="recommended">★</span></span></div></div>
+  <div class="tier-row"><span class="ram-label">32 GB</span><div class="model-list"><span class="model-chip unified">Soprano 80M</span><span class="model-chip unified">Qwen2.5 Omni 3B</span><span class="model-chip unified">Maple 8B</span><span class="model-chip unified">Cyber Tiel 3B</span><span class="model-chip unified">Qwen3.8 27B</span><span class="model-chip unified">Bonsai 27B</span><span class="model-chip unified">SuperQwen 27B</span><span class="model-chip unified">Unleashed 27B<span class="recommended">★</span></span></div></div>
+  <div class="tier-row"><span class="ram-label">48 GB</span><div class="model-list"><span class="model-chip unified">Soprano 80M</span><span class="model-chip unified">Qwen2.5 Omni 3B</span><span class="model-chip unified">Maple 8B</span><span class="model-chip unified">Cyber Tiel 3B</span><span class="model-chip unified">Qwen3.8 27B</span><span class="model-chip unified">Bonsai 27B</span><span class="model-chip unified">SuperQwen 27B</span><span class="model-chip unified">Unleashed 27B</span><span class="model-chip unified">GSQ-RCO</span><span class="model-chip unified">Nemotron 3.5</span></div></div>
+  <div class="tier-row"><span class="ram-label">64 GB</span><div class="model-list"><span class="model-chip unified">Soprano 80M</span><span class="model-chip unified">Qwen2.5 Omni 3B</span><span class="model-chip unified">Maple 8B</span><span class="model-chip unified">Cyber Tiel 3B</span><span class="model-chip unified">Qwen3.8 27B</span><span class="model-chip unified">Bonsai 27B</span><span class="model-chip unified">SuperQwen 27B</span><span class="model-chip unified">Unleashed 27B</span><span class="model-chip unified">GSQ-RCO</span><span class="model-chip unified">Nemotron 3.5</span><span class="model-chip unified">GRM MTP</span></div></div>
+  <div class="tier-row"><span class="ram-label">96 GB</span><div class="model-list"><span class="model-chip unified">Soprano 80M</span><span class="model-chip unified">Qwen2.5 Omni 3B</span><span class="model-chip unified">Maple 8B</span><span class="model-chip unified">Cyber Tiel 3B</span><span class="model-chip unified">Qwen3.8 27B</span><span class="model-chip unified">Bonsai 27B</span><span class="model-chip unified">SuperQwen 27B</span><span class="model-chip unified">Unleashed 27B</span><span class="model-chip unified">GSQ-RCO</span><span class="model-chip unified">Nemotron 3.5</span><span class="model-chip unified">GRM MTP</span><span class="model-chip unified">DeepSeek V4</span><span class="model-chip unified">Cyber Tiel MTP</span></div></div>
+  <div class="tier-row"><span class="ram-label">128 GB</span><div class="model-list"><span class="model-chip unified">Soprano 80M</span><span class="model-chip unified">Qwen2.5 Omni 3B</span><span class="model-chip unified">Maple 8B</span><span class="model-chip unified">Cyber Tiel 3B</span><span class="model-chip unified">Qwen3.8 27B</span><span class="model-chip unified">Bonsai 27B</span><span class="model-chip unified">SuperQwen 27B</span><span class="model-chip unified">Unleashed 27B</span><span class="model-chip unified">GSQ-RCO</span><span class="model-chip unified">Nemotron 3.5</span><span class="model-chip unified">GRM MTP</span><span class="model-chip unified">DeepSeek V4</span><span class="model-chip unified">Cyber Tiel MTP</span><span class="model-chip unified">Cosmos 37B</span></div></div>
+  <div class="tier-row"><span class="ram-label">256 GB</span><div class="model-list"><span class="model-chip unified">Soprano 80M</span><span class="model-chip unified">Qwen2.5 Omni 3B</span><span class="model-chip unified">Maple 8B</span><span class="model-chip unified">Cyber Tiel 3B</span><span class="model-chip unified">Qwen3.8 27B</span><span class="model-chip unified">Bonsai 27B</span><span class="model-chip unified">SuperQwen 27B</span><span class="model-chip unified">Unleashed 27B</span><span class="model-chip unified">GSQ-RCO</span><span class="model-chip unified">Nemotron 3.5</span><span class="model-chip unified">GRM MTP</span><span class="model-chip unified">DeepSeek V4</span><span class="model-chip unified">Cyber Tiel MTP</span><span class="model-chip unified">Cosmos 37B</span><span class="model-chip unified">Flash Next</span></div></div>
+</div>
+
+</div>
+
+</body>
+</html>

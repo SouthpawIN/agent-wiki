@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Turbofit Model Leaderboard</title>
+<style>
+:root {
+  --fg: var(--foreground, #e8e8f0);
+  --muted: var(--muted-foreground, #888899);
+  --accent: var(--accent, #FFE45A);
+  --border: var(--border, #333344);
+  --card: var(--card, #181820);
+  --paper: #f5f5f0;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--card);
+  color: var(--fg);
+  padding: 12px;
+  font-size: 12px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.header h1 {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.header .count {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--border);
+}
+
+thead th {
+  background: var(--border);
+  color: var(--fg);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 6px 8px;
+  text-align: left;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  position: relative;
+}
+
+thead th:hover {
+  background: var(--accent);
+  color: var(--card);
+}
+
+thead th .arrow {
+  margin-left: 4px;
+  opacity: 0.3;
+}
+
+thead th.sorted .arrow {
+  opacity: 1;
+}
+
+tbody td {
+  padding: 5px 8px;
+  border-bottom: 1px solid var(--border);
+  font-size: 11px;
+}
+
+tbody tr:hover {
+  background: rgba(255, 228, 90, 0.04);
+}
+
+.model-link {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.model-link:hover {
+  text-decoration: underline;
+}
+
+.badge {
+  display: inline-block;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: 500;
+  background: rgba(255, 228, 90, 0.1);
+  color: var(--accent);
+  border: 1px solid rgba(255, 228, 90, 0.2);
+}
+
+.system-tag {
+  display: inline-block;
+  padding: 1px 4px;
+  border-radius: 2px;
+  font-size: 9px;
+  font-weight: 500;
+  margin-right: 2px;
+  background: var(--border);
+  color: var(--muted);
+}
+
+.toks {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.empty {
+  color: var(--muted);
+  font-style: italic;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Turbofit Model Leaderboard</h1>
+  <span class="count">17 models</span>
+</div>
+
+<table id="leaderboard">
+<thead>
+<tr>
+  <th data-col="model" data-type="string">Model <span class="arrow">▲</span></th>
+  <th data-col="type" data-type="string">Type <span class="arrow">▲</span></th>
+  <th data-col="system" data-type="string">System <span class="arrow">▲</span></th>
+  <th data-col="params" data-type="number">Parameters <span class="arrow">▲</span></th>
+  <th data-col="toks" data-type="number">tok/s <span class="arrow">▲</span></th>
+  <th data-col="bench" data-type="string">Benchmarks <span class="arrow">▲</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><a class="model-link" href="obsidian://open?vault=Projects&file=topics/turbofit/wiki/models/Ace%20Step%201.5%204B">Ace Step 1.5 4B</a></td>
+  <td><span class="badge">Music</span></td>
+  <td><span class="system-tag">Omarchy</span></td>
+  <td>4B</td>
+  <td class="empty">—</td>
+  <td class="empty">—</td>
+</tr>
+<tr>
+  <td><a class="model-link" href="obsidian://open?vault=Projects&file=topics/turbofit/wiki/models/Bonsai%2027B">Bonsai 27B</a></td>
+  <td><span class="badge">LLM (Ternary)</span></td>
+  <td><span class="system-tag">Omarchy</span></td>
+  <td>27B</td>
+  <td class="empty">—</td>
+  <td class="empty">—</td>
+</tr>
+<tr>
+  <td><a class="model-link" href="obsidian://open?vault=Projects&file=topics/turbofit/wiki/models/Cyber%20Tiel%20Coder%2035B-A3B">Cyber Tiel Coder 35B-A3B</a></td>
+  <td><span class="badge">Code</span></td>
+  <td><span class="system-tag">Omarchy</span> <span class="system-tag">MacBook</span></td>
+  <td>35B-A3B</td>
+  <td class="empty">—</td>
+  <td class="empty">—</td>
+</tr>
+<tr>
+  <td><a class="model-link" href="obsidian://open?vault=Projects&file=topics/turbofit/wiki/models/Cyber%20Tiel%20Coder%20MTP">Cyber Tiel Coder MTP</a></td>
+  <td><span class="badge">Code (MTP)</span></td>
+  <td><span class="system-tag">Omarchy</span></td>
+  <td>35B-A3B</td>
+  <td class="empty">—</td>
+  <td class="empty">—</td>
+</tr>
+<tr>
+  <td><a class="model-link" href="obsidian://open?vault=Projects&file=topics/turbofit/wiki/models/DAXZEIT%20GRM%202.6%20Plus">DAXZEIT GRM 2.6 Plus</a></td>
+  <td><span class="badge">Reasoning (MTP)</span></td>
+  <td><span class="system-tag">Omarchy</span></td>
+  <td>27B</td>
+  <td class="empty">—</td>
+  <td class="empty">—</td>
+</tr>
+<tr>
+  <td><a class="model-link" href="obsidian://open?vault=Projects&file=topics/turbofit/wiki/models/DeepSeek%20V4.1%20Flash">DeepSeek V4.1 Flash</a></td>
+  <td><span class="badge">LLM (MoE)</span></td>
+  <td><span class="system-tag">Omarchy</span></td>
+  <td>27B / ~160B</td>
+  <td class="empty">—</td>
+  <td class="empty">—</td>
+</tr>
+<tr>
+  <td><a class="model-link" href="obsidian://open?vault=Projects&file=topics/turbofit/wiki/models/Maple%20Preview%208B">Maple Preview 8B</a></td>
+  <td><span class="badge">Aux</span></td>
+  <td><span class="system-tag">Omarchy</span></td>
+  <td>8B</td>
+  <td class="toks">12.4</td>
+  <td class="empty">—</td>
+</tr>
+<tr>
+  <td><a class="model-link" href="obsidian://open?vault=Projects&file=topics/turbofit/wiki/models/Cosmos%2037B%20BASE">Cosmos 37B BASE</a></td>
+  <td><span class="badge">LLM</span></td>
+  <td><span class="system-tag">Omarchy</span></td>
+  <td>37B</td>
+  <td class="empty">—</td>
+  <td class="empty">—</td>
+</tr>
+<tr>
+  <td><a class="model-link" href="obsidian://open?vault=Projects&file=topics/turbofit/wiki/models/GSQ-RCO%20Qwen%203.8">GSQ-RCO Qwen 3.8</a></td>
+  <td><span class="badge">Quantized</span></td>
+  <td><span class="system-tag">Omarchy</span></td>
+  <td>27B</td>
+  <td class="empty">—</td>
+  <td class="empty">—</td>
+</tr>
+<tr>
+  <td><a class="model-link" href="obsidian://open?vault=Projects&file=topics/turbofit/wiki/models/NVIDIA%20Nemotron%203.5">NVIDIA Nemotron 3.5</a></td>
+  <td><span class="badge">Enterprise MoE</span></td>
+  <td><span class="system-tag">Omarchy</span></td>
+  <td>30B-A3B</td>
+  <td class="empty">—</td>
+  <td class="empty">—</td>
+</tr>
+<tr>
+  <td><a class="model-link" href="obsidian://open?vault=Projects&file=topics/turbofit/wiki/models/Qwen%203.8%2027B%20Unleashed">Qwen 3.8 27B Unleashed</a></td>
+  <td><span class="badge">General</span></td>
+  <td><span class="system-tag">Omarchy</span> <span class="system-tag">MacBook</span></td>
+  <td>27B</td>
+  <td class="toks">85</td>
+  <td class="empty">—</td>
+</tr>
+<tr>
+  <td><a class="model-link" href="obsidian://open?vault=Projects&file=topics/turbofit/wiki/models/Super%20Qwen%203.8%2027B">Super Qwen 3.8 27B</a></td>
+  <td><span class="badge">Uncensored</span></td>
+  <td><span class="system-tag">Omarchy</span></td>
+  <td>27B</td>
+  <td class="empty">—</td>
+  <td class="empty">—</td>
+</tr>
+<tr>
+  <td><a class="model-link" href="obsidian://open?vault=Projects&file=topics/turbofit/wiki/models/Qwen%202.5%20Omni%203B">Qwen 2.5 Omni 3B</a></td>
+  <td><span class="badge">Multimodal VLM</span></td>
+  <td><span class="system-tag">Omarchy</span></td>
+  <td>3B</td>
+  <td class="empty">—</td>
+  <td class="empty">—</td>
+</tr>
+<tr>
+  <td><a class="model-link" href="obsidian://open?vault=Projects&file=topics/turbofit/wiki/models/Soprano%201.1%2080M">Soprano 1.1 80M</a></td>
+  <td><span class="badge">Creative Micro</span></td>
+  <td><span class="system-tag">Omarchy</span></td>
+  <td>80M</td>
+  <td class="empty">—</td>
+  <td class="empty">—</td>
+</tr>
+<tr>
+  <td><a class="model-link" href="obsidian://open?vault=Projects&file=topics/turbofit/wiki/models/Qwen%203.8%2027B%20Base">Qwen 3.8 27B Base</a></td>
+  <td><span class="badge">Base</span></td>
+  <td><span class="system-tag">Omarchy</span> <span class="system-tag">MacBook</span></td>
+  <td>27B</td>
+  <td class="empty">—</td>
+  <td class="empty">—</td>
+</tr>
+<tr>
+  <td><a class="model-link" href="obsidian://open?vault=Projects&file=topics/turbofit/wiki/models/Qwen%203.8%20Flash%20Next">Qwen 3.8 Flash Next</a></td>
+  <td><span class="badge">Experimental</span></td>
+  <td><span class="system-tag">Omarchy</span></td>
+  <td>?</td>
+  <td class="empty">—</td>
+  <td class="empty">—</td>
+</tr>
+<tr>
+  <td><a class="model-link" href="obsidian://open?vault=Projects&file=topics/turbofit/wiki/models/Ornith%201.5%2035B-A3B">Ornith 1.5 35B-A3B</a></td>
+  <td><span class="badge">Code (Legacy)</span></td>
+  <td><span class="system-tag">MacBook</span></td>
+  <td>35B-A3B</td>
+  <td class="empty">—</td>
+  <td class="empty">—</td>
+</tr>
+</tbody>
+</table>
+
+<script>
+const table = document.getElementById('leaderboard');
+const headers = table.querySelectorAll('thead th');
+let sortCol = null;
+let sortAsc = true;
+
+const paramOrder = { '80M': 0, '3B': 1, '4B': 2, '8B': 3, '27B': 4, '30B-A3B': 5, '35B-A3B': 6, '37B': 7, '27B / ~160B': 8, '?': 99 };
+const sysOrder = { 'MacBook': 0, 'Omarchy, MacBook': 1, 'Omarchy': 2 };
+
+function cellValue(row, col) {
+  const cell = row.cells[col];
+  if (!cell) return '';
+  if (col === 3) { // params
+    const t = cell.textContent.trim();
+    return paramOrder[t] !== undefined ? paramOrder[t] : 50;
+  }
+  if (col === 4) { // toks
+    const t = cell.textContent.trim();
+    return t === '—' ? -1 : parseFloat(t);
+  }
+  if (col === 2) { // system
+    const t = cell.textContent.trim();
+    return sysOrder[t] !== undefined ? sysOrder[t] : 50;
+  }
+  return cell.textContent.trim().toLowerCase();
+}
+
+headers.forEach(th => {
+  th.addEventListener('click', () => {
+    const colIndex = Array.from(headers).indexOf(th);
+    const type = th.dataset.type;
+    
+    if (sortCol === colIndex) {
+      sortAsc = !sortAsc;
+    } else {
+      sortAsc = true;
+      sortCol = colIndex;
+    }
+    
+    headers.forEach(h => h.classList.remove('sorted'));
+    th.classList.add('sorted');
+    
+    const tbody = table.querySelector('tbody');
+    const rows = Array.from(tbody.querySelectorAll('tr'));
+    
+    rows.sort((a, b) => {
+      let va = cellValue(a, colIndex);
+      let vb = cellValue(b, colIndex);
+      
+      if (typeof va === 'number' && typeof vb === 'number') {
+        return sortAsc ? va - vb : vb - va;
+      }
+      return sortAsc ? String(va).localeCompare(String(vb)) : String(vb).localeCompare(String(va));
+    });
+    
+    rows.forEach(r => tbody.appendChild(r));
+  });
+});
+
+// Initial sort by tok/s descending
+(function() {
+  const toksTh = headers[4];
+  toksTh.classList.add('sorted');
+  sortCol = 4;
+  sortAsc = false;
+  const tbody = table.querySelector('tbody');
+  const rows = Array.from(tbody.querySelectorAll('tr'));
+  rows.sort((a, b) => {
+    const va = cellValue(a, 4);
+    const vb = cellValue(b, 4);
+    return vb - va;
+  });
+  rows.forEach(r => tbody.appendChild(r));
+})();
+</script>
+
+</body>
+</html>
