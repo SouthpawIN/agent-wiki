@@ -28,3 +28,7 @@
 - Confirmed all 7 raw lines compiled across: wiki/concepts/wiki-portal-model-pages.md, wiki/concepts/benchmark-maintenance-plan.md, wiki/concepts/model-zoo-table-with-hf-links.md, wiki/decisions/quantization-lane-rules-2026-09-16.md, wiki/decisions/turbo-fit-rule-tracking-2026-09-16.md, wiki/entities/model-candidates.md.
 - Accounting fix: quantization-lane-rules-2026-09-16.md, turbo-fit-rule-tracking-2026-09-16.md and model-zoo-table-with-hf-links.md were created but never logged — now recorded.
 - Added "maple" lowest-tier alias (unresolved) to wiki/entities/model-candidates.md.
+
+## [2026-09-17] compile | raw/inbox/2026-09-16.md (re-pass 2)
+- Confirmed all 7 raw lines already compiled across: wiki/concepts/wiki-portal-model-pages.md, wiki/concepts/benchmark-maintenance-plan.md, wiki/concepts/model-zoo-table-with-hf-links.md, wiki/decisions/quantization-lane-rules-2026-09-16.md, wiki/decisions/turbo-fit-rule-tracking-2026-09-16.md, wiki/entities/model-candidates.md. No new pages.
+- BRIEF.md "## Learned": added IQ3S-all-the-way-up unified-memory quant preference and incremental TurboFit rule tracking.
