@@ -1,0 +1,10 @@
+---
+title: Which model formats (GGUF variants, GPTQ, AWQ, EXL2, etc.) does the qwen4-fork l
+type: query
+proposed: 2026-09-17 13:10
+tags: [question]
+---
+# Which model formats (GGUF variants, GPTQ, AWQ, EXL2, etc.) does the qwen4-fork llama.cpp build support for CUDA inference, and which can be served to Chris's MacBook?
+This is Chris's open format-level question complementing the model-routing goal — he needs to know what formats actually run on O'Marki's CUDA runtime.
+
+_Approve to run the research; the answer lands here._

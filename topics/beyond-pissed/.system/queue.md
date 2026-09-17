@@ -1,6 +1,7 @@
 # Queue — beyond-pissed
 
 ## [CONTEXT]
+- [ ] research qwen4-llama-cuda-format-support — SUGGESTED 2026-09-17 13:10: Want me to look into which model formats the qwen4-fork llama.cpp runtime supports for CUDA?
 - [ ] research format-compatibility-check — SUGGESTED 2026-09-17 05:47: Want me to look into which model formats will actually run on your CUDA llama.cpp runtime (the qwen4 fork)?
 - [ ] research model-routing-options — SUGGESTED 2026-09-15 17:31: Want me to look into how to select which models O'Marki serves to the MacBook?
 - [ ] research oh-marki-macos-flash — SUGGESTED 2026-09-15 13:29: Want me to look into the correct, reliable way to flash an Arch-based ISO to a USB on macOS — the sudo dd vs. rdisk4 per
@@ -16,6 +17,9 @@
 - [ ] center-wiki-orchestration — distilled 2026-09-08 09:57 → skills/center-wiki-orchestration/SKILL.md (auto-applied)
 
 ## [AGENTS]
+- [ ] omarki-serving-models-format-check — SUGGESTED 2026-09-17 13:10: I see you're setting up which formats O'Marki can serve to the MacBook — want a loop that checks which model formats are → agents/omarki-serving-models-format-check.md.proposed
+- [ ] omarki-format-compat-watch — SUGGESTED 2026-09-17 13:10: I see you haven't yet pinned down which model formats run on O'Marki's CUDA llama.cpp runtime — want a daily bot that wa → agents/omarki-format-compat-watch.md.proposed
+- [ ] model-format-servant — SUGGESTED 2026-09-17 13:10: I see you're trying to pin down which model formats actually run on O'Marki's CUDA llama.cpp runtime — want a bot that c → agents/model-format-servant.md.proposed
 - [ ] format-compat-watch — SUGGESTED 2026-09-17 05:47: I see you're trying to pin down which model formats actually run on that CUDA llama.cpp runtime — want a daily bot that  → agents/format-compat-watch.md.proposed
 - [ ] omarki-model-servant — SUGGESTED 2026-09-17 05:47: I see you want to pick which models O'Marki serves to this MacBook — want a bot that curates and routes model selection  → agents/omarki-model-servant.md.proposed
 - [ ] served-models-check — SUGGESTED 2026-09-15 17:31: Want a loop that checks which models O'Marki is currently serving to the MacBook and flags anything that shouldn't be? → agents/served-models-check.md.proposed

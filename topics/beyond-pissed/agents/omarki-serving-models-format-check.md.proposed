@@ -1,0 +1,20 @@
+---
+type: agent
+name: omarki-serving-models-format-check
+proposed: 2026-09-17 13:10
+topic: beyond-pissed
+reuse: null
+---
+# omarki-serving-models-format-check
+**I see you're setting up which formats O'Marki can serve to the MacBook — want a loop that checks which model formats are currently runnable on the CUDA runtime and flags anything that shouldn't be?**
+
+
+
+## First task
+
+
+## SOUL.md (draft)
+
+
+## Evidence
+> A CUDA llama.cpp runtime (qwen4 fork) was built on Omarchy as step 5 of the home-lab build.

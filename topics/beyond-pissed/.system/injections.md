@@ -1,6 +1,9 @@
 # Injections — beyond-pissed
 
 ## [UNREAD]
+[AGENTS] I see you're setting up which formats O'Marki can serve to the MacBook — want a loop that checks which model formats are currently runnable on the CUDA runtime and flags anything that shouldn't be?
+[AGENTS] I see you haven't yet pinned down which model formats run on O'Marki's CUDA llama.cpp runtime — want a daily bot that watches the qwen4 fork for which formats are actually supported and flags anything new?
+[AGENTS] I see you're trying to pin down which model formats actually run on O'Marki's CUDA llama.cpp runtime — want a bot that checks the qwen4 fork's supported formats (GGUF/GPTQ/etc.) and reports what's runnable?
 [AGENTS] I see you're trying to pin down which model formats actually run on that CUDA llama.cpp runtime — want a daily bot that watches for which formats stay compatible as you add models?
 [AGENTS] I see you want to pick which models O'Marki serves to this MacBook — want a bot that curates and routes model selection between the Arch lab and the Mac?
 [AGENTS] Want a loop that checks which models O'Marki is currently serving to the MacBook and flags anything that shouldn't be?

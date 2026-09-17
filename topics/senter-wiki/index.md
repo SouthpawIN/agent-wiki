@@ -34,56 +34,25 @@ This wiki is fed by:
 
 ## README
 
-### Turbofit
-Model research, pipelines, hardware tiers — evidence-backed local inference runtime.
-
-### Hermes Agent
-Runtime configuration, provider setup, model routing.
-
-### Klerik
-Profile factory, bot reviews, surgical corrections.
-
-### Anser
-Native Hermes answers, trust per-row citations only.
-
-### Looker
-UI-QA service bot: screenshots, vision, verification.
-
-### Teknium
-Hermes-Agent builder, core fixes, upstream PRs.
-
-### Paladin
-Vault structure warden, repo hygiene, merges.
-
-### Weaver
-Penter Wiki UI builder: vault-live.html, CSS, layout.
-
-### Dogeman
-YouTube/content studio: rants, scripts, visuals.
-
-### Turbosovth
-TurboFit support agent — model research, never merges.
-
-### Music
-Music generation and AI composition.
-
-### Dispatched M2S
-Dispatch pipeline for multi-agent workflows.
-
-### Burner Phone
-Mobile device management.
-
-### Case MacBook
-MacBook accessories and cases.
-
-### Nous Community
-Nous Research community engagement.
-
-### Kashik
-Kashik project.
-
-### 40+ Archived
-Absorbed topics preserved in `topics/_archive/`.
+| Topic | What |
+|-------|------|
+| [Turbofit](topics/turbofit/index.md) | Model research, pipelines, hardware tiers — evidence-backed local inference runtime. |
+| [Hermes Agent](topics/hermes-agent/index.md) | Runtime configuration, provider setup, model routing. |
+| [Klerik](topics/klerik/index.md) | Profile factory, bot reviews, surgical corrections. |
+| [Anser](topics/anser/index.md) | Native Hermes answers, trust per-row citations only. |
+| [Looker](topics/looker/index.md) | UI-QA service bot: screenshots, vision, verification. |
+| [Teknium](topics/teknium/index.md) | Hermes-Agent builder, core fixes, upstream PRs. |
+| [Paladin](topics/paladin/index.md) | Vault structure warden, repo hygiene, merges. |
+| [Weaver](topics/weaver/index.md) | Senter Wiki UI builder: vault-live.html, CSS, layout. |
+| [Dogeman](topics/dogeman/index.md) | YouTube/content studio: rants, scripts, visuals. |
+| [Turbosovth](topics/turbosovth/index.md) | TurboFit support agent — model research, never merges. |
+| [Music](topics/music/index.md) | Music generation and AI composition. |
+| [Dispatched M2S](topics/dispatched-m2s/index.md) | Dispatch pipeline for multi-agent workflows. |
+| [Burner Phone](topics/burner-phone/index.md) | Mobile device management. |
+| [Case MacBook](topics/case-macbook/index.md) | MacBook accessories and cases. |
+| [Nous Community](topics/nous-community/index.md) | Nous Research community engagement. |
+| [Kashik](topics/kashik/index.md) | Kashik project. |
+| 40+ Archived | Absorbed topics preserved in `topics/_archive/`. |
 
 ---
 
