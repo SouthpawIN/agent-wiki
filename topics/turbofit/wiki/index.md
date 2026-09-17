@@ -21,44 +21,41 @@ sources:
 
 **Turbofit** is a first-class [Hermes Agent](https://github.com/NousResearch/hermes-agent) provider and adaptive local-inference runtime.
 
-> **GitHub:** [SouthpawIN/Turbofit](https://github.com/SouthpawIN/Turbofit) · ACTIVE · MIT License It inventories physical compute and total usable memory, recommends an evidence-backed ladder, launches a native backend, and exposes one OpenAI-compatible endpoint. The client-facing name stays `auto` while the backing model, context, and auxiliary mode change.
+> **GitHub:** [SouthpawIN/Turbofit](https://github.com/SouthpawIN/turbofit) · ACTIVE · MIT License
+
+It inventories physical compute and total usable memory, recommends an evidence-backed ladder, launches a native backend, and exposes one OpenAI-compatible endpoint.
 
 ```text
 provider: custom:turbofit
 model: auto
 ```
 
-**TurboFit Check** scans the machine — dedicated VRAM, unified/integrated memory, or RAM-only — and applies Auto or a selected compatible lane. The **TurboFit List** is the separate evidence-only winner table by hardware class.
+**TurboFit Check** scans the machine — dedicated VRAM, unified/integrated memory, or RAM-only — and applies Auto or a selected compatible lane.
 
-### Turbofit 2.4 Lineup
+## Integrations
 
-| Model | Entries | Role | Status
-|---|---|---|---|
-| **Maple Preview 20B-A1B** | `TQ2_0` | Small-device MoE, ~1B active, native 128K | **Auto on 8 GB at 64K and 128K**
-| **Qwen 3.8 27B Unleashed** | `UD-IQ3_XXS`, `UD-Q3_K_XL` | Uncensored dense 27B, 262K, vision | Active catalog candidates
-| **Ornith 1.5 35B-A3B** | `Q4_K_M` MoE | Default auxiliary; 16 GB RAM-only main | Active auxiliary candidate
-| **Qwen 3.8 27B** | `Q4_K_M`, `Q8_0`, `BF16` ± MTP | Native image/video | Active catalog candidates
-| **Bonsai 27B** | Q1 / 1-bit | Still in the catalog; no longer the 8 GB Fit List default | Active catalog candidate
-| **MiniMax Music 3** | `minimax-music3` | Full-song music | Pinned integration candidate
-| **NVIDIA Parakeet TDT 0.6B v3** | `parakeet-tdt-0-6b-v3` | Local STT | Pinned integration candidate
-| **Soprano TTS** | `soprano-tts` | Local TTS | Pinned integration candidate
+### Repositories
 
-### Absorbed Topics
+| Repo | Link | Status | Stars |
+| --- | --- | --- | --- |
+| turbofit | [github.com/SouthpawIN/turbofit](https://github.com/SouthpawIN/turbofit) | ACTIVE | 83 |
+| turbohaul-llmfit | [github.com/SouthpawIN/turbohaul-llmfit](https://github.com/SouthpawIN/turbohaul-llmfit) | DORMANT | 2 |
+| turbohaul-manager | [github.com/SouthpawIN/turbohaul-manager](https://github.com/SouthpawIN/turbohaul-manager) | DORMANT | 1 |
+| southpaw-turbohaul | [github.com/SouthpawIN/southpaw-turbohaul](https://github.com/SouthpawIN/southpaw-turbohaul) | DORMANT | 7 |
+| sirvir | [github.com/SouthpawIN/sirvir](https://github.com/SouthpawIN/sirvir) | ACTIVE | 27 |
 
-- `turbohaul-llmfit` — Generate optimized llama-server launch strings (absorbed 2026-09-02; was DORMANT)
-- `turbohaul-manager` — Ollama-shape inference manager (absorbed 2026-09-02; was DORMANT)
-- `southpaw-turbohaul` — Curated model server for Nous Research (absorbed 2026-09-02; was DORMANT)
-- `sirvir` — GitHub-current TurboFit support for Hermes (absorbed 2026-09-02; was ACTIVE)
+### HuggingFace Models
 
-### Repos
+| Model | Repository |
+| --- | --- |
+| Maple Preview | [deepgrove/maple-preview](https://huggingface.co/deepgrove/maple-preview) |
+| Cyber Tiel Coder | [peculiar-ragdoll/...](https://huggingface.co/peculiar-ragdoll/Cyber-Tiel-Coder-35B-A3B-GGUF-MTP) |
+| Qwen 3.8 GSQ-RCO | [ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF](https://huggingface.co/ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF) |
+| Qwen 3.8 Flash Next | [ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-GGUF](https://huggingface.co/ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-GGUF) |
+| DeepSeek V4.1 Flash | [vcruz305/DeepSeek-V4.1-Flash-GGUF](https://huggingface.co/vcruz305/DeepSeek-V4.1-Flash-GGUF) |
 
-| Repo | Link | Status | Stars
-|---|---|---|---|
-| turbofit | [github.com/SouthpawIN/turbofit](https://github.com/SouthpawIN/turbofit) | ACTIVE | 83
-| turbohaul-llmfit | [github.com/SouthpawIN/turbohaul-llmfit](https://github.com/SouthpawIN/turbohaul-llmfit) | DORMANT | 2
-| turbohaul-manager | [github.com/SouthpawIN/turbohaul-manager](https://github.com/SouthpawIN/turbohaul-manager) | DORMANT | 1
-| southpaw-turbohaul | [github.com/SouthpawIN/southpaw-turbohaul](https://github.com/SouthpawIN/southpaw-turbohaul) | DORMANT | 7
-| sirvir | [github.com/SouthpawIN/sirvir](https://github.com/SouthpawIN/sirvir) | ACTIVE | 27
+---
+
 
 
 ---
@@ -93,11 +90,7 @@ model: auto
 
 ## TurboFit List
 
-> Models suitable for running Hermes Agent locally. Only 5 candidates: **Maple**, **Cyber-Tiel Coder**, **Qwen GSQ-RCO**, **Qwen Flash Next**, **DeepSeek V4.1 Flash**.
-> 
-> **Fit rule:** model_size (quant) + KV cache must be ≤ tier size. KV cache ≈ 2-4GB for most models at 262K context with q8_0 KV. Comfortable fit: model_size + 2GB ≤ tier_size.
-
-### Agentic Model Lineup
+> 5 models suitable for running Hermes Agent locally. Ordered by capability.
 
 | Order | Model | Type | Parameters | Optimal Quant | Size | AIME26 | GPQA-D | DeepSWE | LCBv6 | TB4.0
 |-------|-------|------|------------|---------------|------|--------|--------|---------|-------|-------|
@@ -2507,65 +2500,6 @@ Unleashed Q3_K_XL remains the **only viable 131K solution** on this 32 GB hardwa
 
 ![Speculative Decode](assets/turbofit-2.4-spec-decode.png)
 
-## Integrations
-
-### GitHub Repositories
-
-| Repo | URL | Description
-|------|-----|-------------|
-| turbofit | [github.com/SouthpawIN/turbofit](https://github.com/SouthpawIN/turbofit) | Main Turbofit runtime — 83★, MIT license
-| sirvir | [github.com/SouthpawIN/sirvir](https://github.com/SouthpawIN/sirvir) | Hermes TurboFit support — 27★
-| agent-wiki (Senter) | [github.com/SouthpawIN/Senter](https://github.com/SouthpawIN/Senter) | Agent wiki vault (absorbed agent-wiki + klerik + senter)
-| hermes-agent | [github.com/NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent) | Hermes Agent framework
-| mlx-lm-deepgrove | [github.com/deepgrove-ai/mlx-lm-deepgrove](https://github.com/deepgrove-ai/mlx-lm-deepgrove) | Maple MLX server runtime fork
-| maple-preview | [github.com/deepgrove/maple-preview](https://github.com/deepgrove/maple-preview) | Maple model source
-| llama.cpp (dflash2 fork) | [github.com/z-lab/llama.cpp-fork](https://github.com/z-lab/llama.cpp-fork) | DFlash2 draft support fork
-| llama.cpp (stamsam fork) | [github.com/stamsam/llama.cpp](https://github.com/stamsam/llama.cpp) | Maple architecture support fork
-| Qwen3.8-Flash-Next | [github.com/QwenLM/Qwen3.8-Flash-Next](https://github.com/QwenLM/Qwen3.8-Flash-Next) | Flash Next model source
-| GSQ | [github.com/IST-DASLab/GSQ](https://github.com/IST-DASLab/GSQ) | Gradient-symmetric quantization
-| RCO | [github.com/IST-DASLab/RCO](https://github.com/IST-DASLab/RCO) | Rank-aware calibration optimization
-
-### HuggingFace Models
-
-| Model | HF Link | Description
-|-------|---------|-------------|
-| Maple Preview | [deepgrove/maple-preview](https://huggingface.co/deepgrove/maple-preview) | 20B-A1B ternary MoE reasoning model
-| Maple Preview GGUF | [deepgrove/maple-preview-GGUF](https://huggingface.co/deepgrove/maple-preview-GGUF) | Pre-quantized Maple GGUF files
-| Cyber Tiel Coder GGUF | [peculiar-ragdoll/Cyber-Tiel-Coder-35B-A3B-GGUF](https://huggingface.co/peculiar-ragdoll/Cyber-Tiel-Coder-35B-A3B-GGUF) | Code MoE, UD-Q4_K_XL
-| Cyber Tiel Coder MTP | [peculiar-ragdoll/Cyber-Tiel-Coder-35B-A3B-GGUF-MTP](https://huggingface.co/peculiar-ragdoll/Cyber-Tiel-Coder-35B-A3B-GGUF-MTP) | MTP speculative variant
-| Dirk Qwen 3.8 27B GGUF | [peculiar-ragdoll/Dirk-Qwen3.8-27B-GGUF](https://huggingface.co/peculiar-ragdoll/Dirk-Qwen3.8-27B-GGUF) | Dirk quantized Qwen 3.8
-| GSQ-RCO Qwen 3.8 | [ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF](https://huggingface.co/ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF) | Non-uniform quantized Qwen 3.8
-| GSQ-RCO Flash Next | [ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-GGUF](https://huggingface.co/ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-GGUF) | Flash Next quantized
-| DeepSeek V4.1 Flash | [deepseek-ai/DeepSeek-V4.1-Flash](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash) | 552B backbone MoE
-| DeepSeek V4.1 Flash GGUF | [vcruz305/DeepSeek-V4.1-Flash-GGUF](https://huggingface.co/vcruz305/DeepSeek-V4.1-Flash-GGUF) | Community GGUF
-| Ornith 1.5 35B-A3B | [ornith-ai/Ornith-1.5-35B-A3B](https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B) | Predecessor to Cyber Tiel
-| Qwen 3.8 27B Unleashed GGUF | [outsourc-e/Qwen3.8-27B-Unleashed-GGUF](https://huggingface.co/outsourc-e/Qwen3.8-27B-Unleashed-GGUF) | Uncensored general LLM
-| Bonsai 27B GGUF | [prism-ml/Bonsai-27B-gguf](https://huggingface.co/prism-ml/Bonsai-27B-gguf) | Ternary quantized Bonsai
-| Qwen 3.8 27B Base | [Qwen/Qwen3.8-27B](https://huggingface.co/Qwen/Qwen3.8-27B) | Base dense 27B
-| Soprano 1.1 80M | [WalkingCat/Soprano-1.1-80M-GGUF](https://huggingface.co/WalkingCat/Soprano-1.1-80M-GGUF) | Creative micro model
-
-### X Profiles & Community
-
-| Handle | URL | Description
-|--------|-----|-------------|
-| @deepgrove_ai | [x.com/deepgrove_ai](https://x.com/deepgrove_ai) | DeepGrove (Maple)
-| @QwenLM | [x.com/QwenLM](https://x.com/QwenLM) | Qwen team
-| @deepseek_ai | [x.com/deepseek_ai](https://x.com/deepseek_ai) | DeepSeek
-| @NousResearch | [x.com/NousResearch](https://x.com/NousResearch) | Nous Research (Hermes)
-| @mlx_community | [x.com/mlx_community](https://x.com/mlx_community) | Apple MLX
-
-### Research Sources
-
-| Source | URL | Description
-|--------|-----|-------------|
-| DeepSeek V4.1 Flash Guide | [deepseekv4guide.org](https://deepseekv4guide.org/guides/deepseek-v4-1-flash) | Community guide
-| Flash Next Paper | [arxiv.org/html/2608.30320](https://arxiv.org/html/2608.30320) | Technical paper
-| Flash Next Gist | [gist.github.com/ryan4yin](https://gist.github.com/ryan4yin/48617bbddacc7067f10799770b7cc33f) | Quick reference
-| antirez GGUF Index | [antirez/deepseek-v4.1-flash-gguf](https://antirez/deepseek-v4.1-flash-gguf) | Community GGUF index
-
-
----
-
 ## Rules
 
 ### Rule 1: Model + KV Cache ≤ Tier Size
@@ -2630,3 +2564,11 @@ Unleashed Q3_K_XL remains the **only viable 131K solution** on this 32 GB hardwa
 | docx | Word document operations
 | weekly-review-planning | Weekly review and planning
 
+---
+
+## Absorbed Topics
+
+- `turbohaul-llmfit` — Generate optimized llama-server launch strings (absorbed 2026-09-02; was DORMANT)
+- `turbohaul-manager` — Ollama-shape inference manager (absorbed 2026-09-02; was DORMANT)
+- `southpaw-turbohaul` — Curated model server for Nous Research (absorbed 2026-09-02; was DORMANT)
+- `sirvir` — GitHub-current TurboFit support for Hermes (absorbed 2026-09-02; was ACTIVE)

@@ -21,44 +21,41 @@ sources:
 
 **Turbofit** is a first-class [Hermes Agent](https://github.com/NousResearch/hermes-agent) provider and adaptive local-inference runtime.
 
-> **GitHub:** [SouthpawIN/Turbofit](https://github.com/SouthpawIN/Turbofit) · ACTIVE · MIT License It inventories physical compute and total usable memory, recommends an evidence-backed ladder, launches a native backend, and exposes one OpenAI-compatible endpoint. The client-facing name stays `auto` while the backing model, context, and auxiliary mode change.
+> **GitHub:** [SouthpawIN/Turbofit](https://github.com/SouthpawIN/turbofit) · ACTIVE · MIT License
+
+It inventories physical compute and total usable memory, recommends an evidence-backed ladder, launches a native backend, and exposes one OpenAI-compatible endpoint.
 
 ```text
 provider: custom:turbofit
 model: auto
 ```
 
-**TurboFit Check** scans the machine — dedicated VRAM, unified/integrated memory, or RAM-only — and applies Auto or a selected compatible lane. The **TurboFit List** is the separate evidence-only winner table by hardware class.
+**TurboFit Check** scans the machine — dedicated VRAM, unified/integrated memory, or RAM-only — and applies Auto or a selected compatible lane.
 
-### Turbofit 2.4 Lineup
+## Integrations
 
-| Model | Entries | Role | Status
-|---|---|---|---|
-| **Maple Preview 20B-A1B** | `TQ2_0` | Small-device MoE, ~1B active, native 128K | **Auto on 8 GB at 64K and 128K**
-| **Qwen 3.8 27B Unleashed** | `UD-IQ3_XXS`, `UD-Q3_K_XL` | Uncensored dense 27B, 262K, vision | Active catalog candidates
-| **Ornith 1.5 35B-A3B** | `Q4_K_M` MoE | Default auxiliary; 16 GB RAM-only main | Active auxiliary candidate
-| **Qwen 3.8 27B** | `Q4_K_M`, `Q8_0`, `BF16` ± MTP | Native image/video | Active catalog candidates
-| **Bonsai 27B** | Q1 / 1-bit | Still in the catalog; no longer the 8 GB Fit List default | Active catalog candidate
-| **MiniMax Music 3** | `minimax-music3` | Full-song music | Pinned integration candidate
-| **NVIDIA Parakeet TDT 0.6B v3** | `parakeet-tdt-0-6b-v3` | Local STT | Pinned integration candidate
-| **Soprano TTS** | `soprano-tts` | Local TTS | Pinned integration candidate
+### Repositories
 
-### Absorbed Topics
+| Repo | Link | Status | Stars |
+| --- | --- | --- | --- |
+| turbofit | [github.com/SouthpawIN/turbofit](https://github.com/SouthpawIN/turbofit) | ACTIVE | 83 |
+| turbohaul-llmfit | [github.com/SouthpawIN/turbohaul-llmfit](https://github.com/SouthpawIN/turbohaul-llmfit) | DORMANT | 2 |
+| turbohaul-manager | [github.com/SouthpawIN/turbohaul-manager](https://github.com/SouthpawIN/turbohaul-manager) | DORMANT | 1 |
+| southpaw-turbohaul | [github.com/SouthpawIN/southpaw-turbohaul](https://github.com/SouthpawIN/southpaw-turbohaul) | DORMANT | 7 |
+| sirvir | [github.com/SouthpawIN/sirvir](https://github.com/SouthpawIN/sirvir) | ACTIVE | 27 |
 
-- `turbohaul-llmfit` — Generate optimized llama-server launch strings (absorbed 2026-09-02; was DORMANT)
-- `turbohaul-manager` — Ollama-shape inference manager (absorbed 2026-09-02; was DORMANT)
-- `southpaw-turbohaul` — Curated model server for Nous Research (absorbed 2026-09-02; was DORMANT)
-- `sirvir` — GitHub-current TurboFit support for Hermes (absorbed 2026-09-02; was ACTIVE)
+### HuggingFace Models
 
-### Repos
+| Model | Repository |
+| --- | --- |
+| Maple Preview | [deepgrove/maple-preview](https://huggingface.co/deepgrove/maple-preview) |
+| Cyber Tiel Coder | [peculiar-ragdoll/...](https://huggingface.co/peculiar-ragdoll/Cyber-Tiel-Coder-35B-A3B-GGUF-MTP) |
+| Qwen 3.8 GSQ-RCO | [ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF](https://huggingface.co/ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF) |
+| Qwen 3.8 Flash Next | [ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-GGUF](https://huggingface.co/ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-GGUF) |
+| DeepSeek V4.1 Flash | [vcruz305/DeepSeek-V4.1-Flash-GGUF](https://huggingface.co/vcruz305/DeepSeek-V4.1-Flash-GGUF) |
 
-| Repo | Link | Status | Stars
-|---|---|---|---|
-| turbofit | [github.com/SouthpawIN/turbofit](https://github.com/SouthpawIN/turbofit) | ACTIVE | 83
-| turbohaul-llmfit | [github.com/SouthpawIN/turbohaul-llmfit](https://github.com/SouthpawIN/turbohaul-llmfit) | DORMANT | 2
-| turbohaul-manager | [github.com/SouthpawIN/turbohaul-manager](https://github.com/SouthpawIN/turbohaul-manager) | DORMANT | 1
-| southpaw-turbohaul | [github.com/SouthpawIN/southpaw-turbohaul](https://github.com/SouthpawIN/southpaw-turbohaul) | DORMANT | 7
-| sirvir | [github.com/SouthpawIN/sirvir](https://github.com/SouthpawIN/sirvir) | ACTIVE | 27
+---
+
 
 
 ---
@@ -67,25 +64,25 @@ model: auto
 
 > All models discovered during research. ★ = on TurboFit List.
 
-| Model | Type | System | Parameters | AIME26 | GPQA-D | DeepSWE | LCBv6 | TB4.0
-|-------|------|--------|------------|--------|--------|---------|-------|-------|-----------|
-| [[Maple Preview]] ★ | Aux LLM (Ternary MoE) | Omarchy | 20B-A1B | 87.5% | 73.5% | — | 75.1% | —
-| [[Cyber Tiel Coder]] ★ | Code LLM (MoE) | Omarchy, MacBook | 35B-A3B | — | — | — | — | —
-| [[Qwen 3.8 GSQ-RCO]] ★ | LLM (Quantized) | Omarchy | 27B | — | 89.2% | 42.2% | 90.3% | —
-| [[Qwen 3.8 Flash Next]] ★ | MoE (Qwen4 Preview) | Omarchy | 180B / 6B | — | 91.7% | 58.7% | 91.9% | —
-| [[DeepSeek V4.1 Flash]] ★ | MoE | Omarchy | 763B / 16B | — | 90.9% | 74.2% | — | 31.2%
-| [[Ace Step 1.5]] | Music Generation | Omarchy | 4B | — | — | — | — | —
-| [[Bonsai 27B]] | LLM (Ternary) | Omarchy | 27B | — | — | — | — | —
-| [[Cosmos 37B]] | LLM | Omarchy | 37B | — | — | — | — | —
-| [[Cyber Tiel Coder MTP]] | Code LLM (MTP) | Omarchy | 35B-A3B | — | — | — | — | —
-| [[DAXZEIT GRM]] | Reasoning LLM (MTP) | Omarchy | 27B | — | — | — | — | —
-| [[NVIDIA Nemotron 3.5]] | Enterprise LLM (MoE) | Omarchy | 30B-A3B | — | — | — | — | —
-| [[Qwen 3.8 Unleashed]] | General LLM | Omarchy, MacBook | 27B | — | — | — | — | —
-| [[Super Qwen]] | Uncensored LLM | Omarchy | 27B | — | — | — | — | —
-| [[Qwen 2.5 Omni]] | Multimodal VLM | Omarchy | 3B | — | — | — | — | —
-| [[Soprano]] | Creative Micro | Omarchy | 80M | — | — | — | — | —
-| [[Qwen 3.8 Base]] | Base LLM | Omarchy, MacBook | 27B | — | — | — | — | —
-| [[Ornith 1.5]] | Code LLM (Legacy) | MacBook | 35B-A3B | — | — | — | — | —
+| Model | Type | System | Parameters | AIME26 | GPQA-D | DeepSWE | LCBv6 | TB4.0 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [[Maple Preview]] ★ | Aux LLM (Ternary MoE) | Omarchy | 20B-A1B | 87.5% | 73.5% | - | 75.1% | - |
+| [[Cyber Tiel Coder]] ★ | Code LLM (MoE) | Omarchy, MacBook | 35B-A3B | - | - | - | - | - |
+| [[Qwen 3.8 GSQ-RCO]] ★ | LLM (Quantized) | Omarchy | 27B | - | 89.2% | 42.2% | 90.3% | - |
+| [[Qwen 3.8 Flash Next]] ★ | MoE (Qwen4 Preview) | Omarchy | 180B / 6B | - | 91.7% | 58.7% | 91.9% | - |
+| [[DeepSeek V4.1 Flash]] ★ | MoE | Omarchy | 763B / 16B | - | 90.9% | 74.2% | - | 31.2% |
+| [[Ace Step 1.5]] | Music Generation | Omarchy | 4B | - | - | - | - | - |
+| [[Bonsai 27B]] | LLM (Ternary) | Omarchy | 27B | - | - | - | - | - |
+| [[Cosmos 37B]] | LLM | Omarchy | 37B | - | - | - | - | - |
+| [[Cyber Tiel Coder MTP]] | Code LLM (MTP) | Omarchy | 35B-A3B | - | - | - | - | - |
+| [[DAXZEIT GRM]] | Reasoning LLM (MTP) | Omarchy | 27B | - | - | - | - | - |
+| [[NVIDIA Nemotron 3.5]] | Enterprise LLM (MoE) | Omarchy | 30B-A3B | - | - | - | - | - |
+| [[Qwen 3.8 Unleashed]] | General LLM | Omarchy, MacBook | 27B | - | - | - | - | - |
+| [[Super Qwen]] | Uncensored LLM | Omarchy | 27B | - | - | - | - | - |
+| [[Qwen 2.5 Omni]] | Multimodal VLM | Omarchy | 3B | - | - | - | - | - |
+| [[Soprano]] | Creative Micro | Omarchy | 80M | - | - | - | - | - |
+| [[Qwen 3.8 Base]] | Base LLM | Omarchy, MacBook | 27B | - | - | - | - | - |
+| [[Ornith 1.5]] | Code LLM (Legacy) | MacBook | 35B-A3B | - | - | - | - | - |
 
 > **Note:** GSQ-RCO IQ3_S scores shown (AIME25 100%, GPQA-D 89.2%, DeepSWE 42.2%, LCBv6 90.3%). Maple LCBv6 score is from LiveCodeBench v6.
 
@@ -93,19 +90,15 @@ model: auto
 
 ## TurboFit List
 
-> Models suitable for running Hermes Agent locally. Only 5 candidates: **Maple**, **Cyber-Tiel Coder**, **Qwen GSQ-RCO**, **Qwen Flash Next**, **DeepSeek V4.1 Flash**.
-> 
-> **Fit rule:** model_size (quant) + KV cache must be ≤ tier size. KV cache ≈ 2-4GB for most models at 262K context with q8_0 KV. Comfortable fit: model_size + 2GB ≤ tier_size.
+> 5 models suitable for running Hermes Agent locally. Ordered by capability.
 
-### Agentic Model Lineup
-
-| Order | Model | Type | Parameters | Optimal Quant | Size | AIME26 | GPQA-D | DeepSWE | LCBv6 | TB4.0
-|-------|-------|------|------------|---------------|------|--------|--------|---------|-------|-------|
-| 1 | **Maple Preview** | Ternary MoE | 20B-A1B | TQ2_0-head-Q4_K | 5.5 GiB | 87.5% | 73.5% | — | 75.1% | —
-| 2 | **Cyber Tiel Coder** | Code LLM (MoE) | 35B-A3B | UD-Q4_K_XL | 22.4 GiB | — | — | — | — | —
-| 3 | **Qwen 3.8 GSQ-RCO** | LLM (Quantized) | 27B | IQ3_S | 11.8 GiB | — | 89.2% | 42.2% | 90.3% | —
-| 4 | **Qwen 3.8 Flash Next** | MoE (Qwen4 Preview) | 180B / 6B | IQ3_XXS | 47 GiB | — | 91.7% | 58.7% | 91.9% | —
-| 5 | **DeepSeek V4.1 Flash** | MoE | 763B / 16B | FP8 / UD-Q4_K_XL | 160 / ~40 GiB | — | 90.9% | 74.2% | — | 31.2%
+| Order | Model | Type | Parameters | Optimal Quant | Size | AIME26 | GPQA-D | DeepSWE | LCBv6 | TB4.0 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | **Maple Preview** | Ternary MoE | 20B-A1B | TQ2_0-head-Q4_K | 5.5 GiB | 87.5% | 73.5% | - | 75.1% | - |
+| 2 | **Cyber Tiel Coder** | Code LLM (MoE) | 35B-A3B | UD-Q4_K_XL | 22.4 GiB | - | - | - | - | - |
+| 3 | **Qwen 3.8 GSQ-RCO** | LLM (Quantized) | 27B | IQ3_S | 11.8 GiB | - | 89.2% | 42.2% | 90.3% | - |
+| 4 | **Qwen 3.8 Flash Next** | MoE (Qwen4 Preview) | 180B / 6B | IQ3_XXS | 47 GiB | - | 91.7% | 58.7% | 91.9% | - |
+| 5 | **DeepSeek V4.1 Flash** | MoE | 763B / 16B | FP8 / UD-Q4_K_XL | 160 / ~40 GiB | - | 90.9% | 74.2% | - | 31.2% |
 
 > **Note:** GSQ-RCO IQ3_S benchmark scores (AIME25 100%, GPQA-D 89.2%, DeepSWE 42.2%, LCBv6 90.3%) are from the model card. Maple LCBv6 score is from LiveCodeBench v6.
 
@@ -119,46 +112,46 @@ Comfortable: model_size + 2GB ≤ tier_size
 
 ### GPU (NVIDIA/AMD VRAM — ≤16GB assumes system RAM available for MoE offload and KV cache)
 
-| Tier | Recommended | Model | Quant | Size | VRAM Used | Context | Notes
-|------|-------------|-------|-------|------|-----------|---------|-------|
-| <8 GB | Maple | TQ2_0 | 5.5 GiB | ~6 GiB | 131K native, 262K w/ RoPE | SSD streaming via ssdmoe. System RAM for KV cache.
-| 16 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~12 GiB | 131K-262K | Near-lossless. Cyber-Tiel Q3_K_M also fits (~14 GiB).
-| 24 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~12 GiB | 262K | Same near-lossless model, more KV headroom
-| 32 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~12 GiB | 262K+ | Same. Bigger KV cache. Consider Cyber-Tiel for code
-| 48 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~12 GiB | 262K+ | Still IQ3_S. More context headroom
-| 64 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~16 GiB | 262K+ | Near-lossless. 52GB free for KV cache, DFlash2 draft.
-| 96 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 262K native, 1M w/ YaRN | Qwen4 preview, beats Claude Opus 4.6
-| 128 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 1M | Max context for Flash Next
-| 256 GB | DeepSeek V4.1 Flash | FP8 | 160 GiB | ~162 GiB | 1M | Top capability. SSD streaming for Engram
+| Tier | Recommended | Model | Quant | Size | VRAM Used | Context | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| <8 GB | Maple | TQ2_0 | 5.5 GiB | ~6 GiB | 131K native, 262K w/ RoPE | SSD streaming via ssdmoe. System RAM for KV cache. |
+| 16 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~12 GiB | 131K-262K | Near-lossless. Cyber-Tiel Q3_K_M also fits (~14 GiB). |
+| 24 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~12 GiB | 262K | Same near-lossless model, more KV headroom |
+| 32 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~12 GiB | 262K+ | Same. Bigger KV cache. Consider Cyber-Tiel for code |
+| 48 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~12 GiB | 262K+ | Still IQ3_S. More context headroom |
+| 64 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~16 GiB | 262K+ | Near-lossless. 52GB free for KV cache, DFlash2 draft. |
+| 96 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 262K native, 1M w/ YaRN | Qwen4 preview, beats Claude Opus 4.6 |
+| 128 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 1M | Max context for Flash Next |
+| 256 GB | DeepSeek V4.1 Flash | FP8 | 160 GiB | ~162 GiB | 1M | Top capability. SSD streaming for Engram |
 
 > IQ3_S = near-lossless. Recommended for all tiers where it fits. Only move to FP16 at 64GB+.
 > Flash Next QSA gives ~4.9x decode speedup vs dense attention at 262K. IQ3_XXS is the sweet spot for 96GB+.
 
 ### CPU (System RAM — model + KV must fit in RAM)
 
-| Tier | Recommended | Model | Quant | Size | RAM Used | Context | Notes
-|------|-------------|-------|-------|------|----------|---------|-------|
-| <8 GB | Maple | TQ2_0 | 5.5 GiB | ~6 GiB | 131K native | Minimum viable
-| 16 GB | Cyber-Tiel Coder | Q3_K_M | ~14 GiB | ~16 GiB | 262K native | MoE, 3B active. Faster than GSQ-RCO on CPU.
-| 32 GB | Cyber-Tiel Coder | UD-Q4_K_XL | 22.4 GiB | ~23 GiB | 262K native | MoE, 3B active, fast on CPU
-| 48 GB | Cyber-Tiel Coder | UD-Q4_K_XL | 22.4 GiB | ~23 GiB | 262K+ | More KV headroom
-| 64 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~16 GiB | 262K+ | Near-lossless. Low power, high context headroom.
-| 96 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 262K native | Flash Next entry tier
-| 128 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 1M w/ YaRN | Max context
-| 256 GB | DeepSeek V4.1 Flash | FP8 | 160 GiB | ~162 GiB | 1M | Max tier
+| Tier | Recommended | Model | Quant | Size | RAM Used | Context | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| <8 GB | Maple | TQ2_0 | 5.5 GiB | ~6 GiB | 131K native | Minimum viable |
+| 16 GB | Cyber-Tiel Coder | Q3_K_M | ~14 GiB | ~16 GiB | 262K native | MoE, 3B active. Faster than GSQ-RCO on CPU. |
+| 32 GB | Cyber-Tiel Coder | UD-Q4_K_XL | 22.4 GiB | ~23 GiB | 262K native | MoE, 3B active, fast on CPU |
+| 48 GB | Cyber-Tiel Coder | UD-Q4_K_XL | 22.4 GiB | ~23 GiB | 262K+ | More KV headroom |
+| 64 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~16 GiB | 262K+ | Near-lossless. Low power, high context headroom. |
+| 96 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 262K native | Flash Next entry tier |
+| 128 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 1M w/ YaRN | Max context |
+| 256 GB | DeepSeek V4.1 Flash | FP8 | 160 GiB | ~162 GiB | 1M | Max tier |
 
 ### Unified Memory (Apple Silicon — shared CPU/GPU RAM)
 
-| Tier | Recommended | Model | Quant | Size | RAM Used | Context | Notes
-|------|-------------|-------|-------|------|----------|---------|-------|
-| <8 GB | Maple | TQ2_0 | 5.5 GiB | ~6 GiB | 131K native | 218 tok/s on M4 Mac mini
-| 16 GB | Cyber-Tiel Coder | Q3_K_M | ~14 GiB | ~16 GiB | 262K native | MoE, 3B active. Faster than GSQ-RCO on Apple Silicon.
-| 32 GB | Cyber-Tiel Coder | UD-Q4_K_XL | 22.4 GiB | ~23 GiB | 262K native | 22+4=26GB ✓, fast MoE on Apple Silicon
-| 48 GB | Cyber-Tiel Coder | UD-Q4_K_XL | 22.4 GiB | ~23 GiB | 262K+ | M2 Max/Ultra territory
-| 64 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~16 GiB | 262K+ | Near-lossless. Low power, high context headroom.
-| 96 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 262K native | M4 Ultra
-| 128 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 1M w/ YaRN | Max Flash Next
-| 256 GB | DeepSeek V4.1 Flash | FP8 | 160 GiB | ~162 GiB | 1M | Max tier
+| Tier | Recommended | Model | Quant | Size | RAM Used | Context | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| <8 GB | Maple | TQ2_0 | 5.5 GiB | ~6 GiB | 131K native | 218 tok/s on M4 Mac mini |
+| 16 GB | Cyber-Tiel Coder | Q3_K_M | ~14 GiB | ~16 GiB | 262K native | MoE, 3B active. Faster than GSQ-RCO on Apple Silicon. |
+| 32 GB | Cyber-Tiel Coder | UD-Q4_K_XL | 22.4 GiB | ~23 GiB | 262K native | 22+4=26GB ✓, fast MoE on Apple Silicon |
+| 48 GB | Cyber-Tiel Coder | UD-Q4_K_XL | 22.4 GiB | ~23 GiB | 262K+ | M2 Max/Ultra territory |
+| 64 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~16 GiB | 262K+ | Near-lossless. Low power, high context headroom. |
+| 96 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 262K native | M4 Ultra |
+| 128 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 1M w/ YaRN | Max Flash Next |
+| 256 GB | DeepSeek V4.1 Flash | FP8 | 160 GiB | ~162 GiB | 1M | Max tier |
 
 > ★ = on TurboFit List. Models without ★ are Model Zoo only.
 
@@ -237,13 +230,13 @@ All attempted llama.cpp DFlash2 integration commands failed with invalid/unrecog
 
 #### Failed Commands and Errors
 
-|| Command | Error
-||---------|-------|
-| `llama-server -m ... --draft-model <path> --draft-ngl 999 --draft-ctx-size 131072 --low-vram 0` | `error: invalid argument: --draft-model`
-| `llama-server -m ... --draft-ngl 999 --low-vram 0` | `error: invalid argument: --draft-ngl`
-| `llama-server -m ... --draft-ctx-size 131072 --low-vram 0` | `error: invalid argument: --draft-ctx-size`
-| `llama-server -m ... --low-vram 0` | `error: invalid argument: --low-vram`
-| `mtplx serve --model ... --memory-budget 32GB` | `error: unrecognized arguments: --memory-budget 32GB`
+|| Command | Error |
+| --- | --- | --- |
+| `llama-server -m ... --draft-model <path> --draft-ngl 999 --draft-ctx-size 131072 --low-vram 0` | `error: invalid argument: --draft-model` |
+| `llama-server -m ... --draft-ngl 999 --low-vram 0` | `error: invalid argument: --draft-ngl` |
+| `llama-server -m ... --draft-ctx-size 131072 --low-vram 0` | `error: invalid argument: --draft-ctx-size` |
+| `llama-server -m ... --low-vram 0` | `error: invalid argument: --low-vram` |
+| `mtplx serve --model ... --memory-budget 32GB` | `error: unrecognized arguments: --memory-budget 32GB` |
 
 #### Root Cause
 
@@ -325,11 +318,11 @@ Dirk is a **dense 27B model** (not MoE), so:
 
 #### Runtimes Tested
 
-| Runtime | Status | Notes
-|---------|--------|-------|
-| llama.cpp stock | Incompatible | `unknown model architecture: 'maple'` (Maple only)
-| llama.cpp Qwen branch | | Works with Q3_K_XL
-| MLX | 🔄 Pending | Would need 131K streaming verification
+| Runtime | Status | Notes |
+| --- | --- | --- |
+| llama.cpp stock | Incompatible | `unknown model architecture: 'maple'` (Maple only) |
+| llama.cpp Qwen branch | | Works with Q3_K_XL |
+| MLX | 🔄 Pending | Would need 131K streaming verification |
 
 #### Related
 
@@ -488,13 +481,13 @@ Source: `wiki/entities/mtplx-qwen-38-27b-optimized-speed.md`
 
 #### Performance
 
-| Context | Throughput | Notes
-|---------|-----------|-------|
-| 500 tokens | 8–12 tok/s | Stable short context
-| 65K | ~7 tok/s | Stable daily-driver target
-| 131K | 6–7 tok/s short | Hermes summary claim
-| 5K+ prompts at 131K | 507 Insufficient Storage | Observed failure
-| End-to-end @ 131K 2005-token history | 0.39 tok/s | `end_to_end_tok_s` observed
+| Context | Throughput | Notes |
+| --- | --- | --- |
+| 500 tokens | 8–12 tok/s | Stable short context |
+| 65K | ~7 tok/s | Stable daily-driver target |
+| 131K | 6–7 tok/s short | Hermes summary claim |
+| 5K+ prompts at 131K | 507 Insufficient Storage | Observed failure |
+| End-to-end @ 131K 2005-token history | 0.39 tok/s | `end_to_end_tok_s` observed |
 
 #### Artifacts
 
@@ -553,9 +546,9 @@ Source: `wiki/entities/nail-qwen36-35b.md`
 
 #### Benchmark Results (M1 MacBook 32GB)
 
-|| Model | Type | Context | Warmup | Short | 5K | Status
-||-------|------|---------|--------|-------|-----|--------|
-|| **Nail Q4_K_XL** | MoE 35B | 32K | ~3s | **23.4 tok/s** | **4.7 tok/s** | Winner
+|| Model | Type | Context | Warmup | Short | 5K | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+|| **Nail Q4_K_XL** | MoE 35B | 32K | ~3s | **23.4 tok/s** | **4.7 tok/s** | Winner |
 
 #### Key Findings
 
@@ -608,23 +601,23 @@ Ornith is owned by TurboFit routing, not the wiki itself. See `[[turbofit-runtim
 
 #### Measured throughput
 
-|| Test | Measured value
-||---|---|
-|| Warmup | ~68s first run; much faster on restarts
-|| Short prompt | 15.6 tok/s at ~517 tokens in / 100 out
-|| 5K prompt | 5.7 tok/s at ~3519 tokens in / 100 out
-|| 131K-loaded server | short-context benchmark also reported at ~28-29 tok/s under lighter conditions
-|| After restart verification | 29 tok/s short prompt, 226 tok/s 5K prompt
+|| Test | Measured value |
+| --- | --- | --- |
+|| Warmup | ~68s first run; much faster on restarts |
+|| Short prompt | 15.6 tok/s at ~517 tokens in / 100 out |
+|| 5K prompt | 5.7 tok/s at ~3519 tokens in / 100 out |
+|| 131K-loaded server | short-context benchmark also reported at ~28-29 tok/s under lighter conditions |
+|| After restart verification | 29 tok/s short prompt, 226 tok/s 5K prompt |
 
 #### Benchmark Results (vs competitors)
 
-|| Benchmark | Ornith 1.5 | Ornith 1.0 | Qwen3.6 35B | Gemma 4 31B | Muse Glimmer 30B | Qwen3.5 397B
-||-----------|------------|------------|-------------|-------------|------------------|--------------|
-|| **Terminal-Bench (Terminus-2)** | **67.8** | 64.2 | 52.5 | 42.1 | 51.7 | 53.5
-|| **Terminal-Bench (Claude Code)** | **68.5** | 62.8 | 49.2 | - | - | 48.6
-|| **SWE-bench Verified** | **79.0** | 75.6 | 73.4 | 52.0 | - | 76.4
-|| **SWE-bench Pro** | **59.6** | 50.4 | 49.5 | 35.7 | 51.2 | 51.6
-|| **SWE-bench Multilingual** | **71.4** | 69.3 | 67.2 | 51.7 | - | 69.3
+|| Benchmark | Ornith 1.5 | Ornith 1.0 | Qwen3.6 35B | Gemma 4 31B | Muse Glimmer 30B | Qwen3.5 397B |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+|| **Terminal-Bench (Terminus-2)** | **67.8** | 64.2 | 52.5 | 42.1 | 51.7 | 53.5 |
+|| **Terminal-Bench (Claude Code)** | **68.5** | 62.8 | 49.2 | - | - | 48.6 |
+|| **SWE-bench Verified** | **79.0** | 75.6 | 73.4 | 52.0 | - | 76.4 |
+|| **SWE-bench Pro** | **59.6** | 50.4 | 49.5 | 35.7 | 51.2 | 51.6 |
+|| **SWE-bench Multilingual** | **71.4** | 69.3 | 67.2 | 51.7 | - | 69.3 |
 
 #### Why It Feels Smarter Than Free Models
 
@@ -665,10 +658,10 @@ Source: `wiki/entities/ornith-35b-dflash2.md`
 
 The DFlash2 draft model is **not viable for this hardware configuration**. From the speed tests:
 
-| Setup | Short | 131K
-|-------|-------|------|
-| **Ornith MLX 4-bit** | **28.5 tok/s** | ~0.5 tok/s
-| Ornith + DFlash2 | N/A | Cannot test
+| Setup | Short | 131K |
+| --- | --- | --- |
+| **Ornith MLX 4-bit** | **28.5 tok/s** | ~0.5 tok/s |
+| Ornith + DFlash2 | N/A | Cannot test |
 
 The DFlash2 draft path cannot be used with Ornith MLX because:
 1. MTPLX cannot use DFlash2 (native MLX MTP heads vs CUDA diffusion draft)
@@ -702,14 +695,14 @@ This page is a legacy entity record; see [[topics/turbofit/wiki/entities/ornith-
 
 #### Tested speeds on M1 MacBook 32GB
 
-|| Context | Tok/s
-||---------|-------|
-|| Short (~500 tokens) | **28.5**
-|| 5K tokens | 5.7
-|| 20K tokens | 1.5
-|| 40K tokens | 0.7
-|| 60K tokens | 0.4
-|| 131K | ~0.5
+|| Context | Tok/s |
+| --- | --- | --- |
+|| Short (~500 tokens) | **28.5** |
+|| 5K tokens | 5.7 |
+|| 20K tokens | 1.5 |
+|| 40K tokens | 0.7 |
+|| 60K tokens | 0.4 |
+|| 131K | ~0.5 |
 
 These numbers were gathered in-session against downloaded artifacts .
 
@@ -758,14 +751,14 @@ Source: `wiki/entities/ornith-35b.md`
 
 #### Tested speeds on M1 MacBook 32GB
 
-| Context | Tok/s
-|---------|-------|
-| Short (~500 tokens) | 28.5
-| 5K tokens | 4.3
-| 20K tokens | 1.5
-| 40K tokens | 0.7
-| 60K tokens | 0.4
-| 131K | ~0.5
+| Context | Tok/s |
+| --- | --- |
+| Short (~500 tokens) | 28.5 |
+| 5K tokens | 4.3 |
+| 20K tokens | 1.5 |
+| 40K tokens | 0.7 |
+| 60K tokens | 0.4 |
+| 131K | ~0.5 |
 
 These numbers were gathered in-session against the downloaded artifacts; they are not stable live-route evidence from Hermes .
 
@@ -839,9 +832,9 @@ Tiel-Coder is a queued local GGUF candidate. The primary MLX download in `~/Mode
 
 #### Benchmark Results
 
-|| Model | Type | Context | Short | 5K | Status
-||-------|------|---------|-------|-----|--------|
-|| **Tiel-Coder Q4_K_XL** | MoE 35B | 65K | **23.1 tok/s** | 4.2 tok/s | Viable
+|| Model | Type | Context | Short | 5K | Status |
+| --- | --- | --- | --- | --- | --- | --- |
+|| **Tiel-Coder Q4_K_XL** | MoE 35B | 65K | **23.1 tok/s** | 4.2 tok/s | Viable |
 
 #### MoE Advantage
 
@@ -922,12 +915,12 @@ Evidence-observed performance characteristics of `Youssofal/Qwen3.8-27B-MTPLX-Op
 #### Throughput
 
 || Context | Throughput | Notes ||
-|---------|-----------|-------|
-| 500 tokens | 8–12 tok/s | Stable short context
-| 65K | ~7 tok/s | Stable daily-driver target
-| 131K short prompt | 6–7 tok/s | Hermes summary claim
-| 5K+ prompts at 131K | `507 Insufficient Storage` | Observed failure
-| 131K with 2005-token history | 0.39 tok/s end-to-end | `end_to_end_tok_s` observed
+| --- | --- | --- | --- | --- |
+| 500 tokens | 8–12 tok/s | Stable short context |
+| 65K | ~7 tok/s | Stable daily-driver target |
+| 131K short prompt | 6–7 tok/s | Hermes summary claim |
+| 5K+ prompts at 131K | `507 Insufficient Storage` | Observed failure |
+| 131K with 2005-token history | 0.39 tok/s end-to-end | `end_to_end_tok_s` observed |
 
 #### Memory-plan evidence
 
@@ -1111,13 +1104,13 @@ M1 MacBook 32GB unified memory:
 
 ##### Candidate Analysis
 
-| Model | Weights | KV @ 131K | Total | Fits?
-|-------|---------|-----------|-------|-------|
-| **Ornith MLX 4-bit** | 18 GB | ~8 GB | ~26 GB | Yes
-| **Unleashed Q3_K_XL** | 12.31 GB | ~8 GB | ~20 GB | Yes
-| **Nail Q4_K_XL** | 20.8 GB | ~8 GB | ~29 GB | ⚠️ Marginal
-| **Tiel-Coder Q4_K_XL** | 22.4 GB | ~8 GB | ~30 GB | ⚠️ Marginal
-| **Dirk Q3_K_XL** | 13.1 GB | ~8 GB | ~21 GB | But slow/OOM
+| Model | Weights | KV @ 131K | Total | Fits? |
+| --- | --- | --- | --- | --- |
+| **Ornith MLX 4-bit** | 18 GB | ~8 GB | ~26 GB | Yes |
+| **Unleashed Q3_K_XL** | 12.31 GB | ~8 GB | ~20 GB | Yes |
+| **Nail Q4_K_XL** | 20.8 GB | ~8 GB | ~29 GB | ⚠️ Marginal |
+| **Tiel-Coder Q4_K_XL** | 22.4 GB | ~8 GB | ~30 GB | ⚠️ Marginal |
+| **Dirk Q3_K_XL** | 13.1 GB | ~8 GB | ~21 GB | But slow/OOM |
 
 #### Memory Guard Evidence
 
@@ -1177,61 +1170,61 @@ Source: `wiki/concepts/benchmark-taxonomy.md`
 
 #### Reasoning & Knowledge
 
-| Benchmark | What it measures | Why it matters
-|-----------|------------------|----------------|
-| MMLU | Multitask language understanding (57 subjects) | General knowledge breadth
-| ARC-Challenge | Grade-school science questions | Logical reasoning
-| HellaSwag | Sentence completion | Common-sense reasoning
-| WinoGrande | Pronoun resolution | Contextual understanding
-| TruthfulQA | Truthfulness | Hallucination resistance
+| Benchmark | What it measures | Why it matters |
+| --- | --- | --- |
+| MMLU | Multitask language understanding (57 subjects) | General knowledge breadth |
+| ARC-Challenge | Grade-school science questions | Logical reasoning |
+| HellaSwag | Sentence completion | Common-sense reasoning |
+| WinoGrande | Pronoun resolution | Contextual understanding |
+| TruthfulQA | Truthfulness | Hallucination resistance |
 
 #### Coding
 
-| Benchmark | What it measures | Why it matters
-|-----------|------------------|----------------|
-| HumanEval | Python code generation | Raw coding ability
-| MBPP | Basic Python problems | Everyday coding
-| LiveCodeBench | Competitive programming | Complex problem solving
+| Benchmark | What it measures | Why it matters |
+| --- | --- | --- |
+| HumanEval | Python code generation | Raw coding ability |
+| MBPP | Basic Python problems | Everyday coding |
+| LiveCodeBench | Competitive programming | Complex problem solving |
 
 #### Math
 
-| Benchmark | What it measures | Why it matters
-|-----------|------------------|----------------|
-| GSM8K | Grade-school math word problems | Mathematical reasoning
-| MATH | Competition mathematics | Advanced math
+| Benchmark | What it measures | Why it matters |
+| --- | --- | --- |
+| GSM8K | Grade-school math word problems | Mathematical reasoning |
+| MATH | Competition mathematics | Advanced math |
 
 #### Long Context
 
-| Benchmark | What it measures | Why it matters
-|-----------|------------------|----------------|
-| RULER | Long-context retrieval | Context window quality
-| Needle-in-Haystack | Needle retrieval at length | Factual recall at depth
+| Benchmark | What it measures | Why it matters |
+| --- | --- | --- |
+| RULER | Long-context retrieval | Context window quality |
+| Needle-in-Haystack | Needle retrieval at length | Factual recall at depth |
 
 #### Inference Performance
 
-| Metric | What it measures | Why it matters
-|--------|------------------|----------------|
-| tok/s @ 4K ctx | tokens/sec at 4K context | Short-context tok/s
-| tok/s @ 32K ctx | tokens/sec at 32K context | Mid-context sustained
-| tok/s @ 128K ctx | tokens/sec at 128K context | Long-context sustained
-| TTFT | Time to first token | Initial latency
-| VRAM usage | GPU memory at load | Hardware feasibility
-| RAM usage | System memory at load | Unified memory feasibility
+| Metric | What it measures | Why it matters |
+| --- | --- | --- |
+| tok/s @ 4K ctx | tokens/sec at 4K context | Short-context tok/s |
+| tok/s @ 32K ctx | tokens/sec at 32K context | Mid-context sustained |
+| tok/s @ 128K ctx | tokens/sec at 128K context | Long-context sustained |
+| TTFT | Time to first token | Initial latency |
+| VRAM usage | GPU memory at load | Hardware feasibility |
+| RAM usage | System memory at load | Unified memory feasibility |
 
 #### Vision (for multimodal models)
 
-| Benchmark | What it measures
-|-----------|------------------|
-| MMMU | Multimodal understanding
-| TextVQA | Text reading in images
-| OCRBench | Document OCR
+| Benchmark | What it measures |
+| --- | --- |
+| MMMU | Multimodal understanding |
+| TextVQA | Text reading in images |
+| OCRBench | Document OCR |
 
 #### Retrieval (for embedding models)
 
-| Benchmark | What it measures
-|-----------|------------------|
-| MTEB | General retrieval
-| BEIR | Zero-shot retrieval
+| Benchmark | What it measures |
+| --- | --- |
+| MTEB | General retrieval |
+| BEIR | Zero-shot retrieval |
 
 #### Usage
 
@@ -1381,13 +1374,13 @@ llama-server -m <main-model> \
 
 **Invalid flags** that failed before binding (from `raw/inbox/2026-09-07.md`):
 
-| Flag | Status
-|------|--------|
-| `--draft-model` | invalid argument
-| `--draft-ngl` | invalid argument
-| `--draft-ctx-size` | invalid argument
-| `--low-vram` | invalid argument
-| `--model-draft` | invalid argument
+| Flag | Status |
+| --- | --- |
+| `--draft-model` | invalid argument |
+| `--draft-ngl` | invalid argument |
+| `--draft-ctx-size` | invalid argument |
+| `--low-vram` | invalid argument |
+| `--model-draft` | invalid argument |
 
 #### Port conflict evidence
 
@@ -1437,11 +1430,11 @@ From [[raw/inbox/2026-09-07.md|2026-09-07 02:20]]:
 
 #### Technical Details
 
-| Aspect | DFlash2 | MTPLX
-|--------|---------|-------|
-| **Target runtime** | CUDA (llama.cpp/vLLM/sglang) | Apple Silicon MLX
-| **Draft architecture** | Diffusion-based speculative decoding | Native MTP (Machine-specific Parallelization Transfer) heads
-| **Hardware support** | NVIDIA GPU only | Apple Silicon Metal
+| Aspect | DFlash2 | MTPLX |
+| --- | --- | --- |
+| **Target runtime** | CUDA (llama.cpp/vLLM/sglang) | Apple Silicon MLX |
+| **Draft architecture** | Diffusion-based speculative decoding | Native MTP (Machine-specific Parallelization Transfer) heads |
+| **Hardware support** | NVIDIA GPU only | Apple Silicon Metal |
 
 #### Evidence of Failure
 
@@ -1470,10 +1463,10 @@ Multiple DFlash2-related commands failed:
 
 From [[raw/inbox/2026-09-07.md|2026-09-07 01:27]]:
 
-| Model | Size
-|-------|------|
-| Unleashed Q3_K_XL | 12.31 GB
-| DFlash2 Q4_K_M (draft) | 1.06 GB
+| Model | Size |
+| --- | --- |
+| Unleashed Q3_K_XL | 12.31 GB |
+| DFlash2 Q4_K_M (draft) | 1.06 GB |
 
 With q8 KV cache at 131K: ~17 GB total fits in 32GB, but DFlash2 cannot be paired with MTPLX.
 
@@ -1784,14 +1777,14 @@ From [[raw/inbox/2026-09-07.md|2026-09-07 03:06]]: Chris asked to "Research and 
 
 #### Speed Comparison Table
 
-| Setup | Short (500t) | 5K Prompt | 131K | Status
-|-------|-------------|-----------|------|--------|
-| **Ornith MLX 4-bit** | **28.5 tok/s** | 5.7 tok/s | ~5 tok/s | Best overall
-| Nail Q4_K_XL | 23.4 tok/s | 4.7 tok/s | - | ⚠️ 32K limit
-| Tiel-Coder Q4_K_XL | 23.1 tok/s | 4.2 tok/s | - | ⚠️ 65K limit
-| MTPLX 65K | 8-12 tok/s | - | - | Stable
-| Dirk Q3_K_XL | 6.0 tok/s | 0.8 tok/s | OOM | Fails
-| Unleashed+DFlash2 | 5 tok/s | - | **~5 tok/s** | Long-context
+| Setup | Short (500t) | 5K Prompt | 131K | Status |
+| --- | --- | --- | --- | --- |
+| **Ornith MLX 4-bit** | **28.5 tok/s** | 5.7 tok/s | ~5 tok/s | Best overall |
+| Nail Q4_K_XL | 23.4 tok/s | 4.7 tok/s | - | ⚠️ 32K limit |
+| Tiel-Coder Q4_K_XL | 23.1 tok/s | 4.2 tok/s | - | ⚠️ 65K limit |
+| MTPLX 65K | 8-12 tok/s | - | - | Stable |
+| Dirk Q3_K_XL | 6.0 tok/s | 0.8 tok/s | OOM | Fails |
+| Unleashed+DFlash2 | 5 tok/s | - | **~5 tok/s** | Long-context |
 
 #### Hardware Reality Check
 
@@ -1895,13 +1888,13 @@ This is the live result surface of Chris's research request for Apple Silicon en
 
 #### Performance Summary
 
-|| Model | Type | Context | Short | 5K | Status
-||-------|------|---------|-------|-----|--------|
-|| **Ornith MLX 4-bit** | MoE 35B | **131K** | **28.5 tok/s** | **5.7 tok/s** | Winner
-|| MTPLX Optimized Speed | 27B | 65K | 8-12 tok/s | - | -
-|| Nail Q4_K_XL | MoE 35B | 32K | 23.4 tok/s | 4.7 tok/s | ⚠️ Not fit at 131K
-|| Tiel-Coder Q4_K_XL | MoE 35B | 65K | 23.1 tok/s | 4.2 tok/s | ⚠️ Not fit at 131K
-|| Dirk Q3_K_XL | Dense 27B | 32K | 6.0 tok/s | 0.8 tok/s | ⚠️ OOM above 32K
+|| Model | Type | Context | Short | 5K | Status |
+| --- | --- | --- | --- | --- | --- | --- |
+|| **Ornith MLX 4-bit** | MoE 35B | **131K** | **28.5 tok/s** | **5.7 tok/s** | Winner |
+|| MTPLX Optimized Speed | 27B | 65K | 8-12 tok/s | - | - |
+|| Nail Q4_K_XL | MoE 35B | 32K | 23.4 tok/s | 4.7 tok/s | ⚠️ Not fit at 131K |
+|| Tiel-Coder Q4_K_XL | MoE 35B | 65K | 23.1 tok/s | 4.2 tok/s | ⚠️ Not fit at 131K |
+|| Dirk Q3_K_XL | Dense 27B | 32K | 6.0 tok/s | 0.8 tok/s | ⚠️ OOM above 32K |
 
 #### Contested promotion
 
@@ -1927,11 +1920,11 @@ The M1 32GB simply cannot hold:
 
 #### Final Recommendations
 
-| Use Case | Model | Context | Speed
-|----------|-------|---------|-------|
-| Daily driver (short/medium) | **Ornith MLX** | 131K | 28.5 tok/s short
-| Long-context heavy | Unleashed+DFlash2 | 131K | ~5 tok/s stable
-| Storage-constrained | Nail | 32K | 23.4 tok/s
+| Use Case | Model | Context | Speed |
+| --- | --- | --- | --- |
+| Daily driver (short/medium) | **Ornith MLX** | 131K | 28.5 tok/s short |
+| Long-context heavy | Unleashed+DFlash2 | 131K | ~5 tok/s stable |
+| Storage-constrained | Nail | 32K | 23.4 tok/s |
 
 #### Active Configuration
 
@@ -2039,13 +2032,13 @@ Later he said, "Current immediate goal: clean up obsolete 27B model files (Nail,
 
 #### Evidence: No — MTPLX cannot coexist at 131K on this 32GB box
 
-| Scenario | Result | Notes
-|----------|--------|-------|
-| MTPLX 131K with 500-token prompt | 8–12 tok/s | Stable
-| MTPLX 131K with 5K+ prompt | OOM / 507 Insufficient Storage | Memory overcommit
-| MTPLX 131K with DFlash2 draft | Not available | DFlash2 incompatible with MLX MTP
-| Unleashed + DFlash2 131K | ~5 tok/s | Stable but slower than 65KMTPLX
-| Ornith 35B MLX 4-bit 131K | ~0.5 tok/s | KV cache dominates
+| Scenario | Result | Notes |
+| --- | --- | --- |
+| MTPLX 131K with 500-token prompt | 8–12 tok/s | Stable |
+| MTPLX 131K with 5K+ prompt | OOM / 507 Insufficient Storage | Memory overcommit |
+| MTPLX 131K with DFlash2 draft | Not available | DFlash2 incompatible with MLX MTP |
+| Unleashed + DFlash2 131K | ~5 tok/s | Stable but slower than 65KMTPLX |
+| Ornith 35B MLX 4-bit 131K | ~0.5 tok/s | KV cache dominates |
 
 #### Key Constraint
 
@@ -2193,10 +2186,10 @@ M1 MacBook 32GB unified memory:
 
 #### Speed Comparison
 
-|| Context | MTPLX | Unleashed+DFlash2
-||---------|-------|-------------------|
-|| 65K | 7-8 tok/s stable | ~5 tok/s
-|| 131K | 0.39 tok/s (observed) | 5 tok/s (with q8 KV)
+|| Context | MTPLX | Unleashed+DFlash2 |
+| --- | --- | --- | --- |
+|| 65K | 7-8 tok/s stable | ~5 tok/s |
+|| 131K | 0.39 tok/s (observed) | 5 tok/s (with q8 KV) |
 
 #### Why 65K is Daily Driver
 
@@ -2253,18 +2246,18 @@ Source: `wiki/decisions/local-main-provider.md`
 What Chris wanted: the smartest feasible local runtime as Hermes main, with verified evidence, not just Hermes internal logs.
 
 #### The candidate field
-| Candidate | Notes
-|---|---|
-| Ornith MLX 4-bit | Short-context fastest; deepest long-context compatibility tested on this box
-| MTPLX Qwen 3.8 27B | Stable 65K fallback; explicit 131K overcommit warnings on 32GB
-| Unleashed Q3_K_XL + DFlash2 | Safe long-context backup; flag mismatches caused repeated failures
-| Nail Q4_K_XL | Faster at 32K than 27B dense, but not usable at 131K
-| Tiel-Coder Q4_K_XL | Works at 65K, not confirmed stable at 131K
-| Dirk Q3_K_XL | Dense 27B; OOMs above 32K
-| Bonsai | Incomplete for MLX; GGUF needs llama.cpp; custom formats blocked
-| Colibri | Custom Maple format, incompatible with standard MLX server
-| Maple | Stable at 65K; OOM at 131K under load
-| FreeToken | Optional CUDA-13 MoE candidate, no in-session promotion
+| Candidate | Notes |
+| --- | --- |
+| Ornith MLX 4-bit | Short-context fastest; deepest long-context compatibility tested on this box |
+| MTPLX Qwen 3.8 27B | Stable 65K fallback; explicit 131K overcommit warnings on 32GB |
+| Unleashed Q3_K_XL + DFlash2 | Safe long-context backup; flag mismatches caused repeated failures |
+| Nail Q4_K_XL | Faster at 32K than 27B dense, but not usable at 131K |
+| Tiel-Coder Q4_K_XL | Works at 65K, not confirmed stable at 131K |
+| Dirk Q3_K_XL | Dense 27B; OOMs above 32K |
+| Bonsai | Incomplete for MLX; GGUF needs llama.cpp; custom formats blocked |
+| Colibri | Custom Maple format, incompatible with standard MLX server |
+| Maple | Stable at 65K; OOM at 131K under load |
+| FreeToken | Optional CUDA-13 MoE candidate, no in-session promotion |
 
 ^[raw/inbox/2026-09-07-from-senter-wiki.md]
 
@@ -2409,12 +2402,12 @@ From [[raw/inbox/2026-09-07.md|2026-09-07 06:18]]:
 
 #### Evidence Summary
 
-| Model | Short | 5K | 131K
-|-------|-------|-----|------|
-| **Ornith MLX 4-bit** | **28.5 tok/s** | 5.7 tok/s | ~5 tok/s
-| Nail Q4_K_XL | 23.4 tok/s | 4.7 tok/s | OOM
-| Tiel-Coder Q4_K_XL | 23.1 tok/s | 4.2 tok/s | Not specified
-| Dirk Q3_K_XL | 6.0 tok/s | 0.8 tok/s | OOM
+| Model | Short | 5K | 131K |
+| --- | --- | --- | --- |
+| **Ornith MLX 4-bit** | **28.5 tok/s** | 5.7 tok/s | ~5 tok/s |
+| Nail Q4_K_XL | 23.4 tok/s | 4.7 tok/s | OOM |
+| Tiel-Coder Q4_K_XL | 23.1 tok/s | 4.2 tok/s | Not specified |
+| Dirk Q3_K_XL | 6.0 tok/s | 0.8 tok/s | OOM |
 
 #### Post-Routing Issues
 
@@ -2458,10 +2451,10 @@ Chris explicitly said "Keep the Unleashed Q3_K_XL as backup (slower but handles 
 
 #### Memory Comparison
 
-| Model | Weights | KV @131K | Total | Status
-|-------|---------|----------|-------|--------|
-| **Unleashed Q3_K_XL + DFlash2** | 12.31 GB + 1.06 GB | ~8 GB (q8) | ~21 GB | Fits
-| MTPLX Qwen 3.8 Optimized | 19.3 GB | ~8 GB | ~28 GB | Overcommit
+| Model | Weights | KV @131K | Total | Status |
+| --- | --- | --- | --- | --- |
+| **Unleashed Q3_K_XL + DFlash2** | 12.31 GB + 1.06 GB | ~8 GB (q8) | ~21 GB | Fits |
+| MTPLX Qwen 3.8 Optimized | 19.3 GB | ~8 GB | ~28 GB | Overcommit |
 
 #### Status Updates (2026-09-07)
 
@@ -2507,65 +2500,6 @@ Unleashed Q3_K_XL remains the **only viable 131K solution** on this 32 GB hardwa
 
 ![Speculative Decode](assets/turbofit-2.4-spec-decode.png)
 
-## Integrations
-
-### GitHub Repositories
-
-| Repo | URL | Description
-|------|-----|-------------|
-| turbofit | [github.com/SouthpawIN/turbofit](https://github.com/SouthpawIN/turbofit) | Main Turbofit runtime — 83★, MIT license
-| sirvir | [github.com/SouthpawIN/sirvir](https://github.com/SouthpawIN/sirvir) | Hermes TurboFit support — 27★
-| agent-wiki (Senter) | [github.com/SouthpawIN/Senter](https://github.com/SouthpawIN/Senter) | Agent wiki vault (absorbed agent-wiki + klerik + senter)
-| hermes-agent | [github.com/NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent) | Hermes Agent framework
-| mlx-lm-deepgrove | [github.com/deepgrove-ai/mlx-lm-deepgrove](https://github.com/deepgrove-ai/mlx-lm-deepgrove) | Maple MLX server runtime fork
-| maple-preview | [github.com/deepgrove/maple-preview](https://github.com/deepgrove/maple-preview) | Maple model source
-| llama.cpp (dflash2 fork) | [github.com/z-lab/llama.cpp-fork](https://github.com/z-lab/llama.cpp-fork) | DFlash2 draft support fork
-| llama.cpp (stamsam fork) | [github.com/stamsam/llama.cpp](https://github.com/stamsam/llama.cpp) | Maple architecture support fork
-| Qwen3.8-Flash-Next | [github.com/QwenLM/Qwen3.8-Flash-Next](https://github.com/QwenLM/Qwen3.8-Flash-Next) | Flash Next model source
-| GSQ | [github.com/IST-DASLab/GSQ](https://github.com/IST-DASLab/GSQ) | Gradient-symmetric quantization
-| RCO | [github.com/IST-DASLab/RCO](https://github.com/IST-DASLab/RCO) | Rank-aware calibration optimization
-
-### HuggingFace Models
-
-| Model | HF Link | Description
-|-------|---------|-------------|
-| Maple Preview | [deepgrove/maple-preview](https://huggingface.co/deepgrove/maple-preview) | 20B-A1B ternary MoE reasoning model
-| Maple Preview GGUF | [deepgrove/maple-preview-GGUF](https://huggingface.co/deepgrove/maple-preview-GGUF) | Pre-quantized Maple GGUF files
-| Cyber Tiel Coder GGUF | [peculiar-ragdoll/Cyber-Tiel-Coder-35B-A3B-GGUF](https://huggingface.co/peculiar-ragdoll/Cyber-Tiel-Coder-35B-A3B-GGUF) | Code MoE, UD-Q4_K_XL
-| Cyber Tiel Coder MTP | [peculiar-ragdoll/Cyber-Tiel-Coder-35B-A3B-GGUF-MTP](https://huggingface.co/peculiar-ragdoll/Cyber-Tiel-Coder-35B-A3B-GGUF-MTP) | MTP speculative variant
-| Dirk Qwen 3.8 27B GGUF | [peculiar-ragdoll/Dirk-Qwen3.8-27B-GGUF](https://huggingface.co/peculiar-ragdoll/Dirk-Qwen3.8-27B-GGUF) | Dirk quantized Qwen 3.8
-| GSQ-RCO Qwen 3.8 | [ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF](https://huggingface.co/ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF) | Non-uniform quantized Qwen 3.8
-| GSQ-RCO Flash Next | [ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-GGUF](https://huggingface.co/ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-GGUF) | Flash Next quantized
-| DeepSeek V4.1 Flash | [deepseek-ai/DeepSeek-V4.1-Flash](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash) | 552B backbone MoE
-| DeepSeek V4.1 Flash GGUF | [vcruz305/DeepSeek-V4.1-Flash-GGUF](https://huggingface.co/vcruz305/DeepSeek-V4.1-Flash-GGUF) | Community GGUF
-| Ornith 1.5 35B-A3B | [ornith-ai/Ornith-1.5-35B-A3B](https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B) | Predecessor to Cyber Tiel
-| Qwen 3.8 27B Unleashed GGUF | [outsourc-e/Qwen3.8-27B-Unleashed-GGUF](https://huggingface.co/outsourc-e/Qwen3.8-27B-Unleashed-GGUF) | Uncensored general LLM
-| Bonsai 27B GGUF | [prism-ml/Bonsai-27B-gguf](https://huggingface.co/prism-ml/Bonsai-27B-gguf) | Ternary quantized Bonsai
-| Qwen 3.8 27B Base | [Qwen/Qwen3.8-27B](https://huggingface.co/Qwen/Qwen3.8-27B) | Base dense 27B
-| Soprano 1.1 80M | [WalkingCat/Soprano-1.1-80M-GGUF](https://huggingface.co/WalkingCat/Soprano-1.1-80M-GGUF) | Creative micro model
-
-### X Profiles & Community
-
-| Handle | URL | Description
-|--------|-----|-------------|
-| @deepgrove_ai | [x.com/deepgrove_ai](https://x.com/deepgrove_ai) | DeepGrove (Maple)
-| @QwenLM | [x.com/QwenLM](https://x.com/QwenLM) | Qwen team
-| @deepseek_ai | [x.com/deepseek_ai](https://x.com/deepseek_ai) | DeepSeek
-| @NousResearch | [x.com/NousResearch](https://x.com/NousResearch) | Nous Research (Hermes)
-| @mlx_community | [x.com/mlx_community](https://x.com/mlx_community) | Apple MLX
-
-### Research Sources
-
-| Source | URL | Description
-|--------|-----|-------------|
-| DeepSeek V4.1 Flash Guide | [deepseekv4guide.org](https://deepseekv4guide.org/guides/deepseek-v4-1-flash) | Community guide
-| Flash Next Paper | [arxiv.org/html/2608.30320](https://arxiv.org/html/2608.30320) | Technical paper
-| Flash Next Gist | [gist.github.com/ryan4yin](https://gist.github.com/ryan4yin/48617bbddacc7067f10799770b7cc33f) | Quick reference
-| antirez GGUF Index | [antirez/deepseek-v4.1-flash-gguf](https://antirez/deepseek-v4.1-flash-gguf) | Community GGUF index
-
-
----
-
 ## Rules
 
 ### Rule 1: Model + KV Cache ≤ Tier Size
@@ -2600,33 +2534,41 @@ Unleashed Q3_K_XL remains the **only viable 131K solution** on this 32 GB hardwa
 
 ### Hermes Skills for Turbofit
 
-| Skill | Location | Description
-|-------|----------|-------------|
-| turbofit | `skills/turbofit/SKILL.md` | Rules for Turbofit Wiki — use when editing
-| turbofit-runtime-setup | `skills/turbofit-runtime-setup/SKILL.md` | Setting up or fixing Turbofit local runtime
-| turbo-model-store-cleanup | `skills/turbo-model-store-cleanup/SKILL.md` | Freeing storage before/after candidate sweeps
-| candidate-quant-comparison | `skills/candidate-quant-comparison/SKILL.md` | Comparing candidate model quantizations
-| turbo-artifact-download-spec | `skills/turbo-artifact-download-spec/SKILL.md` | Artifact download specifications
-| maple-mlx-server-runtime | `skills/maple-mlx-server-runtime/SKILL.md` | Maple MLX server runtime management
-| dflash2-fork-flag-boundary | `skills/dflash2-fork-flag-boundary/SKILL.md` | DFlash2 fork flag compatibility
-| mtplx-32gb-macos-tuning | `skills/mtplx-32gb-macos-tuning/SKILL.md` | MTPLX 32GB macOS memory tuning
-| turbofit-macos-setup | `skills/turbofit-macos-setup.md` | Turbofit macOS setup
-| speedometer-menu-design | `skills/speedometer-menu-design.md` | Speedometer menu UI design
-| turbo-fit-evidence-capture | `skills/turbo-fit-evidence-capture/SKILL.md` | Evidence capture for TurboFit
+| Skill | Location | Description |
+| --- | --- | --- |
+| turbofit | `skills/turbofit/SKILL.md` | Rules for Turbofit Wiki - use when editing |
+| turbofit-runtime-setup | `skills/turbofit-runtime-setup/SKILL.md` | Setting up or fixing Turbofit local runtime |
+| turbo-model-store-cleanup | `skills/turbo-model-store-cleanup/SKILL.md` | Freeing storage before/after candidate sweeps |
+| candidate-quant-comparison | `skills/candidate-quant-comparison/SKILL.md` | Comparing candidate model quantizations |
+| turbo-artifact-download-spec | `skills/turbo-artifact-download-spec/SKILL.md` | Artifact download specifications |
+| maple-mlx-server-runtime | `skills/maple-mlx-server-runtime/SKILL.md` | Maple MLX server runtime management |
+| dflash2-fork-flag-boundary | `skills/dflash2-fork-flag-boundary/SKILL.md` | DFlash2 fork flag compatibility |
+| mtplx-32gb-macos-tuning | `skills/mtplx-32gb-macos-tuning/SKILL.md` | MTPLX 32GB macOS memory tuning |
+| turbofit-macos-setup | `skills/turbofit-macos-setup.md` | Turbofit macOS setup |
+| speedometer-menu-design | `skills/speedometer-menu-design.md` | Speedometer menu UI design |
+| turbo-fit-evidence-capture | `skills/turbo-fit-evidence-capture/SKILL.md` | Evidence capture for TurboFit |
 
 ### Related Hermes Skills
 
-| Skill | Description
-|-------|-------------|
-| agent-wiki-vault | Agent-wiki Obsidian vault workflow
-| hermes-agent | Hermes Agent usage and configuration
-| hermes-fleet-ops | Bot fleet operations
-| hermes-update | Updating Hermes
-| github | GitHub via gh CLI
-| github-pr-workflow | GitHub PR lifecycle
-| github-repo-management | Repo management
-| xlsx | Excel/CSV operations
-| pdf | PDF operations
-| docx | Word document operations
-| weekly-review-planning | Weekly review and planning
+| Skill | Description |
+| --- | --- |
+| agent-wiki-vault | Agent-wiki Obsidian vault workflow |
+| hermes-agent | Hermes Agent usage and configuration |
+| hermes-fleet-ops | Bot fleet operations |
+| hermes-update | Updating Hermes |
+| github | GitHub via gh CLI |
+| github-pr-workflow | GitHub PR lifecycle |
+| github-repo-management | Repo management |
+| xlsx | Excel/CSV operations |
+| pdf | PDF operations |
+| docx | Word document operations |
+| weekly-review-planning | Weekly review and planning |
 
+---
+
+## Absorbed Topics
+
+- `turbohaul-llmfit` — Generate optimized llama-server launch strings (absorbed 2026-09-02; was DORMANT)
+- `turbohaul-manager` — Ollama-shape inference manager (absorbed 2026-09-02; was DORMANT)
+- `southpaw-turbohaul` — Curated model server for Nous Research (absorbed 2026-09-02; was DORMANT)
+- `sirvir` — GitHub-current TurboFit support for Hermes (absorbed 2026-09-02; was ACTIVE)
