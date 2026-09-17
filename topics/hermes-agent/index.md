@@ -1,6 +1,6 @@
 # hermes-agent — wiki index
 > One line per page. The wiki row's CONTEXT section renders this file.
-> Last updated: 2026-09-17 | Total pages: 26
+> Last updated: 2026-09-17 | Total pages: 27
 
 ## Entities
 - [[topics/hermes-agent/wiki/entities/model-check-20260903|Model Check — 20260903_001447_7bc70a]] — Chris is actively checking a specific model/session by id `20260903_001447_7bc70a` against realistic compression behavior.^[raw/inbox/2026-09-06.md] ^[raw/inbox
@@ -15,6 +15,7 @@
 - [[topics/hermes-agent/wiki/concepts/hermes-on-dhh-linux-camp|DHH Linux Distro with Hermes as Native AI]] — On `2026-09-12`, Chris said he's "looking for the latest Linux distro by DHH" and that "the latest update should have Hermes agent as a native AI."^[raw/inbox/2
 - [[topics/hermes-agent/wiki/concepts/hotkeys-slash-command|/hotkeys Slash Command]] — On `2026-09-15 02:17`, Chris requested a new Hermes-Agent feature: a `/hotkeys` slash command that displays — and, going forward, edits — the combined set of He
 - [[topics/hermes-agent/wiki/concepts/model-evaluation-2026-09-06|Model Evaluation — 2026-09-06]] — Chris uses live Hermes sessions as evaluation environments. On 2026-09-06, he ran a realistic compression test and checked whether the active model worked.^[raw
+- [[topics/hermes-agent/wiki/concepts/skills-bots-progressive-disclosure|Skills & Bots Progressive Disclosure in the Wiki]] — On `2026-09-17 10:45` Chris set out how the wiki should present its skills and bots — as browsable lists where each entry uses progressive disclosure, and where
 - [[topics/hermes-agent/wiki/concepts/streaming-throughput-measurement|Streaming Throughput Measurement]] — Accurate tok/s reporting for local Hermes inference requires separating prompt-processing time from generation time.^[raw/inbox/2026-09-07.md]
 - [[topics/hermes-agent/wiki/concepts/topic-index-restructure-2026-09-16|Topic Index Restructure — 2026-09-16]] — On `2026-09-16 21:09`, Hermes began consolidating the topic's root `index.md` into a clean entry point. This is wiki-structure maintenance (the topic's own inde
 

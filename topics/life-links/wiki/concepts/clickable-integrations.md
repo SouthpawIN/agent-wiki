@@ -5,7 +5,7 @@ updated: 2026-09-17
 type: concept
 tags: [pain, ui, idea, question, wiki]
 sources: [raw/inbox/2026-09-17.md]
-confidence: low
+confidence: medium
 ---
 
 # clickable integrations
@@ -23,6 +23,14 @@ confidence: low
 
 - Per Hermes's answer at `2026-09-17 08:39`: "I can put a compact inline Integrations section right at the top of the body (under the frontmatter) with clickable links, while keeping the `integrations` property in the frontmatter for any programmatic use."
 - Plan: keep integrations as a front-matter property (machine-readable) **and** add a compact, clickable inline Integrations section near the top of the body.
+
+## Implementation
+
+^[raw/inbox/2026-09-17.md] At `2026-09-17 10:10`: Hermes applied the fix — the page body now opens with **"Integrations (frontmatter property + clickable section)"** above the overview, and the same page gained two new sections, **Implementation** and **Issues**.
+
+- The clickable half is now live: integrations render as a clickable inline section at the top, not a bare JSON list.
+- The front-matter property half remains for programmatic use (per the `2026-09-17 08:39` plan).
+- This is the first logged execution of the clickable-integrations resolution; per-page rollout to other pages with integrations has not yet been logged.
 
 ## How this fits
 

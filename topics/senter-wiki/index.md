@@ -1,126 +1,45 @@
-# senter-wiki — wiki index
-> One line per page. The wiki row's CONTEXT section renders this file.
-> Last updated: 2026-09-15 | Total pages: 112
+---
+title: Senter Wiki
+created: 2026-07-07
+updated: 2026-09-17
+type: wiki
+redirect: topics/senter/index.md
+---
 
-## Entities
-- [[topics/senter-wiki/wiki/entities/agent-wiki-repo|SouthpawIN/agent-wiki → Senter repo (spec + sandbox)]] — Created 2026-07-07 (repo log). On 2026-08-29 the org was consolidated — Chris: *"this should combine senter, agent wiki, and klerik … replace all with Senter"*
-- [[topics/senter-wiki/wiki/entities/bot-naming-convention|Bot naming convention — remove .md extension from display names]] — Bot names were displaying with `.md` extensions in the UI: `librarian-bot.md` instead of `librarian-bot`.
-- [[topics/senter-wiki/wiki/entities/chris|Chris (sovthpaw) — the user]] — Chris (GitHub `SouthpawIN`, machine user `sovthpaw`) owns the Senter vault and drives the Senter Wiki UI live by **voice dictation** in the Hermes desktop previ
-- [[topics/senter-wiki/wiki/entities/context-card-live-diff|Context card live diff — watching the topic agent edit the wiki (+N −M, green/red lines)]] — The CONTEXT card of a topic row, after the 19:06 decision ([[topics/senter-wiki/wiki/decisions/2026-09-05-context-is-the-wiki-with-live-diffs|CONTEXT is the wik
-- [[topics/senter-wiki/wiki/entities/corner-feed|Corner feed (#chat .mini) — how Chris sees the fleet work]] — The bottom-corner stack of bot cards (`#chat .mini .msg` / `#stream .msg` — NOT `.post`, the retired Feed page). Chris: the Feed page is gone; "the Feed is the 
-- [[topics/senter-wiki/wiki/entities/editor-card|Editor card (hover-peek / click-pin markdown editor)]] — 2026-09-03 (queued first as "consolidate the editor page so that when you mouse over the preview it will expand it. If you click on it, then it will lock it … a
-- [[topics/senter-wiki/wiki/entities/file-cap-bypass|File CAP bypass for .system-live.json]] — **What.** The senter-bridge server rejected `.system-live.json` with HTTP 413 because the file is ~2.8 MB and the `/file` route enforced a 2 MB `FILE_CAP` limit
-- [[topics/senter-wiki/wiki/entities/fleet-bots|Fleet bots touching senter-wiki]] — Senter's fleet as it appears in this topic's sources (roster of 9 on 2026-09-05; bots, not "agents"). ^[raw/inbox/2026-09-05-legacy-inbox.md]
-- [[topics/senter-wiki/wiki/entities/headphone-eq|Headphone EQ visualiser (#hpEq)]] — "an EQ visualizer, small, over the widest part of the inner circle of the girl's headphones … black dots representing the levels going up and down, because blac
-- [[topics/senter-wiki/wiki/entities/hermes-preview-pane-and-drive-preview|Hermes desktop preview pane + drive_preview]] — [[topics/senter-wiki/wiki/entities/vault-live-html|vault-live.html]] renders inside the Hermes desktop app's preview pane, beside the chat sidebar — the "Cursor
-- [[topics/senter-wiki/wiki/entities/hero-orbs|Hero orbs — the four-dot nav]] — Four `.orb`s on the hero title line replacing the retired top tabs. They ARE the four primitives — first orb labelled TOPICS (was CONTEXT), then SKILLS, BOTS, L
-- [[topics/senter-wiki/wiki/entities/hud-cluster|HUD cluster — gear + media player on one axis]] — "move the media player underneath the line … in the middle of that black triangular area between the back of the girl's head, the underline and the edge of the 
-- [[topics/senter-wiki/wiki/entities/launchd-services|launchd services of the Senter Wiki stack]] — | Label | Runs | Cadence | Notes |
-- [[topics/senter-wiki/wiki/entities/music-player|Music player + YouTube audio + Spotify gate]] — - YouTube / .mp3 / .mp4 / m3u8 URL playback via iframe embed worked first ("EQ breathes on iframes" — no audio exposed). ^[raw/inbox/2026-09-05-legacy-inbox.md]
-- [[topics/senter-wiki/wiki/entities/orb-label-renaming|Orb label renaming — context to wiki, agents to bots]] — **Context → Wiki terminology:**
-- [[topics/senter-wiki/wiki/entities/scan-topics|scan-topics.py — the vault scanner]] — `assets/scan-topics.py --watch 20` (launchd `com.senter.scanwatch`) walks the vault and writes `.system-live.json`, the snapshot [[topics/senter-wiki/wiki/entit
-- [[topics/senter-wiki/wiki/entities/senter-agent-sandbox|Senter Agent runtime, SENTER.md and the sandbox]] — "SENTER.md is the declarative language/context layer. Senter Agent is the agent that interprets and operates on it." Markdown source → Context → Skills → Agents
-- [[topics/senter-wiki/wiki/entities/senter-bridge|senter-bridge (127.0.0.1:8643)]] — Local HTTP bridge (`~/.hermes/plugins/senter-bridge`, launchd `com.senter.bridge`, port 8643) between the fleet and
-- [[topics/senter-wiki/wiki/entities/senter-watcher|senter-watcher (per-message filing)]] — `assets/senter-watcher.py`, launchd `com.senter.watcher`, continuous 1.5 s poll of the Hermes `state.db` messages. Files every chat message into a topic
-- [[topics/senter-wiki/wiki/entities/senter-wiki-skills|senter-wiki topic skills (senter-watcher, progressive-disclosure, wiki-ui-knobs)]] — Three SKILL.md files created in `topics/senter-wiki/skills/` on 2026-09-05 when the topic was built "per the agent-wiki spec, all real files" (LOOPS went 13 → 1
-- [[topics/senter-wiki/wiki/entities/senter-wiki-topic-folder|Senter-wiki topic folder — missing directory gap and creation]] — The `senter-wiki-bot` profile exists and serves topic `senter-wiki`, but there was **no `senter-wiki` topic folder** in the vault. The `scan-topics.py` scanner 
-- [[topics/senter-wiki/wiki/entities/settings-card|Settings card (gear → card, not a modal page)]] — "When I back out of settings, I'm in nowhere — the back room, a blank space." After the card conversion: "when I open the settings page I still see the list and
-- [[topics/senter-wiki/wiki/entities/sidebar-agent|Sidebar agent (proposed SOUL) — yes-and rubber duck]] — The conversational front — the Hermes chat sidebar Chris talks to while the wiki pane shows the work. On 2026-09-05 a **proposed sidebar SOUL** was written to `
-- [[topics/senter-wiki/wiki/entities/space-star-map|SPACE star map (#mindmap)]] — A canvas star map of topics behind the wiki (opacity `--spaceGlow`, Chris settled at .46) that becomes the page in SPACE mode (`body.space`). Entered by clickin
-- [[topics/senter-wiki/wiki/entities/topic-wiki-compile-loop|topic-wiki compile loop (com.senter.topic-wiki)]] — `assets/topic-wiki.py` + launchd `com.senter.topic-wiki`, every 15 min: one senter bot run per topic over unprocessed raw items → pages created/updated under `w
-- [[topics/senter-wiki/wiki/entities/topic-worker|topic-worker — per-topic GEPA proposal loop]] — `assets/topic-worker.py`, launchd every 5 min: one real `hermes -p senter` run per topic over the [[topics/senter-wiki/wiki/entities/senter-watcher|watcher's]] 
-- [[topics/senter-wiki/wiki/entities/umbrella|umbrella (cross-topic opinion pass)]] — `assets/umbrella.py`, launchd `com.senter.umbrella`, every 30 min. Merges topics using the similarity thresholds Chris locked on 2026-09-02
-- [[topics/senter-wiki/wiki/entities/usage-strip|Usage strip (GitHub-style heat dots per row)]] — "GitHub usage chart … like a diffusion map … tiny dots"; "I like the dot element, tiny dots." ^[raw/sources/knowledge/ref-vault-live-hover-usage-2026-09-03.md] 
-- [[topics/senter-wiki/wiki/entities/vault-git-init|Decision 2026-09-09 — git repo initialized in the vault]] — **What.** The `~/Documents/Projects/Projects/` vault (hosting `topics/`, `vault-live.html`, and the live Senter Wiki) was **not** a git repository, causing Chri
-- [[topics/senter-wiki/wiki/entities/vault-live-html|vault-live.html (the Senter Wiki surface)]] — `vault-live.html` is the Senter Wiki: a single-file app (CSS + several `<script>` blocks, ~317 KB after recovery) rendered in the Hermes desktop **preview pane*
-- [[topics/senter-wiki/wiki/entities/volume-rocker|Volume rocker + mute dot]] — Track length `--volLen` (495px), top anchored to the player so only the bottom moves; hit-zone height derives from it. While `#media.volOpen` or `.drag`, a `doc
-- [[topics/senter-wiki/wiki/entities/wallpaper-girl|The wallpaper girl (backdrop asset)]] — Chris's desktop wallpaper — a white-on-black ink drawing of a girl with headphones (`assets/wall-contain-1456x914-wallonly.png`, aspect `WALL_AR=1.54`) drawn `c
+# Senter Wiki
 
-## Concepts
-- [[topics/senter-wiki/wiki/concepts/approval-policy|Approval policy — only bots and loops need APPROVE; everything else auto-applies]] — "No approvals for topics, edits, continuity, or skills — they auto-apply … Only bots and loops remain `.proposed` with APPROVE/REJECT — they cost money and run 
-- [[topics/senter-wiki/wiki/concepts/chris-ui-working-rules|Chris's UI working rules — his corrections as law]] — Numbered from his own words in the raw; each rule = quote → what it means. Companion to [[topics/senter-wiki/wiki/concepts/pane-driving-and-verification|verific
-- [[topics/senter-wiki/wiki/concepts/collapse-toward-hermes-native|Collapse toward Hermes-native — \"as markdown and built in Hermes stuff as possible\]] — > "I would like it to, ideally, I would like all of this to be as markdown and built in Hermes stuff as possible." ^[raw/inbox/2026-09-05.md]
-- [[topics/senter-wiki/wiki/concepts/compile-pre-planning|Compile pre-planning — pre-prompting before context is sorted into the wiki (Chris's 19:18 ask)]] — > "Very nice so far continue with that workflow. Let's continue working looking for anything that might be useful for anyone these steps such as any kind of pre
-- [[topics/senter-wiki/wiki/concepts/demo-video-recipe|Demo video recipe (full screen, sidebar included)]] — Chris: *"take a demo video … show off all the animations … music playing so the visualizer goes … lots of bot activity, permissions arriving and getting accepte
-- [[topics/senter-wiki/wiki/concepts/factory-pipeline-gepa|Factory pipeline — Collect → Generate → Evaluate → Apply (GEPA)]] — All use the same 4-stage pipeline. ^[raw/sources/knowledge/agent-wiki-repo/spec.md]
-- [[topics/senter-wiki/wiki/concepts/git-and-remote-naming-conflict|Git remote naming conflict — agent-wiki vs Senter consolidation]] — On 2026-09-09, git was initialized in `~/Documents/Projects/Projects/` because the vault had no `.git` folder, causing "My updates keep failing" — there was no 
-- [[topics/senter-wiki/wiki/concepts/git-and-remote-renaming-conflict|Git remote naming conflict — agent-wiki vs Senter]] — When git was initialized in the vault on 2026-09-09, the remote origin was set to `https://github.com/SouthpawIN/agent-wiki` and the
-- [[topics/senter-wiki/wiki/concepts/goop-four-primitives|GOOP: Context → Skills → Bots → Loops]] — Chris's own framing (2026-09-03, saved verbatim in `topics/senter/.system/concept.md`):
-- [[topics/senter-wiki/wiki/concepts/hand-placement-mode|Hand-placement mode — let Chris drag widgets, then bake the numbers]] — After six rounds of "too low / to the right / the line runs through the gear": "you seem to be struggling — make them click-and-draggable and resizable, I'll pl
-- [[topics/senter-wiki/wiki/concepts/hollow-vs-solid-rings|Hollow = selected/rest, solid = hover/active — one ring knob]] — Chris's inverse recipe for any circle that mirrors the row dots (active [[topics/senter-wiki/wiki/entities/hero-orbs|hero orb]], the [[topics/senter-wiki/wiki/e
-- [[topics/senter-wiki/wiki/concepts/hover-card-contract|Hover cards: editor, settings, click-off swallow contract]] — Chris (2026-09-03): *"I don't want a different editor page. I still want that editor though … when something is selected, underneath the line there is the overv
-- [[topics/senter-wiki/wiki/concepts/layer-stack|Layer stack (z-index contract) of vault-live.html]] — Ordered bottom → top, with dates where it changed. ^[raw/sources/knowledge/skill-agent-wiki-vault.md]
-- [[topics/senter-wiki/wiki/concepts/layout-for-bots-and-sessions|Layout for bots and sessions — how the one-page model frames them]] — Chris: *\"ok so how do I see my bots and sessions in this layout? Look at the Hermes Desktop and fix the layout, also My updates keep failing. I think that's so
-- [[topics/senter-wiki/wiki/concepts/librarian-progressive-disclosure|Librarian — progressive disclosure of wiki skills, bots, and loops]] — > "We can use progressive disclosure just like how skills are discovered by first through the font matter and then it could dig deeper. We can have a librarian 
-- [[topics/senter-wiki/wiki/concepts/llm-wiki-topic-layout|Every topic is a Karpathy-style LLM wiki (raw / wiki / SCHEMA / index / log)]] — Senter had been "misreading 'context' as a summary line." Chris pointed at the `llm-wiki` skill; the fix went to the root: every topic became a three-layer LLM 
-- [[topics/senter-wiki/wiki/concepts/markdown-is-the-api|Markdown is the API — user edits are the steering wheel]] — "Human → machine, machine → machine, machine → human. All via markdown files." "No chat command. No config file. No YAML wizard. Just edit markdown." The filesy
-- [[topics/senter-wiki/wiki/concepts/model-budget-exhaustion-local-lm|Model budget exhaustion — local LM 500-hour limit]] — Model budget exhaustion — local LM 500-hour limit
-- [[topics/senter-wiki/wiki/concepts/one-page-navigation-model|One-page navigation: term, orbs as sections, sort semantics]] — Final statement, Chris: *"instead of having different pages for context, skills, bots and loops — just use the front wiki page and have that reorder by what we'
-- [[topics/senter-wiki/wiki/concepts/pane-driving-and-verification|Driving the preview pane and proving it — the verification contract]] — "no try again … you need to practice your computer use, not work around." The preview pane IS the UI he watches; driving it by selector is driving the real thin
-- [[topics/senter-wiki/wiki/concepts/paper-palette|The paper palette — one off-white, true black, no grey]] — Pure black background, ONE off-white for everything "white" — text, borders, hollow rings, orbs, feed cards, AND the ink of the [[topics/senter-wiki/wiki/entiti
-- [[topics/senter-wiki/wiki/concepts/proactive-completion-directive|Proactive completion directive — layout + budget, finish front and back end]] — > "I'll complete the Senter Wiki UI restoration now, including both frontend and backend coordination … please continue until the UI is restored to what I want 
-- [[topics/senter-wiki/wiki/concepts/progressive-disclosure|Progressive disclosure — INDEX → file → section]] — The reading protocol for the [[topics/senter-wiki/wiki/entities/sidebar-agent|sidebar]] and workers: consult `INDEX.md` (regenerated over `raw/sources/knowledge
-- [[topics/senter-wiki/wiki/concepts/row-geometry-and-dot-column|Row geometry, the dot column, hover band and usage strip]] — Chris: *"every page is going to have exactly the same layout"* and *"standardize and reuse elements from the front wiki page for all the other pages so you do n
-- [[topics/senter-wiki/wiki/concepts/sandbox-and-safety-contract|Sandbox & safety contract (repo)]] — From the [[topics/senter-wiki/wiki/entities/agent-wiki-repo|agent-wiki repo]]: *"SENTER.md is never permission to modify the live Hermes installation. All Herm 
-- [[topics/senter-wiki/wiki/concepts/senter-wiki-vision|The Senter Wiki vision — Cursor × Obsidian, the wiki IS the system]] — > Hermes makes Skills out of repeated asks. Context -> Skills. … Bots make sense when a collection of Skills requires its own continuity/learning … When a Bot h
-- [[topics/senter-wiki/wiki/concepts/similarity-ranking|Similarity, ranking and list order]] — "consider the context of the entire topic … the entire file" — similarity is whole-document TF-IDF cosine, not keyword hits; skills sort "not by their title" bu
-- [[topics/senter-wiki/wiki/concepts/standard-row-anatomy|The standard row — every page has exactly the same layout]] — Chris: "every page is going to have exactly the same layout" and "standardize and reuse elements from the front wiki page for all the other pages so you do not 
-- [[topics/senter-wiki/wiki/concepts/two-layer-llm-wiki|Two-layer LLM wiki per topic (raw → wiki → index)]] — Chris corrected the assistant on 2026-09-05: *"You're right, and I'd been misreading 'context' as a summary line. Fixed at the root, using the `llm-wiki` skill 
-- [[topics/senter-wiki/wiki/concepts/ui-performs-the-fleet|The UI performs the fleet (stage events, feed, motion)]] — Chris's expectation: watch fixes and fleet work land live in the wiki while he talks. On 2026-09-05 the assistant diagnosed *"why you weren't seeing motion befo
-- [[topics/senter-wiki/wiki/concepts/verification-and-proof-methods|Verification and proof methods for wiki UI work]] — Chris's standard: a claim about what he sees without proof from his real window is lying to him; *"he distrusts vision verdicts and accepts pixel triples."*
-- [[topics/senter-wiki/wiki/concepts/wiki-page-quality-bar|Wiki page quality bar — what a "good" compiled page proved on 2026-09-05]] — The 18:15 spot-check of one compiled decision page is the only worked example so far of what a compiled page must do. Read as a checklist, a page passes when it
+> MERGED into [[Sentry Index]].
 
-## Decisions
-- [[topics/senter-wiki/wiki/decisions/2026-08-29-consolidate-repos-into-senter|Decision 2026-08-29: consolidate agent-wiki + klerik + senter into one repo, Senter]] — Chris: "this should combine senter, agent wiki, and klerik … replace all with Senter." `agent-wiki` + `klerik` + `senter` → one GitHub repo **Senter**. ^[raw/so
-- [[topics/senter-wiki/wiki/decisions/2026-09-03-centre-anchored-hero-orbs|Decision: hero orbs centred on the row-dot column, geometry never from lettering]] — **What.** `.heroOrbs { left:var(--dotsc); transform:translateX(-50%) }`, `alignHero()` self-corrects on centres; `--heroNudge` retired; title mutations sync num
-- [[topics/senter-wiki/wiki/decisions/2026-09-03-editor-is-a-card-not-a-page|Decision 2026-09-03: the editor is a hover card over the wiki, not a page]] — Chris: "I don't want a different editor page. I still want that editor though … Hover over [the overview] and a window appears — like the hover cards … as an ov
-- [[topics/senter-wiki/wiki/decisions/2026-09-03-editor-is-a-hover-card|Decision: the editor is a hover card over the wiki, not a page]] — **What.** Replaces the separate editor page. Hover the hero overview → card peeks; click → pinned/editable; click outside → close + save (bridge `POST /write`).
-- [[topics/senter-wiki/wiki/decisions/2026-09-03-hand-placement-mode|Decision: when px-by-voice stalls, make widgets draggable and let Chris place them]] — **What.** Chris: *"you seem to be struggling — make them click-and-draggable and resizable, I'll place them, then say go."* Temp layer, readout box, bake on "go
-- [[topics/senter-wiki/wiki/decisions/2026-09-03-mvp-checkpoint-backend-phase|Decision: UI MVP done; switch to the backend phase]] — **What.** Chris: *"the UI is at a good enough spot that we can start working on the back end."* Demo buttons and the `__senterHandle` hook removed; UI asks from
-- [[topics/senter-wiki/wiki/decisions/2026-09-03-mvp-checkpoint-ui-good-enough|Decision 2026-09-03 ~20:40: UI MVP checkpoint — start the back end]] — Chris: "the UI is at a good enough spot that we can start working on the back end." Demo buttons (`#demoGo`, `#hpEqDemo`) and the `__senterHandle` hook were rem
-- [[topics/senter-wiki/wiki/decisions/2026-09-03-one-page-navigation|Decision: one page — Topics/Skills/Bots/Loops as sections; Feed page removed]] — **What.** Chris: *"just use the front wiki page and have that reorder by what we're searching for … a top wiki for Topics, then below that sections for Skills, 
-- [[topics/senter-wiki/wiki/decisions/2026-09-03-paper-palette-blue-white|Decision: one --paper knob, blue-white; wallpaper as luminance mask]] — **What.** Every "white" resolves to `--paper` (`#dfe8f5` at 96 %); the wallpaper picture is a luminance mask over flat paper, stacked twice; grey never used as 
-- [[topics/senter-wiki/wiki/decisions/2026-09-03-settings-is-a-card|Decision: settings is a card; the 'nowhere' bug root-caused]] — **Symptom.** Chris: *"When I back out of settings, I'm in nowhere — the back room, a blank space."* Then: *"when I open the settings page I still see the list a
-- [[topics/senter-wiki/wiki/decisions/2026-09-04-media-zone-and-player-hits|Decision: media hit zone from the EQ to the pane edge; player opens only from title/artist]] — **What.** Invisible media area from the EQ's left edge (x 936, `--eqLeft`) to the pane edge, top down to the feed top (~60vh): click toggles mute, wheel moves t
-- [[topics/senter-wiki/wiki/decisions/2026-09-05-approvals-only-bots-and-loops|Decision: approvals only for bots and loops; skills/edits auto-apply]] — **What.** *"Policy changed as you asked — no approvals for topics, edits, continuity, or skills — they auto-apply … Only bots and loops remain `.proposed` with 
-- [[topics/senter-wiki/wiki/decisions/2026-09-05-content-card-stops-at-side-chat|Decision 2026-09-05 19:06: the expanded content card fills up to the side chat and never overlaps it]] — > "Okay, so the full context when it opens up, I still don't like it even with the media player and the side chat over it. How about instead of expanding to fil
-- [[topics/senter-wiki/wiki/decisions/2026-09-05-context-is-the-wiki-with-live-diffs|Decision 2026-09-05 19:06: CONTEXT is the wiki itself, edited live with GitHub-style diffs — no counts, no index list]] — Twenty minutes after the first compiles landed and the CONTEXT section began rendering `index.md`, Chris rejected that view:
-- [[topics/senter-wiki/wiki/decisions/2026-09-05-every-topic-is-an-llm-wiki|Decision 2026-09-05: every topic is a Karpathy-style LLM wiki; CONTEXT renders index.md]] — > **Superseded in part, 19:06.** The two-layer wiki stands; the *rendering* half ("CONTEXT renders the full `index.md`; context orb = page count") was rejected 
-- [[topics/senter-wiki/wiki/decisions/2026-09-05-instant-scaffold-on-new-subject|Decision 2026-09-05: a new subject scaffolds a topic and dispatches research immediately]] — "(2) a new subject triggers immediate scaffold + research dispatch to an existing bot." Detail: "a substantive message that fits no topic → watcher scaffolds `t
-- [[topics/senter-wiki/wiki/decisions/2026-09-05-keep-senter-and-senter-wiki-separate|Decision 2026-09-05 (contested): keep senter and senter-wiki separate vs umbrella's merge proposal]] — "Topic split: `senter` = the fleet/system (process, lessons, orchestrator); `senter-wiki` = the UI surface. Keep them separate." Restated 2026-09-05 16:51: "I k
-- [[topics/senter-wiki/wiki/decisions/2026-09-05-markdown-titles-render-in-context-card|Decision 2026-09-05: markdown headings render as titles in the CONTEXT card]] — > "I want to make sure that all of the markdown actually renders. So the title is actually pop up as titles on this stuff within the context and everything to m
-- [[topics/senter-wiki/wiki/decisions/2026-09-05-per-message-watcher-one-profile-one-card|Decision 2026-09-05: per-message watcher, one senter profile, one card per proposal]] — "Per message, live, visible. That settles the three questions: **every message**, **one senter profile running the loops** (per-topic profiles come later, when 
-- [[topics/senter-wiki/wiki/decisions/2026-09-05-resolve-cards-and-prove-apply-path|Decision 2026-09-05 18:18: resolve the pending cards by proving the apply path, not by clearing them]] — After the compiles landed, the next step recorded for the pending APPROVE/REJECT cards was: "approve `klerik-queue-drain` (proves the loop apply path live), rej
-- [[topics/senter-wiki/wiki/decisions/2026-09-05-row-dots-expand-from-hovered-dot|Decision 2026-09-05 19:18: row dots expand around the dot under the mouse, not always to the right]] — > "When I hover over any of the four dots from the list, okay, I like that it expands to the right only for the furthest one. When I hover over any other of the
-- [[topics/senter-wiki/wiki/decisions/2026-09-06-vault-live-recovery-and-reconstruction|Decision 2026-09-06: vault-live.html damage recovery and feature reconstruction]] — During the diff-badge experiment on 2026-09-06, `vault-live.html` was damaged: 271 KB with no `</style>`. The page rendered black and the music player, settings
-- [[topics/senter-wiki/wiki/decisions/2026-09-06-wiki-row-diffbadges-persistent-24h-self-sorting|Decision 2026-09-06: wiki row diff badges, 24h persistence, and self-organizing sort]] — > "I want the diffs to be persistent for 24 hours from the last time it went to zero. So if no activity for 24 hours in that topic, then that diff resets... I w
-- [[topics/senter-wiki/wiki/decisions/2026-09-08-bot-naming-convention|Bot naming convention — remove .md extension from display names]] — Bot names were displaying with `.md` extensions in the UI: `librarian-bot.md` instead of `librarian-bot`.
-- [[topics/senter-wiki/wiki/decisions/2026-09-08-senter-wiki-topic-structure-gap|Senter-wiki topic structure gap and resolution]] — The `senter-wiki-bot` profile exists and serves topic `senter-wiki`, but there was no `senter-wiki` topic folder in the vault. The `scan-topics.py` scanner requ
-- [[topics/senter-wiki/wiki/decisions/2026-09-08-wiki-content-population|Wiki content population — 26 placeholder rows replaced]] — **26 topic rows** now have compiled wiki content instead of "topic page pending".
-- [[topics/senter-wiki/wiki/decisions/2026-09-09-bots-sessions-already-surfaced|Decision 2026-09-09 — bots and sessions are already surfaced, no new layout needed]] — **What.** Chris asked *\"how do I see my bots and sessions in this layout?\"* on 2026-09-09 13:01. The one-page navigation model already maps bots and sessions 
-- [[topics/senter-wiki/wiki/decisions/2026-09-09-local-lm-reserved-from-general-wiki-work|Local LM Reserved from General Wiki Work]] — Local LM inference is not used for general Senter wiki work. It is reserved for local-model-as-deliverable cases only.
-- [[topics/senter-wiki/wiki/decisions/2026-09-09-orb-fix-completion|Orb label fix completion — mkTopic array and downstream refs renamed]] — **Superseded by:** [[topics/senter-wiki/wiki/decisions/2026-09-09-orb-rename-completion|2026-09-09 — full orb label rename completed]] (consolidated coverage)
-- [[topics/senter-wiki/wiki/decisions/2026-09-09-orb-rename-completion|Orb label rename completion — mkTopic + all downstream refs renamed]] — Decision 2026-09-09 — orb rename completion (mkTopic + all downstream refs)
-- [[topics/senter-wiki/wiki/decisions/2026-09-09-update-failure-git-repo|Update failure — vault not a git repository]] — The vault at `~/Documents/Projects/Projects/` was **not** a git repository, causing Chris's "updates keep failing" errors. The root cause was diagnosed as:
-- [[topics/senter-wiki/wiki/decisions/2026-09-09-vault-git-init|Decision 2026-09-09 — git repo initialized in the vault]] — **What.** The `~/Documents/Projects/Projects/` vault (hosting `topics/`, `vault-live.html`, and the live Senter Wiki) was **not**
-- [[topics/senter-wiki/wiki/decisions/2026-09-10-bot-schema-consistency-fix|Decision 2026-09-10 — bot schema consistency fix (skills as int, model field)]] — **What.** The JSON emitted by `scan-topics.py` had inconsistent bot schemas across `scan_topics()` and `scan_vault_agents()`: some bots carried `skills` as a li
-- [[topics/senter-wiki/wiki/decisions/2026-09-10-fix-layout-and-update-only|Fix the layout and fix the update — only those two]] — > "Hey, I need you to fix the layout and fix the update. Don't do anything else just do those two because I've been asking you to keep getting stuck"
-- [[topics/senter-wiki/wiki/decisions/2026-09-10-layout-and-update-fix|Decision 2026-09-10 — fix the layout and fix the update]] — **What.** Chris: *“Hey, I need you to fix the layout and fix the update. Don't do anything else just do those two because I've been asking you to keep getting s
+The Sentry Wiki topic has been consolidated into the primary Sentry wiki. All content preserved there.
 
-## Comparisons
-- [[topics/senter-wiki/wiki/comparisons/goop-v1-vs-agent-wiki|GOOP v1 whitepaper vs Agent Wiki vs what runs today]] — | Dimension | GOOP v1 (2026-07-04, Anser + sovthpaw) | Agent Wiki spec (2026-07-07) | Running 2026-09-05 |
-- [[topics/senter-wiki/wiki/comparisons/pane-driving-methods|Ways to drive/verify the preview pane, compared]] — | Method | Fires page handlers? | Verdict |
-- [[topics/senter-wiki/wiki/comparisons/wallpaper-tint-approaches|Wallpaper tint approaches compared (why only the mask worked)]] — | Attempt | Result / why it read wrong |
+---
 
-## Queries
-- [[topics/senter-wiki/wiki/queries/apply-path-proven-2026-09-05|Apply path proven (2026-09-05 18:57) — two loops registered, gateways auto-installed, three bots with live crons]] — At 18:57 the assistant reported the outcome of the card resolution planned at 18:18 ([[topics/senter-wiki/wiki/decisions/2026-09-05-resolve-cards-and-prove-appl
-- [[topics/senter-wiki/wiki/queries/duplicate-page-candidates|Duplicate page candidates in this wiki (two compiles wrote the same subjects)]] — The two `log.md` compile entries dated 2026-09-05 (the 18:14 background run ^[raw/inbox/2026-09-05.md] and a second pass over the same 44 raw items) each create
-- [[topics/senter-wiki/wiki/queries/first-compile-results-2026-09-05|First real compiles landed (2026-09-05 18:14–18:15) — senter 60 pages, senter-wiki 55]] — The background process `proc_523fec73ba82` ran `assets/topic-wiki.py compile senter` then `compile senter-wiki` and exited 0 at 18:14; the last pages written fo
-- [[topics/senter-wiki/wiki/queries/open-items-as-of-2026-09-05|Open items and things waiting on Chris (as of 2026-09-05 19:19)]] — > Superseded by [[topics/senter-wiki/wiki/queries/open-items-as-of-2026-09-06|open items 2026-09-06]]. Archived for provenance; do not edit.
-- [[topics/senter-wiki/wiki/queries/open-items-as-of-2026-09-06|Open items and things waiting on Chris (as of 2026-09-06)]] — - ~~Row dots expand from hovered dot~~ — implemented with `--orbShift` transform; hovered dot stays under cursor. ^[raw/inbox/2026-09-06.md]
-- [[topics/senter-wiki/wiki/queries/open-items-as-of-2026-09-08|Open items and things waiting on Chris (as of 2026-09-08)]] — - ~~Row dots expand from hovered dot~~ — implemented with `--orbShift` transform; hovered dot stays under cursor. ^[raw/inbox/2026-09-06.md]
-- [[topics/senter-wiki/wiki/queries/open-items-as-of-2026-09-09|Open items as of 2026-09-10]] — Open items as of 2026-09-09
-- [[topics/senter-wiki/wiki/queries/timeline-2026-09-03-to-05|Timeline: how the Senter Wiki got from UI batches to a running flywheel]] — | When | What |
-- [[topics/senter-wiki/wiki/queries/timeline-2026-09-03-to-06|Timeline: how the Senter Wiki got from UI batches to a running flywheel]] — | When | What |
-- [[topics/senter-wiki/wiki/queries/ui-knob-registry|UI knob registry — every tuned value and the rule that owns it]] — Compiled counterpart of the `wiki-ui-knobs` skill ([[topics/senter-wiki/wiki/entities/senter-wiki-skills|topic skills]]). Values are Chris's locked numbers as o
+## WIKI
 
+### CONTEXT
+
+The Sentry Wiki UI (`vault-live.html`) is the visual surface of the vault. It renders in the Hermes desktop preview pane and is steered live by Chris via voice.
+
+See [[Sentry Index]] for full content.
+
+### CONTINUATION
+
+See [[Sentry Index]].
+
+---
+
+## SKILLS
+
+See [[Sentry Index]].
+
+---
+
+## BOTS
+
+See [[Sentry Index]].
+
+---
+
+## LOOPS
+
+See [[Sentry Index]].

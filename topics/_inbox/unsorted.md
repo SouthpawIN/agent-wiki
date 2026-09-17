@@ -1256,3 +1256,12 @@ Wiki checkpoint committed at `48bbbf0`.
 
 ## 2026-09-16 23:17 · chris · 20260914_200308_f9b029 · best want-version 0.03
 So this will be like leaderboards for each one.
+
+## 2026-09-17 11:25 · chris · 20260914_200308_f9b029 · best klerik 0.04
+I'm using voice detects
+
+## 2026-09-16 23:17 · chris · 20260914_200308_f9b029 · best want-version 0.03
+So this will be like leaderboards for each one.
+
+## 2026-09-17 11:27 · chris · 20260914_200308_f9b029 · best klerik 0.04
+I'm using voice detects

@@ -1,11 +1,12 @@
 # looked-image — wiki index
 > One line per page. The wiki row's CONTEXT section renders this file.
-> Last updated: 2026-09-07 | Total pages: 10
+> Last updated: 2026-09-17 | Total pages: 11
 
 ## Entities
 - [[topics/looked-image/wiki/entities/131k-optimization-target|131K optimization target]] — An explicit size/resource constraint introduced by Chris for an unnamed artifact.^[raw/inbox/2026-09-07.md]
 - [[topics/looked-image/wiki/entities/memory-shard|Memory shard]] — A Chris-coined term for a surviving local copy that can be used to reconstruct a desired state after something went wrong.
 - [[topics/looked-image/wiki/entities/screenshot-2026-09-05-4-38-59-pm|Screenshot 2026-09-05 4.38.59 PM]] — Visual content of this file was not successfully analyzed for this compile, so this page records known provenance and Chris’s use of it as a target reference.
+- [[topics/looked-image/wiki/entities/visual-reference-section-rules-skills|Visual Reference section (Rules, Skills)]] — A fragment captured from Hermes state on 2026-09-17 that lists a "Visual Reference" section followed by numbered items 10. Rules, 11. Skills, 12. (truncated).^[
 
 ## Concepts
 - [[topics/looked-image/wiki/concepts/visual-revert-target|Visual revert target]] — A concept introduced by this topic: restore a broken or incorrect state by reference to a known-good visual artifact instead of verbal description.

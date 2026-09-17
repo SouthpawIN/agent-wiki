@@ -1,115 +1,158 @@
-# senter — wiki index
-> One line per page. The wiki row's CONTEXT section renders this file.
-> Last updated: 2026-09-15 | Total pages: 101
+---
+title: Senter
+created: 2026-07-07
+updated: 2026-09-17
+type: wiki
+links:
+  github: https://github.com/SouthpawIN/Senter
+  vault: ~/Documents/Projects/Projects
+sources:
+  - index.md
+  - BRIEF.md
+  - README.md
+  - wiki/
+---
 
-## Entities
-- [[topics/senter/wiki/entities/anser|Anser (redundancy gate / Discord support)]] — **Anser** (Chris says "answer") has two lives. Its installed SOUL (v1.1.0) is a **Discord tech-support + project-planning** agent; in [[topics/senter/wiki/entit
-- [[topics/senter/wiki/entities/chris|Chris (sovthpaw)]] — Chris — GitHub `SouthpawIN`, macOS user `sovthpaw` — is the owner and sole user of [[topics/senter/wiki/entities/senter|Senter]] and the fleet. He directs every
-- [[topics/senter/wiki/entities/dogeman|dogeman (YouTube/content studio)]] — **dogeman** is the fleet's YouTube/content studio bot: rants, scripts, visuals, viral intel. "Content, not frontend." ^[raw/sources/knowledge/skill-senter-fleet
-- [[topics/senter/wiki/entities/hermes-agent|Hermes Agent (the runtime)]] — **Hermes Agent** (Nous Research; Chris's dictation: "Hermia's agent") is the runtime every fleet bot runs on. Each bot is a *profile* under `~/.hermes/profiles/
-- [[topics/senter/wiki/entities/klerik|Klerik (profile factory)]] — **Klerik** (Chris says "Claire"/"cleric") is the fleet's meta-agent: it reviews and *surgically* corrects other Hermes profiles — SOUL.md, USER.md, MEMORY.md, A
-- [[topics/senter/wiki/entities/librarian|Librarian (progressive discovery loop)]] — The **librarian** is [[topics/senter/wiki/entities/anser|anser]]'s REFLECT-loop proposal for a proactive watch/discovery loop over the whole vault. Chris, 2026-
-- [[topics/senter/wiki/entities/looker|Looker (UI-QA LOOK service)]] — **Looker** is the fleet's UI-QA *service* bot: builders call it for the LOOK step of verification instead of re-implementing screenshots + vision themselves. "Y
-- [[topics/senter/wiki/entities/other-fleet-bots|Other fleet bots — dogeman, turbosovth, and the legacy roster]] — Bots that appear across the rosters but have no dedicated raw profile in this topic. Roster history: [[topics/senter/wiki/comparisons/fleet-rosters-over-time|ro
-- [[topics/senter/wiki/entities/paladin|Paladin (the Warden — vault structure)]] — **Paladin** keeps the structural integrity of the agent-wiki vault and the `SouthpawIN` repos: topic merges, renames, index/catalog regeneration, `[[wikilink]]`
-- [[topics/senter/wiki/entities/senter-bridge|senter-bridge (approval cards into the wiki)]] — The **senter-bridge** plugin (`~/.hermes/plugins/senter-bridge/`, mirrored at `assets/senter-bridge/` in the vault; server via launchd `com.senter.bridge` on `1
-- [[topics/senter/wiki/entities/senter-dispatch-and-sentinel|senter-dispatch + senter-sentinel (self-healing pipeline)]] — [2026-09-05, t_f1b1eba1: the SENTINEL is retired — daemon unplugged, `sentinel.py` deleted; the kanban dispatcher + fleet-tick replaced it. Dispatch remains liv
-- [[topics/senter/wiki/entities/senter-repo|senter repo (SouthpawIN/senter — legacy triage orchestrator)]] — The public repo `https://github.com/SouthpawIN/senter` (install: `hermes profile install https://github.com/SouthpawIN/senter`; run: `hermes chat --profile sent
-- [[topics/senter/wiki/entities/senter-wiki-ui|Senter Wiki UI (vault-live.html)]] — The **Senter Wiki** is a single self-contained HTML file, `~/Documents/Projects/Projects/vault-live.html` + `assets/`, rendered in the Hermes desktop **preview 
-- [[topics/senter/wiki/entities/senter|senter (the bot)]] — **Senter** — "the center line." The one Hermes profile [[topics/senter/wiki/entities/chris|Chris]] talks to; the single surface through which every idea flows f
-- [[topics/senter/wiki/entities/skill-senter-fleet-coordination|Skill — senter-fleet-coordination]] — `senter-fleet-coordination` is [[topics/senter/wiki/entities/senter|Senter]]'s operating playbook: "Use when routing fleet ideas, bots, or vault logs. Senter co
-- [[topics/senter/wiki/entities/teknium|Teknium (Hermes-Agent builder)]] — **Teknium** (Chris says "tech meme"/"technium"/"tectium") is the fleet's Hermes-Agent builder: triage, core fixes, PRs against `hermes-agent` — "core fixes, not
-- [[topics/senter/wiki/entities/topic-agent|Topic agent (assets/topic-agent.py — one intelligence per topic)]] — The **topic agent** is the single intelligence that owns one vault topic end to end. Introduced 2026-09-05 17:53 as the direct answer to [[topics/senter/wiki/en
-- [[topics/senter/wiki/entities/turbosovth|turbosovth (TurboFit support)]] — **turbosovth** (Chris says "turbo south" / "south paw") is the fleet's TurboFit support agent — **never merges**. ^[raw/sources/knowledge/skill-senter-fleet-coo
-- [[topics/senter/wiki/entities/umbrella|Umbrella (assets/umbrella.py — com.senter.umbrella, topic governance owner)]] — The **umbrella** is the one cross-topic job in the vault: a launchd service (`com.senter.umbrella`, **every 30 min**) running `~/Documents/Projects/Projects/ass
-- [[topics/senter/wiki/entities/watcher|Watcher (per-message filer)]] — > **Superseded in part, 2026-09-05 17:46–17:53.** The watcher now *cuts* messages into per-topic pieces instead of routing whole messages, and the "every 12 fil
-- [[topics/senter/wiki/entities/weaver|Weaver (Senter Wiki UI builder)]] — **Weaver** (Chris says "Riever") builds and maintains the [[topics/senter/wiki/entities/senter-wiki-ui|Senter Wiki UI]]: `~/Documents/Projects/Projects/vault-li
+# Senter
 
-## Concepts
-- [[topics/senter/wiki/concepts/approval-apply-paths|Approval apply paths (a card's approve button does the thing — loop → cron, bot → profile, research → answer in the page)]] — **Decided 2026-09-05 (Chris, 18:0x: "stop asking me for so many decisions"): approvals APPLY.** An approved card is not a note in a queue and not a second quest
-- [[topics/senter/wiki/concepts/bridge-server-restart-via-launchd|Bridge server lifecycle (launchd com.senter.bridge)]] — The [[topics/senter/wiki/entities/senter-bridge|senter-bridge]] server is managed by launchd as `com.senter.bridge`. On 2026-09-08, Hermes restarted the server 
-- [[topics/senter/wiki/concepts/claim-v2-protocol|CLAIM v2 protocol (atomic mkdir claims)]] — [RETIRED 2026-09-05 (kanban t_f1b1eba1) — replaced by `hermes kanban` claims (SQLite CAS, dispatcher-owned reclaim). Historical record below; nothing here is op
-- [[topics/senter/wiki/concepts/companion-bot-doctrine|Companion-bot doctrine (house pattern for SouthpawIN repos)]] — House pattern set **2026-08-30**: every repo under `github.com/SouthpawIN` pairs with a dedicated **customer-service bot** that installs/configures on machines 
-- [[topics/senter/wiki/concepts/context-size-fallback-threshold|Context fallback threshold (>65K) requires auxiliary.compression pin]] — **The claim.** Anser (2026-09-07 00:35): *"Use Nous cloud fallback for contexts >65K"*
-- [[topics/senter/wiki/concepts/context-to-skills-to-bots-to-loops|Context → skills → bots → loops (the flywheel)]] — The four lanes of Chris's agent-wiki spec (Context/Topics → Skills → Bots → Loops) read as a *process*: each topic runs a loop that turns raw context into skill
-- [[topics/senter/wiki/concepts/cursor-for-markdown|Cursor for markdown (the premise)]] — [[topics/senter/wiki/entities/chris|Chris]]'s one-line framing of the whole Senter project, 2026-09-05 16:29:
-- [[topics/senter/wiki/concepts/done-signal|Done signal (DONE / BLOCKED / NEEDS-CHRIS)]] — Fleet standard, instituted after Chris said of the builders "I never know when it's done." The LAST line of every bot reply is exactly one of: ^[raw/sources/kno
-- [[topics/senter/wiki/concepts/dspy-gepa-optimization|DSPy + GEPA optimization (Klerik's intelligence layer)]] — [[topics/senter/wiki/entities/klerik|Klerik]] "doesn't just fix surface behavior — you comprehend and optimize the **intention** of other agents using programma
-- [[topics/senter/wiki/concepts/five-part-architecture|Five-part architecture (sidebar · watcher · topics · loops · approvals)]] — Hermes's playback of [[topics/senter/wiki/entities/chris|Chris]]'s 2026-09-05 16:29 brief, which Chris did not contradict (he added "fast paced… per message"). 
-- [[topics/senter/wiki/concepts/fix-the-record-not-the-pitch|Fix the record, not the pitch (the wiki is the agent's memory — a wrong page repeats as a wrong card)]] — **Rule (Hermes, 2026-09-05 18:53):** "The senter agent keeps pitching 'governance has no owner' — because the wiki (its memory) says the umbrella was deleted, w
-- [[topics/senter/wiki/concepts/fleet-coordination-lessons|Fleet coordination lessons (distilled pitfalls)]] — The ~65 pitfalls in the [[topics/senter/wiki/entities/skill-senter-fleet-coordination|senter-fleet-coordination skill]], grouped. Each traces to a Chris correct
-- [[topics/senter/wiki/concepts/fleet-coordination-misconceptions|Fleet-coordination misconceptions (contested)]] — This page records misunderstandings about how the Senter fleet works that have been corrected in the wiki. The `contested: true` flag indicates this is a living
-- [[topics/senter/wiki/concepts/librarian-cross-topic-discovery|Librarian as cross-topic discovery, not only read-time policy]] — Chris, 2026-09-07 18:15: **"We can use progressive disclosure just like how skills are discovered by first through the font matter and then it could dig deeper.
-- [[topics/senter/wiki/concepts/librarian-progressive-discovery|Librarian as progressive discovery (Chris, 2026-09-07)]] — On 2026-09-07 at 18:15, Chris reframed the existing progressive-discovery rule as a governance actor, not just a read-time policy: ^[raw/inbox/2026-09-07.md]
-- [[topics/senter/wiki/concepts/live-data-contract|Live-data contract ("spawn = visible", no timers)]] — Two of Chris's hard rules for the [[topics/senter/wiki/entities/senter-wiki-ui|Senter Wiki UI]] and its daemons. ^[raw/sources/knowledge/skill-senter-fleet-coor
-- [[topics/senter/wiki/concepts/look-loop-verification|LOOK loop verification (proof = Chris's real window)]] — The fleet's verification doctrine for anything visible. Born 2026-09-02 from Chris: "refine the builder — make it use screenshots and check itself in a recursiv
-- [[topics/senter/wiki/concepts/loop-apply-path|Loop apply path (approve a loop card → real Hermes cron on the owning bot)]] — The **loop apply path** is what happens when Chris approves a *loop* pitch from a [[topics/senter/wiki/entities/topic-agent|topic agent]]: the card's approval b
-- [[topics/senter/wiki/concepts/markdown-is-the-api|Markdown is the API]] — Senter's hard rule: "every delegation, spawn, and outcome is written to the vault, not just chatted." The skill sharpens it: "Markdown is the API; unlogged work
-- [[topics/senter/wiki/concepts/media-player-controls|Media player controls (volume rocker, mute, EQ, live music)]] — The music widget in the [[topics/senter/wiki/entities/senter-wiki-ui|Senter Wiki UI]] — a girl with headphones, an EQ, a volume rocker, transport buttons, title
-- [[topics/senter/wiki/concepts/meeseeks-model|Meeseeks model (ephemeral one-item builders)]] — Chris's design for builder bots: **ephemeral instances**, one per queue item. "Builders are ephemeral — one `-q` instance per queue item, born with README + que
-- [[topics/senter/wiki/concepts/model-fallback-chain|Model fallback chain (user's pick stays sticky until an actual error)]] — How Hermes selects a model when the user's chosen model or provider fails — and the rule Chris wants it to follow: **the model picker's choice must stay in plac
-- [[topics/senter/wiki/concepts/nous-managed-gateway|Nous managed gateway (TTS / tool proxy with JWT entitlement cache)]] — The managed gateway that lets Hermes access Nous-provided tools (TTS via the OpenAI audio proxy, vision, etc.) using the user's Nous account — and the staleness
-- [[topics/senter/wiki/concepts/preview-pane-viewport|Preview-pane viewport (lessons 27–28)]] — **The primary verification viewport is the preview PANE, not the Hermes window.** Chris reads the [[topics/senter/wiki/entities/senter-wiki-ui|Senter Wiki]] in 
-- [[topics/senter/wiki/concepts/proactive-suggestion-doctrine|Proactive suggestion doctrine (bots → loops → research; suggestions, not orders)]] — How [[topics/senter/wiki/entities/chris|Chris]] wants the fleet to turn a new subject into offers, stated 2026-09-05 17:18 and 17:46. This is the tempo layer on
-- [[topics/senter/wiki/concepts/profile-setup-checklist|Profile setup checklist (what "spawned" means)]] — [[topics/senter/wiki/entities/klerik|Klerik]]'s mandatory setup for every profile it creates or reviews, plus the completion criteria the fleet learned the hard
-- [[topics/senter/wiki/concepts/progressive-disclosure|Progressive disclosure (how the wiki is read)]] — Chris's answer to "how does the sidebar stay aware of 7 MB of context?": read it the way Hermes discovers skills — index first, then the file, then one section.
-- [[topics/senter/wiki/concepts/reflect-loop|REFLECT loop (repetition → bot edits)]] — Chris's ask: "be proactive — turn repeated issues into bot edits or new bots; add a self-reflective loop." REFLECT "replaces hand-written lessons." Spec: `topic
-- [[topics/senter/wiki/concepts/remote-absorption-ssh|Remote absorption over SSH (senter Linux workstation)]] — Techniques validated **2026-08-28** while absorbing the **`senter` Linux workstation** — a machine of Chris's named senter, with a ~14 TB home, its own `~/.herm
-- [[topics/senter/wiki/concepts/routing-rules|Routing rules (route → refine → spawn)]] — How [[topics/senter/wiki/entities/senter|Senter]] turns an idea from Chris into fleet work. Identical in the SOUL and the skill; the skill adds the hard correct
-- [[topics/senter/wiki/concepts/selfmodel-layer|Self-model layer (topics/senter/.system/selfmodel)]] — Built **2026-08-31** per [[topics/senter/wiki/entities/anser|anser]]'s audit: Senter's declarative self-knowledge, separate from Hermes built-ins. Files: `SCHEM
-- [[topics/senter/wiki/concepts/topic-agent-pitch-caps|Topic-agent pitch caps (1 bot / 2 loops / 1 research; zero infrastructure pitches; hermes: lines are evidence)]] — Rules put into the [[topics/senter/wiki/entities/topic-agent|topic agent]]'s prompt at 18:58, after its first passes produced a flood of cards about itself. Her
-- [[topics/senter/wiki/concepts/topic-brief-pre-prompting|Topic BRIEF pre-prompting (each topic declares what belongs to it and how to think about it)]] — The **pre-prompting layer** is the last piece Hermes added on 2026-09-05 (19:23), directly after the [[topics/senter/wiki/decisions/2026-09-05-backend-as-builti
-- [[topics/senter/wiki/concepts/topics-are-the-work-units|Topics are the work units (GOOP spec)]] — A vault topic `topics/<name>/` is the thing a bot "absorbs". When Chris's idea maps to an existing topic, the bot that owns that topic owns the idea; a new doma
-- [[topics/senter/wiki/concepts/vault-agents-vs-profile-bots|Vault agents vs profile bots (proposed vs live)]] — The scan-topics.py investigation on 2026-09-08 clarified the distinction between **vault agent specs** (proposed bots) and **profile bots** (live, running bots)
-- [[topics/senter/wiki/concepts/vault-repo-mapping|Vault-to-repo mapping (gh-sync, agent-wiki, klerik, senter)]] — A record of the repository structure that surrounds the Senter vault, as
-- [[topics/senter/wiki/concepts/vault-ui-style-contract|Vault UI style contract (white on black, list not cards)]] — Chris's locked visual preferences for the [[topics/senter/wiki/entities/senter-wiki-ui|Senter Wiki UI]], corrected three times on 2026-08-31 and since owned by 
-- [[topics/senter/wiki/concepts/voice-dictation-name-map|Voice dictation name map]] — [[topics/senter/wiki/entities/chris|Chris]] talks to Senter over voice dictation; codenames arrive mangled and stray background audio (TV, kids) arrives as garb
-- [[topics/senter/wiki/concepts/watcher-as-cutter|Watcher as cutter (split messages by subject, file the pieces)]] — Second form of the [[topics/senter/wiki/entities/watcher|watcher]], live 2026-09-05 17:53. The first form (16:37) routed **whole messages** to the single best-f
+> Cursor for markdown. A live-acting second brain.
 
-## Decisions
-- [[topics/senter/wiki/decisions/2026-08-30-conversation-first-operating-model|2026-08-30 — Conversation-first operating model (locked)]] — **What.** Intake is free conversation. Chris talks about anything; [[topics/senter/wiki/entities/senter|Senter]] is the single surface. Senter detects interests
-- [[topics/senter/wiki/decisions/2026-08-30-standing-approval|2026-08-30 — Standing approval: act first, confirm only the irreversible]] — **What.** Chris: **"when I ask for things I want you to assume that you have my approval."** Senter acts on requests immediately and reports after; no batched c
-- [[topics/senter/wiki/decisions/2026-09-02-fleet-decisions-as-wiki-cards|2026-09-02 — Fleet decisions go to the wiki as cards, not chat]] — **What.** Chris: **"if you're waiting on my call, then there should be an approval going to the wiki."** A `clarify` modal had timed out unanswered while he was
-- [[topics/senter/wiki/decisions/2026-09-02-governance-thresholds-calibrated|2026-09-02 — Governance thresholds calibrated against Chris's decisions (propose ≥ .35, auto ≥ .50)]] — **What.** Similarity thresholds for topic merge/split governance are **calibrated against decisions Chris already made, never guessed.** Locked values: **propos
-- [[topics/senter/wiki/decisions/2026-09-02-process-artifacts-are-the-product|2026-09-02 — Process artifacts are the product]] — **What.** Chris: **"this is exactly how I intend people to use this product… as we fix things we need to be bolstering it in the wiki."** A lesson written only 
-- [[topics/senter/wiki/decisions/2026-09-02-senter-never-builds|2026-09-02 — Senter routes; Senter never builds (hard correction)]] — **What.** After [[topics/senter/wiki/entities/senter|Senter]] hand-iterated the wiki UI for a whole session, Chris said: **"you're doing a lot of these edits yo
-- [[topics/senter/wiki/decisions/2026-09-02-upstream-pr-policy|2026-09-02 — Upstream PR policy: ledger for others' repos, ship on Chris's fork]] — **What.** [[topics/senter/wiki/entities/teknium|Teknium]] never opens PRs on repos Chris doesn't own during a session. Drafts go to the ledger `topics/hermes-ag
-- [[topics/senter/wiki/decisions/2026-09-05-backend-as-builtin-hermes-plus-markdown|2026-09-05 — Backend should be built-in Hermes commands + markdown; the UI stays]] — **What.** At 19:06 [[topics/senter/wiki/entities/chris|Chris]] set the direction for the *backend* of the whole Senter flow: ^[raw/inbox/2026-09-05.md]
-- [[topics/senter/wiki/decisions/2026-09-05-context-section-is-a-full-llm-wiki|2026-09-05 — Each topic's wiki section is a full LLM wiki, not a line]] — **What.** Chris, 17:40: **"I still don't think you get it because the wiki for center wiki is still only one line… you should use the LLM wiki skill for the wik
-- [[topics/senter/wiki/decisions/2026-09-05-no-approval-for-wiki-edits|2026-09-05 — No approval needed for wiki edits; bots trigger sooner]] — **What.** Chris, 17:18, reacting to approval cards: **"These are the things that I don't want to have to give approval on or edits to the wiki and things like t
-- [[topics/senter/wiki/decisions/2026-09-05-one-agent-per-topic-no-separation|2026-09-05 — One agent per topic; the watcher cuts; bots first, no thresholds ("I don't like the separation")]] — **What.** At 17:46 [[topics/senter/wiki/entities/chris|Chris]] rejected the umbrella/worker/compiler split Hermes had built earlier in the afternoon: **"I don't
-- [[topics/senter/wiki/decisions/2026-09-05-per-message-watcher|2026-09-05 — Per-message watcher, not per-session (\"like Cursor\")]] — **What.** Asked "Watcher granularity: every message, or session-end summaries + tool results?", Chris (16:35) answered: **"I want this to be fast paced… live ed
-- [[topics/senter/wiki/decisions/2026-09-05-preempt-decisions-complete-the-incomplete|2026-09-05 — Preempt decisions; stop asking; find what isn't complete and complete it]] — **What.** At 18:16, after the topic agents' first pitches had landed as cards, [[topics/senter/wiki/entities/chris|Chris]] said, in full: **"Preempt decision, s
-- [[topics/senter/wiki/decisions/2026-09-05-wiki-is-hermes-memory-layer|2026-09-05 — The wiki is Hermes's memory layer: all of it, not summaries]] — **What.** Chris, 16:22: **"this is supposed to be basically a memory layer for Hermes agent… populate center and center wiki with all of the context that we hav
-- [[topics/senter/wiki/decisions/2026-09-06-model-picker-sticky-and-tts-gateway|2026-09-06 — Model picker must stay sticky; TTS managed-gateway cache must be force-fresh]] — **What.** Two runtime config problems surfaced together at 01:51 on 2026-09-06 and were diagnosed through 02:31 by [[topics/senter/wiki/entities/hermes-agent|He
-- [[topics/senter/wiki/decisions/2026-09-07-rename-context-to-wiki|Rename 'context' references to 'wiki' (proposed 2026-09-07)]] — During the 2026-09-07 18:10–18:16 state review, Hermes proposed renaming every "context" reference to "wiki" in the vault and Senter docs, and updating topic an
-- [[topics/senter/wiki/decisions/2026-09-07-skill-bot-loop-criteria-reaffirmed|Skill-vs-bot-vs-loop decision criteria (reaffirmed 2026-09-07)]] — The five-part architecture already defines these four tiers explicitly. On 2026-09-07, Hermes noted the need to add them explicitly to the architecture and topi
-- [[topics/senter/wiki/decisions/2026-09-08-autonomous-completion-standing-approval-extended|Autonomous completion of Senter Wiki front and backend (standing approval extended 2026-09-08)]] — **What.** Chris, 2026-09-08 08:45: *"please continue until the UI is restored to what I want (read through this session to find clues and specs), and finish bot
-- [[topics/senter/wiki/decisions/2026-09-08-bridge-scan-topics-bot-name-parsing|Bridge scan-topics.py bot name parsing (clarified 2026-09-08)]] — **The initial report.** On 2026-09-08 09:51, Hermes's analysis suggested that `scan-topics.py` was including `.md` suffixes in bot names in `.system-live.json` 
-- [[topics/senter/wiki/decisions/2026-09-08-complete-senter-wiki-autonomously|Complete Senter Wiki front and backend autonomously]] — **What.** Chris, 08:45: *"please continue until the UI is restored to what I want (read through this session to find clues and specs), and finish both the front
-- [[topics/senter/wiki/decisions/2026-09-08-context-fallback-threshold|Context fallback threshold (>65K) requires auxiliary.compression pin]] — **The claim.** [[topics/senter/wiki/entities/anser|Anser]] (2026-09-07 00:35): *"Use Nous cloud fallback for contexts >65K"*
-- [[topics/senter/wiki/decisions/2026-09-08-senter-wiki-bot-topic-folder-missing|Senter-wiki-bot topic folder missing (clarified: folder exists)]] — **The initial gap.** The `senter-wiki-bot` profile exists but on 2026-09-08 09:56 the scan-topics.py investigation suggested it had no topic folder with proper 
-- [[topics/senter/wiki/decisions/2026-09-09-autonomous-senter-wiki-completion-continuation|2026-09-09 — Autonomous Senter Wiki front + backend completion continues (standing approval confirmed)]] — Chris, 2026-09-09 (continuing toward his standing goal): **"Goal: please continue until the UI is restored to what I want (read through this session to find clu
-- [[topics/senter/wiki/decisions/2026-09-09-bot-sessions-layout-inspection|2026-09-09 — Bot/sessions layout visibility inspection (ongoing after pipeline verification)]] — From the re-routed `senter-wiki` raw item, Chris, 2026-09-09 13:01: **"ok so how do I see my bots and sessions in this layout? Look at the Hermes Desktop and fi
-- [[topics/senter/wiki/decisions/2026-09-09-live-data-pipeline-verification|Live data pipeline verification (2026-09-09) — bridge / git / gh-sync]] — Hermes confirmed the Senter backend infrastructure is live and healthy:
-- [[topics/senter/wiki/decisions/2026-09-10-desktop-layout-tabbed-browser|2026-09-10 — Desktop layout: tabbed browser main zone + bot options above sidebar]] — Chris, 2026-09-10 15:22: **"I want you to bring back the options that were here, such as the sidebar. I really wish that that had the tabs on top of it to open 
-- [[topics/senter/wiki/decisions/2026-09-10-hermes-update-parked-branch|2026-09-10 — Hermes update blocked by parked branch + dirty tree (Senter Wiki is a separate repo)]] — Chris, 2026-09-10 14:26: **"I need you to find what is blocking Hermes-Agent from updating, it might be my project here, which I do not want erased for the sake
-- [[topics/senter/wiki/decisions/2026-09-14-gateway-context-reset-on-overflow|2026-09-14 — Gateway chat resets on context overflow; continue with /new]] — 2026-09-14 22:38, a gateway chat **refused to continue the partial response** because the request no longer fit the model's context window:
+This is the **primary wiki** — the coordination layer between Chris and the Hermes fleet. Every idea, decision, and artifact lives here as markdown. Edit any file — that's the steering wheel.
 
-## Comparisons
-- [[topics/senter/wiki/comparisons/delegate-task-vs-hermes-q-meeseeks|Dispatch — delegate_task children vs shell-spawned `hermes -q` Meeseeks]] — Chris: "don't queue tasks, don't make me wait several minutes for a task to start… many in parallel." Measured on 2026-09-02 across the same class of work (3-li
-- [[topics/senter/wiki/comparisons/fleet-rosters-over-time|Fleet rosters over time]] — The raw files carry five different fleet tables. They disagree because they were written at different dates — none is wrong for its date. Live truth is always `
-- [[topics/senter/wiki/comparisons/manual-edit-vs-dspy-gepa|Manual surgical edit vs DSPy/GEPA (when Klerik uses which)]] — [[topics/senter/wiki/entities/klerik|Klerik]]'s decision table, identical in SOUL and AGENTS. ^[raw/sources/knowledge/klerik-SOUL.md]
-- [[topics/senter/wiki/comparisons/native-hermes-vs-custom-backend|Native Hermes vs custom backend — what each Senter part runs on (19:12 inventory)]] — Ledger for [[topics/senter/wiki/decisions/2026-09-05-backend-as-builtin-hermes-plus-markdown|Chris's 19:06 decision]] ("just built in Hermes commands and markdo
-- [[topics/senter/wiki/comparisons/senter-legacy-repo-vs-current-soul|Senter — legacy repo vs current SOUL]] — Two documents both called "Senter" describe different bots. ^[raw/sources/knowledge/senter-repo/SOUL.md] ^[raw/sources/knowledge/senter-SOUL.md]
-- [[topics/senter/wiki/comparisons/topic-pipeline-16-37-vs-17-46|Topic pipeline shapes — worker + umbrella + compiler (16:37) vs one topic agent (17:46)]] — Two designs for "how does a topic turn Chris's talk into wiki + action", both from the same afternoon. The second replaced the first within ~70 minutes after [[
+---
 
-## Queries
-- [[topics/senter/wiki/queries/event-driven-topic-agent-trigger|Event-driven topic-agent trigger verification (2026-09-09)]] — **The question.** The topic agent (`assets/topic-agent.py`) still fires on a 5-min timer, not on WatchPaths-triggered new inbox writes. This gap, identified at 
-- [[topics/senter/wiki/queries/event-driven-trigger-gaps-2026-09-07|Event-driven trigger gaps identified 2026-09-07]] — Hermes summarized **still-likely gaps** in the event-driven path on 2026-09-07 18:10. These gaps are work, not questions.
-- [[topics/senter/wiki/queries/event-driven-trigger-gaps-2026-09-08|Event-driven trigger gaps (2026-09-08 investigation)]] — **The gap.** The topic agent (`assets/topic-agent.py`) should fire on new watcher cuts (event-driven) not on a 5-minute timer. This was identified as work at 20
-- [[topics/senter/wiki/queries/latest-user-message-preempt-2026-09-07|Latest user-message preemption rule from compaction handoff]] — A 2026-09-07 compaction handoff arrived multiple times in later raw items with explicit instruction: **the latest user message after a summary is the single sou
-- [[topics/senter/wiki/queries/senter-timeline|senter-timeline]] — Filed query: "what happened when?" across all raw items. Times are CDT where given. ^[raw/sources/knowledge/skill-senter-fleet-coordination.md]
-- [[topics/senter/wiki/queries/vault-repo-link-status|Verify vault-to-repo link status (gh-sync / agent-wiki)]] — Hermes observed on 2026-09-09 13:15 that a `gh-sync` directory contains
-- [[topics/senter/wiki/queries/verify-apply-paths-and-watchpaths-landed|Verify apply paths and WatchPaths landed]] — **Loop apply path** — proven. The cron `e6e20c22e1b9` runs successfully. ✓
+## INTEGRATIONS
 
+This wiki is fed by:
+
+- **GitHub:** [SouthpawIN/Senter](https://github.com/SouthpawIN/Senter) — repo, issues, PRs
+- **Hermes state.db:** every chat message cut into `topics/<t>/raw/inbox/`
+- **Sessions:** `topics/senter-wiki/.system/sessions/` — full conversation transcripts
+- **Fleet daemons:** watcher, topic-agent, umbrella, bridge, scanwatch
+
+---
+
+## WIKI
+
+### CONTEXT
+
+> The Senter flywheel runs on **five parts** (locked 2026-09-05):
+> 1. **Sidebar** — Chris talks, Sentry listens
+> 2. **Watcher** — cuts every message into per-topic pieces
+> 3. **Topics** — one intelligence per subject
+> 4. **Loops** — cron jobs that monitor, benchmark, alert
+> 5. **Approvals** — bots and loops need a card click; everything else auto-applies
+
+#### Fleet Architecture
+
+| Component | What | Where |
+|-----------|------|-------|
+| Sidebar | Chris's chat surface | Hermes desktop |
+| Watcher | Message cutter | `assets/sentry-watcher.py` |
+| Topic Agent | One intelligence per topic | `assets/topic-agent.py` |
+| Umbrella | Governance (merge, dedupe) | `assets/umbrella.py` |
+| Bridge | HTTP API for the UI | `~/.hermes/plugins/sentry-bridge` |
+| Scanwatch | Vault snapshot | `assets/scan-topics.py` |
+
+#### Live Dashboard
+
+`vault-live.html` renders in the Hermes desktop preview pane. Chris steers it by voice while watching it move.
+
+#### Topic Map
+
+| Topic | Status | What |
+|-------|--------|------|
+| **Senter** | PRIMARY | Fleet architecture, bots, loops |
+| **Turbofit** | ACTIVE | Model research, pipelines, hardware tiers |
+| **Hermes Agent** | ACTIVE | Runtime configuration, provider setup |
+| **Klerik** | ACTIVE | Profile factory, bot reviews |
+| **Anser** | ACTIVE | Native Hermes answers |
+| **Looker** | ACTIVE | UI-QA service bot |
+| **Teknium** | ACTIVE | Hermes-Agent builder |
+| **Paladin** | ACTIVE | Vault structure warden |
+| **Weaver** | ACTIVE | Sentry Wiki UI builder |
+| **Dogeman** | ACTIVE | YouTube/content studio |
+| **Turbosovth** | ACTIVE | TurboFit support agent |
+| **Music** | ACTIVE | Music generation |
+| **40+ more** | ARCHIVED | See `topics/_archive/` |
+
+### CONTINUATION
+
+#### Roadblocks
+
+- **Model picker must stay sticky** — Hermes must not silently switch to cloud providers
+- **Compression timeouts** at 262K+ tokens — cap at 131K on M1
+- **Topic sprawl** — 56 topics, many stale. Consolidation plan: merge into ~15 active subjects
+
+#### Further Reading
+
+- [Sentry Wiki](topics/sentry-wiki/index.md) — UI and build skills
+- [Turbofit](topics/turbofit/index.md) — model research
+- [Hermes Agent](topics/hermes-agent/index.md) — runtime config
+- [Archive](topics/_archive/) — absorbed topics, preserved verbatim
+
+---
+
+## SKILLS
+
+> Full skill files in `topics/sentry/skills/<name>/SKILL.md` and `topics/sentry-wiki/skills/<name>/SKILL.md`.
+
+### Fleet Coordination
+
+- **sentry-fleet-coordination** — Operating playbook: route fleet ideas, bots, vault logs
+- **progressive-disclosure** — How to read the vault: index → file → section
+- **wiki-ui-knobs** — Live wiki UI rules and verification loops
+- **remote-absorption-ssh** — Multi-machine consolidation over SSH
+
+### Build & Verify
+
+- **candidate-quant-comparison** — Evaluate new local model candidates
+- **dflash2-fork-flag-boundary** — DFlash2 flag set that succeeds/fails
+- **turbo-artifact-download-spec** — Reproducible download records with verification
+- **turbo-fit-evidence-capture** — Capture performance from live Hermes window
+- **turbo-model-store-cleanup** — Free storage, delete wiki-marked artifacts only
+- **maple-mlx-server-runtime** — Run Maple MLX on Apple Silicon
+- **mtplx-32gb-macos-tuning** — Tune MTPLX on 32GB macOS
+
+### Review & Reflection
+
+- **sdlc-review** — Review Kanban handoffs and route verified outcomes
+- **simplify-code** — Parallel cleanup of recent code changes
+- **requesting-code-review** — Pre-commit review: security, quality gates, auto-fix
+
+---
+
+## BOTS
+
+> The fleet roster. Full profiles in `~/.hermes/profiles/<name>/`.
+
+| Bot | Role | Use |
+|-----|------|-----|
+| **sentry** | Sidebar | Chris talks here. Routes, never builds. |
+| **klerik** | Profile factory | Reviews and corrects other bots |
+| **looker** | UI-QA | Screenshots, vision, verification |
+| **teknium** | Core builder | Hermes-Agent fixes, upstream PRs |
+| **paladin** | Warden | Vault structure, repo hygiene |
+| **weaver** | UI builder | vault-live.html, CSS, layout |
+| **dogeman** | Content studio | YouTube, scripts, visuals |
+| **turbosovth** | TurboFit support | Model research, never merges |
+| **anser** | Native answers | Citations only, no hallucination |
+| **hermes-agent** | Runtime | Provider config, model routing |
+| **turbofit** | Inference | Model zoo, pipelines, hardware |
+
+---
+
+## LOOPS
+
+> Active cron jobs. Full specs in `topics/<t>/loops/<name>.md`.
+
+| Loop | Cadence | What |
+|------|---------|------|
+| **sentry-umbrella** | 30m | Governance: merge, dedupe, catalogs |
+| **sentry-watcher** | continuous | Cut messages into per-topic inbox |
+| **sentry-scanwatch** | continuous | Snapshot `.system-live.json` |
+| **turbofit-health-check** | 2h | All runtime processes healthy? |
+| **turbofit-memory-monitor** | 15m | Memory usage across devices |
+| **turbofit-candidate-discovery** | 6h | New models on HuggingFace |
+| **hermes-model-change-detector** | 5m | Alert if model switches |
+| **compression-timeout-watch** | 10m | Hermes compression failures |

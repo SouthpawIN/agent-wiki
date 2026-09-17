@@ -1,6 +1,7 @@
 # Queue — looked-image
 
 ## [CONTEXT]
+- [ ] research pin-stafford-douglasal-131k — SUGGESTED 2026-09-17 11:26: Want me to look into what the 131K target actually is at Stafford-Douglasal Science Department, and which current artifa
 - [ ] research stafford-douglasal-131k-benchmark — SUGGESTED 2026-09-07 05:02: Want me to look into whether the 131K target is a generic artifact limit or a benchmark tied to Stafford-Douglasal Scien
 - [ ] research looked-image-131k-research — SUGGESTED 2026-09-07 01:13: Want me to look into optimization paths that actually hit 131K for this artifact?
 - [ ] research survey-local-recovery-artifacts — SUGGESTED 2026-09-06 22:01: Want me to survey the local filesystem for existing screenshots, project backups, and config snapshots that could serve 

@@ -5,3 +5,5 @@
 ## [2026-09-07] compile | raw/inbox/2026-09-07.md -> wiki/entities/131k-optimization-target.md, wiki/decisions/research-optimization-before-rebuild.md, wiki/queries/meet-131k-with-optimization.md
 ## [2026-09-07] compile | raw/inbox/2026-09-07.md updated existing 131K pages with Stafford-Douglasal comparison quote and flagged contested target context
 ## [2026-09-07] compile | raw/inbox/2026-09-07.md -> wiki/entities/131k-optimization-target.md, wiki/comparisons/131k-abstract-vs-stafford-douglasal.md
+
+## [2026-09-17] compile | raw/inbox/2026-09-17.md -> wiki/entities/visual-reference-section-rules-skills.md

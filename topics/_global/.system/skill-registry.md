@@ -83,6 +83,7 @@
 | humanizer | default, anser, dogeman, fleet-orchestrator, klerik, looker, paladin, senter, senter-wiki-bot, teknium, turbosovth, weaver | Humanize text: strip AI-isms and add real voice. | live |
 | imessage | default, anser, dogeman, fleet-orchestrator, klerik, looker, paladin, senter, senter-wiki-bot, teknium, turbosovth, weaver | Send and receive iMessages/SMS via the imsg CLI on macOS. | live |
 | inspecting-hermes-desktop-dom | default, anser, dogeman, fleet-orchestrator, klerik, looker, paladin, senter, senter-wiki-bot, teknium, turbosovth, weaver | Read the live Hermes desktop DOM/CSS over CDP. | live |
+| integrations-clickable-render | senter | Non-clickable integrations? Render them as clickable links. | live |
 | jupyter-live-kernel | klerik | Iterative Python via live Jupyter kernel (hamelnb). | live |
 | knowledge-vault | default | Build an Obsidian vault of project topics from user sources. | live |
 | latest-message-wins-task-handling | topic:back-where | Use when a turn resumes from compaction or a Historical Task Snapshot. Treat only the latest user me | live |

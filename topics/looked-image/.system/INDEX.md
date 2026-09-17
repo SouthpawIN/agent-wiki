@@ -10,19 +10,19 @@ Read order for an agent: this file → pick a file below → its outline → `re
     - L8 ## Status
 
 ## .system
-- `.system/agent.cursor` — 0 KB, 5 lines — raw/inbox/2026-09-06.md@7a63a86ad01f
+- `.system/agent.cursor` — 0 KB, 6 lines — raw/inbox/2026-09-06.md@7a63a86ad01f
 - `.system/continuity.md` — 0 KB, 4 lines — Continuity — looked-image
     - L1 # Continuity — looked-image
 - `.system/injections.md` — 1 KB, 10 lines — Injections — looked-image
     - L1 # Injections — looked-image
     - L3 ## [UNREAD]
     - L9 ## [READ]
-- `.system/queue.md` — 1 KB, 18 lines — Queue — looked-image
+- `.system/queue.md` — 2 KB, 19 lines — Queue — looked-image
     - L1 # Queue — looked-image
     - L3 ## [CONTEXT]
-    - L9 ## [SKILLS]
-    - L11 ## [AGENTS]
-    - L15 ## [LOOPS]
+    - L10 ## [SKILLS]
+    - L12 ## [AGENTS]
+    - L16 ## [LOOPS]
 
 ## agents
 - `agents/looker-131k-research.md.proposed` — 1 KB, 22 lines — type: agent

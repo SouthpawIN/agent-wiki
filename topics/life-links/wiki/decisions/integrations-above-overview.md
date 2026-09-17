@@ -29,7 +29,8 @@ confidence: low
 
 ## Status
 
-- Recorded as a directive; execution against any specific page has not yet been logged.
+- **Executed (2026-09-17 10:10).** The page body now opens with the integrations block above the overview, labelled "Integrations (frontmatter property + clickable section)" — the prominent half done, now paired with the structured (front-matter) half. The same restructure added two new sections, **Implementation** and **Issues**.
+- Per-page rollout: other wiki pages that still carry integrations as a non-clickable JSON list have not yet been updated.
 
 ## Related
 
