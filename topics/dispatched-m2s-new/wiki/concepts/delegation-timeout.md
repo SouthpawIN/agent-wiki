@@ -1,10 +1,10 @@
 ---
 title: delegation owner exit timeout
 created: 2026-09-07
-updated: 2026-09-10
+updated: 2026-09-17
 type: concept
 tags: [infra, pain, delegation]
-sources: [raw/inbox/2026-09-07.md, raw/inbox/2026-09-09.md, raw/inbox/2026-09-10.md, raw/inbox/2026-09-16.md]
+sources: [raw/inbox/2026-09-07.md, raw/inbox/2026-09-09.md, raw/inbox/2026-09-10.md, raw/inbox/2026-09-16.md, raw/inbox/2026-09-17.md]
 confidence: low
 ---
 
@@ -45,5 +45,11 @@ Based on the raw inbox data, successful subsequent batches used smaller subagent
 - deleg_56809b77: 4 subagents (successful)
 - deleg_dc36df32: 2 subagents (successful)
 - deleg_7418fbf4: 5 subagents (successful, 2026-09-16) — the largest fan-out to succeed, which contradicts the size-reduction hypothesis. See [[entities/delegation-batch-7418fbf4|batch deleg_7418fbf4]].
+- deleg_a5b975f7: 1 subagent (successful, 2026-09-16) — same size as the failing batch, opposite outcome. See [[entities/delegation-batch-a5b975f7|batch deleg_a5b975f7]].
+- deleg_e7970c1a: 1 subagent (successful, 2026-09-17) — same size as the failing batch, opposite outcome. See [[entities/delegation-batch-e7970c1a|batch deleg_e7970c1a]].
 
 Chris observed: "The short prompt benefits from better relative throughput."
+
+## Note on the failure's cause
+
+Two `1`-subagent batches (deleg_a5b975f7, deleg_e7970c1a) completed normally while the original [[entities/delegation-batch-e76115bb|batch deleg_e76115bb]] — also `1` subagent — failed. Batch size cannot be the cause; the distinguishing factor lies elsewhere (prompt length, model, role, duration, or the owner process itself), all still unrecorded for the failure. The recorded transcript path for deleg_e7970c1a (`…/deleg_e7970c1a/task-0.log`) is the first concrete lead to capture the missing leaf-subagent details.

@@ -1,10 +1,10 @@
 ---
 title: owner-exit vs smaller-fan-out outcomes
 created: 2026-09-07
-updated: 2026-09-07
+updated: 2026-09-17
 type: comparison
 tags: [infra, delegation, decision]
-sources: [raw/inbox/2026-09-07.md, raw/inbox/2026-09-16.md]
+sources: [raw/inbox/2026-09-07.md, raw/inbox/2026-09-16.md, raw/inbox/2026-09-17.md]
 confidence: low
 ---
 
@@ -23,6 +23,8 @@ This page compares the failing owner-exit batch against the later successful bat
 Smaller subagent counts did not consistently map to success/failure here because `deleg_dc36df32` used `2` and succeeded while `deleg_e76115bb` used `1` and failed. If batch size were the only factor, `1` should be safer than `4`, which was not observed. This means the owner-exit error should be investigated separately from batch-size tuning unless the smaller batches in the later runs also used shorter prompts. Chris noted shorter prompts helped relative throughput, so the favorable outcome may reflect prompt length more than fan-out count.
 
 ^[raw/inbox/2026-09-16.md] The comparison is now sharpened: [[entities/delegation-batch-7418fbf4|batch deleg_7418fbf4]] succeeded at a fan-out of `5` subagents on 2026-09-16, larger than every earlier success (4 and 2). This rules out "smaller fan-out = success" outright — the distinguishing factor between the failing batch and the three successes lies elsewhere (prompt length, model, role, or duration, all still unrecorded for the failure).
+
+^[raw/inbox/2026-09-16.md] [[entities/delegation-batch-a5b975f7|batch deleg_a5b975f7]] (2026-09-16 21:11) and [[entities/delegation-batch-e7970c1a|batch deleg_e7970c1a]] (2026-09-17 12:14) both succeeded at a fan-out of `1` subagent — the exact size of the failing [[entities/delegation-batch-e76115bb|batch deleg_e76115bb]]. Same size, opposite outcome, twice over. This is the strongest evidence yet that batch size is not the driver at all: the only remaining candidates are prompt length, model, role, duration, or the owner process itself — none of which are recorded for the failure. The recorded transcript path for deleg_e7970c1a (`…/deleg_e7970c1a/task-0.log`) is the first concrete lead to capture those missing details.
 
 ## Contested
 
