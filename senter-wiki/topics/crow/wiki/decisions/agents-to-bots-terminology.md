@@ -4,7 +4,7 @@ created: 2026-09-08
 updated: 2026-09-10
 type: decision
 tags: [decision, preference, repo, infra, ui]
-sources: [raw/inbox/2026-09-08.md, raw/inbox/2026-09-09.md]
+sources: [raw/inbox/2026-09-08.md, raw/inbox/2026-09-09.md, raw/inbox/2026-09-17.md]
 confidence: high
 ---
 
@@ -69,6 +69,15 @@ so that files like `context-fallback-pin.md.proposed` yield the bot name
 consistent with the existing split logic in `scan_vault_agents()` which already
 uses `md.name.split(".md")[0]` — "which gives `context-fallback-pin` ✓"
 ^[raw/inbox/2026-09-09.md]
+
+### Extension gate: `.md.proposed` vs `.endswith(".md")`
+
+Agent/loop files are written with a `.md.proposed` extension, which does **not**
+match an `".endswith('.md')"` check — so files sitting in the `.md.proposed`
+state slip past the gate. ^[raw/inbox/2026-09-17.md] This is the same `.md`-suffix
+normalization thread as the `name_of()` fix above; the gate needs to accept
+`.md.proposed` (or the files need to be promoted out of `.proposed` before the
+check). ^[raw/inbox/2026-09-17.md]
 
 ### Model field consistency
 

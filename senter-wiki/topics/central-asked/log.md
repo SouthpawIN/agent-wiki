@@ -4,3 +4,4 @@
 ## [2026-09-15] compile | preview-pane, central-area-tab-requirement, webview-rejected, webview-vs-preview-pane, plus-sign-disappears
 ## [2026-09-16] compile | updates-not-showing
 ## [2026-09-17] compile | combine-index-and-full-wiki
+## [2026-09-17] compile | center-wiki-title

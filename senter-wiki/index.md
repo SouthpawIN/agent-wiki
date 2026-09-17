@@ -7,7 +7,7 @@ links:
   github: https://github.com/SouthpawIN/Senter
   vault: ~/Documents/Projects/Projects
 sources:
-  - senter-wiki.md
+  - index.md
   - BRIEF.md
   - topics/
 ---
@@ -17,17 +17,6 @@ sources:
 > Cursor for markdown. A live-acting second brain.
 
 This vault is the **coordination layer** between Chris and the Hermes fleet. Every idea, decision, and artifact lives here as markdown. Edit any file — that's the steering wheel.
-
----
-
-## INTEGRATIONS
-
-This wiki is fed by:
-
-- **GitHub:** [SouthpawIN/Senter](https://github.com/SouthpawIN/Senter) — repo, issues, PRs
-- **Hermes state.db:** every chat message cut into `topics/<t>/raw/inbox/`
-- **Sessions:** `topics/senter-wiki/.system/sessions/` — full conversation transcripts
-- **Fleet daemons:** watcher, topic-agent, umbrella, bridge, scanwatch
 
 ---
 
