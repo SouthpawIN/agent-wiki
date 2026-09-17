@@ -25,6 +25,23 @@ The Senter Wiki is the **master orchestration layer** for everything Chris cares
 
 ## README
 
+### Core Sections
+
+#### Inspiration & Integrations
+Everything that feeds data into the wiki — GitHub repos, HuggingFace models, raw inbox cuts from Hermes sessions, cron outputs, webhooks, kanban state. This is the *sensory layer*: without integrations, the wiki has no input.
+
+#### Wiki & Topics
+The knowledge itself. Every subject Chris cares about gets its own topic with evidence, decisions, and action items. Topics are organized via progressive disclosure — scan the table of contents, click to dive deep, drill into specifics.
+
+#### Skills & Capabilities
+Reusable procedures Hermes knows how to run. Each skill is a SKILL.md file with frontmatter (name, description, when to use it). Skills are the *verbs* of the system — what Hermes can *do*.
+
+#### Bots & Profiles
+Autonomous Hermes agents, each with its own SOUL.md defining its role, behavior, and boundaries. Bots are the *nouns* of the system — who does the work.
+
+#### Triggers & Loops
+Scheduled automations (cron jobs), kanban tasks, and webhooks. Loops are the *temporal* dimension — what runs when, how often, and what it checks.
+
 ### What This Is
 
 The Sentry Wiki is a **bonsai tree of knowledge**: the same structure repeats at every scale. The vault root has INTEGRATIONS, README, SKILLS, BOTS, and LOOPS. Every topic inside it has the same. Every sub-topic within that has the same. This creates a self-similar, navigable hierarchy where any level can be understood the same way.
