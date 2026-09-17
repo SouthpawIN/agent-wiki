@@ -19,6 +19,14 @@ sources:
   - wiki/queries/
 ---
 
+## Integrations
+
+- **GitHub:** [SouthpawIN/turbofit](https://github.com/SouthpawIN/turbofit)
+- **HuggingFace:** [SouthpawIN](https://huggingface.co/SouthpawIN)
+- **Omarchy:** [SouthpawIN/omarchy](https://github.com/SouthpawIN/omarchy)
+
+---
+
 ## Overview
 
 **Turbofit** is a first-class [Hermes Agent](https://github.com/NousResearch/hermes-agent) provider and adaptive local-inference runtime.
