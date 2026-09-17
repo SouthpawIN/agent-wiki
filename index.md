@@ -1,11 +1,19 @@
 ---
-title: Senter Vault
+title: Senter Wiki
 created: 2026-07-07
 updated: 2026-09-17
-type: index
+type: wiki
+links:
+  github: https://github.com/SouthpawIN/Senter
+  vault: ~/Documents/Projects/Projects
+sources:
+  - index.md
+  - BRIEF.md
+  - README.md
+  - wiki/
 ---
 
-# Senter Vault
+# Senter Wiki
 
 > Cursor for markdown. A live-acting second brain.
 
@@ -15,7 +23,7 @@ This vault is the **coordination layer** between Chris and the Hermes fleet. Eve
 
 ## INTEGRATIONS
 
-This vault is fed by:
+This wiki is fed by:
 
 - **GitHub:** [SouthpawIN/Senter](https://github.com/SouthpawIN/Senter) — repo, issues, PRs
 - **Hermes state.db:** every chat message cut into `topics/<t>/raw/inbox/`
@@ -24,68 +32,62 @@ This vault is fed by:
 
 ---
 
-## WIKI
+## README
 
-### CONTEXT
+### Turbofit
+Model research, pipelines, hardware tiers — evidence-backed local inference runtime.
 
-> 56 topics. Each is a self-contained GOOP instance: `README.md` (dashboard) · `.system/` (continuity, queue, injections) · `wiki/` · `skills/` · `bots/` · `loops/`.
+### Hermes Agent
+Runtime configuration, provider setup, model routing.
 
-| Topic | Status | What |
-|-------|--------|------|
-| **Senter** | PRIMARY | Fleet architecture, bots, loops, coordination |
-| **Turbofit** | ACTIVE | Model research, pipelines, hardware tiers |
-| **Hermes Agent** | ACTIVE | Runtime configuration, provider setup |
-| **Klerik** | ACTIVE | Profile factory, bot reviews |
-| **Anser** | ACTIVE | Native Hermes answers, trust per-row citations |
-| **Looker** | ACTIVE | UI-QA service bot |
-| **Teknium** | ACTIVE | Hermes-Agent builder, core fixes |
-| **Paladin** | ACTIVE | Vault structure warden |
-| **Weaver** | ACTIVE | Senter Wiki UI builder |
-| **Dogeman** | ACTIVE | YouTube/content studio |
-| **Turbosovth** | ACTIVE | TurboFit support agent |
-| **Music** | ACTIVE | Music generation and AI |
-| **Dispatched M2S** | ACTIVE | Dispatch pipeline |
-| **Burner Phone** | STALE | Mobile device management |
-| **Tailscale Steam** | STALE | Tailscale + Steam streaming |
-| **Case MacBook** | STALE | MacBook accessories |
-| **Nous Community** | STALE | Nous Research community |
-| **Kashik** | STALE | Kashik project |
-| **Pirouette Framework** | STALE | Framework development |
-| **Evolutionary** | STALE | Evolutionary algorithms |
-| **Dev Tooling** | STALE | Development tools |
-| **Self File** | STALE | Self-file management |
-| **User Message** | STALE | User messaging |
-| **Pocket Shop** | STALE | Pocket shop app |
-| **YouTube** | STALE | YouTube content |
-| **40+ more** | ARCHIVED | See `topics/_archive/` |
+### Klerik
+Profile factory, bot reviews, surgical corrections.
 
-### CONTINUATION
+### Anser
+Native Hermes answers, trust per-row citations only.
 
-#### Active Architecture
+### Looker
+UI-QA service bot: screenshots, vision, verification.
 
-The Senter flywheel runs on **five parts** (locked 2026-09-05):
+### Teknium
+Hermes-Agent builder, core fixes, upstream PRs.
 
-1. **Sidebar** — Chris talks, Senter listens (yes-and, rubber duck)
-2. **Watcher** — cuts every message into per-topic pieces
-3. **Topics** — one intelligence per subject, owns the whole lifecycle
-4. **Loops** — cron jobs that monitor, benchmark, alert
-5. **Approvals** — bots and loops need a card click; everything else auto-applies
+### Paladin
+Vault structure warden, repo hygiene, merges.
 
-#### Roadblocks
+### Weaver
+Penter Wiki UI builder: vault-live.html, CSS, layout.
 
-- **Model picker must stay sticky** — Hermes must not silently switch to cloud providers
-- **Compression timeouts** at 262K+ tokens — cap at 131K on M1
-- **Topic sprawl** — 56 topics, many stale. Consolidation plan: merge into ~15 active subjects
+### Dogeman
+YouTube/content studio: rants, scripts, visuals.
 
-#### Live Dashboard
+### Turbosovth
+TurboFit support agent — model research, never merges.
 
-`topics/senter-wiki/skills/wiki-ui-knobs/SKILL.md` + `vault-live.html` — Chris steers the wiki by voice while watching it move in the Hermes preview pane.
+### Music
+Music generation and AI composition.
+
+### Dispatched M2S
+Dispatch pipeline for multi-agent workflows.
+
+### Burner Phone
+Mobile device management.
+
+### Case MacBook
+MacBook accessories and cases.
+
+### Nous Community
+Nous Research community engagement.
+
+### Kashik
+Kashik project.
+
+### 40+ Archived
+Absorbed topics preserved in `topics/_archive/`.
 
 ---
 
 ## SKILLS
-
-> Aggregated from all active topics. Full skill files live in `topics/<t>/skills/<name>/SKILL.md`.
 
 ### Fleet Coordination
 
@@ -114,8 +116,6 @@ The Senter flywheel runs on **five parts** (locked 2026-09-05):
 
 ## BOTS
 
-> The fleet roster. Full profiles in `~/.hermes/profiles/<name>/`.
-
 | Bot | Role | Use |
 |-----|------|-----|
 | **senter** | Sidebar | Chris talks here. Routes, never builds. |
@@ -134,25 +134,13 @@ The Senter flywheel runs on **five parts** (locked 2026-09-05):
 
 ## LOOPS
 
-> Active cron jobs. Full specs in `topics/<t>/loops/<name>.md`.
-
 | Loop | Cadence | What |
 |------|---------|------|
 | **senter-umbrella** | 30m | Governance: merge, dedupe, catalogs |
-| **sentry-watcher** | continuous | Cut messages into per-topic inbox |
-| **sentry-scanwatch** | continuous | Snapshot `.system-live.json` |
+| **senter-watcher** | continuous | Cut messages into per-topic inbox |
+| **senter-scanwatch** | continuous | Snapshot `.system-live.json` |
 | **turbofit-health-check** | 2h | All runtime processes healthy? |
 | **turbofit-memory-monitor** | 15m | Memory usage across devices |
 | **turbofit-candidate-discovery** | 6h | New models on HuggingFace |
 | **hermes-model-change-detector** | 5m | Alert if model switches |
 | **compression-timeout-watch** | 10m | Hermes compression failures |
-
----
-
-## QUICK LINKS
-
-- [Senter](topics/senter/index.md) — fleet architecture
-- [Turbofit](topics/turbofit/index.md) — model research
-- [Hermes Agent](topics/hermes-agent/index.md) — runtime config
-- [Senter Wiki](topics/senter-wiki/index.md) — UI and build
-- [Archive](topics/_archive/) — absorbed topics, preserved verbatim
