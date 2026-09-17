@@ -8,7 +8,7 @@ links:
   vault: ~/Documents/Projects/Projects
 sources:
   - senter-wiki.md
-  - topics-wiki/
+  - wiki-topics/
   - skills-capabilities/
   - bots-profiles/
   - triggers-triggers-loops/
@@ -59,38 +59,38 @@ This means Chris can talk about **everything at once** — Turbofit one minute, 
 
 | Topic | What |
 |-------|------|
-| [Turbofit](topics-wiki/turbofit/index.md) | Model research, pipelines, hardware tiers |
-| [Music](topics-wiki/music/index.md) | Music generation and AI composition |
-| [Dispatched M2S](topics-wiki/dispatched-m2s/index.md) | Multi-agent dispatch pipeline |
-| [Burner Phone](topics-wiki/burner-phone/index.md) | Mobile device management |
-| [Case MacBook](topics-wiki/case-macbook/index.md) | MacBook accessories |
-| [Nous Community](topics-wiki/nous-community/index.md) | Nous Research community |
-| [Back Where](topics-wiki/back-where/index.md) | Context and memory management |
-| [Both Smarter](topics-wiki/both-smarter/index.md) | Dual intelligence systems |
-| [Beyond Pissed](topics-wiki/beyond-pissed/index.md) | Advanced troubleshooting |
-| [Central Asked](topics-wiki/central-asked/index.md) | Central query hub |
-| [Click Options](topics-wiki/click-options/index.md) | Click handling patterns |
-| [Crow](topics-wiki/crow/index.md) | Crow project |
-| [Dev Tooling](topics-wiki/dev-tooling/index.md) | Development tools |
-| [Evolutionary](topics-wiki/evolutionary/index.md) | Evolutionary algorithms |
-| [Faster Without](topics-wiki/faster-without/index.md) | Performance optimization |
-| [Life Links](topics-wiki/life-links/index.md) | Personal knowledge management |
-| [Object Important](topics-wiki/object-important/index.md) | Object importance tracking |
-| [Only Device](topics-wiki/only-device/index.md) | Device-specific config |
-| [Pocket Shop](topics-wiki/pocket-shop/index.md) | Pocket shop app |
-| [Process Important](topics-wiki/process-important/index.md) | Process importance tracking |
-| [Restore Hdiutil](topics-wiki/restore-hdiutil/index.md) | macOS disk utility |
-| [Self File](topics-wiki/self-file/index.md) | Self-file management |
-| [Tailscale Steam](topics-wiki/tailscale-steam/index.md) | Tailscale + Steam streaming |
-| [Talked Architecture](topics-wiki/talked-architecture/index.md) | Architecture discussions |
-| [Try Again](topics-wiki/try-again/index.md) | Retry logic |
-| [User Message](topics-wiki/user-message/index.md) | User messaging |
-| [Want Version](topics-wiki/want-version/index.md) | Version requests |
-| [What Mean](topics-wiki/what-mean/index.md) | Meaning analysis |
-| [Whoa There](topics-wiki/whoa-there/index.md) | Alerts and monitoring |
-| [Wiki Want](topics-wiki/wiki-want/index.md) | Wiki feature requests |
-| [YouTube](topics-wiki/youtube/index.md) | YouTube content |
-| 20+ Archived | Absorbed topics in `topics-wiki/_archive/` |
+| [Turbofit](wiki-topics/turbofit/index.md) | Model research, pipelines, hardware tiers |
+| [Music](wiki-topics/music/index.md) | Music generation and AI composition |
+| [Dispatched M2S](wiki-topics/dispatched-m2s/index.md) | Multi-agent dispatch pipeline |
+| [Burner Phone](wiki-topics/burner-phone/index.md) | Mobile device management |
+| [Case MacBook](wiki-topics/case-macbook/index.md) | MacBook accessories |
+| [Nous Community](wiki-topics/nous-community/index.md) | Nous Research community |
+| [Back Where](wiki-topics/back-where/index.md) | Context and memory management |
+| [Both Smarter](wiki-topics/both-smarter/index.md) | Dual intelligence systems |
+| [Beyond Pissed](wiki-topics/beyond-pissed/index.md) | Advanced troubleshooting |
+| [Central Asked](wiki-topics/central-asked/index.md) | Central query hub |
+| [Click Options](wiki-topics/click-options/index.md) | Click handling patterns |
+| [Crow](wiki-topics/crow/index.md) | Crow project |
+| [Dev Tooling](wiki-topics/dev-tooling/index.md) | Development tools |
+| [Evolutionary](wiki-topics/evolutionary/index.md) | Evolutionary algorithms |
+| [Faster Without](wiki-topics/faster-without/index.md) | Performance optimization |
+| [Life Links](wiki-topics/life-links/index.md) | Personal knowledge management |
+| [Object Important](wiki-topics/object-important/index.md) | Object importance tracking |
+| [Only Device](wiki-topics/only-device/index.md) | Device-specific config |
+| [Pocket Shop](wiki-topics/pocket-shop/index.md) | Pocket shop app |
+| [Process Important](wiki-topics/process-important/index.md) | Process importance tracking |
+| [Restore Hdiutil](wiki-topics/restore-hdiutil/index.md) | macOS disk utility |
+| [Self File](wiki-topics/self-file/index.md) | Self-file management |
+| [Tailscale Steam](wiki-topics/tailscale-steam/index.md) | Tailscale + Steam streaming |
+| [Talked Architecture](wiki-topics/talked-architecture/index.md) | Architecture discussions |
+| [Try Again](wiki-topics/try-again/index.md) | Retry logic |
+| [User Message](wiki-topics/user-message/index.md) | User messaging |
+| [Want Version](wiki-topics/want-version/index.md) | Version requests |
+| [What Mean](wiki-topics/what-mean/index.md) | Meaning analysis |
+| [Whoa There](wiki-topics/whoa-there/index.md) | Alerts and monitoring |
+| [Wiki Want](wiki-topics/wiki-want/index.md) | Wiki feature requests |
+| [YouTube](wiki-topics/youtube/index.md) | YouTube content |
+| 20+ Archived | Absorbed topics in `wiki-topics/_archive/` |
 
 ### Progressive Disclosure
 
