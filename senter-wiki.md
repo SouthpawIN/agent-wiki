@@ -40,9 +40,11 @@ Everything that feeds data into the wiki — GitHub repos, HuggingFace models, r
 
 ---
 
-## Wiki & Topics
+## [Wiki & Topics](wiki-topics/)
 
 Every subject Chris cares about gets its own topic with evidence, decisions, and action items. Topics are organized via progressive disclosure — scan the table of contents, click to dive deep, drill into specifics.
+
+<div class="table-scroll">
 
 | Topic | What |
 |-------|------|
@@ -79,11 +81,15 @@ Every subject Chris cares about gets its own topic with evidence, decisions, and
 | [YouTube](wiki-topics/youtube/index.md) | YouTube content |
 | [20+ Archived](wiki-topics/_archive/) | Absorbed topics preserved verbatim |
 
+</div>
+
 ---
 
-## Skills & Capabilities
+## [Skills & Capabilities](skills-capabilities/)
 
 Reusable procedures Hermes knows how to run. Each skill is a SKILL.md file with frontmatter (name, description, when to use it). Skills are the *verbs* of the system — what Hermes can *do*. All skills below are symlinked to Hermes — edit in vault, updates Hermes live.
+
+<div class="table-scroll">
 
 | Skill | Use |
 |-------|-----|
@@ -109,11 +115,15 @@ Reusable procedures Hermes knows how to run. Each skill is a SKILL.md file with 
 | [turbofit-runtime-setup](skills-capabilities/hermes-skills/turbofit-runtime-setup/SKILL.md) | Use when setting up or fixing the Turbofit local runtime |
 | [web](skills-capabilities/hermes-skills/web/SKILL.md) | Reach web content when direct access fails |
 
+</div>
+
 ---
 
-## Bots & Profiles
+## [Bots & Profiles](bots-profiles/)
 
 Autonomous Hermes agents, each with its own SOUL.md defining its role, behavior, and boundaries. Bots are the *nouns* of the system — who does the work. All bots below are symlinked to Hermes — edit in vault, updates the bot live.
+
+<div class="table-scroll">
 
 | Bot | Role | Use |
 |-----|------|-----|
@@ -129,9 +139,11 @@ Autonomous Hermes agents, each with its own SOUL.md defining its role, behavior,
 | [hermes-agent](bots-profiles/hermes-profiles/hermes-agent/SOUL.md) | Runtime | Provider config, model routing |
 | [turbofit](bots-profiles/hermes-profiles/turbofit/SOUL.md) | Inference | Model zoo, pipelines, hardware |
 
+</div>
+
 ---
 
-## Triggers & Loops
+## [Triggers & Loops](triggers-loops/)
 
 Scheduled automations (cron jobs), kanban tasks, and webhooks. Loops are the *temporal* dimension — what runs when, how often, and what it checks.
 
