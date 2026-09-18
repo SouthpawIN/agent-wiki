@@ -40,7 +40,7 @@ Everything that feeds data into the wiki — GitHub repos, HuggingFace models, r
 
 ---
 
-## [Wiki & Topics](wiki-topics/)
+## Wiki & Topics
 
 Every subject Chris cares about gets its own topic with evidence, decisions, and action items. Topics are organized via progressive disclosure — scan the table of contents, click to dive deep, drill into specifics.
 
@@ -81,7 +81,7 @@ Every subject Chris cares about gets its own topic with evidence, decisions, and
 
 ---
 
-## [Skills & Capabilities](skills-capabilities/)
+## Skills & Capabilities
 
 Reusable procedures Hermes knows how to run. Each skill is a SKILL.md file with frontmatter (name, description, when to use it). Skills are the *verbs* of the system — what Hermes can *do*. All skills below are symlinked to Hermes — edit in vault, updates Hermes live.
 
@@ -113,7 +113,7 @@ Reusable procedures Hermes knows how to run. Each skill is a SKILL.md file with 
 
 ---
 
-## [Bots & Profiles](bots-profiles/)
+## Bots & Profiles
 
 Autonomous Hermes agents, each with its own SOUL.md defining its role, behavior, and boundaries. Bots are the *nouns* of the system — who does the work. All bots below are symlinked to Hermes — edit in vault, updates the bot live.
 
@@ -135,7 +135,7 @@ Autonomous Hermes agents, each with its own SOUL.md defining its role, behavior,
 
 ---
 
-## [Triggers & Loops](triggers-loops/)
+## Triggers & Loops
 
 Scheduled automations (cron jobs), kanban tasks, and webhooks. Loops are the *temporal* dimension — what runs when, how often, and what it checks.
 
