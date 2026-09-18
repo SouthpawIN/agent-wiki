@@ -11,8 +11,8 @@ sources:
   - wiki-topics/
   - skills-capabilities/
   - bots-profiles/
-  - triggers-triggers-loops/
-  - inspiration-inspiration-integrations/
+  - triggers-loops/
+  - inspiration-integrations/
 ---
 
 # Senter Wiki
@@ -23,60 +23,35 @@ The Senter Wiki is the **master orchestration layer** for everything Chris cares
 
 ---
 
-## README
+## Inspiration & Integrations
 
-### Core Sections
+Everything that feeds data into the wiki — GitHub repos, HuggingFace models, raw inbox cuts from Hermes sessions, cron outputs, webhooks, kanban state, clipboard captures. This is the *sensory layer*: without integrations, the wiki has no input.
 
-| Section | Name & Description | Full Definition |
-|---------|-------------------|-----------------|
-| **Inspiration & Integrations** | Data sources that feed the wiki — GitHub, HF, raw inbox, cron outputs, webhooks, kanban state. The *sensory layer*. | [Inspiration & Integrations](inspiration-integrations/index.md) |
-| **Topics & Wiki** | Every subject Chris cares about — evidence, decisions, action items. Progressive disclosure: scan → click → drill. | [Topics & Wiki](topics-wiki/index.md) |
-| **Skills & Capabilities** | Reusable procedures Hermes knows how to run. Each is a SKILL.md with frontmatter. The *verbs* of the system. | [Skills & Capabilities](skills-capabilities/index.md) — *symlinked to Hermes* |
-| **Bots & Profiles** | Autonomous Hermes agents, each with its own SOUL.md. The *nouns* of the system. | [Bots & Profiles](bots-profiles/index.md) — *symlinked to Hermes* |
-| **Triggers & Loops** | Scheduled automations (cron jobs), kanban tasks, webhooks. The *temporal* dimension. | [Triggers & Loops](triggers-loops/index.md) |
+| Integration | Source | What |
+|-------------|--------|------|
+| GitHub | github.com/SouthpawIN/Senter | Code, issues, PRs |
+| HuggingFace | huggingface.co/SouthpawIN | Model repos |
+| Hermes state.db | ~/.hermes/state.db | Chat messages cut into per-topic inbox |
+| Sessions | .system/sessions/ | Full conversation transcripts |
+| Fleet Daemons | launchd services | watcher, topic-agent, umbrella, bridge, scanwatch |
 
-> **Progressive Disclosure:** Each entry above shows the name and description. Click the link to see the full definition. Skills and Bots are symlinked to Hermes — editing in vault updates Hermes live.
+### Inspiration Bin
+- *Empty — start capturing!*
 
-### What This Is
+---
 
-The Senter Wiki is a **bonsai tree of knowledge**: the same structure repeats at every scale. The vault root has INTEGRATIONS, README, SKILLS, BOTS, and LOOPS. Every topic inside it has the same. Every sub-topic within that has the same. This creates a self-similar, navigable hierarchy where any level can be understood the same way.
+## Wiki & Topics
 
-**The pattern:**
-```
-INTEGRATIONS — what data feeds this level
-README       — what this is, table of contents for what's inside
-SKILLS       — what Hermes knows how to do at this level
-BOTS         — the autonomous agents working at this level
-LOOPS        — scheduled automations running at this level
-```
-
-### How It Works
-
-Chris talks freely about anything. Hermes (the sidebar agent) listens, extracts ideas, and sorts them into topics. Each topic gets its own focused wiki with evidence, decisions, and action items.
-
-When a topic accumulates enough patterns — repeated issues, common tasks, monitorable conditions — Hermes proposes **skills** (reusable procedures), **bots** (autonomous agents), and **loops** (scheduled automations). Chris approves via card clicks. The work happens automatically.
-
-This means Chris can talk about **everything at once** — Turbofit one minute, Music the next, then random macOS troubleshooting — and the wiki self-organizes. Each topic gets its own focused workstream without Chris having to context-switch.
-
-### The Four Primitives
-
-| Primitive | What | Example |
-|-----------|------|---------|
-| **Topics** | Subjects Chris cares about | Turbofit, Music, Dispatched M2S |
-| **Skills** | Reusable procedures Hermes can run | candidate-quantification, turbo-artifact-download-spec |
-| **Bots** | Autonomous Hermes profiles | senter, klerik, looker, turbosovth |
-| **Loops** | Scheduled/cron automations | senter-umbrella (30m), turbofit-health-check (2h) |
-
-### Current Topics
+Every subject Chris cares about gets its own topic with evidence, decisions, and action items. Topics are organized via progressive disclosure — scan the table of contents, click to dive deep, drill into specifics.
 
 | Topic | What |
 |-------|------|
-| [Turbofit](wiki-topics/turbofit/index.md) | Model research, pipelines, hardware tiers |
+| [Turbofit](wiki-topics/turbofit/index.md) | Model research, pipelines, hardware tiers — evidence-backed local inference runtime |
 | [Music](wiki-topics/music/index.md) | Music generation and AI composition |
-| [Dispatched M2S](wiki-topics/dispatched-m2s/index.md) | Multi-agent dispatch pipeline |
+| [Dispatched M2S](wiki-topics/dispatched-m2s/index.md) | Dispatch pipeline for multi-agent workflows |
 | [Burner Phone](wiki-topics/burner-phone/index.md) | Mobile device management |
-| [Case MacBook](wiki-topics/case-macbook/index.md) | MacBook accessories |
-| [Nous Community](wiki-topics/nous-community/index.md) | Nous Research community |
+| [Case MacBook](wiki-topics/case-macbook/index.md) | MacBook accessories and cases |
+| [Nous Community](wiki-topics/nous-community/index.md) | Nous Research community engagement |
 | [Back Where](wiki-topics/back-where/index.md) | Context and memory management |
 | [Both Smarter](wiki-topics/both-smarter/index.md) | Dual intelligence systems |
 | [Beyond Pissed](wiki-topics/beyond-pissed/index.md) | Advanced troubleshooting |
@@ -102,81 +77,71 @@ This means Chris can talk about **everything at once** — Turbofit one minute, 
 | [Whoa There](wiki-topics/whoa-there/index.md) | Alerts and monitoring |
 | [Wiki Want](wiki-topics/wiki-want/index.md) | Wiki feature requests |
 | [YouTube](wiki-topics/youtube/index.md) | YouTube content |
-| 20+ Archived | Absorbed topics in `wiki-topics/_archive/` |
-
-### Progressive Disclosure
-
-This wiki uses the same pattern Hermes uses for skill discovery:
-
-1. **Scan** — README shows topic names + one-line descriptions (this page)
-2. **Click** — Open any topic to see its own README with full detail
-3. **Drill** — Each topic's SKILLS/BOTS/LOOPS link to their full definitions
-4. **Act** — Edit any file, approve any card, spawn any bot
-
-No need to read everything. Navigate by relevance.
-
-### Active Fleet
-
-**11 bots** in the fleet, each a Hermes profile:
-- **senter** — Chris's sidebar (routes, never builds)
-- **klerik** — Profile factory, reviews other bots
-- **looker** — UI-QA (screenshots, vision, verification)
-- **teknium** — Hermes-Agent builder, core fixes
-- **paladin** — Vault structure warden
-- **weaver** — Senter Wiki UI builder
-- **dogeman** — YouTube/content studio
-- **turbosovth** — TurboFit support (never merges)
-- **anser** — Native answers, citations only
-- **hermes-agent** — Runtime, provider config
-- **turbofit** — Inference, model zoo
-
-### Active Loops
-
-**8 cron jobs** monitoring and maintaining the system:
-- **senter-umbrella** (30m) — Governance: merge, dedupe, catalogs
-- **senter-watcher** (continuous) — Cut messages into per-topic inbox
-- **senter-scanwatch** (continuous) — Snapshot vault state
-- **turbofit-health-check** (2h) — Runtime process health
-- **turbofit-memory-monitor** (15m) — Memory usage across devices
-- **turbofit-candidate-discovery** (6h) — New models on HuggingFace
-- **hermes-model-change-detector** (5m) — Alert on model switches
-- **compression-timeout-watch** (10m) — Hermes compression failures
-
-### Principles
-
-- **Local first** — Cloud fallback only when local capability exceeded
-- **Evidence-driven** — Every claim needs a source
-- **Evidence before winner** — No declaring winners without benchmarks
-- **Reasoning ON** — All models think by default
-- **Stop asking, start building** — Preempt decisions, complete gaps
-- **Motion = progress** — The wiki should move while Chris talks
-
-### How to Use This Wiki
-
-1. **Talk naturally** — Chris discusses anything with the sidebar agent
-2. **Watch it organize** — Hermes sorts ideas into topics automatically
-3. **Review cards** — Approve/reject proposed skills, bots, and loops
-4. **Click to dive** — Open any topic for full depth
-5. **Edit anything** — Every file is the steering wheel
+| [20+ Archived](wiki-topics/_archive/) | Absorbed topics preserved verbatim |
 
 ---
 
-## INSPIRATION & INTEGRATIONS
+## Skills & Capabilities
 
-See [Inspiration & Integrations](inspiration-integrations/index.md).
+Reusable procedures Hermes knows how to run. Each skill is a SKILL.md file with frontmatter (name, description, when to use it). Skills are the *verbs* of the system — what Hermes can *do*. All skills below are symlinked to Hermes — edit in vault, updates Hermes live.
 
-## TOPICS & WIKI
+| Skill | Use |
+|-------|-----|
+| [agent-wiki-vault](skills-capabilities/hermes-skills/agent-wiki-vault/SKILL.md) | Use when working in the user's agent-wiki Obsidian vault |
+| [agent-wiki-vaults](skills-capabilities/hermes-skills/agent-wiki-vaults/SKILL.md) | Build agent-wiki (GOOP) Obsidian vaults from GitHub repos |
+| [apple](skills-capabilities/hermes-skills/apple/SKILL.md) | Apple Notes, Reminders, FindMy, iMessage, macOS settings |
+| [autonomous-ai-agents](skills-capabilities/hermes-skills/autonomous-ai-agents/SKILL.md) | Spawning and orchestrating autonomous AI coding agents |
+| [browserless-web-debugging](skills-capabilities/hermes-skills/browserless-web-debugging/SKILL.md) | Debug single-file HTML/JS pages without a browser |
+| [creative](skills-capabilities/hermes-skills/creative/SKILL.md) | Creative content generation: ASCII art, diagrams, visual design |
+| [devops](skills-capabilities/hermes-skills/devops/SKILL.md) | DevOps, remote Linux ops, SDLC review |
+| [email](skills-capabilities/hermes-skills/email/SKILL.md) | Himalaya CLI: IMAP/SMTP email from terminal |
+| [github](skills-capabilities/hermes-skills/github/SKILL.md) | GitHub via gh CLI: PRs, issues, reviews, repos |
+| [knowledge-vault](skills-capabilities/hermes-skills/knowledge-vault/SKILL.md) | Build an Obsidian vault of project topics from user sources |
+| [media](skills-capabilities/hermes-skills/media/SKILL.md) | YouTube transcripts, GIF search, music generation, audio visualization |
+| [mlops](skills-capabilities/hermes-skills/mlops/SKILL.md) | Machine Learning Operations: training, deploying, optimizing ML models |
+| [note-taking](skills-capabilities/hermes-skills/note-taking/SKILL.md) | Note taking skills: Obsidian, Apple Notes, Apple Reminders |
+| [productivity](skills-capabilities/hermes-skills/productivity/SKILL.md) | Document creation, presentations, spreadsheets |
+| [research](skills-capabilities/hermes-skills/research/SKILL.md) | Academic research, paper discovery, literature review |
+| [smart-home](skills-capabilities/hermes-skills/smart-home/SKILL.md) | Control Philips Hue lights, scenes, rooms via OpenHue CLI |
+| [social-media](skills-capabilities/hermes-skills/social-media/SKILL.md) | Reddit, X/Twitter interactions |
+| [software-development](skills-capabilities/hermes-skills/software-development/SKILL.md) | Codebase inspection, debugging, testing, simplification |
+| [turbofit](skills-capabilities/hermes-skills/turbofit/SKILL.md) | Rules for Turbofit Wiki |
+| [turbofit-runtime-setup](skills-capabilities/hermes-skills/turbofit-runtime-setup/SKILL.md) | Use when setting up or fixing the Turbofit local runtime |
+| [web](skills-capabilities/hermes-skills/web/SKILL.md) | Reach web content when direct access fails |
 
-Current topics listed above. See [Topics & Wiki](topics-wiki/index.md) for details.
+---
 
-## SKILLS & CAPABILITIES
+## Bots & Profiles
 
-See [Skills & Capabilities](skills-capabilities/index.md) — 21 skills, symlinked to Hermes. Edit in vault, updates Hermes live.
+Autonomous Hermes agents, each with its own SOUL.md defining its role, behavior, and boundaries. Bots are the *nouns* of the system — who does the work. All bots below are symlinked to Hermes — edit in vault, updates the bot live.
 
-## BOTS & PROFILES
+| Bot | Role | Use |
+|-----|------|-----|
+| [senter](bots-profiles/hermes-profiles/senter/SOUL.md) | Sidebar | Chris talks here. Routes, never builds. |
+| [klerik](bots-profiles/hermes-profiles/klerik/SOUL.md) | Profile factory | Reviews and corrects other bots |
+| [looker](bots-profiles/hermes-profiles/looker/SOUL.md) | UI-QA | Screenshots, vision, verification |
+| [teknium](bots-profiles/hermes-profiles/teknium/SOUL.md) | Core builder | Hermes-Agent fixes, upstream PRs |
+| [paladin](bots-profiles/hermes-profiles/paladin/SOUL.md) | Warden | Vault structure, repo hygiene |
+| [weaver](bots-profiles/hermes-profiles/weaver/SOUL.md) | UI builder | vault-live.html, CSS, layout |
+| [dogeman](bots-profiles/hermes-profiles/dogeman/SOUL.md) | Content studio | YouTube, scripts, visuals |
+| [turbosovth](bots-profiles/hermes-profiles/turbosovth/SOUL.md) | TurboFit support | Model research, never merges |
+| [anser](bots-profiles/hermes-profiles/anser/SOUL.md) | Native answers | Citations only, no hallucination |
+| [hermes-agent](bots-profiles/hermes-profiles/hermes-agent/SOUL.md) | Runtime | Provider config, model routing |
+| [turbofit](bots-profiles/hermes-profiles/turbofit/SOUL.md) | Inference | Model zoo, pipelines, hardware |
 
-See [Bots & Profiles](bots-profiles/index.md) — 11 profiles, symlinked to Hermes. Edit in vault, updates the bot live.
+---
 
-## TRIGGERS & LOOPS
+## Triggers & Loops
 
-See [Triggers & Loops](triggers-loops/index.md) — cron jobs and kanban tasks.
+Scheduled automations (cron jobs), kanban tasks, and webhooks. Loops are the *temporal* dimension — what runs when, how often, and what it checks.
+
+| Automation | Cadence | What |
+|------------|---------|------|
+| senter-umbrella | 30m | Governance: merge, dedupe, catalogs |
+| senter-watcher | continuous | Cut messages into per-topic inbox |
+| senter-scanwatch | continuous | Snapshot vault state |
+| turbofit-health-check | 2h | All runtime processes healthy? |
+| turbofit-memory-monitor | 15m | Memory usage across devices |
+| turbofit-candidate-discovery | 6h | New models on HuggingFace |
+| hermes-model-change-detector | 5m | Alert if model switches |
+| compression-timeout-watch | 10m | Hermes compression failures |
