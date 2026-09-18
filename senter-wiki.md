@@ -39,7 +39,7 @@ The Senter Wiki is the **master orchestration layer** for everything Chris cares
 
 ### What This Is
 
-The Sentry Wiki is a **bonsai tree of knowledge**: the same structure repeats at every scale. The vault root has INTEGRATIONS, README, SKILLS, BOTS, and LOOPS. Every topic inside it has the same. Every sub-topic within that has the same. This creates a self-similar, navigable hierarchy where any level can be understood the same way.
+The Senter Wiki is a **bonsai tree of knowledge**: the same structure repeats at every scale. The vault root has INTEGRATIONS, README, SKILLS, BOTS, and LOOPS. Every topic inside it has the same. Every sub-topic within that has the same. This creates a self-similar, navigable hierarchy where any level can be understood the same way.
 
 **The pattern:**
 ```

@@ -37,7 +37,7 @@ This wiki is fed by:
 ### CONTEXT
 
 > The Senter flywheel runs on **five parts** (locked 2026-09-05):
-> 1. **Sidebar** — Chris talks, Sentry listens
+> 1. **Sidebar** — Chris talks, Senter listens
 > 2. **Watcher** — cuts every message into per-topic pieces
 > 3. **Topics** — one intelligence per subject
 > 4. **Loops** — cron jobs that monitor, benchmark, alert
