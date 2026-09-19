@@ -31,6 +31,7 @@ The Senter Wiki is the **master orchestration layer** for everything Chris cares
 Data sources that feed the wiki — GitHub repos, HuggingFace models, raw inbox cuts from Hermes sessions, cron outputs, webhooks, kanban state. This is the *sensory layer*.
 
 **Hermes capabilities for ingestion:**
+- `/learn <source>` — Learn a reusable skill from dirs/URLs/this chat
 - `hermes sync` — Skill Sync across devices
 - `hermes gateway` — Messaging gateway (Telegram, Discord, Slack, WhatsApp, etc.)
 - `hermes webhook` — Dynamic webhook subscriptions
@@ -42,24 +43,34 @@ Data sources that feed the wiki — GitHub repos, HuggingFace models, raw inbox 
 Processing information into structured knowledge. Every subject Chris cares about gets its own topic with evidence, decisions, and action items.
 
 **Hermes capabilities for wiki processing:**
+- `/llm-wiki` — LLM Wiki slash command
+- `/curator` — Skill maintenance and discovery
 - `hermes skills` — Skill discovery and management
 - `hermes kanban` — Task board for tracking work
 - `hermes sessions` — Session management and history
-- Built-in skills: apple-notes, obsidian, knowledge-vault, llm-wiki, document-to-action-items, meeting-action-items
+- Built-in skills: apple-notes, obsidian, knowledge-vault, llm-wiki, document-to-action-items, meeting-action-items, weekly-review-planning, session-librarian
 
 #### Skills & Capabilities
 Reusable procedures Hermes knows how to run. Each skill is a SKILL.md with frontmatter. Skills are the *verbs* of the system.
 
 **Hermes capabilities for skills:**
+- `/skills` — Search/install/manage skills
+- `/bundles` — List skill bundles
+- `/learn <source>` — Learn a reusable skill
+- `/curator [sub]` — Skill maintenance (status, run, pin, archive)
+- `/reload-skills` — Re-scan skills directory
 - Skill frontmatter: name, description, version, author, tags
-- `hermes skills list` — List all installed skills
 - `hermes sync` — Sync skills across devices
-- Built-in curator for skill discovery
+- Built-in curator for skill lifecycle management
 
 #### Bots & Profiles
 Autonomous Hermes agents, each with its own SOUL.md. Bots are the *nouns* of the system.
 
 **Hermes capabilities for bots:**
+- `/profile` — Active profile info
+- `/new (/reset) [name]` — Fresh session
+- `/personality [name]` — Set a personality
+- `/agents (/tasks)` — Show active agents
 - `hermes profile` — Profile management
 - `hermes chat -p <profile>` — Run commands against a profile
 - Profile distribution via `hermes profile install`
@@ -69,11 +80,17 @@ Autonomous Hermes agents, each with its own SOUL.md. Bots are the *nouns* of the
 Scheduled automations (cron jobs), kanban tasks, and webhooks. The *temporal* dimension.
 
 **Hermes capabilities for automation:**
+- `/cron [sub]` — Manage scheduled tasks
+- `/suggestions (/suggest)` — Review suggested automations
+- `/blueprint (/bp) [name]` — Set up automation from blueprint
+- `/kanban [sub]` — Multi-profile collaboration board
+- `/goal [text|sub]` — Standing goal across turns
+- `/subgoal [text]` — Add/manage criteria
 - `hermes cron` — Cron job management
 - `hermes kanban` — Multi-profile task board
 - `hermes webhook` — Event-driven runs
 - `hermes send` — Send messages to platforms
-- Built-in: delegate_task, cronjob tools
+- `delegate_task` — Subagent spawning
 
 ---
 
