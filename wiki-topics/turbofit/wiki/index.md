@@ -110,48 +110,50 @@ KV_cache ≈ 2-4GB at 262K context (q8_0 KV)
 Comfortable: model_size + 2GB ≤ tier_size
 ```
 
+> **Two ladders, not one.** The lineup is dense + MoE, and dense does not run well on CPU / Unified memory, so the tiers split into two ladders that converge on Flash Next:
+> - **Dedicated (GPU / VRAM):** dense is fine - Bonsai 2 -> Underdog 27B -> GSQ-RCO 27B -> Flash Next.
+> - **Unified (CPU / Apple Silicon):** MoE only, no dense - Maple -> Cyber-Tiel (in place of GSQ-RCO 27B) -> Flash Next.
+
 ### GPU (NVIDIA/AMD VRAM — ≤16GB assumes system RAM available for MoE offload and KV cache)
 
-| Tier | Recommended | Model | Quant | Size | VRAM Used | Context | Notes
-|------|-------------|-------|-------|------|-----------|---------|-------|
-| <8 GB | Maple | TQ2_0 | 5.5 GiB | ~6 GiB | 131K native, 262K w/ RoPE | SSD streaming via ssdmoe. System RAM for KV cache.
+| Tier | Model | Quant | Size | VRAM Used | Context | Notes |
+|------|-------|-------|------|-----------|---------|-------|
+| 8-11 GB | Bonsai 2 | ptq1 / pq2 | ~8-9 GiB | ~9 GiB | 131K-262K | Dense ternary GGUF; prism-llama.cpp.
+| 12-15 GB | Underdog 27B | pq2 | ~12-13 GiB | ~13 GiB | 131K-262K | Dense ternary GGUF; prism-llama.cpp.
 | 16 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~12 GiB | 131K-262K | Near-lossless. Cyber-Tiel Q3_K_M also fits (~14 GiB).
 | 24 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~12 GiB | 262K | Same near-lossless model, more KV headroom
 | 32 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~12 GiB | 262K+ | Same. Bigger KV cache. Consider Cyber-Tiel for code
 | 48 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~12 GiB | 262K+ | Still IQ3_S. More context headroom
-| 64 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~16 GiB | 262K+ | Near-lossless. 52GB free for KV cache, DFlash2 draft.
+| 64 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 262K native | MoE; both ladders converge (Strata on 2×3090)
 | 96 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 262K native, 1M w/ YaRN | Qwen4 preview, beats Claude Opus 4.6
 | 128 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 1M | Max context for Flash Next
-| 256 GB | DeepSeek V4.1 Flash | FP8 | 160 GiB | ~162 GiB | 1M | Top capability. SSD streaming for Engram
 
 > IQ3_S = near-lossless. Recommended for all tiers where it fits. Only move to FP16 at 64GB+.
-> Flash Next QSA gives ~4.9x decode speedup vs dense attention at 262K. IQ3_XXS is the sweet spot for 96GB+.
+> Flash Next QSA gives ~4.9x decode speedup vs dense attention at 262K. IQ3_XXS is the sweet spot for 64GB+.
 
 ### CPU (System RAM — model + KV must fit in RAM)
 
-| Tier | Recommended | Model | Quant | Size | RAM Used | Context | Notes
+| Tier | Model | Quant | Size | RAM Used | Context | Notes |
 |------|-------------|-------|-------|------|----------|---------|-------|
-| <8 GB | Maple | TQ2_0 | 5.5 GiB | ~6 GiB | 131K native | Minimum viable
+| 8-15 GB | Maple | TQ2_0 | 5.5 GiB | ~6 GiB | 131K native | MoE; stands in for Bonsai 2 / Underdog (dense)
 | 16 GB | Cyber-Tiel Coder | Q3_K_M | ~14 GiB | ~16 GiB | 262K native | MoE, 3B active. Faster than GSQ-RCO on CPU.
 | 32 GB | Cyber-Tiel Coder | UD-Q4_K_XL | 22.4 GiB | ~23 GiB | 262K native | MoE, 3B active, fast on CPU
 | 48 GB | Cyber-Tiel Coder | UD-Q4_K_XL | 22.4 GiB | ~23 GiB | 262K+ | More KV headroom
-| 64 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~16 GiB | 262K+ | Near-lossless. Low power, high context headroom.
+| 64 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 262K native | MoE; both ladders converge (Cyber-Tiel stood in for GSQ-RCO 27B)
 | 96 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 262K native | Flash Next entry tier
 | 128 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 1M w/ YaRN | Max context
-| 256 GB | DeepSeek V4.1 Flash | FP8 | 160 GiB | ~162 GiB | 1M | Max tier
 
 ### Unified Memory (Apple Silicon — shared CPU/GPU RAM)
 
-| Tier | Recommended | Model | Quant | Size | RAM Used | Context | Notes
+| Tier | Model | Quant | Size | RAM Used | Context | Notes |
 |------|-------------|-------|-------|------|----------|---------|-------|
-| <8 GB | Maple | TQ2_0 | 5.5 GiB | ~6 GiB | 131K native | 218 tok/s on M4 Mac mini
+| 8-15 GB | Maple | TQ2_0 | 5.5 GiB | ~6 GiB | 131K native | MoE, 218 tok/s on M4; stands in for Bonsai 2 / Underdog
 | 16 GB | Cyber-Tiel Coder | Q3_K_M | ~14 GiB | ~16 GiB | 262K native | MoE, 3B active. Faster than GSQ-RCO on Apple Silicon.
 | 32 GB | Cyber-Tiel Coder | UD-Q4_K_XL | 22.4 GiB | ~23 GiB | 262K native | 22+4=26GB ✓, fast MoE on Apple Silicon
 | 48 GB | Cyber-Tiel Coder | UD-Q4_K_XL | 22.4 GiB | ~23 GiB | 262K+ | M2 Max/Ultra territory
-| 64 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~16 GiB | 262K+ | Near-lossless. Low power, high context headroom.
+| 64 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 262K native | MoE; both ladders converge (candidate-only on Apple — no macOS engine yet)
 | 96 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 262K native | M4 Ultra
 | 128 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 1M w/ YaRN | Max Flash Next
-| 256 GB | DeepSeek V4.1 Flash | FP8 | 160 GiB | ~162 GiB | 1M | Max tier
 
 > ★ = on TurboFit List. Models without ★ are Model Zoo only.
 
