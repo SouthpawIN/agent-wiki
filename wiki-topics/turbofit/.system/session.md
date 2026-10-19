@@ -1,10 +1,19 @@
 ---
 title: session-state
-updated: 2026-08-27
+updated: 2026-10-18
 type: session
 ---
 
 # Live Session State — turbofit setup
+
+## Current live state (2026-10-18)
+- **Scope re-aligned:** TurboFit = universal product (public, 100+ likes), NOT personal fleet.
+- New scope locked in wiki: two fit lists (GPU-dense / unified-MoE), benchmark publication, dynamic model+engine registry, SALT-core engine, Tailscale solidification → see **ROADMAP.md**.
+- SALT-core fork re-cloned to `/tmp/salt-core` (dry-run export, not a release; qualification gate needed).
+- Standing method: validate on local fleet (MacBook + Omarchy Linux, both on Tailscale) while staying universal.
+- (History below is from the 2026-08-27 setup run — stale.)
+
+---
 
 Read this FIRST each turn. This is the working state of the concurrent setup+design effort.
 Updated every turn. Ideas below the line are ready to LAUNCH with async agents.

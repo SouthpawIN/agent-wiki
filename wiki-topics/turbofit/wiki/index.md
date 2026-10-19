@@ -32,6 +32,8 @@ model: auto
 
 **TurboFit Check** scans the machine — dedicated VRAM, unified/integrated memory, or RAM-only — and applies Auto or a selected compatible lane.
 
+> **Fit Ladder = source of truth for the UI.** The canonical Fit lives in [## TurboFit List](#turbofit-list) below: two ladders that converge on **Flash Next** — **Dedicated (GPU/VRAM, dense)** and **Unified (CPU/Apple Silicon, MoE)**. Build the Fit UI against that section; per-model detail is in `wiki/models/`.
+
 ## Integrations
 
 ### Repositories

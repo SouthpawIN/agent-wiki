@@ -12,3 +12,13 @@ Raw understanding, 2026-08-27 (GitHub + live setup on this machine):
   the Unleashed Q3_K_XL is the authority. This discrepancy is a GitHub fix candidate.
 - User directive: the Fit List IS the fallback chain. Scan/recommend/Fit-List consolidation is the architectural fix; Bonsai-in-24gb.yaml and Apple->MLX misroute are symptoms of three divergent authorities.
 - (Edit this file to correct my understanding; I never overwrite user-edited lines.)
+
+## Refined scope, 2026-10-18 (Chris)
+- TurboFit is a **universal product** (public, 100+ likes, many users), NOT a personal-fleet tool.
+- Method: **validate on the local fleet** (MacBook + Omarchy Linux workstation, both on Tailscale) **while keeping it universal.**
+- **Two fit lists:** GPU-dedicated (VRAM: NVIDIA/AMD/Intel) favors **dense**; Unified (Mac/CPU) favors **MoE.**
+- TurboFit is a **self-managed server that adds models AND inference engines** via benchmarking.
+- **Publish benchmarks** to users — best model + engine per tier per machine.
+- Integrate **SALT-core** as an engine (HDD streaming + KV offload for low-end tiers).
+- **Solidify Tailscale** (auto-config on install, reliable discovery/federation).
+- Open debt: README slop, cross-OS test failures, self-install promise. See ROADMAP.md.
