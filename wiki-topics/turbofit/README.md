@@ -109,7 +109,7 @@ What TurboSouth helps with:
 
 What it does *not* do: autonomously publish PRs, manage credentials, kill external GPU processes, or bypass the native runtime lifecycle.
 
-> Reciprocal install: `hermes profile install https://github.com/SouthpawIN/turbosouth.git` · In-product: `install_turbosouth: true` (via `/turbofit` or the Desktop settings).
+> **Reciprocal install** — TurboSouth installs TurboFit for you: `hermes profile install https://github.com/SouthpawIN/turbosouth.git` (Install TurboSouth, and it sets up TurboFit when it is missing). In-product: `install_turbosouth: true` (via `/turbofit` or the Desktop settings).
 
 ---
 
