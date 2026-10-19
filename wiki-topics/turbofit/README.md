@@ -4,7 +4,7 @@
 
 **One model provider. Every machine. The best local configuration the hardware can safely sustain.**
 
-TurboFit is a first-class [Hermes Agent](https://github.com/NousResearch/hermes-agent) provider and adaptive local-inference runtime. It inventories your physical compute and total usable memory, recommends an evidence-backed **Fit Ladder**, launches a native backend, and exposes one OpenAI-compatible endpoint. Pick the `auto` model and it fits the largest model your machine can sustain — with a measured, reproducible fallback if a rung can't hold.
+TurboFit is a first-class [Hermes Agent](https://github.com/NousResearch/hermes-agent) provider and adaptive local-inference runtime. It inventories your physical compute and total usable memory, then **populates your model list with every model that fits your hardware tier** — the single best sustainable fit on top (your `auto` model), the rest below as explicit choices. It recommends an evidence-backed **Fit Ladder**, launches a native backend, and exposes one OpenAI-compatible endpoint. Pick the `auto` model and it runs the largest model your machine can sustain — with a measured, reproducible fallback if a rung can't hold.
 
 > **TurboFit is the whole project. TurboSouth is the dedicated service-tech bot** that helps you install it, land it on a machine that's never been tested, configure it, answer questions, and send tested fixes back upstream to TurboFit.
 
@@ -12,9 +12,11 @@ TurboFit is a first-class [Hermes Agent](https://github.com/NousResearch/hermes-
 
 ## Install
 
-The fastest path — **paste this into your Hermes** and it does everything: installs + enables TurboFit, sets it as your provider with the `auto` model, installs TurboSouth, and selects the sovthpaw pet.
+**One package.** Installing TurboFit brings **TurboSouth** along with it (and TurboSouth ships the **sovthpaw pet** as its default) — you install one thing, not three. You don't download TurboSouth, download the pet, and combine them yourself; the package does that for you.
 
-> Install and enable TurboFit from https://github.com/SouthpawIN/turbofit.git, set it as my provider with the auto model, install TurboSouth, and select the s0uthpaw pet as my default.
+The fastest path — **paste this into your Hermes** and it does the rest (enable, set as your provider on the `auto` model, install TurboSouth, select the pet):
+
+> Install TurboFit from https://github.com/SouthpawIN/turbofit.git
 
 Prefer a specific route? All five are supported.
 
@@ -28,8 +30,8 @@ Prefer a specific route? All five are supported.
 
 ### After install (any path)
 1. Quit Hermes Desktop (⌘Q) and open a new session.
-2. `/turbofit status` → `/turbofit setup`.
-3. The sovthpaw pet is selected for you (or run `hermes pets select s0uthpaw` manually).
+2. `/turbofit status` → `/turbofit setup` — **this scans your machine and populates your model list** with every model that fits your hardware tier: the best sustainable fit on top (your `auto` model), the rest below as explicit choices.
+3. The sovthpaw pet is selected for you (or run `hermes pets select sovthpaw` manually).
 
 ---
 
@@ -56,7 +58,7 @@ Prefer a specific route? All five are supported.
 | 24 GB | **GSQ-RCO 27B** | IQ3_S | 262K | more KV headroom |
 | 32 GB | **GSQ-RCO 27B** | IQ3_S (lossless) | 262K+ | don't up the power bill past lossless |
 | 48 GB | **GSQ-RCO 27B** | IQ3_S + MTP | 262K+ | MTP on |
-| 64 GB | **Qwen 3.8 Flash Next** | IQ3_XXS | 262K native | MoE — convergence (Strata on 2×3090) |
+| 64 GB | **Qwen 3.8 Flash Next** | IQ3_XXS | 262K native | MoE — convergence |
 | 96 GB | **Qwen 3.8 Flash Next** | IQ3_XXS | 1M w/ YaRN | beats Claude Opus 4.6 |
 | 128 GB | **Qwen 3.8 Flash Next** | IQ3_XXS | 1M | max context |
 
@@ -71,7 +73,7 @@ Prefer a specific route? All five are supported.
 
 ### DeepSeek V4.1 — the 1017 update (pending)
 
-A **Strata engine** for **DeepSeek V4.1** (the **1017 update**, released yesterday) is "very, very good." Open test: whether it can run on the target tier (~CC4 / large). It's a larger model, so if it fits it sits in the tier **above** Qwen Flash Next — currently the top of the unified ladder.
+A native engine for **DeepSeek V4.1** (the **1017 update**) is in testing and measuring well. It's a larger model, so if it fits a machine it sits in the tier **above** Qwen 3.8 Flash Next — currently the top of the unified ladder. (Open test: the largest tier it can run on.)
 
 ### Live catalog (what `serve auto` ships today)
 
@@ -95,7 +97,7 @@ Ranked by measured evidence, not heuristics:
 
 TurboSouth is the dedicated, self-updating customer-service bot for TurboFit. It's not a second model backend — it's the hands that get you from *"I have a machine"* to *"TurboFit is running the best model it can"* — and it keeps feeding improvements back upstream.
 
-Installing TurboSouth **defaults to the sovthpaw pet** (`s0uthpaw`) — a chibi agent with big curly auburn hair, black sunglasses, a sleeveless black vest, and a pink strap — for both the default home and the TurboSouth profile.
+Installing TurboSouth **defaults to the sovthpaw pet** (`sovthpaw`) — a chibi agent with big curly auburn hair, black sunglasses, a sleeveless black vest, and a pink strap — for both the default home and the TurboSouth profile.
 
 What TurboSouth helps with:
 - **Install + setup** — resolves the right Auto-chain artifacts for your machine and gets the gateway up.
@@ -135,11 +137,13 @@ External results are discovery evidence only; a model is promoted to a local run
 
 ---
 
-## Tailscale
+## Tailscale — a built-in TurboFit backend
 
-- **Gateway binding:** the box runs the Hermes Gateway on `0.0.0.0:8091`; Tailscale exposes it on the tailnet (Mac: launchd `com.hermes.turbofit-gateway`; Omarchy: systemd user units).
-- **Model-picker federation:** peers auto-discover over the tailnet — each box advertises the models it can serve.
-- **The end state:** the wiki itself becomes the single source of truth, centralized over Tailscale across all devices, organized top-down by the wiki's own standards.
+Tailscale is a **built-in backend**, not an add-on or a machine-specific setup: `/turbofit serve` exposes your gateway on a private tailnet with **no public ports**, and the model picker federates across it. Any user can enable it for their own devices — it's part of the product:
+
+- **Gateway binding:** your machine runs the Hermes Gateway on `0.0.0.0:8091`; Tailscale exposes it on your private tailnet (runs as a local service on each OS — launchd on macOS, systemd on Linux).
+- **Model-picker federation:** peers auto-discover over the tailnet — each machine advertises the models it can serve, so every machine's model list auto-populates with every other machine's models.
+- **The end state:** private remote access + auto-fed model lists, zero public exposure. The wiki becomes the single source of truth, centralized over Tailscale across all devices, organized top-down by the wiki's own standards.
 
 > Deep detail: [`references/tailscale.md`](references/tailscale.md)
 
@@ -147,10 +151,12 @@ External results are discovery evidence only; a model is promoted to a local run
 
 ## What you get
 
+- **Hardware scan → populated model list** — on install it reads your GPU/RAM and populates your model list with every model that fits your tier: the best sustainable fit on top (your `auto` model), the rest below as explicit choices.
 - **Fit Ladder** — the two TurboFit-List ladders converging on Flash Next, with a measured reproducible fallback (the Fit List IS the fallback chain).
+- **Tailscale (built-in backend)** — private remote access + auto-fed model lists across your devices (`/turbofit serve`, verify with `/turbofit smoke`). Funnel is never used.
 - **Multimodal adapters** — vision aux, TTS, and STT through the same gateway (full on-device multimodal is the frontier).
-- **Tailscale Serve** — private remote access (`/turbofit serve`, verify with `/turbofit smoke`). Funnel is never used.
 - **Native engines** — CUDA, ROCm, Vulkan, Metal, and CPU backends chosen by your hardware.
+- **One package** — installing TurboFit brings TurboSouth (and its default sovthpaw pet) along automatically.
 
 ![Turbofit settings in Hermes Desktop, including fallback routing, multimodal model selection, and hardware-fit recommendations](wiki/assets/hermes-desktop-turbofit-settings.png)
 
@@ -171,7 +177,7 @@ This entry is the overview. The full evidence is one level down:
 - [`wiki/index.md`](wiki/index.md) — the generated public wiki (Model Zoo, the canonical TurboFit List, benchmarks)
 - The Fit UI: [`wiki/models/hardware-tiers.html`](wiki/models/hardware-tiers.html) · [`wiki/models/leaderboard.html`](wiki/models/leaderboard.html) · [`wiki/models/external-benchmarks.html`](wiki/models/external-benchmarks.html)
 - [`ROADMAP.md`](ROADMAP.md) — the source-of-truth roadmap (the two ladders, phases, open gaps)
-- Raw sources: [`raw/inbox/`](raw/inbox/) (Chris's notes) · [`raw/sources/2026-10-18-universal-scope.md`](raw/sources/2026-10-18-universal-scope.md)
+- Raw sources: [`raw/inbox/`](raw/inbox/) (the raw inbox) · [`raw/sources/2026-10-18-universal-scope.md`](raw/sources/2026-10-18-universal-scope.md)
 - Canonical data in the product repo: [`fit-lists.json`](https://github.com/SouthpawIN/turbofit/blob/main/fit-lists.json) · [`model-catalog.json`](https://github.com/SouthpawIN/turbofit/blob/main/model-catalog.json)
 
 ---
