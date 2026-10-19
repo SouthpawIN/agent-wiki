@@ -34,7 +34,7 @@ Rationale: dense wins where VRAM bandwidth is the ceiling; MoE wins where total 
 
 ## Phases (status)
 
-- [x] **A. Cohesion + truth** — capture scope in the wiki; align the README lineup to the live `references/model-catalog.json` (kill aspirational "slop"). *in progress*
+- [x] **A. Cohesion + truth** — capture scope in the wiki; the hub README's Fit = the **canonical TurboFit List** (two ladders converging on Flash Next), with the live `model-catalog.json` as the shipped subset. *done*
 - [ ] **B. Two fit lists** — split the list into GPU-dedicated (dense) + unified (MoE); pick each tier's winner inside the right list. Touches `turbofit_list.py` + `runtime-profiles/`.
 - [ ] **C. Self-managed registry** — TurboFit can register **new models** and **new inference engines**; benchmark campaigns drive promotion. Model onboarding exists (`turbofit-model-onboard`); **engine registration is the gap.**
 - [ ] **D. Benchmark publication** — a user-facing surface (wiki page + dashboard) showing best model + engine per tier per machine. Today `references/external-benchmarks.md` is discovery-only (every candidate row shows `-`); nothing is published to users.
@@ -44,7 +44,7 @@ Rationale: dense wins where VRAM bandwidth is the ceiling; MoE wins where total 
 
 ## Roadblocks
 
-- README promises models + numbers that don't match the live catalog (slop).
+- The README's Fit is the **canonical TurboFit List** (Maple, Cyber-Tiel, Qwen 3.8 Flash, DeepSeek V4.1 Flash); the live catalog is the **shipped subset** — align the live catalog toward the canonical list over time.
 - No GPU-vs-unified list split in code.
 - No engine registration (engines are a fixed set); no benchmark publication surface.
 - SALT-core is a **dry-run public export, not a release** — needs a qualification gate before it becomes a real engine.

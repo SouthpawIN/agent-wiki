@@ -5,7 +5,7 @@ Three layers of model, ranked by **measured evidence, not heuristics**.
 > Grounded in the product repo: [`curated-lineup.md`](../../../../../turbofit/references/curated-lineup.md), [`model-intel.md`](../../../../../turbofit/references/model-intel.md), [`model-catalog.json`](../../../../../turbofit/model-catalog.json). API picks below are June 2026 data.
 
 ## 1. Local fit-ladder models
-The two ladders (see [fit-ladder.md](fit-ladder.md)): Qwen3.5-397B-A17B, GLM-5.1, Qwen3.5-27B, Llama-3.3-70B, Qwen3-30B-A3B, Qwen3.5-35B-A3B. These are the downloadable local models Turbofit actually fits.
+The canonical TurboFit List (the source of truth; see [fit-ladder.md](fit-ladder.md)) is two ladders converging on Flash Next: **GPU-dedicated** (`Bonsai 2 → Underdog 27B → GSQ-RCO 27B → Flash Next`) + **Unified** (`Maple → Cyber-Tiel Coder → Flash Next`). The live catalog `model-catalog.json` is the **shipped subset** `serve auto` downloads today: Qwen3.5-397B-A17B, GLM-5.1, Qwen3.5-27B, Llama-3.3-70B, Qwen3-30B-A3B, Qwen3.5-35B-A3B.
 
 ## 2. API lineup (for Modest / Thin tiers)
 Ranked by composite (GPQA + SWE-bench + MMLU + AIME):

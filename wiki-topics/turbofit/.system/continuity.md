@@ -21,4 +21,4 @@ Raw understanding, 2026-08-27 (GitHub + live setup on this machine):
 - **Publish benchmarks** to users — best model + engine per tier per machine.
 - Integrate **SALT-core** as an engine (HDD streaming + KV offload for low-end tiers).
 - **Solidify Tailscale** (auto-config on install, reliable discovery/federation).
-- Open debt: README slop, cross-OS test failures, self-install promise. See ROADMAP.md.
+- Open debt: align the live catalog toward the canonical TurboFit List, cross-OS test failures, self-install promise. See ROADMAP.md.

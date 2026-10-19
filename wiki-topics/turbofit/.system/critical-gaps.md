@@ -23,7 +23,7 @@ Current state: steps 2-5 done manually today; nothing survives reboot except fil
 
 ## Gaps vs the 2026-10-18 scope (audit 2026-10-18)
 Ranked against the new universal scope (see ROADMAP.md):
-1. README lineup ≠ live `references/model-catalog.json` — aspirational models/numbers ("slop"). Align to real catalog.
+1. The README's Fit is the **canonical TurboFit List** (Maple, Cyber-Tiel, Qwen 3.8 Flash, etc.); the live `model-catalog.json` is the shipped subset. Align the live catalog toward the canonical list (the canonical list is the design, not slop).
 2. **One combined fit list** — no GPU-dedicated (dense) vs unified (MoE) split. `turbofit_list.py` + profiles.
 3. **No engine registration** — engines are a fixed set; TurboFit must be able to add inference engines, not just models.
 4. **No benchmark publication surface** — `external-benchmarks.md` is discovery-only (all candidates show `-`); users can't see best model+engine per tier.

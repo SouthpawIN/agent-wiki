@@ -33,35 +33,45 @@ Prefer a specific route? All five are supported.
 
 ---
 
-## The two fit ladders
+## The Fit — the TurboFit List (source of truth for the UI)
 
-`serve auto` picks the largest rung your machine can hold, then falls back measurably. Two independent ladders, chosen by your hardware:
+> **Two ladders, not one.** The lineup is dense + MoE, and dense does not run well on CPU / Unified memory, so the tiers split into **two fit lists that converge on Flash Next**:
+> - **Ladder 1 — GPU-dedicated** (VRAM-bound; dense is fine): `Bonsai 2 → Underdog 27B → GSQ-RCO 27B → Flash Next`.
+> - **Ladder 2 — Unified memory** (system-RAM-bound; MoE only, no dense): `Maple → Cyber-Tiel Coder (stands in for GSQ-RCO 27B) → Flash Next`.
 
-**Ladder 1 — GPU-dedicated** (a VRAM ceiling, e.g. RTX 3090 24 GB). Dense and MoE models sized to the card:
+`serve auto` scans the machine, builds the fit chain from these ladders, picks the largest sustainable rung, and walks down the chain on OOM/timeout — **the Fit List IS the fallback chain** (the adaptive fit chain). When VRAM pressure rises: the main model is protected until the last step · MoE expert offload is the first pressure valve · context drops only when absolutely necessary · API aux kicks in when the local aux can't fit.
 
-`Qwen3.5-397B-A17B` (MoE, 17 B active) → `GLM-5.1` (744 B MoE, 40 B active, strongest local coder) → `Qwen3.5-27B` (dense) → `Llama-3.3-70B` (dense) → `Qwen3-30B-A3B` (MoE, 3 B active) → `Qwen2.5-72B-Instruct-1M` (8448-ctx dense)
+### The TurboFit List — 5 models, ordered by capability
 
-**Ladder 2 — Unified memory** (Mac / Apple Silicon, no VRAM ceiling). MoE is the practical path:
+| # | Model | Type | Params | Optimal Quant | Size | AIME26 | GPQA-D | DeepSWE | LCBv6 | TB4.0 |
+|---|-------|------|--------|---------------|------|--------|--------|---------|-------|-------|
+| 1 | **Maple Preview** | Ternary MoE | 20B-A1B | TQ2_0-head-Q4_K | 5.5 GiB | 87.5% | 73.5% | — | 75.1% | — |
+| 2 | **Cyber Tiel Coder** | Code LLM (MoE) | 35B-A3B | UD-Q4_K_XL | 22.4 GiB | — | — | — | — | — |
+| 3 | **Qwen 3.8 GSQ-RCO** | LLM (quant) | 27B | IQ3_S | 11.8 GiB | — | 89.2% | 42.2% | 90.3% | — |
+| 4 | **Qwen 3.8 Flash Next** | MoE (Qwen4 Preview) | 180B / 6B | IQ3_XXS | 47 GiB | — | 91.7% | 58.7% | 91.9% | — |
+| 5 | **DeepSeek V4.1 Flash** | MoE | 763B / 16B | FP8 / UD-Q4_K_XL | 160 / ~40 GiB | — | 90.9% | 74.2% | — | 31.2% |
 
-`Qwen3-30B-A3B` (MoE, 3 B active) → `Qwen3.5-35B-A3B` (MoE, 3 B active, 1 M ctx always-on)
+Fit math: `model_size + KV_cache ≤ tier_size` (KV ≈ 2–4 GB at 262 K, q8_0 KV); comfortable when `model_size + 2 GB ≤ tier_size`.
 
-**When VRAM pressure rises, recover in this order:** the main model is protected until the last step · MoE expert offload is the first pressure valve · context drops only when absolutely necessary · API aux kicks in when the local aux can't fit.
+### Tiers (full tables in `references/fit-ladder.md`)
 
-> Deep detail: [`references/fit-ladder.md`](references/fit-ladder.md) · Canonical data: [`fit-lists.json`](https://github.com/SouthpawIN/turbofit/blob/main/fit-lists.json) and [`model-catalog.json`](https://github.com/SouthpawIN/turbofit/blob/main/model-catalog.json).
+- **GPU (VRAM):** 8–11 GB Bonsai 2 · 12–15 GB Underdog 27B · 16–48 GB GSQ-RCO (IQ3_S, near-lossless) · 64–128 GB **Flash Next** (both ladders converge; Strata on 2×3090, 1 M ctx w/ YaRN).
+- **CPU (RAM):** 8–15 GB Maple · 16–48 GB Cyber-Tiel Coder · 64–128 GB Flash Next.
+- **Unified (Apple Silicon):** 8–15 GB Maple (218 tok/s on M4) · 16–48 GB Cyber-Tiel Coder · 64–128 GB Flash Next (candidate-only — no macOS engine yet).
 
----
+### Live catalog (what `serve auto` ships today)
 
-## Model lineup
+The currently-automated, downloadable set (`model-catalog.json` / `fit-lists.json`) — the **shipped subset** of the list above: `Qwen3.5-397B-A17B` (MoE), `Qwen3.5-27B`, `GLM-5.1` (744 B MoE, strongest local coder), `Llama-3.3-70B`, `Qwen3-30B-A3B`, `Qwen3.5-35B-A3B` (1 M ctx), `Qwen2.5-72B-Instruct-1M` (8448 ctx).
 
-Ranked by **measured evidence, not heuristics** — three layers:
+### API lineup + named local picks (aux)
 
-- **Local fit-ladder models** — the two ladders above (the downloadable models Turbofit actually fits).
-- **API lineup** — for Modest/Thin machines: `DeepSeek V4 Pro` (NIM, free, top open SWE-bench), `Qwen 3.7 MAX` (paid, #1 MMLU), `MiniMax M3` (NIM, free, vision, 1 M ctx) as the aux.
-- **Named local picks** — MRI-Trust merges and MTP grafts: `Darwin 28B Reason` (89.4 % GPQA, smartest dense), `Prism Eagle 27B` (121 tok/s, fastest), `Carnice 35A3B` (small aux).
+Ranked by measured evidence, not heuristics:
+- **API** (Modest/Thin machines): `DeepSeek V4 Pro` (NIM, free, top open SWE-bench), `Qwen 3.7 MAX` (paid, #1 MMLU), `MiniMax M3` (NIM, free, vision, 1 M ctx).
+- **Named local picks** (MRI-Trust merges + MTP grafts): `Darwin 28B Reason` (89.4 % GPQA, smartest dense), `Prism Eagle 27B` (121 tok/s, fastest), `Carnice 35A3B` (small aux).
 
 **Pairing rules:** a text-only main **must** pair with a vision aux (never two blind models) · the aux offsets 40–85 % of token cost · the aux needs 262 K+ context to compress the main without losing info · free NIM pairs beat everything on cost.
 
-> Deep detail: [`references/model-lineup.md`](references/model-lineup.md) · [`references/benchmark-evidence.md`](references/benchmark-evidence.md)
+> Deep detail: [`references/fit-ladder.md`](references/fit-ladder.md) · [`references/model-lineup.md`](references/model-lineup.md) · the Fit UI: [`wiki/models/hardware-tiers.html`](wiki/models/hardware-tiers.html) · [`wiki/models/leaderboard.html`](wiki/models/leaderboard.html) · Canonical data: [`fit-lists.json`](https://github.com/SouthpawIN/turbofit/blob/main/fit-lists.json) · [`model-catalog.json`](https://github.com/SouthpawIN/turbofit/blob/main/model-catalog.json)
 
 ---
 
@@ -123,7 +133,7 @@ External results are discovery evidence only; a model is promoted to a local run
 
 ## What you get
 
-- **Fit Ladder** — the two ladders above, with a measured reproducible fallback.
+- **Fit Ladder** — the two TurboFit-List ladders converging on Flash Next, with a measured reproducible fallback (the Fit List IS the fallback chain).
 - **Multimodal adapters** — vision aux, TTS, and STT through the same gateway (full on-device multimodal is the frontier).
 - **Tailscale Serve** — private remote access (`/turbofit serve`, verify with `/turbofit smoke`). Funnel is never used.
 - **Native engines** — CUDA, ROCm, Vulkan, Metal, and CPU backends chosen by your hardware.
@@ -143,9 +153,11 @@ External results are discovery evidence only; a model is promoted to a local run
 
 This entry is the overview. The full evidence is one level down:
 
-- [`references/`](references/) — `fit-ladder.md`, `model-lineup.md`, `benchmark-evidence.md`, `hardware-tiers.md`, `multimodal.md`, `tailscale.md`, `troubleshooting.md`, `upstream-pr-process.md`
-- [`wiki/index.md`](wiki/index.md) — the generated public wiki (Model Zoo, benchmarks, fit ladders)
+- [`references/`](references/) — `fit-ladder.md`, `model-lineup.md`, `benchmark-evidence.md`, `hardware.md`, `multimodal.md`, `tailscale.md`, `troubleshooting.md`, `upstream-pr-process.md`
+- [`wiki/index.md`](wiki/index.md) — the generated public wiki (Model Zoo, the canonical TurboFit List, benchmarks)
+- The Fit UI: [`wiki/models/hardware-tiers.html`](wiki/models/hardware-tiers.html) · [`wiki/models/leaderboard.html`](wiki/models/leaderboard.html) · [`wiki/models/external-benchmarks.html`](wiki/models/external-benchmarks.html)
 - [`ROADMAP.md`](ROADMAP.md) — the source-of-truth roadmap (the two ladders, phases, open gaps)
+- Raw sources: [`raw/inbox/`](raw/inbox/) (Chris's notes) · [`raw/sources/2026-10-18-universal-scope.md`](raw/sources/2026-10-18-universal-scope.md)
 - Canonical data in the product repo: [`fit-lists.json`](https://github.com/SouthpawIN/turbofit/blob/main/fit-lists.json) · [`model-catalog.json`](https://github.com/SouthpawIN/turbofit/blob/main/model-catalog.json)
 
 ---
