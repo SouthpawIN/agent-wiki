@@ -33,31 +33,45 @@ Prefer a specific route? All five are supported.
 
 ---
 
-## The Fit — the TurboFit List (source of truth for the UI)
+## The Fit — two ladders that converge on Flash Next (source of truth for the UI)
+![TurboFit hero](https://raw.githubusercontent.com/SouthpawIN/turbofit/main/assets/turbofit-hero.jpg)
 
-> **Two ladders, not one.** The lineup is dense + MoE, and dense does not run well on CPU / Unified memory, so the tiers split into **two fit lists that converge on Flash Next**:
-> - **Ladder 1 — GPU-dedicated** (VRAM-bound; dense is fine): `Bonsai 2 → Underdog 27B → GSQ-RCO 27B → Flash Next`.
-> - **Ladder 2 — Unified memory** (system-RAM-bound; MoE only, no dense): `Maple → Cyber-Tiel Coder (stands in for GSQ-RCO 27B) → Flash Next`.
+> **Two ladders, not one.** Dense doesn't run well on CPU / Unified memory, so the tiers split into **two fit ladders** — the **GPU-dedicated ladder is dense**, the **Unified (CPU / Mac) ladder is MoE** — and **both converge on Qwen 3.8 Flash Next**. Flash Next is an MoE, and it's the *only* rung where the dense ladder switches to MoE.
+>
+> `serve auto` scans the machine, builds the fit chain from the right ladder, picks the largest sustainable rung, and walks down on OOM/timeout — **the Fit List IS the fallback chain**.
+>
+> **Two cross-cutting rules for every rung:**
+> - **MTP on whenever we can** — every one of these models has MTP (multi-token prediction) available in some form; turn it on at each rung.
+> - **Mind the power bill (kWh / hour).** IQ3_S is lossless, so there's no reason to push a heavier quant (and a higher power draw) past it — 32 GB and 48 GB both stay on GSQ-RCO @ IQ3_S.
+>
+> Deep detail: [fit-ladder](references/fit-ladder.md) · Canonical data in the product repo: `fit-lists.json` · `model-catalog.json`.
 
-`serve auto` scans the machine, builds the fit chain from these ladders, picks the largest sustainable rung, and walks down the chain on OOM/timeout — **the Fit List IS the fallback chain** (the adaptive fit chain). When VRAM pressure rises: the main model is protected until the last step · MoE expert offload is the first pressure valve · context drops only when absolutely necessary · API aux kicks in when the local aux can't fit.
+### Ladder 1 — Dedicated (GPU / VRAM, **dense**)
 
-### The TurboFit List — 5 models, ordered by capability
+| VRAM | Rung | Quant | Context | Notes |
+|------|------|-------|---------|-------|
+| 8 GB | **Bonsai 2** | Q2 | 131K | dense ternary; prism-llama.cpp |
+| 12 GB | **Underdog 27B** | pq2 | 131K | dense ternary; prism-llama.cpp |
+| 16 GB | **GSQ-RCO 27B** | IQ3_S | 131K | near-lossless |
+| 24 GB | **GSQ-RCO 27B** | IQ3_S | 262K | more KV headroom |
+| 32 GB | **GSQ-RCO 27B** | IQ3_S (lossless) | 262K+ | don't up the power bill past lossless |
+| 48 GB | **GSQ-RCO 27B** | IQ3_S + MTP | 262K+ | MTP on |
+| 64 GB | **Qwen 3.8 Flash Next** | IQ3_XXS | 262K native | MoE — convergence (Strata on 2×3090) |
+| 96 GB | **Qwen 3.8 Flash Next** | IQ3_XXS | 1M w/ YaRN | beats Claude Opus 4.6 |
+| 128 GB | **Qwen 3.8 Flash Next** | IQ3_XXS | 1M | max context |
 
-| # | Model | Type | Params | Optimal Quant | Size | AIME26 | GPQA-D | DeepSWE | LCBv6 | TB4.0 |
-|---|-------|------|--------|---------------|------|--------|--------|---------|-------|-------|
-| 1 | **Maple Preview** | Ternary MoE | 20B-A1B | TQ2_0-head-Q4_K | 5.5 GiB | 87.5% | 73.5% | — | 75.1% | — |
-| 2 | **Cyber Tiel Coder** | Code LLM (MoE) | 35B-A3B | UD-Q4_K_XL | 22.4 GiB | — | — | — | — | — |
-| 3 | **Qwen 3.8 GSQ-RCO** | LLM (quant) | 27B | IQ3_S | 11.8 GiB | — | 89.2% | 42.2% | 90.3% | — |
-| 4 | **Qwen 3.8 Flash Next** | MoE (Qwen4 Preview) | 180B / 6B | IQ3_XXS | 47 GiB | — | 91.7% | 58.7% | 91.9% | — |
-| 5 | **DeepSeek V4.1 Flash** | MoE | 763B / 16B | FP8 / UD-Q4_K_XL | 160 / ~40 GiB | — | 90.9% | 74.2% | — | 31.2% |
+### Ladder 2 — Unified (CPU / Apple Silicon, **MoE only — no dense**)
 
-Fit math: `model_size + KV_cache ≤ tier_size` (KV ≈ 2–4 GB at 262 K, q8_0 KV); comfortable when `model_size + 2 GB ≤ tier_size`.
+| RAM | Rung | Quant | Notes |
+|-----|------|-------|-------|
+| 8–15 GB | **Maple Preview** | TQ2_0 | MoE; 218 tok/s on M4 |
+| 16–48 GB | **Cyber Tiel Coder** | UD-Q4_K_XL | MoE, 3B active; faster than GSQ-RCO on CPU |
+| 64 GB+ | **Qwen 3.8 Flash Next** | IQ3_XXS | MoE — convergence (candidate-only on Apple, no macOS engine yet) |
+| top | **DeepSeek V4.1 Flash** | FP8 / UD-Q4_K_XL | MoE, 763B; sits **above** Flash Next |
 
-### Tiers (full tables in `references/fit-ladder.md`)
+### DeepSeek V4.1 — the 1017 update (pending)
 
-- **GPU (VRAM):** 8–11 GB Bonsai 2 · 12–15 GB Underdog 27B · 16–48 GB GSQ-RCO (IQ3_S, near-lossless) · 64–128 GB **Flash Next** (both ladders converge; Strata on 2×3090, 1 M ctx w/ YaRN).
-- **CPU (RAM):** 8–15 GB Maple · 16–48 GB Cyber-Tiel Coder · 64–128 GB Flash Next.
-- **Unified (Apple Silicon):** 8–15 GB Maple (218 tok/s on M4) · 16–48 GB Cyber-Tiel Coder · 64–128 GB Flash Next (candidate-only — no macOS engine yet).
+A **Strata engine** for **DeepSeek V4.1** (the **1017 update**, released yesterday) is "very, very good." Open test: whether it can run on the target tier (~CC4 / large). It's a larger model, so if it fits it sits in the tier **above** Qwen Flash Next — currently the top of the unified ladder.
 
 ### Live catalog (what `serve auto` ships today)
 

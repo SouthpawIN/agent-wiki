@@ -26,18 +26,22 @@ Comfortable: model_size + 2 GB ≤ tier_size
 
 Dense does not run well on CPU / Unified memory, so the tiers split into two ladders:
 - **Ladder 1 — Dedicated (GPU / VRAM):** dense is fine — `Bonsai 2 → Underdog 27B → GSQ-RCO 27B → Flash Next`.
-- **Ladder 2 — Unified (CPU / Apple Silicon):** MoE only, no dense — `Maple → Cyber-Tiel (in place of GSQ-RCO 27B) → Flash Next`.
+- **Ladder 2 — Unified (CPU / Apple Silicon):** MoE only, no dense — `Maple → Cyber-Tiel (in place of GSQ-RCO 27B) → Flash Next → DeepSeek V4.1` (DeepSeek V4.1 is the top rung, **above** Flash Next).
+
+## Cross-cutting rules (every rung)
+- **MTP on whenever we can** — every one of these models has MTP (multi-token prediction) available in some form; turn it on at each rung.
+- **Mind the power bill (kWh / hour).** IQ3_S is lossless, so there's no reason to push a heavier quant (and a higher power draw) past it — 32 GB and 48 GB both stay on GSQ-RCO @ IQ3_S.
 
 ## GPU (NVIDIA/AMD VRAM — ≤16 GB assumes system RAM available for MoE offload + KV)
 
 | Tier | Model | Quant | Size | VRAM Used | Context | Notes |
 |------|-------|-------|------|-----------|---------|-------|
-| 8-11 GB | Bonsai 2 | ptq1 / pq2 | ~8-9 GiB | ~9 GiB | 131K-262K | Dense ternary GGUF; prism-llama.cpp |
-| 12-15 GB | Underdog 27B | pq2 | ~12-13 GiB | ~13 GiB | 131K-262K | Dense ternary GGUF; prism-llama.cpp |
-| 16 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~12 GiB | 131K-262K | Near-lossless; Cyber-Tiel Q3_K_M also fits (~14 GiB) |
-| 24 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~12 GiB | 262K | More KV headroom |
-| 32 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~12 GiB | 262K+ | Bigger KV; consider Cyber-Tiel for code |
-| 48 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~12 GiB | 262K+ | Still IQ3_S, more context |
+| 8-11 GB | Bonsai 2 | Q2 | ~8-9 GiB | ~9 GiB | 131K | Dense ternary GGUF; prism-llama.cpp; MTP on |
+| 12-15 GB | Underdog 27B | pq2 | ~12-13 GiB | ~13 GiB | 131K | Dense ternary GGUF; prism-llama.cpp; MTP on |
+| 16 GB | GSQ-RCO 27B | IQ3_S | 11.8 GiB | ~12 GiB | 131K | Near-lossless; MTP on; Cyber-Tiel Q3_K_M also fits (~14 GiB) |
+| 24 GB | GSQ-RCO 27B | IQ3_S | 11.8 GiB | ~12 GiB | 262K | More KV headroom; MTP on |
+| 32 GB | GSQ-RCO 27B | IQ3_S (lossless) | 11.8 GiB | ~12 GiB | 262K+ | Lossless — don't up the power bill past it; MTP on |
+| 48 GB | GSQ-RCO 27B | IQ3_S (lossless) + MTP | 11.8 GiB | ~12 GiB | 262K+ | Same IQ3_S as 32 GB, MTP on |
 | 64 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 262K native | MoE; both ladders converge (Strata on 2×3090) |
 | 96 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 262K native, 1M w/ YaRN | Qwen4 preview, beats Claude Opus 4.6 |
 | 128 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 1M | Max context for Flash Next |
@@ -55,6 +59,7 @@ Dense does not run well on CPU / Unified memory, so the tiers split into two lad
 | 64 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 262K native | Both ladders converge (Cyber-Tiel stood in for GSQ-RCO 27B) |
 | 96 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 262K native | Flash Next entry tier |
 | 128 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 1M w/ YaRN | Max context |
+| top | DeepSeek V4.1 Flash | FP8 / UD-Q4_K_XL | large (MoE) | — | 181K | 763B MoE — top rung, **above** Flash Next; 1017 update, Strata engine; pending: does it fit the target tier? |
 
 ## Unified memory (Apple Silicon — shared CPU/GPU RAM)
 
@@ -67,6 +72,7 @@ Dense does not run well on CPU / Unified memory, so the tiers split into two lad
 | 64 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 262K native | Candidate-only on Apple — no macOS engine yet |
 | 96 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 262K native | M4 Ultra |
 | 128 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 1M w/ YaRN | Max Flash Next |
+| top | DeepSeek V4.1 Flash | FP8 / UD-Q4_K_XL | large (MoE) | — | 181K | 763B MoE — top rung, **above** Flash Next; 1017 update, Strata engine |
 
 > ★ = on the TurboFit List. Models without ★ are Model Zoo only.
 

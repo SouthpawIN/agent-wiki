@@ -16,7 +16,7 @@ Raw understanding, 2026-08-27 (GitHub + live setup on this machine):
 ## Refined scope, 2026-10-18 (Chris)
 - TurboFit is a **universal product** (public, 100+ likes, many users), NOT a personal-fleet tool.
 - Method: **validate on the local fleet** (MacBook + Omarchy Linux workstation, both on Tailscale) **while keeping it universal.**
-- **Two fit lists:** GPU-dedicated (VRAM: NVIDIA/AMD/Intel) favors **dense**; Unified (Mac/CPU) favors **MoE.**
+- Two fit ladders converge on **Qwen 3.8 Flash Next** (the only rung the dense ladder switches to MoE): **GPU-dedicated = dense** (`Bonsai 2 → Underdog 27B → GSQ-RCO 27B → Flash Next`); **Unified (Mac/CPU) = MoE only, no dense** (`Maple → Cyber-Tiel Coder → Flash Next → DeepSeek V4.1`). **MTP on for every rung when available**; fit selection weighs the **power bill (kWh/hour)** — IQ3_S lossless is the quality ceiling (no heavier quant past it). DeepSeek V4.1 (1017 update) via Strata is the top unified rung (pending: does it fit the target tier?).
 - TurboFit is a **self-managed server that adds models AND inference engines** via benchmarking.
 - **Publish benchmarks** to users — best model + engine per tier per machine.
 - Integrate **SALT-core** as an engine (HDD streaming + KV offload for low-end tiers).

@@ -44,7 +44,7 @@ Rationale: dense wins where VRAM bandwidth is the ceiling; MoE wins where total 
 
 ## Roadblocks
 
-- The README's Fit is the **canonical TurboFit List** (Maple, Cyber-Tiel, Qwen 3.8 Flash, DeepSeek V4.1 Flash); the live catalog is the **shipped subset** — align the live catalog toward the canonical list over time.
+- The README's Fit is the **canonical TurboFit List** — two ladders converging on Flash Next (dedicated dense: `Bonsai 2 → Underdog → GSQ-RCO`; unified MoE: `Maple → Cyber-Tiel → Flash Next → DeepSeek V4.1`); the live catalog is the **shipped subset** — align the live catalog toward the canonical list over time. Fit selection should weigh **MTP-on** and the **power bill (kWh/hour)** (IQ3_S lossless is the quality ceiling).
 - No GPU-vs-unified list split in code.
 - No engine registration (engines are a fixed set); no benchmark publication surface.
 - SALT-core is a **dry-run public export, not a release** — needs a qualification gate before it becomes a real engine.

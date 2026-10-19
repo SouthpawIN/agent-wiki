@@ -23,7 +23,12 @@ Current state: steps 2-5 done manually today; nothing survives reboot except fil
 
 ## Gaps vs the 2026-10-18 scope (audit 2026-10-18)
 Ranked against the new universal scope (see ROADMAP.md):
-1. The README's Fit is the **canonical TurboFit List** (Maple, Cyber-Tiel, Qwen 3.8 Flash, etc.); the live `model-catalog.json` is the shipped subset. Align the live catalog toward the canonical list (the canonical list is the design, not slop).
+1. The README's Fit is the **canonical TurboFit List** — two ladders converging on Flash Next (dedicated dense: `Bonsai 2 → Underdog → GSQ-RCO`; unified MoE: `Maple → Cyber-Tiel → Flash Next → DeepSeek V4.1`); the live `model-catalog.json` is the shipped subset. Align the live catalog toward the canonical list (the canonical list is the design, not slop).
+
+Fit-selection considerations still to wire in:
+- **MTP on by default** for every rung (each model exposes MTP in some form).
+- **Power bill (kWh/hour)** as a fit criterion — IQ3_S is lossless; don't push a heavier quant (higher power draw) past it.
+- **DeepSeek V4.1 (the 1017 update)** via the Strata engine — pending test whether it fits the target tier; if so it's the top unified rung, above Flash Next.
 2. **One combined fit list** — no GPU-dedicated (dense) vs unified (MoE) split. `turbofit_list.py` + profiles.
 3. **No engine registration** — engines are a fixed set; TurboFit must be able to add inference engines, not just models.
 4. **No benchmark publication surface** — `external-benchmarks.md` is discovery-only (all candidates show `-`); users can't see best model+engine per tier.
