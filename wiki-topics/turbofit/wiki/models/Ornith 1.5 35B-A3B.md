@@ -40,7 +40,7 @@ sources: []
 
 ## Benchmarks
 
-> Filled in as research completes. Use [[concepts/benchmark-taxonomy|Benchmark Taxonomy]] for the canonical list.
+> Filled in as research completes. Use [[benchmark-taxonomy|Benchmark Taxonomy]] for the canonical list.
 
 ### Reasoning & Knowledge
 
@@ -112,10 +112,10 @@ Hermes recommended pairing Ornith MLX 4-bit with Unleashed+DFlash2 for 131K cove
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/ornith-35b-mlx.md|Ornith 35B MLX]]
-- [[wiki-topics/turbofit/wiki/concepts/dflash2-mplx-incompatibility|MPLX DFlash2 Incompatibility]]
-- [[wiki-topics/turbofit/wiki/entities/dflash2-draft.md|DFlash2 Draft]]
-- [[wiki-topics/turbofit/wiki/queries/apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
+- [[ornith-35b-mlx|Ornith 35B MLX]]
+- [[dflash2-mplx-incompatibility|MPLX DFlash2 Incompatibility]]
+- [[dflash2-draft|DFlash2 Draft]]
+- [[apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
 
 
 ### Ornith 1.5 MLX 4-bit
@@ -128,7 +128,7 @@ Ornith is a Mixture of Experts (MoE) model with 35B total parameters and roughly
 
 #### Provenance
 
-Ornith is owned by TurboFit routing, not the wiki itself. See `[[turbofit-runtime-providers|TurboFit Runtime Providers]]` and `[[turbo-fit-evidence-capture|TurboFit Evidence Capture]]` for how service health should be checked when Hermes can't reach it.
+Ornith is owned by TurboFit routing, not the wiki itself. See `TurboFit Runtime Providers` and [TurboFit Evidence Capture](../../skills/turbo-fit-evidence-capture/SKILL.md) for how service health should be checked when Hermes can't reach it.
 
 ^[raw/inbox/2026-09-07-from-senter-wiki.md]
 
@@ -178,7 +178,7 @@ Chris's final directive at 14:25: "It just needs to be configured into turbofit 
 
 #### Related pages
 
-- [[turbo-fit-evidence-capture|TurboFit Evidence Capture]]
+- [TurboFit Evidence Capture](../../skills/turbo-fit-evidence-capture/SKILL.md)
 - [[mtplx-main-provider|MPLX Main Provider]]
 - [[unleashed-backup|Unleashed Backup]]
 
@@ -218,17 +218,17 @@ Hermes recommended pairing Ornith MLX 4-bit with Unleashed+DFlash2 for 131K cove
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/ornith-35b-mlx.md|Ornith 35B MLX]]
-- [[wiki-topics/turbofit/wiki/concepts/dflash2-mplx-incompatibility|MPLX DFlash2 Incompatibility]]
-- [[wiki-topics/turbofit/wiki/entities/dflash2-draft.md|DFlash2 Draft]]
-- [[wiki-topics/turbofit/wiki/queries/apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
+- [[ornith-35b-mlx|Ornith 35B MLX]]
+- [[dflash2-mplx-incompatibility|MPLX DFlash2 Incompatibility]]
+- [[dflash2-draft|DFlash2 Draft]]
+- [[apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
 
 
 ### Ornith 35B A3B MLX
 
 `Ornith-1.5-35B-A3B` MLX 4-bit is a MoE local candidate downloaded to `~/Models/storage/ornith/` with a companion DFlash2 draft package at `~/Models/storage/ornith-dflash2/` .
 
-This page is a legacy entity record; see [[wiki-topics/turbofit/wiki/entities/ornith-1-5-35b-a3b-mlx-4-bit.md|Ornith 1.5 35B-A3B MLX 4-bit]] for measured throughput and config state after 2026-09-07 final lock-in .
+This page is a legacy entity record; see [[ornith-1-5-35b-a3b-mlx-4-bit|Ornith 1.5 35B-A3B MLX 4-bit]] for measured throughput and config state after 2026-09-07 final lock-in .
 
 #### Tested speeds on M1 MacBook 32GB
 
@@ -275,9 +275,9 @@ Use Ornith MLX 4-bit for short/medium-context daily work. Use Unleashed+DFlash2 
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/ornith-35b-dflash2.md|Ornith 35B DFlash2]]
-- [[wiki-topics/turbofit/wiki/decisions/aux-model-selection.md|Aux Model Selection]]
-- [[wiki-topics/turbofit/wiki/queries/apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
+- [[ornith-35b-dflash2|Ornith 35B DFlash2]]
+- [[aux-model-selection|Aux Model Selection]]
+- [[apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
 
 
 ### Ornith Config Routing Failure
@@ -335,9 +335,9 @@ The `mmproj-F16.gguf` file (858 MB) provides vision capability. Test verificatio
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/queries/apple-silicon-runtime-benchmark|Speed Test Results]]
-- [[wiki-topics/turbofit/wiki/decisions/candidate-quant-preference|Candidate Quant Preference]]
-- [[wiki-topics/turbofit/wiki/entities/ornith-35b-mlx.md|Ornith 35B MLX]]
+- [[apple-silicon-runtime-benchmark|Speed Test Results]]
+- [[candidate-quant-preference|Candidate Quant Preference]]
+- [[ornith-35b-mlx|Ornith 35B MLX]]
 
 
 ### Ornith Config Routing
@@ -367,8 +367,8 @@ The timeout persisted after the 14:25 config repoint. A Hermes session or gatewa
 
 ## See Also
 
-- [[concepts/benchmark-taxonomy|Benchmark Taxonomy]]
-- [[wiki-topics/turbofit/wiki/index|Wiki Index]]
+- [[benchmark-taxonomy|Benchmark Taxonomy]]
+- [[index|Wiki Index]]
 
 ### From entity: ornith-1-5-35b-a3b-mlx-4-bit
 
@@ -382,7 +382,7 @@ Ornith is a Mixture of Experts (MoE) model with 35B total parameters and roughly
 
 ## Provenance
 
-Ornith is owned by TurboFit routing, not the wiki itself. See `[[turbofit-runtime-providers|TurboFit Runtime Providers]]` and `[[turbo-fit-evidence-capture|TurboFit Evidence Capture]]` for how service health should be checked when Hermes can't reach it.
+Ornith is owned by TurboFit routing, not the wiki itself. See `TurboFit Runtime Providers` and [TurboFit Evidence Capture](../../skills/turbo-fit-evidence-capture/SKILL.md) for how service health should be checked when Hermes can't reach it.
 
 ^[raw/inbox/2026-09-07-from-senter-wiki.md]
 
@@ -436,7 +436,7 @@ Chris's final directive at 14:25: "It just needs to be configured into turbofit 
 
 ## Related pages
 
-- [[turbo-fit-evidence-capture|TurboFit Evidence Capture]]
+- [TurboFit Evidence Capture](../../skills/turbo-fit-evidence-capture/SKILL.md)
 - [[mtplx-main-provider|MPLX Main Provider]]
 - [[unleashed-backup|Unleashed Backup]]
 
@@ -475,16 +475,16 @@ Hermes recommended pairing Ornith MLX 4-bit with Unleashed+DFlash2 for 131K cove
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/entities/ornith-35b-mlx.md|Ornith 35B MLX]]
-- [[wiki-topics/turbofit/wiki/concepts/dflash2-mplx-incompatibility|MPLX DFlash2 Incompatibility]]
-- [[wiki-topics/turbofit/wiki/entities/dflash2-draft.md|DFlash2 Draft]]
-- [[wiki-topics/turbofit/wiki/queries/apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
+- [[ornith-35b-mlx|Ornith 35B MLX]]
+- [[dflash2-mplx-incompatibility|MPLX DFlash2 Incompatibility]]
+- [[dflash2-draft|DFlash2 Draft]]
+- [[apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
 
 ### From entity: ornith-35b-mlx
 
 `Ornith-1.5-35B-A3B` MLX 4-bit is a MoE local candidate downloaded to `~/Models/storage/ornith/` with a companion DFlash2 draft package at `~/Models/storage/ornith-dflash2/` ^[raw/inbox/2026-09-07.md].
 
-This page is a legacy entity record; see [[wiki-topics/turbofit/wiki/entities/ornith-1-5-35b-a3b-mlx-4-bit.md|Ornith 1.5 35B-A3B MLX 4-bit]] for measured throughput and config state after 2026-09-07 final lock-in ^[raw/inbox/2026-09-07.md].
+This page is a legacy entity record; see [[ornith-1-5-35b-a3b-mlx-4-bit|Ornith 1.5 35B-A3B MLX 4-bit]] for measured throughput and config state after 2026-09-07 final lock-in ^[raw/inbox/2026-09-07.md].
 
 ## Tested speeds on M1 MacBook 32GB
 
@@ -531,9 +531,9 @@ Use Ornith MLX 4-bit for short/medium-context daily work. Use Unleashed+DFlash2 
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/entities/ornith-35b-dflash2.md|Ornith 35B DFlash2]]
-- [[wiki-topics/turbofit/wiki/decisions/aux-model-selection.md|Aux Model Selection]]
-- [[wiki-topics/turbofit/wiki/queries/apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
+- [[ornith-35b-dflash2|Ornith 35B DFlash2]]
+- [[aux-model-selection|Aux Model Selection]]
+- [[apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
 
 ### From entity: ornith-35b
 
@@ -572,12 +572,12 @@ Ornith is fast at short context but loses throughput sharply as KV cache grows. 
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/decisions/aux-model-selection|Aux Model Selection]]
-- [[wiki-topics/turbofit/wiki/decisions/unleashed-backup|Unleashed Backup]]
-- [[wiki-topics/turbofit/wiki/queries/apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
-- [[wiki-topics/turbofit/wiki/entities/dflash2-draft|DFlash2 Draft]]
-- [[wiki-topics/turbofit/wiki/entities/ornith-35b-mlx.md|Ornith 35B MLX]]
-- [[wiki-topics/turbofit/wiki/entities/ornith-35b-dflash2.md|Ornith 35B DFlash2]]
+- [[aux-model-selection|Aux Model Selection]]
+- [[unleashed-backup|Unleashed Backup]]
+- [[apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
+- [[dflash2-draft|DFlash2 Draft]]
+- [[ornith-35b-mlx|Ornith 35B MLX]]
+- [[ornith-35b-dflash2|Ornith 35B DFlash2]]
 
 ### From entity: ornith-config-routing-failure
 

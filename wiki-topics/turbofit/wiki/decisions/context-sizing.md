@@ -30,6 +30,6 @@ Set 2026-09-06 after multiple compression timeout errors during end-to-end testi
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/decisions/main-model-selection.md|Main Model Selection]]
-- [[wiki-topics/turbofit/wiki/decisions/aux-model-selection.md|Aux Model Selection]]
-- [[wiki-topics/turbofit/wiki/concepts/compression-timeouts.md|Compression Timeouts]]
+- [[main-model-selection|Main Model Selection]]
+- [[aux-model-selection|Aux Model Selection]]
+- [[compression-timeouts|Compression Timeouts]]

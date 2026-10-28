@@ -42,7 +42,7 @@ Dirk is a **dense 27B model** (not MoE), so:
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/entities/dirk-qwen38-27b.md|Dirk Qwen 3.8 27B GGUF]]
-- [[wiki-topics/turbofit/wiki/decisions/candidate-quant-preference.md|Candidate Quant Preference]]
-- [[wiki-topics/turbofit/wiki/queries/apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
-- [[wiki-topics/turbofit/wiki/entities/unleashed-27b.md|Unleashed 27B]]
+- [[dirk-qwen38-27b|Dirk Qwen 3.8 27B GGUF]]
+- [[candidate-quant-preference|Candidate Quant Preference]]
+- [[apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
+- [[unleashed-27b|Unleashed 27B]]

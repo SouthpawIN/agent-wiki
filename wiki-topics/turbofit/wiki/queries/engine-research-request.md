@@ -65,5 +65,5 @@ Lock in **Ornith MLX 4-bit** as main provider at 65K context (28.5 tok/s short).
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/queries/apple-silicon-runtime-benchmark.md|Apple Silicon Runtime Benchmark]]
-- [[wiki-topics/turbofit/wiki/decisions/context-window-decision.md|Context Window Decision]]
+- [[apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
+- [[context-window-decision|Context Window Decision]]

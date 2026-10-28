@@ -33,6 +33,6 @@ Multiple Hermes turns declared Maple MLX unstable or impossible before the deepg
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/entities/maple.md|Maple]]
-- [[wiki-topics/turbofit/wiki/decisions/main-model-selection.md|Main Model Selection]]
-- [[wiki-topics/turbofit/wiki/comparisons/aux-runtime-options.md|Aux Runtime Options]]
+- [[maple|Maple]]
+- [[main-model-selection|Main Model Selection]]
+- [[aux-runtime-options|Aux Runtime Options]]

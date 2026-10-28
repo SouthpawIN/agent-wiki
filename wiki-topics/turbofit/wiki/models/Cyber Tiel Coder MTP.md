@@ -37,4 +37,4 @@ llama.cpp AMX (MoE experts load sequentially)
 
 ## Notes
 Size: 183G total
-Cross-references: [[wiki-topics/turbofit/index|wiki index]]
+Cross-references: [[index|wiki index]]

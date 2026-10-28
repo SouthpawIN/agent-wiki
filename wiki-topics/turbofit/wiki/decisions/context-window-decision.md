@@ -52,6 +52,6 @@ M1 MacBook 32GB unified memory:
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/entities/mplx-qwen-38-27b-optimized-speed.md|MPLX Qwen 3.8 27B Optimized Speed]]
-- [[wiki-topics/turbofit/wiki/decisions/mtplx-main-provider.md|MPLX Main Provider]]
-- [[wiki-topics/turbofit/wiki/entities/unleashed-27b.md|Unleashed 27B]]
+- [[mtplx-qwen-38-27b-optimized-speed|MPLX Qwen 3.8 27B Optimized Speed]]
+- [[mtplx-main-provider|MPLX Main Provider]]
+- [[unleashed-27b|Unleashed 27B]]

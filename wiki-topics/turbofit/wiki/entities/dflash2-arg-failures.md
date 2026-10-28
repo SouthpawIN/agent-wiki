@@ -46,6 +46,6 @@ llama-server -m <main-model> --spec-draft-model <draft-model> --spec-draft-ngl 9
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/entities/dflash2-draft.md|DFlash2 Draft]]
-- [[wiki-topics/turbofit/wiki/entities/mplx-service-arg-validation.md|MPLX Service Arg Validation]]
-- [[wiki-topics/turbofit/wiki/concepts/dflash2-compat-boundary.md|DFlash2 Compatibility Boundary]]
+- [[dflash2-draft|DFlash2 Draft]]
+- [[mtplx-service-arg-validation|MPLX Service Arg Validation]]
+- [[dflash2-compat-boundary|DFlash2 Compatibility Boundary]]

@@ -37,6 +37,6 @@ Local main-model compression at very large context sizes is too slow for Hermesâ
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/decisions/context-sizing.md|Context Sizing]]
-- [[wiki-topics/turbofit/wiki/decisions/aux-model-selection.md|Aux Model Selection]]
-- [[wiki-topics/turbofit/wiki/entities/maple.md|Maple]]
+- [[context-sizing|Context Sizing]]
+- [[aux-model-selection|Aux Model Selection]]
+- [[maple|Maple]]

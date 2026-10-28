@@ -2,7 +2,7 @@
 
 Two ways Turbofit tiers hardware — by **local VRAM** and by **API fallback**.
 
-> Grounded in [`curated-lineup.md`](../../../../../turbofit/references/curated-lineup.md) and [`ROADMAP.md`](../ROADMAP.md).
+> Grounded in [`curated-lineup.md`](curated-lineup.md) and [`ROADMAP.md`](../ROADMAP.md).
 
 ## Local (VRAM)
 | Tier | VRAM | Ladder |

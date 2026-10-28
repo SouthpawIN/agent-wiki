@@ -10,7 +10,7 @@ tags:
   - inference
   - candidate
 sources:
-  - raw/inbox/2026-09-07.md
+  - [raw/inbox/2026-09-07.md](../../raw/inbox/2026-09-07.md)
   - raw/inbox/2026-09-07-from-senter-wiki.md
   - raw/inbox/2026-09-07-from-object-important.md
 confidence: high
@@ -28,7 +28,7 @@ Ornith is a Mixture of Experts (MoE) model with 35B total parameters and roughly
 
 ## Provenance
 
-Ornith is owned by TurboFit routing, not the wiki itself. See `[[turbofit-runtime-providers|TurboFit Runtime Providers]]` and `[[turbo-fit-evidence-capture|TurboFit Evidence Capture]]` for how service health should be checked when Hermes can't reach it.
+Ornith is owned by TurboFit routing, not the wiki itself. See `TurboFit Runtime Providers` and [TurboFit Evidence Capture](../../skills/turbo-fit-evidence-capture/SKILL.md) for how service health should be checked when Hermes can't reach it.
 
 ^[raw/inbox/2026-09-07-from-senter-wiki.md]
 
@@ -82,6 +82,6 @@ Chris's final directive at 14:25: "It just needs to be configured into turbofit 
 
 ## Related pages
 
-- [[turbo-fit-evidence-capture|TurboFit Evidence Capture]]
+- [TurboFit Evidence Capture](../../skills/turbo-fit-evidence-capture/SKILL.md)
 - [[mtplx-main-provider|MPLX Main Provider]]
 - [[unleashed-backup|Unleashed Backup]]

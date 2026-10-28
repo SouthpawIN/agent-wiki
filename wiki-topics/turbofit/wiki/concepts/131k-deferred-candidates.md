@@ -14,7 +14,7 @@ confidence: high
 
 A number of newly downloaded candidate artifacts were not benchmarked at 131K because model-plus-KV size exceeds the stable 32 GB Mac fit before testing begins.
 
-From [[raw/inbox/2026-09-07.md|2026-09-07 08:36]]:
+From 2026-09-07 08:36:
 
 > "Several downloaded candidates were deferred from 131K testing because their size plus KV cache exceeds stable 32 GB fit before benchmark."
 
@@ -42,7 +42,7 @@ M1 MacBook 32GB unified memory:
 
 ## Memory Guard Evidence
 
-From [[raw/inbox/2026-09-07.md|2026-09-07 00:56]]:
+From 2026-09-07 00:56:
 
 ```json
 {
@@ -59,7 +59,7 @@ This shows MTPLX's memory guard: prefill_admission_shed clears KV cache to stay 
 
 ## The Reality Check
 
-From [[raw/inbox/2026-09-07.md|2026-09-07 09:20]]:
+From 2026-09-07 09:20:
 
 > "**The hard truth:** On M1 MacBook 32GB with a 27B model at 131K context, **~5-6 tok/s is the ceiling.** You want 10+ tok/s. That's not happening with this hardware — it's like asking a Honda Civic to go 200mph."
 
@@ -85,6 +85,6 @@ Ornith MLX 4-bit wins because it's MoE (~3B active params) with MLX backend for 
 
 ## Related
 
-- [[turbofit/concepts/mtplx-32gb-memory-and-evidence-reliability|MPLX 32GB Memory and Evidence Reliability]]
-- [[turbofit/entities/turbofit-memory-crash|TurboFit Memory Crash]]
-- [[turbofit/entities/mplx-memory-guard|MPLX Memory Guard]]
+- [[mtplx-32gb-memory-and-evidence-reliability|MPLX 32GB Memory and Evidence Reliability]]
+- [[turbofit-memory-crash|TurboFit Memory Crash]]
+- [[mtplx-memory-guard|MPLX Memory Guard]]

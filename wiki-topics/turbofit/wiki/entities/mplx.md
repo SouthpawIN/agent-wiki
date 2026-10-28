@@ -4,7 +4,7 @@ created: 2026-09-06
 updated: 2026-09-07
 type: entity
 tags: [tool, model, plan, pain]
-sources: [raw/inbox/2026-09-06.md, raw/inbox/2026-09-07.md, raw/inbox/2026-09-07-from-senter-wiki.md]
+sources: [raw/inbox/2026-09-06.md, [raw/inbox/2026-09-07.md](../../raw/inbox/2026-09-07.md), raw/inbox/2026-09-07-from-senter-wiki.md]
 confidence: medium
 ---
 
@@ -30,6 +30,6 @@ MPLX is an experimental additional local runtime discovered late in the session.
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/entities/turbofit.md|TurboFit]]
-- [[wiki-topics/turbofit/wiki/entities/unleashed-27b.md|Unleashed 27B]]
-- [[wiki-topics/turbofit/wiki/queries/mplx-integration.md|MPLX Integration]]
+- [[turbofit|TurboFit]]
+- [[unleashed-27b|Unleashed 27B]]
+- [[mplx-integration|MPLX Integration]]

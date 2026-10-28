@@ -4,13 +4,13 @@ created: 2026-09-07
 updated: 2026-09-07
 type: comparison
 tags: [comparison, decision, preference, pain]
-sources: [raw/inbox/2026-09-07.md, raw/inbox/2026-09-07-from-music.md, raw/inbox/2026-09-06.md]
+sources: [raw/inbox/2026-09-07.md, raw/inbox/2026-09-07-from-music.md, [raw/inbox/2026-09-06.md](../../raw/inbox/2026-09-06.md)]
 confidence: medium
 ---
 
 # Main Runtime Speed Comparison
 
-Evidence-observed main-runtime candidates for Qwen 3.8 27B-class workloads on this 32 GB M1 Mac. Numbers are in-session measurements against downloaded/observed artifacts, not all confirmed live Hermes routes ^[raw/inbox/2026-09-07.md, raw/inbox/2026-09-07-from-music.md, raw/inbox/2026-09-06.md].
+Evidence-observed main-runtime candidates for Qwen 3.8 27B-class workloads on this 32 GB M1 Mac. Numbers are in-session measurements against downloaded/observed artifacts, not all confirmed live Hermes routes ^[raw/inbox/2026-09-07.md, raw/inbox/2026-09-07-from-music.md, [raw/inbox/2026-09-06.md](../../raw/inbox/2026-09-06.md)].
 
 || Runtime / setup | Short context | Long context / 131K | Failure mode |
 |-----------------|--------------|---------------------|--------------|
@@ -30,9 +30,9 @@ On this hardware, 10+ tok/s at 131K with a 27B-class load is not achievable with
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/entities/mplx.md|MPLX]]
-- [[wiki-topics/turbofit/wiki/entities/unleashed-27b|Unleashed 27B]]
-- [[wiki-topics/turbofit/wiki/entities/ornith-35b|Ornith 35B A3B]]
-- [[wiki-topics/turbofit/wiki/entities/dflash2-draft|DFlash2 Draft]]
-- [[wiki-topics/turbofit/wiki/queries/apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
-- [[wiki-topics/turbofit/wiki/comparisons/aux-runtime-options|Aux Runtime Options]]
+- [[mplx|MPLX]]
+- [[unleashed-27b|Unleashed 27B]]
+- [[ornith-35b|Ornith 35B A3B]]
+- [[dflash2-draft|DFlash2 Draft]]
+- [[apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
+- [[aux-runtime-options|Aux Runtime Options]]

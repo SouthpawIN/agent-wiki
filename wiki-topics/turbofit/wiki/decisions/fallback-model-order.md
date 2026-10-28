@@ -29,5 +29,5 @@ Diagnosed 2026-09-06 02:20–02:25 UTC; config correction attempted in-session b
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/concepts/model-switching-pain.md|Model Switching Pain]]
-- [[wiki-topics/turbofit/wiki/decisions/main-model-selection.md|Main Model Selection]]
+- [[model-switching-pain|Model Switching Pain]]
+- [[main-model-selection|Main Model Selection]]

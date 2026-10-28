@@ -55,7 +55,7 @@ Unleashed Q3_K_XL remains the **only viable 131K solution** on this 32 GB hardwa
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/entities/unleashed-27b.md|Unleashed 27B]]
-- [[wiki-topics/turbofit/wiki/entities/dflash2-draft.md|DFlash2 Draft]]
-- [[wiki-topics/turbofit/wiki/decisions/main-model-selection.md|Main Model Selection]]
-- [[wiki-topics/turbofit/wiki/concepts/mtplx-context-overcommit.md|MPLX Context Overcommit]]
+- [[unleashed-27b|Unleashed 27B]]
+- [[dflash2-draft|DFlash2 Draft]]
+- [[main-model-selection|Main Model Selection]]
+- [[mtplx-context-overcommit|MPLX Context Overcommit]]

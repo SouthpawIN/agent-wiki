@@ -9,7 +9,7 @@ tags:
   - routing
   - evidence
 sources:
-  - raw/inbox/2026-09-07.md
+  - [raw/inbox/2026-09-07.md](../../raw/inbox/2026-09-07.md)
 confidence: medium
 ---
 
@@ -40,4 +40,4 @@ Unrequested model changes can invalidate benchmark context, tool routing, and se
 
 - [[model-switching-pain|Model Switching Pain]]
 - [[ornith-config-routing-failure|Ornith Config Routing Failure]]
-- [[wiki-topics/turbofit/wiki/decisions/fallback-model-order|Fallback Model Order]]
+- [[fallback-model-order|Fallback Model Order]]

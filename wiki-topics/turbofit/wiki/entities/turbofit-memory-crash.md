@@ -35,8 +35,8 @@ Hermes summary claims `custom:turbofit-mtplx` as main provider with 65K stable c
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/entities/turbofit-verifier-bridge.md|TurboFit Verifier Bridge]]
-- [[wiki-topics/turbofit/wiki/entities/mplx.md|MPLX]]
-- [[wiki-topics/turbofit/wiki/entities/mtplx-memory-guard.md|MPLX Memory Guard]]
-- [[wiki-topics/turbofit/wiki/decisions/mtplx-main-provider.md|MTPLX Main Provider]]
-- [[wiki-topics/turbofit/wiki/concepts/mtplx-context-overcommit.md|MPLX Context Overcommit]]
+- [[turbofit-verifier-bridge|TurboFit Verifier Bridge]]
+- [[mplx|MPLX]]
+- [[mtplx-memory-guard|MPLX Memory Guard]]
+- [[mtplx-main-provider|MTPLX Main Provider]]
+- [[mtplx-context-overcommit|MPLX Context Overcommit]]

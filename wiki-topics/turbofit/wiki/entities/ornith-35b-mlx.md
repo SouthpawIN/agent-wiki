@@ -13,7 +13,7 @@ contested: true
 
 `Ornith-1.5-35B-A3B` MLX 4-bit is a MoE local candidate downloaded to `~/Models/storage/ornith/` with a companion DFlash2 draft package at `~/Models/storage/ornith-dflash2/` ^[raw/inbox/2026-09-07.md].
 
-This page is a legacy entity record; see [[wiki-topics/turbofit/wiki/entities/ornith-1-5-35b-a3b-mlx-4-bit.md|Ornith 1.5 35B-A3B MLX 4-bit]] for measured throughput and config state after 2026-09-07 final lock-in ^[raw/inbox/2026-09-07.md].
+This page is a legacy entity record; see [[ornith-1-5-35b-a3b-mlx-4-bit|Ornith 1.5 35B-A3B MLX 4-bit]] for measured throughput and config state after 2026-09-07 final lock-in ^[raw/inbox/2026-09-07.md].
 
 ## Tested speeds on M1 MacBook 32GB
 
@@ -60,6 +60,6 @@ Use Ornith MLX 4-bit for short/medium-context daily work. Use Unleashed+DFlash2 
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/entities/ornith-35b-dflash2.md|Ornith 35B DFlash2]]
-- [[wiki-topics/turbofit/wiki/decisions/aux-model-selection.md|Aux Model Selection]]
-- [[wiki-topics/turbofit/wiki/queries/apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
+- [[ornith-35b-dflash2|Ornith 35B DFlash2]]
+- [[aux-model-selection|Aux Model Selection]]
+- [[apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]

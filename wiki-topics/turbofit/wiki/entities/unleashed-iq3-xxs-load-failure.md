@@ -25,6 +25,6 @@ This failure is specific to this quant artifact and this fork load path. It does
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/entities/unleashed-27b|Unleashed 27B]]
-- [[wiki-topics/turbofit/wiki/decisions/unleashed-backup|Unleashed Backup]]
-- [[wiki-topics/turbofit/wiki/concepts/dflash2-compat-boundary|DFlash2 Compatibility Boundary]]
+- [[unleashed-27b|Unleashed 27B]]
+- [[unleashed-backup|Unleashed Backup]]
+- [[dflash2-compat-boundary|DFlash2 Compatibility Boundary]]

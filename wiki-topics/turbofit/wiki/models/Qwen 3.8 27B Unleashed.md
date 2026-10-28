@@ -40,7 +40,7 @@ sources: []
 
 ## Benchmarks
 
-> Filled in as research completes. Use [[concepts/benchmark-taxonomy|Benchmark Taxonomy]] for the canonical list.
+> Filled in as research completes. Use [[benchmark-taxonomy|Benchmark Taxonomy]] for the canonical list.
 
 ### Reasoning & Knowledge
 
@@ -106,12 +106,12 @@ sources: []
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/mplx.md|MPLX]]
-- [[wiki-topics/turbofit/wiki/decisions/mtplx-main-provider.md|MPLX Main Provider]]
-- [[wiki-topics/turbofit/wiki/decisions/context-window-decision.md|Context Window Decision]]
-- [[wiki-topics/turbofit/wiki/entities/mtplx-memory-guard.md|MPLX Memory Guard]]
-- [[wiki-topics/turbofit/wiki/entities/mtplx-service-arg-validation.md|MPLX Service Arg Validation]]
-- [[wiki-topics/turbofit/wiki/concepts/mtplx-32gb-memory-and-evidence-reliability.md|MPLX 32GB Memory and Evidence Reliability]]
+- [[mplx|MPLX]]
+- [[mtplx-main-provider|MPLX Main Provider]]
+- [[context-window-decision|Context Window Decision]]
+- [[mtplx-memory-guard|MPLX Memory Guard]]
+- [[mtplx-service-arg-validation|MPLX Service Arg Validation]]
+- [[mtplx-32gb-memory-and-evidence-reliability|MPLX 32GB Memory and Evidence Reliability]]
 
 
 ### Unleashed 27B
@@ -136,9 +136,9 @@ Qwen3.8-27B-Unleashed in `UD-Q3_K_XL.gguf` with the Unleashed vision projector a
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/turbofit.md|TurboFit]]
-- [[wiki-topics/turbofit/wiki/entities/dflash2-draft.md|DFlash2 Draft]]
-- [[wiki-topics/turbofit/wiki/decisions/main-model-selection.md|Main Model Selection]]
+- [[turbofit|TurboFit]]
+- [[dflash2-draft|DFlash2 Draft]]
+- [[main-model-selection|Main Model Selection]]
 
 
 ### Unleashed IQ3 XXS Load Failure
@@ -158,9 +158,9 @@ This failure is specific to this quant artifact and this fork load path. It does
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/unleashed-27b|Unleashed 27B]]
-- [[wiki-topics/turbofit/wiki/decisions/unleashed-backup|Unleashed Backup]]
-- [[wiki-topics/turbofit/wiki/concepts/dflash2-compat-boundary|DFlash2 Compatibility Boundary]]
+- [[unleashed-27b|Unleashed 27B]]
+- [[unleashed-backup|Unleashed Backup]]
+- [[dflash2-compat-boundary|DFlash2 Compatibility Boundary]]
 
 
 ---
@@ -204,10 +204,10 @@ Dirk is a **dense 27B model** (not MoE), so:
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/dirk-qwen38-27b.md|Dirk Qwen 3.8 27B GGUF]]
-- [[wiki-topics/turbofit/wiki/decisions/candidate-quant-preference.md|Candidate Quant Preference]]
-- [[wiki-topics/turbofit/wiki/queries/apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
-- [[wiki-topics/turbofit/wiki/entities/unleashed-27b.md|Unleashed 27B]]
+- [[dirk-qwen38-27b|Dirk Qwen 3.8 27B GGUF]]
+- [[candidate-quant-preference|Candidate Quant Preference]]
+- [[apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
+- [[unleashed-27b|Unleashed 27B]]
 
 
 ### Dirk Qwen 3.8 27B GGUF
@@ -226,10 +226,10 @@ Chris requested Dirk GGUF downloads for local comparison. The actual repo is `pe
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/dirk-gguf.md|Dirk GGUF Q3_K_XL]]
-- [[wiki-topics/turbofit/wiki/decisions/candidate-quant-preference.md|Candidate Quant Preference]]
-- [[wiki-topics/turbofit/wiki/queries/apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
-- [[wiki-topics/turbofit/wiki/entities/unleashed-27b.md|Unleashed 27B]]
+- [[dirk-gguf|Dirk GGUF Q3_K_XL]]
+- [[candidate-quant-preference|Candidate Quant Preference]]
+- [[apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
+- [[unleashed-27b|Unleashed 27B]]
 
 
 ### Unleashed Backup
@@ -279,31 +279,31 @@ Unleashed Q3_K_XL remains the **only viable 131K solution** on this 32 GB hardwa
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/unleashed-27b.md|Unleashed 27B]]
-- [[wiki-topics/turbofit/wiki/entities/dflash2-draft.md|DFlash2 Draft]]
-- [[wiki-topics/turbofit/wiki/decisions/main-model-selection.md|Main Model Selection]]
-- [[wiki-topics/turbofit/wiki/concepts/mtplx-context-overcommit.md|MPLX Context Overcommit]]
+- [[unleashed-27b|Unleashed 27B]]
+- [[dflash2-draft|DFlash2 Draft]]
+- [[main-model-selection|Main Model Selection]]
+- [[mtplx-context-overcommit|MPLX Context Overcommit]]
 
 
 ---
 
 ## Visual Reference
 
-![Model Ladder](assets/scaling-ladder.png)
+![Model Ladder](https://github.com/SouthpawIN/turbofit/blob/main/assets/scaling-ladder.png)
 
-![Provider Integration](assets/provider-integration.png)
+![Provider Integration](https://github.com/SouthpawIN/turbofit/blob/main/assets/provider-integration.png)
 
-![Hermes Settings](assets/hermes-desktop-turbofit-settings.png)
+![Hermes Settings](https://github.com/SouthpawIN/turbofit/blob/main/assets/hermes-desktop-turbofit-settings.png)
 
-![Speculative Decode](assets/turbofit-2.4-spec-decode.png)
+![Speculative Decode](https://github.com/SouthpawIN/turbofit/blob/main/assets/turbofit-2.4-spec-decode.png)
 
 ## Rules
 
 
 ## See Also
 
-- [[concepts/benchmark-taxonomy|Benchmark Taxonomy]]
-- [[wiki-topics/turbofit/wiki/index|Wiki Index]]
+- [[benchmark-taxonomy|Benchmark Taxonomy]]
+- [[index|Wiki Index]]
 
 ### From entity: dirk-gguf
 
@@ -339,10 +339,10 @@ Dirk is a **dense 27B model** (not MoE), so:
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/entities/dirk-qwen38-27b.md|Dirk Qwen 3.8 27B GGUF]]
-- [[wiki-topics/turbofit/wiki/decisions/candidate-quant-preference.md|Candidate Quant Preference]]
-- [[wiki-topics/turbofit/wiki/queries/apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
-- [[wiki-topics/turbofit/wiki/entities/unleashed-27b.md|Unleashed 27B]]
+- [[dirk-qwen38-27b|Dirk Qwen 3.8 27B GGUF]]
+- [[candidate-quant-preference|Candidate Quant Preference]]
+- [[apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
+- [[unleashed-27b|Unleashed 27B]]
 
 ### From entity: dirk-qwen38-27b
 
@@ -360,10 +360,10 @@ Chris requested Dirk GGUF downloads for local comparison. The actual repo is `pe
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/entities/dirk-gguf.md|Dirk GGUF Q3_K_XL]]
-- [[wiki-topics/turbofit/wiki/decisions/candidate-quant-preference.md|Candidate Quant Preference]]
-- [[wiki-topics/turbofit/wiki/queries/apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
-- [[wiki-topics/turbofit/wiki/entities/unleashed-27b.md|Unleashed 27B]]
+- [[dirk-gguf|Dirk GGUF Q3_K_XL]]
+- [[candidate-quant-preference|Candidate Quant Preference]]
+- [[apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
+- [[unleashed-27b|Unleashed 27B]]
 
 ### From entity: unleashed-27b
 
@@ -387,9 +387,9 @@ Qwen3.8-27B-Unleashed in `UD-Q3_K_XL.gguf` with the Unleashed vision projector a
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/entities/turbofit.md|TurboFit]]
-- [[wiki-topics/turbofit/wiki/entities/dflash2-draft.md|DFlash2 Draft]]
-- [[wiki-topics/turbofit/wiki/decisions/main-model-selection.md|Main Model Selection]]
+- [[turbofit|TurboFit]]
+- [[dflash2-draft|DFlash2 Draft]]
+- [[main-model-selection|Main Model Selection]]
 
 ### From entity: unleashed-iq3-xxs-load-failure
 
@@ -408,6 +408,6 @@ This failure is specific to this quant artifact and this fork load path. It does
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/entities/unleashed-27b|Unleashed 27B]]
-- [[wiki-topics/turbofit/wiki/decisions/unleashed-backup|Unleashed Backup]]
-- [[wiki-topics/turbofit/wiki/concepts/dflash2-compat-boundary|DFlash2 Compatibility Boundary]]
+- [[unleashed-27b|Unleashed 27B]]
+- [[unleashed-backup|Unleashed Backup]]
+- [[dflash2-compat-boundary|DFlash2 Compatibility Boundary]]

@@ -37,7 +37,7 @@ At least one Unleashed+DFlash2 attempt failed with `couldn't bind HTTP server so
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/entities/dflash2-draft|DFlash2 Draft]]
-- [[wiki-topics/turbofit/wiki/entities/unleashed-27b|Unleashed 27B]]
-- [[wiki-topics/turbofit/wiki/entities/mplx-metal-load-failure|MPLX Metal Load Failure]]
-- [[wiki-topics/turbofit/wiki/decisions/context-sizing|Context Sizing]]
+- [[dflash2-draft|DFlash2 Draft]]
+- [[unleashed-27b|Unleashed 27B]]
+- [[mplx-metal-load-failure|MPLX Metal Load Failure]]
+- [[context-sizing|Context Sizing]]

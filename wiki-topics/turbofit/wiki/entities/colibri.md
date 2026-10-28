@@ -29,6 +29,6 @@ Chris explicitly redirected focus from Bonsai and Colibri to Ornith: "Don't worr
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/entities/maple.md|Maple]]
-- [[wiki-topics/turbofit/wiki/entities/ornith-1-5-35b-a3b-mlx-4-bit|Ornith 1.5 35B-A3B MLX 4-bit]]
-- [[wiki-topics/turbofit/wiki/decisions/local-main-provider|TurboFit Local Main Provider Decision]]
+- [[maple|Maple]]
+- [[ornith-1-5-35b-a3b-mlx-4-bit|Ornith 1.5 35B-A3B MLX 4-bit]]
+- [[local-main-provider|TurboFit Local Main Provider Decision]]

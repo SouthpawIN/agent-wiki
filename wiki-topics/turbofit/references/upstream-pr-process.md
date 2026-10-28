@@ -2,7 +2,7 @@
 
 How research findings become pull requests.
 
-> Grounded in [`roadmap.md`](../../../../../turbofit/references/roadmap.md), [`SOUL.md`](../../../../../turbofit/references/SOUL.md), and `profiles/turbosouth/INSTRUCTIONS.md` in the product repo.
+> Grounded in [`roadmap.md`](https://github.com/SouthpawIN/turbofit/tree/main/references/roadmap.md), [`SOUL.md`](https://github.com/SouthpawIN/turbofit/blob/main/skills/turbofit/references/SOUL.md), and `profiles/turbosouth/INSTRUCTIONS.md` in the product repo.
 
 ## The research → PR pipeline
 1. **Scrape**: `research/model-intel.py` pulls benchmark + hardware intel.

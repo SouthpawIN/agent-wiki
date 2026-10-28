@@ -243,16 +243,16 @@ Files available at:
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/queries/apple-silicon-runtime-benchmark|Speed Test Results]]
-- [[wiki-topics/turbofit/wiki/entities/ornith-35b-mlx.md|Ornith 35B MLX]]
-- [[wiki-topics/turbofit/wiki/entities/nail-qwen36-35b.md|Nail Qwen 3.6 35B UD Q4_K_XL]]
-- [[wiki-topics/turbofit/wiki/decisions/context-window-decision.md|Context Window Decision]]
+- [[apple-silicon-runtime-benchmark|Speed Test Results]]
+- [[ornith-35b-mlx|Ornith 35B MLX]]
+- [[nail-qwen36-35b|Nail Qwen 3.6 35B UD Q4_K_XL]]
+- [[context-window-decision|Context Window Decision]]
 
 
 ## See Also
 
-- [[concepts/benchmark-taxonomy|Benchmark Taxonomy]]
-- [[wiki-topics/turbofit/wiki/index|Wiki Index]]
+- [[benchmark-taxonomy|Benchmark Taxonomy]]
+- [[index|Wiki Index]]
 - [Ornith-1.5-35B-A3B (upstream base)](https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B)
 - [Tiel-Coder-35B-A3B (censored sibling)](https://huggingface.co/peculiar-ragdoll/Tiel-Coder-35B-A3B-GGUF)
 
@@ -289,7 +289,7 @@ Files available at:
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/queries/apple-silicon-runtime-benchmark|Speed Test Results]]
-- [[wiki-topics/turbofit/wiki/entities/ornith-35b-mlx.md|Ornith 35B MLX]]
-- [[wiki-topics/turbofit/wiki/entities/nail-qwen36-35b.md|Nail Qwen 3.6 35B UD Q4_K_XL]]
-- [[wiki-topics/turbofit/wiki/decisions/context-window-decision.md|Context Window Decision]]
+- [[apple-silicon-runtime-benchmark|Speed Test Results]]
+- [[ornith-35b-mlx|Ornith 35B MLX]]
+- [[nail-qwen36-35b|Nail Qwen 3.6 35B UD Q4_K_XL]]
+- [[context-window-decision|Context Window Decision]]

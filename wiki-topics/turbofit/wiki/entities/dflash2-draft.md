@@ -23,7 +23,7 @@ DFlash2 is the speculative-draft model paired with Unleashed 27B in TurboFit. It
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/entities/unleashed-27b.md|Unleashed 27B]]
-- [[wiki-topics/turbofit/wiki/entities/turbofit.md|TurboFit]]
-- [[wiki-topics/turbofit/wiki/comparisons/aux-runtime-options.md|Aux Runtime Options]]
-- [[wiki-topics/turbofit/wiki/entities/ornith-35b-dflash2.md|Ornith 35B DFlash2]]
+- [[unleashed-27b|Unleashed 27B]]
+- [[turbofit|TurboFit]]
+- [[aux-runtime-options|Aux Runtime Options]]
+- [[ornith-35b-dflash2|Ornith 35B DFlash2]]

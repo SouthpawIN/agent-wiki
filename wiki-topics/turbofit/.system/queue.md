@@ -196,3 +196,7 @@ Order: main fix → rename+README → PR verdicts → TPS table → sandbox desi
 - [ ] research mtplx-memory-ceiling — SUGGESTED 2026-09-07 00:30: Want me to look into what's the largest reliable context size for MTPLX on this hardware, and whether there's a supporte
 - [ ] research mtplx-viability-check — SUGGESTED 2026-09-07 00:09: Want me to look into whether MTPLX can run reliably on this box, or if it should be dropped from the TurboFit list?
 - [ ] research deepgrove-fork-stability — SUGGESTED 2026-09-06 22:41: Want me to look into the Maple MLX Apple-Silicon server story?
+- [ ] [CONTEXT] Merge duplicate pages: `Maple` vs `Maple Preview 8B`, `Cyber Tiel Coder 35B-A3B` vs `Cyber Tiel Coder MTP`, `dflash2-compat-boundary` / `dflash2-fork-flag-boundary` / `dflash2-mplx-incompatibility` — acceptance: one page each, others redirect stubs.
+- [ ] [CONTEXT] Decide the single benchmark store: TurboFit `references/benchmark-results.json` vs `model-momento` SQLite — acceptance: one ingest direction written down.
+- [ ] [CONTEXT] Rule 5 (index.md = wiki/index.md) is violated by two entry points (generated catalog + 2.5k-line dense body) — acceptance: either merge or amend Rule 5 in the `turbofit` skill.
+- [ ] [SKILLS] `turbofit` skill still carries copies of repo references (curated-lineup, scaling-ladder, research-report, api-*) → point them at the vault pages instead of duplicating.

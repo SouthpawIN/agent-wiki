@@ -1,386 +1,334 @@
 ---
 title: Turbofit Wiki
 created: 2026-09-16
-updated: 2026-09-17
+updated: 2026-10-28
 type: wiki
 links:
   github: https://github.com/SouthpawIN/turbofit
-  huggingface_turbofit: https://huggingface.co/SouthpawIN
-  omarchy: https://github.com/SouthpawIN/omarchy
+  huggingface: https://huggingface.co/SouthpawIN
 sources:
-  - index.md
-  - BRIEF.md
   - README.md
-  - wiki/models/
+  - raw/sources/2026-10-28-github-consolidation.md
 ---
 
 # Turbofit Wiki
 
-**TurboFit** is a first-class [Hermes Agent](https://github.com/NousResearch/hermes-agent) provider and adaptive local-inference runtime. It discovers what a machine can run, recommends an evidence-backed model ladder, launches a native backend, and exposes a single OpenAI-compatible endpoint.
-
-**Design principles:**
-- Local first, cloud fallback only when the task exceeds local capability
-- Model choice is evidence-driven, not brand-driven
-- Reasoning ON by default; token budgets sized for thinking models (4000+)
-- Every model gets benchmarks, every claim gets a source
-
-**Supported platforms:**
-- **Omarchy** (RTX 3090 ×2, 377GB RAM) — primary GPU server
-- **MacBook** (M1 32GB) — streaming + local inference
-- Future: Surface Duo as mobile endpoint
-
-```text
-provider: custom:turbofit
-model: auto
-```
-
-**TurboFit Check** scans the machine and applies Auto or a selected compatible lane.
-
----
-
-## INTEGRATIONS
-
-This wiki is fed by:
-
-- **GitHub:** [SouthpawIN/turbofit](https://github.com/SouthpawIN/turbofit) — code, issues, PRs
-- **HuggingFace:** [SouthpawIN](https://huggingface.co/SouthpawIN) — model repos
-- **Omarchy:** [SouthpawIN/omarchy](https://github.com/SouthpawIN/omarchy) — primary GPU server
-- **Raw inbox:** `raw/inbox/` — daily cuts from Hermes sessions
-- **Sessions:** `wiki-topics/senter-wiki/.system/sessions/` — full conversation transcripts
-
----
-
-## README
-
-This section covers HOW TurboFit works: architecture, runtime selection, provider configuration, and the integration paths that make local inference stable.
-
-### Runtime Selection
-
-TurboFit supports multiple inference backends. Selection depends on platform and model:
-
-| Runtime | Platform | Models | Speed | Notes |
-| --- | --- | --- | --- | --- |
-| **llama.cpp** (dflash2 fork) | Omarchy, MacBook | Unleashed 27B, DeepSeek V4.1 | 70-85 tok/s (Omarchy GPU) | Full DFlash2 draft support |
-| **llama.cpp** (stock) | Omarchy, MacBook | Most GGUF models | Varies | No DFlash2 support |
-| **MTPLX** | MacBook (M1) | Qwen 3.8, Unleashed | 12.4 tok/s short, 7-12 tok/s at 65K | Memory guard at 131K |
-| **MLX** | MacBook (M1) | Ornith 1.5, Maple | 28.5 tok/s short | Apple-native, fastest on M1 |
-
-### Hermes Provider Integration
-
-TurboFit registers as `custom:turbofit` in Hermes Agent. Configuration is in `config.yaml`:
+**TurboFit** is a first-class [Hermes Agent](https://github.com/NousResearch/hermes-agent) provider and adaptive local-inference runtime. It inventories the machine, populates the model list with everything that fits, recommends an evidence-backed **fit ladder**, launches a native backend, and exposes one OpenAI-compatible endpoint.
 
 ```yaml
 provider: custom:turbofit
 model: auto
 ```
 
-**Auto mode** scans available hardware and selects the best model from the TurboFit List. Manual selection locks a specific model.
+**Design principles:** local first (cloud only past local capability) · evidence-driven, not brand-driven · reasoning ON, budgets sized for thinking models · every claim carries a source.
 
-### Model + Context Sizing
+**Hub page:** [README](README.md) — install paths, the two ladders, product narrative. This page is the *catalog*: every page in the topic, plus the fit tables generated from the canonical data.
 
-Local contexts are set to **131,072 tokens** as the stable sweet spot. Evidence:
-- 262K+ pre-fills slowly on M1 32GB and stresses Metal heap
-- Hermes compression timed out repeatedly at 270K+ tokens on main model
-- 131K is the tested stable configuration on the MacBook
+---
 
-On Omarchy (256GB+ VRAM), 262K+ contexts are viable with DFlash2 draft models.
+## INSPIRATIONS & INTEGRATIONS
 
-### Provider Fallback Order
+| Source | What it feeds |
+| --- | --- |
+| [SouthpawIN/turbofit](https://github.com/SouthpawIN/turbofit) | The product repo — code, `fit-lists.json`, `model-catalog.json`, benchmarks, docs |
+| [SouthpawIN/sirvir](https://github.com/SouthpawIN/sirvir) | TurboSouth support bot — installs, configures, files tested upstream PRs |
+| [SouthpawIN/SALT-core](https://github.com/SouthpawIN/SALT-core) | State/KV ownership engine behind the SALT integration surface |
+| [SouthpawIN/model-momento](https://github.com/SouthpawIN/model-momento) | Long-tail model metadata + benchmark history |
+| [SouthpawIN/turbohaul-manager](https://github.com/SouthpawIN/turbohaul-manager) · [southpaw-turbohaul](https://github.com/SouthpawIN/southpaw-turbohaul) · [turbohaul-llmfit](https://github.com/SouthpawIN/turbohaul-llmfit) | The TurboQuant manager line + launch-string doctrine |
+| HuggingFace [SouthpawIN](https://huggingface.co/SouthpawIN) | Published artifacts |
+| `raw/inbox/` | Watcher cuts from Hermes sessions (immutable) |
 
-To prevent silent switching to cloud providers:
+Full map: [references/ecosystem](references/ecosystem.md).
 
-1. `model.default` must be first in the fallback chain
-2. `auxiliary.compression.provider` pinned to local TurboFit route
-3. Cloud fallback only for tasks exceeding local memory budget
+---
 
-This addresses the Hermes auto-route stability issue where `stepfun/step-3.7-flash:free` was selected without explicit choice.
+## TOPICS & WIKI
 
-### DFlash2 Speculative Decoding
+### The fit — two ladders that converge on Flash Next
 
-DFlash2 is a draft model for accelerating long-context inference. Key facts:
+> **Dense does not run well on CPU / unified memory, so there are two ladders.** The GPU-dedicated ladder is dense; the unified (CPU / Apple Silicon) ladder is MoE only. Both converge on **Qwen 3.8 Flash Next**. The Fit List IS the fallback chain — `serve auto` walks down on OOM/timeout.
+>
+> Cross-cutting: **MTP on whenever available**; **mind the power bill** — IQ3_S is lossless, so no heavier quant past it (32 GB and 48 GB both stay on GSQ-RCO @ IQ3_S).
 
-- **Only works with llama.cpp** (dflash2 fork), not MTPLX or MLX
-- **Incompatible with MTPLX**: MTPLX uses native MLX MTP heads; DFlash2 is CUDA/llama.cpp only
-- **Valid flags**: `--spec-draft-model`, `--spec-draft-ngl 999`, `--spec-draft-n-max 7`, `--spec-type draft-dflash`
-- **Invalid flags** that fail: `--draft-model`, `--draft-ngl`, `--draft-ctx-size`, `--low-vram`, `--model-draft`
+#### Ladder 1 — Dedicated (GPU / VRAM, dense)
 
-### Memory Management
+| Tier | Model | Quant / Engine | Context | Notes |
+| --- | --- | --- | --- | --- |
+| **8-11gb** | Ternary Bonsai 2 27B (7.21 GB) | PTQ1_0, PQ2_0 | 131K | dense ternary GGUF (Q2); sizes PTQ1_0 5.95 GB / PQ2_0 7.21 GB; prism-llama.cpp; MTP on |
+| **12-15gb** | Underdog 27B | PQ2_0 | 131K | dense; MTP on |
+| **16-23gb** | Qwen 3.8 27B GSQ-RCO (11.8 GB) | IQ3_S | 131K | near-lossless; MTP on |
+| **24-63gb** | Qwen 3.8 27B GSQ-RCO (11.8 GB) | IQ3_S | 262K | near-lossless; 262K at 24 GB; MTP on; power bill stays on IQ3_S (no heavier quant) |
+| **64gb+** | Qwen 3.8 Flash Next (Strata) | strata | 262K | MoE; both ladders converge on Flash Next; MTP on |
 
-**MTPLX Memory Guard** — emits `prefill_admission_shed` events when a prompt would exceed memory threshold, clearing KV cache to stay under limit.
+#### Ladder 2 — Unified (CPU / Apple Silicon, MoE only)
 
-**Unleashed IQ3_XXS** — failed to load with `tensor 'blk.2.attn_qkv.weight' data is not within the file bounds`. This quant is not usable on the dflash2 fork.
+| Tier | Model | Quant / Engine | Context | Notes |
+| --- | --- | --- | --- | --- |
+| **8-15gb** | Maple Preview 20B-A1B | TQ2_0 | 131K | MoE; CPU |
+| **16-23gb** | Cyber-Tiel Coder 35B-A3B (13.2 GB) | UD-IQ3_XXS | 262K | MoE, 3B active; 262K ctx; faster than GSQ-RCO on CPU |
+| **24-31gb** | Cyber-Tiel Coder 35B-A3B (18.5 GB) | UD-Q4_K_XL | 262K | MoE, 3B active |
+| **32-47gb** | Cyber-Tiel Coder 35B-A3B (26.6 GB) | UD-Q5_K_XL | 262K | MoE, 3B active |
+| **48-63gb** | Cyber-Tiel Coder 35B-A3B (31.8 GB) | UD-Q6_K_XL | 262K | MoE, 3B active |
+| **64gb+** | Qwen 3.8 Flash Next (Strata) | strata | 262K | MoE; both ladders converge on Flash Next; MTP on |
 
-**Crash pattern**: `mtplx serve` exits with code -9 when memory plan is marked `OVER`. Exit code 1 with `RuntimeError: [METAL] Command buffer execution failed: Insufficient Memory` during MTP injection.
+Fully generated from `references/fit-lists.json` @ commit `2026-10-19` era — see [fit-ladder](references/fit-ladder.md) for the prose version and [scaling-ladder](references/scaling-ladder.md) for the long tail.
 
-### Verifier Bridge
-
-`turbofit-verifier` drives verification through `desktop_preview` on a real Hermes window instead of summary claims.
-
-### Model Zoo
-
-> All models discovered during research. ★ = on TurboFit List.
-
-| Model | Type | System | Parameters | AIME26 | GPQA-D | DeepSWE | LCBv6 | TB4.0 | HuggingFace |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [[Maple Preview]] ★ | Aux LLM (Ternary MoE) | Omarchy | 20B-A1B | 87.5% | 73.5% | - | 75.1% | - | [maple-preview](https://huggingface.co/deepgrove/maple-preview) |
-| [[Cyber Tiel Coder]] ★ | Code LLM (MoE) | Omarchy, MacBook | 35B-A3B | - | - | - | - | - | [Cyber-Tiel-Coder-GGUF](https://huggingface.co/peculiar-ragdoll/Cyber-Tiel-Coder-35B-A3B-GGUF-MTP) |
-| [[Qwen 3.8 GSQ-RCO]] ★ | LLM (Quantized) | Omarchy | 27B | - | 89.2% | 42.2% | 90.3% | - | [GSQ-RCO-GGUF](https://huggingface.co/ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF) |
-| [[Qwen 3.8 Flash Next]] ★ | MoE (Qwen4 Preview) | Omarchy | 180B / 6B | - | 91.7% | 58.7% | 91.9% | - | [Flash-Next-GSQ-RCO](https://huggingface.co/ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-GGUF) |
-| [[DeepSeek V4.1 Flash]] ★ | MoE | Omarchy | 763B / 16B | - | 90.9% | 74.2% | - | 31.2% | [V4.1-Flash-GGUF](https://huggingface.co/vcruz305/DeepSeek-V4.1-Flash-GGUF) |
-| [[Ace Step 1.5]] | Music Generation | Omarchy | 4B | - | - | - | - | - | [ACE-Step-1.5-GGUF](https://huggingface.co/ACE-Step/ACE-Step-1.5-GGUF) |
-| [[Bonsai 27B]] | LLM (Ternary) | Omarchy | 27B | - | - | - | - | - | [Bonsai-27B-gguf](https://huggingface.co/prism-ml/Bonsai-27B-gguf) |
-| [[Cosmos 37B]] | LLM | Omarchy | 37B | - | - | - | - | - | [Cosmos-37b-BASE-i1-GGUF](https://huggingface.co/mradermacher/Cosmos-37b-BASE-i1-GGUF) |
-| [[Cyber Tiel Coder MTP]] | Code LLM (MTP) | Omarchy | 35B-A3B | - | - | - | - | - | [Cyber-Tiel-MTP](https://huggingface.co/peculiar-ragdoll/Cyber-Tiel-Coder-35B-A3B-GGUF-MTP) |
-| [[DAXZEIT GRM]] | Reasoning LLM (MTP) | Omarchy | 27B | - | - | - | - | - | [DAXZEIT-GRM-2.6-Plus-MTP](https://huggingface.co/mradermacher/DAXZEIT_GRM_2.6-Plus-0628-MTP-reasoning-i1-GGUF) |
-| [[NVIDIA Nemotron 3.5]] | Enterprise LLM (MoE) | Omarchy | 30B-A3B | - | - | - | - | - | [NVIDIA-Nemotron-3.5-Lightning-30B-A3B](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-GGUF) |
-| [[Qwen 3.8 Unleashed]] | General LLM | Omarchy, MacBook | 27B | - | - | - | - | - | [Qwen3.8-Unleashed-GGUF](https://huggingface.co/outsourc-e/Qwen3.8-27B-Unleashed-GGUF) |
-| [[Super Qwen]] | Uncensored LLM | Omarchy | 27B | - | - | - | - | - | [SuperQwen3.8-27b-abliterated](https://huggingface.co/Jiunsong/SuperQwen3.8-27b-abliterated-GGUF) |
-| [[Qwen 2.5 Omni]] | Multimodal VLM | Omarchy | 3B | - | - | - | - | - | [Qwen2.5-Omni-3B](https://huggingface.co/unsloth/Qwen2.5-Omni-3B-GGUF) |
-| [[Soprano]] | Creative Micro | Omarchy | 80M | - | - | - | - | - | [Soprano-1.1-80M](https://huggingface.co/WalkingCat/Soprano-1.1-80M-GGUF) |
-| [[Qwen 3.8 Base]] | Base LLM | Omarchy, MacBook | 27B | - | - | - | - | - | [Qwen3.8-27B](https://huggingface.co/Qwen/Qwen3.8-27B) |
-| [[Ornith 1.5]] | Code LLM (Legacy) | MacBook | 35B-A3B | - | - | - | - | - | [Ornith-1.5-35B-A3B](https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B) |
-
-> **Note:** GSQ-RCO IQ3_S scores shown (AIME25 100%, GPQA-D 89.2%, DeepSWE 42.2%, LCBv6 90.3%). Maple LCBv6 score is from LiveCodeBench v6.
-
-### TurboFit List
-
-#### Agentic Model Lineup
-
-| Model | Tok/s | Parameters | Best For |
-| --- | --- | --- | --- |
-| [[Maple Preview]] | 218 tok/s (MTPLX M4) | 20B-A1B | Aux/compression tasks |
-| [[Cyber Tiel Coder]] | 23 tok/s (MacBook 65K) | 35B-A3B | Code generation |
-| [[Qwen 3.8 GSQ-RCO]] | 85 tok/s (Omarchy GPU) | 27B | Daily driver, reasoning |
-| [[Qwen 3.8 Flash Next]] | 70-85 tok/s (Omarchy GPU) | 180B / 6B | Maximum capability |
-| [[DeepSeek V4.1 Flash]] | TBD | 763B / 16B | Next-gen capability |
-
-#### Fit Calculation System
-
-##### GPU (NVIDIA/AMD VRAM)
-
-| Tier | Model | Quant | Context | Flags | Tok/s | Notes |
-| --- | --- | --- | --- | --- | --- | --- |
-| <8 GB | Maple | IQ3_S | 131K | `--ctx-size 131072 --n-gpu-layers 999 --mlock` | ~10 tok/s | SSD streaming |
-| 16-64 GB | GSQ-RCO | IQ3_S | 262K | `--ctx-size 262144 --n-gpu-layers 999 --mlock` | ~85 tok/s | Near-lossless |
-| 96+ GB | Flash Next | IQ3_XXS | 524K | `--ctx-size 524288 --n-gpu-layers 999 --mlock` | TBD | |
-| 256 GB | DeepSeek V4.1 | FP8 | 1M | `--ctx-size 1048576 --n-gpu-layers 999 --mlock` | TBD | |
-
-##### CPU (System RAM)
-
-| Tier | Model | Quant | Context | Flags | Tok/s | Notes |
-| --- | --- | --- | --- | --- | --- | --- |
-| <8 GB | Maple | IQ3_S | 65K | `--ctx-size 65536 --no-mmap --mlock` | ~8 tok/s | Minimum viable |
-| 16-48 GB | Cyber-Tiel | IQ3_S | 262K | `--ctx-size 262144 --no-mmap --mlock` | ~23 tok/s | MoE, 3B active |
-| 64 GB | GSQ-RCO | IQ3_S | 262K | `--ctx-size 262144 --no-mmap --mlock` | ~12 tok/s | Low power |
-
-##### Unified Memory (Apple Silicon)
-
-| Tier | Model | Quant | Context | Engine | Tok/s | Notes |
-| --- | --- | --- | --- | --- | --- | --- |
-| <8 GB | Maple | IQ3_S | 65K | MTPLX | 218 tok/s (M4) | |
-| 16-48 GB | Cyber-Tiel | IQ3_S | 262K | MTPLX | ~23 tok/s (MacBook) | |
-| 64 GB | GSQ-RCO | IQ3_S | 262K | MTPLX | ~8-12 tok/s (65K) | |
-
-### Key Concepts
-
-#### 131K Deferred Candidates
-
-Newly downloaded candidate artifacts not benchmarked at 131K because model-plus-KV exceeds 32GB Mac fit before testing begins.
-
-#### Benchmark Taxonomy
-
-| Tier | Use Case | Models |
-| --- | --- | --- |
-| Daily Driver | Short-context speed | Ornith MLX (28.5 tok/s) |
-| Long Context | 131K stable | Unleashed + DFlash2 (~5 tok/s) |
-| High Capability | Maximum quality | DeepSeek V4.1 Flash |
-| Aux/Compression | Background tasks | Maple Preview |
-
-#### Speculative Decoding Architectures
-
-| Architecture | Runtimes | Draft Type | Speed Boost |
-| --- | --- | --- | --- |
-| DFlash2 | llama.cpp fork | Diffusion-based | ~1.5-2x |
-| MTP (Multi-Token) | MLX, llama.cpp | Native heads | ~2x |
-| MTPLX | MTPLX only | Native MLX MTP | ~2.5x |
-
-#### Hermes Auto Route Stability
-
-See Issues section for problem details and resolution.
-
-#### Model Selection Decision Tree
+### Fit math
 
 ```
-Start
-  ├─ Need vision? → Unleashed 27B (only model with projector)
-  ├─ Need speed at 65K? → Ornith MLX 4-bit (28.5 tok/s)
-  ├─ Need 131K long context? → Unleashed + DFlash2 on llama.cpp
-  └─ Need max capability? → DeepSeek V4.1 Flash on Omarchy
+Required:  model_size + KV_cache ≤ tier_size
+KV cache:  ≈ 2-4 GB at 262K context (q8_0 KV)
+Comfortable: model_size + 2 GB ≤ tier_size
 ```
 
+Never show a model using more memory than its tier provides. If it doesn't fit, say so or drop the quant.
+
+### Models (18 pages)
+
+| Page | What |
+| --- | --- |
+| [[Ace Step 1.5 4B]] | acestep.cpp with CUDA, 12-20GB VRAM on RTX 3090×2 |
+| [[Bonsai 27B]] | Bonsai refers to models from prism-ml: Bonsai-27B-mlx-1bit (1-bit binary, 1.4M downloads) and Ternary-Bonsai-27B-mlx-2bit (2-bit ternary, 1.4M downloads). The Ternary… |
+| [[Cosmos 37B BASE]] | llama.cpp CUDA, needs offload (184GB total) |
+| [[Cyber Tiel Coder 35B-A3B]] | The SSM-heavy architecture makes KV cache very cheap: ~20–22 KB/token at f16, ~10–11 KB/token at q80. |
+| [[Cyber Tiel Coder MTP]] | llama.cpp with --spec-type draft-mtp, -ngl 99 |
+| [[DAXZEIT GRM 2.6 Plus]] | llama.cpp with --spec-type draft-mtp, CUDA |
+| [[DeepSeek V4.1 Flash]] | DeepSeek-V4.1-Flash adopts a Causal Encoder-Decoder (CED) architecture — a 40-layer Transformer split into a 20-layer causal encoder and a 20-layer decoder. The… |
+| [[GSQ-RCO Qwen 3.8]] | Full name: Qwen3.8-27B (GSQ-RCO quantization) |
+| [[Maple Preview 8B]] | Maple Preview |
+| [[Maple]] | ./llama-cli -m maple-preview-TQ20-head-Q4K.gguf \ |
+| [[NVIDIA Nemotron 3.5]] | llama.cpp CUDA, --layer-split for multi-GPU |
+| [[Ornith 1.5 35B-A3B]] | jzinno/Ornith-1.5-35B-A3B-DFlash2 was inspected on HuggingFace and downloaded as a local draft artifact for speculative-decode experiments . |
+| [[Qwen 2.5 Omni 3B]] | llama.cpp CUDA + mmproj for vision |
+| [[Qwen 3.8 27B Base]] | llama.cpp CUDA, -ngl 99 |
+| [[Qwen 3.8 27B Unleashed]] | Youssofal/Qwen3.8-27B-MTPLX-Optimized-Speed is the candidate Hermes TurboFit provider discovered on 2026-09-07. It is served via ~/turbofit/.venv/bin/mtplx serve and… |
+| [[Qwen 3.8 Flash Next]] | Qwen-reported scores from HuggingFace model card: |
+| [[Soprano 1.1 80M]] | Soprano 1.1 80M |
+| [[Super Qwen 3.8 27B]] | llama.cpp CUDA, -ngl 99 for full GPU offload |
+### Concepts
+
+| Page | What |
+| --- | --- |
+| [[131k-deferred-candidates]] | A number of newly downloaded candidate artifacts were not benchmarked at 131K because model-plus-KV size exceeds the stable 32 GB Mac fit before testing begins. |
+| [[benchmark-taxonomy]] | When adding a model page, fill in any of the above benchmarks where data is available from: |
+| [[bonsai-colibri-deprioritization]] | During the 2026-09-07 testing session, subagents explored multiple candidate models including Bonsai (Prism MLX 2-bit ternary, 7.91 GB) and Colibri (custom Maple… |
+| [[compression-timeouts]] | Hermes failed with: |
+| [[dflash2-compat-boundary]] | DFlash2 draft models are not interchangeable across runtimes. On this box the boundary is concrete: MTPLX cannot use DFlash2, and Unleashed+DFlash2 only works through… |
+| [[dflash2-fork-flag-boundary]] | DFlash2 draft models are not interchangeable across runtimes. On this box the boundary is concrete: MTPLX cannot use DFlash2, and Unleashed+DFlash2 only works through… |
+| [[dflash2-mplx-incompatibility]] | DFlash2 draft models are incompatible with MTPLX's native MLX MTP heads. This is a fundamental architecture mismatch. |
+| [[fit-calculation-system-tables]] | The fit calculation system tables are Chris's set of tables that record how well each model fits a given compute platform. As named by Chris they come in three hardware… |
+| [[hermes-auto-route-stability]] | From raw/inbox/2026-09-08-from-senter-wiki.md: |
+| [[hermes-model-switching-noise]] | The active Hermes model switched multiple times during TurboFit work without Chris initiating the changes ^[raw/inbox/2026-09-07.md]. The switch chain was: |
+| [[model-switching-pain]] | The active Hermes model switched multiple times during TurboFit work without Chris initiating the changes. |
+| [[model-zoo-table]] | The Model Zoo table is the dashboard table that compares machine-learning models across named categories. It is the subject of all three add-one requests in this topic.… |
+| [[mtplx-32gb-memory-and-evidence-reliability]] | Captures two distinct reliability concerns for MTPLX on this box: 131K memory overcommit, and postcommit artifacts that can't be treated as finished TurboFit evidence… |
+| [[mtplx-context-overcommit]] | On the 32 GB Mac, mtplx serve with --context-window 131072 loads the model in 6-9s and installs the native MTP draft head, but the printed memory plan marks… |
+| [[mtplx-foreground-preemption]] | When MTPLX handles long-running Hermes foreground work, postcommit records show crosssessionforegroundpreempted and foregroundpreemptedpostcommit, and idle async… |
+| [[turbofit-session-mismatch]] | MTLPX generation events show foreground/preemption behavior and session-store mismatch that make some TurboFit captures unreliable as finished-state evidence… |
 ### Decisions
 
-#### Aux Model Selection
+| Page | What |
+| --- | --- |
+| [[aux-model-selection]] | Auxiliary and compression routing is Maple MLX on 127.0.0.1:11612, 131k context, served with deepgrove-ai/mlx-lm-deepgrove ^[raw/inbox/2026-09-06.md]. |
+| [[candidate-quant-preference]] | Decision/Preference: When comparing GGUF vs MLX for new local candidates, prefer the Q3 quant when model pages describe it as near base-model quality. |
+| [[context-sizing]] | Local TurboFit contexts are set to 131,072 tokens for both main and aux ^[raw/inbox/2026-09-06.md]. |
+| [[context-window-decision]] | Decision: Lock in 65K context as the stable daily driver on M1 MacBook 32GB, with 131K reserved for rare long-context needs where speed is not critical. |
+| [[fallback-model-order]] | The active model preference order should preserve explicit user choice and avoid silently switching to stepfun/step-3.7-flash:free ^[raw/inbox/2026-09-06.md]. |
+| [[highest-recorded-tok-s-after-flags]] | Chris asked to add a column to all of the fit calculation system tables — the GPU, CPU, and unified tables — recording the highest recorded tokens per second, placed… |
+| [[local-main-provider]] | What Chris wanted: the smartest feasible local runtime as Hermes main, with verified evidence, not just Hermes internal logs. |
+| [[main-model-selection]] | Initial decision: Main inference and vision is Unleashed 27B + DFlash2 draft on 127.0.0.1:11606, Metal, 131k context ^[raw/inbox/2026-09-06.md]. |
+| [[mtplx-main-provider]] | Make Youssofal/Qwen3.8-27B-MTPLX-Optimized-Speed via mtplx serve the main TurboFit provider and remove Maple/Unleashed as co-resident models to reclaim disk space. |
+| [[ornith-config-routing]] | Action: Repoint Hermes custom:turbofit to the running Ornith MLX server on http://127.0.0.1:11613/v1 and set ornith-1-5-35a3b-mlx as the default model. |
+| [[turbofit-list-parameters-column]] | Chris asked to add one more category to the table: parameters. ^[raw/inbox/2026-09-16.md] |
+| [[turbofit-list-tok-s-column]] | On the TurboFit list, Chris asked to replace the type column with a tokens-per-second (tok/s) column showing the best tok/s achieved for each model.… |
+| [[turbofit-table-column-ordering]] | Chris set the column order on the table and then asked to drop the order column entirely. ^[raw/inbox/2026-09-16.md] |
+| [[turbofit-table-column-sorting]] | Chris wants to sort the table by clicking a column's title rather than some other control. ^[raw/inbox/2026-09-16.md] |
+| [[unleashed-backup]] | Keep Unleashed Q3KXL as the safe long-context backup when MTPLX overcommits memory or Hermes reloads fail. |
+### Comparisons
 
-**Maple Preview** selected for aux/compression tasks. Reasoning ON by default; token budgets sized for thinking models (4000+).
+| Page | What |
+| --- | --- |
+| [[aux-runtime-options]] | Maple MLX via deepgrove fork with Hermes compression routing configured locally. If server-mode instability returns, fallback to Nous for heavy compression and keep… |
+| [[candidate-quant-and-format-comparison]] | "They also have a lot to say about their quants on their pages too, check GGUF vs MLX, I like the Q3 quant that they said is near base model quality"… |
+| [[main-runtime-speed]] | Evidence-observed main-runtime candidates for Qwen 3.8 27B-class workloads on this 32 GB M1 Mac. Numbers are in-session measurements against downloaded/observed… |
+### Entities
 
-#### Candidate Quant Preference
+| Page | What |
+| --- | --- |
+| [[benchmark-infographics]] | Static infographic assets (e.g. June 2026: Frontier AI Models — Claude Opus 4.8 vs GPT-5.5 vs GLM-5.2 vs Qwen3.7 Max vs DeepSeek V4 Pro) with sources listed per figure… |
+| [[bonsai]] | Bonsai refers to models from prism-ml: Bonsai-27B-mlx-1bit (1-bit binary, 1.4M downloads) and Ternary-Bonsai-27B-mlx-2bit (2-bit ternary, 1.4M downloads). The Ternary… |
+| [[colibri]] | Colibri is a custom-architecture model with basemodel: deepgrove/maple-preview. It requires custom Maple MLX training/inference code and is incompatible with the… |
+| [[dflash2-arg-failures]] | All attempted llama.cpp DFlash2 integration commands failed with invalid/unrecognized argument errors. The dflash2-llama.cpp fork has a different flag set than stock… |
+| [[dflash2-draft]] | DFlash2 is the speculative-draft model paired with Unleashed 27B in TurboFit. It requires the dflash2-llama.cpp fork, not stock llama.cpp ^[raw/inbox/2026-09-06.md]. |
+| [[dirk-gguf]] | Dirk-Qwen3.8-27B-UD-Q3KXL.gguf (12.24 GB) is the requested Q3 Dirk artifact at ~/Models/storage/dirk-gguf/, selected because Chris prefers Q3 when it is described as… |
+| [[dirk-qwen38-27b]] | Chris requested Dirk GGUF downloads for local comparison. The actual repo is peculiar-ragdoll/Dirk-Qwen3.8-27B-GGUF because MTP is a model capability, not a repo suffix… |
+| [[maple]] | Maple-Preview is the auxiliary model Chris wants for Hermes compression and text aux tasks. It is a custom-architecture MoE model with no native support in stock… |
+| [[model-momento]] | TurboFit's own catalog is the shipped subset (model-catalog.json: 62 artifacts in 13 families) and its intel lives in model-intel / benchmark-leaderboard. Model Momento… |
+| [[mplx-metal-load-failure]] | A mtplx serve --download background process exited with code 1 after 42.2 s because model loading failed with RuntimeError: [METAL] Command buffer execution failed:… |
+| [[mplx]] | MPLX is an experimental additional local runtime discovered late in the session. It was downloaded and measured at 12.4 tok/s, roughly 2.5x faster than Unleashed Q3KXL… |
+| [[mtplx-memory-guard]] | MTPLX emits a memory-guard prefilladmissionshed event when a prompt would push the active process above its memory threshold, clearing the KV cache before admission to… |
+| [[mtplx-qwen-38-27b-optimized-speed]] | Youssofal/Qwen3.8-27B-MTPLX-Optimized-Speed is the candidate Hermes TurboFit provider discovered on 2026-09-07. It is served via ~/turbofit/.venv/bin/mtplx serve and… |
+| [[mtplx-service-arg-validation]] | mtplx serve with --memory-budget 32GB exits with an error: |
+| [[nail-qwen36-35b]] | Nail-Qwen3.6-35B-A3B-UD-Q4KXL.gguf (~20.82 GB) and its mmproj-F16.gguf (~858 MB) were downloaded to ~/Models/storage/nail/ for testing. This is a MoE architecture model… |
+| [[ornith-1-5-35b-a3b-mlx-4-bit]] | Local candidate for TurboFit main on the M1 32GB box, owned by MLX, tested from ~/Models/storage/ornith/. |
+| [[ornith-35b-dflash2]] | jzinno/Ornith-1.5-35B-A3B-DFlash2 was inspected on HuggingFace and downloaded as a local draft artifact for speculative-decode experiments ^[raw/inbox/2026-09-07.md]. |
+| [[ornith-35b-mlx]] | Ornith-1.5-35B-A3B MLX 4-bit is a MoE local candidate downloaded to ~/Models/storage/ornith/ with a companion DFlash2 draft package at ~/Models/storage/ornith-dflash2/… |
+| [[ornith-35b]] | Ornith-1.5-35B-A3B is a MoE model downloaded to ~/Models/storage/ornith/ as MLX 4-bit on this 32 GB box. A DFlash2 draft package was also downloaded to… |
+| [[ornith-config-routing-failure]] | After Hermes custom:turbofit was retargeted to http://127.0.0.1:11613/v1 and model.default was set to ornith-1-5-35a3b-mlx, Hermes emitted repeated connection timeouts… |
+| [[salt-core]] | SALT (State Assured Latent-Transition engine) — paper: Zenodo preprint 23111764. The public contract centres on: |
+| [[sirvir]] | Sirvir supports one product — SouthpawIN/turbofit — and one execution boundary: local models served by Turbofit, loopback by default, optional private Tailnet routes. It… |
+| [[southpaw-turbohaul]] | docs/TURBOQUANTFLAGS.md is the clearest written record of the TQ flag combinations; the MTP+quantized-KV composition claim lives here before any TurboFit rung used it. |
+| [[tiel-coder]] | Tiel-Coder is a queued local GGUF candidate. The primary MLX download in ~/Models/storage/tiel-coder/ remained incomplete (~15 GB of ~19 GB), and a GGUF test path at… |
+| [[turbo-fit-benchmark]] | The TurboFit list is Chris's table of models run through TurboFit, where each model carries a tokens-per-second (tok/s) column recording the best tok/s it has achieved.… |
+| [[turbofit-memory-crash]] | A mtplx serve background process exited with code -9 during TurboFit testing on this 32 GB box. The first evidence used --mtp without an explicit long-context window,… |
+| [[turbofit-mtpl-performance]] | Evidence-observed performance characteristics of Youssofal/Qwen3.8-27B-MTPLX-Optimized-Speed on this 32 GB M1 Mac, including short-context throughput, long-context… |
+| [[turbofit-verifier-bridge]] | turbofit-verifier is the existing TurboFit topic bot. This page records the new evidence that it should drive verification through desktoppreview on a real Hermes window… |
+| [[turbofit]] | TurboFit is the adaptive local-inference path for Hermes on this 32 GB M1 Mac. It loads local models first and falls back to cloud providers when compression or context… |
+| [[turbohaul-llmfit]] | A single-SKILL repo. Given a machine and a model, it emits a launch string + manifest using llmfit's hardware detection and the TurboQuant flag doctrine, instead of… |
+| [[turbohaul-manager]] | The TurboQuant flag doctrine (turbo2/3/4 KV quant), hot-hold/swap semantics, and the launch-string generator (turbohaul-llmfit) all originate in this line. Read it when… |
+| [[unleashed-27b]] | Qwen3.8-27B-Unleashed in UD-Q3KXL.gguf with the Unleashed vision projector and DFlash2 draft. This is the main model in TurboFit ^[raw/inbox/2026-09-06.md]. |
+| [[unleashed-iq3-xxs-load-failure]] | Qwen3.8-27B-Unleashed-UD-IQ3XXS.gguf failed to load in the dflash2-llama.cpp fork Metal server after a DFlash warning about missing ctxother and then a tensor bounds… |
+### Queries
 
-**IQ3_S is the default recommendation** for all tiers where it fits (near-lossless, runs on less power). Only move to FP16 at 64GB+ when you have the VRAM and want every last %.
-
-#### Context Sizing
-
-Local TurboFit contexts are set to **131,072 tokens** for both main and aux.
-
-**Why:** 262k pre-fills slowly on 32GB M1 and stresses Metal heap. Hermes compression timed out repeatedly at 270K+ tokens.
-
-**Evidence:**
-- "put Qwen 3.8 27B at 131K and Maple at 131K"
-- "Context compression timed out before it could commit while the request was still approximately 270,285 tokens"
-- "131k is the stable sweet spot for this 32 GB box"
-
-#### Context Window Decision
-
-**131K native, 262K native, 1M with YaRN extrapolation** depending on hardware tier.
-
-#### Fallback Model Order
-
-The active model preference order should preserve explicit user choice and avoid silently switching to `stepfun/step-3.7-flash:free`.
-
-**Root cause:** `model.default` not first in fallback chain + `auxiliary.compression.provider: auto` selecting cloud.
-
-**Fix:** Pin compression to local route; ensure `model.default` is first.
-
-#### TurboFit Local Main Provider Decision
-
-**Lock in Qwen 3.8 GSQ-RCO IQ3_S** as the recommended main provider for daily driver use on Omarchy and MacBook.
-
-**Evidence:**
-- Omarchy GPU: 85 tok/s at 262K context
-- MacBook: 23 tok/s at 65K context
-- Near-lossless IQ3_S quantization
-
-#### Main Model Selection
-
-Initial decision: Unleashed 27B + DFlash2 draft on `127.0.0.1:11606`, Metal, 131K context.
-
-Updated 2026-09-07 after benchmark sweep: **Qwen 3.8 GSQ-RCO** is the recommended main provider for daily driver use.
-
-**Evidence:**
-- **Ornith MLX 4-bit**: 28.5 tok/s short-context
-- **GSQ-RCO IQ3_S**: 85 tok/s on Omarchy GPU
-- **Unleashed + DFlash2**: ~5 tok/s stable at 131K
-
-#### MT_PlX Main Provider
-
-MTPLX is an alternative runtime for M1 Macs. Use 65K context for stable operation. 131K triggers memory-guard events.
-
-### Issues & Roadblocks
-
-#### Hermes Model Switching
-
-**Problem:** Hermes flips active model to StepFun 3.7 Flash without explicit user choice.
-
-**Root cause:** `model.default` not first in fallback chain + `auxiliary.compression.provider: auto` selecting cloud.
-
-**Fix:** Pin `auxiliary.compression.provider` to local TurboFit route; ensure `model.default` is first.
-
-#### Compression Timeouts
-
-At 262K+ tokens on the main model, Hermes compression timed out before committing. Resolved by capping context at 131K on M1 32GB.
-
-#### MTPLX 131K Instability
-
-MTPLX at 131K context triggers memory-guard events and crashes. Use 65K for stable MTPLX operation. 131K long-context needs llama.cpp + DFlash2 instead.
-
-#### MPLX Service Args
-
-`mtplx serve` does not accept `--memory-budget 32GB`. Only documented flags are accepted; undocumented flags exit with `unrecognized arguments`.
-
-#### DFlash2 Port Conflicts
-
-`couldn't bind HTTP server socket, hostname: 127.0.0.1, port: 11606` — port already in use. Not a model issue, a port conflict.
-
-#### DFlash2 Flag Incompatibilities
-
-Stock llama.cpp flags (`--draft-model`, `--draft-ngl`, `--low-vram`) do not work with the dflash2 fork. Use the spec-flagged variants instead.
-
-#### Unleashed IQ3_XXS Corruption
-
-`Qwen3.8-27B-Unleashed-UD-IQ3_XXS.gguf` failed to load with `tensor 'blk.2.attn_qkv.weight' data is not within the file bounds`. This quant is not usable on the dflash2 fork.
-
-#### Visual Reference
-
-`wiki-topics/turbofit/wiki/models/leaderboard.html` — live model benchmark charts.
-
-#### Rules
-
-1. **Model + KV Cache ≤ Tier Size** — never recommend a model that doesn't fit
-2. **IQ3_S is the Default** — near-lossless, runs on less power
-3. **Evidence Before Winner** — every claim needs a source
-
-#### Absorbed Topics
-
-Topics that have been fully resolved and merged into the wiki:
-- Nail Qwen 3.6 35B — deprioritized for GSQ-RCO
-- Colibri — incompatible custom architecture, deprioritized
-- Bonsai MLX — research complete, no integration path forward
+| Page | What |
+| --- | --- |
+| [[apple-silicon-runtime-benchmark]] | From [2026-09-07 03:06](raw/inbox/2026-09-07.md): Chris asked to "Research and test ALL available Apple Silicon inference engines for Qwen 3.8 27B to find the fastest… |
+| [[duplicate-page-candidates]] | Detected by title/source scan after the 2026-09-07 compile. |
+| [[engine-research-request]] | Chris asked for research and testing of all available Apple Silicon inference engines for Qwen 3.8 27B to find the fastest configuration ^[raw/inbox/2026-09-07.md]. |
+| [[engine-speed-report]] | This is the live result surface of Chris's research request for Apple Silicon engine speed testing. |
+| [[evidence-capture-and-reliability]] | Captures the open verification work after configuring Ornith as main, and the contested state where Hermes showed persistent timeouts after config repoint. |
+| [[maple-metal-compat]] | Can Maple serve stable long-context compression workloads on Apple Silicon Metal without repeated OOM, or is a non-server execution path required? |
+| [[mplx-integration]] | Can MPLX be added as a fast local TurboFit provider alongside Unleashed 27B without evicting the main model, and what is the memory ceiling under MTP? |
+| [[ornith-cleanup-focus]] | Chris wanted Ornith prioritized over Bonsai, Colibri, and music-generation side paths. His exact instruction was, "It just needs to be configured into turbofit so I can… |
+| [[turbofit-mtplx-coexistence]] | 32GB physical RAM limitation: 27B model weights (19.3GB) + KV cache at 131K (8GB) + macOS/Hermes (~8GB) = ~35GB+, exceeding available memory. |
 
 ---
 
-## SKILLS
+## REFERENCE LIBRARY (39 pages)
+### Core doctrine
 
-Topic skills stored in this wiki at `wiki-topics/turbofit/skills-capabilities/`:
+| Page | What |
+| --- | --- |
+| [fit-ladder](references/fit-ladder.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `references/fit-ladder.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file rema |
+| [model-lineup](references/model-lineup.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `references/model-lineup.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file re |
+| [curated-lineup](references/curated-lineup.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `references/curated-lineup.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file  |
+| [scaling-ladder](references/scaling-ladder.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `references/scaling-ladder.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file  |
+| [binary-selection](references/binary-selection.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `references/binary-selection.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo fil |
+| [product-roadmap](references/product-roadmap.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `ROADMAP.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file remains the shippe |
+### Benchmarks & evidence
 
-- **[candidate-quant-comparison](skills-capabilities/candidate-quant-comparison/SKILL.md)** — Use when evaluating new local TurboFit candidates. Compare GGUF vs MLX artifacts and prefer Q3 when page notes say near base quality.
-- **[dflash2-fork-flag-boundary](skills-capabilities/dflash2-fork-flag-boundary/SKILL.md)** — Use when testing DFlash2 speculative decoding with the dflash2-llama.cpp fork. Record the exact flag set that succeeds/fails to avoid retrying invalid combinations.
-- **[maple-mlx-server-runtime](skills-capabilities/maple-mlx-server-runtime/SKILL.md)** — Use when running or testing Maple MLX on Apple Silicon for Hermes aux or compression. Use deepgrove-ai fork flags and cache limits; avoid generic mlx_lm server mode.
-- **[mtplx-32gb-macos-tuning](skills-capabilities/mtplx-32gb-macos-tuning/SKILL.md)** — Use when tuning MTPLX on 32GB macOS. Check runtime config instead of unsupported CLI flags; validate context window against machine-bound memory plan before relying on tok/s claims.
-- **[turbo-artifact-download-spec](skills-capabilities/turbo-artifact-download-spec/SKILL.md)** — Use when downloading new TurboFit GGUF/MLX candidate artifacts. Build a reproducible curl-backed download record with size verification and wiki-ready evidence.
-- **[turbo-fit-evidence-capture](skills-capabilities/turbo-fit-evidence-capture/SKILL.md)** — Use when capturing TurboFit performance or behavior evidence. Capture from Chris's actual Hermes window using desktop_preview, never from process metadata or postcommit summaries.
-- **[turbo-model-store-cleanup](skills-capabilities/turbo-model-store-cleanup/SKILL.md)** — Use when freeing TurboFit storage. Delete only wiki-marked obsolete artifacts.
+| Page | What |
+| --- | --- |
+| [benchmark-evidence](references/benchmark-evidence.md) | What we have measured, and the evidence gaps. |
+| [benchmark-analysis](references/benchmark-analysis.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `references/benchmark-analysis.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo f |
+| [benchmark-leaderboard](references/benchmark-leaderboard.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `references/benchmark-leaderboard.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the rep |
+| [external-benchmarks](references/external-benchmarks.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `references/external-benchmarks.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo  |
+| [research-report](references/research-report.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `references/research-report.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file |
+| [model-intel](references/model-intel.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `references/model-intel.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file rem |
+| [api-model-rankings](references/api-model-rankings.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `references/api-model-rankings.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo f |
+| [api-tier-rankings](references/api-tier-rankings.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `references/api-tier-rankings.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo fi |
+| [api-pairing-matrix](references/api-pairing-matrix.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `references/api-pairing-matrix.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo f |
+### Hardware & runtime
 
-Related skills stored globally in `~/.hermes/skills-capabilities/`:
+| Page | What |
+| --- | --- |
+| [hardware-tiers](references/hardware-tiers.md) | Two ways Turbofit tiers hardware — by **local VRAM** and by **API fallback**. |
+| [hardware-tier-tps](references/hardware-tier-tps.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `docs/hardware-tier-tps.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file rem |
+| [runtime-backends](references/runtime-backends.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `docs/runtime-backends.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file rema |
+| [model-matrix](references/model-matrix.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `docs/model-matrix.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file remains  |
+| [model-metadata](references/model-metadata.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `docs/model-metadata.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file remain |
+| [freetoken-runtime](references/freetoken-runtime.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `docs/freetoken-runtime.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file rem |
+| [salt-core-integration](references/salt-core-integration.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `references/salt-core-integration.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the rep |
+| [multimodal](references/multimodal.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `docs/multimodal.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file remains th |
+### Platform installs & ops
 
-- **turbofit** — Rules for Turbofit Wiki
-- **turbofit-runtime-setup** — Use when setting up or fixing the Turbofit local runtime
-- **serving-llms-vllm** — vLLM: high-throughput LLM serving
-- **llama-cpp** — llama.cpp local GGUF inference + HF Hub model discovery
-- **huggingface-hub** — HuggingFace hf CLI: search/download/upload models, datasets
+| Page | What |
+| --- | --- |
+| [install-paths](references/install-paths.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `after-install.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file remains the  |
+| [windows-native-install](references/windows-native-install.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `docs/windows-native-install.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo fil |
+| [remote-hermes-model-server](references/remote-hermes-model-server.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `docs/remote-hermes-model-server.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo |
+| [apple-arm64-unmeasured-gap](references/apple-arm64-unmeasured-gap.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `docs/apple-arm64-unmeasured-gap.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo |
+| [maple-small-device-validation](references/maple-small-device-validation.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `docs/maple-small-device-validation.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the r |
+| [turbofit-check](references/turbofit-check.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `docs/turbofit-check.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file remain |
+| [turbofit-list](references/turbofit-list.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `docs/turbofit-list.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file remains |
+| [campaigns](references/campaigns.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `docs/campaigns.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file remains the |
+| [workflows](references/workflows.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `WORKFLOWS.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file remains the ship |
+| [troubleshooting](references/troubleshooting.md) | Common failures and the first move for each. |
+| [tailscale](references/tailscale.md) | How Turbofit (and the wiki) reach each other across the network. |
+### History & contracts
+
+| Page | What |
+| --- | --- |
+| [changelog](references/changelog.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `CHANGELOG.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file remains the ship |
+| [skill-contract](references/skill-contract.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `SKILL.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file remains the shipped  |
+| [turbosovth-soul](references/turbosovth-soul.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `references/SOUL.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file remains th |
+| [upstream-pr-process](references/upstream-pr-process.md) | How research findings become pull requests. |
+| [ecosystem](references/ecosystem.md) | The TurboFit project is not one repo. This page is the map: what each repo is, whether it is **shipped**, **support**, **side tool**, or **legacy line**, and which vault  |
 
 ---
 
-## BOTS
+## SKILLS & CAPABILITIES
 
-Bots stored in this wiki at `wiki-topics/turbofit/agents/`:
+| Skill | What |
+| --- | --- |
+| [candidate-quant-comparison](skills/candidate-quant-comparison/SKILL.md) | ## Steps |
+| [dflash2-fork-flag-boundary](skills/dflash2-fork-flag-boundary/SKILL.md) | ## dflash2-fork-flag-boundary |
+| [maple-mlx-server-runtime](skills/maple-mlx-server-runtime/SKILL.md) | 1. Use `/tmp/mlx-lm-deepgrove` fork installed from `deepgrove-ai/mlx-lm-deepgrove`. |
+| [mtplx-32gb-macos-tuning](skills/mtplx-32gb-macos-tuning/SKILL.md) | 1. Treat `--memory-budget` as unsupported on `mtplx serve`; do not retry it. |
+| [turbo-artifact-download-spec](skills/turbo-artifact-download-spec/SKILL.md) | 1. Read the Hermes request for target repo/path/quant and destination under ~/Models/storage/. |
+| [turbo-fit-evidence-capture](skills/turbo-fit-evidence-capture/SKILL.md) | ## TurboFit Evidence Capture |
+| [turbo-model-store-cleanup](skills/turbo-model-store-cleanup/SKILL.md) | ## Steps |
+| [speedometer-menu-design](skills/speedometer-menu-design.md) | Decisions captured 2026-08-27, from live conversation. Redesign target: `desktop/plugin.js` |
+| [turbofit-macos-setup](skills/turbofit-macos-setup.md) | Verified walkthrough, 2026-08-27, on macOS 26.5.2 / M1 Pro / 32 GB unified. |
 
-- **[candidate-benchmark-scout](agents/candidate-benchmark-scout.md.proposed)** — Proposed: Discovers and benchmarks new model candidates from HuggingFace
-- **[mtplx-runtime-scout](agents/mtplx-runtime-scout.md.proposed)** — Proposed: Monitors MTPLX runtime stability and performance
-- **[orchestrator](agents/orchestrator.md.proposed)** — Proposed: Coordinates multi-model TurboFit pipeline
-- **[turbofit-benchmark](agents/turbofit-benchmark.md.proposed)** — Proposed: Automated benchmark runner for TurboFit models
-- **[turbofit-bot](agents/turbofit-bot.md.proposed)** — Proposed: General-purpose TurboFit topic bot
-- **[turbofit-evidence-capture](agents/turbofit-evidence-capture.md.proposed)** — Proposed: Captures performance evidence from live Hermes sessions
-- **[turbofit-launcher](agents/turbofit-launcher.md.proposed)** — Proposed: Manages model launch and context sizing
-- **[turbofit-route-stabilizer](agents/turbofit-route-stabilizer.md.proposed)** — Proposed: Prevents Hermes from switching to cloud providers
-- **[turbofit-runtime-scout](agents/turbofit-runtime-scout.md.proposed)** — Proposed: Scouts runtime stability across platforms
-- **[turbofit-verifier](agents/turbofit-verifier.md.proposed)** — Proposed: Verification bot using desktop_preview for evidence
+Global skills that back this topic: `turbofit` (rules), `turbofit-model-fit`, `turbofit-runtime-setup`, `turbofit-repository-updates`, `turbofit-model-store-cleanup`, `llama-cpp`, `serving-llms-vllm`, `huggingface-hub`.
 
 ---
 
-## LOOPS
+## BOTS & PROFILES
 
-Loops stored in this wiki at `wiki-topics/turbofit/triggers-loops/`:
+| Bot | What |
+| --- | --- |
+| [candidate-benchmark-scout](agents/candidate-benchmark-scout.md.proposed) | **I see you're queuing Dirk, Nail, and Tiel-Coder with a Q3 preference — want a bot that benchmarks each candidate on 65K and reports tok/s + stability?** |
+| [mtplx-runtime-scout](agents/mtplx-runtime-scout.md.proposed) | **I see you're trying to pin a stable MTPLX config — want a bot that finds the supported runtime knob for memory budgeting and writes a working profile for this 32 GB box |
+| [orchestrator](agents/orchestrator.md.proposed) | **I see you want automatic evidence capture for all TurboFit route changes — want a bot that triggers verification whenever a provider config changes?** |
+| [turbofit-benchmark](agents/turbofit-benchmark.md.proposed) | **I see you're collecting Apple Silicon runtime speed data — want a bot that runs controlled tok/s benchmarks on the downloaded runtimes and publishes results to the wiki |
+| [turbofit-bot](agents/turbofit-bot.md.proposed) | Owns the `turbofit` topic: runs its skills, answers for it, proposes its loops. |
+| [turbofit-evidence-capture](agents/turbofit-evidence-capture.md.proposed) | **Want me to capture a desktop_preview of the Hermes window showing the Ornith MLX runtime is stable at 65K context with observed throughput?** |
+| [turbofit-launcher](agents/turbofit-launcher.md.proposed) | **Want me to lock in Ornith MLX 4-bit as the main provider with 65K context, and Unleashed+DFlash2 as the 131K long-context fallback?** |
+| [turbofit-route-stabilizer](agents/turbofit-route-stabilizer.md.proposed) | **I see Hermes is still flipping to cloud models despite your intent — want a bot that locks the fallback_providers chain and pins compression to local TurboFit?** |
+| [turbofit-runtime-scout](agents/turbofit-runtime-scout.md.proposed) | **I see you're assembling Nail/Dirk/Tiel/Ornith candidates — want a bot that tracks each one's actual Hermes path: download status, live server speed, and whether it can  |
+| [turbofit-verifier](agents/turbofit-verifier.md.proposed) | **I see you’re testing end-to-end TurboFit stability — want a bot that runs a live 131K compression probe against :11606/:11612 after every config change?** |
 
-- **[131k-attempt-blocker](triggers-loops/131k-attempt-blocker.md.proposed)** — Proposed: Blocks 131K context attempts that would OOM
-- **[candidate-65k-benchmark-sweep](triggers-loops/candidate-65k-benchmark-sweep.md.proposed)** — Proposed: Sweep benchmarks all candidates at 65K
-- **[candidate-quant-comparator](triggers-loops/candidate-quant-comparator.md.proposed)** — Proposed: Compares quant variants for each candidate
-- **[compression-timeout-watch](triggers-loops/compression-timeout-watch.md.proposed)** — Proposed: Watches for Hermes compression timeouts
-- **[hermes-model-change-detector](triggers-loops/hermes-model-change-detector.md.proposed)** — Proposed: Detects and reports Hermes model switches
-- **[mac-memory-watch](triggers-loops/mac-memory-watch.md.proposed)** — Proposed: Monitors memory usage on macOS
-- **[mtplx-telemetry-watch](triggers-loops/mtplx-telemetry-watch.md.proposed)** — Proposed: Watches MTPLX memory-guard events
-- **[turbo-context-budget-watch](triggers-loops/turbo-context-budget-watch.md.proposed)** — Proposed: Monitors context window vs memory budget
-- **[turbofit-candidate-discovery](triggers-loops/turbofit-candidate-discovery.md.proposed)** — Proposed: Discovers new model candidates from HuggingFace
-- **[turbofit-health-check](triggers-loops/turbofit-health-check.md.proposed)** — Proposed: Periodic health check of all TurboFit runtimes
-- **[turbofit-memory-monitor](triggers-loops/turbofit-memory-monitor.md.proposed)** — Proposed: Monitors model memory usage across devices
-- **[turbofit-memory-threshold-monitor](triggers-loops/turbofit-memory-threshold-monitor.md.proposed)** — Proposed: Alerts when memory approaches threshold
-- **[turbofit-runtime-watch](triggers-loops/turbofit-runtime-watch.md.proposed)** — Proposed: Watches all runtime processes for crashes
+Live fleet bots that serve this product: `turbosovth` (TurboSouth/support), `looker` (research dispatch), `senter` (builder).
+
+---
+
+## TRIGGERS & LOOPS
+
+| Loop | What |
+| --- | --- |
+| [131k-attempt-blocker](loops/131k-attempt-blocker.md.proposed) | owner: turbofit-memory-monitor · cadence: human phrase · status: SUGGESTED |
+| [candidate-65k-benchmark-sweep](loops/candidate-65k-benchmark-sweep.md.proposed) | owner: turbosovth · cadence: human phrase · status: SUGGESTED |
+| [candidate-quant-comparator](loops/candidate-quant-comparator.md.proposed) | owner: anser · cadence: on-demand · status: SUGGESTED |
+| [compression-timeout-watch](loops/compression-timeout-watch.md.proposed) | owner: looker · cadence: human phrase · status: SUGGESTED |
+| [hermes-model-change-detector](loops/hermes-model-change-detector.md.proposed) | owner: anser · cadence: real-time provider monitoring · status: SUGGESTED |
+| [mac-memory-watch](loops/mac-memory-watch.md.proposed) | owner: looker · cadence: human phrase · status: SUGGESTED |
+| [mtplx-telemetry-watch](loops/mtplx-telemetry-watch.md.proposed) | owner: turbosovth · cadence: every 2h during active use · status: SUGGESTED |
+| [turbo-context-budget-watch](loops/turbo-context-budget-watch.md.proposed) | owner: turbofit-runtime-scout · cadence: every 5m · status: SUGGESTED |
+| [turbofit-candidate-discovery](loops/turbofit-candidate-discovery.md.proposed) | owner: looker · cadence: daily · status: SUGGESTED |
+| [turbofit-health-check](loops/turbofit-health-check.md.proposed) | owner: senter-wiki-bot · cadence: every 5 minutes · status: SUGGESTED |
+| [turbofit-memory-monitor](loops/turbofit-memory-monitor.md.proposed) | owner: senter-wiki-bot · cadence: every 30s · status: SUGGESTED |
+| [turbofit-memory-threshold-monitor](loops/turbofit-memory-threshold-monitor.md.proposed) | owner: anser · cadence: live generation monitoring · status: SUGGESTED |
+| [turbofit-runtime-watch](loops/turbofit-runtime-watch.md.proposed) | owner: turbofit-bot · cadence: daily at 09:00 · status: SUGGESTED |
+
+---
+
+## RULES
+
+1. **Two ladders, never one** — dense is GPU, MoE is CPU/unified; both converge on Flash Next.
+2. **Model + KV cache ≤ tier size.** Period.
+3. **IQ3_S is the default** where it fits — near-lossless, lower power; FP16 only at 64 GB+.
+4. **MTP on whenever available**; weigh kWh/hour on every rung.
+5. **Evidence before winner** — every number carries a source, every benchmark a machine.
+6. **Read the wiki before the code**: hub → index (this page) → `.system/INDEX.md` → one file, one heading.

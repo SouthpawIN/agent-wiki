@@ -1,4 +1,4 @@
-# INDEX — wiki-topics/turbofit
+# INDEX — topics/turbofit
 _42 files · 79 KB · regenerate: `python3 assets/build-index.py`_
 
 Read order for an agent: this file → pick a file below → its outline → `read_file offset=<line> limit=<n>`. Sessions under `.system/sessions/` are full transcripts (largest; go by outline).

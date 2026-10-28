@@ -5,7 +5,7 @@ updated: 2026-09-07
 type: entity
 tags: [entity, performance, mtplx, mtp, evidence, pain]
 sources:
-  - raw/inbox/2026-09-07.md
+  - [raw/inbox/2026-09-07.md](../../raw/inbox/2026-09-07.md)
   - raw/inbox/2026-09-07-from-senter.md
 confidence: high
 contested: true
@@ -66,8 +66,8 @@ Hermes summaries claimed MTPLX was the locked main provider at 131K, but later c
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/entities/mplx.md|MPLX]]
-- [[wiki-topics/turbofit/wiki/concepts/mtplx-context-overcommit.md|MPLX Context Overcommit]]
-- [[wiki-topics/turbofit/wiki/entities/turbofit-memory-crash.md|TurboFit Memory Crash]]
-- [[wiki-topics/turbofit/wiki/entities/mtplx-memory-guard.md|MPLX Memory Guard]]
-- [[wiki-topics/turbofit/wiki/entities/mtplx-qwen-38-27b-optimized-speed.md|MPLX Qwen 3.8 27B Optimized Speed]]
+- [[mplx|MPLX]]
+- [[mtplx-context-overcommit|MPLX Context Overcommit]]
+- [[turbofit-memory-crash|TurboFit Memory Crash]]
+- [[mtplx-memory-guard|MPLX Memory Guard]]
+- [[mtplx-qwen-38-27b-optimized-speed|MPLX Qwen 3.8 27B Optimized Speed]]

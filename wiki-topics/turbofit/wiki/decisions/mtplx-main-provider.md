@@ -59,6 +59,6 @@ Ornith was selected as the main provider because:
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/decisions/context-window-decision.md|Context Window Decision]]
-- [[wiki-topics/turbofit/wiki/entities/mplx-qwen-38-27b-optimized-speed.md|MPLX Qwen 3.8 27B Optimized Speed]]
-- [[wiki-topics/turbofit/wiki/entities/ornith-35b-mlx.md|Ornith 35B MLX]]
+- [[context-window-decision|Context Window Decision]]
+- [[mtplx-qwen-38-27b-optimized-speed|MPLX Qwen 3.8 27B Optimized Speed]]
+- [[ornith-35b-mlx|Ornith 35B MLX]]

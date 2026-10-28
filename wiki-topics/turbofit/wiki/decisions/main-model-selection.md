@@ -4,7 +4,7 @@ created: 2026-09-06
 updated: 2026-09-07
 type: decision
 tags: [decision, model, preference, pain]
-sources: [raw/inbox/2026-09-06.md, raw/inbox/2026-09-07.md]
+sources: [raw/inbox/2026-09-06.md, [raw/inbox/2026-09-07.md](../../raw/inbox/2026-09-07.md)]
 confidence: medium
 contested: true
 ---
@@ -44,8 +44,8 @@ Multiple provider switches occurred during the session:
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/entities/unleashed-27b.md|Unleashed 27B]]
-- [[wiki-topics/turbofit/wiki/entities/ornith-35b-mlx.md|Ornith 35B MLX]]
-- [[wiki-topics/turbofit/wiki/entities/mplx.md|MPLX]]
-- [[wiki-topics/turbofit/wiki/entities/mtplx-qwen-38-27b-optimized-speed.md|MPLX Qwen 3.8 27B]]
-- [[wiki-topics/turbofit/wiki/decisions/context-window-decision.md|Context Window Decision]]
+- [[unleashed-27b|Unleashed 27B]]
+- [[ornith-35b-mlx|Ornith 35B MLX]]
+- [[mplx|MPLX]]
+- [[mtplx-qwen-38-27b-optimized-speed|MPLX Qwen 3.8 27B]]
+- [[context-window-decision|Context Window Decision]]

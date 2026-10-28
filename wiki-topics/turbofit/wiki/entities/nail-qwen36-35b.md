@@ -38,6 +38,6 @@ The `mmproj-F16.gguf` file (858 MB) provides vision capability. Test verificatio
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/queries/apple-silicon-runtime-benchmark|Speed Test Results]]
-- [[wiki-topics/turbofit/wiki/decisions/candidate-quant-preference|Candidate Quant Preference]]
-- [[wiki-topics/turbofit/wiki/entities/ornith-35b-mlx.md|Ornith 35B MLX]]
+- [[apple-silicon-runtime-benchmark|Speed Test Results]]
+- [[candidate-quant-preference|Candidate Quant Preference]]
+- [[ornith-35b-mlx|Ornith 35B MLX]]

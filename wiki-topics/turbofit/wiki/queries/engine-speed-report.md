@@ -72,6 +72,6 @@ providers:
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/queries/apple-silicon-runtime-benchmark.md|APL_Silicon Runtime Benchmark]]
-- [[wiki-topics/turbofit/wiki/entities/ornith-35b-mlx.md|Ornith 35B MLX]]
-- [[wiki-topics/turbofit/wiki/decisions/context-window-decision.md|Context Window Decision]]
+- [[apple-silicon-runtime-benchmark|APL_Silicon Runtime Benchmark]]
+- [[ornith-35b-mlx|Ornith 35B MLX]]
+- [[context-window-decision|Context Window Decision]]

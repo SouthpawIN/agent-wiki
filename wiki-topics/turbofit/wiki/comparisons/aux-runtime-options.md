@@ -28,6 +28,6 @@ Maple MLX via deepgrove fork with Hermes compression routing configured locally.
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/entities/maple.md|Maple]]
-- [[wiki-topics/turbofit/wiki/decisions/aux-model-selection.md|Aux Model Selection]]
-- [[wiki-topics/turbofit/wiki/queries/maple-metal-compat.md|Maple Metal Compatibility]]
+- [[maple|Maple]]
+- [[aux-model-selection|Aux Model Selection]]
+- [[maple-metal-compat|Maple Metal Compatibility]]

@@ -192,5 +192,5 @@ llama-server \
 - N-gram shard is read sparsely; SSD-backed mmap has negligible latency impact
 
 ## Cross-references
-- [[wiki-topics/turbofit/index|wiki index]]
-- [[models/Qwen3.8-27B|Qwen3.8-27B]] — non-MoE sibling
+- [[index|wiki index]]
+- [[Qwen 3.8 27B Base|Qwen3.8-27B]] — non-MoE sibling

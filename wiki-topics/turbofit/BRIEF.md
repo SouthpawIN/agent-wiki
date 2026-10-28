@@ -12,7 +12,7 @@
 - If a cut mentions another topic by name (music, anser, omnisenter-models, legacy-bots, pocket-shop, nous-community…) more than this one, it goes there
 
 ## Aliases (the cutter binds hard on these words)
-- turbofit
+- turbofit, turbo-fit, turbofit-list, fit-ladder, fit list, strata, turbohaul, turbosouth, sirvir, model-momento
 
 ## Lens — how to read new context for this topic
 - What is sovthpaw trying to achieve here, in his words? What changed since the last pass?

@@ -45,6 +45,6 @@ Total needed:
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/entities/mplx.md|MPLX]]
-- [[wiki-topics/turbofit/wiki/entities/mplx-qwen-38-27b-optimized-speed.md|MPLX Qwen 3.8 27B Optimized Speed]]
-- [[wiki-topics/turbofit/wiki/entities/mplx-memory-guard.md|MPLX Memory Guard]]
+- [[mplx|MPLX]]
+- [[mtplx-qwen-38-27b-optimized-speed|MPLX Qwen 3.8 27B Optimized Speed]]
+- [[mtplx-memory-guard|MPLX Memory Guard]]

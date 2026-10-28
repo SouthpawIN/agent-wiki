@@ -37,4 +37,4 @@ Not recommended — too slow for audio generation
 
 ## Notes
 Size: 53G total
-Cross-references: [[wiki-topics/turbofit/index|wiki index]]
+Cross-references: [[index|wiki index]]

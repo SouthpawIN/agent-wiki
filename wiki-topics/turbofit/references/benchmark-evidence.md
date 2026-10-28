@@ -2,7 +2,7 @@
 
 What we have measured, and the evidence gaps.
 
-> Grounded in [`external-benchmarks.md`](../../../../../turbofit/references/external-benchmarks.md), [`research-report.md`](../../../../../turbofit/references/research-report.md), and [`benchmark-analysis.md`](../../../../../turbofit/references/benchmark-analysis.md) in the product repo.
+> Grounded in [`external-benchmarks.md`](external-benchmarks.md), [`research-report.md`](research-report.md), and [`benchmark-analysis.md`](benchmark-analysis.md) in the product repo.
 
 ## External (discovery evidence only)
 - **DeepSWE v1.1** (2026-08-04, 113 tasks, `mini-swe-agent` harness): top frontier agents score 0.53–0.736 pass@1.

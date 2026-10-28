@@ -28,7 +28,7 @@ TurboFit is the adaptive local-inference path for Hermes on this 32 GB M1 Mac. I
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/entities/unleashed-27b.md|Unleashed 27B]]
-- [[wiki-topics/turbofit/wiki/entities/maple.md|Maple]]
-- [[wiki-topics/turbofit/wiki/entities/dflash2-draft.md|DFlash2 Draft]]
-- [[wiki-topics/turbofit/wiki/entities/mplx.md|MPLX]]
+- [[unleashed-27b|Unleashed 27B]]
+- [[maple|Maple]]
+- [[dflash2-draft|DFlash2 Draft]]
+- [[mplx|MPLX]]

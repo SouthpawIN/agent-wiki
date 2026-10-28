@@ -24,6 +24,6 @@ When MTPLX handles long-running Hermes foreground work, postcommit records show 
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/entities/turbofit-mtp-performance.md|TurboFit MTP Performance]]
-- [[wiki-topics/turbofit/wiki/entities/turbofit-memory-crash.md|TurboFit Memory Crash]]
-- [[wiki-topics/turbofit/wiki/queries/turbofit-mtplx-coexistence.md|MTPLX Coexistence]]
+- [[turbofit-mtpl-performance|TurboFit MTP Performance]]
+- [[turbofit-memory-crash|TurboFit Memory Crash]]
+- [[turbofit-mtplx-coexistence|MTPLX Coexistence]]

@@ -37,4 +37,4 @@ llama.cpp with AMX, MTP may fall back to standard
 
 ## Notes
 Size: 123G total
-Cross-references: [[wiki-topics/turbofit/index|wiki index]]
+Cross-references: [[index|wiki index]]

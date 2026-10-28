@@ -38,9 +38,9 @@ contested: true
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/entities/mplx.md|MPLX]]
-- [[wiki-topics/turbofit/wiki/decisions/mtplx-main-provider.md|MPLX Main Provider]]
-- [[wiki-topics/turbofit/wiki/decisions/context-window-decision.md|Context Window Decision]]
-- [[wiki-topics/turbofit/wiki/entities/mtplx-memory-guard.md|MPLX Memory Guard]]
-- [[wiki-topics/turbofit/wiki/entities/mtplx-service-arg-validation.md|MPLX Service Arg Validation]]
-- [[wiki-topics/turbofit/wiki/concepts/mtplx-32gb-memory-and-evidence-reliability.md|MPLX 32GB Memory and Evidence Reliability]]
+- [[mplx|MPLX]]
+- [[mtplx-main-provider|MPLX Main Provider]]
+- [[context-window-decision|Context Window Decision]]
+- [[mtplx-memory-guard|MPLX Memory Guard]]
+- [[mtplx-service-arg-validation|MPLX Service Arg Validation]]
+- [[mtplx-32gb-memory-and-evidence-reliability|MPLX 32GB Memory and Evidence Reliability]]

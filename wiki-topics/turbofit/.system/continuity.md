@@ -22,3 +22,8 @@ Raw understanding, 2026-08-27 (GitHub + live setup on this machine):
 - Integrate **SALT-core** as an engine (HDD streaming + KV offload for low-end tiers).
 - **Solidify Tailscale** (auto-config on install, reliable discovery/federation).
 - Open debt: align the live catalog toward the canonical TurboFit List, cross-OS test failures, self-install promise. See ROADMAP.md.
+
+## Consolidation, 2026-10-28
+- **The vault topic is the one spot for TurboFit knowledge.** Product repo keeps code + machine-readable data + binaries; prose docs are absorbed here with provenance headers.
+- The repo is a **family**, not a repo: `turbofit` (product) · `sirvir` (support/TurboSouth) · `SALT-core` (engine surface) · `model-momento` (long-tail model DB) · `benchmark-infographics` (shareables) · `turbohaul-manager` / `southpaw-turbohaul` / `turbohaul-llmfit` (the TurboQuant manager line). Map: `references/ecosystem.md`.
+- Fit doctrine is canonical in `references/fit-ladder.md` + `fit-lists.json` (two ladders, converge on Flash Next, DeepSeek V4.1 top of unified, MTP on, IQ3_S quality ceiling). Any page contradicting it is stale.

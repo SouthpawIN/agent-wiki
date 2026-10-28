@@ -1,11 +1,21 @@
+---
+title: Model Lineup
+updated: 2026-10-28
+type: reference
+tags: [turbofit, reference]
+sources: [raw/sources/2026-10-28-github-consolidation.md]
+---
+
+> **Source of truth:** absorbed from [`SouthpawIN/turbofit`](https://github.com/SouthpawIN/turbofit) `references/model-lineup.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file remains the shipped copy.
+
 # Model Lineup
 
 Three layers of model, ranked by **measured evidence, not heuristics**.
 
-> Grounded in the product repo: [`curated-lineup.md`](../../../../../turbofit/references/curated-lineup.md), [`model-intel.md`](../../../../../turbofit/references/model-intel.md), [`model-catalog.json`](../../../../../turbofit/model-catalog.json). API picks below are June 2026 data.
+> Grounded in the product repo: [`curated-lineup.md`](curated-lineup.md), [`model-intel.md`](model-intel.md), [`model-catalog.json`](https://github.com/SouthpawIN/turbofit/blob/main/references/model-catalog.json). API picks below are June 2026 data.
 
 ## 1. Local fit-ladder models
-The canonical TurboFit List (the source of truth; see [fit-ladder.md](fit-ladder.md)) is **two ladders that converge on Qwen 3.8 Flash Next** — the only rung where the dense ladder switches to MoE: **GPU-dedicated (dense)** (`Bonsai 2 → Underdog 27B → GSQ-RCO 27B → Flash Next`) + **Unified / CPU / Apple Silicon (MoE only, no dense)** (`Maple → Cyber-Tiel Coder → Flash Next → DeepSeek V4.1`, with DeepSeek V4.1 on top). **MTP on for every rung when available**, and fit selection weighs the **power bill (kWh/hour)** — IQ3_S is lossless, so no heavier quant past it. The live catalog `model-catalog.json` is the **shipped subset** `serve auto` downloads today: Qwen3.5-397B-A17B, GLM-5.1, Qwen3.5-27B, Llama-3.3-70B, Qwen3-30B-A3B, Qwen3.5-35B-A3B.
+The canonical TurboFit List (the source of truth; see [fit-ladder.md](fit-ladder.md)) is **two ladders that converge on Qwen 3.8 Flash Next** — the only rung where the dense ladder switches to MoE: **GPU-dedicated (dense)** (`Ternary Bonsai 2 27B → Underdog 27B → Qwen 3.8 27B GSQ-RCO → Qwen 3.8 Flash Next`) + **Unified / CPU / Apple Silicon (MoE only, no dense)** (`Maple Preview 20B-A1B → Cyber-Tiel Coder 35B-A3B → Qwen 3.8 Flash Next`, with DeepSeek V4.1 Flash (Strata 1017) on top, engine pending). **MTP on for every rung when available**, and fit selection weighs the **power bill (kWh/hour)** — IQ3_S is lossless, so no heavier quant past it. The live catalog `model-catalog.json` is the **61 models in 13 families** `serve auto` downloads today (full list in the repo README → "Live catalog"); the two ladders above are the curated rungs `serve auto` promotes, the rest of the catalog is Model Zoo download-only.
 
 ## 2. API lineup (for Modest / Thin tiers)
 Ranked by composite (GPQA + SWE-bench + MMLU + AIME):
@@ -35,3 +45,11 @@ Opinionated best-pairings from the local catalog:
 3. The **aux needs 262K+ context** to compress the main without losing info.
 4. **Free NIM pairs beat everything on cost**: DeepSeek V4 Pro + MiniMax M3.
 5. **Route paid API through Nous** for Tool Gateway + 10% credit bonus.
+
+
+---
+
+## Curated vault notes kept from the earlier copy (pre-2026-10-28)
+
+> Grounded in the product repo: [`curated-lineup.md`](curated-lineup.md), [`model-intel.md`](model-intel.md), [`model-catalog.json`](https://github.com/SouthpawIN/turbofit/tree/main/model-catalog.json). API picks below are June 2026 data.
+The canonical TurboFit List (the source of truth; see [fit-ladder.md](fit-ladder.md)) is **two ladders that converge on Qwen 3.8 Flash Next** — the only rung where the dense ladder switches to MoE: **GPU-dedicated (dense)** (`Bonsai 2 → Underdog 27B → GSQ-RCO 27B → Flash Next`) + **Unified / CPU / Apple Silicon (MoE only, no dense)** (`Maple → Cyber-Tiel Coder → Flash Next → DeepSeek V4.1`, with DeepSeek V4.1 on top). **MTP on for every rung when available**, and fit selection weighs the **power bill (kWh/hour)** — IQ3_S is lossless, so no heavier quant past it. The live catalog `model-catalog.json` is the **shipped subset** `serve auto` downloads today: Qwen3.5-397B-A17B, GLM-5.1, Qwen3.5-27B, Llama-3.3-70B, Qwen3-30B-A3B, Qwen3.5-35B-A3B.

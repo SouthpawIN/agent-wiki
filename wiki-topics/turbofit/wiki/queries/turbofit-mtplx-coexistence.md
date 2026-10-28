@@ -38,7 +38,7 @@ requested context 131072 exceeds the machine fit 8192: KV at the full window nee
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/concepts/mtplx-context-overcommit|MPLX Context Overcommit]]
-- [[wiki-topics/turbofit/wiki/entities/turbofit-memory-crash|TurboFit Memory Crash]]
-- [[wiki-topics/turbofit/wiki/entities/turbofit-mtp-performance|TurboFit MTP Performance]]
-- [[wiki-topics/turbofit/wiki/decisions/context-window-decision|Context Window Decision]]
+- [[mtplx-context-overcommit|MPLX Context Overcommit]]
+- [[turbofit-memory-crash|TurboFit Memory Crash]]
+- [[turbofit-mtpl-performance|TurboFit MTP Performance]]
+- [[context-window-decision|Context Window Decision]]

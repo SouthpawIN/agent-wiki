@@ -17,6 +17,8 @@ sources:
 
 ---
 
+> **This is the dense wiki body.** Catalog of every page: [`../index.md`](../index.md) · Hub: [`../README.md`](../README.md)
+
 ## Overview
 
 **Turbofit** is a first-class [Hermes Agent](https://github.com/NousResearch/hermes-agent) provider and adaptive local-inference runtime.
@@ -32,135 +34,56 @@ model: auto
 
 **TurboFit Check** scans the machine — dedicated VRAM, unified/integrated memory, or RAM-only — and applies Auto or a selected compatible lane.
 
-> **Fit Ladder = source of truth for the UI.** The canonical Fit lives in [## TurboFit List](#turbofit-list) below: two ladders that converge on **Flash Next** — **Dedicated (GPU/VRAM, dense)** and **Unified (CPU/Apple Silicon, MoE)**. Build the Fit UI against that section; per-model detail is in `wiki/models/`.
+> **Fit Ladder = source of truth for the UI.** The canonical Fit lives in [## TurboFit List
 
-## Integrations
+> **Source of truth:** `references/fit-lists.json` + `references/model-catalog.json` in the product repo. Regenerated into this wiki on 2026-10-28 (see [GitHub consolidation](../raw/sources/2026-10-28-github-consolidation.md)).
 
-### Repositories
+**Two ladders, not one.** Dense models don't run well on CPU / unified memory, so the fit splits into two ladders that converge on **Qwen 3.8 Flash Next** — the only place the dense ladder switches to MoE. The Fit List **is** the fallback chain: `serve auto` picks the largest sustainable rung and walks down on OOM/timeout.
 
-| Repo | Link | Status | Stars |
-| --- | --- | --- | --- |
-| turbofit | [github.com/SouthpawIN/turbofit](https://github.com/SouthpawIN/turbofit) | ACTIVE | 83 |
-| turbohaul-llmfit | [github.com/SouthpawIN/turbohaul-llmfit](https://github.com/SouthpawIN/turbohaul-llmfit) | DORMANT | 2 |
-| turbohaul-manager | [github.com/SouthpawIN/turbohaul-manager](https://github.com/SouthpawIN/turbohaul-manager) | DORMANT | 1 |
-| southpaw-turbohaul | [github.com/SouthpawIN/southpaw-turbohaul](https://github.com/SouthpawIN/southpaw-turbohaul) | DORMANT | 7 |
-| sirvir | [github.com/SouthpawIN/sirvir](https://github.com/SouthpawIN/sirvir) | ACTIVE | 27 |
+Cross-cutting rules for every rung:
+- **MTP on whenever available.**
+- **Mind the power bill (kWh/hour).** IQ3_S is lossless — never push a heavier quant past it (32 GB and 48 GB both stay on GSQ-RCO @ IQ3_S).
 
-### HuggingFace Models
+### Fit calculation
 
-| Model | Repository |
+```
+Required:   model_size + KV_cache ≤ tier_size
+KV_cache:   ≈ 2-4 GB at 262K context (q8_0 KV)
+Comfortable: model_size + 2 GB ≤ tier_size
+```
+
+### Ladder 1 — Dedicated (GPU / VRAM, dense)
+
+| Tier | Model | Quant / Engine | Size | Context | Notes |
+| --- | --- | --- | --- | --- | --- |
+| 8-11gb | Ternary Bonsai 2 27B | PTQ1_0, PQ2_0 | 7.21 GB | 131K | dense ternary GGUF (Q2); sizes PTQ1_0 5.95 GB / PQ2_0 7.21 GB; prism-llama.cpp; MTP on |
+| 12-15gb | Underdog 27B | PQ2_0 | — | 131K | dense; MTP on |
+| 16-23gb | Qwen 3.8 27B GSQ-RCO | IQ3_S | 11.8 GB | 131K | near-lossless; MTP on |
+| 24-63gb | Qwen 3.8 27B GSQ-RCO | IQ3_S | 11.8 GB | 262K | near-lossless; 262K at 24 GB; MTP on; power bill stays on IQ3_S (no heavier quant) |
+| 64gb+ | Qwen 3.8 Flash Next (Strata) | strata | — | 262K | MoE; both ladders converge on Flash Next; MTP on |
+
+### Ladder 2 — Unified (CPU / Apple Silicon, MoE only)
+
+| Tier | Model | Quant / Engine | Size | Context | Notes |
+| --- | --- | --- | --- | --- | --- |
+| 8-15gb | Maple Preview 20B-A1B | TQ2_0 | — | 131K | MoE; CPU |
+| 16-23gb | Cyber-Tiel Coder 35B-A3B | UD-IQ3_XXS | 13.2 GB | 262K | MoE, 3B active; 262K ctx; faster than GSQ-RCO on CPU |
+| 24-31gb | Cyber-Tiel Coder 35B-A3B | UD-Q4_K_XL | 18.5 GB | 262K | MoE, 3B active |
+| 32-47gb | Cyber-Tiel Coder 35B-A3B | UD-Q5_K_XL | 26.6 GB | 262K | MoE, 3B active |
+| 48-63gb | Cyber-Tiel Coder 35B-A3B | UD-Q6_K_XL | 31.8 GB | 262K | MoE, 3B active |
+| 64gb+ | Qwen 3.8 Flash Next (Strata) | strata | — | 262K | MoE; both ladders converge on Flash Next; MTP on |
+
+### Model pages
+
+| Model | Page |
 | --- | --- |
-| Maple Preview | [deepgrove/maple-preview](https://huggingface.co/deepgrove/maple-preview) |
-| Cyber Tiel Coder | [peculiar-ragdoll/...](https://huggingface.co/peculiar-ragdoll/Cyber-Tiel-Coder-35B-A3B-GGUF-MTP) |
-| Qwen 3.8 GSQ-RCO | [ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF](https://huggingface.co/ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF) |
-| Qwen 3.8 Flash Next | [ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-GGUF](https://huggingface.co/ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-GGUF) |
-| DeepSeek V4.1 Flash | [vcruz305/DeepSeek-V4.1-Flash-GGUF](https://huggingface.co/vcruz305/DeepSeek-V4.1-Flash-GGUF) |
-
----
-
-
-
----
-
-## Model Zoo
-
-> All models discovered during research. ★ = on TurboFit List.
-
-| Model | Type | System | Parameters | AIME26 | GPQA-D | DeepSWE | LCBv6 | TB4.0
-|-------|------|--------|------------|--------|--------|---------|-------|-------|-----------|
-| [[Maple Preview]] ★ | Aux LLM (Ternary MoE) | Omarchy | 20B-A1B | 87.5% | 73.5% | — | 75.1% | —
-| [[Cyber Tiel Coder]] ★ | Code LLM (MoE) | Omarchy, MacBook | 35B-A3B | — | — | — | — | —
-| [[Qwen 3.8 GSQ-RCO]] ★ | LLM (Quantized) | Omarchy | 27B | — | 89.2% | 42.2% | 90.3% | —
-| [[Qwen 3.8 Flash Next]] ★ | MoE (Qwen4 Preview) | Omarchy | 180B / 6B | — | 91.7% | 58.7% | 91.9% | —
-| [[DeepSeek V4.1 Flash]] ★ | MoE | Omarchy | 763B / 16B | — | 90.9% | 74.2% | — | 31.2%
-| [[Ace Step 1.5]] | Music Generation | Omarchy | 4B | — | — | — | — | —
-| [[Bonsai 27B]] | LLM (Ternary) | Omarchy | 27B | — | — | — | — | —
-| [[Cosmos 37B]] | LLM | Omarchy | 37B | — | — | — | — | —
-| [[Cyber Tiel Coder MTP]] | Code LLM (MTP) | Omarchy | 35B-A3B | — | — | — | — | —
-| [[DAXZEIT GRM]] | Reasoning LLM (MTP) | Omarchy | 27B | — | — | — | — | —
-| [[NVIDIA Nemotron 3.5]] | Enterprise LLM (MoE) | Omarchy | 30B-A3B | — | — | — | — | —
-| [[Qwen 3.8 Unleashed]] | General LLM | Omarchy, MacBook | 27B | — | — | — | — | —
-| [[Super Qwen]] | Uncensored LLM | Omarchy | 27B | — | — | — | — | —
-| [[Qwen 2.5 Omni]] | Multimodal VLM | Omarchy | 3B | — | — | — | — | —
-| [[Soprano]] | Creative Micro | Omarchy | 80M | — | — | — | — | —
-| [[Qwen 3.8 Base]] | Base LLM | Omarchy, MacBook | 27B | — | — | — | — | —
-| [[Ornith 1.5]] | Code LLM (Legacy) | MacBook | 35B-A3B | — | — | — | — | —
-
-> **Note:** GSQ-RCO IQ3_S scores shown (AIME25 100%, GPQA-D 89.2%, DeepSWE 42.2%, LCBv6 90.3%). Maple LCBv6 score is from LiveCodeBench v6.
-
----
-
-## TurboFit List
-
-> 5 models suitable for running Hermes Agent locally. Ordered by capability.
-
-| Order | Model | Type | Parameters | Optimal Quant | Size | AIME26 | GPQA-D | DeepSWE | LCBv6 | TB4.0
-|-------|-------|------|------------|---------------|------|--------|--------|---------|-------|-------|
-| 1 | **Maple Preview** | Ternary MoE | 20B-A1B | TQ2_0-head-Q4_K | 5.5 GiB | 87.5% | 73.5% | — | 75.1% | —
-| 2 | **Cyber Tiel Coder** | Code LLM (MoE) | 35B-A3B | UD-Q4_K_XL | 22.4 GiB | — | — | — | — | —
-| 3 | **Qwen 3.8 GSQ-RCO** | LLM (Quantized) | 27B | IQ3_S | 11.8 GiB | — | 89.2% | 42.2% | 90.3% | —
-| 4 | **Qwen 3.8 Flash Next** | MoE (Qwen4 Preview) | 180B / 6B | IQ3_XXS | 47 GiB | — | 91.7% | 58.7% | 91.9% | —
-| 5 | **DeepSeek V4.1 Flash** | MoE | 763B / 16B | FP8 / UD-Q4_K_XL | 160 / ~40 GiB | — | 90.9% | 74.2% | — | 31.2%
-
-> **Note:** GSQ-RCO IQ3_S benchmark scores (AIME25 100%, GPQA-D 89.2%, DeepSWE 42.2%, LCBv6 90.3%) are from the model card. Maple LCBv6 score is from LiveCodeBench v6.
-
-### Fit Calculation System
-
-```
-Required: model_size + KV_cache ≤ tier_size
-KV_cache ≈ 2-4GB at 262K context (q8_0 KV)
-Comfortable: model_size + 2GB ≤ tier_size
-```
-
-> **Two ladders, not one.** The lineup is dense + MoE, and dense does not run well on CPU / Unified memory, so the tiers split into two ladders that converge on Flash Next:
-> - **Dedicated (GPU / VRAM):** dense is fine - Bonsai 2 -> Underdog 27B -> GSQ-RCO 27B -> Flash Next.
-> - **Unified (CPU / Apple Silicon):** MoE only, no dense - Maple -> Cyber-Tiel (in place of GSQ-RCO 27B) -> Flash Next.
-
-### GPU (NVIDIA/AMD VRAM — ≤16GB assumes system RAM available for MoE offload and KV cache)
-
-| Tier | Model | Quant | Size | VRAM Used | Context | Notes |
-|------|-------|-------|------|-----------|---------|-------|
-| 8-11 GB | Bonsai 2 | ptq1 / pq2 | ~8-9 GiB | ~9 GiB | 131K-262K | Dense ternary GGUF; prism-llama.cpp.
-| 12-15 GB | Underdog 27B | pq2 | ~12-13 GiB | ~13 GiB | 131K-262K | Dense ternary GGUF; prism-llama.cpp.
-| 16 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~12 GiB | 131K-262K | Near-lossless. Cyber-Tiel Q3_K_M also fits (~14 GiB).
-| 24 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~12 GiB | 262K | Same near-lossless model, more KV headroom
-| 32 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~12 GiB | 262K+ | Same. Bigger KV cache. Consider Cyber-Tiel for code
-| 48 GB | GSQ-RCO | IQ3_S | 11.8 GiB | ~12 GiB | 262K+ | Still IQ3_S. More context headroom
-| 64 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 262K native | MoE; both ladders converge (Strata on 2×3090)
-| 96 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 262K native, 1M w/ YaRN | Qwen4 preview, beats Claude Opus 4.6
-| 128 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 1M | Max context for Flash Next
-
-> IQ3_S = near-lossless. Recommended for all tiers where it fits. Only move to FP16 at 64GB+.
-> Flash Next QSA gives ~4.9x decode speedup vs dense attention at 262K. IQ3_XXS is the sweet spot for 64GB+.
-
-### CPU (System RAM — model + KV must fit in RAM)
-
-| Tier | Model | Quant | Size | RAM Used | Context | Notes |
-|------|-------------|-------|-------|------|----------|---------|-------|
-| 8-15 GB | Maple | TQ2_0 | 5.5 GiB | ~6 GiB | 131K native | MoE; stands in for Bonsai 2 / Underdog (dense)
-| 16 GB | Cyber-Tiel Coder | Q3_K_M | ~14 GiB | ~16 GiB | 262K native | MoE, 3B active. Faster than GSQ-RCO on CPU.
-| 32 GB | Cyber-Tiel Coder | UD-Q4_K_XL | 22.4 GiB | ~23 GiB | 262K native | MoE, 3B active, fast on CPU
-| 48 GB | Cyber-Tiel Coder | UD-Q4_K_XL | 22.4 GiB | ~23 GiB | 262K+ | More KV headroom
-| 64 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 262K native | MoE; both ladders converge (Cyber-Tiel stood in for GSQ-RCO 27B)
-| 96 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 262K native | Flash Next entry tier
-| 128 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 1M w/ YaRN | Max context
-
-### Unified Memory (Apple Silicon — shared CPU/GPU RAM)
-
-| Tier | Model | Quant | Size | RAM Used | Context | Notes |
-|------|-------------|-------|-------|------|----------|---------|-------|
-| 8-15 GB | Maple | TQ2_0 | 5.5 GiB | ~6 GiB | 131K native | MoE, 218 tok/s on M4; stands in for Bonsai 2 / Underdog
-| 16 GB | Cyber-Tiel Coder | Q3_K_M | ~14 GiB | ~16 GiB | 262K native | MoE, 3B active. Faster than GSQ-RCO on Apple Silicon.
-| 32 GB | Cyber-Tiel Coder | UD-Q4_K_XL | 22.4 GiB | ~23 GiB | 262K native | 22+4=26GB ✓, fast MoE on Apple Silicon
-| 48 GB | Cyber-Tiel Coder | UD-Q4_K_XL | 22.4 GiB | ~23 GiB | 262K+ | M2 Max/Ultra territory
-| 64 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 262K native | MoE; both ladders converge (candidate-only on Apple — no macOS engine yet)
-| 96 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 262K native | M4 Ultra
-| 128 GB | Flash Next | IQ3_XXS | 47 GiB | ~48 GiB | 1M w/ YaRN | Max Flash Next
-
-> ★ = on TurboFit List. Models without ★ are Model Zoo only.
-
-
----
+| Ternary Bonsai 2 27B | [[Bonsai 27B]] · [[bonsai]] |
+| Underdog 27B | (no page yet — see [[model-lineup]]) |
+| Qwen 3.8 27B GSQ-RCO | [[GSQ-RCO Qwen 3.8]] |
+| Qwen 3.8 Flash Next | [[Qwen 3.8 Flash Next]] |
+| Cyber-Tiel Coder 35B-A3B | [[Cyber Tiel Coder 35B-A3B]] · [[Cyber Tiel Coder MTP]] |
+| Maple Preview 20B-A1B | [[Maple]] · [[Maple Preview 8B]] |
+| DeepSeek V4.1 Flash (1017) | [[DeepSeek V4.1 Flash]] |
 
 ## Entities
 
@@ -193,9 +116,9 @@ At 7.91 GB, Ternary Bonsai would fit within the 32 GB memory budget, but no veri
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/ornith-1-5-35b-a3b-mlx-4-bit|Ornith 1.5 35B-A3B MLX 4-bit]]
-- [[wiki-topics/turbofit/wiki/queries/engine-research-request|Engine Research Request]]
-- [[wiki-topics/turbofit/wiki/decisions/local-main-provider|TurboFit Local Main Provider Decision]]
+- [[ornith-1-5-35b-a3b-mlx-4-bit|Ornith 1.5 35B-A3B MLX 4-bit]]
+- [[engine-research-request|Engine Research Request]]
+- [[local-main-provider|TurboFit Local Main Provider Decision]]
 
 ### Colibri
 
@@ -221,9 +144,9 @@ Chris explicitly redirected focus from Bonsai and Colibri to Ornith: "Don't worr
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/maple.md|Maple]]
-- [[wiki-topics/turbofit/wiki/entities/ornith-1-5-35b-a3b-mlx-4-bit|Ornith 1.5 35B-A3B MLX 4-bit]]
-- [[wiki-topics/turbofit/wiki/decisions/local-main-provider|TurboFit Local Main Provider Decision]]
+- [[maple|Maple]]
+- [[ornith-1-5-35b-a3b-mlx-4-bit|Ornith 1.5 35B-A3B MLX 4-bit]]
+- [[local-main-provider|TurboFit Local Main Provider Decision]]
 
 ### DFlash2 Arg Failures
 
@@ -266,9 +189,9 @@ llama-server -m <main-model> --spec-draft-model <draft-model> --spec-draft-ngl 9
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/dflash2-draft.md|DFlash2 Draft]]
-- [[wiki-topics/turbofit/wiki/entities/mplx-service-arg-validation.md|MPLX Service Arg Validation]]
-- [[wiki-topics/turbofit/wiki/concepts/dflash2-compat-boundary.md|DFlash2 Compatibility Boundary]]
+- [[dflash2-draft|DFlash2 Draft]]
+- [[mtplx-service-arg-validation|MPLX Service Arg Validation]]
+- [[dflash2-compat-boundary|DFlash2 Compatibility Boundary]]
 
 ### DFlash2 Draft
 
@@ -288,10 +211,10 @@ DFlash2 is the speculative-draft model paired with Unleashed 27B in TurboFit. It
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/unleashed-27b.md|Unleashed 27B]]
-- [[wiki-topics/turbofit/wiki/entities/turbofit.md|TurboFit]]
-- [[wiki-topics/turbofit/wiki/comparisons/aux-runtime-options.md|Aux Runtime Options]]
-- [[wiki-topics/turbofit/wiki/entities/ornith-35b-dflash2.md|Ornith 35B DFlash2]]
+- [[unleashed-27b|Unleashed 27B]]
+- [[turbofit|TurboFit]]
+- [[aux-runtime-options|Aux Runtime Options]]
+- [[ornith-35b-dflash2|Ornith 35B DFlash2]]
 
 ### Dirk GGUF Q3_K_XL
 
@@ -330,10 +253,10 @@ Dirk is a **dense 27B model** (not MoE), so:
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/dirk-qwen38-27b.md|Dirk Qwen 3.8 27B GGUF]]
-- [[wiki-topics/turbofit/wiki/decisions/candidate-quant-preference.md|Candidate Quant Preference]]
-- [[wiki-topics/turbofit/wiki/queries/apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
-- [[wiki-topics/turbofit/wiki/entities/unleashed-27b.md|Unleashed 27B]]
+- [[dirk-qwen38-27b|Dirk Qwen 3.8 27B GGUF]]
+- [[candidate-quant-preference|Candidate Quant Preference]]
+- [[apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
+- [[unleashed-27b|Unleashed 27B]]
 
 ### Dirk Qwen 3.8 27B GGUF
 
@@ -354,10 +277,10 @@ Chris requested Dirk GGUF downloads for local comparison. The actual repo is `pe
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/dirk-gguf.md|Dirk GGUF Q3_K_XL]]
-- [[wiki-topics/turbofit/wiki/decisions/candidate-quant-preference.md|Candidate Quant Preference]]
-- [[wiki-topics/turbofit/wiki/queries/apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
-- [[wiki-topics/turbofit/wiki/entities/unleashed-27b.md|Unleashed 27B]]
+- [[dirk-gguf|Dirk GGUF Q3_K_XL]]
+- [[candidate-quant-preference|Candidate Quant Preference]]
+- [[apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
+- [[unleashed-27b|Unleashed 27B]]
 
 ### Maple
 
@@ -388,10 +311,10 @@ Maple-Preview is the auxiliary model Chris wants for Hermes compression and text
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/turbofit.md|TurboFit]]
-- [[wiki-topics/turbofit/wiki/entities/mplx.md|MPLX]]
-- [[wiki-topics/turbofit/wiki/decisions/aux-model-selection.md|Aux Model Selection]]
-- [[wiki-topics/turbofit/wiki/concepts/compression-timeouts.md|Compression Timeouts]]
+- [[turbofit|TurboFit]]
+- [[mplx|MPLX]]
+- [[aux-model-selection|Aux Model Selection]]
+- [[compression-timeouts|Compression Timeouts]]
 
 ### MPLX Metal Load Failure
 
@@ -412,8 +335,8 @@ A `mtplx serve --download` background process exited with code `1` after 42.2 s 
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/turbofit-memory-crash.md|TurboFit Memory Crash]]
-- [[wiki-topics/turbofit/wiki/entities/turbofit-mtp-performance.md|TurboFit MTP Performance]]
+- [[turbofit-memory-crash|TurboFit Memory Crash]]
+- [[turbofit-mtpl-performance|TurboFit MTP Performance]]
 
 ### MPLX
 
@@ -440,9 +363,9 @@ MPLX is an experimental additional local runtime discovered late in the session.
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/turbofit.md|TurboFit]]
-- [[wiki-topics/turbofit/wiki/entities/unleashed-27b.md|Unleashed 27B]]
-- [[wiki-topics/turbofit/wiki/queries/mplx-integration.md|MPLX Integration]]
+- [[turbofit|TurboFit]]
+- [[unleashed-27b|Unleashed 27B]]
+- [[mplx-integration|MPLX Integration]]
 
 ### MTPLX Memory Guard
 
@@ -463,9 +386,9 @@ MTPLX emits a memory-guard `prefill_admission_shed` event when a prompt would pu
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/turbofit-mtp-performance.md|TurboFit MTP Performance]]
-- [[wiki-topics/turbofit/wiki/entities/turbofit-memory-crash.md|TurboFit Memory Crash]]
-- [[wiki-topics/turbofit/wiki/queries/turbofit-mtplx-coexistence.md|MTPLX Coexistence]]
+- [[turbofit-mtpl-performance|TurboFit MTP Performance]]
+- [[turbofit-memory-crash|TurboFit Memory Crash]]
+- [[turbofit-mtplx-coexistence|MTPLX Coexistence]]
 
 ### MTPLX Qwen 3.8 27B Optimized Speed
 
@@ -499,12 +422,12 @@ Source: `wiki/entities/mtplx-qwen-38-27b-optimized-speed.md`
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/mplx.md|MPLX]]
-- [[wiki-topics/turbofit/wiki/decisions/mtplx-main-provider.md|MPLX Main Provider]]
-- [[wiki-topics/turbofit/wiki/decisions/context-window-decision.md|Context Window Decision]]
-- [[wiki-topics/turbofit/wiki/entities/mtplx-memory-guard.md|MPLX Memory Guard]]
-- [[wiki-topics/turbofit/wiki/entities/mtplx-service-arg-validation.md|MPLX Service Arg Validation]]
-- [[wiki-topics/turbofit/wiki/concepts/mtplx-32gb-memory-and-evidence-reliability.md|MPLX 32GB Memory and Evidence Reliability]]
+- [[mplx|MPLX]]
+- [[mtplx-main-provider|MPLX Main Provider]]
+- [[context-window-decision|Context Window Decision]]
+- [[mtplx-memory-guard|MPLX Memory Guard]]
+- [[mtplx-service-arg-validation|MPLX Service Arg Validation]]
+- [[mtplx-32gb-memory-and-evidence-reliability|MPLX 32GB Memory and Evidence Reliability]]
 
 ### MT_PlX Service Arg Validation
 
@@ -537,9 +460,9 @@ mtplx serve --model <model-id> --port 11613
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/mplx-qwen-38-27b-optimized-speed.md|MPLX Qwen 3.8 27B Optimized Speed]]
-- [[wiki-topics/turbofit/wiki/entities/mplx.md|MPLX]]
-- [[wiki-topics/turbofit/wiki/concepts/mtplx-32gb-memory-and-evidence-reliability.md|MPLX 32GB Memory and Evidence Reliability]]
+- [[mtplx-qwen-38-27b-optimized-speed|MPLX Qwen 3.8 27B Optimized Speed]]
+- [[mplx|MPLX]]
+- [[mtplx-32gb-memory-and-evidence-reliability|MPLX 32GB Memory and Evidence Reliability]]
 
 ### Nail Qwen 3.6 35B UD Q4_K_XL
 
@@ -574,9 +497,9 @@ The `mmproj-F16.gguf` file (858 MB) provides vision capability. Test verificatio
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/queries/apple-silicon-runtime-benchmark|Speed Test Results]]
-- [[wiki-topics/turbofit/wiki/decisions/candidate-quant-preference|Candidate Quant Preference]]
-- [[wiki-topics/turbofit/wiki/entities/ornith-35b-mlx.md|Ornith 35B MLX]]
+- [[apple-silicon-runtime-benchmark|Speed Test Results]]
+- [[candidate-quant-preference|Candidate Quant Preference]]
+- [[ornith-35b-mlx|Ornith 35B MLX]]
 
 ### Ornith 1.5 MLX 4-bit
 
@@ -591,7 +514,7 @@ Ornith is a Mixture of Experts (MoE) model with 35B total parameters and roughly
 
 #### Provenance
 
-Ornith is owned by TurboFit routing, not the wiki itself. See `[[turbofit-runtime-providers|TurboFit Runtime Providers]]` and `[[turbo-fit-evidence-capture|TurboFit Evidence Capture]]` for how service health should be checked when Hermes can't reach it.
+Ornith is owned by TurboFit routing, not the wiki itself. See `TurboFit Runtime Providers` and [TurboFit Evidence Capture](../skills/turbo-fit-evidence-capture/SKILL.md) for how service health should be checked when Hermes can't reach it.
 
 ^[raw/inbox/2026-09-07-from-senter-wiki.md]
 
@@ -641,7 +564,7 @@ Chris's final directive at 14:25: "It just needs to be configured into turbofit 
 
 #### Related pages
 
-- [[turbo-fit-evidence-capture|TurboFit Evidence Capture]]
+- [TurboFit Evidence Capture](../skills/turbo-fit-evidence-capture/SKILL.md)
 - [[mtplx-main-provider|MPLX Main Provider]]
 - [[unleashed-backup|Unleashed Backup]]
 
@@ -683,10 +606,10 @@ Hermes recommended pairing Ornith MLX 4-bit with Unleashed+DFlash2 for 131K cove
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/ornith-35b-mlx.md|Ornith 35B MLX]]
-- [[wiki-topics/turbofit/wiki/concepts/dflash2-mplx-incompatibility|MPLX DFlash2 Incompatibility]]
-- [[wiki-topics/turbofit/wiki/entities/dflash2-draft.md|DFlash2 Draft]]
-- [[wiki-topics/turbofit/wiki/queries/apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
+- [[ornith-35b-mlx|Ornith 35B MLX]]
+- [[dflash2-mplx-incompatibility|MPLX DFlash2 Incompatibility]]
+- [[dflash2-draft|DFlash2 Draft]]
+- [[apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
 
 ### Ornith 35B A3B MLX
 
@@ -695,7 +618,7 @@ Source: `wiki/entities/ornith-35b-mlx.md`
 
 `Ornith-1.5-35B-A3B` MLX 4-bit is a MoE local candidate downloaded to `~/Models/storage/ornith/` with a companion DFlash2 draft package at `~/Models/storage/ornith-dflash2/` .
 
-This page is a legacy entity record; see [[wiki-topics/turbofit/wiki/entities/ornith-1-5-35b-a3b-mlx-4-bit.md|Ornith 1.5 35B-A3B MLX 4-bit]] for measured throughput and config state after 2026-09-07 final lock-in .
+This page is a legacy entity record; see [[ornith-1-5-35b-a3b-mlx-4-bit|Ornith 1.5 35B-A3B MLX 4-bit]] for measured throughput and config state after 2026-09-07 final lock-in .
 
 #### Tested speeds on M1 MacBook 32GB
 
@@ -742,9 +665,9 @@ Use Ornith MLX 4-bit for short/medium-context daily work. Use Unleashed+DFlash2 
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/ornith-35b-dflash2.md|Ornith 35B DFlash2]]
-- [[wiki-topics/turbofit/wiki/decisions/aux-model-selection.md|Aux Model Selection]]
-- [[wiki-topics/turbofit/wiki/queries/apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
+- [[ornith-35b-dflash2|Ornith 35B DFlash2]]
+- [[aux-model-selection|Aux Model Selection]]
+- [[apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
 
 ### Ornith 35B A3B
 
@@ -786,12 +709,12 @@ Ornith is fast at short context but loses throughput sharply as KV cache grows. 
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/decisions/aux-model-selection|Aux Model Selection]]
-- [[wiki-topics/turbofit/wiki/decisions/unleashed-backup|Unleashed Backup]]
-- [[wiki-topics/turbofit/wiki/queries/apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
-- [[wiki-topics/turbofit/wiki/entities/dflash2-draft|DFlash2 Draft]]
-- [[wiki-topics/turbofit/wiki/entities/ornith-35b-mlx.md|Ornith 35B MLX]]
-- [[wiki-topics/turbofit/wiki/entities/ornith-35b-dflash2.md|Ornith 35B DFlash2]]
+- [[aux-model-selection|Aux Model Selection]]
+- [[unleashed-backup|Unleashed Backup]]
+- [[apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
+- [[dflash2-draft|DFlash2 Draft]]
+- [[ornith-35b-mlx|Ornith 35B MLX]]
+- [[ornith-35b-dflash2|Ornith 35B DFlash2]]
 
 ### Ornith Config Routing Failure
 
@@ -856,10 +779,10 @@ Files available at:
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/queries/apple-silicon-runtime-benchmark|Speed Test Results]]
-- [[wiki-topics/turbofit/wiki/entities/ornith-35b-mlx.md|Ornith 35B MLX]]
-- [[wiki-topics/turbofit/wiki/entities/nail-qwen36-35b.md|Nail Qwen 3.6 35B UD Q4_K_XL]]
-- [[wiki-topics/turbofit/wiki/decisions/context-window-decision.md|Context Window Decision]]
+- [[apple-silicon-runtime-benchmark|Speed Test Results]]
+- [[ornith-35b-mlx|Ornith 35B MLX]]
+- [[nail-qwen36-35b|Nail Qwen 3.6 35B UD Q4_K_XL]]
+- [[context-window-decision|Context Window Decision]]
 
 ### TurboFit Memory Crash
 
@@ -890,11 +813,11 @@ Hermes summary claims `custom:turbofit-mtplx` as main provider with 65K stable c
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/turbofit-verifier-bridge.md|TurboFit Verifier Bridge]]
-- [[wiki-topics/turbofit/wiki/entities/mplx.md|MPLX]]
-- [[wiki-topics/turbofit/wiki/entities/mtplx-memory-guard.md|MPLX Memory Guard]]
-- [[wiki-topics/turbofit/wiki/decisions/mtplx-main-provider.md|MTPLX Main Provider]]
-- [[wiki-topics/turbofit/wiki/concepts/mtplx-context-overcommit.md|MPLX Context Overcommit]]
+- [[turbofit-verifier-bridge|TurboFit Verifier Bridge]]
+- [[mplx|MPLX]]
+- [[mtplx-memory-guard|MPLX Memory Guard]]
+- [[mtplx-main-provider|MTPLX Main Provider]]
+- [[mtplx-context-overcommit|MPLX Context Overcommit]]
 
 ### TurboFit MTP Performance
 
@@ -907,7 +830,7 @@ Redirect: this subject is consolidated under `turbofit-mtpl-performance`.
 - This file remains to avoid breaking old wikilinks; it carries no unique evidence.
 
 Related:
-- [[wiki-topics/turbofit/wiki/entities/turbofit-mtpl-performance.md|TurboFit MTPLX Performance]]
+- [[turbofit-mtpl-performance|TurboFit MTPLX Performance]]
 
 ### TurboFit MTPLX Performance
 
@@ -965,11 +888,11 @@ Hermes summaries claimed MTPLX was the locked main provider at 131K, but later c
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/mplx.md|MPLX]]
-- [[wiki-topics/turbofit/wiki/concepts/mtplx-context-overcommit.md|MPLX Context Overcommit]]
-- [[wiki-topics/turbofit/wiki/entities/turbofit-memory-crash.md|TurboFit Memory Crash]]
-- [[wiki-topics/turbofit/wiki/entities/mtplx-memory-guard.md|MPLX Memory Guard]]
-- [[wiki-topics/turbofit/wiki/entities/mtplx-qwen-38-27b-optimized-speed.md|MPLX Qwen 3.8 27B Optimized Speed]]
+- [[mplx|MPLX]]
+- [[mtplx-context-overcommit|MPLX Context Overcommit]]
+- [[turbofit-memory-crash|TurboFit Memory Crash]]
+- [[mtplx-memory-guard|MPLX Memory Guard]]
+- [[mtplx-qwen-38-27b-optimized-speed|MPLX Qwen 3.8 27B Optimized Speed]]
 
 ### TurboFit Verifier Bridge
 
@@ -990,8 +913,8 @@ Source: `wiki/entities/turbofit-verifier-bridge.md`
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/turbofit.md|TurboFit]]
-- [[wiki-topics/turbofit/wiki/concepts/model-switching-pain.md|Model Switching Pain]]
+- [[turbofit|TurboFit]]
+- [[model-switching-pain|Model Switching Pain]]
 
 ### TurboFit
 
@@ -1016,10 +939,10 @@ TurboFit is the adaptive local-inference path for Hermes on this 32 GB M1 Mac. I
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/unleashed-27b.md|Unleashed 27B]]
-- [[wiki-topics/turbofit/wiki/entities/maple.md|Maple]]
-- [[wiki-topics/turbofit/wiki/entities/dflash2-draft.md|DFlash2 Draft]]
-- [[wiki-topics/turbofit/wiki/entities/mplx.md|MPLX]]
+- [[unleashed-27b|Unleashed 27B]]
+- [[maple|Maple]]
+- [[dflash2-draft|DFlash2 Draft]]
+- [[mplx|MPLX]]
 
 ### Unleashed 27B
 
@@ -1046,9 +969,9 @@ Qwen3.8-27B-Unleashed in `UD-Q3_K_XL.gguf` with the Unleashed vision projector a
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/turbofit.md|TurboFit]]
-- [[wiki-topics/turbofit/wiki/entities/dflash2-draft.md|DFlash2 Draft]]
-- [[wiki-topics/turbofit/wiki/decisions/main-model-selection.md|Main Model Selection]]
+- [[turbofit|TurboFit]]
+- [[dflash2-draft|DFlash2 Draft]]
+- [[main-model-selection|Main Model Selection]]
 
 ### Unleashed IQ3 XXS Load Failure
 
@@ -1070,9 +993,9 @@ This failure is specific to this quant artifact and this fork load path. It does
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/unleashed-27b|Unleashed 27B]]
-- [[wiki-topics/turbofit/wiki/decisions/unleashed-backup|Unleashed Backup]]
-- [[wiki-topics/turbofit/wiki/concepts/dflash2-compat-boundary|DFlash2 Compatibility Boundary]]
+- [[unleashed-27b|Unleashed 27B]]
+- [[unleashed-backup|Unleashed Backup]]
+- [[dflash2-compat-boundary|DFlash2 Compatibility Boundary]]
 
 
 ---
@@ -1090,7 +1013,7 @@ Source: `wiki/concepts/131k-deferred-candidates.md`
 
 A number of newly downloaded candidate artifacts were not benchmarked at 131K because model-plus-KV size exceeds the stable 32 GB Mac fit before testing begins.
 
-From [[raw/inbox/2026-09-07.md|2026-09-07 08:36]]:
+From 2026-09-07 08:36:
 
 > "Several downloaded candidates were deferred from 131K testing because their size plus KV cache exceeds stable 32 GB fit before benchmark."
 
@@ -1118,7 +1041,7 @@ M1 MacBook 32GB unified memory:
 
 #### Memory Guard Evidence
 
-From [[raw/inbox/2026-09-07.md|2026-09-07 00:56]]:
+From 2026-09-07 00:56:
 
 ```json
 {
@@ -1135,7 +1058,7 @@ This shows MTPLX's memory guard: prefill_admission_shed clears KV cache to stay 
 
 #### The Reality Check
 
-From [[raw/inbox/2026-09-07.md|2026-09-07 09:20]]:
+From 2026-09-07 09:20:
 
 > "**The hard truth:** On M1 MacBook 32GB with a 27B model at 131K context, **~5-6 tok/s is the ceiling.** You want 10+ tok/s. That's not happening with this hardware — it's like asking a Honda Civic to go 200mph."
 
@@ -1161,9 +1084,9 @@ Ornith MLX 4-bit wins because it's MoE (~3B active params) with MLX backend for 
 
 #### Related
 
-- [[turbofit/concepts/mtplx-32gb-memory-and-evidence-reliability|MPLX 32GB Memory and Evidence Reliability]]
-- [[turbofit/entities/turbofit-memory-crash|TurboFit Memory Crash]]
-- [[turbofit/entities/mplx-memory-guard|MPLX Memory Guard]]
+- [[mtplx-32gb-memory-and-evidence-reliability|MPLX 32GB Memory and Evidence Reliability]]
+- [[turbofit-memory-crash|TurboFit Memory Crash]]
+- [[mtplx-memory-guard|MPLX Memory Guard]]
 
 ### Benchmark Taxonomy
 
@@ -1273,10 +1196,10 @@ Bonsai and Colibri are parked. The active work is Ornith MLX 4-bit as the main t
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/bonsai.md|Bonsai MLX]]
-- [[wiki-topics/turbofit/wiki/entities/colibri.md|Colibri]]
-- [[wiki-topics/turbofit/wiki/entities/ornith-1-5-35b-a3b-mlx-4-bit|Ornith 1.5 35B-A3B MLX 4-bit]]
-- [[wiki-topics/turbofit/wiki/queries/evidence-capture-and-reliability|Evidence Capture and Reliability Query]]
+- [[bonsai|Bonsai MLX]]
+- [[colibri|Colibri]]
+- [[ornith-1-5-35b-a3b-mlx-4-bit|Ornith 1.5 35B-A3B MLX 4-bit]]
+- [[evidence-capture-and-reliability|Evidence Capture and Reliability Query]]
 
 ### Compression Timeouts
 
@@ -1310,9 +1233,9 @@ Local main-model compression at very large context sizes is too slow for Hermes�
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/decisions/context-sizing.md|Context Sizing]]
-- [[wiki-topics/turbofit/wiki/decisions/aux-model-selection.md|Aux Model Selection]]
-- [[wiki-topics/turbofit/wiki/entities/maple.md|Maple]]
+- [[context-sizing|Context Sizing]]
+- [[aux-model-selection|Aux Model Selection]]
+- [[maple|Maple]]
 
 ### DFlash2 Compatibility Boundary
 
@@ -1346,10 +1269,10 @@ At least one Unleashed+DFlash2 attempt failed with `couldn't bind HTTP server so
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/dflash2-draft|DFlash2 Draft]]
-- [[wiki-topics/turbofit/wiki/entities/unleashed-27b|Unleashed 27B]]
-- [[wiki-topics/turbofit/wiki/entities/mplx-metal-load-failure|MPLX Metal Load Failure]]
-- [[wiki-topics/turbofit/wiki/decisions/context-sizing|Context Sizing]]
+- [[dflash2-draft|DFlash2 Draft]]
+- [[unleashed-27b|Unleashed 27B]]
+- [[mplx-metal-load-failure|MPLX Metal Load Failure]]
+- [[context-sizing|Context Sizing]]
 
 ### DFlash2 Fork Flag Boundary
 
@@ -1376,7 +1299,7 @@ llama-server -m <main-model> \
   --spec-type draft-dflash
 ```
 
-**Invalid flags** that failed before binding (from `raw/inbox/2026-09-07.md`):
+**Invalid flags** that failed before binding (from [raw/inbox/2026-09-07.md](../raw/inbox/2026-09-07.md)):
 
 | Flag | Status
 |------|--------|
@@ -1414,10 +1337,10 @@ After a DFlash warning: `dflash requires ctx_other to be set`. That artifact is 
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/dflash2-draft.md|DFlash2 Draft]]
-- [[wiki-topics/turbofit/wiki/entities/unleashed-27b.md|Unleashed 27B]]
-- [[wiki-topics/turbofit/wiki/entities/ornith-35b-dflash2.md|Ornith 35B DFlash2]]
-- [[wiki-topics/turbofit/wiki/entities/ornith-1-5-35b-a3b-mlx-4-bit.md|Ornith 1.5 35B-A3B MLX 4-bit]]
+- [[dflash2-draft|DFlash2 Draft]]
+- [[unleashed-27b|Unleashed 27B]]
+- [[ornith-35b-dflash2|Ornith 35B DFlash2]]
+- [[ornith-1-5-35b-a3b-mlx-4-bit|Ornith 1.5 35B-A3B MLX 4-bit]]
 
 ### DFlash2 MTPLX Incompatibility
 
@@ -1428,7 +1351,7 @@ Source: `wiki/concepts/dflash2-mplx-incompatibility.md`
 
 DFlash2 draft models are incompatible with MTPLX's native MLX MTP heads. This is a fundamental architecture mismatch.
 
-From [[raw/inbox/2026-09-07.md|2026-09-07 02:20]]:
+From 2026-09-07 02:20:
 
 > "DFlash2 is not available for MTPLX. `z-lab/Qwen3.8-27B-DFlash2` exists on HuggingFace but is a CUDA-only diffusion draft model for llama.cpp/vLLM/sglang — incompatible with MTPLX's native MLX MTP heads."
 
@@ -1465,7 +1388,7 @@ Multiple DFlash2-related commands failed:
 
 #### Model Sizes
 
-From [[raw/inbox/2026-09-07.md|2026-09-07 01:27]]:
+From 2026-09-07 01:27:
 
 | Model | Size
 |-------|------|
@@ -1489,10 +1412,10 @@ The incompatibility explains why:
 
 #### Related
 
-- [[entities/dflash2-arg-failures|DFlash2 Arg Failures]]
-- [[entities/mplx-service-arg-validation|MPLX Service Arg Validation]]
-- [[turbofit/entities/dflash2-draft|DFlash2 Draft]]
-- [[turbofit/concepts/dflash2-compat-boundary|DFlash2 Compatibility Boundary]]
+- [[dflash2-arg-failures|DFlash2 Arg Failures]]
+- [[mtplx-service-arg-validation|MPLX Service Arg Validation]]
+- [[dflash2-draft|DFlash2 Draft]]
+- [[dflash2-compat-boundary|DFlash2 Compatibility Boundary]]
 
 ### Hermes Auto Route Stability
 
@@ -1518,7 +1441,7 @@ Hermes's auto-routing mechanism selected non-local providers multiple times duri
 
 #### Standing directive from Chris
 
-> "The active model preference order should preserve explicit user choice and avoid silently switching to `stepfun/step-3.7-flash:free`" [[raw/inbox/2026-09-06.md]].
+> "The active model preference order should preserve explicit user choice and avoid silently switching to `stepfun/step-3.7-flash:free`" raw/inbox/2026-09-06.
 
 #### Resolution needed
 
@@ -1528,13 +1451,13 @@ Hermes's auto-routing mechanism selected non-local providers multiple times duri
 
 #### Status
 
-This stability issue may be resolved by the [[wiki-topics/turbofit/wiki/decisions/fallback-model-order.md|Fallback Model Order]] decision, pending verification that `model.default` appears first in the provider chain and compression stays pinned to local routes.
+This stability issue may be resolved by the [[fallback-model-order|Fallback Model Order]] decision, pending verification that `model.default` appears first in the provider chain and compression stays pinned to local routes.
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/decisions/fallback-model-order.md|Fallback Model Order]]
-- [[wiki-topics/turbofit/wiki/concepts/model-switching-pain.md|Model Switching Pain]]
-- [[wiki-topics/turbofit/wiki/concepts/compression-timeouts.md|Compression Timeouts]]
+- [[fallback-model-order|Fallback Model Order]]
+- [[model-switching-pain|Model Switching Pain]]
+- [[compression-timeouts|Compression Timeouts]]
 
 ### Hermes Model Switching Noise
 
@@ -1566,7 +1489,7 @@ Unrequested model changes can invalidate benchmark context, tool routing, and se
 
 - [[model-switching-pain|Model Switching Pain]]
 - [[ornith-config-routing-failure|Ornith Config Routing Failure]]
-- [[wiki-topics/turbofit/wiki/decisions/fallback-model-order|Fallback Model Order]]
+- [[fallback-model-order|Fallback Model Order]]
 
 ### Model Switching Pain
 
@@ -1590,18 +1513,18 @@ Later, the system reverted to `meituan/longcat-2.0:free` via provider nous, and 
 
 #### Evidence of unwanted switches
 
-From Hermes logs in `raw/inbox/2026-09-07.md`:
+From Hermes logs in [raw/inbox/2026-09-07.md](../raw/inbox/2026-09-07.md):
 
 - `[System: The active model for this chat has changed to meituan/longcat-2.0:free via provider nous.]` at 14:30
 - `[System: The active model for this chat has changed to ornith-1-5-35a3b-mlx via provider turbofit.]` at 14:42 (after Chris's explicit directive)
 
 #### Why it matters
 
-Unrequested model changes can invalidate benchmark context, tool routing, and session evidence. Chris wants TurboFit to stay on the chosen local runtime until he changes it himself. He explicitly stated his preference for Ornith: *"I'm actually gonna switch models to Ornith because it's smarter than the free models that we're using currently"* [[raw/inbox/2026-09-07.md]].
+Unrequested model changes can invalidate benchmark context, tool routing, and session evidence. Chris wants TurboFit to stay on the chosen local runtime until he changes it himself. He explicitly stated his preference for Ornith: *"I'm actually gonna switch models to Ornith because it's smarter than the free models that we're using currently"* raw/inbox/2026-09-07.
 
 #### Root cause
 
-Contributing causes identified in [[wiki-topics/turbofit/wiki/concepts/compression-timeouts.md|Compression Timeouts]]:
+Contributing causes identified in [[compression-timeouts|Compression Timeouts]]:
 
 1. `fallback_providers` ordering that did not preserve explicit choice
 2. `auxiliary.compression.provider: auto` picking a different provider/model for compression
@@ -1609,9 +1532,9 @@ Contributing causes identified in [[wiki-topics/turbofit/wiki/concepts/compressi
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/decisions/fallback-model-order.md|Fallback Model Order]]
-- [[wiki-topics/turbofit/wiki/concepts/compression-timeouts.md|Compression Timeouts]]
-- [[wiki-topics/turbofit/wiki/entities/ornith-config-routing-failure.md|Ornith Config Routing Failure]]
+- [[fallback-model-order|Fallback Model Order]]
+- [[compression-timeouts|Compression Timeouts]]
+- [[ornith-config-routing-failure|Ornith Config Routing Failure]]
 
 ### MTPLX 32GB Memory and Evidence Reliability
 
@@ -1640,9 +1563,9 @@ Postcommit records show `cross_session_foreground_preempted` and `foreground_pre
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/turbofit-mtpl-performance.md|TurboFit MTPLX Performance]]
-- [[wiki-topics/turbofit/wiki/entities/mtplx-memory-guard.md|MPLX Memory Guard]]
-- [[wiki-topics/turbofit/wiki/decisions/context-window-decision.md|Context Window Decision]]
+- [[turbofit-mtpl-performance|TurboFit MTPLX Performance]]
+- [[mtplx-memory-guard|MPLX Memory Guard]]
+- [[context-window-decision|Context Window Decision]]
 
 ### MPTX Context Overcommit
 
@@ -1684,9 +1607,9 @@ Total needed:
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/mplx.md|MPLX]]
-- [[wiki-topics/turbofit/wiki/entities/mplx-qwen-38-27b-optimized-speed.md|MPLX Qwen 3.8 27B Optimized Speed]]
-- [[wiki-topics/turbofit/wiki/entities/mplx-memory-guard.md|MPLX Memory Guard]]
+- [[mplx|MPLX]]
+- [[mtplx-qwen-38-27b-optimized-speed|MPLX Qwen 3.8 27B Optimized Speed]]
+- [[mtplx-memory-guard|MPLX Memory Guard]]
 
 ### MPLX Foreground Preemption
 
@@ -1707,9 +1630,9 @@ When MTPLX handles long-running Hermes foreground work, postcommit records show 
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/turbofit-mtp-performance.md|TurboFit MTP Performance]]
-- [[wiki-topics/turbofit/wiki/entities/turbofit-memory-crash.md|TurboFit Memory Crash]]
-- [[wiki-topics/turbofit/wiki/queries/turbofit-mtplx-coexistence.md|MTPLX Coexistence]]
+- [[turbofit-mtpl-performance|TurboFit MTP Performance]]
+- [[turbofit-memory-crash|TurboFit Memory Crash]]
+- [[turbofit-mtplx-coexistence|MTPLX Coexistence]]
 
 ### TurboFit Session Mismatch
 
@@ -1732,13 +1655,13 @@ MTLPX generation events show foreground/preemption behavior and session-store mi
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/turbofit-verifier-bridge.md|TurboFit Verifier Bridge]]
-- [[wiki-topics/turbofit/wiki/concepts/model-switching-pain.md|Model Switching Pain]]
+- [[turbofit-verifier-bridge|TurboFit Verifier Bridge]]
+- [[model-switching-pain|Model Switching Pain]]
 
 
 #### Research Request
 
-From [[raw/inbox/2026-09-07.md|2026-09-07 03:06]]: Chris asked to "Research and test ALL available Apple Silicon inference engines for Qwen 3.8 27B to find the fastest configuration: llama.cpp (different quants, KV cache types, speculative decoding), MLX (deepgrove fork), OMLX, FreeToken, and any other engines found. Report tok/s for each."
+From 2026-09-07 03:06: Chris asked to "Research and test ALL available Apple Silicon inference engines for Qwen 3.8 27B to find the fastest configuration: llama.cpp (different quants, KV cache types, speculative decoding), MLX (deepgrove fork), OMLX, FreeToken, and any other engines found. Report tok/s for each."
 
 #### Tested Engines
 
@@ -1792,7 +1715,7 @@ From [[raw/inbox/2026-09-07.md|2026-09-07 03:06]]: Chris asked to "Research and 
 
 #### Hardware Reality Check
 
-From [[raw/inbox/2026-09-07.md|2026-09-07 05:41]]:
+From 2026-09-07 05:41:
 
 > "**The hard truth:** On M1 MacBook 32GB with a 27B model at 131K context, **~5-6 tok/s is the ceiling.** You want 10+ tok/s. That's not happening with this hardware — it's like asking a Honda Civic to go 200mph."
 
@@ -1805,9 +1728,9 @@ From [[raw/inbox/2026-09-07.md|2026-09-07 05:41]]:
 
 #### Related
 
-- [[turbofit/queries/engine-research-request|Engine Research Request]]
-- [[turbofit/entities/ornith-1-5-35b-a3b-mlx-4-bit|Ornith 1.5 35B-A3B MLX 4-bit]]
-- [[turbofit/concepts/dflash2-mplx-incompatibility|DFlash2 MTPLX Incompatibility]]
+- [[engine-research-request|Engine Research Request]]
+- [[ornith-1-5-35b-a3b-mlx-4-bit|Ornith 1.5 35B-A3B MLX 4-bit]]
+- [[dflash2-mplx-incompatibility|DFlash2 MTPLX Incompatibility]]
 
 Detected by title/source scan after the 2026-09-07 compile.
 
@@ -1818,7 +1741,7 @@ Detected by title/source scan after the 2026-09-07 compile.
 
 #### Source overlap clusters
 
-These pages share `raw/inbox/2026-09-07.md` and may be describing the same event set from different angles:
+These pages share [raw/inbox/2026-09-07.md](../raw/inbox/2026-09-07.md) and may be describing the same event set from different angles:
 - `decisions/unleashed-backup.md`, `decisions/context-window-decision.md`, `decisions/candidate-quant-preference.md`, `decisions/mtplx-main-provider.md`
 - `concepts/turbofit-session-mismatch.md`, `concepts/hermes-model-switching-noise.md`, `concepts/mtplx-context-overcommit.md`
 - entities: `ornith-config-routing-failure.md`, `dirk-gguf.md`, `unleashed-iq3-xxs-load-failure.md`, `ornith-35b-mlx.md`, `turbofit-mtp-performance.md`, `dflash2-arg-failures.md`, `mtplx-qwen-38-27b-optimized-speed.md`, `dirk-qwen38-27b.md`, `mplx-metal-load-failure.md`, `mtplx-service-arg-validation.md`, `nail-qwen36-35b.md`, `turbofit-verifier-bridge.md`, `ornith-35b.md`, `tiel-coder.md`, `ornith-35b-dflash2.md`, `turbofit-mtpl-performance.md`
@@ -1881,8 +1804,8 @@ Lock in **Ornith MLX 4-bit** as main provider at 65K context (28.5 tok/s short).
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/queries/apple-silicon-runtime-benchmark.md|Apple Silicon Runtime Benchmark]]
-- [[wiki-topics/turbofit/wiki/decisions/context-window-decision.md|Context Window Decision]]
+- [[apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
+- [[context-window-decision|Context Window Decision]]
 
 This is the live result surface of Chris's research request for Apple Silicon engine speed testing.
 
@@ -1944,9 +1867,9 @@ providers:
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/queries/apple-silicon-runtime-benchmark.md|APL_Silicon Runtime Benchmark]]
-- [[wiki-topics/turbofit/wiki/entities/ornith-35b-mlx.md|Ornith 35B MLX]]
-- [[wiki-topics/turbofit/wiki/decisions/context-window-decision.md|Context Window Decision]]
+- [[apple-silicon-runtime-benchmark|APL_Silicon Runtime Benchmark]]
+- [[ornith-35b-mlx|Ornith 35B MLX]]
+- [[context-window-decision|Context Window Decision]]
 
 Captures the open verification work after configuring Ornith as main, and the contested state where Hermes showed persistent timeouts after config repoint.
 
@@ -1975,7 +1898,7 @@ If the Hermes timeout was only during transition, what is the canonical approval
 
 #### Related pages
 
-- [[turbo-fit-evidence-capture|TurboFit Evidence Capture]]
+- [TurboFit Evidence Capture](../skills/turbo-fit-evidence-capture/SKILL.md)
 - [[local-main-provider|Local Main Provider]]
 - [[ornith-1-5-35b-a3b-mlx-4-bit|Ornith 1.5 35B-A3B MLX 4-bit]]
 
@@ -1996,9 +1919,9 @@ Chris wants Maple as auxiliary on this M1 Mac. If Metal server mode cannot stay 
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/comparisons/aux-runtime-options.md|Aux Runtime Options]]
-- [[wiki-topics/turbofit/wiki/entities/maple.md|Maple]]
-- [[wiki-topics/turbofit/wiki/entities/mplx.md|MPLX]]
+- [[aux-runtime-options|Aux Runtime Options]]
+- [[maple|Maple]]
+- [[mplx|MPLX]]
 
 #### Question
 
@@ -2016,9 +1939,9 @@ If MPLX can share the box with Unleashed, it may become a faster aux or alternat
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/mplx.md|MPLX]]
-- [[wiki-topics/turbofit/wiki/entities/turbofit.md|TurboFit]]
-- [[wiki-topics/turbofit/wiki/decisions/main-model-selection.md|Main Model Selection]]
+- [[mplx|MPLX]]
+- [[turbofit|TurboFit]]
+- [[main-model-selection|Main Model Selection]]
 
 Chris wanted Ornith prioritized over Bonsai, Colibri, and music-generation side paths. His exact instruction was, "It just needs to be configured into turbofit so I can continue with Ornith. Don't worry about bonsai." .
 
@@ -2062,10 +1985,10 @@ requested context 131072 exceeds the machine fit 8192: KV at the full window nee
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/concepts/mtplx-context-overcommit|MPLX Context Overcommit]]
-- [[wiki-topics/turbofit/wiki/entities/turbofit-memory-crash|TurboFit Memory Crash]]
-- [[wiki-topics/turbofit/wiki/entities/turbofit-mtp-performance|TurboFit MTP Performance]]
-- [[wiki-topics/turbofit/wiki/decisions/context-window-decision|Context Window Decision]]
+- [[mtplx-context-overcommit|MPLX Context Overcommit]]
+- [[turbofit-memory-crash|TurboFit Memory Crash]]
+- [[turbofit-mtpl-performance|TurboFit MTP Performance]]
+- [[context-window-decision|Context Window Decision]]
 
 ---
 
@@ -2101,9 +2024,9 @@ Multiple Hermes turns declared Maple MLX unstable or impossible before the deepg
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/maple.md|Maple]]
-- [[wiki-topics/turbofit/wiki/decisions/main-model-selection.md|Main Model Selection]]
-- [[wiki-topics/turbofit/wiki/comparisons/aux-runtime-options.md|Aux Runtime Options]]
+- [[maple|Maple]]
+- [[main-model-selection|Main Model Selection]]
+- [[aux-runtime-options|Aux Runtime Options]]
 
 ### Candidate Quant Preference
 
@@ -2129,11 +2052,11 @@ A reusable quant-selection rule for candidate research: if page notes say "near 
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/dirk-qwen38-27b.md|Dirk Qwen 3.8 27B GGUF]]
-- [[wiki-topics/turbofit/wiki/entities/nail-qwen36-35b.md|Nail Qwen 3.6 35B UD Q4_K_XL]]
-- [[wiki-topics/turbofit/wiki/entities/tiel-coder.md|Tiel Coder]]
-- [[wiki-topics/turbofit/wiki/entities/ornith-35b-mlx.md|Ornith 35B MLX]]
-- [[wiki-topics/turbofit/wiki/queries/apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
+- [[dirk-qwen38-27b|Dirk Qwen 3.8 27B GGUF]]
+- [[nail-qwen36-35b|Nail Qwen 3.6 35B UD Q4_K_XL]]
+- [[tiel-coder|Tiel Coder]]
+- [[ornith-35b-mlx|Ornith 35B MLX]]
+- [[apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
 
 ### Context Sizing
 
@@ -2160,9 +2083,9 @@ Set 2026-09-06 after multiple compression timeout errors during end-to-end testi
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/decisions/main-model-selection.md|Main Model Selection]]
-- [[wiki-topics/turbofit/wiki/decisions/aux-model-selection.md|Aux Model Selection]]
-- [[wiki-topics/turbofit/wiki/concepts/compression-timeouts.md|Compression Timeouts]]
+- [[main-model-selection|Main Model Selection]]
+- [[aux-model-selection|Aux Model Selection]]
+- [[compression-timeouts|Compression Timeouts]]
 
 ### Context Window Decision
 
@@ -2211,9 +2134,9 @@ M1 MacBook 32GB unified memory:
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/mplx-qwen-38-27b-optimized-speed.md|MPLX Qwen 3.8 27B Optimized Speed]]
-- [[wiki-topics/turbofit/wiki/decisions/mtplx-main-provider.md|MPLX Main Provider]]
-- [[wiki-topics/turbofit/wiki/entities/unleashed-27b.md|Unleashed 27B]]
+- [[mtplx-qwen-38-27b-optimized-speed|MPLX Qwen 3.8 27B Optimized Speed]]
+- [[mtplx-main-provider|MPLX Main Provider]]
+- [[unleashed-27b|Unleashed 27B]]
 
 ### Fallback Model Order
 
@@ -2239,8 +2162,8 @@ Diagnosed 2026-09-06 02:20–02:25 UTC; config correction attempted in-session b
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/concepts/model-switching-pain.md|Model Switching Pain]]
-- [[wiki-topics/turbofit/wiki/decisions/main-model-selection.md|Main Model Selection]]
+- [[model-switching-pain|Model Switching Pain]]
+- [[main-model-selection|Main Model Selection]]
 
 ### TurboFit Local Main Provider Decision
 
@@ -2276,7 +2199,7 @@ Final TurboFit evidence requires a real Hermes window capture plus the primary v
 
 #### Related pages
 - [[ornith-1-5-35b-a3b-mlx-4-bit|Ornith 1.5 35B-A3B MLX 4-bit]]
-- [[turbo-fit-evidence-capture|TurboFit Evidence Capture]]
+- [TurboFit Evidence Capture](../skills/turbo-fit-evidence-capture/SKILL.md)
 
 ### Main Model Selection
 
@@ -2316,11 +2239,11 @@ Multiple provider switches occurred during the session:
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/unleashed-27b.md|Unleashed 27B]]
-- [[wiki-topics/turbofit/wiki/entities/ornith-35b-mlx.md|Ornith 35B MLX]]
-- [[wiki-topics/turbofit/wiki/entities/mplx.md|MPLX]]
-- [[wiki-topics/turbofit/wiki/entities/mtplx-qwen-38-27b-optimized-speed.md|MPLX Qwen 3.8 27B]]
-- [[wiki-topics/turbofit/wiki/decisions/context-window-decision.md|Context Window Decision]]
+- [[unleashed-27b|Unleashed 27B]]
+- [[ornith-35b-mlx|Ornith 35B MLX]]
+- [[mplx|MPLX]]
+- [[mtplx-qwen-38-27b-optimized-speed|MPLX Qwen 3.8 27B]]
+- [[context-window-decision|Context Window Decision]]
 
 ### MT_PlX Main Provider
 
@@ -2376,9 +2299,9 @@ Ornith was selected as the main provider because:
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/decisions/context-window-decision.md|Context Window Decision]]
-- [[wiki-topics/turbofit/wiki/entities/mplx-qwen-38-27b-optimized-speed.md|MPLX Qwen 3.8 27B Optimized Speed]]
-- [[wiki-topics/turbofit/wiki/entities/ornith-35b-mlx.md|Ornith 35B MLX]]
+- [[context-window-decision|Context Window Decision]]
+- [[mtplx-qwen-38-27b-optimized-speed|MPLX Qwen 3.8 27B Optimized Speed]]
+- [[ornith-35b-mlx|Ornith 35B MLX]]
 
 ### Ornith Config Routing
 
@@ -2400,7 +2323,7 @@ providers.turbofit.default_model: ornith-1-5-35a3b-mlx
 
 #### Why Ornith
 
-From [[raw/inbox/2026-09-07.md|2026-09-07 06:18]]:
+From 2026-09-07 06:18:
 
 > "**Ornith MLX 4-bit** is the fastest local short-context candidate on this box at 28.5 tok/s for 500-token prompts, but drops to ~0.5 tok/s at 131K and is not a stable long-context main on 32 GB. Unlocked Ornith as main provider."
 
@@ -2415,7 +2338,7 @@ From [[raw/inbox/2026-09-07.md|2026-09-07 06:18]]:
 
 #### Post-Routing Issues
 
-At [[raw/inbox/2026-09-07.md|2026-09-07 14:26]], Hermes showed timeout errors despite the server being live:
+At 2026-09-07 14:26, Hermes showed timeout errors despite the server being live:
 
 ```
 layer: provider
@@ -2428,13 +2351,13 @@ error: Connection error.
 
 #### Final Status
 
-At [[raw/inbox/2026-09-07.md|2026-09-07 14:30]]: Ornith is running on port 11613 and the config shows it as the default provider. Chris reported at [[raw/inbox/2026-09-07.md|14:28]] that "Ornith is live and active on your session now."
+At 2026-09-07 14:30: Ornith is running on port 11613 and the config shows it as the default provider. Chris reported at 14:28 that "Ornith is live and active on your session now."
 
 #### Related
 
-- [[entities/ornith-1-5-35b-a3b-mlx-4-bit|Ornith 1.5 35B-A3B MLX 4-bit]]
-- [[entities/ornith-config-routing-failure|Ornith Config Routing Failure]]
-- [[turbofit/entities/mplx.md|MPLX]]
+- [[ornith-1-5-35b-a3b-mlx-4-bit|Ornith 1.5 35B-A3B MLX 4-bit]]
+- [[ornith-config-routing-failure|Ornith Config Routing Failure]]
+- [[mplx|MPLX]]
 
 ### Unleashed Backup
 
@@ -2486,10 +2409,10 @@ Unleashed Q3_K_XL remains the **only viable 131K solution** on this 32 GB hardwa
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/unleashed-27b.md|Unleashed 27B]]
-- [[wiki-topics/turbofit/wiki/entities/dflash2-draft.md|DFlash2 Draft]]
-- [[wiki-topics/turbofit/wiki/decisions/main-model-selection.md|Main Model Selection]]
-- [[wiki-topics/turbofit/wiki/concepts/mtplx-context-overcommit.md|MPLX Context Overcommit]]
+- [[unleashed-27b|Unleashed 27B]]
+- [[dflash2-draft|DFlash2 Draft]]
+- [[main-model-selection|Main Model Selection]]
+- [[mtplx-context-overcommit|MPLX Context Overcommit]]
 
 
 ---

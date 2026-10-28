@@ -24,5 +24,5 @@ confidence: medium
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/entities/turbofit.md|TurboFit]]
-- [[wiki-topics/turbofit/wiki/concepts/model-switching-pain.md|Model Switching Pain]]
+- [[turbofit|TurboFit]]
+- [[model-switching-pain|Model Switching Pain]]

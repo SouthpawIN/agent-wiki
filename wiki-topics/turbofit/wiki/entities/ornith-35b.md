@@ -46,9 +46,9 @@ Ornith is fast at short context but loses throughput sharply as KV cache grows. 
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/decisions/aux-model-selection|Aux Model Selection]]
-- [[wiki-topics/turbofit/wiki/decisions/unleashed-backup|Unleashed Backup]]
-- [[wiki-topics/turbofit/wiki/queries/apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
-- [[wiki-topics/turbofit/wiki/entities/dflash2-draft|DFlash2 Draft]]
-- [[wiki-topics/turbofit/wiki/entities/ornith-35b-mlx.md|Ornith 35B MLX]]
-- [[wiki-topics/turbofit/wiki/entities/ornith-35b-dflash2.md|Ornith 35B DFlash2]]
+- [[aux-model-selection|Aux Model Selection]]
+- [[unleashed-backup|Unleashed Backup]]
+- [[apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
+- [[dflash2-draft|DFlash2 Draft]]
+- [[ornith-35b-mlx|Ornith 35B MLX]]
+- [[ornith-35b-dflash2|Ornith 35B DFlash2]]

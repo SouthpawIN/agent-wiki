@@ -26,5 +26,5 @@ MTLPX generation events show foreground/preemption behavior and session-store mi
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/entities/turbofit-verifier-bridge.md|TurboFit Verifier Bridge]]
-- [[wiki-topics/turbofit/wiki/concepts/model-switching-pain.md|Model Switching Pain]]
+- [[turbofit-verifier-bridge|TurboFit Verifier Bridge]]
+- [[model-switching-pain|Model Switching Pain]]

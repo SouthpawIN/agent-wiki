@@ -9,7 +9,7 @@ tags:
   - routing
   - pain
 sources:
-  - raw/inbox/2026-09-07.md
+  - [raw/inbox/2026-09-07.md](../../raw/inbox/2026-09-07.md)
   - raw/inbox/2026-09-08-from-senter-wiki.md
 confidence: high
 contested: true
@@ -36,7 +36,7 @@ Hermes's auto-routing mechanism selected non-local providers multiple times duri
 
 ## Standing directive from Chris
 
-> "The active model preference order should preserve explicit user choice and avoid silently switching to `stepfun/step-3.7-flash:free`" [[raw/inbox/2026-09-06.md]].
+> "The active model preference order should preserve explicit user choice and avoid silently switching to `stepfun/step-3.7-flash:free`" raw/inbox/2026-09-06.
 
 ## Resolution needed
 
@@ -46,10 +46,10 @@ Hermes's auto-routing mechanism selected non-local providers multiple times duri
 
 ## Status
 
-This stability issue may be resolved by the [[wiki-topics/turbofit/wiki/decisions/fallback-model-order.md|Fallback Model Order]] decision, pending verification that `model.default` appears first in the provider chain and compression stays pinned to local routes.
+This stability issue may be resolved by the [[fallback-model-order|Fallback Model Order]] decision, pending verification that `model.default` appears first in the provider chain and compression stays pinned to local routes.
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/decisions/fallback-model-order.md|Fallback Model Order]]
-- [[wiki-topics/turbofit/wiki/concepts/model-switching-pain.md|Model Switching Pain]]
-- [[wiki-topics/turbofit/wiki/concepts/compression-timeouts.md|Compression Timeouts]]
+- [[fallback-model-order|Fallback Model Order]]
+- [[model-switching-pain|Model Switching Pain]]
+- [[compression-timeouts|Compression Timeouts]]

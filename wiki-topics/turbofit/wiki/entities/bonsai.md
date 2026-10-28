@@ -33,6 +33,6 @@ At 7.91 GB, Ternary Bonsai would fit within the 32 GB memory budget, but no veri
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/entities/ornith-1-5-35b-a3b-mlx-4-bit|Ornith 1.5 35B-A3B MLX 4-bit]]
-- [[wiki-topics/turbofit/wiki/queries/engine-research-request|Engine Research Request]]
-- [[wiki-topics/turbofit/wiki/decisions/local-main-provider|TurboFit Local Main Provider Decision]]
+- [[ornith-1-5-35b-a3b-mlx-4-bit|Ornith 1.5 35B-A3B MLX 4-bit]]
+- [[engine-research-request|Engine Research Request]]
+- [[local-main-provider|TurboFit Local Main Provider Decision]]

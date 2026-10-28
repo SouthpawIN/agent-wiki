@@ -119,7 +119,7 @@ E. Obsidian-plugin agent — Hermes for Obsidian, Cursor-style: Hermes client in
 D. Vault-janitor agent — keep .system/queue.md + session.md synced to actual repo state
 
 ## 2026-09-02 — absorbed turbohaul-llmfit
-_Merged into `turbofit` by merge-topics.py v1.1.0. Verbatim originals: `wiki-topics/_archive/turbohaul-llmfit/.system/`._
+_Merged into `turbofit` by merge-topics.py v1.1.0. Verbatim originals: `topics/_archive/turbohaul-llmfit/.system/`._
 
 ### continuity.md (from turbohaul-llmfit)
 
@@ -131,7 +131,7 @@ Raw understanding, 2026-08-27 (from GitHub metadata + README):
 - (Edit this file to correct my understanding; I never overwrite user-edited lines.)
 
 ## 2026-09-02 — absorbed turbohaul-manager
-_Merged into `turbofit` by merge-topics.py v1.1.0. Verbatim originals: `wiki-topics/_archive/turbohaul-manager/.system/`._
+_Merged into `turbofit` by merge-topics.py v1.1.0. Verbatim originals: `topics/_archive/turbohaul-manager/.system/`._
 
 ### continuity.md (from turbohaul-manager)
 
@@ -143,7 +143,7 @@ Raw understanding, 2026-08-27 (from GitHub metadata + README):
 - (Edit this file to correct my understanding; I never overwrite user-edited lines.)
 
 ## 2026-09-02 — absorbed southpaw-turbohaul
-_Merged into `turbofit` by merge-topics.py v1.1.0. Verbatim originals: `wiki-topics/_archive/southpaw-turbohaul/.system/`._
+_Merged into `turbofit` by merge-topics.py v1.1.0. Verbatim originals: `topics/_archive/southpaw-turbohaul/.system/`._
 
 ### continuity.md (from southpaw-turbohaul)
 
@@ -155,7 +155,7 @@ Raw understanding, 2026-08-27 (from GitHub metadata + README):
 - (Edit this file to correct my understanding; I never overwrite user-edited lines.)
 
 ## 2026-09-02 — absorbed sirvir
-_Merged into `turbofit` by merge-topics.py v1.1.0. Verbatim originals: `wiki-topics/_archive/sirvir/.system/`._
+_Merged into `turbofit` by merge-topics.py v1.1.0. Verbatim originals: `topics/_archive/sirvir/.system/`._
 
 ### continuity.md (from sirvir)
 
@@ -165,3 +165,9 @@ Raw understanding, 2026-08-27 (from GitHub metadata + README):
 - Sirvir — GitHub-current TurboFit support for Hermes; installs TurboFit when missing, compares machine fit, answers Q&A, troubleshoots, and writes tested upstream PRs.
 - Language: Python; 27 stars; last push 2026-08-24; original work.
 - (Edit this file to correct my understanding; I never overwrite user-edited lines.)
+
+## 2026-10-28 — GitHub consolidation pass (complete)
+- **Directive:** "go through my GitHub … everything consolidated into the agent wiki … just get everything into one spot." Bot-wiki reorg notes explicitly ignored.
+- **Done:** 33 repo prose docs absorbed into `references/` @ `0ff572b`; 7 ecosystem entity pages; ecosystem map; index.md regenerated; `wiki/index.md` ladder section corrected to the two-ladder doctrine; link + wikilink integrity clean; 8 pages re-homed from `add-one`.
+- **State:** topic is now self-contained for knowledge. Code, JSON data and binaries stay in the repo on purpose (map in the source file).
+- **Open:** (1) two benchmark stores (TurboFit JSON vs model-momento SQLite), (2) legacy turbohaul line not archived, (3) duplicate model/concept pages flagged not merged (`Maple` vs `Maple Preview 8B`, `Cyber Tiel Coder 35B-A3B` vs `Cyber Tiel Coder MTP`, `dflash2-compat-boundary` vs `dflash2-fork-flag-boundary` vs `dflash2-mplx-incompatibility`), (4) `index.md` vs `wiki/index.md` two entry points (Rule 5 says one).

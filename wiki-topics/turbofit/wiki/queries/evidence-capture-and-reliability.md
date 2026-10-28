@@ -9,7 +9,7 @@ tags:
   - query
   - main-provider
 sources:
-  - raw/inbox/2026-09-07.md
+  - [raw/inbox/2026-09-07.md](../../raw/inbox/2026-09-07.md)
   - raw/inbox/2026-09-07-from-senter-wiki.md
 confidence: medium
 ---
@@ -45,6 +45,6 @@ If the Hermes timeout was only during transition, what is the canonical approval
 
 ## Related pages
 
-- [[turbo-fit-evidence-capture|TurboFit Evidence Capture]]
+- [TurboFit Evidence Capture](../../skills/turbo-fit-evidence-capture/SKILL.md)
 - [[local-main-provider|Local Main Provider]]
 - [[ornith-1-5-35b-a3b-mlx-4-bit|Ornith 1.5 35B-A3B MLX 4-bit]]

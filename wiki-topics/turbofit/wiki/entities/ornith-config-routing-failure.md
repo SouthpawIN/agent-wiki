@@ -9,7 +9,7 @@ tags:
   - pain
   - routing
 sources:
-  - raw/inbox/2026-09-07.md
+  - [raw/inbox/2026-09-07.md](../../raw/inbox/2026-09-07.md)
 confidence: medium
 ---
 

@@ -24,7 +24,7 @@ Chris requested Dirk GGUF downloads for local comparison. The actual repo is `pe
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/entities/dirk-gguf.md|Dirk GGUF Q3_K_XL]]
-- [[wiki-topics/turbofit/wiki/decisions/candidate-quant-preference.md|Candidate Quant Preference]]
-- [[wiki-topics/turbofit/wiki/queries/apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
-- [[wiki-topics/turbofit/wiki/entities/unleashed-27b.md|Unleashed 27B]]
+- [[dirk-gguf|Dirk GGUF Q3_K_XL]]
+- [[candidate-quant-preference|Candidate Quant Preference]]
+- [[apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
+- [[unleashed-27b|Unleashed 27B]]

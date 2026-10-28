@@ -29,8 +29,8 @@ A reusable quant-selection rule for candidate research: if page notes say "near 
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/entities/dirk-qwen38-27b.md|Dirk Qwen 3.8 27B GGUF]]
-- [[wiki-topics/turbofit/wiki/entities/nail-qwen36-35b.md|Nail Qwen 3.6 35B UD Q4_K_XL]]
-- [[wiki-topics/turbofit/wiki/entities/tiel-coder.md|Tiel Coder]]
-- [[wiki-topics/turbofit/wiki/entities/ornith-35b-mlx.md|Ornith 35B MLX]]
-- [[wiki-topics/turbofit/wiki/queries/apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
+- [[dirk-qwen38-27b|Dirk Qwen 3.8 27B GGUF]]
+- [[nail-qwen36-35b|Nail Qwen 3.6 35B UD Q4_K_XL]]
+- [[tiel-coder|Tiel Coder]]
+- [[ornith-35b-mlx|Ornith 35B MLX]]
+- [[apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]

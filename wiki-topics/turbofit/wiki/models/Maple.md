@@ -175,18 +175,18 @@ Maple-Preview is the auxiliary model Chris wants for Hermes compression and text
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/turbofit.md|TurboFit]]
-- [[wiki-topics/turbofit/wiki/entities/mplx.md|MPLX]]
-- [[wiki-topics/turbofit/wiki/decisions/aux-model-selection.md|Aux Model Selection]]
-- [[wiki-topics/turbofit/wiki/concepts/compression-timeouts.md|Compression Timeouts]]
+- [[turbofit|TurboFit]]
+- [[mplx|MPLX]]
+- [[aux-model-selection|Aux Model Selection]]
+- [[compression-timeouts|Compression Timeouts]]
 
 
 ## See Also
 
-- [[concepts/benchmark-taxonomy|Benchmark Taxonomy]]
-- [[wiki-topics/turbofit/wiki/index|Wiki Index]]
+- [[benchmark-taxonomy|Benchmark Taxonomy]]
+- [[index|Wiki Index]]
 - [[Bonsai 27B|Bonsai 27B]] — DeepGrove's earlier 1-bit ternary model
-- [[Maple Preview|Maple Preview]] — Separate 8B aux model stub
+- [[Maple|Maple Preview]] — Separate 8B aux model stub
 
 ### From entity: maple
 
@@ -214,7 +214,7 @@ Maple-Preview is the auxiliary model Chris wants for Hermes compression and text
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/entities/turbofit.md|TurboFit]]
-- [[wiki-topics/turbofit/wiki/entities/mplx.md|MPLX]]
-- [[wiki-topics/turbofit/wiki/decisions/aux-model-selection.md|Aux Model Selection]]
-- [[wiki-topics/turbofit/wiki/concepts/compression-timeouts.md|Compression Timeouts]]
+- [[turbofit|TurboFit]]
+- [[mplx|MPLX]]
+- [[aux-model-selection|Aux Model Selection]]
+- [[compression-timeouts|Compression Timeouts]]

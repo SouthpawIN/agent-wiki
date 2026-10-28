@@ -155,5 +155,5 @@ llama.cpp AMX (AVX-512/AVX2) — dense model, no MoE offload needed
 
 ## Notes
 - Size: 8.4–11.8 GB depending on quant (plus 0.9 GB mmproj for multimodal)
-- Cross-references: [[wiki-topics/turbofit/index|wiki index]]
+- Cross-references: [[index|wiki index]]
 - Reference implementations: [IST-DASLab/GSQ](https://github.com/IST-DASLab/GSQ), [IST-DASLab/RCO](https://github.com/IST-DASLab/RCO)

@@ -10,7 +10,7 @@ tags:
   - runtime
   - evidence
 sources:
-  - raw/inbox/2026-09-07.md
+  - [raw/inbox/2026-09-07.md](../../raw/inbox/2026-09-07.md)
   - raw/inbox/2026-09-07-from-senter-wiki.md
 confidence: medium
 contested: true
@@ -56,4 +56,4 @@ Final TurboFit evidence requires a real Hermes window capture plus the primary v
 
 ## Related pages
 - [[ornith-1-5-35b-a3b-mlx-4-bit|Ornith 1.5 35B-A3B MLX 4-bit]]
-- [[turbo-fit-evidence-capture|TurboFit Evidence Capture]]
+- [TurboFit Evidence Capture](../../skills/turbo-fit-evidence-capture/SKILL.md)

@@ -172,5 +172,5 @@ KV cache is 890 bytes/token. Memory planning:
 
 ## See Also
 
-- [[concepts/benchmark-taxonomy|Benchmark Taxonomy]]
-- [[wiki-topics/turbofit/wiki/index|Wiki Index]]
+- [[benchmark-taxonomy|Benchmark Taxonomy]]
+- [[index|Wiki Index]]

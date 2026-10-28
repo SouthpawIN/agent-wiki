@@ -30,6 +30,6 @@ Qwen3.8-27B-Unleashed in `UD-Q3_K_XL.gguf` with the Unleashed vision projector a
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/entities/turbofit.md|TurboFit]]
-- [[wiki-topics/turbofit/wiki/entities/dflash2-draft.md|DFlash2 Draft]]
-- [[wiki-topics/turbofit/wiki/decisions/main-model-selection.md|Main Model Selection]]
+- [[turbofit|TurboFit]]
+- [[dflash2-draft|DFlash2 Draft]]
+- [[main-model-selection|Main Model Selection]]

@@ -26,6 +26,6 @@ If MPLX can share the box with Unleashed, it may become a faster aux or alternat
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/entities/mplx.md|MPLX]]
-- [[wiki-topics/turbofit/wiki/entities/turbofit.md|TurboFit]]
-- [[wiki-topics/turbofit/wiki/decisions/main-model-selection.md|Main Model Selection]]
+- [[mplx|MPLX]]
+- [[turbofit|TurboFit]]
+- [[main-model-selection|Main Model Selection]]

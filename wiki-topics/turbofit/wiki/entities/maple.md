@@ -34,7 +34,7 @@ Maple-Preview is the auxiliary model Chris wants for Hermes compression and text
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/entities/turbofit.md|TurboFit]]
-- [[wiki-topics/turbofit/wiki/entities/mplx.md|MPLX]]
-- [[wiki-topics/turbofit/wiki/decisions/aux-model-selection.md|Aux Model Selection]]
-- [[wiki-topics/turbofit/wiki/concepts/compression-timeouts.md|Compression Timeouts]]
+- [[turbofit|TurboFit]]
+- [[mplx|MPLX]]
+- [[aux-model-selection|Aux Model Selection]]
+- [[compression-timeouts|Compression Timeouts]]

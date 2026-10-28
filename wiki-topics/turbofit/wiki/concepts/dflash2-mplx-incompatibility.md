@@ -14,7 +14,7 @@ confidence: high
 
 DFlash2 draft models are incompatible with MTPLX's native MLX MTP heads. This is a fundamental architecture mismatch.
 
-From [[raw/inbox/2026-09-07.md|2026-09-07 02:20]]:
+From 2026-09-07 02:20:
 
 > "DFlash2 is not available for MTPLX. `z-lab/Qwen3.8-27B-DFlash2` exists on HuggingFace but is a CUDA-only diffusion draft model for llama.cpp/vLLM/sglang — incompatible with MTPLX's native MLX MTP heads."
 
@@ -51,7 +51,7 @@ Multiple DFlash2-related commands failed:
 
 ## Model Sizes
 
-From [[raw/inbox/2026-09-07.md|2026-09-07 01:27]]:
+From 2026-09-07 01:27:
 
 | Model | Size |
 |-------|------|
@@ -75,7 +75,7 @@ The incompatibility explains why:
 
 ## Related
 
-- [[entities/dflash2-arg-failures|DFlash2 Arg Failures]]
-- [[entities/mplx-service-arg-validation|MPLX Service Arg Validation]]
-- [[turbofit/entities/dflash2-draft|DFlash2 Draft]]
-- [[turbofit/concepts/dflash2-compat-boundary|DFlash2 Compatibility Boundary]]
+- [[dflash2-arg-failures|DFlash2 Arg Failures]]
+- [[mtplx-service-arg-validation|MPLX Service Arg Validation]]
+- [[dflash2-draft|DFlash2 Draft]]
+- [[dflash2-compat-boundary|DFlash2 Compatibility Boundary]]

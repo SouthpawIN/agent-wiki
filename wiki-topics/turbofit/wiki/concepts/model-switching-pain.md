@@ -9,8 +9,8 @@ tags:
   - routing
   - evidence
 sources:
-  - raw/inbox/2026-09-07.md
-  - raw/inbox/2026-09-06.md
+  - [raw/inbox/2026-09-07.md](../../raw/inbox/2026-09-07.md)
+  - [raw/inbox/2026-09-06.md](../../raw/inbox/2026-09-06.md)
 confidence: high
 ---
 
@@ -33,18 +33,18 @@ Later, the system reverted to `meituan/longcat-2.0:free` via provider nous, and 
 
 ## Evidence of unwanted switches
 
-From Hermes logs in `raw/inbox/2026-09-07.md`:
+From Hermes logs in [raw/inbox/2026-09-07.md](../../raw/inbox/2026-09-07.md):
 
 - `[System: The active model for this chat has changed to meituan/longcat-2.0:free via provider nous.]` at 14:30
 - `[System: The active model for this chat has changed to ornith-1-5-35a3b-mlx via provider turbofit.]` at 14:42 (after Chris's explicit directive)
 
 ## Why it matters
 
-Unrequested model changes can invalidate benchmark context, tool routing, and session evidence. Chris wants TurboFit to stay on the chosen local runtime until he changes it himself. He explicitly stated his preference for Ornith: *"I'm actually gonna switch models to Ornith because it's smarter than the free models that we're using currently"* [[raw/inbox/2026-09-07.md]].
+Unrequested model changes can invalidate benchmark context, tool routing, and session evidence. Chris wants TurboFit to stay on the chosen local runtime until he changes it himself. He explicitly stated his preference for Ornith: *"I'm actually gonna switch models to Ornith because it's smarter than the free models that we're using currently"* raw/inbox/2026-09-07.
 
 ## Root cause
 
-Contributing causes identified in [[wiki-topics/turbofit/wiki/concepts/compression-timeouts.md|Compression Timeouts]]:
+Contributing causes identified in [[compression-timeouts|Compression Timeouts]]:
 
 1. `fallback_providers` ordering that did not preserve explicit choice
 2. `auxiliary.compression.provider: auto` picking a different provider/model for compression
@@ -52,6 +52,6 @@ Contributing causes identified in [[wiki-topics/turbofit/wiki/concepts/compressi
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/decisions/fallback-model-order.md|Fallback Model Order]]
-- [[wiki-topics/turbofit/wiki/concepts/compression-timeouts.md|Compression Timeouts]]
-- [[wiki-topics/turbofit/wiki/entities/ornith-config-routing-failure.md|Ornith Config Routing Failure]]
+- [[fallback-model-order|Fallback Model Order]]
+- [[compression-timeouts|Compression Timeouts]]
+- [[ornith-config-routing-failure|Ornith Config Routing Failure]]

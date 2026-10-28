@@ -37,4 +37,4 @@ llama.cpp AMX
 
 ## Notes
 Size: 18G total
-Cross-references: [[wiki-topics/turbofit/index|wiki index]]
+Cross-references: [[index|wiki index]]

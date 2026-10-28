@@ -40,7 +40,7 @@ sources: []
 
 ## Benchmarks
 
-> Filled in as research completes. Use [[concepts/benchmark-taxonomy|Benchmark Taxonomy]] for the canonical list.
+> Filled in as research completes. Use [[benchmark-taxonomy|Benchmark Taxonomy]] for the canonical list.
 
 ### Reasoning & Knowledge
 
@@ -79,5 +79,5 @@ sources: []
 
 ## See Also
 
-- [[concepts/benchmark-taxonomy|Benchmark Taxonomy]]
-- [[wiki-topics/turbofit/wiki/index|Wiki Index]]
+- [[benchmark-taxonomy|Benchmark Taxonomy]]
+- [[index|Wiki Index]]

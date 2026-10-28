@@ -27,6 +27,6 @@ Chris wants Maple as auxiliary on this M1 Mac. If Metal server mode cannot stay 
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/comparisons/aux-runtime-options.md|Aux Runtime Options]]
-- [[wiki-topics/turbofit/wiki/entities/maple.md|Maple]]
-- [[wiki-topics/turbofit/wiki/entities/mplx.md|MPLX]]
+- [[aux-runtime-options|Aux Runtime Options]]
+- [[maple|Maple]]
+- [[mplx|MPLX]]

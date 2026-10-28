@@ -24,5 +24,5 @@ A `mtplx serve --download` background process exited with code `1` after 42.2 s 
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/entities/turbofit-memory-crash.md|TurboFit Memory Crash]]
-- [[wiki-topics/turbofit/wiki/entities/turbofit-mtp-performance.md|TurboFit MTP Performance]]
+- [[turbofit-memory-crash|TurboFit Memory Crash]]
+- [[turbofit-mtpl-performance|TurboFit MTP Performance]]

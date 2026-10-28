@@ -39,7 +39,7 @@ Bonsai and Colibri are parked. The active work is Ornith MLX 4-bit as the main t
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/entities/bonsai.md|Bonsai MLX]]
-- [[wiki-topics/turbofit/wiki/entities/colibri.md|Colibri]]
-- [[wiki-topics/turbofit/wiki/entities/ornith-1-5-35b-a3b-mlx-4-bit|Ornith 1.5 35B-A3B MLX 4-bit]]
-- [[wiki-topics/turbofit/wiki/queries/evidence-capture-and-reliability|Evidence Capture and Reliability Query]]
+- [[bonsai|Bonsai MLX]]
+- [[colibri|Colibri]]
+- [[ornith-1-5-35b-a3b-mlx-4-bit|Ornith 1.5 35B-A3B MLX 4-bit]]
+- [[evidence-capture-and-reliability|Evidence Capture and Reliability Query]]

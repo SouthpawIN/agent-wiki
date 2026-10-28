@@ -1,0 +1,29 @@
+---
+title: Turbofit List
+updated: 2026-10-28
+type: reference
+tags: [turbofit, reference]
+sources: [raw/sources/2026-10-28-github-consolidation.md]
+---
+
+> **Source of truth:** absorbed from [`SouthpawIN/turbofit`](https://github.com/SouthpawIN/turbofit) `docs/turbofit-list.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file remains the shipped copy.
+
+# TurboFit List
+
+The **TurboFit List** is made only from benchmark winners at each physical hardware level. **TurboFit Check** is the system scan-to-configuration process that matches a user's machine to this evidence; it is not a model leaderboard.
+
+| Hardware level | Winner | Context | Intelligence | TPS | Balanced | Status |
+|---:|---|---:|---:|---:|---:|---|
+| 8 GB | — | — | — | — | — | pending benchmarks |
+| 16 GB | — | — | — | — | — | pending benchmarks |
+| 24 GB | `Cyber-Tiel Coder 35B-A3B UD-IQ3_XXS + Ornith 1.5 35B-A3B Q4_K_M` | 65536 | pending | 25.625082 | pending | measured-tps-only |
+| 32 GB | — | — | — | — | — | pending benchmarks |
+| 48 GB | `Qwen 3.8 27B GSQ-RCO UD-Q3_K_XL + Route auxiliary tasks to main` | 262144 | 46.875 | 39.39215795117914 | 58.778 | winner |
+| 64 GB | — | — | — | — | — | pending benchmarks |
+| 96 GB | — | — | — | — | — | pending benchmarks |
+| 128 GB | — | — | — | — | — | pending benchmarks |
+| 192 GB | — | — | — | — | — | pending benchmarks |
+| 256 GB | — | — | — | — | — | pending benchmarks |
+| 384 GB | — | — | — | — | — | pending benchmarks |
+
+A blank level is honest: no current-recipe winner has completed the exact physical and intelligence campaigns for that hardware class yet.

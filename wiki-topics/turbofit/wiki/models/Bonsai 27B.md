@@ -40,7 +40,7 @@ sources: []
 
 ## Benchmarks
 
-> Filled in as research completes. Use [[concepts/benchmark-taxonomy|Benchmark Taxonomy]] for the canonical list.
+> Filled in as research completes. Use [[benchmark-taxonomy|Benchmark Taxonomy]] for the canonical list.
 
 ### Reasoning & Knowledge
 
@@ -101,9 +101,9 @@ At 7.91 GB, Ternary Bonsai would fit within the 32 GB memory budget, but no veri
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/ornith-1-5-35b-a3b-mlx-4-bit|Ornith 1.5 35B-A3B MLX 4-bit]]
-- [[wiki-topics/turbofit/wiki/queries/engine-research-request|Engine Research Request]]
-- [[wiki-topics/turbofit/wiki/decisions/local-main-provider|TurboFit Local Main Provider Decision]]
+- [[ornith-1-5-35b-a3b-mlx-4-bit|Ornith 1.5 35B-A3B MLX 4-bit]]
+- [[engine-research-request|Engine Research Request]]
+- [[local-main-provider|TurboFit Local Main Provider Decision]]
 
 
 ### Colibri
@@ -127,9 +127,9 @@ Chris explicitly redirected focus from Bonsai and Colibri to Ornith: "Don't worr
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/maple.md|Maple]]
-- [[wiki-topics/turbofit/wiki/entities/ornith-1-5-35b-a3b-mlx-4-bit|Ornith 1.5 35B-A3B MLX 4-bit]]
-- [[wiki-topics/turbofit/wiki/decisions/local-main-provider|TurboFit Local Main Provider Decision]]
+- [[maple|Maple]]
+- [[ornith-1-5-35b-a3b-mlx-4-bit|Ornith 1.5 35B-A3B MLX 4-bit]]
+- [[local-main-provider|TurboFit Local Main Provider Decision]]
 
 
 ### Bonsai and Colibri Deprioritization
@@ -163,16 +163,16 @@ Bonsai and Colibri are parked. The active work is Ornith MLX 4-bit as the main t
 
 #### Related
 
-- [[wiki-topics/turbofit/wiki/entities/bonsai.md|Bonsai MLX]]
-- [[wiki-topics/turbofit/wiki/entities/colibri.md|Colibri]]
-- [[wiki-topics/turbofit/wiki/entities/ornith-1-5-35b-a3b-mlx-4-bit|Ornith 1.5 35B-A3B MLX 4-bit]]
-- [[wiki-topics/turbofit/wiki/queries/evidence-capture-and-reliability|Evidence Capture and Reliability Query]]
+- [[bonsai|Bonsai MLX]]
+- [[colibri|Colibri]]
+- [[ornith-1-5-35b-a3b-mlx-4-bit|Ornith 1.5 35B-A3B MLX 4-bit]]
+- [[evidence-capture-and-reliability|Evidence Capture and Reliability Query]]
 
 
 ## See Also
 
-- [[concepts/benchmark-taxonomy|Benchmark Taxonomy]]
-- [[wiki-topics/turbofit/wiki/index|Wiki Index]]
+- [[benchmark-taxonomy|Benchmark Taxonomy]]
+- [[index|Wiki Index]]
 
 ### From entity: bonsai
 
@@ -198,6 +198,6 @@ At 7.91 GB, Ternary Bonsai would fit within the 32 GB memory budget, but no veri
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/entities/ornith-1-5-35b-a3b-mlx-4-bit|Ornith 1.5 35B-A3B MLX 4-bit]]
-- [[wiki-topics/turbofit/wiki/queries/engine-research-request|Engine Research Request]]
-- [[wiki-topics/turbofit/wiki/decisions/local-main-provider|TurboFit Local Main Provider Decision]]
+- [[ornith-1-5-35b-a3b-mlx-4-bit|Ornith 1.5 35B-A3B MLX 4-bit]]
+- [[engine-research-request|Engine Research Request]]
+- [[local-main-provider|TurboFit Local Main Provider Decision]]

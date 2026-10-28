@@ -37,4 +37,4 @@ llama.cpp (vision encoder may be slow)
 
 ## Notes
 Size: 62G total
-Cross-references: [[wiki-topics/turbofit/index|wiki index]]
+Cross-references: [[index|wiki index]]

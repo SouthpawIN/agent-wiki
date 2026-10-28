@@ -43,7 +43,7 @@ Hermes recommended pairing Ornith MLX 4-bit with Unleashed+DFlash2 for 131K cove
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/entities/ornith-35b-mlx.md|Ornith 35B MLX]]
-- [[wiki-topics/turbofit/wiki/concepts/dflash2-mplx-incompatibility|MPLX DFlash2 Incompatibility]]
-- [[wiki-topics/turbofit/wiki/entities/dflash2-draft.md|DFlash2 Draft]]
-- [[wiki-topics/turbofit/wiki/queries/apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]
+- [[ornith-35b-mlx|Ornith 35B MLX]]
+- [[dflash2-mplx-incompatibility|MPLX DFlash2 Incompatibility]]
+- [[dflash2-draft|DFlash2 Draft]]
+- [[apple-silicon-runtime-benchmark|Apple Silicon Runtime Benchmark]]

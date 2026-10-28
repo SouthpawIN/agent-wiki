@@ -12,7 +12,7 @@ confidence: high
 
 ## Research Request
 
-From [[raw/inbox/2026-09-07.md|2026-09-07 03:06]]: Chris asked to "Research and test ALL available Apple Silicon inference engines for Qwen 3.8 27B to find the fastest configuration: llama.cpp (different quants, KV cache types, speculative decoding), MLX (deepgrove fork), OMLX, FreeToken, and any other engines found. Report tok/s for each."
+From 2026-09-07 03:06: Chris asked to "Research and test ALL available Apple Silicon inference engines for Qwen 3.8 27B to find the fastest configuration: llama.cpp (different quants, KV cache types, speculative decoding), MLX (deepgrove fork), OMLX, FreeToken, and any other engines found. Report tok/s for each."
 
 ^[raw/inbox/2026-09-07.md]
 
@@ -68,7 +68,7 @@ From [[raw/inbox/2026-09-07.md|2026-09-07 03:06]]: Chris asked to "Research and 
 
 ## Hardware Reality Check
 
-From [[raw/inbox/2026-09-07.md|2026-09-07 05:41]]:
+From 2026-09-07 05:41:
 
 > "**The hard truth:** On M1 MacBook 32GB with a 27B model at 131K context, **~5-6 tok/s is the ceiling.** You want 10+ tok/s. That's not happening with this hardware — it's like asking a Honda Civic to go 200mph."
 
@@ -81,6 +81,6 @@ From [[raw/inbox/2026-09-07.md|2026-09-07 05:41]]:
 
 ## Related
 
-- [[turbofit/queries/engine-research-request|Engine Research Request]]
-- [[turbofit/entities/ornith-1-5-35b-a3b-mlx-4-bit|Ornith 1.5 35B-A3B MLX 4-bit]]
-- [[turbofit/concepts/dflash2-mplx-incompatibility|DFlash2 MTPLX Incompatibility]]
+- [[engine-research-request|Engine Research Request]]
+- [[ornith-1-5-35b-a3b-mlx-4-bit|Ornith 1.5 35B-A3B MLX 4-bit]]
+- [[dflash2-mplx-incompatibility|DFlash2 MTPLX Incompatibility]]

@@ -10,7 +10,7 @@ tags:
   - compatibility
   - pain
 sources:
-  - raw/inbox/2026-09-07.md
+  - [raw/inbox/2026-09-07.md](../../raw/inbox/2026-09-07.md)
   - raw/inbox/2026-09-07-from-senter-wiki.md
 confidence: high
 ---
@@ -37,7 +37,7 @@ llama-server -m <main-model> \
   --spec-type draft-dflash
 ```
 
-**Invalid flags** that failed before binding (from `raw/inbox/2026-09-07.md`):
+**Invalid flags** that failed before binding (from [raw/inbox/2026-09-07.md](../../raw/inbox/2026-09-07.md)):
 
 | Flag | Status |
 |------|--------|
@@ -75,7 +75,7 @@ After a DFlash warning: `dflash requires ctx_other to be set`. That artifact is 
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/entities/dflash2-draft.md|DFlash2 Draft]]
-- [[wiki-topics/turbofit/wiki/entities/unleashed-27b.md|Unleashed 27B]]
-- [[wiki-topics/turbofit/wiki/entities/ornith-35b-dflash2.md|Ornith 35B DFlash2]]
-- [[wiki-topics/turbofit/wiki/entities/ornith-1-5-35b-a3b-mlx-4-bit.md|Ornith 1.5 35B-A3B MLX 4-bit]]
+- [[dflash2-draft|DFlash2 Draft]]
+- [[unleashed-27b|Unleashed 27B]]
+- [[ornith-35b-dflash2|Ornith 35B DFlash2]]
+- [[ornith-1-5-35b-a3b-mlx-4-bit|Ornith 1.5 35B-A3B MLX 4-bit]]

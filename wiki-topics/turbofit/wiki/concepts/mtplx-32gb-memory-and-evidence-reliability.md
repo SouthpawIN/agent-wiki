@@ -5,7 +5,7 @@ updated: 2026-09-07
 type: concept
 tags: [concept, pain, mtplx, evidence, memory, macos]
 sources:
-  - raw/inbox/2026-09-07.md
+  - [raw/inbox/2026-09-07.md](../../raw/inbox/2026-09-07.md)
   - raw/inbox/2026-09-07-from-senter.md
 confidence: medium
 contested: true
@@ -35,6 +35,6 @@ Postcommit records show `cross_session_foreground_preempted` and `foreground_pre
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/entities/turbofit-mtpl-performance.md|TurboFit MTPLX Performance]]
-- [[wiki-topics/turbofit/wiki/entities/mtplx-memory-guard.md|MPLX Memory Guard]]
-- [[wiki-topics/turbofit/wiki/decisions/context-window-decision.md|Context Window Decision]]
+- [[turbofit-mtpl-performance|TurboFit MTPLX Performance]]
+- [[mtplx-memory-guard|MPLX Memory Guard]]
+- [[context-window-decision|Context Window Decision]]

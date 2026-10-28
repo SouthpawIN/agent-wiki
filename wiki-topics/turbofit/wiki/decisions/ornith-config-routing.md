@@ -27,7 +27,7 @@ providers.turbofit.default_model: ornith-1-5-35a3b-mlx
 
 ## Why Ornith
 
-From [[raw/inbox/2026-09-07.md|2026-09-07 06:18]]:
+From 2026-09-07 06:18:
 
 > "**Ornith MLX 4-bit** is the fastest local short-context candidate on this box at 28.5 tok/s for 500-token prompts, but drops to ~0.5 tok/s at 131K and is not a stable long-context main on 32 GB. Unlocked Ornith as main provider."
 
@@ -42,7 +42,7 @@ From [[raw/inbox/2026-09-07.md|2026-09-07 06:18]]:
 
 ## Post-Routing Issues
 
-At [[raw/inbox/2026-09-07.md|2026-09-07 14:26]], Hermes showed timeout errors despite the server being live:
+At 2026-09-07 14:26, Hermes showed timeout errors despite the server being live:
 
 ```
 layer: provider
@@ -55,10 +55,10 @@ error: Connection error.
 
 ## Final Status
 
-At [[raw/inbox/2026-09-07.md|2026-09-07 14:30]]: Ornith is running on port 11613 and the config shows it as the default provider. Chris reported at [[raw/inbox/2026-09-07.md|14:28]] that "Ornith is live and active on your session now."
+At 2026-09-07 14:30: Ornith is running on port 11613 and the config shows it as the default provider. Chris reported at 14:28 that "Ornith is live and active on your session now."
 
 ## Related
 
-- [[entities/ornith-1-5-35b-a3b-mlx-4-bit|Ornith 1.5 35B-A3B MLX 4-bit]]
-- [[entities/ornith-config-routing-failure|Ornith Config Routing Failure]]
-- [[turbofit/entities/mplx.md|MPLX]]
+- [[ornith-1-5-35b-a3b-mlx-4-bit|Ornith 1.5 35B-A3B MLX 4-bit]]
+- [[ornith-config-routing-failure|Ornith Config Routing Failure]]
+- [[mplx|MPLX]]

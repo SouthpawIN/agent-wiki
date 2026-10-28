@@ -41,7 +41,7 @@ Files available at:
 
 ## Related
 
-- [[wiki-topics/turbofit/wiki/queries/apple-silicon-runtime-benchmark|Speed Test Results]]
-- [[wiki-topics/turbofit/wiki/entities/ornith-35b-mlx.md|Ornith 35B MLX]]
-- [[wiki-topics/turbofit/wiki/entities/nail-qwen36-35b.md|Nail Qwen 3.6 35B UD Q4_K_XL]]
-- [[wiki-topics/turbofit/wiki/decisions/context-window-decision.md|Context Window Decision]]
+- [[apple-silicon-runtime-benchmark|Speed Test Results]]
+- [[ornith-35b-mlx|Ornith 35B MLX]]
+- [[nail-qwen36-35b|Nail Qwen 3.6 35B UD Q4_K_XL]]
+- [[context-window-decision|Context Window Decision]]
