@@ -209,61 +209,61 @@ Never show a model using more memory than its tier provides. If it doesn't fit, 
 
 | Page | What |
 | --- | --- |
-| [fit-ladder](references/fit-ladder.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `references/fit-ladder.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file rema |
-| [model-lineup](references/model-lineup.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `references/model-lineup.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file re |
-| [curated-lineup](references/curated-lineup.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `references/curated-lineup.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file  |
-| [scaling-ladder](references/scaling-ladder.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `references/scaling-ladder.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file  |
-| [binary-selection](references/binary-selection.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `references/binary-selection.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo fil |
-| [product-roadmap](references/product-roadmap.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `ROADMAP.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file remains the shippe |
+| [fit-ladder](references/fit-ladder.md) | GSQ-RCO IQ3S benchmarks (AIME25 100%, GPQA-D 89.2%, DeepSWE 42.2%, LCBv6 90.3%) are from the model card; Maple LCBv6 is LiveCodeBench v6. |
+| [model-lineup](references/model-lineup.md) | Three layers of model, ranked by measured evidence, not heuristics. |
+| [curated-lineup](references/curated-lineup.md) | Opinionated picks for main + aux roles, local + API. Ranked by actual benchmark scores, not heuristics. |
+| [scaling-ladder](references/scaling-ladder.md) | The scaling ladder is what makes turbofit opinionated. Its philosophy: good intelligence is always available no matter what hardware you have — from… |
+| [binary-selection](references/binary-selection.md) | When a model fails to load with the atomic fork binary, use this decision tree to determine the fix. |
+| [product-roadmap](references/product-roadmap.md) | The source-of-truth map of TurboFit: the two ladders, what is built, and what is open. |
 ### Benchmarks & evidence
 
 | Page | What |
 | --- | --- |
 | [benchmark-evidence](references/benchmark-evidence.md) | What we have measured, and the evidence gaps. |
-| [benchmark-analysis](references/benchmark-analysis.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `references/benchmark-analysis.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo f |
-| [benchmark-leaderboard](references/benchmark-leaderboard.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `references/benchmark-leaderboard.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the rep |
-| [external-benchmarks](references/external-benchmarks.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `references/external-benchmarks.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo  |
-| [research-report](references/research-report.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `references/research-report.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file |
-| [model-intel](references/model-intel.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `references/model-intel.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file rem |
-| [api-model-rankings](references/api-model-rankings.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `references/api-model-rankings.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo f |
-| [api-tier-rankings](references/api-tier-rankings.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `references/api-tier-rankings.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo fi |
-| [api-pairing-matrix](references/api-pairing-matrix.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `references/api-pairing-matrix.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo f |
+| [benchmark-analysis](references/benchmark-analysis.md) | — |
+| [benchmark-leaderboard](references/benchmark-leaderboard.md) | <!-- turbofit:generated:benchmark-leaderboard:begin --> |
+| [external-benchmarks](references/external-benchmarks.md) | External results are discovery evidence only. Turbofit promotes local runtime profiles only after reproducible local runs pass their gates. |
+| [research-report](references/research-report.md) | Projected using your actual daily input/output averages and cache hit rate. |
+| [model-intel](references/model-intel.md) | Generated: 2026-08-14T16:55:23.535149+00:00 |
+| [api-model-rankings](references/api-model-rankings.md) | Curated API models ranked by quality. Prices in $/M tokens (input/output). |
+| [api-tier-rankings](references/api-tier-rankings.md) | Curated API models ranked by quality. Prices in $/M tokens (input/output). |
+| [api-pairing-matrix](references/api-pairing-matrix.md) | Pairings use the user's specified model universe. Prices in $/M tokens (input/output). |
 ### Hardware & runtime
 
 | Page | What |
 | --- | --- |
-| [hardware-tiers](references/hardware-tiers.md) | Two ways Turbofit tiers hardware — by **local VRAM** and by **API fallback**. |
-| [hardware-tier-tps](references/hardware-tier-tps.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `docs/hardware-tier-tps.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file rem |
-| [runtime-backends](references/runtime-backends.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `docs/runtime-backends.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file rema |
-| [model-matrix](references/model-matrix.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `docs/model-matrix.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file remains  |
-| [model-metadata](references/model-metadata.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `docs/model-metadata.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file remain |
-| [freetoken-runtime](references/freetoken-runtime.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `docs/freetoken-runtime.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file rem |
-| [salt-core-integration](references/salt-core-integration.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `references/salt-core-integration.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the rep |
-| [multimodal](references/multimodal.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `docs/multimodal.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file remains th |
+| [hardware-tiers](references/hardware-tiers.md) | Two ways Turbofit tiers hardware — by local VRAM and by API fallback. |
+| [hardware-tier-tps](references/hardware-tier-tps.md) | Live llama-server /completion medians. Three 128-token generations after warmup. |
+| [runtime-backends](references/runtime-backends.md) | Turbofit keeps provider routes stable while the process runtime is replaceable. The controller and Hermes provider do not depend on a specific… |
+| [model-matrix](references/model-matrix.md) | Canonical research detail extracted from the product README. |
+| [model-metadata](references/model-metadata.md) | GET /v1/models and GET /v1/models/{id} retain raw request IDs |
+| [freetoken-runtime](references/freetoken-runtime.md) | TurboFit integrates FreeToken as an optional, evidence-gated candidate backend for supported NVIDIA MoE checkpoints. It is not an Auto rung and does… |
+| [salt-core-integration](references/salt-core-integration.md) | <!-- turbofit:generated:salt-core-integration:begin --> |
+| [multimodal](references/multimodal.md) | Turbofit scans total usable memory and platform support, then labels each option as ready, candidate, unsupported, or too large. Candidate… |
 ### Platform installs & ops
 
 | Page | What |
 | --- | --- |
-| [install-paths](references/install-paths.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `after-install.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file remains the  |
-| [windows-native-install](references/windows-native-install.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `docs/windows-native-install.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo fil |
-| [remote-hermes-model-server](references/remote-hermes-model-server.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `docs/remote-hermes-model-server.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo |
-| [apple-arm64-unmeasured-gap](references/apple-arm64-unmeasured-gap.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `docs/apple-arm64-unmeasured-gap.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo |
-| [maple-small-device-validation](references/maple-small-device-validation.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `docs/maple-small-device-validation.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the r |
-| [turbofit-check](references/turbofit-check.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `docs/turbofit-check.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file remain |
-| [turbofit-list](references/turbofit-list.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `docs/turbofit-list.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file remains |
-| [campaigns](references/campaigns.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `docs/campaigns.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file remains the |
-| [workflows](references/workflows.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `WORKFLOWS.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file remains the ship |
+| [install-paths](references/install-paths.md) | /turbofit is a plugin command. It only exists in a session that has loaded the plugin, and |
+| [windows-native-install](references/windows-native-install.md) | Turbofit supports Windows 10/11 with a user-scoped pinned llama.cpp runtime and gateway. No administrator account or machine-wide service is required. |
+| [remote-hermes-model-server](references/remote-hermes-model-server.md) | Turbofit can run on one machine while a Hermes Agent gateway runs on another. This is useful when the Mac has the Apple Silicon memory bandwidth and… |
+| [apple-arm64-unmeasured-gap](references/apple-arm64-unmeasured-gap.md) | references/successful-runtime-profiles.json is the evidence table behind |
+| [maple-small-device-validation](references/maple-small-device-validation.md) | Status: Auto on hardware-8gb at native 64K and 128K |
+| [turbofit-check](references/turbofit-check.md) | Canonical product brief. This is what ships, not a research note. |
+| [turbofit-list](references/turbofit-list.md) | The TurboFit List is made only from benchmark winners at each physical hardware level. TurboFit Check is the system scan-to-configuration process… |
+| [campaigns](references/campaigns.md) | Operator detail for physical and intelligence campaigns. |
+| [workflows](references/workflows.md) | One source of truth, two repos. |
 | [troubleshooting](references/troubleshooting.md) | Common failures and the first move for each. |
 | [tailscale](references/tailscale.md) | How Turbofit (and the wiki) reach each other across the network. |
 ### History & contracts
 
 | Page | What |
 | --- | --- |
-| [changelog](references/changelog.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `CHANGELOG.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file remains the ship |
-| [skill-contract](references/skill-contract.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `SKILL.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file remains the shipped  |
-| [turbosovth-soul](references/turbosovth-soul.md) | **Source of truth:** absorbed from `SouthpawIN/turbofit` `references/SOUL.md` @ `0ff572b` (2026-10-28). This vault copy is canonical for reading; the repo file remains th |
+| [changelog](references/changelog.md) | — |
+| [skill-contract](references/skill-contract.md) | description: "Operate the Turbofit adaptive local inference plugin." |
+| [turbosovth-soul](references/turbosovth-soul.md) | TurboSouth is the customer-service profile bundled with Turbofit. The canonical distributable persona is profiles/turbosouth/SOUL.md, with operating… |
 | [upstream-pr-process](references/upstream-pr-process.md) | How research findings become pull requests. |
-| [ecosystem](references/ecosystem.md) | The TurboFit project is not one repo. This page is the map: what each repo is, whether it is **shipped**, **support**, **side tool**, or **legacy line**, and which vault  |
+| [ecosystem](references/ecosystem.md) | The TurboFit project is not one repo. This page is the map: what each repo is, whether it is shipped, support, side tool, or legacy line, and which… |
 
 ---
 
