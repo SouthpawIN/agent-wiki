@@ -71,7 +71,7 @@ Full map: [references/ecosystem](references/ecosystem.md).
 | **48-63gb** | Cyber-Tiel Coder 35B-A3B (31.8 GB) | UD-Q6_K_XL | 262K | MoE, 3B active |
 | **64gb+** | Qwen 3.8 Flash Next (Strata) | strata | 262K | MoE; both ladders converge on Flash Next; MTP on |
 
-Fully generated from `references/fit-lists.json` @ commit `2026-10-19` era — see [fit-ladder](references/fit-ladder.md) for the prose version and [scaling-ladder](references/scaling-ladder.md) for the long tail.
+Generated from [`references/fit-lists.json`](https://github.com/SouthpawIN/turbofit/blob/main/references/fit-lists.json) (commit `0ff572b`, 2026-10-19) — see [fit-ladder](references/fit-ladder.md) for the prose version and [scaling-ladder](references/scaling-ladder.md) for the long tail.
 
 ### Fit math
 
