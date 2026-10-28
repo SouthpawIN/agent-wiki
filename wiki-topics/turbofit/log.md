@@ -27,3 +27,10 @@
 - Link integrity: 0 broken relative links in the topic (cross-repo `../../../../../turbofit/...` links resolved to `~/Documents/turbofit`, i.e. nowhere); 118 wikilinks normalised to real page stems.
 - Moved 8 stranded TurboFit table pages out of the miscut `add-one` topic into `wiki/{decisions,concepts,entities}/`.
 - Provenance + open questions: `raw/sources/2026-10-28-github-consolidation.md`.
+
+## 2026-10-28 sweep | TurboFit knowledge out of the other topics
+- Absorbed 15 pages that had been filed under `click-options`, `back-where`, `try-again`, `add-one`, `both-smarter`, `dispatched-m2s-new`; sources are now redirect stubs.
+- Merged 6 near-identical pages into 3 canonical ones: `turbofit-provider-picker-history` (7 sources), `turbofit-picker-is-the-acceptance-test`, `model-zoo-list-lands-in-turbofit-list`.
+- Merged in-topic duplicates: `Maple Preview 8B` + `entities/maple` → `Maple`; `Cyber Tiel Coder MTP` + `entities/tiel-coder` → `Cyber Tiel Coder 35B-A3B`. Removed a second, provenance-stripped copy of each absorbed block.
+- `index.md` catalog: Models 18 → 16 real pages (2 are redirects), added the 6 new pages to CONCEPTS/DECISIONS.
+- Detail: `raw/sources/2026-10-28-github-consolidation.md` §7.

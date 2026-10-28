@@ -6,3 +6,7 @@ _Scaffolded by the watcher 2026-09-13 16:43 from a new subject Chris raised in t
 
 ## Status
 - research dispatched (see .system/research.md when it lands)
+
+## Absorbed
+
+- **TurboFit** — TurboFit provider/picker history, the acceptance-test decision and the Model Zoo→TurboFit-list decision were merged into `wiki-topics/turbofit/` on 2026-10-28; the pages here are redirect stubs.

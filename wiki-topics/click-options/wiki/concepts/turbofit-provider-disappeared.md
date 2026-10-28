@@ -1,33 +1,15 @@
 ---
 title: TurboFit Provider Disappeared
 created: 2026-09-14
-updated: 2026-09-14
-type: concept
-tags: [pain, tool, question, infra, idea]
-sources: [raw/inbox/2026-09-13.md]
-confidence: high
+updated: 2026-10-28
+type: redirect
+tags: [redirect, turbofit]
 ---
 
-# TurboFit Provider Disappeared
+# TurboFit Provider Disappeared → MERGED into [[turbofit-provider-picker-history|TurboFit Provider — the desktop-picker history]]
 
-## The issue
-On **2026-09-13 17:20** Chris reported a new problem: TurboFit is **no longer showing as a provider**. It had previously been there, holding his models, and now it isn't even on the list.
+All content from this page now lives in the TurboFit topic — one spot for everything TurboFit.
 
-> "I don't see turbo fit as a provider. It was there before and it had my models and now it's not even on the list when I Click on the arrow on the desktop to show me all the models and providers and input bar here"
-
-^[raw/inbox/2026-09-13.md]
-
-## Where it vanishes
-- The provider/model picker is the **arrow on the desktop** that expands **all the models and providers**, next to the input bar. TurboFit and its models used to appear there; now they don't.
-
-## Status / open question
-Unresolved at filing. Open questions:
-- Did the TurboFit runtime/service crash or fail to launch (was it working earlier that day, alongside the password-recovery attempt)?
-- Is this a model-loading failure specifically, or the whole provider vanishing from the list?
-- Related to any Hermes runtime / Turbofit adaptive-local-model state?
-
-^[raw/inbox/2026-09-13.md]
-
-## Notes
-- Same session as the Recovery Mode password reset — the day was already rocky (failed non-recovery attempts → Recovery Mode → then this provider issue).
-- Related: [[click-options/wiki/decisions/recovery-mode-password-reset|Recovery Mode Password Reset]].
+- **Canonical page:** [[turbofit-provider-picker-history|TurboFit Provider — the desktop-picker history]] (`wiki-topics/turbofit/wiki/` — see the TurboFit topic)
+- **Why:** consolidation sweep, 2026-10-28. TurboFit knowledge was scattered across `click-options`, `try-again`, `back-where`, `add-one`, `both-smarter`, `dispatched-m2s-new`; it belongs in `wiki-topics/turbofit/`.
+- **Raw evidence** for this page stays where it was filed: see the source topic's `raw/inbox/`.

@@ -6,3 +6,7 @@ _Scaffolded by the watcher 2026-09-16 19:51 from a new subject Chris raised in t
 
 ## Status
 - research dispatched (see .system/research.md when it lands)
+
+## Absorbed
+
+- **TurboFit** — The two TurboFit table pages here were already owned by `wiki-topics/turbofit/`; they are redirect stubs as of 2026-10-28.

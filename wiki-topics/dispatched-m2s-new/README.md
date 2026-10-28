@@ -9,3 +9,7 @@ The batch did not complete successfully: Delegation owner exited before recordin
 
 ## Status
 - research dispatched (see .system/research.md when it lands)
+
+## Absorbed
+
+- **TurboFit** — The TurboFit per-model-pages decision was merged into `wiki-topics/turbofit/` on 2026-10-28; the page here is a redirect stub.

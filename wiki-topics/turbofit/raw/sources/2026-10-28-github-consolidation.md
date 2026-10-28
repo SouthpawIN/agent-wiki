@@ -99,3 +99,29 @@ Every relative link in the topic was resolved after absorption. Three fixes were
 1. **Two benchmark stores.** TurboFit keeps `references/benchmark-results.json`; [model-momento](../../wiki/entities/model-momento.md) keeps its own SQLite history. Neither has been nominated as the long-term truth. Candidate: Model Momento ingests TurboFit's JSON.
 2. **Legacy line retirement.** `turbohaul-manager` / `southpaw-turbohaul` are documented but not archived. Nothing was deleted in this pass.
 3. **Duplicate wiki pages inside this topic** (e.g. `Maple` vs `Maple Preview 8B`, `Cyber Tiel Coder 35B-A3B` vs `Cyber Tiel Coder MTP`, `Qwen 3.8 27B Base` vs `Unleashed`) are merge candidates — flagged, not merged.
+
+## 7. Cross-topic sweep (same day, second pass)
+
+The first pass made the repos single-homed. This pass did the same for the **vault**: TurboFit knowledge had been filed into seven unrelated topics by the watcher's cutter. Content was merged into canonical TurboFit pages; every source page is now a redirect stub (same filename, so inbound links still resolve).
+
+| Was filed in | Page(s) | Now lives in |
+| --- | --- | --- |
+| `click-options` | turbofit-provider-disappeared · turbofit-provider-still-missing-2026-09-15 · turbofit-models-under-provider · turbofit-picker-registration-gap · turbofit-provider-recurring-disappearance · runtime-config-fix-2026-09-15 | [turbofit-provider-picker-history](../../wiki/concepts/turbofit-provider-picker-history.md) |
+| `click-options` | test-through-hermes-not-endpoint | [turbofit-picker-is-the-acceptance-test](../../wiki/decisions/turbofit-picker-is-the-acceptance-test.md) |
+| `click-options` | model-zoo-models-for-turbofit-list | [model-zoo-list-lands-in-turbofit-list](../../wiki/decisions/model-zoo-list-lands-in-turbofit-list.md) |
+| `back-where` | turbofit-options-missing-after-restart | [turbofit-provider-picker-history](../../wiki/concepts/turbofit-provider-picker-history.md) |
+| `try-again` | turbofit-m1-testing-status | [turbofit-m1-testing-status](../../wiki/concepts/turbofit-m1-testing-status.md) |
+| `both-smarter` | turbo-fit-lane-rules · turbo-fit-rule-tracking-2026-09-16 | [turbofit-standing-rule-tracking](../../wiki/decisions/turbofit-standing-rule-tracking.md) |
+| `dispatched-m2s-new` | turbofit-model-pages | [turbofit-per-model-pages](../../wiki/decisions/turbofit-per-model-pages.md) |
+| `add-one` | turbo-fit-benchmark · turbo-fit-tokens-per-second-column | already owned here ([turbo-fit-benchmark](../../wiki/entities/turbo-fit-benchmark.md), [turbofit-list-tok-s-column](../../wiki/decisions/turbofit-list-tok-s-column.md)) — source pages stubbed |
+
+**In-topic duplicates merged the same pass** (model page vs entity page vs `sources: []` stub for the same model):
+
+| Duplicate | Canonical page |
+| --- | --- |
+| `wiki/models/Maple Preview 8B.md` (unsourced 8B claim) + `wiki/entities/maple.md` | [Maple](../../wiki/models/Maple.md) — the 8B figures kept as a clearly-flagged *unverified* section |
+| `wiki/models/Cyber Tiel Coder MTP.md` (unsourced variant stub) + `wiki/entities/tiel-coder.md` | [Cyber Tiel Coder 35B-A3B](../../wiki/models/Cyber Tiel Coder 35B-A3B.md) |
+
+Two pages had also been appended **twice** by earlier merge passes (`Maple`, `Cyber Tiel Coder 35B-A3B`); the second copy was removed, keeping the copy that carries `^[raw/…]` provenance.
+
+Still open: the two benchmark stores ([model-momento](../../wiki/entities/model-momento.md) SQLite vs `references/benchmark-results.json`), and whether the absorbed prose should be deleted from the product repo now that the vault owns it (repo currently keeps its own copies of `docs/*.md` and `references/*.md`).

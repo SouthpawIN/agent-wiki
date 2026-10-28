@@ -6,3 +6,7 @@ _Scaffolded by the watcher 2026-09-06 02:47 from a new subject Chris raised in t
 
 ## Status
 - research dispatched (see .system/research.md when it lands)
+
+## Absorbed
+
+- **TurboFit** — The "TurboFit M1 testing status" page was merged into `wiki-topics/turbofit/` on 2026-10-28; the page here is a redirect stub.

@@ -149,72 +149,46 @@ sources: [deepgrove/maple-preview, deepgrove/maple-preview-GGUF, stamsam/maple-p
 - Minimal agentic post-training — may underperform on SWE-bench-style tasks.
 - No support for vLLM, SGLang, or mainline llama.cpp at release. Requires DeepGrove fork or stamsam fork.
 
-### Maple
-
-Maple-Preview is the auxiliary model Chris wants for Hermes compression and text aux tasks. It is a custom-architecture MoE model with no native support in stock llama.cpp and no vision projector .
-
-#### Artifacts on disk
-
-- `~/Models/storage/gguf/Maple-Preview/maple-mlx` — deepgrove MLX download.
-- `~/Models/storage/gguf/Maple-Preview/maple-tq2_0.gguf` — 5.4 GB, crashes on Metal warmup.
-- `~/Models/storage/gguf/Maple-Preview/maple-q2_0.gguf` — tensor read failure under fork.
-- `~/Models/storage/gguf/Maple-Preview/maple-f16.gguf` — 40.4 GB, completed download .
-
-#### Runtime compatibility
-
-- **llama.cpp / GGUF**: incompatible. The `stamsam/llama.cpp` fork lacks Metal kernels for TQ2_0 and tensor layout mismatches for Q2_0. Final failure: `kernel_mul_mm_id_tq2_0_f32` missing in Metal compile pipeline.
-- **MLX**: working via `deepgrove-ai/mlx-lm-deepgrove` with `--flash-head --trust-remote-code`.
-- **Server mode**: unstable with prompt-cache growth; OOM after a handful of requests on 32 GB.
-- **Generate mode**: stable for 100–5000 token prompts and tested to 130K tokens in 103 s without OOM .
-
-#### Performance
-
-- ~62 tok/s warm.
-- 130K compression workload completed in 103 s on this hardware.
-- Uses ~7 GB at rest .
-
-#### Related
-
-- [[turbofit|TurboFit]]
-- [[mplx|MPLX]]
-- [[aux-model-selection|Aux Model Selection]]
-- [[compression-timeouts|Compression Timeouts]]
-
-
-## See Also
-
-- [[benchmark-taxonomy|Benchmark Taxonomy]]
-- [[index|Wiki Index]]
-- [[Bonsai 27B|Bonsai 27B]] — DeepGrove's earlier 1-bit ternary model
-- [[Maple|Maple Preview]] — Separate 8B aux model stub
-
-### From entity: maple
+## Aux-model evidence (absorbed from the entity page)
 
 Maple-Preview is the auxiliary model Chris wants for Hermes compression and text aux tasks. It is a custom-architecture MoE model with no native support in stock llama.cpp and no vision projector ^[raw/inbox/2026-09-06.md].
 
-## Artifacts on disk
+### Artifacts on disk
 
 - `~/Models/storage/gguf/Maple-Preview/maple-mlx` — deepgrove MLX download.
 - `~/Models/storage/gguf/Maple-Preview/maple-tq2_0.gguf` — 5.4 GB, crashes on Metal warmup.
 - `~/Models/storage/gguf/Maple-Preview/maple-q2_0.gguf` — tensor read failure under fork.
 - `~/Models/storage/gguf/Maple-Preview/maple-f16.gguf` — 40.4 GB, completed download ^[raw/inbox/2026-09-06.md].
 
-## Runtime compatibility
+### Runtime compatibility
 
 - **llama.cpp / GGUF**: incompatible. The `stamsam/llama.cpp` fork lacks Metal kernels for TQ2_0 and tensor layout mismatches for Q2_0. Final failure: `kernel_mul_mm_id_tq2_0_f32` missing in Metal compile pipeline.
 - **MLX**: working via `deepgrove-ai/mlx-lm-deepgrove` with `--flash-head --trust-remote-code`.
 - **Server mode**: unstable with prompt-cache growth; OOM after a handful of requests on 32 GB.
 - **Generate mode**: stable for 100–5000 token prompts and tested to 130K tokens in 103 s without OOM ^[raw/inbox/2026-09-06.md].
 
-## Performance
+### Performance
 
 - ~62 tok/s warm.
 - 130K compression workload completed in 103 s on this hardware.
 - Uses ~7 GB at rest ^[raw/inbox/2026-09-06.md].
 
-## Related
+### Related
 
 - [[turbofit|TurboFit]]
 - [[mplx|MPLX]]
 - [[aux-model-selection|Aux Model Selection]]
 - [[compression-timeouts|Compression Timeouts]]
+
+
+## Unverified 8B artifact note (absorbed 2026-10-28)
+
+> Filed as a separate page ("Maple Preview 8B", `sources: []` — no raw evidence behind it) and merged here so there is one Maple page. Treat the 8B figures below as **unverified**; they conflict with the 20B-A1B figures above.
+
+| Claim | Value |
+| --- | --- |
+| HuggingFace | `deepgrove/maple-preview-GGUF` |
+| Parameters | 8B (claim) |
+| Quantization / size | Q4_K_M / 22 GB on disk |
+| Omarchy path | `/home/sovthpaw/Models/storage/gguf/deepgrove_maple-preview-GGUF/` |
+| Reported speed | 12.4 tok/s (attributed to MLX on Mac in one cell and CUDA on Omarchy in another — internally inconsistent) |

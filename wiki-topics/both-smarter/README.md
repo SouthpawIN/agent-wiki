@@ -7,3 +7,7 @@ Yeah, you should be both smarter and faster than the free models. Can you give a
 
 ## Status
 - research dispatched (see .system/research.md when it lands)
+
+## Absorbed
+
+- **TurboFit** — The TurboFit lane rules and rule-tracking decision were merged into `wiki-topics/turbofit/wiki/decisions/turbofit-standing-rule-tracking.md` on 2026-10-28; the pages here are redirect stubs.

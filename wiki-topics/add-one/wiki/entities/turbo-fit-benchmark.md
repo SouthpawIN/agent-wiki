@@ -1,24 +1,15 @@
 ---
 title: TurboFit benchmark (best tok/s per model)
 created: 2026-09-16
-updated: 2026-09-16
-type: entity
-tags: [tool, ui, plan]
-sources: [raw/inbox/2026-09-16.md]
-confidence: high
+updated: 2026-10-28
+type: redirect
+tags: [redirect, turbofit]
 ---
 
-# TurboFit benchmark (best tok/s per model)
+# TurboFit benchmark (best tok/s per model) → MERGED into [[turbo-fit-benchmark|TurboFit benchmark (best tok/s per model)]]
 
-The **TurboFit list** is Chris's table of models run through **TurboFit**, where each model carries a **tokens-per-second (tok/s)** column recording the *best* tok/s it has achieved. ^[raw/inbox/2026-09-16.md]
+All content from this page now lives in the TurboFit topic — one spot for everything TurboFit.
 
-> "On the turbo fit list, remove the type column, but instead replace that with a tokens per second column, which will show the best tokens per second that we've achieved with each one of those."
-
-The tok/s column sits between **Model** and **parameters** in the settled order, and the separate **order** column was removed. ^[raw/inbox/2026-09-16.md]
-
-## Related
-- [[decisions/turbo-fit-tokens-per-second-column|Add a tokens-per-second column to the TurboFit list]]
-- [[decisions/column-ordering|Column ordering]]
-- [[decisions/highest-recorded-tok-s-after-flags|Highest recorded tok/s after flags]]
-- [[concepts/model-zoo-table|Model Zoo table]]
-- [[concepts/fit-calculation-system-tables|Fit calculation system tables]]
+- **Canonical page:** [[turbo-fit-benchmark|TurboFit benchmark (best tok/s per model)]] (`wiki-topics/turbofit/wiki/` — see the TurboFit topic)
+- **Why:** consolidation sweep, 2026-10-28. TurboFit knowledge was scattered across `click-options`, `try-again`, `back-where`, `add-one`, `both-smarter`, `dispatched-m2s-new`; it belongs in `wiki-topics/turbofit/`.
+- **Raw evidence** for this page stays where it was filed: see the source topic's `raw/inbox/`.

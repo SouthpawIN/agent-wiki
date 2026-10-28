@@ -83,7 +83,7 @@ Comfortable: model_size + 2 GB ≤ tier_size
 
 Never show a model using more memory than its tier provides. If it doesn't fit, say so or drop the quant.
 
-### Models (18 pages)
+### Models (16 pages)
 
 | Page | What |
 | --- | --- |
@@ -91,11 +91,9 @@ Never show a model using more memory than its tier provides. If it doesn't fit, 
 | [[Bonsai 27B]] | Bonsai refers to models from prism-ml: Bonsai-27B-mlx-1bit (1-bit binary, 1.4M downloads) and Ternary-Bonsai-27B-mlx-2bit (2-bit ternary, 1.4M downloads). The Ternary… |
 | [[Cosmos 37B BASE]] | llama.cpp CUDA, needs offload (184GB total) |
 | [[Cyber Tiel Coder 35B-A3B]] | The SSM-heavy architecture makes KV cache very cheap: ~20–22 KB/token at f16, ~10–11 KB/token at q80. |
-| [[Cyber Tiel Coder MTP]] | llama.cpp with --spec-type draft-mtp, -ngl 99 |
 | [[DAXZEIT GRM 2.6 Plus]] | llama.cpp with --spec-type draft-mtp, CUDA |
 | [[DeepSeek V4.1 Flash]] | DeepSeek-V4.1-Flash adopts a Causal Encoder-Decoder (CED) architecture — a 40-layer Transformer split into a 20-layer causal encoder and a 20-layer decoder. The… |
 | [[GSQ-RCO Qwen 3.8]] | Full name: Qwen3.8-27B (GSQ-RCO quantization) |
-| [[Maple Preview 8B]] | Maple Preview |
 | [[Maple]] | ./llama-cli -m maple-preview-TQ20-head-Q4K.gguf \ |
 | [[NVIDIA Nemotron 3.5]] | llama.cpp CUDA, --layer-split for multi-GPU |
 | [[Ornith 1.5 35B-A3B]] | jzinno/Ornith-1.5-35B-A3B-DFlash2 was inspected on HuggingFace and downloaded as a local draft artifact for speculative-decode experiments . |
@@ -125,6 +123,8 @@ Never show a model using more memory than its tier provides. If it doesn't fit, 
 | [[mtplx-context-overcommit]] | On the 32 GB Mac, mtplx serve with --context-window 131072 loads the model in 6-9s and installs the native MTP draft head, but the printed memory plan marks… |
 | [[mtplx-foreground-preemption]] | When MTPLX handles long-running Hermes foreground work, postcommit records show crosssessionforegroundpreempted and foregroundpreemptedpostcommit, and idle async… |
 | [[turbofit-session-mismatch]] | MTLPX generation events show foreground/preemption behavior and session-store mismatch that make some TurboFit captures unreliable as finished-state evidence… |
+| [[turbofit-provider-picker-history]] | Every time the TurboFit provider vanished from, or never registered into, the Hermes desktop provider/model picker — 09-13 disappearance, 09-15 still-missing, the wayvnc + https-scheme fix that was necessary but not sufficient, and the restart that dropped the options again. Absorbed from five scattered topics. |
+| [[turbofit-m1-testing-status]] | What the 2026-09-07 Apple-Silicon benchmark push had proven on the MacBook (Bonsai ternary via llama.cpp Metal, warmup protocol) and what blocked it (config writes refused mid-test). |
 ### Decisions
 
 | Page | What |
@@ -144,6 +144,10 @@ Never show a model using more memory than its tier provides. If it doesn't fit, 
 | [[turbofit-table-column-ordering]] | Chris set the column order on the table and then asked to drop the order column entirely. ^[raw/inbox/2026-09-16.md] |
 | [[turbofit-table-column-sorting]] | Chris wants to sort the table by clicking a column's title rather than some other control. ^[raw/inbox/2026-09-16.md] |
 | [[unleashed-backup]] | Keep Unleashed Q3KXL as the safe long-context backup when MTPLX overcommits memory or Hermes reloads fail. |
+| [[turbofit-picker-is-the-acceptance-test]] | Standing acceptance criterion: a model is only "working" when it can be picked inside Hermes with no error. The raw endpoint passing proves nothing. |
+| [[model-zoo-list-lands-in-turbofit-list]] | Every model Chris hands over from the Model Zoo must land on the TurboFit list — a partial subset is a failure ("Please, please do better"). |
+| [[turbofit-standing-rule-tracking]] | Chris states fit/lane rules mid-build and expects each implemented immediately, not batched: IQ3_S through 48 GB, MoE (Cyber Tiel) on CPU/unified lanes, Q3 acceptable on 8–16 GB GPU tiers. |
+| [[turbofit-per-model-pages]] | Build policy: one page per model with setup-relevant nuggets, consolidating notes that were filed twice without losing information. |
 ### Comparisons
 
 | Page | What |
