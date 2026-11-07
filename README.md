@@ -50,6 +50,10 @@ python -m senter_agent ~/.hermes/wiki --json
 
 # Validate the contracts
 pytest -q
+python scripts/verify_bots.py .            # identity, sections, artifacts, links
+
+# Publish every bot as a Hermes skill (bot-<slug>)
+python tools/publish_skills.py . ~/.hermes
 
 # The nightly maintainer
 hermes cron create "0 6 * * *" --name fleet-reconcile \

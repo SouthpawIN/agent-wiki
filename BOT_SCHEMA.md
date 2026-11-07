@@ -84,6 +84,23 @@ short form keeps BOT.md readable at a glance.
 6. **No bot writes another bot's BOT.md.** Cross-bot changes go through
    `bots/bot-wiki/.system/queue.md`.
 
+## Publishing
+
+The wiki is the source of truth; Hermes holds a deployed copy.
+
+```bash
+python tools/publish_skills.py . "$HERMES_HOME"
+```
+
+That renders each `BOT.md` into `$HERMES_HOME/skills/bots/<slug>/SKILL.md` named
+`bot-<slug>`, so any session loads the bot with one `skill_view("bot-<slug>")`.
+The published skill carries the mission, the operating loop, the artifact paths,
+the hold points, and the unblockers — the BOT.md stays the long version.
+
+When a bot's loop is `live`, its scheduled twin is a Hermes cron job whose prompt
+is the loop file's `## Prompt` body verbatim and whose workdir is the wiki clone.
+`hermes cron list` is the audit surface; `loops/<slug>.md` is the spec.
+
 ## Validation
 
 ```bash

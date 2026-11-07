@@ -61,6 +61,11 @@ target bot's BOT.md before touching anything.
 |---|---|---|
 | [[bots/bot-wiki/loops/fleet-reconcile]] | daily 06:00 UTC | live |
 
+## Publishing
+
+`tools/publish_skills.py` renders every BOT.md into `$HERMES_HOME/skills/bots/<slug>/SKILL.md`
+as `bot-<slug>`. Run it after any BOT.md change; the published copy is disposable.
+
 ## Hold points
 
 - Never edit another bot's `BOT.md`. File a `[BOTS]` item in the fleet queue.
