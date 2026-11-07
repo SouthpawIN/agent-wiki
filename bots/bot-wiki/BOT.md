@@ -61,6 +61,18 @@ target bot's BOT.md before touching anything.
 |---|---|---|
 | [[bots/bot-wiki/loops/fleet-reconcile]] | daily 06:00 UTC | live |
 
+## Resuming the whole fleet
+
+Nine projects run at once, so resuming is a procedure, not a memory exercise:
+
+1. Start at `bots/_fleet/FLEET.md` — the only page that claims to be current.
+2. Load the one bot you are touching (`skill: bot-<slug>`), not all nine.
+3. Read that bot's `.system/`: `continuity.md`, `injections.md`, `queue.md`.
+4. Cross-bot work goes in the fleet queue; never edit another bot's `BOT.md`.
+5. One mission per exchange — switching mid-task produces two half artifacts.
+6. Append to the bot's `## Log` before switching away. The log is the next
+   session's only memory of what happened.
+
 ## Publishing
 
 `tools/publish_skills.py` renders every BOT.md into `$HERMES_HOME/skills/bots/<slug>/SKILL.md`
