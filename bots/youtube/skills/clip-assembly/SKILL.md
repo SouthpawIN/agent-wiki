@@ -13,6 +13,23 @@ metadata:
 
 Input: `segments.json` + source media. Output: `render.mp4` + `edl.json`.
 
+## The tool
+
+Do not hand-write ffmpeg for this. `bots/youtube/scripts/cutroom.py` implements
+the whole path and is tested on synthetic media:
+
+```bash
+python bots/youtube/scripts/cutroom.py probe session.mp4
+python bots/youtube/scripts/cutroom.py segments session.mp4 --out segments.json
+python bots/youtube/scripts/cutroom.py edl session.mp4 segments.json --out edl.json
+python bots/youtube/scripts/cutroom.py render edl.json out/render.mp4 --preset slow --crf 18
+python bots/youtube/scripts/cutroom.py verify out/render.mp4 edl.json   # exit 1 on failure
+```
+
+`segments` drops dead air: a detected pause ends the previous chunk and the next
+one resumes when the pause ends. `verify` fails on duration drift > 1 s, a missing
+stream, or a true peak above -1.0 dBTP.
+
 ## Procedure
 
 1. **Build the EDL first**, as JSON, before touching ffmpeg:

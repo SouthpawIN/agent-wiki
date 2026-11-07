@@ -29,6 +29,10 @@ each video is one coherent takeaway, cut from wherever he actually said it.
 
 ## Owns
 
+- `bots/youtube/scripts/cutroom.py` — the deterministic renderer: probe, silence
+  detection, segmentation, EDL, cut/concat/loudnorm, verification. Seven tests in
+  `bots/youtube/tests/` run it on synthetic media, so the renderer is proven
+  before a single recording exists.
 - `/opt/data/media/incoming/` — OBS output lands here (symlink or rsync from omarchy).
 - `/opt/data/media/work/<session>/` — per-session artifacts (transcript, segments, EDL).
 - `/opt/data/media/out/<slug>/` — render targets, `upload.md` metadata sheet.
@@ -57,7 +61,7 @@ each video is one coherent takeaway, cut from wherever he actually said it.
 | Skill | When it loads | State |
 |---|---|---|
 | [[bots/youtube/skills/rant-segmentation/SKILL]] | after transcription, on any session > 20 min | written |
-| [[bots/youtube/skills/clip-assembly/SKILL]] | turning segments into a rendered file | written |
+| [[bots/youtube/skills/clip-assembly/SKILL]] | turning segments into a rendered file | written + exercised (`scripts/cutroom.py`) |
 | [[bots/youtube/skills/package-and-chapters/SKILL]] | before upload, to build metadata + thumbnail | written |
 
 ## Loops
@@ -88,3 +92,4 @@ each video is one coherent takeaway, cut from wherever he actually said it.
 ## Log
 
 - 2026-11-07 — bot seeded; pipeline specified; no media ingested yet.
+- 2026-11-07 — deterministic half implemented: `scripts/cutroom.py` (probe → silences → segments → EDL → render → verify), 7 synthetic-media tests green. Dead air is dropped at pause boundaries; transcription still needs whisper weights.
