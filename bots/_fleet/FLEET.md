@@ -16,7 +16,7 @@ method the other nine run on. Status legend: `live` (running now), `seeding`
 | [[bots/bot-wiki/BOT\|bot-wiki]] | Klerik | the method itself | live | 1 | — |
 | [[bots/youtube/BOT\|youtube]] | Cutroom | Discord rants → YouTube | seeding | 0 | OBS output path |
 | [[bots/pocketshop/BOT\|pocketshop]] | Binder | MTG card flipping | seeding | 0 | printer, eBay token, fee + restock limits |
-| [[bots/turbofit/BOT\|turbofit]] | Fitment | model × hardware matrix | seeding | 0 | Darwin needs GGUF conversion |
+| [[bots/turbofit/BOT\|turbofit]] | TurboSouth | TurboFit support + fit matrix | seeding | 0 | Darwin needs GGUF conversion |
 | [[bots/kart-racer/BOT\|kart-racer]] | Apex | Unity kart racer | seeding | 0 | repo name/visibility, Unity version, test gamepad |
 | [[bots/ai-daw/BOT\|ai-daw]] | Riff | music generation plugin | seeding | 0 | GPU host for ACE-Step |
 | [[bots/anser/BOT\|anser]] | Anser | mod answer bot | seeding | 0 | X API credentials |
@@ -31,7 +31,7 @@ method the other nine run on. Status legend: `live` (running now), `seeding`
   `pocketshop` gets it for card flatbeds, `ssi` for documents. Neither may
   reconfigure it without telling the other (queue item in both).
 - `turbofit` computes the local hardware budget that `ai-daw` and `youtube`
-  want for local inference. Fitment publishes the matrix; the other two read it.
+  want for local inference. TurboSouth publishes the matrix; the other two read it.
 
 ## Standing rules
 

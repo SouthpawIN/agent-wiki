@@ -15,7 +15,7 @@ Every bot, its Hermes profile, and its state. A bot **is** a profile — the wik
 |---|---|---|---|---|
 | [[bots/bot-wiki/BOT\|bot-wiki]] | Klerik | `bot-wiki` | live | 1 live |
 | [[bots/hermes/BOT\|hermes]] | Mesh | `hermes` | seeding | 0 live |
-| [[bots/turbofit/BOT\|turbofit]] | Fitment | `turbofit` | seeding | 0 live |
+| [[bots/turbofit/BOT\|turbofit]] | TurboSouth | `turbofit` | seeding | 0 live |
 | [[bots/pocketshop/BOT\|pocketshop]] | Binder | `pocketshop` | seeding | 0 live |
 | [[bots/youtube/BOT\|youtube]] | Cutroom | `youtube` | seeding | 0 live |
 | [[bots/anser/BOT\|anser]] | Anser | `anser` | seeding | 0 live |

@@ -57,7 +57,7 @@ wiki/
 │   ├── bot-wiki/                ← Klerik: the method, as a bot
 │   ├── youtube/                 ← Cutroom
 │   ├── pocketshop/              ← Binder
-│   ├── turbofit/                ← Fitment
+│   ├── turbofit/                ← TurboSouth (TurboFit support)
 │   ├── kart-racer/              ← Apex
 │   ├── ai-daw/                  ← Riff
 │   ├── anser/                   ← Anser
@@ -95,14 +95,14 @@ debugger. Front end clean, back end inspectable.
 | bot-wiki | **Klerik** | the method: schema, fleet index, queue reconciliation | **live**, one loop at 06:00 |
 | youtube | **Cutroom** | hours of Discord voice chat → chaptered videos | seeding · OBS output path |
 | pocketshop | **Binder** | four boxes of MTG cards → listings → restock | seeding · scanner, eBay token |
-| turbofit | **Fitment** | model × hardware matrix and both fit ladders | seeding · Darwin, unified-dense policy |
+| turbofit | **TurboSouth** | TurboFit support, plus the model × hardware matrix | seeding · Darwin, unified-dense policy |
 | kart-racer | **Apex** | Unity kart racer on the NRCU cast | seeding · repo, Unity version, gamepad |
 | ai-daw | **Riff** | Hermes plugin driving a music DAW | seeding · where the GPU lives |
 | anser | **Anser** | Nous moderation answers, cited and dated | seeding · X read credentials |
 | hermes | **Mesh** | one Hermes instance across every device | seeding · device pairing |
 | ssi | **Beacon** | children's SSI and Texas benefits paperwork | **blocked** · program list + documents |
 
-Twenty-seven skills and twelve loop specs live across them. One loop is armed;
+Twenty-eight skills and twelve loop specs live across them. One loop is armed;
 the rest are written and waiting for a manual pass, because a loop that was never
 run by hand fails silently forever.
 
@@ -145,7 +145,7 @@ python -m senter_agent . --json
 
 # Contract tests + bot layout verification
 PYTHONPATH=. pytest -q
-python scripts/verify_bots.py .          # bots=9 skills=27 loops=12 problems=0
+python scripts/verify_bots.py .          # bots=9 skills=28 loops=12 problems=0
 
 # Publish each bot as a Hermes skill (bot-<slug>)
 python tools/publish_skills.py . ~/.hermes
@@ -173,7 +173,7 @@ The wiki is the design doc. Hermes is the runtime. Nothing is translated by hand
 | Check | Result |
 |---|---|
 | `PYTHONPATH=. pytest -q` | 69 passed |
-| `python scripts/verify_bots.py .` | 9 bots · 27 skills · 12 loops · **0 problems** |
+| `python scripts/verify_bots.py .` | 9 bots · 28 skills · 12 loops · **0 problems** |
 | `python -m senter_agent . --json` | 78 documents, 9 `type: bot` documents |
 | Published skills | 9 × `bot-<slug>` |
 | Armed loops | 1 (`fleet-reconcile`, 06:00 UTC) |

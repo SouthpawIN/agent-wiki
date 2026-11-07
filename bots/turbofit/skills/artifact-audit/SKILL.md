@@ -2,7 +2,7 @@
 name: artifact-audit
 description: Detect upstream artifact drift that invalidates fit rungs.
 version: 1.0.0
-author: Fitment
+author: TurboSouth
 license: MIT
 metadata:
   hermes:

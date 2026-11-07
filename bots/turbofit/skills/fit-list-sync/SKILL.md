@@ -2,7 +2,7 @@
 name: fit-list-sync
 description: Reconcile fit ladders with the catalog and keep both honest.
 version: 1.0.0
-author: Fitment
+author: TurboSouth
 license: MIT
 metadata:
   hermes:

@@ -8,14 +8,14 @@ tags: [skills, registry]
 
 # Skill Registry
 
-Every skill, grouped by the bot that loads it. 27 skills across 9 bots.
+Every skill, grouped by the bot that loads it. 28 skills across 9 bots.
 
 | Bot | Skills |
 |---|---|
 | bot-wiki | `bot-authoring`, `bot-reconcile`, `bot-promote` |
 | youtube | `rant-segmentation`, `clip-assembly`, `package-and-chapters` |
 | pocketshop | `draft-listing-pipeline`, `restock-ev-pick`, `sale-ledger` |
-| turbofit | `model-matrix-add`, `fit-list-sync`, `artifact-audit` |
+| turbofit | `support-verify`, `model-matrix-add`, `fit-list-sync`, `artifact-audit` |
 | kart-racer | `unity-kart-prototype`, `nrcu-roster-import`, `track-kit` |
 | ai-daw | `daw-plugin-scaffold`, `music-model-adapter`, `lego-arrangement` |
 | anser | `grounded-answer`, `x-corpus-refresh`, `mod-escalation` |

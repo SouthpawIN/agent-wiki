@@ -2,7 +2,7 @@
 name: model-matrix-add
 description: Add a model to the TurboFit catalog and fit ladders across tiers.
 version: 1.0.0
-author: Fitment
+author: TurboSouth
 license: MIT
 metadata:
   hermes:
