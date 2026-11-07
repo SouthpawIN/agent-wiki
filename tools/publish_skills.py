@@ -69,6 +69,8 @@ def render(bot_file: Path, wiki_root: Path) -> tuple[str, str]:
     skills = sorted((bot_file.parent / "skills").glob("*/SKILL.md"))
     loops = sorted((bot_file.parent / "loops").glob("*.md"))
     holds = section(text, "Hold points")
+    extra = [(h, section(text, h)) for h in ("Resuming the whole fleet",)]
+    extra = [(h, body) for h, body in extra if body]
     needs = section(text, "Needs from Chris")
     loop_steps = section(text, "Operating loop")
 
@@ -105,6 +107,8 @@ def render(bot_file: Path, wiki_root: Path) -> tuple[str, str]:
             sched = frontmatter(loop.read_text(encoding="utf-8")).get("schedule", "")
             lines.append(f"- `{loop}` ({sched}, {state})")
         lines.append("")
+    for heading, body in extra:
+        lines += [f"## {heading}", "", body, ""]
     if holds:
         lines += ["## Hold points — never do these alone", "", holds, ""]
     if needs:
