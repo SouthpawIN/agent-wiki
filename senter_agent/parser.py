@@ -43,6 +43,17 @@ def _declaration(path: Path, sections: dict[str, str]) -> GoopDeclaration:
     )
 
 
+def _infer_kind(path: Path) -> str:
+    """Bot-first layout: the path says what a document is before frontmatter does."""
+    parts = [part.lower() for part in path.parts]
+    if path.stem.upper() == "BOT" and "bots" in parts:
+        return "bot"
+    for part, kind in (("skills", "skill"), ("loops", "loop"), ("agents", "agent")):
+        if part in parts:
+            return kind
+    return "context"
+
+
 def parse_markdown(path: str | Path) -> GoopDocument:
     path = Path(path)
     raw = path.read_text(encoding="utf-8")
@@ -53,7 +64,7 @@ def parse_markdown(path: str | Path) -> GoopDocument:
     title = title_match.group(1).strip() if title_match else path.stem.replace("-", " ").title()
     explicit = _KIND.search(metadata)
     explicit_kind = normalize_kind(explicit.group(1)) if explicit else None
-    kind = explicit_kind or ("context" if path.stem.isupper() else "context")
+    kind = explicit_kind or _infer_kind(path)
     tags_match = re.search(r"tags\s*:\s*\[([^]]*)\]", metadata, re.I)
     tags = [x.strip().strip("'\"") for x in tags_match.group(1).split(",")] if tags_match else []
     links = [a or b for a, b in _LINK.findall(raw)]

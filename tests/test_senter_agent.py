@@ -71,3 +71,26 @@ def test_queue_preserves_user_status(tmp_path: Path):
     queue.write_text(original.replace("- [ ] `video-procedure`", "- [x] `video-procedure`"), encoding="utf-8")
     write_queue(queue, proposals)
     assert "- [x] `video-procedure`" in queue.read_text(encoding="utf-8")
+
+
+def test_bot_first_layout_is_inferred_from_path(tmp_path: Path):
+    from senter_agent.parser import parse_markdown
+    root = tmp_path / "bots" / "demo"
+    (root / "skills" / "seed").mkdir(parents=True)
+    (root / "loops").mkdir(parents=True)
+    (root / "BOT.md").write_text("# Demo\n", encoding="utf-8")
+    (root / "skills" / "seed" / "SKILL.md").write_text("# Seed\n", encoding="utf-8")
+    (root / "loops" / "daily.md").write_text("# Daily\n", encoding="utf-8")
+    assert parse_markdown(root / "BOT.md").kind == "bot"
+    assert parse_markdown(root / "skills" / "seed" / "SKILL.md").kind == "skill"
+    assert parse_markdown(root / "loops" / "daily.md").kind == "loop"
+
+
+def test_planner_proposes_bots_from_bot_documents(tmp_path: Path):
+    from senter_agent.parser import parse_tree
+    from senter_agent.planner import build_plan
+    root = tmp_path / "bots" / "demo"
+    root.mkdir(parents=True)
+    (root / "BOT.md").write_text("---\ntype: bot\ntags: [demo]\n---\n\n# Demo\n", encoding="utf-8")
+    proposals = build_plan(parse_tree(tmp_path))
+    assert any(p.primitive == "bot" and p.slug == "demo" for p in proposals)

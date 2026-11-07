@@ -21,15 +21,21 @@ and lives in the wiki:
 
 | Primitive | Factory | Hermes Write | Wiki Path | Standard |
 |---|---|---|---|---|---|
-| **Context** | Context | `write_file` to wiki pages | `topics/<topic>/.system/` + `README.md` | wiki markdown |
-| **Loops** | Loops | `cronjob(create)`, kanban create | `topics/<topic>/loops/` | cron/kanban config |
-| **Agents** | Agents | `hermes profile create` + SOUL.md write | `topics/<topic>/agents/` | `AGENTS.md` |
-| **Skills** | Skills | `skill_manage(action='create')` | `topics/<topic>/skills/` | `SKILL.md` |
+| **Bot** | Agents | `hermes profile create` + BOT.md | `bots/<slug>/BOT.md` | `BOT.md` |
+| **Context** | Context | `write_file` to wiki pages | `bots/<slug>/.system/` | wiki markdown |
+| **Loops** | Loops | `cronjob(create)`, kanban create | `bots/<slug>/loops/` | cron/kanban config |
+| **Agents** | Agents | `hermes profile create` + SOUL.md write | `bots/<slug>/agents/` | `AGENTS.md` |
+| **Skills** | Skills | `skill_manage(action='create')` | `bots/<slug>/skills/` | `SKILL.md` |
 
-Primitives nest: Context contains Loops which invoke Agents which load Skills.
+Primitives nest: a Bot holds Context, runs Loops, and loads Skills.
 The wiki directory structure mirrors this nesting exactly.
 
-### Context (outermost layer)
+### Bot (outermost layer)
+
+An entity that owns one topic: mission, hold points, a read of its own state, and a
+clock. A Bot **is** a Hermes profile, so Bot Mode renders the same roster.
+
+### Context
 
 The shared comprehension layer — raw understanding extracted from chat, transformed into
 structured knowledge. Two faces:
@@ -54,43 +60,45 @@ The atomic unit of capability.
 
 ---
 
-## Topic-Based Organization
+## Bot-First Organization
 
-Every user interest is a **topic** — a self-contained directory that holds the full GOOP stack:
+Every project is a **bot**. A bot owns exactly one topic and is the only directory
+it lives in (see `BOT_SCHEMA.md`):
 
 ```
-wiki/topics/<topic-slug>/
+wiki/bots/<slug>/
 │
-├── README.md                 ← FRONT END: human-readable dashboard
+├── BOT.md                    ← FRONT END: mission, loop, skills, loop table, holds
 ├── .system/                  ← BACK END: machine coordination (hidden by default)
-│   ├── continuity.md         ← Context's raw understanding from chat sessions
-│   ├── injections.md         ← messages queued for Senter's conversational surface
-│   └── queue.md              ← pending factory work items, tagged by factory
-├── skills/                   ← skills scoped to this topic
-├── agents/                   ← agent summaries serving this topic
-└── loops/                    ← execution infrastructure
+│   ├── continuity.md         ← Context's understanding of this bot's job
+│   ├── injections.md         ← messages queued for the human's next conversation
+│   └── queue.md              ← [BOTS]/[SKILLS]/[LOOPS] work items
+├── skills/                   ← procedures this bot loads on demand
+├── agents/                   ← roles this bot spawns
+└── loops/                    ← this bot's schedules
 ```
+
+There is no `topics/` tree. A topic without a bot is an idea, not a project. If a
+bot needs two missions it becomes two bots.
 
 ### The `.system/` Convention
 
 Dot-prefixed directories are hidden by default in Obsidian, file browsers, and `ls`.
-The user CAN open them — that's the debugger. The default experience: open `README.md` and see a clean dashboard.
+The user CAN open them — that's the debugger. The default experience: open
+`BOT.md` and see a clean dashboard.
 
-### The `_global/` Topic
-
-A special topic (underscore sorts it first) that holds fleet-wide overview:
+### The `_fleet/` Index
 
 ```
-wiki/topics/_global/
-├── README.md                 ← fleet dashboard
-├── .system/
-│   ├── agent-roster.md       ← every agent across all topics
-│   ├── skill-registry.md     ← every skill across all topics
-│   └── loop-registry.md      ← every running loop
-└── agents/                   ← symlinks to all agent summaries
+wiki/bots/_fleet/
+├── FLEET.md                  ← every bot, status, live loop count, blocker
+└── .system/
+    ├── continuity.md         ← fleet-level understanding and constraints
+    └── queue.md              ← cross-bot work ([BOTS]/[SKILLS]/[LOOPS])
 ```
 
----
+A bot may not edit another bot's `BOT.md`. Cross-bot changes are filed in
+`_fleet/.system/queue.md`, which is the only shared mutable surface.
 
 ## The Flywheel
 
@@ -98,7 +106,7 @@ From idea to working system, driven entirely by markdown reads and writes:
 
 1. Chris speaks an idea to Senter's unnamed STS auxiliary — session auto-saved to Hermes session DB
 2. Context reads Senter sessions via `session_search(profile='senter')`, writes wiki pages
-3. Context populates `queue.md` with tagged items: `[SKILLS]`, `[AGENTS]`, `[LOOPS]`
+3. Context populates `queue.md` with tagged items: `[SKILLS]`, `[BOTS]`, `[LOOPS]`
 4. Factories watch queue.md, claim items, spawn `delegate_task`, write artifacts
 5. Factories write status to `.system/injections.md`
 6. Senter's conversational surface reads injections before responding, weaving status into conversation naturally
@@ -106,15 +114,16 @@ From idea to working system, driven entirely by markdown reads and writes:
 ### The Queue Format
 
 ```markdown
-## [SKILLS] items
-- [ ] github-api-paginate — needed for PR watcher
-- [x] github-auth-setup — DONE → skills/github-auth-setup.md
+## [BOTS] items
+- [ ] pr-watcher — new bot; needs a mission, three skills, one loop
+- [x] pocketshop — materialized → bots/pocketshop/BOT.md
 
-## [AGENTS] items
-- [ ] pr-watcher — new agent to run PR monitoring on cron
+## [SKILLS] items
+- [ ] github-api-paginate — needed for the PR bot
+- [x] github-auth-setup — DONE → bots/pr-watcher/skills/github-auth-setup/SKILL.md
 
 ## [LOOPS] items
-- [ ] pr-check-cron — wire pr-watcher to 30-min schedule
+- [ ] pr-check-cron — wire pr-watcher to a 30-minute schedule
 ```
 
 Factories read, claim (`[~]`), and mark done (`[x]`). Only Context creates entries.
@@ -177,9 +186,9 @@ Pipeline:
 3. **Evaluate:** Score against rubric: completeness, clarity, reusability, evidence.
 4. **Apply:** `skill_manage(action='create')` with winning candidate. Write summary.
 
-### Agents Factory
+### Agents Factory (Bot Factory)
 
-**Trigger:** New `[AGENTS]` entries. Also watches Skill Registry for unhosted skills.
+**Trigger:** New `[BOTS]` entries. Also watches the Skill Registry for unhosted skills.
 **Output:** Hermes profiles via `hermes profile create`.
 
 Pipeline:
@@ -227,7 +236,7 @@ The Agent Wiki system uses only existing Hermes primitives:
 
 ```bash
 # 1. Ensure wiki exists
-mkdir -p ~/.hermes/wiki/topics/_global/.system
+mkdir -p ~/.hermes/wiki/bots/_fleet/.system
 
 # 2. The STS auxiliary is tool-free; Senter remains the unified agent.
 
@@ -239,11 +248,11 @@ hermes cron create "every 30m" \
   EVERY TICK:
   1. Read Senter's latest sessions: session_search(profile='senter', sort='newest', limit=5)
   2. Identify new: projects, entities, concepts, action items, pain points
-  3. For each project/idea mentioned, create or update wiki/topics/<topic-slug>/
-     - Write/update README.md (human-facing dashboard)
+  3. For each project/idea mentioned, create or update wiki/bots/<bot-slug>/
+     - Write/update BOT.md (human-facing dashboard)
      - Write/update .system/continuity.md (your raw understanding)
      - Append to .system/queue.md: [SKILLS]/[AGENTS]/[LOOPS] items as appropriate
-  4. Update wiki/topics/_global/README.md (fleet dashboard) if roster changed
+  4. Update wiki/bots/_fleet/FLEET.md if roster changed
   5. NEVER overwrite user-edited continuity lines
   6. Log all actions to wiki/log.md"
 
@@ -265,7 +274,7 @@ hermes cron create "every 15m" \
   Read queue.md for [AGENTS] items. For each:
   1. delegate_task to draft SOUL.md + profile config
   2. hermes profile create <name>
-  3. Write summary to topics/<topic>/agents/<name>.md
+  3. Write summary to bots/<bot>/agents/<name>.md
   4. Inject status"
 
 # 6. Loops cron — wires execution
@@ -300,7 +309,7 @@ hermes cron create "every 15m" \
 2. **The wiki is the system.** No separate database. No config dashboard. The filesystem IS the state.
 3. **User-editable everything.** Every understanding, every queue item, every status — the user can edit it directly.
 4. **Dot-prefix for machine internals.** `.system/` is hidden but accessible. Front end (README.md) is clean.
-5. **Topics are self-contained GOOP instances.** Each topic contains its own Context, Loops, Agents, and Skills.
+5. **Bots are self-contained GOOP instances.** Each bot holds its own Context, Loops, Roles, and Skills, and a bot *is* a Hermes profile.
 6. **Factories are thin.** Each factory is a cron job that spawns one `delegate_task`. No persistent factory profiles needed.
 7. **Injections keep the human in the loop.** Background work writes to a file. Senter's conversational surface reads it.
 8. **No self-edit.** Agents cannot edit Agents. Context cannot rewrite its own continuity without user approval.

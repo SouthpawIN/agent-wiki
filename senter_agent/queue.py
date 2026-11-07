@@ -57,7 +57,7 @@ def write_queue(path: str | Path, proposals: list[Proposal]) -> Path:
     for proposal in proposals:
         grouped.setdefault(proposal.primitive, []).append(proposal)
     lines = [_HEADER.rstrip("\n")]
-    for primitive in ("context", "skill", "agent", "loop"):
+    for primitive in ("bot", "context", "skill", "agent", "loop"):
         lines += [f"## {primitive.title()}"]
         items = sorted(grouped.get(primitive, []), key=lambda item: item.slug)
         if not items:
