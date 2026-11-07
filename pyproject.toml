@@ -12,7 +12,7 @@ requires-python = ">=3.11"
 senter-agent = "senter_agent.cli:main"
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
+testpaths = ["tests", "bots"]
 addopts = "-q"
 
 [tool.setuptools.packages.find]
