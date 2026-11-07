@@ -31,6 +31,8 @@ the data of record.
 
 ## Owns
 
+- [[bots/turbofit/benchmark-campaign|benchmark-campaign]] — the 2,340-line
+  success-index matrix (model × drafter × context) that the ladder must satisfy.
 - `references/model-catalog.json` (62 variants today) and `references/fit-lists.json`.
 - `src/turbofit_runtime/model_catalog.py` (`CATALOG_SCHEMA turbofit.model-catalog/v2`),
   `fit_ladders.py`, `fit_check.py`, `hermes_fit.py`.
