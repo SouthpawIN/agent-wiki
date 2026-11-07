@@ -6,7 +6,7 @@ owner: sovthpaw
 status: live
 created: 2026-11-07
 tags: [bot, meta, method, wiki]
-repos: [SouthpawIN/agent-wiki]
+repos: [SouthpawIN/bot-wiki]
 ---
 
 # Klerik — Bot Wiki

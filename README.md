@@ -1,147 +1,211 @@
-![Agent Wiki](assets/hero-agent-wiki.png)
+![Bot Wiki](assets/hero-agent-wiki.png)
 
-# Senter Agent
+# Bot Wiki
 
-> **Senter is the three-eyed owl: a self-documenting, self-extending multi-agent system. The wiki IS the coordination layer.**
+> **Senter is the three-eyed owl: a self-documenting, self-extending swarm of bots. The wiki IS the coordination layer.**
 >
-> Built on [Hermes Agent](https://github.com/NousResearch/hermes-agent) by [Nous Research](https://nousresearch.com/).
-> **Bot-first:** every topic is owned by a bot. The bot is the page, the queue, the skill bundle, and the clock.
+> Built on [Hermes Agent](https://github.com/NousResearch/hermes-agent) by [Nous Research](https://nousresearch.com).
+> One bot per topic. The bot is the markdown, the queue, the skill bundle, and the clock. `SENTER.md` is the language layer; Senter is the interpreter.
 
 ---
 
-## What is Agent Wiki?
+## What this is
 
-A fleet of bots, one per thing you actually care about, described entirely in
-markdown. Each bot owns a topic, carries its own work queue, grows its own
-skills, and may run on its own schedule. There is no separate database, no config
-dashboard, and no topic directory that exists without an owner.
+This started as a wiki about topics. Every interest got a page, every page got a
+stack of four primitives — **Context**, **Loops**, **Agents**, **Skills** — and the
+whole thing was supposed to organize a fleet of agents as a well-kept markdown
+vault. Markdown was the API, the filesystem was the database, and you steered by
+editing files instead of config panels.
+
+The idea was right. The unit was wrong.
+
+A topic page is a filing cabinet. It collects links, it never comes due, and
+nothing in it can be invoked. So the vault grew beautiful dashboards that nobody
+executed, and every project quietly depended on a human remembering it existed.
+
+**Bot Wiki keeps the vault and changes the unit.** A topic no longer has a page;
+a topic has an owner. The bot is a directory that can be loaded, questioned,
+scheduled, and held to a definition of done. Nine of them exist today, one per
+project Chris is actually running — plus a tenth that maintains the method the
+other nine run on.
+
+## The shift, in one table
+
+| | Topic-first (July 2026) | Bot-first (now) |
+|---|---|---|
+| Unit | A page about a subject | An actor that owns a subject |
+| Lives in | `topics/<topic>/` | `bots/<slug>/` |
+| Front door | `README.md` dashboard | `BOT.md` mission + operating loop |
+| Can it act? | only via a factory that read the page | it holds skills and a clock |
+| When it decays | silently | it reports `blocked` and names the unblocker |
+| In Hermes | a profile per agent, chosen by hand | a bot *is* a profile, rendered in Bot Mode |
+
+The four primitives survived; they just got an owner. A **Bot** holds **Context**,
+runs **Loops**, and loads **Skills**. That is the same nesting as before, with a
+subject that can be woken up.
+
+---
+
+## How it organizes
+
+```
+wiki/
+├── bots/
+│   ├── _fleet/                  ← the only shared mutable surface
+│   │   ├── FLEET.md             ← every bot: status, live loops, blocker
+│   │   └── .system/             ← cross-bot queue, fleet continuity
+│   ├── bot-wiki/                ← Klerik: the method, as a bot
+│   ├── youtube/                 ← Cutroom
+│   ├── pocketshop/              ← Binder
+│   ├── turbofit/                ← Fitment
+│   ├── kart-racer/              ← Apex
+│   ├── ai-daw/                  ← Riff
+│   ├── anser/                   ← Anser
+│   ├── hermes/                  ← Mesh
+│   └── ssi/                     ← Beacon
+├── catalogs/                    ← fleet, roster, skills, loops
+├── BOT_SCHEMA.md                ← what a bot must contain
+├── SENTER.md                    ← the language/context layer
+└── log.md                       ← append-only history
+```
+
+Every bot is the same shape:
 
 ```
 bots/<slug>/
-├── BOT.md                  ← identity + dashboard: mission, loop, skills, holds
-├── .system/                ← machine coordination (hidden, still editable)
-│   ├── continuity.md       ← what the bot understands about its job
-│   ├── queue.md            ← [SKILLS] / [LOOPS] / [BOTS] work items
-│   └── injections.md       ← one-line status for the human's next conversation
-├── skills/<slug>/SKILL.md  ← procedures, loaded on demand
-└── loops/<slug>.md         ← a skill bound to a clock
+├── BOT.md                  mission · operating loop · skills · loops · holds · needs
+├── .system/                continuity.md · queue.md · injections.md
+├── skills/<slug>/SKILL.md  procedures, not descriptions
+└── loops/<slug>.md         a skill bound to a clock
 ```
 
-Read `BOT_SCHEMA.md` for the standard, and `bots/_fleet/FLEET.md` for the roster.
+`BOT.md` is the only file you have to write. It carries the mission as an
+outcome, the numbered loop the bot runs, the artifacts it owns, the skills it
+loads, the loops it runs, the things it may never do alone, and — when stuck —
+the exact ask that would unstick it. A bot that cannot act says so in one line at
+the top and names what it needs.
 
-## Why bot-first
+`.system/` is dot-prefixed so file browsers hide it. Open it anyway; that is the
+debugger. Front end clean, back end inspectable.
 
-Topic-first wikis rot. A topic page is a filing cabinet: it collects links nobody
-executes, and it has no clock, so nothing ever comes due. Bot-first makes every
-directory an entity — something you can invoke, that owns a queue, that accretes
-skills, and that will notice when it has been idle.
+## The nine bots
 
-The recursion is the point: **bot-wiki** (Klerik) is the tenth bot. It maintains
-the method the other nine run on, using the method itself.
+| Bot | Callsign | Owns | State |
+|---|---|---|---|
+| bot-wiki | **Klerik** | the method: schema, fleet index, queue reconciliation | **live**, one loop at 06:00 |
+| youtube | **Cutroom** | hours of Discord voice chat → chaptered videos | seeding · OBS output path |
+| pocketshop | **Binder** | four boxes of MTG cards → listings → restock | seeding · scanner, eBay token |
+| turbofit | **Fitment** | model × hardware matrix and both fit ladders | seeding · Darwin, unified-dense policy |
+| kart-racer | **Apex** | Unity kart racer on the NRCU cast | seeding · repo, Unity version, gamepad |
+| ai-daw | **Riff** | Hermes plugin driving a music DAW | seeding · where the GPU lives |
+| anser | **Anser** | Nous moderation answers, cited and dated | seeding · X read credentials |
+| hermes | **Mesh** | one Hermes instance across every device | seeding · device pairing |
+| ssi | **Beacon** | children's SSI and Texas benefits paperwork | **blocked** · program list + documents |
+
+Twenty-seven skills and twelve loop specs live across them. One loop is armed;
+the rest are written and waiting for a manual pass, because a loop that was never
+run by hand fails silently forever.
+
+## How a bot acts
+
+1. **It is addressed by name.** Each bot publishes as a Hermes skill,
+   `bot-<slug>`, so any session can load it and be that bot. Its `BOT.md` stays
+   the long version.
+2. **It follows a numbered loop.** Read state, do the one thing, validate, write
+   the artifact where the BOT.md predicted it, log one line.
+3. **It carries hold points.** Paying, publishing under Chris's name, submitting
+   government forms, deleting data — never alone. Binder drafts listings, Beacon
+   fills forms, Cutroom renders cuts; a human clicks the last button.
+4. **It reports upward.** A one-line injection lands in `.system/injections.md`
+   and surfaces in conversation, not on a dashboard.
+5. **It is gated.** `pytest -q` and `scripts/verify_bots.py` must pass before any
+   bot claims work as done. The maintainer cannot edit its own validator.
+
+## The recursion
+
+`bot-wiki` is a bot. Klerik reads every `BOT.md`, repairs the fleet index when it
+drifts from reality, claims exactly one queue item per run, and refuses to touch
+another bot's identity. On its first live run it corrected two stale blockers in
+`FLEET.md` and fixed a `PYTHONPATH` bug in its own procedure — then the spec was
+tightened so a maintainer may only commit `bots/**` prose, behind both gates.
+
+That is the method describing itself: the wiki that builds the wiki, under the
+same rules as everything it builds.
+
+---
 
 ## Quick Start
 
 ```bash
-# Clone the wiki
-git clone https://github.com/SouthpawIN/agent-wiki.git ~/.hermes/wiki
+git clone https://github.com/SouthpawIN/bot-wiki.git ~/.hermes/wiki
+cd ~/.hermes/wiki
 
-# Parse every bot, propose work
-python -m senter_agent ~/.hermes/wiki --json
+# Parse every bot and propose work from the markdown
+python -m senter_agent . --json
 
-# Validate the contracts
-pytest -q
-python scripts/verify_bots.py .            # identity, sections, artifacts, links
+# Contract tests + bot layout verification
+PYTHONPATH=. pytest -q
+python scripts/verify_bots.py .          # bots=9 skills=27 loops=12 problems=0
 
-# Publish every bot as a Hermes skill (bot-<slug>)
+# Publish each bot as a Hermes skill (bot-<slug>)
 python tools/publish_skills.py . ~/.hermes
+```
 
-# The nightly maintainer
+Then, in Hermes:
+
+```bash
 hermes cron create "0 6 * * *" --name fleet-reconcile \
   --prompt "$(sed -n '/## Prompt/,/## Stop/p' ~/.hermes/wiki/bots/bot-wiki/loops/fleet-reconcile.md)"
 ```
 
-Each bot maps 1:1 onto a Hermes **profile**, so Hermes **Bot Mode** shows the same
-roster with per-bot memory, skills, and routines. The wiki is the design doc; the
-profile is the runtime.
+## From wiki to runtime
 
-## The Four Primitives
+A Bot **is** a Hermes profile — isolated config, memory, skills, credentials, and
+chat history under `~/.hermes/profiles/<slug>/`. Bot Mode is a UI over that
+primitive, so the roster in the wiki and the roster on screen are the same nine
+entities. `hermes -p <slug> chat` opens the same agent the wiki describes, and
+each bot's routines appear in `hermes cron list` beside its Bot Chat.
 
-| Primitive | Factory | What It Is |
-| --- | --- | --- |
-| **Bot** | Agents | An owned topic: identity, mission, holds, and a clock |
-| **Context** | Context | Wiki pages — raw understanding, structured into knowledge |
-| **Skills** | Skills | `SKILL.md` bundles — procedures, loaded on demand |
-| **Loops** | Loops | A skill plus a schedule; cron or kanban |
+The wiki is the design doc. Hermes is the runtime. Nothing is translated by hand.
 
-Primitives nest: a **Bot** holds **Context**, runs **Loops**, and loads **Skills**.
+## Verification
 
-## The Flywheel
-
-1. **Chat** — you tell Senter about an idea.
-2. **Comprehend** — Context writes the bot's `.system/continuity.md`.
-3. **Shape** — a bot appears: `BOT.md` with a mission, three skills, one loop.
-4. **Execute** — the loop runs, writes artifacts, appends to the bot's log.
-5. **Inject** — one line comes back to you in conversation, not a dashboard.
-
-## The Bot Is the Topic
-
-There is no `topics/` tree. If a bot needs two missions it is two bots; if a topic
-has no bot it is an idea, not a project. The rules that follow from that:
-
-| Rule | Why |
+| Check | Result |
 |---|---|
-| One bot, one topic | Two missions means neither gets a clean queue |
-| Skills are procedures | A description cannot be executed by a fresh agent |
-| Loops name their skill | An unbound loop is a mystery cron job |
-| Hold points are absolute | Payment, publishing, and filings need a human |
-| `blocked` needs a named ask | A stuck bot with no ask is a dead bot |
+| `PYTHONPATH=. pytest -q` | 69 passed |
+| `python scripts/verify_bots.py .` | 9 bots · 27 skills · 12 loops · **0 problems** |
+| `python -m senter_agent . --json` | 78 documents, 9 `type: bot` documents |
+| Published skills | 9 × `bot-<slug>` |
+| Armed loops | 1 (`fleet-reconcile`, 06:00 UTC) |
 
-## The Factory Pipeline
+`scripts/verify_bots.py` checks identity (`type: bot`, slug matches directory),
+required sections, declared skills and loops on disk, `blocked` bots having a real
+ask, and every `[[wiki link]]` resolving. `INTEGRATED_STATUS.md` records what is
+specified, implemented, exercised, and still blocked.
 
-| Factory | Watches | Produces |
-| --- | --- | --- |
-| **Context** | chat sessions | wiki pages, queue items |
-| **Skills** | `[SKILLS]` items | `SKILL.md` files |
-| **Agents** | `[BOTS]` items | bot scaffolding, profiles |
-| **Loops** | `[LOOPS]` items | cron jobs, kanban tasks |
-
-All factories use the same four stages: **Collect evidence → Generate candidates
-→ Evaluate → Apply.** They materialize reviewable markdown; they never silently
-create live Hermes objects.
-
-## Global Catalogs
-
-| Catalog | Shows |
-| --- | --- |
-| [[bots/_fleet/FLEET\|Fleet]] | all nine bots, status, blockers |
-| [[catalogs/bot-roster\|Bot Roster]] | every bot → its Hermes profile |
-| [[catalogs/skill-registry\|Skill Registry]] | every skill, by bot |
-| [[catalogs/loop-registry\|Loop Registry]] | every loop, schedule, state |
-| [[catalogs/agent-roster\|Agent Roster]] | the front door (Senter) and roles |
-
-## Design Principles
+## Design principles
 
 1. **Markdown is the API** — human ↔ machine, machine ↔ machine.
-2. **The wiki is the system** — no separate database or config dashboard.
-3. **User-editable everything** — every understanding, queue item, and status.
-4. **Dot-prefix for machine internals** — `.system/` is hidden but accessible.
-5. **Bots are self-contained** — each holds its own context, skills, and loops.
-6. **Factories are thin** — a cron job that spawns one `delegate_task`.
-7. **Injections keep you in the loop** — factories write files; conversation reads them.
-8. **No self-edit** — the bot that writes bots cannot rewrite itself.
-
-## Integrated Verification
-
-System status and the user-test matrix live in [[INTEGRATED_STATUS.md|INTEGRATED_STATUS.md]].
-The live wiki is `~/.hermes/wiki/`; conventions in `BOT_SCHEMA.md`; history in `log.md`.
+2. **The wiki is the system** — no database, no config dashboard, no YAML wizard.
+3. **One bot, one topic** — two missions means two bots.
+4. **Skills are procedures** — if a fresh agent cannot execute it step by step, it
+   is prose and belongs in continuity.
+5. **Loops name their skill** — an unbound loop is a mystery cron job.
+6. **Hold points are absolute** — money, publishing, filings, deletions.
+7. **`blocked` requires an ask** — a stuck bot with no ask is a dead bot.
+8. **No self-edit** — the bot that writes bots cannot rewrite itself, and a
+   maintainer cannot edit the validator that judges it.
+9. **Dot-prefix machine internals** — `.system/` is hidden, not secret.
 
 ## Learn More
 
-- [[BOT_SCHEMA\|Bot Schema]] — the standard every bot is written against
-- [[spec\|Agent Wiki Specification]] — full architecture
-- [[goop-whitepaper\|GOOP Whitepaper v1]] — the original vision
-- [[goop-nesting\|GOOP Nesting]] — primitive nesting
+- [[BOT_SCHEMA|Bot Schema]] — the standard every bot is written against
+- [[bots/_fleet/FLEET|Fleet]] — the live roster and cross-bot dependencies
+- [[spec|Specification]] — full architecture, setup, history
+- [[goop-whitepaper|GOOP Whitepaper v1]] — the original vision, July 2026
+- [[goop-nesting|GOOP Nesting]] — primitive nesting
+- [[SENTER|Senter]] — the language/context layer
 
 ---
 
-_Built on [Hermes Agent](https://github.com/NousResearch/hermes-agent). Towards Self-Improvement._
+*Built on [Hermes Agent](https://github.com/NousResearch/hermes-agent). Towards Self-Improvement.*

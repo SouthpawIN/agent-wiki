@@ -2,6 +2,12 @@
 
 > Chronological record of all Agent Wiki actions. Append-only.
 
+## [2026-11-07] rename + rewrite | agent-wiki → bot-wiki
+- Repo renamed `SouthpawIN/agent-wiki` → `SouthpawIN/bot-wiki` (GitHub redirects old URLs)
+- README rewritten from the original concept (Senter, four primitives, flywheel, markdown-as-API)
+  to the current organisation (one bot per topic, BOT.md as the unit, Hermes profile per bot)
+- No structural changes: bots/, catalogs/, BOT_SCHEMA.md unchanged
+
 ## 2026-11-07 — Bot-first reorganisation
 
 Replaced the topic tree with a bot tree. One bot per topic; the bot owns its
