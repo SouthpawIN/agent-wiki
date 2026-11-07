@@ -5,7 +5,8 @@
 > **Senter is the three-eyed owl: a self-documenting, self-extending swarm of bots. The wiki IS the coordination layer.**
 >
 > Built on [Hermes Agent](https://github.com/NousResearch/hermes-agent) by [Nous Research](https://nousresearch.com).
-> One bot per topic. The bot is the markdown, the queue, the skill bundle, and the clock. `SENTER.md` is the language layer; Senter is the interpreter.
+> One bot per topic. The bot is the markdown, the queue, the skill bundle, and the clock.
+> `SENTER.md` is the language layer. Senter is the agent you talk to; the bots are the ones with jobs.
 
 ---
 
@@ -28,6 +29,44 @@ a topic has an owner. The bot is a directory that can be loaded, questioned,
 scheduled, and held to a definition of done. Nine of them exist today, one per
 project Chris is actually running — plus a tenth that maintains the method the
 other nine run on.
+
+## The agent that works on all of it
+
+Nine projects, one conversation. The thing on the other end of that conversation is
+**Senter** — personified as the three-eyed owl in Herm, backed by an unnamed,
+tool-free speech-to-speech auxiliary. It is not a tenth bot and it does not hold
+project state. It routes.
+
+| Role | Who | Job |
+|---|---|---|
+| **Front door** | Senter | hears the request, decides which bot owns it, loads that bot, reports back in plain language |
+| **Maintainer** | Klerik (`bot-wiki`) | keeps the fleet index honest, materializes missing skills, bounds its own writes |
+| **Executors** | the nine bots | hold their own mission, queue, skills, and clock |
+
+The important part is where the state lives. Nothing is remembered "in the chat":
+it is in `bots/<slug>/`, on disk, in markdown. Senter can pick up any of the nine
+projects cold, on any device, because resuming is a procedure — and the procedure
+is written down.
+
+### How Senter resumes nine projects
+
+1. **Read the index.** `bots/_fleet/FLEET.md` — one row per bot: callsign, topic,
+   status, live loops, blocker. The only page that claims to be current.
+2. **Load one bot.** `skill: bot-<slug>`. Nine bots in context is noise; one bot
+   plus the index is enough to be useful immediately.
+3. **Read its `.system/`.** `continuity.md` for what it understands, `injections.md`
+   for what changed since you last spoke, `queue.md` for what is owed.
+4. **Respect the boundary.** Cross-bot work goes in the fleet queue. No bot edits
+   another bot's `BOT.md`, and no request quietly borrows another project's asset —
+   the scanner, the GPU, your hands: those are shared, and sharing is stated.
+5. **One mission per exchange.** Switching projects mid-task is how you get two
+   half-finished artifacts and no diagnosis.
+6. **Leave a line behind.** Append to the bot's `## Log` before switching away. That
+   line is the next session's only memory of what happened.
+
+This is also why the fleet is readable at a glance: Senter's working set is the
+index plus one bot, not nine dashboards. If a project is stuck, the index says so
+and names the ask; if it is moving, the bot's log says what moved.
 
 ## The shift, in one table
 
