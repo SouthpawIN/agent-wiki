@@ -28,6 +28,17 @@ def _evidence(doc: GoopDocument) -> bool:
     return bool(doc.tags or doc.explicit_kind or doc.path.stem.isupper())
 
 
+def bot_slug_from_path(doc: GoopDocument) -> str | None:
+    """Return the bot slug encoded in ``bots/<slug>/BOT.md`` paths."""
+    parts = [part.lower() for part in doc.path.parts]
+    if "bots" not in parts:
+        return None
+    index = len(parts) - 1 - parts[::-1].index("bots")
+    if index + 1 < len(parts) - 1:
+        return parts[index + 1]
+    return None
+
+
 def build_plan(documents: list[GoopDocument]) -> list[Proposal]:
     """Suggest typed GOOP artifacts from markdown evidence.
 
@@ -42,6 +53,15 @@ def build_plan(documents: list[GoopDocument]) -> list[Proposal]:
             continue
         names = [str(d.path) for d in docs]
         proposals.append(Proposal("skill", f"{key}-procedure", f"Repeated tagged concept appears in {len(docs)} source documents.", names))
+    bot_docs = [d for d in documents if d.kind == "bot"]
+    for doc in sorted(bot_docs, key=lambda item: str(item.path)):
+        slug = bot_slug_from_path(doc) or doc.path.parent.name
+        proposals.append(Proposal(
+            "bot",
+            slug,
+            f"Bot document declares an owned topic: {doc.title}.",
+            [str(doc.path)],
+        ))
     skill_docs = [d for d in documents if d.kind == "skill"]
     if len(skill_docs) >= 2:
         proposals.append(Proposal("agent", "skill-cluster-agent", f"{len(skill_docs)} skill documents form a candidate capability cluster.", [str(d.path) for d in skill_docs]))

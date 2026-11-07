@@ -52,3 +52,14 @@ HERMES_HOME="$PWD/../hermes-home" bun run src/index.tsx
 ```
 
 Test the three-eyed Eikon, state transitions, GOOP Wiki sidebar, and active Petdex metadata if Petdex is enabled in the disposable Hermes profile.
+
+## 2026-11-07 — Bot-first verification
+
+| Contract | Artifact | Exercised |
+|---|---|---|
+| `bots/*/BOT.md` declares `type: bot` and a slug matching its directory | 9 bots | `python -m senter_agent . --json` → 9 bot documents |
+| Path inference: `BOT.md` → bot, `skills/**/SKILL.md` → skill, `loops/*.md` → loop | `senter_agent/parser.py` | `tests/test_senter_agent.py::test_bot_first_layout_is_inferred_from_path` |
+| Materialization writes `bots/<slug>/BOT.md` + `.system/` | `senter_agent/factories.py` | `tests/test_factories.py` (6 tests) |
+| Planner proposes one bot per bot document | `senter_agent/planner.py` | `tests/test_senter_agent.py::test_planner_proposes_bots_from_bot_documents` |
+| Full suite | 69 tests | `pytest -q` → 69 passed |
+| Live Hermes deployment (profiles, cron) | — | **not yet provisioned** — see `bots/hermes/skills/bot-mode-profiles` |

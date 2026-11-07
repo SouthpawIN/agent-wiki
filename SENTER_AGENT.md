@@ -82,4 +82,4 @@ The CLI inspects markdown and can write/update a human-editable proposal queue. 
 
 ## Identity
 
-The Herm TUI identity for Senter is the three-eyed owl. The current owl animation reference and six-state mapping are tracked in the local Agent Wiki topic `topics/senter-agent/`.
+The Herm TUI identity for Senter is the three-eyed owl. The current owl animation reference and six-state mapping are tracked in the bot `bots/bot-wiki/`.

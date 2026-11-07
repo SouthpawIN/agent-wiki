@@ -2,7 +2,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Optional
 
-PRIMITIVES = ("context", "skill", "agent", "loop")
+PRIMITIVES = ("bot", "context", "skill", "agent", "loop")
 
 @dataclass
 class GoopDocument:
@@ -36,7 +36,7 @@ class Proposal:
 
 def normalize_kind(value: str) -> str:
     value = value.strip().lower().rstrip("s")
-    aliases = {"context": "context", "skill": "skill", "agent": "agent", "loop": "loop"}
+    aliases = {"bot": "bot", "context": "context", "skill": "skill", "agent": "agent", "loop": "loop"}
     return aliases.get(value, "context")
 
 

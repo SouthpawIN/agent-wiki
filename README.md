@@ -4,25 +4,40 @@
 
 > **Senter is the three-eyed owl: a self-documenting, self-extending multi-agent system. The wiki IS the coordination layer.**
 >
-> Built on [Hermes Agent](https://github.com/NousResearch/hermes-agent) by [Nous Research](https://nousresearch.com).
-> Topics are miniature GOOP instances. `SENTER.md` is the language/context layer; Senter Agent is the interpreter and orchestrator.
+> Built on [Hermes Agent](https://github.com/NousResearch/hermes-agent) by [Nous Research](https://nousresearch.com/).
+> **Bot-first:** every topic is owned by a bot. The bot is the page, the queue, the skill bundle, and the clock.
 
 ---
 
 ## What is Agent Wiki?
 
-Agent Wiki organizes a multi-agent AI fleet as **a well-organized markdown vault**. Every topic you care about gets its own directory containing the full stack:
+A fleet of bots, one per thing you actually care about, described entirely in
+markdown. Each bot owns a topic, carries its own work queue, grows its own
+skills, and may run on its own schedule. There is no separate database, no config
+dashboard, and no topic directory that exists without an owner.
 
-- **Context** — what the system understands about your goal
-- **Loops** — cron jobs and workflows that run over time
-- **Agents** — AI profiles that do the work
-- **Skills** — reusable procedures agents load on demand
+```
+bots/<slug>/
+├── BOT.md                  ← identity + dashboard: mission, loop, skills, holds
+├── .system/                ← machine coordination (hidden, still editable)
+│   ├── continuity.md       ← what the bot understands about its job
+│   ├── queue.md            ← [SKILLS] / [LOOPS] / [BOTS] work items
+│   └── injections.md       ← one-line status for the human's next conversation
+├── skills/<slug>/SKILL.md  ← procedures, loaded on demand
+└── loops/<slug>.md         ← a skill bound to a clock
+```
 
-You chat with Senter through an unnamed, low-intelligence, tool-free speech-to-speech auxiliary task. Senter watches conversations, comprehends what you want, and proposes the skills, agents, and workflows to make it happen. Progress flows back naturally in conversation.
+Read `BOT_SCHEMA.md` for the standard, and `bots/_fleet/FLEET.md` for the roster.
 
-**Every part of the system is a markdown file you can edit.** No config dashboards. No YAML wizards. Open the wiki, change what you want, and the system picks it up.
+## Why bot-first
 
----
+Topic-first wikis rot. A topic page is a filing cabinet: it collects links nobody
+executes, and it has no clock, so nothing ever comes due. Bot-first makes every
+directory an entity — something you can invoke, that owns a queue, that accretes
+skills, and that will notice when it has been idle.
+
+The recursion is the point: **bot-wiki** (Klerik) is the tenth bot. It maintains
+the method the other nine run on, using the method itself.
 
 ## Quick Start
 
@@ -30,129 +45,103 @@ You chat with Senter through an unnamed, low-intelligence, tool-free speech-to-s
 # Clone the wiki
 git clone https://github.com/SouthpawIN/agent-wiki.git ~/.hermes/wiki
 
-# Senter's front-end surface is an unnamed STS auxiliary task.
-# The three-eyed owl is Senter's Herm TUI identity.
+# Parse every bot, propose work
+python -m senter_agent ~/.hermes/wiki --json
 
-# Start the factory crons
-hermes cron create "every 30m" --name "context-factory" --prompt "..."
-hermes cron create "every 15m" --name "skills-factory" --prompt "..."
-hermes cron create "every 15m" --name "agents-factory" --prompt "..."
-hermes cron create "every 15m" --name "loops-factory" --prompt "..."
+# Validate the contracts
+pytest -q
+python scripts/verify_bots.py .            # identity, sections, artifacts, links
 
-# Start chatting
-hermes --tui
+# Publish every bot as a Hermes skill (bot-<slug>)
+python tools/publish_skills.py . ~/.hermes
+
+# The nightly maintainer
+hermes cron create "0 6 * * *" --name fleet-reconcile \
+  --prompt "$(sed -n '/## Prompt/,/## Stop/p' ~/.hermes/wiki/bots/bot-wiki/loops/fleet-reconcile.md)"
 ```
 
-→ Full setup: [[spec|Agent Wiki Specification]]
-
----
+Each bot maps 1:1 onto a Hermes **profile**, so Hermes **Bot Mode** shows the same
+roster with per-bot memory, skills, and routines. The wiki is the design doc; the
+profile is the runtime.
 
 ## The Four Primitives
 
-![Four Primitives](assets/four-primitives.png)
-
 | Primitive | Factory | What It Is |
-|---|---|---|
-| **Context** | Context | Wiki pages — raw understanding from chat, structured into knowledge |
-| **Loops** | Loops | Cron jobs, kanban tasks — execution that runs over time |
-| **Agents** | Agents | Hermes profiles — named entities with personality, tools, and skills |
-| **Skills** | Skills | SKILL.md bundles — reusable procedures loaded on demand |
+| --- | --- | --- |
+| **Bot** | Agents | An owned topic: identity, mission, holds, and a clock |
+| **Context** | Context | Wiki pages — raw understanding, structured into knowledge |
+| **Skills** | Skills | `SKILL.md` bundles — procedures, loaded on demand |
+| **Loops** | Loops | A skill plus a schedule; cron or kanban |
 
-Primitives nest: **Context** contains **Loops** which invoke **Agents** which load **Skills**.
-
----
+Primitives nest: a **Bot** holds **Context**, runs **Loops**, and loads **Skills**.
 
 ## The Flywheel
 
-![Flywheel](assets/flywheel.png)
+1. **Chat** — you tell Senter about an idea.
+2. **Comprehend** — Context writes the bot's `.system/continuity.md`.
+3. **Shape** — a bot appears: `BOT.md` with a mission, three skills, one loop.
+4. **Execute** — the loop runs, writes artifacts, appends to the bot's log.
+5. **Inject** — one line comes back to you in conversation, not a dashboard.
 
-From idea to working system — driven entirely by markdown reads and writes:
+## The Bot Is the Topic
 
-1. **Chat** — You tell Senter about an idea
-2. **Comprehend** — Context reads the chat, writes wiki pages
-3. **Create** — Factories (Skills, Agents, Loops) build skills, agents, and loops
-4. **Inject** — Status flows back through Senter's conversational surface
+There is no `topics/` tree. If a bot needs two missions it is two bots; if a topic
+has no bot it is an idea, not a project. The rules that follow from that:
 
----
-
-## Topic Structure
-
-![Topic Structure](assets/topic-structure.png)
-
-Every user interest is a self-contained **topic** — its own directory with the full GOOP stack:
-
-```
-wiki/topics/<topic>/
-├── README.md              ← human dashboard
-├── .system/               ← machine coordination (hidden)
-│   ├── continuity.md      ← raw understanding
-│   ├── injections.md       ← messages for Senter's conversational surface
-│   └── queue.md           ← pending factory work
-├── skills/                ← skills for this topic
-├── agents/                ← agents serving this topic
-└── loops/                 ← execution infrastructure
-```
-
-The `.system/` prefix hides machine internals. You CAN open them — that's the debugger. But your default experience is clean markdown dashboards.
-
----
+| Rule | Why |
+|---|---|
+| One bot, one topic | Two missions means neither gets a clean queue |
+| Skills are procedures | A description cannot be executed by a fresh agent |
+| Loops name their skill | An unbound loop is a mystery cron job |
+| Hold points are absolute | Payment, publishing, and filings need a human |
+| `blocked` needs a named ask | A stuck bot with no ask is a dead bot |
 
 ## The Factory Pipeline
 
-![Factory Pipeline](assets/factory-pipeline.png)
+| Factory | Watches | Produces |
+| --- | --- | --- |
+| **Context** | chat sessions | wiki pages, queue items |
+| **Skills** | `[SKILLS]` items | `SKILL.md` files |
+| **Agents** | `[BOTS]` items | bot scaffolding, profiles |
+| **Loops** | `[LOOPS]` items | cron jobs, kanban tasks |
 
-Four cron jobs run the system. Each watches the wiki for signals and spawns work:
-
-| Factory | Watches | Produces | Uses |
-|---|---|---|---|
-| **Context** | Chat sessions | Wiki pages, queue items | `session_search()`, `write_file()` |
-| **Skills** | `[SKILLS]` queue items | SKILL.md files | `delegate_task()`, `skill_manage()` |
-| **Agents** | `[AGENTS]` queue items | Agent profiles | `delegate_task()`, `hermes profile create` |
-| **Loops** | `[LOOPS]` queue items | Cron jobs, kanban | `delegate_task()`, `cronjob()` |
-
-All factories use **the same 4-stage pipeline**: Collect evidence → Generate candidates → Evaluate → Apply.
-
----
+All factories use the same four stages: **Collect evidence → Generate candidates
+→ Evaluate → Apply.** They materialize reviewable markdown; they never silently
+create live Hermes objects.
 
 ## Global Catalogs
 
-See everything at a glance. Edit anything directly:
-
 | Catalog | Shows |
-|---|---|
-| [[catalogs/fleet-dashboard|Fleet Dashboard]] | All topics, agents, skills, loops |
-| [[catalogs/agent-roster|Agent Roster]] | Every agent → click to see SOUL, edit to change |
-| [[catalogs/skill-registry|Skill Registry]] | Every skill → click to see SKILL.md |
-| [[catalogs/loop-registry|Loop Registry]] | Every loop → edit schedule, pause |
-| [[catalogs/topic-index|Topic Index]] | Every topic with full GOOP stack |
-
----
+| --- | --- |
+| [[bots/_fleet/FLEET\|Fleet]] | all nine bots, status, blockers |
+| [[catalogs/bot-roster\|Bot Roster]] | every bot → its Hermes profile |
+| [[catalogs/skill-registry\|Skill Registry]] | every skill, by bot |
+| [[catalogs/loop-registry\|Loop Registry]] | every loop, schedule, state |
+| [[catalogs/agent-roster\|Agent Roster]] | the front door (Senter) and roles |
 
 ## Design Principles
 
-1. **Markdown is the API** — human ↔ machine, machine ↔ machine
-2. **The wiki is the system** — no separate database or config dashboard
-3. **User-editable everything** — every understanding, queue item, status
-4. **Dot-prefix for machine internals** — `.system/` is hidden but accessible
-5. **Topics are self-contained** — each topic holds its own full GOOP stack
-6. **Factories are thin** — cron jobs that spawn one `delegate_task`
-7. **Injections keep you in the loop** — factories write to files, Senter's conversational surface reads them
-8. **No self-edit** — factories cannot modify themselves
-
----
+1. **Markdown is the API** — human ↔ machine, machine ↔ machine.
+2. **The wiki is the system** — no separate database or config dashboard.
+3. **User-editable everything** — every understanding, queue item, and status.
+4. **Dot-prefix for machine internals** — `.system/` is hidden but accessible.
+5. **Bots are self-contained** — each holds its own context, skills, and loops.
+6. **Factories are thin** — a cron job that spawns one `delegate_task`.
+7. **Injections keep you in the loop** — factories write files; conversation reads them.
+8. **No self-edit** — the bot that writes bots cannot rewrite itself.
 
 ## Integrated Verification
 
-The complete system status and user-test matrix are maintained in [[INTEGRATED_STATUS.md|INTEGRATED_STATUS.md]]. This distinguishes specified contracts, implemented artifacts, exercised paths, and blocked live integrations.
-
-The unified live Wiki is `~/.hermes/wiki/`. Its entry point is `~/.hermes/wiki/index.md`; its conventions are in `SCHEMA.md` and operational history in `log.md`.
+System status and the user-test matrix live in [[INTEGRATED_STATUS.md|INTEGRATED_STATUS.md]].
+The live wiki is `~/.hermes/wiki/`; conventions in `BOT_SCHEMA.md`; history in `log.md`.
 
 ## Learn More
 
-- [[spec|Agent Wiki Specification]] — full architecture, setup, comparison to GOOP v1
-- [[goop-whitepaper|GOOP Whitepaper v1]] — the original architectural vision (July 2026)
-- [[goop-nesting|GOOP Nesting]] — primitive nesting hierarchy
+- [[BOT_SCHEMA\|Bot Schema]] — the standard every bot is written against
+- [[spec\|Agent Wiki Specification]] — full architecture
+- [[goop-whitepaper\|GOOP Whitepaper v1]] — the original vision
+- [[goop-nesting\|GOOP Nesting]] — primitive nesting
 
 ---
 
-*Built on [Hermes Agent](https://github.com/NousResearch/hermes-agent). Towards Self-Improvement.*
+_Built on [Hermes Agent](https://github.com/NousResearch/hermes-agent). Towards Self-Improvement._

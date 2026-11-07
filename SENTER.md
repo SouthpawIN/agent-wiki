@@ -156,7 +156,7 @@ The image should contain the Senter runtime and safe defaults; the selected `*.m
 - `SENTER.md`: language/context contract
 - `SENTER_AGENT.md`: Senter Agent runtime and roadmap
 - `senter_agent/`: local parser, planner, and proposal queue implementation
-- `topics/`: evolving topic context and summaries
+- `bots/`: one directory per bot, each owning its topic, skills, and loops
 - Hermes sandbox: experimental frontend/runtime integration
 - GitHub: versioned, reviewable source and release history
 

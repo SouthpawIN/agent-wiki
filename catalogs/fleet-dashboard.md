@@ -1,39 +1,36 @@
 ---
 title: Fleet Dashboard
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-11-07
 type: catalog
-tags: [goop, fleet, overview]
+tags: [fleet, overview]
 ---
 
-# Your Fleet at a Glance
+# The Fleet at a Glance
 
-→ [[agent-roster|Agent Roster]] · [[skill-registry|Skill Registry]] · [[loop-registry|Loop Registry]] · [[topic-index|Topic Index]]
+→ [[bots/_fleet/FLEET|Fleet]] · [[bot-roster|Bot Roster]] · [[skill-registry|Skill Registry]] · [[loop-registry|Loop Registry]]
 
-## Active Topics
+## Bots
 
-| Topic | Status | Agents | Loops | Last Activity |
-|---|---|---|---|---|
-| (no topics yet — start chatting with Senter's STS auxiliary) | | | | |
-
-## Agent Roster
-
-| Agent | Role | Status |
-|---|---|---|
-| [[senter]] | Three-eyed owl — unified Agent Wiki | 🟢 Active |
-
-## Running Loops
-
-| Loop | Type | Schedule | Status |
+| Bot | Topic | Status | Next physical action |
 |---|---|---|---|
-| context-factory | cron | every 30m | ⏳ pending |
-| skills-factory | cron | every 15m | ⏳ pending |
-| agents-factory | cron | every 15m | ⏳ pending |
-| loops-factory | cron | every 15m | ⏳ pending |
+| bot-wiki | the method | live | nightly reconcile at 06:00 |
+| hermes | one instance everywhere | seeding | serve the dashboard on the tailnet |
+| turbofit | model × hardware | seeding | decide Darwin: convert or drop |
+| pocketshop | MTG flipping | seeding | connect the scanner, get eBay token |
+| youtube | recordings → videos | seeding | confirm OBS output path |
+| anser | mod answers | seeding | X read credentials |
+| kart-racer | Unity kart game | seeding | pick repo + Unity version |
+| ai-daw | music plugin | seeding | decide where the GPU lives |
+| ssi | benefits paperwork | blocked | program list + documents |
 
-## Quick Actions
+## Counts
 
-- **New idea?** Tell Senter through the unnamed STS auxiliary — Context creates the topic automatically
-- **Force a skill:** Edit `.system/queue.md` → add `[SKILLS] my-skill`
-- **Fix a misunderstanding:** Edit `.system/continuity.md` directly
-- **See what factories are doing:** Read `log.md`
+- 9 bots + 1 fleet index
+- 27 skills, 12 loops (1 live)
+- 3 bots blocked on Chris, 6 on hardware or credentials
+
+## Standing rules
+
+Public output says **sovthpaw**. Nothing spends money without a hold point.
+Every log is append-only and newest-first.
