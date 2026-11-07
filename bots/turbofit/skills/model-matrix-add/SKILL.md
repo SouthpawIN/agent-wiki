@@ -51,12 +51,48 @@ never a claim that something fits.
    unified `8-15gb / 16-23gb / 24-31gb / 32-47gb / 48-63gb / 64gb+`.
 7. **Tag requirements** — MoE above the pool needs `requires: strata-stream` so
    `fit_check.py` stops refusing it on dedicated-VRAM physics.
-8. **Test**:
+8. **Wire the recipe** — a catalog variant without a recipe cannot launch.
+   `references/model-recipes.json` has one entry per family (binary, port,
+   model_root, projector, methods per context) and one per variant (model file,
+   draft, methods). Copy the nearest family; give the family a unique port; list a
+   method for **every** context the catalog advertises, or the compiler fails with
+   `no method recipe for context <n>`.
+9. **Register the artifact** — `references/artifact-manifest.json` needs one entry
+   per file the recipes reference, with `sha256` taken from Hugging Face's LFS
+   `oid` (not computed by downloading) and `size_bytes` from the tree API. The
+   manifest set must equal the referenced-file set exactly: extra shard entries
+   fail the contract just as missing ones do.
+10. **Regenerate the matrix** — it is generated, never hand-edited:
    ```bash
-   pytest -q tests/test_allowed_lineup.py tests/test_catalog_campaign.py
-   python -m turbofit_runtime.model_catalog 2>/dev/null || true
+   PYTHONPATH=src python - <<'PY'
+   from turbofit_runtime.model_catalog import ModelCatalog, build_configuration_matrix
+   import json, pathlib
+   cat = ModelCatalog.load(pathlib.Path("references/model-catalog.json"))
+   pathlib.Path("references/configuration-matrix.json").write_text(
+       json.dumps(build_configuration_matrix(cat), indent=2) + "\n")
+   PY
    ```
-   Then serve once on the smallest tier claimed. If it OOMs, delete that rung.
+   If the artifact-manifest test pins the catalog length, bump that number in the
+   same commit — it is a deliberate snapshot guard, not an obstacle.
+11. **Verify no regressions**, comparing failure lists rather than counts (this
+   suite has environment-dependent failures):
+   ```bash
+   PYTHONPATH=src pytest -q --ignore=tests/test_hermes_fit.py 2>&1 | grep ^FAILED | sort > /tmp/after
+   git stash && PYTHONPATH=src pytest -q --ignore=tests/test_hermes_fit.py 2>&1 | grep ^FAILED | sort > /tmp/before && git stash pop
+   comm -23 /tmp/after /tmp/before      # must be empty
+   ```
+12. **Offer, never displace.** A new family is an option in `check_local_options`
+   and `ALLOWED_MAIN`; the band default (`local_main_for_vram_gb`,
+   `speed_main_for_vram_gb`, `shared_main_for_total_memory_gb`) must not change.
+   Promotion to a ladder winner is a benchmark decision, not a catalog edit.
+
+## What "q3 or higher" means per repo
+
+The quant ladder is whatever the uploader published, so map the floor honestly:
+Qwen 3.8 27B GSQ-RCO tops out at IQ3_S; Nanbeige's ladder starts at IQ2 and its q3
+is IQ3_XS; Flint ships memory envelopes (Mix-12G/Mix-24G), not quants; DeepSeek
+starts at IQ1_M. Naming a Q4 that does not exist is the same error as inventing a
+size.
 
 ## Refusals
 

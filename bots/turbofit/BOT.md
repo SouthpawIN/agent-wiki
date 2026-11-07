@@ -96,14 +96,18 @@ TurboSouth also owns the model × hardware matrix and keeps both fit ladders hon
 
 ## Needs from Chris
 
-- **Darwin 180B**: it ships 335 GiB of safetensors and no GGUF. Either pick a
-  conversion target (IQ2_XXS ≈ 60–90 GiB, needs a big box and hours) or drop it
-  from the matrix. This is the one decision blocking that row.
-- **Unified + dense**: confirm Arete may appear on the Apple ladder as an explicit
-  `dense-exception` rung. The current policy says unified is MoE-only.
-- Which 8 GB card to use for the Flash Next / DeepSeek streaming smoke test.
+- **Darwin 180B**: the benchmark repo ships safetensors only, but a community
+  mixed quant exists at **125.3 GiB** (`Baekpica/...Mixed-Quant-GGUF`) and is
+  already wired in Strata. Confirm a 125 GiB download is acceptable; there is
+  nothing to convert.
+- **Unified + dense**: Arete is now offered on the unified ladder as an explicit
+  `dense-exception` option. Say if you want it removed, or promoted past the MoE
+  default (it will be slower).
+- Which 8 GB card to use for the Flash Next / DeepSeek streaming smoke test —
+  both are wired but unserved on real hardware.
 
 ## Log
 
 - 2026-11-07 — matrix measured for all seven requested models; Arete mapped to 4 dedicated tiers; Darwin flagged as not-runnable (no GGUF).
 - 2026-11-07 — renamed from Fitment to TurboSouth; mission realigned with the TurboSouth support project (install → verify → upstream PR).
+- 2026-11-07 — seven-model matrix implemented: 10 catalog variants + recipes + manifest + regenerated matrix in `turbofit` PR #51; 935 tests pass. Ladder promotion still needs benchmarks.
