@@ -44,5 +44,5 @@ The nightly procedure. Read-only until step 5.
 cd ~/work/agent-wiki
 python -m senter_agent . --json | jq '.documents, (.proposals|length)'
 python -m senter_agent . --status
-pytest -q
+PYTHONPATH=. pytest -q   # tests import senter_agent; bare `pytest -q` fails collection
 ```
