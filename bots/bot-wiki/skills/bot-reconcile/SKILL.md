@@ -38,6 +38,12 @@ The nightly procedure. Read-only until step 5.
 - Any test failure → revert your edits, `[!]` the item, report the failing test
   name. A factory that ships a red tree is worse than an idle one.
 
+## Git contract
+
+Commit and push only `bots/**` prose, only after both gates pass; never touch
+`senter_agent/`, `tests/`, `scripts/`, `catalogs/`, or a loop's schedule. A
+maintainer that can edit its own validator has no validator.
+
 ## Commands
 
 ```bash

@@ -23,8 +23,22 @@ Then, in this order:
 3. Append one `[UNREAD]` injection line to the affected bot.
 4. If nothing changed, write nothing.
 
-Never touch a BOT.md you do not own. Never arm a new loop. Post the diff summary
-as your final message, max 6 lines.
+Never touch a BOT.md you do not own. Never arm, edit, or remove a cron job.
+
+## Git contract
+
+The workdir is a clone. You MAY commit and push, but only within the blast radius
+below, and only when both gates pass.
+
+- Allowed: `bots/**` prose — BOT.md log lines, `.system/queue.md` status marks,
+  `.system/injections.md`, `skills/**/SKILL.md`, and a loop's `state:` cell.
+- Forbidden: `senter_agent/**`, `tests/**`, `scripts/**`, `catalogs/**`, and any
+  `loops/**` change other than a `state:` cell.
+- Gates: `PYTHONPATH=. pytest -q` and `python scripts/verify_bots.py .` must both
+  pass first. A red gate means revert your edits and report instead of pushing.
+- Commit subject: `chore(bot): <what changed>` with the bot slug in the body.
+
+Post the diff summary as your final message, max 6 lines.
 
 ## Stop condition
 
