@@ -1,7 +1,7 @@
 ---
 type: index
 title: Fleet
-updated: 2026-11-07
+updated: 2026-11-08
 tags: [fleet, index]
 ---
 
@@ -15,9 +15,9 @@ method the other nine run on. Status legend: `live` (running now), `seeding`
 |---|---|---|---|---|---|
 | [[bots/bot-wiki/BOT\|bot-wiki]] | Klerik | the method itself | live | 1 | — |
 | [[bots/hermes/BOT\|hermes]] | Mesh | one Hermes across devices | live | 1 | devices must sign in |
-| [[bots/turbofit/BOT\|turbofit]] | TurboSouth | TurboFit support + fit matrix | seeding | 0 | PR #51 review; benchmark promotion |
+| [[bots/turbofit/BOT\|turbofit]] | TurboSouth | TurboFit support + fit matrix | seeding | 0 | Darwin 125 GiB download; 8 GB card for the smoke test |
 | [[bots/pocketshop/BOT\|pocketshop]] | Binder | MTG card flipping | seeding | 0 | printer, eBay token, fee + restock limits |
-| [[bots/youtube/BOT\|youtube]] | Cutroom | Discord rants → YouTube | seeding | 0 | OBS output path; whisper weights |
+| [[bots/youtube/BOT\|youtube]] | Cutroom | Discord rants → YouTube | seeding | 0 | OBS output path; channel identity; whisper weights |
 | [[bots/ai-daw/BOT\|ai-daw]] | Riff | music generation plugin | seeding | 0 | GPU host for ACE-Step |
 | [[bots/anser/BOT\|anser]] | Anser | mod answer bot | seeding | 0 | X read credentials |
 | [[bots/kart-racer/BOT\|kart-racer]] | Apex | Unity kart racer | seeding | 0 | repo name, Unity version, gamepad |

@@ -51,4 +51,6 @@ cd ~/work/agent-wiki
 python -m senter_agent . --json | jq '.documents, (.proposals|length)'
 python -m senter_agent . --status
 PYTHONPATH=. pytest -q   # tests import senter_agent; bare `pytest -q` fails collection
+# this container's venv has no pypdf and no pip; tests need it on the path:
+#   PYTHONPATH=.:/opt/data/pylibs pytest -q
 ```

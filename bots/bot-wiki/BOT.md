@@ -90,6 +90,7 @@ as `bot-<slug>`. Run it after any BOT.md change; the published copy is disposabl
 
 ## Log
 
+- 2026-11-08 (06:00 reconcile) — index fixed: turbofit's `Blocked on` still named PR #51 (merged work), now names the real holds (Darwin 125 GiB, 8 GB smoke card); youtube gained `channel identity`. Claimed `pocketshop` `printer-onboarding` and wrote the CUPS/eSCL skill (29 skills, 126 tests, 0 problems). Filed a `[BOTS]` item because only Binder may declare it in its own Skills table. Env: this venv lacks pypdf and pip, so the suite needs `PYTHONPATH=.:/opt/data/pylibs`; noted in `bot-reconcile`.
 - 2026-11-08 — fleet-wide build pass: every one of the nine bots now has a working artifact behind it, not just a spec (see `FLEET.md` → "What is built"). Two live loops armed: `fleet-reconcile` 06:00 and `mesh-health` 06:30. Wiki suite: 126 tests, validator clean.
 - 2026-11-07 — first reconcile run: statuses and live-loop counts matched; fixed two stale `Blocked on` cells in `FLEET.md` (kart-racer, pocketshop); no queue items existed to claim.
 - 2026-11-07 — fleet rebuilt bot-first; nine bots seeded; schema published; live loop armed.
