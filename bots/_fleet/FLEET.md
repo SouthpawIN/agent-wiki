@@ -20,7 +20,7 @@ method the other nine run on. Status legend: `live` (running now), `seeding`
 | [[bots/kart-racer/BOT\|kart-racer]] | Apex | Unity kart racer | seeding | 0 | repo name/visibility, Unity version, test gamepad |
 | [[bots/ai-daw/BOT\|ai-daw]] | Riff | music generation plugin | seeding | 0 | GPU host for ACE-Step |
 | [[bots/anser/BOT\|anser]] | Anser | mod answer bot | seeding | 0 | X API credentials |
-| [[bots/hermes/BOT\|hermes]] | Mesh | one Hermes across devices | seeding | 0 | device pairing |
+| [[bots/hermes/BOT\|hermes]] | Mesh | one Hermes across devices | live | 1 | devices must sign in |
 | [[bots/ssi/BOT\|ssi]] | Beacon | TX benefits paperwork | blocked | 0 | program list + documents |
 
 ## Cross-bot dependencies

@@ -3,7 +3,7 @@ type: bot
 slug: hermes
 name: Mesh
 owner: sovthpaw
-status: seeding
+status: live
 created: 2026-11-07
 tags: [bot, hermes, tailscale, sync, infrastructure]
 repos: [NousResearch/hermes-agent]
@@ -29,6 +29,7 @@ same bots, same skills. Attach, don't copy: no second brain, no drift.
 ## Owns
 
 - The tailnet wiring: `tailscale serve` for HTTPS, MagicDNS name, ACLs.
+- `bots/hermes/devices/_mesh.md` — the record of what is wired and verified.
 - `hermes dashboard` (machine-level, unified mode) and the API server.
 - The per-device onboarding checklists in `bots/hermes/devices/`.
 - The rule that only one machine is the *authority*; the rest are clients.
@@ -62,7 +63,7 @@ same bots, same skills. Attach, don't copy: no second brain, no drift.
 
 | Loop | Schedule | State |
 |---|---|---|
-| [[bots/hermes/loops/mesh-health]] | daily 06:30 | spec |
+| [[bots/hermes/loops/mesh-health]] | daily 06:30 | live |
 
 ## Hold points
 
@@ -81,3 +82,4 @@ same bots, same skills. Attach, don't copy: no second brain, no drift.
 ## Log
 
 - 2026-11-07 — bot seeded; authority designated as this container; tailnet serve plan set.
+- 2026-11-08 — **web app is live on the tailnet**: `tailscale serve --bg --https=8443 9119` → https://hermes-vps.tail6ff78b.ts.net:8443/, verified HTTP/2 302 to the Nous OAuth login. Five devices on the tailnet (omarchy, chriss-s10 online; MacBook, surface-duo-2 offline). Device attach and bot profiles still pending.
