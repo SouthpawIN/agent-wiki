@@ -14,6 +14,24 @@ metadata:
 Every page gets a name and a row before it gets read. Filing first is what makes
 a 40-page notice survivable.
 
+## The tool
+
+`bots/ssi/scripts/casefile.py` does the filing, the calendar, and the form filling:
+
+```bash
+python bots/ssi/scripts/casefile.py init <initials>
+python bots/ssi/scripts/casefile.py intake <initials> scan.pdf \
+    --source ssa --doctype notice --date 2026-10-02 \
+    --case-no TX-999 --ask "Return form 827" --due 2026-11-20
+python bots/ssi/scripts/casefile.py deadlines <initials> --days 10
+python bots/ssi/scripts/casefile.py review <initials> --form SSA-827 --facts facts.json
+python bots/ssi/scripts/casefile.py fill blank-form.pdf facts.json filled.pdf
+```
+
+`facts.json` maps each field to `{"value": ..., "source": "path"}`. A field with no
+value or no source is left blank and reported as `[[CONFIRM: field]]` — the tool
+will not put an unverified number on a benefits form.
+
 ## Procedure
 
 1. **Scan** 300 dpi, grayscale, PDF with a text layer (OCR at scan time if the

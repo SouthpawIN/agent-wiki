@@ -32,6 +32,9 @@ started) and the documents already in hand. Without those, every next step is a 
 
 ## Owns
 
+- `bots/ssi/scripts/casefile.py` — the case binder: `init`, `intake`, `deadlines`,
+  `review`, `fill`, `log`. Nine tests in `bots/ssi/tests/` cover it on synthetic
+  PDFs, including the rule that an unsourced fact is never written to a form.
 - `cases/<child-initials>/` — intake, forms, notices, correspondence, timeline.
 - `cases/_programs.md` — the program inventory (SSI, Medicaid/CHIP, SNAP, waivers,
   school/IEP) with status per child.
@@ -101,3 +104,4 @@ started) and the documents already in hand. Without those, every next step is a 
 ## Log
 
 - 2026-11-07 — bot seeded as `blocked`; program inventory drafted from public rules; no case documents yet.
+- 2026-11-08 — case binder implemented and tested (9 tests): intake copies rather than moves, deadlines sort overdue first, facts without a source become `[[CONFIRM]]` instead of values, AcroForm filling refuses a form with no fields, and the review sheet always ends at "Chris signs". Still blocked on the program list and the documents themselves.
