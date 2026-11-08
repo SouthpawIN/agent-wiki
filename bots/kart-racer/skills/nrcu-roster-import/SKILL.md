@@ -15,6 +15,22 @@ Source of truth: `123mikeyd/Nous_Research_Cinematic_Universe` — `characters/*.
 profiles and `images/previews/*.webp`. 35 characters as of 2026-11-07, including
 `Turbo Fit / Sovthpaw`.
 
+## The tool
+
+```bash
+python bots/kart-racer/scripts/roster.py build --out bots/kart-racer/assets/roster.json \
+    --cache-dir .cache/nrcu            # add --offline once the cache is warm
+python bots/kart-racer/scripts/roster.py validate bots/kart-racer/assets/roster.json
+```
+
+`build` reads `characters/README.md` for the cast, each `characters/<slug>.md` for
+the profile, and writes `roster.json` (schema `nrcu-kart.roster/v1`). Weight class
+comes from build hints in the profile and records its reason in `source_note`;
+stats are derived from a hash of the slug so a re-run never reshuffles a character.
+Entries with `"locked": true` are never overwritten. `validate` fails on duplicate
+slugs, a missing field, a bad weight class, stats outside 1-10, or a roster with no
+Turbo Fit / Sovthpaw entry.
+
 ## Procedure
 
 1. Fetch the character directory and each profile's front matter (display name,

@@ -14,14 +14,28 @@ method the other nine run on. Status legend: `live` (running now), `seeding`
 | Bot | Callsign | Topic | Status | Live loops | Blocked on |
 |---|---|---|---|---|---|
 | [[bots/bot-wiki/BOT\|bot-wiki]] | Klerik | the method itself | live | 1 | — |
-| [[bots/youtube/BOT\|youtube]] | Cutroom | Discord rants → YouTube | seeding | 0 | OBS output path |
-| [[bots/pocketshop/BOT\|pocketshop]] | Binder | MTG card flipping | seeding | 0 | printer, eBay token, fee + restock limits |
-| [[bots/turbofit/BOT\|turbofit]] | TurboSouth | TurboFit support + fit matrix | seeding | 0 | Darwin needs GGUF conversion |
-| [[bots/kart-racer/BOT\|kart-racer]] | Apex | Unity kart racer | seeding | 0 | repo name/visibility, Unity version, test gamepad |
-| [[bots/ai-daw/BOT\|ai-daw]] | Riff | music generation plugin | seeding | 0 | GPU host for ACE-Step |
-| [[bots/anser/BOT\|anser]] | Anser | mod answer bot | seeding | 0 | X API credentials |
 | [[bots/hermes/BOT\|hermes]] | Mesh | one Hermes across devices | live | 1 | devices must sign in |
+| [[bots/turbofit/BOT\|turbofit]] | TurboSouth | TurboFit support + fit matrix | seeding | 0 | PR #51 review; benchmark promotion |
+| [[bots/pocketshop/BOT\|pocketshop]] | Binder | MTG card flipping | seeding | 0 | printer, eBay token, fee + restock limits |
+| [[bots/youtube/BOT\|youtube]] | Cutroom | Discord rants → YouTube | seeding | 0 | OBS output path; whisper weights |
+| [[bots/ai-daw/BOT\|ai-daw]] | Riff | music generation plugin | seeding | 0 | GPU host for ACE-Step |
+| [[bots/anser/BOT\|anser]] | Anser | mod answer bot | seeding | 0 | X read credentials |
+| [[bots/kart-racer/BOT\|kart-racer]] | Apex | Unity kart racer | seeding | 0 | repo name, Unity version, gamepad |
 | [[bots/ssi/BOT\|ssi]] | Beacon | TX benefits paperwork | blocked | 0 | program list + documents |
+
+## What is built, not just specified
+
+| Bot | Working artifact | Proof |
+|---|---|---|
+| bot-wiki | `scripts/verify_bots.py`, `tools/publish_skills.py`, `fleet-reconcile` cron | 9 bots published as skills; loop has run and committed |
+| hermes | tailnet serve of the web app | https://hermes-vps.tail6ff78b.ts.net:8443/ → 302 to Nous OAuth; `mesh-health` armed 06:30 |
+| turbofit | 14 catalog variants + recipes + manifest + matrix | [PR #51](https://github.com/SouthpawIN/turbofit/pull/51), 936 tests pass |
+| pocketshop | `restock_ev.py` decision math | [PR #2](https://github.com/SouthpawIN/pocket-shop/pull/2), 13 tests |
+| youtube | `scripts/cutroom.py` render + package | 14 tests on synthetic media |
+| ai-daw | `plugin/` — six `daw_*` tools, adapters, renderer | 14 tests, real audio via ffmpeg |
+| anser | `scripts/corpus.py` fetch/cache/cite/refuse | 12 tests, import mode needs no credentials |
+| kart-racer | `scripts/roster.py` + 35-character `assets/roster.json` | 8 offline tests; validate clean |
+| ssi | `scripts/casefile.py` intake/deadlines/review/fill | 9 tests on synthetic AcroForm PDFs |
 
 ## Cross-bot dependencies
 

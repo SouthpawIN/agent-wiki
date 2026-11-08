@@ -32,6 +32,11 @@ hardware. Not a prototype video — a game with a main menu and a finish line.
 
 - The Unity project (new repo, suggested `SouthpawIN/nrcu-kart`).
 - `Assets/Roster/roster.json` — the derived cast table, regenerated from NRCU.
+- `bots/kart-racer/scripts/roster.py` — the generator (`build` / `validate`), plus
+  `bots/kart-racer/assets/roster.json`: **35 characters derived from the live
+  NRCU bible**, weights 15 medium / 14 light / 6 heavy, every entry carrying a
+  `source_note` for why it got its weight class and a credit line. Eight tests in
+  `bots/kart-racer/tests/` run it offline against fixtures.
 - Build targets: Windows standalone first, Linux second. No console SDKs.
 
 ## Operating loop
@@ -85,3 +90,4 @@ hardware. Not a prototype video — a game with a main menu and a finish line.
 ## Log
 
 - 2026-11-07 — bot seeded; 35 NRCU characters enumerated (incl. Turbo Fit / Sovthpaw); drift-first plan set.
+- 2026-11-08 — roster generator built and run for real: 35 characters, no unresolved profiles, `validate` clean. Turbo Fit / Sovthpaw is in the cast with the spelling preserved. Flagged for Chris: that entry came out `light` because the profile contains the word "small"; it is unlocked, so one edit to `stats`/`weight` plus `"locked": true` pins it.

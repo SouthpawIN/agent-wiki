@@ -1,0 +1,605 @@
+{
+  "schema": "nrcu-kart.roster/v1",
+  "generated_at": "2026-11-08",
+  "source": "https://github.com/123mikeyd/Nous_Research_Cinematic_Universe",
+  "credit": "Character and art credits per NRCU CREDITS.md",
+  "count": 35,
+  "characters": [
+    {
+      "slug": "artsbro",
+      "display": "ArtsBro",
+      "portrait": "Roster/Portraits/artsbro.webp",
+      "weight": "medium",
+      "stats": {
+        "speed": 4,
+        "accel": 6,
+        "handling": 5,
+        "weight": 3
+      },
+      "credit": "Character and art credits per NRCU CREDITS.md",
+      "source_note": "no build hint in the profile; medium is the default",
+      "locked": false,
+      "bio_hook": "**ArtsBro / Arts Bro \u2014 NRCU co-artist.** Arts Bro created the community music video [Thank You Nous Research](../music-videos/thank-you-nous-research-arts-bro.m",
+      "tags": []
+    },
+    {
+      "slug": "cthulhu",
+      "display": "Cthulhu",
+      "portrait": "Roster/Portraits/cthulhu.webp",
+      "weight": "heavy",
+      "stats": {
+        "speed": 3,
+        "accel": 7,
+        "handling": 8,
+        "weight": 10
+      },
+      "credit": "Character and art credits per NRCU CREDITS.md",
+      "source_note": "build hint 'cthulhu' in the profile",
+      "locked": false,
+      "bio_hook": "Cthulhu is part of the Nous cast. The collected style sheets supplement the recorded visual cameo; further biography and powers remain open.",
+      "tags": []
+    },
+    {
+      "slug": "doge-man",
+      "display": "Doge Man",
+      "portrait": "Roster/Portraits/doge-man.webp",
+      "weight": "light",
+      "stats": {
+        "speed": 4,
+        "accel": 8,
+        "handling": 8,
+        "weight": 3
+      },
+      "credit": "Character and art credits per NRCU CREDITS.md",
+      "source_note": "build hint 'cat' in the profile",
+      "locked": false,
+      "bio_hook": "**Also known as:** 123mikeyD \u00b7 Super Shiba",
+      "tags": []
+    },
+    {
+      "slug": "don-piedro",
+      "display": "Don Piedro",
+      "portrait": "Roster/Portraits/don-piedro.webp",
+      "weight": "heavy",
+      "stats": {
+        "speed": 7,
+        "accel": 4,
+        "handling": 5,
+        "weight": 8
+      },
+      "credit": "Character and art credits per NRCU CREDITS.md",
+      "source_note": "build hint 'mech' in the profile",
+      "locked": false,
+      "bio_hook": "**Community cameo \u2014 initial visual reference**",
+      "tags": []
+    },
+    {
+      "slug": "emozilla",
+      "display": "Emo / Emozilla",
+      "portrait": "Roster/Portraits/emozilla.webp",
+      "weight": "medium",
+      "stats": {
+        "speed": 7,
+        "accel": 7,
+        "handling": 8,
+        "weight": 3
+      },
+      "credit": "Character and art credits per NRCU CREDITS.md",
+      "source_note": "no build hint in the profile; medium is the default",
+      "locked": false,
+      "bio_hook": "**Public AI-research identity and Nous Research co-founder/CTO.**",
+      "tags": []
+    },
+    {
+      "slug": "fatcat",
+      "display": "FatCat",
+      "portrait": "Roster/Portraits/fatcat.webp",
+      "weight": "light",
+      "stats": {
+        "speed": 5,
+        "accel": 6,
+        "handling": 5,
+        "weight": 1
+      },
+      "credit": "Character and art credits per NRCU CREDITS.md",
+      "source_note": "build hint 'cat' in the profile",
+      "locked": false,
+      "bio_hook": "**Status:** Character concept; story role open.",
+      "tags": []
+    },
+    {
+      "slug": "fleety",
+      "display": "Fleety13",
+      "portrait": "Roster/Portraits/fleety.webp",
+      "weight": "light",
+      "stats": {
+        "speed": 8,
+        "accel": 10,
+        "handling": 5,
+        "weight": 4
+      },
+      "credit": "Character and art credits per NRCU CREDITS.md",
+      "source_note": "build hint 'bee' in the profile",
+      "locked": false,
+      "bio_hook": "Fleety13 is included in the NRCU character library with reference sheets from [Sahil\u2019s Hermes Multiverse collection](https://github.com/Sahil-SS9/hermes-multive",
+      "tags": []
+    },
+    {
+      "slug": "ggb",
+      "display": "GGB \u2014 Gummy Bee",
+      "portrait": "Roster/Portraits/ggb.webp",
+      "weight": "light",
+      "stats": {
+        "speed": 3,
+        "accel": 7,
+        "handling": 7,
+        "weight": 1
+      },
+      "credit": "Character and art credits per NRCU CREDITS.md",
+      "source_note": "build hint 'small' in the profile",
+      "locked": false,
+      "bio_hook": "**Confirmed canon:** GGB is a magical gummy bee. Gummy bees supply ample amounts of goo that promotes botanical growth.",
+      "tags": []
+    },
+    {
+      "slug": "gille-and-coffeeblender",
+      "display": "Gille & CoffeeBlender",
+      "portrait": "Roster/Portraits/gille-and-coffeeblender.webp",
+      "weight": "medium",
+      "stats": {
+        "speed": 6,
+        "accel": 4,
+        "handling": 8,
+        "weight": 4
+      },
+      "credit": "Character and art credits per NRCU CREDITS.md",
+      "source_note": "no build hint in the profile; medium is the default",
+      "locked": false,
+      "bio_hook": "Gille is part of the support side of the team and handles support threads. Mike describes him as a good dude.",
+      "tags": []
+    },
+    {
+      "slug": "gottz",
+      "display": "Gottz",
+      "portrait": "Roster/Portraits/gottz.webp",
+      "weight": "medium",
+      "stats": {
+        "speed": 4,
+        "accel": 4,
+        "handling": 4,
+        "weight": 3
+      },
+      "credit": "Character and art credits per NRCU CREDITS.md",
+      "source_note": "no build hint in the profile; medium is the default",
+      "locked": false,
+      "bio_hook": "Gottz is included in the NRCU character library with reference sheets from [Sahil\u2019s Hermes Multiverse collection](https://github.com/Sahil-SS9/hermes-multiverse",
+      "tags": []
+    },
+    {
+      "slug": "heartbreaker",
+      "display": "Heartbreaker / Brooklyn",
+      "portrait": "Roster/Portraits/heartbreaker.webp",
+      "weight": "medium",
+      "stats": {
+        "speed": 4,
+        "accel": 5,
+        "handling": 4,
+        "weight": 6
+      },
+      "credit": "Character and art credits per NRCU CREDITS.md",
+      "source_note": "no build hint in the profile; medium is the default",
+      "locked": false,
+      "bio_hook": "A fearless builder and believer in open freedom. Fights closed systems with charm, code, and conviction. Hearts on the outside. Fire within.",
+      "tags": []
+    },
+    {
+      "slug": "hermes-user-123321",
+      "display": "Hermes User 123321",
+      "portrait": "Roster/Portraits/hermes-user-123321.webp",
+      "weight": "medium",
+      "stats": {
+        "speed": 5,
+        "accel": 6,
+        "handling": 5,
+        "weight": 3
+      },
+      "credit": "Character and art credits per NRCU CREDITS.md",
+      "source_note": "no build hint in the profile; medium is the default",
+      "locked": false,
+      "bio_hook": "",
+      "tags": []
+    },
+    {
+      "slug": "isneezekittens",
+      "display": "I Sneeze Kittens",
+      "portrait": "Roster/Portraits/isneezekittens.webp",
+      "weight": "light",
+      "stats": {
+        "speed": 4,
+        "accel": 8,
+        "handling": 3,
+        "weight": 5
+      },
+      "credit": "Character and art credits per NRCU CREDITS.md",
+      "source_note": "build hint 'small' in the profile",
+      "locked": false,
+      "bio_hook": "**Community member \u2014 character reference and confirmed video appearance**",
+      "tags": []
+    },
+    {
+      "slug": "mgf-654",
+      "display": "MGF.654",
+      "portrait": "Roster/Portraits/mgf-654.webp",
+      "weight": "medium",
+      "stats": {
+        "speed": 6,
+        "accel": 3,
+        "handling": 3,
+        "weight": 7
+      },
+      "credit": "Character and art credits per NRCU CREDITS.md",
+      "source_note": "no build hint in the profile; medium is the default",
+      "locked": false,
+      "bio_hook": "MGF.654 is included in the NRCU character library with reference sheets from [Sahil\u2019s Hermes Multiverse collection](https://github.com/Sahil-SS9/hermes-multiver",
+      "tags": []
+    },
+    {
+      "slug": "mephisto",
+      "display": "Mephisto",
+      "portrait": "Roster/Portraits/mephisto.webp",
+      "weight": "heavy",
+      "stats": {
+        "speed": 6,
+        "accel": 7,
+        "handling": 4,
+        "weight": 10
+      },
+      "credit": "Character and art credits per NRCU CREDITS.md",
+      "source_note": "build hint 'mech' in the profile",
+      "locked": false,
+      "bio_hook": "Mephisto is included in the NRCU character archive. The primary artwork is a pixel-art portrait with orange hair, closed eyes, a knit sweater, and a dark jacket",
+      "tags": []
+    },
+    {
+      "slug": "noctis",
+      "display": "Noctis",
+      "portrait": "Roster/Portraits/noctis.webp",
+      "weight": "heavy",
+      "stats": {
+        "speed": 3,
+        "accel": 7,
+        "handling": 7,
+        "weight": 5
+      },
+      "credit": "Character and art credits per NRCU CREDITS.md",
+      "source_note": "build hint 'mech' in the profile",
+      "locked": false,
+      "bio_hook": "**Recon / Infiltrator \u2014 affiliation redacted**",
+      "tags": []
+    },
+    {
+      "slug": "nous-girl",
+      "display": "Nous Girl",
+      "portrait": "Roster/Portraits/nous-girl.webp",
+      "weight": "light",
+      "stats": {
+        "speed": 3,
+        "accel": 7,
+        "handling": 3,
+        "weight": 6
+      },
+      "credit": "Character and art credits per NRCU CREDITS.md",
+      "source_note": "build hint 'small' in the profile",
+      "locked": false,
+      "bio_hook": "When the archive owner refers to **Nous Girl**, he means the girl represented in the **Nous Research logo**. Nous Girl is not a real person.",
+      "tags": []
+    },
+    {
+      "slug": "sahil",
+      "display": "Sahil",
+      "portrait": "Roster/Portraits/sahil.webp",
+      "weight": "medium",
+      "stats": {
+        "speed": 3,
+        "accel": 6,
+        "handling": 3,
+        "weight": 3
+      },
+      "credit": "Character and art credits per NRCU CREDITS.md",
+      "source_note": "no build hint in the profile; medium is the default",
+      "locked": false,
+      "bio_hook": "**Sahil \u2014 NRCU co-artist.** His [Hermes Multiverse collection](https://github.com/Sahil-SS9/hermes-multiverse) contributes the credited character-style variatio",
+      "tags": []
+    },
+    {
+      "slug": "scary-jerry",
+      "display": "Scary Jerry",
+      "portrait": "Roster/Portraits/scary-jerry.webp",
+      "weight": "light",
+      "stats": {
+        "speed": 8,
+        "accel": 5,
+        "handling": 6,
+        "weight": 3
+      },
+      "credit": "Character and art credits per NRCU CREDITS.md",
+      "source_note": "build hint 'imp' in the profile",
+      "locked": false,
+      "bio_hook": "A skeletal jester wearing a stitched red, blue, green, and yellow outfit, a bell-tipped cap, and mismatched curled shoes. His skull grin and striking red-and-ye",
+      "tags": []
+    },
+    {
+      "slug": "sidbin",
+      "display": "Sidbin \u2014 Mirror Shade",
+      "portrait": "Roster/Portraits/sidbin.webp",
+      "weight": "medium",
+      "stats": {
+        "speed": 3,
+        "accel": 8,
+        "handling": 4,
+        "weight": 6
+      },
+      "credit": "Character and art credits per NRCU CREDITS.md",
+      "source_note": "no build hint in the profile; medium is the default",
+      "locked": false,
+      "bio_hook": "A reclusive drifter who moves through the edges of cities like smoke through alleys. He sees more than he speaks, reflecting truths others try to hide. His past",
+      "tags": []
+    },
+    {
+      "slug": "suzu",
+      "display": "Suzu",
+      "portrait": "Roster/Portraits/suzu.webp",
+      "weight": "light",
+      "stats": {
+        "speed": 4,
+        "accel": 10,
+        "handling": 7,
+        "weight": 4
+      },
+      "credit": "Character and art credits per NRCU CREDITS.md",
+      "source_note": "build hint 'small' in the profile",
+      "locked": false,
+      "bio_hook": "**\u201cShe might be Nous Girl\u2019s older sister who is somehow smaller than her, but we cannot be sure.\u201d**",
+      "tags": []
+    },
+    {
+      "slug": "teknium",
+      "display": "Teknium",
+      "portrait": "Roster/Portraits/teknium.webp",
+      "weight": "heavy",
+      "stats": {
+        "speed": 6,
+        "accel": 4,
+        "handling": 8,
+        "weight": 8
+      },
+      "credit": "Character and art credits per NRCU CREDITS.md",
+      "source_note": "build hint 'mech' in the profile",
+      "locked": false,
+      "bio_hook": "The leader and architect of the Hermes Agent Squad.",
+      "tags": []
+    },
+    {
+      "slug": "tinuviel",
+      "display": "Tinuviel \u2014 The Starry Wanderer",
+      "portrait": "Roster/Portraits/tinuviel.webp",
+      "weight": "medium",
+      "stats": {
+        "speed": 4,
+        "accel": 4,
+        "handling": 4,
+        "weight": 4
+      },
+      "credit": "Character and art credits per NRCU CREDITS.md",
+      "source_note": "no build hint in the profile; medium is the default",
+      "locked": false,
+      "bio_hook": "A serene force in a broken world. She moves like starlight and speaks through action. She protects freedom, plants seeds of knowledge, and inspires those who bu",
+      "tags": []
+    },
+    {
+      "slug": "tunacookie",
+      "display": "TunaCookie",
+      "portrait": "Roster/Portraits/tunacookie.webp",
+      "weight": "medium",
+      "stats": {
+        "speed": 3,
+        "accel": 6,
+        "handling": 5,
+        "weight": 5
+      },
+      "credit": "Character and art credits per NRCU CREDITS.md",
+      "source_note": "no build hint in the profile; medium is the default",
+      "locked": false,
+      "bio_hook": "TunaCookie is included in the NRCU character library with reference sheets from [Sahil\u2019s Hermes Multiverse collection](https://github.com/Sahil-SS9/hermes-multi",
+      "tags": []
+    },
+    {
+      "slug": "turbo-fit",
+      "display": "Turbo Fit / Sovthpaw",
+      "portrait": "Roster/Portraits/turbo-fit.webp",
+      "weight": "light",
+      "stats": {
+        "speed": 6,
+        "accel": 5,
+        "handling": 3,
+        "weight": 2
+      },
+      "credit": "Character and art credits per NRCU CREDITS.md",
+      "source_note": "build hint 'small' in the profile",
+      "locked": false,
+      "bio_hook": "**Turbofit / Turbo Fit** is the NRCU character for **Sovthpaw**, a community moderator and left-handed guitar player. His handle is spelled **Sovthpaw**, with a",
+      "tags": []
+    },
+    {
+      "slug": "witcheer",
+      "display": "Witcheer",
+      "portrait": "Roster/Portraits/witcheer.webp",
+      "weight": "light",
+      "stats": {
+        "speed": 6,
+        "accel": 8,
+        "handling": 5,
+        "weight": 2
+      },
+      "credit": "Character and art credits per NRCU CREDITS.md",
+      "source_note": "build hint 'cat' in the profile",
+      "locked": false,
+      "bio_hook": "The archive owner identifies **Witcheer** as the anthropomorphic duck communicating with **Kainan** in [*Thank You Nous Research* by Arts Bro](../music-videos/t",
+      "tags": []
+    },
+    {
+      "slug": "adolan",
+      "display": "adolan",
+      "portrait": "Roster/Portraits/adolan.webp",
+      "weight": "medium",
+      "stats": {
+        "speed": 5,
+        "accel": 3,
+        "handling": 7,
+        "weight": 6
+      },
+      "credit": "Character and art credits per NRCU CREDITS.md",
+      "source_note": "no build hint in the profile; medium is the default",
+      "locked": false,
+      "bio_hook": "adolan is included in the NRCU character library with reference sheets from [Sahil\u2019s Hermes Multiverse collection](https://github.com/Sahil-SS9/hermes-multivers",
+      "tags": []
+    },
+    {
+      "slug": "drahcir-rahl",
+      "display": "drahcir_rahl",
+      "portrait": "Roster/Portraits/drahcir-rahl.webp",
+      "weight": "medium",
+      "stats": {
+        "speed": 4,
+        "accel": 8,
+        "handling": 7,
+        "weight": 6
+      },
+      "credit": "Character and art credits per NRCU CREDITS.md",
+      "source_note": "no build hint in the profile; medium is the default",
+      "locked": false,
+      "bio_hook": "drahcir_rahl \u2014 The IT Juggernaut. An independent character recognizable by his long salt-and-pepper hair, full beard, orange-tinted glasses, and black coat with",
+      "tags": []
+    },
+    {
+      "slug": "ee-dd",
+      "display": "ee.dd",
+      "portrait": "Roster/Portraits/ee-dd.webp",
+      "weight": "light",
+      "stats": {
+        "speed": 5,
+        "accel": 9,
+        "handling": 7,
+        "weight": 6
+      },
+      "credit": "Character and art credits per NRCU CREDITS.md",
+      "source_note": "build hint 'small' in the profile",
+      "locked": false,
+      "bio_hook": "ee.dd appears as a small green frog-like meme avatar perched on **Nous Girl\u2019s** shoulder while she receives a lantern from an unidentified long-haired hermes ag",
+      "tags": []
+    },
+    {
+      "slug": "quark2world",
+      "display": "quark2world",
+      "portrait": "Roster/Portraits/quark2world.webp",
+      "weight": "heavy",
+      "stats": {
+        "speed": 6,
+        "accel": 8,
+        "handling": 8,
+        "weight": 10
+      },
+      "credit": "Character and art credits per NRCU CREDITS.md",
+      "source_note": "build hint 'mech' in the profile",
+      "locked": false,
+      "bio_hook": "**Quark \u2014 community creator and NRCU character**",
+      "tags": []
+    },
+    {
+      "slug": "realtimeuk",
+      "display": "realtimeuk",
+      "portrait": "Roster/Portraits/realtimeuk.webp",
+      "weight": "light",
+      "stats": {
+        "speed": 3,
+        "accel": 9,
+        "handling": 7,
+        "weight": 1
+      },
+      "credit": "Character and art credits per NRCU CREDITS.md",
+      "source_note": "build hint 'kitten' in the profile",
+      "locked": false,
+      "bio_hook": "realtimeuk is included in the NRCU character library with reference sheets from [Sahil\u2019s Hermes Multiverse collection](https://github.com/Sahil-SS9/hermes-multi",
+      "tags": []
+    },
+    {
+      "slug": "salt555",
+      "display": "salt555",
+      "portrait": "Roster/Portraits/salt555.webp",
+      "weight": "medium",
+      "stats": {
+        "speed": 6,
+        "accel": 7,
+        "handling": 6,
+        "weight": 5
+      },
+      "credit": "Character and art credits per NRCU CREDITS.md",
+      "source_note": "no build hint in the profile; medium is the default",
+      "locked": false,
+      "bio_hook": "salt555 is included in the NRCU character library with reference sheets from [Sahil\u2019s Hermes Multiverse collection](https://github.com/Sahil-SS9/hermes-multiver",
+      "tags": []
+    },
+    {
+      "slug": "shawncleta",
+      "display": "shawncleta",
+      "portrait": "Roster/Portraits/shawncleta.webp",
+      "weight": "medium",
+      "stats": {
+        "speed": 5,
+        "accel": 7,
+        "handling": 5,
+        "weight": 8
+      },
+      "credit": "Character and art credits per NRCU CREDITS.md",
+      "source_note": "no build hint in the profile; medium is the default",
+      "locked": false,
+      "bio_hook": "shawncleta is included in the NRCU character library with reference sheets from [Sahil\u2019s Hermes Multiverse collection](https://github.com/Sahil-SS9/hermes-multi",
+      "tags": []
+    },
+    {
+      "slug": "sudo-nightwing",
+      "display": "sudo-nightwing",
+      "portrait": "Roster/Portraits/sudo-nightwing.webp",
+      "weight": "light",
+      "stats": {
+        "speed": 5,
+        "accel": 6,
+        "handling": 3,
+        "weight": 3
+      },
+      "credit": "Character and art credits per NRCU CREDITS.md",
+      "source_note": "build hint 'imp' in the profile",
+      "locked": false,
+      "bio_hook": "sudo-nightwing is a mustached DJ from the 1970s who somehow time-traveled to the present day. He wears a domino mask. How he got here is unexplained\u2014that's the ",
+      "tags": []
+    },
+    {
+      "slug": "tdamre",
+      "display": "tdamre",
+      "portrait": "Roster/Portraits/tdamre.webp",
+      "weight": "light",
+      "stats": {
+        "speed": 8,
+        "accel": 9,
+        "handling": 7,
+        "weight": 3
+      },
+      "credit": "Character and art credits per NRCU CREDITS.md",
+      "source_note": "build hint 'bee' in the profile",
+      "locked": false,
+      "bio_hook": "tdamre is included in the NRCU character library with reference sheets from [Sahil\u2019s Hermes Multiverse collection](https://github.com/Sahil-SS9/hermes-multivers",
+      "tags": []
+    }
+  ],
+  "unresolved": []
+}
