@@ -13,6 +13,19 @@ metadata:
 
 Input: `segments.json`, `render.mp4`. Output: `upload.md`. Never uploads.
 
+## The tool
+
+```bash
+python bots/youtube/scripts/cutroom.py package segments.json --out out/ \
+    --premise "One sentence on what this session is about" --visibility unlisted
+```
+
+It writes `out/upload.md` and prints the title, chapters, tags, and runtime. The
+title comes from the highest-ranked segment's hook line, capped at 60 characters;
+chapters always start at `0:00` and segments shorter than 10 s are merged into the
+previous chapter. Packaging **fails** if a private name appears in the title or
+premise — the public handle is `sovthpaw`.
+
 ## Procedure
 
 1. **Title** — the hook line, compressed to ≤ 60 chars, front-loaded with the

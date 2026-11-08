@@ -120,3 +120,69 @@ def test_cli_segments_writes_an_artifact(session: Path, tmp_path: Path) -> None:
     assert cutroom.main(["segments", str(session), "--out", str(target)]) == 0
     data = json.loads(target.read_text())
     assert len(data) >= 1 and {"id", "start", "end"} <= set(data[0])
+
+# ------------------------------------------------------------------ packaging
+
+SEGMENTS = [
+    {"id": "seg-01", "start": 0.0, "end": 340.0, "title": "Why local models win",
+     "hook_line": "Local models are the only ones you can audit", "rank": 0.82,
+     "terms": ["local", "models", "privacy"]},
+    {"id": "seg-02", "start": 340.0, "end": 610.0, "title": "Discord moderation stories",
+     "hook_line": "", "rank": 0.51, "terms": ["discord", "moderation"]},
+    {"id": "seg-03", "start": 610.0, "end": 900.0, "title": "Kart racing in Unity",
+     "hook_line": "", "rank": 0.44, "terms": ["unity", "games"]},
+]
+
+
+def test_timestamp_formats() -> None:
+    assert cutroom.timestamp(0) == "0:00"
+    assert cutroom.timestamp(65) == "1:05"
+    assert cutroom.timestamp(3725) == "1:02:05"
+
+
+def test_title_is_front_loaded_and_capped() -> None:
+    assert cutroom.make_title(SEGMENTS) == "Local models are the only ones you can audit"
+    long = [{"start": 0.0, "end": 10.0, "title": "x" * 120, "rank": 1.0}]
+    assert len(cutroom.make_title(long)) <= 60
+
+
+def test_chapters_start_at_zero_and_merge_short_segments() -> None:
+    chapters = cutroom.make_chapters(SEGMENTS)
+    assert chapters[0][0] == 0.0
+    assert len(chapters) == 3
+
+    cramped = [{"start": 0.0, "end": 5.0, "title": "a"},
+               {"start": 5.0, "end": 9.0, "title": "b"},
+               {"start": 60.0, "end": 90.0, "title": "c"}]
+    merged = cutroom.make_chapters(cramped)
+    assert [name for _, name in merged] == ["a", "c"], "sub-10s chapters are merged"
+
+
+def test_tags_are_deduped_and_capped() -> None:
+    tags = cutroom.make_tags(SEGMENTS, channel_defaults=("local", "nous"), limit=12)
+    assert tags[0] == "local" and tags.count("local") == 1
+    assert "nous" in tags and len(tags) <= 12
+
+
+def test_package_writes_upload_md(tmp_path: Path) -> None:
+    result = cutroom.package(SEGMENTS, tmp_path / "out", premise="Three rants from one session.")
+    text = (tmp_path / "out" / "upload.md").read_text(encoding="utf-8")
+
+    assert result["chapters"][0]["time"] == "0:00"
+    assert result["visibility"] == "unlisted"
+    assert "Recorded live in voice chat" in text
+    assert "Chris publishes; Cutroom never does" in text
+    assert "sovthpaw" in text
+
+
+def test_package_refuses_a_private_name(tmp_path: Path) -> None:
+    with pytest.raises(ValueError, match="must not contain"):
+        cutroom.package(SEGMENTS, tmp_path / "out", title="Chris explains local models")
+
+
+def test_cli_package_writes_the_sheet(tmp_path: Path) -> None:
+    source = tmp_path / "segments.json"
+    source.write_text(json.dumps(SEGMENTS), encoding="utf-8")
+    out = tmp_path / "pkg"
+    assert cutroom.main(["package", str(source), "--out", str(out), "--premise", "One session."]) == 0
+    assert (out / "upload.md").exists()

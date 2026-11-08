@@ -268,6 +268,137 @@ def verify(render_path: str | Path, edl: dict, *, tolerance: float = 1.0) -> dic
     return {"ok": not problems, "problems": problems, "peak_dbfs": peak_db, "probe": info}
 
 
+# ---------------------------------------------------------------- packaging
+
+# Anything that must never appear in public metadata. Public name is sovthpaw.
+FORBIDDEN_PUBLIC_NAMES = ("Chris", "Christopher")
+PUBLIC_NAME = "sovthpaw"
+
+
+def timestamp(seconds: float) -> str:
+    seconds = max(0, int(round(seconds)))
+    hours, rest = divmod(seconds, 3600)
+    minutes, secs = divmod(rest, 60)
+    return f"{hours}:{minutes:02d}:{secs:02d}" if hours else f"{minutes}:{secs:02d}"
+
+
+def assert_public_names(text: str) -> None:
+    """Fail the package rather than publish a private name."""
+    for name in FORBIDDEN_PUBLIC_NAMES:
+        if name.lower() in text.lower():
+            raise ValueError(f"public metadata must not contain '{name}'; use '{PUBLIC_NAME}'")
+
+
+def make_title(segments: list[dict], *, fallback: str = "Voice chat rant") -> str:
+    """Front-load the claim, cap at 60 characters."""
+    ranked = [s for s in segments if s.get("rank") is not None]
+    pick = max(ranked, key=lambda s: s["rank"]) if ranked else (segments[0] if segments else {})
+    base = (pick.get("hook_line") or pick.get("title") or fallback).strip()
+    base = " ".join(base.split())
+    if len(base) <= 60:
+        return base
+    cut = base[:59]
+    return cut[: cut.rfind(" ")].rstrip(",;:") + "…"
+
+
+def make_chapters(segments: list[dict], *, min_seconds: float = 10.0) -> list[tuple[float, str]]:
+    """Chapters from segment starts. First is always 0:00; short ones are merged."""
+    ordered = sorted(segments, key=lambda s: s["start"])
+    chapters: list[tuple[float, str]] = []
+    for segment in ordered:
+        start = 0.0 if not chapters else float(segment["start"])
+        title = (segment.get("title") or f"Part {len(chapters) + 1}").strip()
+        if chapters and start - chapters[-1][0] < min_seconds:
+            continue
+        chapters.append((start, title))
+    if not chapters:
+        chapters = [(0.0, ordered[0].get("title", "Part 1") if ordered else "Part 1")]
+    if chapters[0][0] != 0.0:
+        chapters[0] = (0.0, chapters[0][1])
+    return chapters
+
+
+def make_tags(segments: list[dict], *, channel_defaults: tuple[str, ...] = (), limit: int = 12) -> list[str]:
+    terms: list[str] = []
+    for segment in segments:
+        for term in segment.get("terms") or []:
+            if term.lower() not in [t.lower() for t in terms]:
+                terms.append(term)
+    for term in channel_defaults:
+        if term.lower() not in [t.lower() for t in terms]:
+            terms.append(term)
+    return terms[:limit]
+
+
+def package(
+    segments: list[dict],
+    out_dir: str | Path,
+    *,
+    title: str | None = None,
+    premise: str = "",
+    channel_defaults: tuple[str, ...] = (),
+    visibility: str = "unlisted",
+    thumbnail_subject: str = "",
+) -> dict:
+    """Write upload.md. Never uploads, never schedules."""
+    out_dir = Path(out_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    resolved_title = title or make_title(segments)
+    assert_public_names(resolved_title)
+    assert_public_names(premise)
+
+    chapters = make_chapters(segments)
+    tags = make_tags(segments, channel_defaults=channel_defaults)
+    chapter_lines = "\n".join(f"{timestamp(start)} {name}" for start, name in chapters)
+    total = max((float(s["end"]) for s in segments), default=0.0)
+
+    text = f"""# Upload sheet
+
+**Title.** {resolved_title}
+
+**Visibility.** {visibility} (Chris publishes; Cutroom never does)
+
+## Description
+
+{premise or '[[premise: one sentence on what this is about]]'}
+
+Recorded live in voice chat. Chapters below.
+
+## Chapters
+
+{chapter_lines}
+
+_Total runtime {timestamp(total)}._
+
+## Tags
+
+{', '.join(tags) if tags else '[[tags: none derived - add by hand]]'}
+
+## Thumbnail
+
+Prompt: a single dominant subject, {thumbnail_subject or '[[subject]]'}, high contrast,
+at most four words of text, legible at 320x180. Generate with image_generate, then
+check the downscaled version before shipping.
+
+## Needs Chris
+
+- Read the title and the first chapter: if the hook is not in the first 8 seconds
+  of the cut, the title is a promise the video does not keep.
+- Approve, then publish under **{PUBLIC_NAME}**.
+"""
+    path = out_dir / "upload.md"
+    path.write_text(text, encoding="utf-8")
+    return {
+        "upload_md": str(path),
+        "title": resolved_title,
+        "title_length": len(resolved_title),
+        "chapters": [{"time": timestamp(start), "title": name} for start, name in chapters],
+        "tags": tags,
+        "visibility": visibility,
+        "runtime": timestamp(total),
+    }
+
+
 def _load(path: str | Path) -> Any:
     return json.loads(Path(path).read_text(encoding="utf-8"))
 
@@ -287,6 +418,10 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser("render"); p.add_argument("edl"); p.add_argument("out")
     p.add_argument("--preset", default="slow"); p.add_argument("--crf", type=int, default=18)
     p = sub.add_parser("verify"); p.add_argument("render"); p.add_argument("edl")
+    p = sub.add_parser("package"); p.add_argument("segments")
+    p.add_argument("--out", default="out"); p.add_argument("--title")
+    p.add_argument("--premise", default=""); p.add_argument("--visibility", default="unlisted")
+    p.add_argument("--subject", default="")
 
     args = parser.parse_args(argv)
     try:
@@ -306,6 +441,12 @@ def main(argv: list[str] | None = None) -> int:
             print(f"{len(edl['segments'])} cuts, {edl['expected_duration']:.2f}s -> {args.out}"); return 0
         if args.command == "render":
             result = render(_load(args.edl), args.out, preset=args.preset, crf=args.crf)
+            print(json.dumps(result, indent=2)); return 0
+        if args.command == "package":
+            data = _load(args.segments)
+            segments = data.get("segments", data) if isinstance(data, dict) else data
+            result = package(segments, args.out, title=args.title, premise=args.premise,
+                             visibility=args.visibility, thumbnail_subject=args.subject)
             print(json.dumps(result, indent=2)); return 0
         if args.command == "verify":
             result = verify(args.render, _load(args.edl))
