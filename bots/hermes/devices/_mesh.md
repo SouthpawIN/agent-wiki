@@ -43,6 +43,32 @@ gateway, so 8443 keeps both alive.
 | christophers-macbook-pro | 100.81.37.77 | macOS | offline (5 m ago) | client + local TurboFit node |
 | surface-duo-2 | 100.79.15.54 | android | offline (4 d) | client |
 
+## Bot profiles
+
+Nine profiles exist on the authority, one per bot, each with its `SOUL.md` rendered
+from its `BOT.md` and its `bot-<slug>` skill installed.
+
+| Wiki bot | Profile name | Callsign |
+|---|---|---|
+| bot-wiki | `bot-wiki` | Klerik |
+| youtube | `youtube` | Cutroom |
+| pocketshop | `pocketshop` | Binder |
+| turbofit | `turbofit` | TurboSouth |
+| kart-racer | `kart-racer` | Apex |
+| ai-daw | `ai-daw` | Riff |
+| anser | `anser` | Anser |
+| **hermes** | **`mesh`** | Mesh |
+| ssi | `ssi` | Beacon |
+
+`hermes` is reserved by Hermes itself, so the profile is named `mesh`; the wiki
+slug stays `hermes`.
+
+```bash
+hermes profile list              # ten profiles: default + the nine bots
+hermes -p youtube chat           # opens the same agent the wiki describes
+python tools/publish_profiles.py . ~/.hermes   # re-render after any BOT.md edit
+```
+
 ## Onboarding a device
 
 1. Confirm it is on the tailnet: `tailscale status` shows it, and it resolves
@@ -73,9 +99,6 @@ gateway, so 8443 keeps both alive.
 
 ## What is NOT done
 
-- The MacBook, Surface Duo 2, and phone have not been pointed at this instance
-  yet — that needs a click on each device (sign in, or `tailscale up`).
-- No Hermes **profiles** have been created for the nine bots. The plan is in
-  `bots/hermes/skills/bot-mode-profiles/SKILL.md`; it is deliberately not executed
-  until the web app is confirmed from a second device, so a bad profile set is not
-  baked into the authority.
+- The MacBook, Surface Duo 2, and phone have not **signed in** to the instance yet.
+  The profiles exist here; each device needs one login at
+  https://hermes-vps.tail6ff78b.ts.net:8443/ to see them in Bot Mode.

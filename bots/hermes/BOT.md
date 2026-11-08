@@ -82,4 +82,5 @@ same bots, same skills. Attach, don't copy: no second brain, no drift.
 ## Log
 
 - 2026-11-07 — bot seeded; authority designated as this container; tailnet serve plan set.
+- 2026-11-08 — nine bot profiles created on the authority (`hermes` → `mesh`, since the name is reserved), each with SOUL.md from its BOT.md and its `bot-<slug>` skill; `tools/publish_profiles.py` re-renders them.
 - 2026-11-08 — **web app is live on the tailnet**: `tailscale serve --bg --https=8443 9119` → https://hermes-vps.tail6ff78b.ts.net:8443/, verified HTTP/2 302 to the Nous OAuth login. Five devices on the tailnet (omarchy, chriss-s10 online; MacBook, surface-duo-2 offline). Device attach and bot profiles still pending.

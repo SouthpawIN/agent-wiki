@@ -28,7 +28,7 @@ method the other nine run on. Status legend: `live` (running now), `seeding`
 | Bot | Working artifact | Proof |
 |---|---|---|
 | bot-wiki | `scripts/verify_bots.py`, `tools/publish_skills.py`, `fleet-reconcile` cron | 9 bots published as skills; loop has run and committed |
-| hermes | tailnet serve of the web app | https://hermes-vps.tail6ff78b.ts.net:8443/ → 302 to Nous OAuth; `mesh-health` armed 06:30 |
+| hermes | tailnet serve of the web app + 9 bot profiles | https://hermes-vps.tail6ff78b.ts.net:8443/ → 302 to Nous OAuth; `mesh-health` armed 06:30; `hermes profile list` shows all nine |
 | turbofit | 14 catalog variants + recipes + manifest + matrix | [PR #51](https://github.com/SouthpawIN/turbofit/pull/51), 936 tests pass |
 | pocketshop | `restock_ev.py` decision math | [PR #2](https://github.com/SouthpawIN/pocket-shop/pull/2), 13 tests |
 | youtube | `scripts/cutroom.py` render + package | 14 tests on synthetic media |
