@@ -34,7 +34,7 @@ method the other nine run on. Status legend: `live` (running now), `seeding`
 | youtube | `scripts/cutroom.py` render + package | 14 tests on synthetic media |
 | ai-daw | `plugin/` — six `daw_*` tools, adapters, renderer | 14 tests, real audio via ffmpeg |
 | anser | `scripts/corpus.py` fetch/cache/cite/refuse | 12 tests, import mode needs no credentials |
-| kart-racer | `scripts/roster.py` + 35-character `assets/roster.json` | 8 offline tests; validate clean |
+| kart-racer | Unity project at [SouthpawIN/nrcu-kart](https://github.com/SouthpawIN/nrcu-kart): 7 C# scripts + 35-character roster | 8 roster tests; `tools/check_project.py` ok; **not yet compiled** — needs a Unity editor |
 | ssi | `scripts/casefile.py` intake/deadlines/review/fill | 9 tests on synthetic AcroForm PDFs |
 
 ## Cross-bot dependencies

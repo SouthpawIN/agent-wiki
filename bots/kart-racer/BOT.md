@@ -30,7 +30,11 @@ hardware. Not a prototype video — a game with a main menu and a finish line.
 
 ## Owns
 
-- The Unity project (new repo, suggested `SouthpawIN/nrcu-kart`).
+- **https://github.com/SouthpawIN/nrcu-kart** — the Unity project (6 LTS, URP, new
+  Input System): `KartController` (grip steering, hop-drift, three mini-turbos),
+  `Checkpoint`, `Respawn`, `RaceManager` (laps, standings, cup points),
+  `PositionTracker`, `ItemBox`, `RosterEntry`, and the 35-character roster.
+  `tools/check_project.py` validates structure and roster without Unity.
 - `Assets/Roster/roster.json` — the derived cast table, regenerated from NRCU.
 - `bots/kart-racer/scripts/roster.py` — the generator (`build` / `validate`), plus
   `bots/kart-racer/assets/roster.json`: **35 characters derived from the live
@@ -90,4 +94,5 @@ hardware. Not a prototype video — a game with a main menu and a finish line.
 ## Log
 
 - 2026-11-07 — bot seeded; 35 NRCU characters enumerated (incl. Turbo Fit / Sovthpaw); drift-first plan set.
+- 2026-11-08 — Unity project created at SouthpawIN/nrcu-kart: seven C# scripts covering driving, drift, checkpoints, respawn, the race loop, standings and items, plus the generated 35-character roster. Not yet compiled — this container has no Unity editor, so the first Play-mode test is Chris's.
 - 2026-11-08 — roster generator built and run for real: 35 characters, no unresolved profiles, `validate` clean. Turbo Fit / Sovthpaw is in the cast with the spelling preserved. Flagged for Chris: that entry came out `light` because the profile contains the word "small"; it is unlocked, so one edit to `stats`/`weight` plus `"locked": true` pins it.
