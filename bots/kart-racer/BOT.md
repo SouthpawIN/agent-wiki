@@ -9,12 +9,14 @@ tags: [bot, unity, game, kart-racer, nrcu]
 repos: [SouthpawIN/nrcu-kart, 123mikeyd/Nous_Research_Cinematic_Universe]
 ---
 
-# Apex — Kart Racer
+# Apex — Nous Racers
 
 **Mission.** A finished, playable kart racer in Unity built from the Nous Research
 Cinematic Universe cast: Mario Kart / Crash Team Racing feel, 35 characters from
 the NRCU bible, four cups, working items, and a build that runs on Chris's own
 hardware. Not a prototype video — a game with a main menu and a finish line.
+
+The game is **Nous Racers** — a play on the company, Nous Research.
 
 **Interface.** `skill: kart-racer`.
 

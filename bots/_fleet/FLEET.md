@@ -20,7 +20,7 @@ method the other nine run on. Status legend: `live` (running now), `seeding`
 | [[bots/youtube/BOT\|youtube]] | Cutroom | Discord rants → YouTube | seeding | 0 | OBS output path; channel identity; whisper weights |
 | [[bots/ai-daw/BOT\|ai-daw]] | Riff | music generation plugin | seeding | 0 | GPU host for ACE-Step |
 | [[bots/anser/BOT\|anser]] | Anser | mod answer bot | seeding | 0 | X read credentials |
-| [[bots/kart-racer/BOT\|kart-racer]] | Apex | Unity kart racer | seeding | 0 | repo name, Unity version, gamepad |
+| [[bots/kart-racer/BOT\|kart-racer]] | Apex | **Nous Racers** — Unity kart racer | seeding | 0 | first Play-mode test |
 | [[bots/ssi/BOT\|ssi]] | Beacon | TX benefits paperwork | blocked | 0 | program list + documents |
 
 ## What is built, not just specified
@@ -34,7 +34,7 @@ method the other nine run on. Status legend: `live` (running now), `seeding`
 | youtube | `scripts/cutroom.py` render + package | 14 tests on synthetic media |
 | ai-daw | `plugin/` — six `daw_*` tools, adapters, renderer | 14 tests, real audio via ffmpeg |
 | anser | `scripts/corpus.py` fetch/cache/cite/refuse | 12 tests, import mode needs no credentials |
-| kart-racer | Unity project at [SouthpawIN/nrcu-kart](https://github.com/SouthpawIN/nrcu-kart): 7 C# scripts + 35-character roster | 8 roster tests; `tools/check_project.py` ok; **not yet compiled** — needs a Unity editor |
+| kart-racer | Unity project at [SouthpawIN/nous-racers](https://github.com/SouthpawIN/nous-racers): 7 C# scripts + 35-character roster | 8 roster tests; `tools/check_project.py` ok; **not yet compiled** — needs a Unity editor |
 | ssi | `scripts/casefile.py` intake/deadlines/review/fill | 9 tests on synthetic AcroForm PDFs |
 
 ## Cross-bot dependencies

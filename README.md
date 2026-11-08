@@ -118,7 +118,7 @@ not silently create live runtime objects.
 | youtube | **Cutroom** | hours of voice chat → chaptered videos |
 | pocketshop | **Binder** | card inventory → listings → restock |
 | turbofit | **TurboSouth** | TurboFit support, plus the model × hardware matrix |
-| kart-racer | **Apex** | a Unity kart racer on the NRCU cast |
+| kart-racer | **Apex** | **Nous Racers** — a Unity kart racer on the NRCU cast |
 | ai-daw | **Riff** | a Hermes plugin driving a music DAW |
 | anser | **Anser** | cited, dated answers for moderation |
 | hermes | **Mesh** | one Hermes instance across every device |
