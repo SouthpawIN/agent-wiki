@@ -31,6 +31,10 @@ adapter layer so a better music model is a new adapter, not a rewrite.
 
 ## Owns
 
+- `bots/ai-daw/plugin/` — the working plugin: `plugin.yaml`, `plugin_tools.py`
+  (six `daw_*` tools), `daw/core.py` (manifest, versions, reference mix, stems,
+  loudnorm mix), and `daw/adapters/` (`base`, `dryrun`, `acestep`). Fourteen tests
+  in `bots/ai-daw/tests/` run the whole pipeline on synthesised audio, no GPU.
 - The plugin: `~/.hermes/plugins/ai-daw/{plugin.yaml,plugin_tools.py,adapters/,projects/}`.
 - `adapters/<engine>.py` — one file per music model, same interface.
 - Project format: `project.json` (bpm, key, sections, track list, seeds) + `stems/`.
@@ -86,3 +90,4 @@ adapter layer so a better music model is a new adapter, not a rewrite.
 ## Log
 
 - 2026-11-07 — bot seeded; adapter interface specified; ACE-Step 1.5 registered as baseline engine.
+- 2026-11-08 — plugin implemented: manifest-driven projects, idempotent layer generation keyed on (engine, model, seed, prompt, bars), versioned alternates that never overwrite a keeper, a 32 kbps mono reference mix for conditioning, aligned stems, and one loudnorm pass with a loudness report. `dryrun` synthesises real audio via ffmpeg so the pipeline is testable without a GPU; `acestep` is a thin HTTP client that fails with an install hint rather than a traceback. 14 tests green.

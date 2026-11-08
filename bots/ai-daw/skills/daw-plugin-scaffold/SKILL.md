@@ -11,6 +11,21 @@ metadata:
 
 # DAW plugin scaffold
 
+## The implementation
+
+`bots/ai-daw/plugin/` is this scaffold, built and tested:
+
+```
+plugin.yaml            six daw_* tools, python_runtime: external (stdlib + ffmpeg)
+plugin_tools.py        thin wrappers: resolve project id -> daw.core -> small dict
+daw/core.py            Project: manifest, generate_layer, reference_mix, render_stems, render_mix
+daw/adapters/base.py   MusicEngine protocol + get_engine()
+daw/adapters/dryrun.py ffmpeg lavfi voices per instrument - real audio, no GPU
+daw/adapters/acestep.py HTTP client for a local ACE-Step server
+```
+
+Run it: `PYTHONPATH=bots/ai-daw/plugin python -m pytest bots/ai-daw/tests -q`.
+
 ## Procedure
 
 1. **Create the plugin directory** next to the other Hermes plugins:
