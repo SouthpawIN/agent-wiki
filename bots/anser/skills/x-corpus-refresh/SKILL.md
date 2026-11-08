@@ -11,6 +11,21 @@ metadata:
 
 # X corpus refresh
 
+## The tool
+
+```bash
+python bots/anser/scripts/corpus.py refresh --accounts NousResearch Teknium --limit 50
+python bots/anser/scripts/corpus.py import --from-json posts.json   # no credentials needed
+python bots/anser/scripts/corpus.py search "web app" --days 90 --top 5
+python bots/anser/scripts/corpus.py pack "is hermes free"           # citation-ready answer stub
+python bots/anser/scripts/corpus.py status
+```
+
+`refresh` shells out to `xurl`; on auth failure it records `stale: true` and the
+error in `data/corpus-state.json` instead of leaving a silent gap. `pack` returns
+`grounded: false` and the "not publicly stated" stub when nothing matches — that
+string is the answer.
+
 ## Procedure
 
 1. Pull the latest posts for `NousResearch` and `Teknium`, newest first, with

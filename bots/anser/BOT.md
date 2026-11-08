@@ -29,6 +29,9 @@ neither covers it.
 
 ## Owns
 
+- `bots/anser/scripts/corpus.py` — the corpus tool: `refresh`, `import`, `search`,
+  `pack`, `status`. Twelve tests in `bots/anser/tests/` cover dedupe, citations,
+  ranking, filters, and the stale/refuse paths without needing X credentials.
 - `data/x-corpus.jsonl` — cached posts from @NousResearch and @Teknium with URLs,
   timestamps, and text. Refreshed by loop, never edited by hand.
 - `data/answers/` — one file per answered question with its citations.
@@ -82,3 +85,4 @@ neither covers it.
 ## Log
 
 - 2026-11-07 — bot seeded; citation discipline set; corpus empty pending X access.
+- 2026-11-08 — corpus tool implemented and tested (12 tests): append-only dedupe, citation strings on every hit, recency + reply-penalty ranking, account/day filters, `answer_pack` that says "not publicly stated" when the corpus is silent, and `refresh` marking the corpus stale rather than pretending. Import mode works without credentials, so the tool is usable the day X access lands.
