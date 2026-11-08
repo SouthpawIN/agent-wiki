@@ -61,6 +61,7 @@ modules; it does not reimplement them.
 | [[bots/pocketshop/skills/draft-listing-pipeline/SKILL]] | every card batch | written |
 | [[bots/pocketshop/skills/restock-ev-pick/SKILL]] | weekly, when restock balance ≥ $150 | written |
 | [[bots/pocketshop/skills/sale-ledger/SKILL]] | every sale alert, and month-end | written |
+| [[bots/pocketshop/skills/printer-onboarding/SKILL]] | once, to bring the shared scanner online | written by Klerik 2026-11-08 |
 
 ## Loops
 
@@ -91,3 +92,4 @@ modules; it does not reimplement them.
 ## Log
 
 - 2026-11-07 — bot seeded; existing modules mapped; listing path is API-first with browser fallback.
+- 2026-11-08 — Klerik's reconcile wrote `printer-onboarding` (CUPS + eSCL, shared with `ssi`) and filed the BOT.md edit as a fleet item, because a bot may not edit another bot's identity. Declared here by hand.
