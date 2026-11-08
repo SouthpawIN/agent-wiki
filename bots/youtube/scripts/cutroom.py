@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import shutil
 import re
 import subprocess
 import sys
@@ -31,6 +32,11 @@ TAIL = 0.8
 
 def run(cmd: list[str]) -> subprocess.CompletedProcess:
     return subprocess.run(cmd, capture_output=True, text=True)
+
+
+def require_ffmpeg() -> None:
+    if shutil.which("ffmpeg") is None or shutil.which("ffprobe") is None:
+        raise RuntimeError("ffmpeg/ffprobe not found on PATH")
 
 
 def probe(path: str | Path) -> dict:
@@ -399,6 +405,209 @@ check the downscaled version before shipping.
     }
 
 
+# ------------------------------------------------------- graphics + assembly
+
+FONT = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
+CARD_SIZE = "1920x1080"
+
+
+def _esc(text: str) -> str:
+    """Escape a string for ffmpeg drawtext."""
+    out = str(text).replace("\\", "").replace(":", "\\:").replace("'", "’")
+    return out.replace("%", "\\%").replace(",", "\\,")
+
+
+def make_card(text: str, out: str | Path, *, subtitle: str = "", duration: float = 3.0,
+              size: str = CARD_SIZE, kind: str = "title", fps: int = 60) -> Path:
+    """A title, chapter, or lower-third card. Generated, never hand-placed."""
+    require_ffmpeg()
+    out = Path(out)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    width, height = (int(v) for v in size.split("x"))
+    if kind == "lower-third":
+        box = (
+            f"drawbox=x=0:y=h-160:w={int(width * 0.5)}:h=160:color=black@0.65:t=fill,"
+            f"drawtext=fontfile={FONT}:text='{_esc(text)}':fontcolor=white:fontsize=52:"
+            f"x=60:y=h-120"
+        )
+        base = f"color=c=black:s={size}:r={fps}:d={duration}:color=black@0.0,format=yuva420p"
+    else:
+        font = 96 if kind == "title" else 72
+        y = "(h-th)/2" if not subtitle else "(h-th)/2-40"
+        box = (
+            f"drawtext=fontfile={FONT}:text='{_esc(text)}':fontcolor=white:fontsize={font}:"
+            f"x=(w-tw)/2:y={y}"
+        )
+        if subtitle:
+            box += (
+                f",drawtext=fontfile={FONT}:text='{_esc(subtitle)}':fontcolor=white@0.8:"
+                f"fontsize={font // 2}:x=(w-tw)/2:y=(h-th)/2+60"
+            )
+        base = f"color=c=#101014:s={size}:r={fps}:d={duration}"
+    result = run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-f", "lavfi",
+                  "-i", f"anullsrc=r=48000:cl=stereo", "-f", "lavfi", "-i", base,
+                  "-shortest", "-vf", box, "-c:v", "libx264", "-pix_fmt", "yuv420p",
+                  "-c:a", "aac", str(out)])
+    if result.returncode != 0:
+        raise RuntimeError(result.stderr.strip()[:300] or f"card render failed: {out}")
+    return out
+
+
+def _geometry(path: str | Path) -> tuple[int, int]:
+    info = probe(path)
+    video = info.get("video") or {}
+    return int(video.get("width") or 1920), int(video.get("height") or 1080)
+
+
+def _normalize(path: str | Path, target: tuple[int, int], work: Path, *, fps: int = 60) -> Path:
+    """Scale/pad a clip to the target geometry so xfade can join it."""
+    width, height = target
+    dest = work / f"_norm-{Path(path).stem}.mp4"
+    result = run([
+        "ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-i", str(path),
+        "-vf", (f"scale={width}:{height}:force_original_aspect_ratio=decrease,"
+                f"pad={width}:{height}:(ow-iw)/2:(oh-ih)/2,setsar=1,fps={fps}"),
+        "-c:v", "libx264", "-pix_fmt", "yuv420p", "-c:a", "aac", "-ar", "48000", str(dest),
+    ])
+    if result.returncode != 0:
+        raise RuntimeError(result.stderr.strip()[:300] or f"normalize failed: {path}")
+    return dest
+
+
+def xfade_chain(parts: list[str | Path], out: str | Path, *,
+                transition: str = "fade", duration: float = 0.5) -> Path:
+    """Crossfade a list of clips into one. Overlaps are subtracted from the total.
+
+    Every part is normalised to the first part's geometry first: xfade refuses
+    mismatched sizes, and a 320x180 source has to join a 1920x1080 title card.
+    """
+    require_ffmpeg()
+    if len(parts) < 2:
+        shutil.copy2(str(parts[0]), str(out))
+        return Path(out)
+    work = Path(out).parent
+    geometry = _geometry(parts[0])
+    normalised = [_normalize(parts[0], geometry, work)]
+    normalised += [_normalize(part, geometry, work) for part in parts[1:]]
+    parts = normalised
+    import subprocess as _sp
+    current = Path(parts[0])
+    for index, nxt in enumerate(parts[1:], start=1):
+        target = Path(out).parent / f"_xfade-{index}.mp4"
+        target.parent.mkdir(parents=True, exist_ok=True)
+        # offset = length of the accumulated clip minus the overlap
+        probe = run(["ffprobe", "-v", "error", "-show_entries", "format=duration",
+                     "-of", "csv=p=0", str(current)])
+        offset = max(0.0, float(probe.stdout.strip()) - duration)
+        result = _sp.run([
+            "ffmpeg", "-hide_banner", "-loglevel", "error", "-y",
+            "-i", str(current), "-i", str(nxt),
+            "-filter_complex",
+            f"[0:v][1:v]xfade=transition={transition}:duration={duration}:offset={offset:.3f}[v];"
+            f"[0:a][1:a]acrossfade=d={duration}[a]",
+            "-map", "[v]", "-map", "[a]", "-c:v", "libx264", "-pix_fmt", "yuv420p",
+            "-c:a", "aac", str(target)], capture_output=True, text=True)
+        if result.returncode != 0:
+            raise RuntimeError(result.stderr.strip()[:300] or "xfade failed")
+        if current != Path(parts[0]):
+            current.unlink(missing_ok=True)
+        current = target
+    Path(out).parent.mkdir(parents=True, exist_ok=True)
+    current.replace(Path(out))
+    return Path(out)
+
+
+def group_by_topic(segments: list[dict]) -> list[tuple[str, list[dict]]]:
+    """Group segments across sessions by topic, best topic first."""
+    buckets: dict[str, list[dict]] = {}
+    for segment in segments:
+        topic = str(segment.get("topic") or segment.get("title") or "misc")
+        buckets.setdefault(topic, []).append(segment)
+    def best(items: list[dict]) -> float:
+        ranks = [float(s.get("rank") or 0.0) for s in items]
+        return max(ranks) if ranks else 0.0
+    ordered = sorted(buckets.items(), key=lambda kv: (-best(kv[1]), kv[0]))
+    return [(topic, sorted(items, key=lambda s: float(s.get("rank") or 0.0), reverse=True))
+            for topic, items in ordered]
+
+
+def assemble(sessions: list[dict], out_dir: str | Path, *, transition: str = "fade",
+             transition_duration: float = 0.5, title: str | None = None,
+             channel: str = "sovthpaw", max_minutes: float = 25.0) -> dict:
+    """Raw sessions in, one organised video out.
+
+    sessions: [{"source": path, "segments": [...]}, ...]
+    Segments are grouped by topic across every session (so a rant that resumed
+    after lunch lands with the rant it belongs to), ordered best-topic-first, and
+    rendered as: title card -> chapter card -> cut -> cut -> ... with crossfades.
+    """
+    require_ffmpeg()
+    out_dir = Path(out_dir)
+    work = out_dir / "work"
+    work.mkdir(parents=True, exist_ok=True)
+
+    flat: list[dict] = []
+    for session in sessions:
+        for segment in session.get("segments", []):
+            flat.append({**segment, "source": segment.get("source") or session.get("source", "")})
+
+    grouped = group_by_topic(flat)
+    cap = max_minutes * 60.0
+    chosen: list[dict] = []
+    total = 0.0
+    for _, items in grouped:
+        for segment in items:
+            length = float(segment["end"]) - float(segment["start"])
+            if total + length > cap:
+                continue
+            chosen.append(segment)
+            total += length
+
+    resolved_title = title or make_title(chosen)
+    assert_public_names(resolved_title)
+
+    parts: list[Path] = []
+    parts.append(make_card(resolved_title, work / "card-title.mp4",
+                           subtitle=channel, duration=3.0, kind="title"))
+    ordered_topics: list[tuple[str, list[dict]]] = []
+    for segment in chosen:
+        topic = str(segment.get("topic") or segment.get("title") or "misc")
+        if ordered_topics and ordered_topics[-1][0] == topic:
+            ordered_topics[-1][1].append(segment)
+        else:
+            ordered_topics.append((topic, [segment]))
+
+    lower_third_done = False
+    for topic, items in ordered_topics:
+        if not lower_third_done:
+            parts.append(make_card(channel, work / f"card-lt-{len(parts)}.mp4",
+                                   duration=2.0, kind="lower-third"))
+            lower_third_done = True
+        parts.append(make_card(topic, work / f"card-chapter-{len(parts)}.mp4",
+                               duration=1.5, kind="chapter"))
+        for segment in items:
+            edl = build_edl([segment])
+            part = work / f"cut-{len(parts):03d}.mp4"
+            render(edl, part, preset="veryfast", crf=20, fps=60)
+            parts.append(part)
+
+    joined = work / "joined.mp4"
+    xfade_chain(parts, joined, transition=transition, duration=transition_duration)
+    final = out_dir / "render.mp4"
+    result = run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-i", str(joined),
+                  "-af", f"loudnorm=I={TARGET_LUFS}:TP={TRUE_PEAK}:LRA=11",
+                  "-c:v", "copy", "-c:a", "aac", "-b:a", "192k",
+                  "-movflags", "+faststart", str(final)])
+    if result.returncode != 0:
+        raise RuntimeError(result.stderr.strip()[:300] or "final pass failed")
+
+    packaged = package(chosen, out_dir, title=resolved_title,
+                       premise=f"{len(ordered_topics)} topics from {len(sessions)} session(s).")
+    return {"ok": True, "render": str(final), "title": resolved_title,
+            "topics": [topic for topic, _ in ordered_topics], "segments": len(chosen),
+            "runtime_s": round(probe(final)["duration"], 2), "upload_md": packaged["upload_md"]}
+
+
 def _load(path: str | Path) -> Any:
     return json.loads(Path(path).read_text(encoding="utf-8"))
 
@@ -418,6 +627,9 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser("render"); p.add_argument("edl"); p.add_argument("out")
     p.add_argument("--preset", default="slow"); p.add_argument("--crf", type=int, default=18)
     p = sub.add_parser("verify"); p.add_argument("render"); p.add_argument("edl")
+    p = sub.add_parser("assemble"); p.add_argument("sessions")
+    p.add_argument("--out", default="out"); p.add_argument("--title")
+    p.add_argument("--transition", default="fade"); p.add_argument("--xfade", type=float, default=0.5)
     p = sub.add_parser("package"); p.add_argument("segments")
     p.add_argument("--out", default="out"); p.add_argument("--title")
     p.add_argument("--premise", default=""); p.add_argument("--visibility", default="unlisted")
@@ -441,6 +653,12 @@ def main(argv: list[str] | None = None) -> int:
             print(f"{len(edl['segments'])} cuts, {edl['expected_duration']:.2f}s -> {args.out}"); return 0
         if args.command == "render":
             result = render(_load(args.edl), args.out, preset=args.preset, crf=args.crf)
+            print(json.dumps(result, indent=2)); return 0
+        if args.command == "assemble":
+            data = _load(args.sessions)
+            sessions = data.get("sessions", data) if isinstance(data, dict) else data
+            result = assemble(sessions, args.out, title=args.title,
+                              transition=args.transition, transition_duration=args.xfade)
             print(json.dumps(result, indent=2)); return 0
         if args.command == "package":
             data = _load(args.segments)

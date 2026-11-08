@@ -186,3 +186,99 @@ def test_cli_package_writes_the_sheet(tmp_path: Path) -> None:
     out = tmp_path / "pkg"
     assert cutroom.main(["package", str(source), "--out", str(out), "--premise", "One session."]) == 0
     assert (out / "upload.md").exists()
+
+# -------------------------------------------------------- graphics + assembly
+
+
+def test_title_card_renders_with_text(tmp_path: Path) -> None:
+    card = cutroom.make_card("Local models win", tmp_path / "title.mp4",
+                             subtitle="sovthpaw", duration=1.0)
+    assert card.exists() and card.stat().st_size > 1000
+    info = cutroom.probe(card)
+    assert info["duration"] == pytest.approx(1.0, abs=0.2)
+    assert info["video"]["width"] == 1920 and info["video"]["height"] == 1080
+
+
+def test_chapter_and_lower_third_cards(tmp_path: Path) -> None:
+    assert cutroom.make_card("Discord stories", tmp_path / "ch.mp4",
+                             duration=1.0, kind="chapter").exists()
+    assert cutroom.make_card("sovthpaw", tmp_path / "lt.mp4",
+                             duration=1.0, kind="lower-third").exists()
+
+
+def test_card_text_is_escaped_not_injected(tmp_path: Path) -> None:
+    # a colon or comma would break the drawtext filter if unescaped
+    card = cutroom.make_card("Wait, really: yes", tmp_path / "esc.mp4", duration=1.0)
+    assert card.exists()
+
+
+def test_xfade_chain_reduces_total_by_the_overlap(tmp_path: Path) -> None:
+    a = tmp_path / "a.mp4"; b = tmp_path / "b.mp4"
+    synth(a, seconds=4, tone=220, colour="navy")
+    synth(b, seconds=4, tone=330, colour="darkgreen")
+    out = tmp_path / "xf.mp4"
+    cutroom.xfade_chain([a, b], out, duration=0.5)
+    info = cutroom.probe(out)
+    assert info["duration"] == pytest.approx(7.5, abs=0.4), "two 4s clips minus one 0.5s overlap"
+
+
+def test_group_by_topic_orders_the_strongest_topic_first() -> None:
+    segments = [
+        {"title": "games", "rank": 0.3, "start": 0.0, "end": 10.0},
+        {"title": "local models", "rank": 0.9, "start": 0.0, "end": 10.0},
+        {"title": "games", "rank": 0.4, "start": 20.0, "end": 30.0},
+    ]
+    grouped = cutroom.group_by_topic(segments)
+    assert grouped[0][0] == "local models"
+    assert len(grouped) == 2
+    assert [s["rank"] for s in grouped[1][1]] == [0.4, 0.3], "ranked inside a topic"
+
+
+def test_assemble_organises_across_sessions(tmp_path: Path, session: Path) -> None:
+    """Two 'sessions' with interleaved topics -> one video, topics grouped."""
+    second = tmp_path / "session2.mp4"
+    synth(second, seconds=6, tone=440, colour="maroon")
+
+    sessions = [
+        {"source": str(session), "segments": [
+            {"title": "local models", "topic": "local models", "rank": 0.9,
+             "start": 0.0, "end": 3.5, "source": str(session)},
+            {"title": "games", "topic": "games", "rank": 0.4,
+             "start": 8.0, "end": 11.0, "source": str(session)},
+        ]},
+        {"source": str(second), "segments": [
+            {"title": "local models", "topic": "local models", "rank": 0.7,
+             "start": 0.0, "end": 4.0, "source": str(second)},
+        ]},
+    ]
+    out = tmp_path / "assembled"
+    result = cutroom.assemble(sessions, out, transition_duration=0.25)
+
+    assert result["ok"], result
+    assert Path(result["render"]).exists()
+    assert result["topics"] == ["local models", "games"], "the resumed rant joins its topic"
+    assert result["segments"] == 3
+    assert result["runtime_s"] > 8.0, "cards plus the three cuts"
+    assert Path(result["upload_md"]).exists(), "packaging happens with the render"
+
+    text = Path(result["upload_md"]).read_text()
+    assert result["title"] in text
+
+
+def test_assemble_refuses_a_private_name(tmp_path: Path, session: Path) -> None:
+    sessions = [{"source": str(session), "segments": [
+        {"title": "x", "topic": "x", "rank": 0.5, "start": 0.0, "end": 2.0,
+         "source": str(session)}]}]
+    with pytest.raises(ValueError, match="must not contain"):
+        cutroom.assemble(sessions, tmp_path / "out", title="Chris rants about it")
+
+
+def test_cli_assemble(tmp_path: Path, session: Path) -> None:
+    import json as _json
+    payload = {"sessions": [{"source": str(session), "segments": [
+        {"title": "one", "topic": "one", "rank": 0.8, "start": 0.0, "end": 3.0,
+         "source": str(session)}]}]}
+    src = tmp_path / "sessions.json"
+    src.write_text(_json.dumps(payload), encoding="utf-8")
+    assert cutroom.main(["assemble", str(src), "--out", str(tmp_path / "a")]) == 0
+    assert (tmp_path / "a" / "render.mp4").exists()
