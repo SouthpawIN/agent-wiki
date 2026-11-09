@@ -1,7 +1,7 @@
 ---
 type: index
 title: Fleet
-updated: 2026-11-08
+updated: 2026-11-09
 tags: [fleet, index]
 ---
 
@@ -15,26 +15,26 @@ method the other nine run on. Status legend: `live` (running now), `seeding`
 |---|---|---|---|---|---|
 | [[bots/bot-wiki/BOT\|bot-wiki]] | Klerik | the method itself | live | 1 | — |
 | [[bots/hermes/BOT\|hermes]] | Mesh | one Hermes across devices | live | 1 | devices must sign in |
-| [[bots/turbofit/BOT\|turbofit]] | TurboSouth | TurboFit support + fit matrix | seeding | 0 | Darwin 125 GiB download; 8 GB card for the smoke test |
+| [[bots/turbofit/BOT\|turbofit]] | TurboSouth | TurboFit support + fit matrix | seeding | 0 | Darwin 125 GiB download; 8 GB card for the smoke test; Arete on the unified ladder |
 | [[bots/pocketshop/BOT\|pocketshop]] | Binder | MTG card flipping | seeding | 0 | printer, eBay token, fee + restock limits |
 | [[bots/youtube/BOT\|youtube]] | Cutroom | Discord rants → YouTube | seeding | 0 | OBS output path; channel identity; whisper weights |
 | [[bots/ai-daw/BOT\|ai-daw]] | Riff | music generation plugin | seeding | 0 | GPU host for ACE-Step |
-| [[bots/anser/BOT\|anser]] | Anser | mod answer bot | seeding | 0 | X read credentials |
-| [[bots/kart-racer/BOT\|kart-racer]] | Apex | **Nous Racers** — Unity kart racer | seeding | 0 | first Play-mode test |
+| [[bots/anser/BOT\|anser]] | Anser | mod answer bot | seeding | 0 | X read credentials; channel list + mention policy |
+| [[bots/kart-racer/BOT\|kart-racer]] | Apex | **Nous Racers** — Unity kart racer | seeding | 0 | first Play-mode test; a controller to tune deadzones |
 | [[bots/ssi/BOT\|ssi]] | Beacon | TX benefits paperwork | blocked | 0 | program list + documents |
 
 ## What is built, not just specified
 
 | Bot | Working artifact | Proof |
 |---|---|---|
-| bot-wiki | `scripts/verify_bots.py`, `tools/publish_skills.py`, `fleet-reconcile` cron | 9 bots published as skills; loop has run and committed |
+| bot-wiki | `scripts/verify_bots.py`, `tools/publish_skills.py`, `fleet-reconcile` cron | 9 bots + the shared `sovthpaw-voice` skill published; loop has run and committed |
 | hermes | tailnet serve of the web app + 9 bot profiles | https://hermes-vps.tail6ff78b.ts.net:8443/ → 302 to Nous OAuth; `mesh-health` armed 06:30; `hermes profile list` shows all nine |
-| turbofit | 14 catalog variants + recipes + manifest + matrix | [PR #51](https://github.com/SouthpawIN/turbofit/pull/51), 936 tests pass |
+| turbofit | 62 catalog variants + recipes + manifest + matrix | [PR #51](https://github.com/SouthpawIN/turbofit/pull/51), 936 tests pass |
 | pocketshop | `restock_ev.py` decision math | [PR #2](https://github.com/SouthpawIN/pocket-shop/pull/2), 13 tests |
 | youtube | `scripts/cutroom.py` render + package | 14 tests on synthetic media |
 | ai-daw | `plugin/` — six `daw_*` tools, adapters, renderer | 14 tests, real audio via ffmpeg |
 | anser | `scripts/corpus.py` fetch/cache/cite/refuse | 12 tests, import mode needs no credentials |
-| kart-racer | Unity project at [SouthpawIN/nous-racers](https://github.com/SouthpawIN/nous-racers): 7 C# scripts + 35-character roster | 8 roster tests; `tools/check_project.py` ok; **not yet compiled** — needs a Unity editor |
+| kart-racer | Unity project at [SouthpawIN/nrcu-kart](https://github.com/SouthpawIN/nrcu-kart): 7 C# scripts + 35-character roster | 8 roster tests; `tools/check_project.py` ok; **not yet compiled** — needs a Unity editor |
 | ssi | `scripts/casefile.py` intake/deadlines/review/fill | 9 tests on synthetic AcroForm PDFs |
 
 ## Cross-bot dependencies
