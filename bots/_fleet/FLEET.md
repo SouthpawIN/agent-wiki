@@ -1,7 +1,7 @@
 ---
 type: index
 title: Fleet
-updated: 2026-11-09
+updated: 2026-11-10
 tags: [fleet, index]
 ---
 
@@ -31,7 +31,7 @@ method the other nine run on. Status legend: `live` (running now), `seeding`
 | hermes | tailnet serve of the web app + 9 bot profiles | https://hermes-vps.tail6ff78b.ts.net:8443/ → 302 to Nous OAuth; `mesh-health` armed 06:30; `hermes profile list` shows all nine |
 | turbofit | 62 catalog variants + recipes + manifest + matrix | [PR #51](https://github.com/SouthpawIN/turbofit/pull/51), 936 tests pass |
 | pocketshop | `restock_ev.py` decision math | [PR #2](https://github.com/SouthpawIN/pocket-shop/pull/2), 13 tests |
-| youtube | `scripts/cutroom.py` render + package | 14 tests on synthetic media |
+| youtube | `scripts/cutroom.py` render + package | 27 tests on synthetic media |
 | ai-daw | `plugin/` — six `daw_*` tools, adapters, renderer | 14 tests, real audio via ffmpeg |
 | anser | `scripts/corpus.py` fetch/cache/cite/refuse | 12 tests, import mode needs no credentials |
 | kart-racer | Unity project at [SouthpawIN/nrcu-kart](https://github.com/SouthpawIN/nrcu-kart): 7 C# scripts + 35-character roster | 8 roster tests; `tools/check_project.py` ok; **not yet compiled** — needs a Unity editor |

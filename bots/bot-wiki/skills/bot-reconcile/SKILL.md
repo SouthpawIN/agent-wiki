@@ -52,5 +52,5 @@ python -m senter_agent . --json | jq '.documents, (.proposals|length)'
 python -m senter_agent . --status
 PYTHONPATH=. pytest -q   # tests import senter_agent; bare `pytest -q` fails collection
 # this container's venv has no pypdf and no pip; tests need it on the path:
-#   PYTHONPATH=.:/opt/data/pylibs pytest -q
+#   PYTHONPATH=.:/opt/data/pylibs pytest -q   # ~25 min: youtube's assemble tests render 1080p60 x264; run it in the background, never in a 3-min foreground call
 ```
