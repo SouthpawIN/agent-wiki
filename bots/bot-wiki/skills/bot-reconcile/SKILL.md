@@ -50,7 +50,33 @@ maintainer that can edit its own validator has no validator.
 cd ~/work/agent-wiki
 python -m senter_agent . --json | jq '.documents, (.proposals|length)'
 python -m senter_agent . --status
-PYTHONPATH=. pytest -q   # tests import senter_agent; bare `pytest -q` fails collection
-# this container's venv has no pypdf and no pip; tests need it on the path:
-#   PYTHONPATH=.:/opt/data/pylibs pytest -q   # ~25 min: youtube's assemble tests render 1080p60 x264; run it in the background, never in a 3-min foreground call
+python scripts/verify_bots.py .          # bots=9 skills=N loops=N problems=0
+PYTHONPATH=.:/opt/data/pylibs /opt/data/.local/bin/pytest -q
+# `python -m pytest` fails here: the hermes venv has no pytest. Use the binary.
+# this container's venv has no pypdf either; tests need it on the path.
+# ~25 min: youtube's assemble tests render 1080p60 x264. Run in the background.
 ```
+
+## Pitfall — a corrupt clone from an interrupted run
+
+A cron run killed mid-`fetch` leaves loose objects truncated to **0 bytes**. The
+symptoms look like data loss: `git status` prints `error: object file ... is
+empty`, `git rev-parse HEAD` says `fatal: bad object HEAD`, and the working tree
+holds 0-byte copies of whatever was open (FLEET.md, BOT.md, a SKILL.md).
+
+Repair, in this order — nothing is lost if the commit reached origin:
+
+```bash
+# 1. delete only zero-byte loose objects (never a blanket `git gc`/reset --hard)
+python3 -c "import os;[os.unlink(os.path.join(r,f)) for r,d,fs in os.walk('.git/objects')
+            for f in fs if os.path.getsize(os.path.join(r,f))==0]"
+rm -f .git/AUTO_MERGE .git/index.lock    # a broken AUTO_MERGE ref breaks checkout
+# 2. refetch from origin, then rebuild the tree from HEAD
+git fetch --prune origin && git reset --mixed origin/main && git checkout -- .
+git status --short   # must be clean before reconciling anything
+```
+
+Do this before reading the fleet: reconciling against a 0-byte FLEET.md "fixes"
+the index into nonsense. Both clones (`~/work/agent-wiki` and
+`~/.hermes/wiki`) share one origin and corrupt together — repair both.
+
