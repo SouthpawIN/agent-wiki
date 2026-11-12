@@ -57,6 +57,15 @@ PYTHONPATH=.:/opt/data/pylibs /opt/data/.local/bin/pytest -q
 # ~25 min: youtube's assemble tests render 1080p60 x264. Run in the background.
 ```
 
+## Where the state lives
+
+`.system/` is **gitignored**. Queues, `continuity.md` and `injections.md` exist
+only inside the clone that holds them, so a fresh clone (including
+`~/.hermes/wiki`) starts with no queue at all and every run there claims nothing
+and writes nothing. Work in `~/work/agent-wiki`, then copy `bots/*/.system`
+into the other clone after pushing. An empty queue is a missing clone, not an
+idle fleet — say so instead of exiting quietly.
+
 ## Pitfall — a corrupt clone from an interrupted run
 
 A cron run killed mid-`fetch` leaves loose objects truncated to **0 bytes**. The
