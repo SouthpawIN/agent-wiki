@@ -1,7 +1,7 @@
 ---
 type: index
 title: Fleet
-updated: 2026-11-11
+updated: 2026-11-12
 tags: [fleet, index]
 ---
 
@@ -10,13 +10,15 @@ tags: [fleet, index]
 Nine bots: eight per topic, plus `bot-wiki` (Klerik), which maintains the method
 they all run on. Status legend: `live` (running now), `seeding` (skills written,
 loops not yet armed), `blocked` (needs a human decision). Verified against every
-`bots/*/BOT.md` on 2026-11-11.
+`bots/*/BOT.md` on 2026-11-12: status and live-loop count are read from each
+BOT.md's frontmatter and its own Loops table; "Blocked on" compresses that bot's
+`## Needs from Chris`, never invents one.
 
 | Bot | Callsign | Topic | Status | Live loops | Blocked on |
 |---|---|---|---|---|---|
 | [[bots/bot-wiki/BOT\|bot-wiki]] | Klerik | the method itself | live | 1 | — |
-| [[bots/hermes/BOT\|hermes]] | Mesh | one Hermes across devices | live | 1 | device sign-in; phone OS |
-| [[bots/turbofit/BOT\|turbofit]] | TurboSouth | TurboFit support + fit matrix | seeding | 0 | Darwin 125 GiB download; an 8 GB card for the smoke test; Arete's ladder placement |
+| [[bots/hermes/BOT\|hermes]] | Mesh | one Hermes across devices | live | 1 | device sign-in; phone OS; whether the MacBook keeps a local TurboFit node role |
+| [[bots/turbofit/BOT\|turbofit]] | TurboSouth | TurboFit support + fit matrix | seeding | 0 | Darwin 125.3 GiB download decision; Arete on the unified ladder; an 8 GB card for the smoke test |
 | [[bots/pocketshop/BOT\|pocketshop]] | Binder | MTG card flipping | seeding | 0 | printer IP; eBay token; fee + restock limits |
 | [[bots/youtube/BOT\|youtube]] | Cutroom | Discord rants → YouTube | seeding | 0 | OBS output path; a 30-minute sample; channel identity |
 | [[bots/ai-daw/BOT\|ai-daw]] | Riff | music generation plugin | seeding | 0 | GPU host for ACE-Step; plugin vs existing DAW UI |
@@ -28,7 +30,7 @@ loops not yet armed), `blocked` (needs a human decision). Verified against every
 
 | Bot | Working artifact | Proof |
 |---|---|---|
-| bot-wiki | `scripts/verify_bots.py`, `tools/publish_skills.py`, `fleet-reconcile` cron | 9 bots + the shared `sovthpaw-voice` skill published; loop has run and committed |
+| bot-wiki | `scripts/verify_bots.py`, `tools/publish_skills.py`, `fleet-reconcile` cron | 9 bots + the shared `sovthpaw-voice` and `wifi-scanner-control` skills; loop has run and committed |
 | hermes | tailnet serve of the web app + 9 bot profiles | https://hermes-vps.tail6ff78b.ts.net:8443/ → 302 to Nous OAuth; `mesh-health` armed 06:30; `hermes profile list` shows all nine |
 | turbofit | 62 catalog variants + recipes + manifest + matrix | [PR #51](https://github.com/SouthpawIN/turbofit/pull/51), 936 tests pass |
 | pocketshop | `restock_ev.py` decision math | [PR #2](https://github.com/SouthpawIN/pocket-shop/pull/2), 13 tests |
@@ -45,6 +47,13 @@ loops not yet armed), `blocked` (needs a human decision). Verified against every
 - `hermes`: the 443 serve proxy points at `127.0.0.1:8788` (nothing listening),
   not the documented `8091`; `:9119` binds `0.0.0.0`. Recorded in its own log,
   unfixed.
+- `bots/_fleet/skills/*` (`sovthpaw-voice`, `wifi-scanner-control`) is not
+  installed by `tools/publish_skills.py`, which renders `bots/*/BOT.md` only.
+  Queued; needs a `tools/` change Klerik may not make.
+- `.system/` is gitignored, so queues and injections are per-clone state. The
+  clone at `~/.hermes/wiki` carried none on 2026-11-12; the maintainer edits
+  `~/work/agent-wiki` and mirrors them. Two clones, one queue, is a fork waiting
+  to happen — worth making `.system/` tracked or fixing the mirroring.
 
 ## Cross-bot dependencies
 
@@ -52,7 +61,8 @@ loops not yet armed), `blocked` (needs a human decision). Verified against every
   be reachable from the phone.
 - `pocketshop` and `ssi` share one physical asset: the Wi-Fi printer/scanner.
   `pocketshop` gets it for card flatbeds, `ssi` for documents. Neither may
-  reconfigure it without telling the other (queue item in both).
+  reconfigure it without telling the other (queue item in both). The runtime
+  contract between them is `bots/_fleet/skills/wifi-scanner-control`.
 - `turbofit` computes the local hardware budget that `ai-daw` and `youtube`
   want for local inference. TurboSouth publishes the matrix; the other two read it.
 
