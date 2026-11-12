@@ -29,10 +29,13 @@ each video is one coherent takeaway, cut from wherever he actually said it.
 
 ## Owns
 
-- `bots/youtube/scripts/cutroom.py` — the deterministic renderer: probe, silence
-  detection, segmentation, EDL, cut/concat/loudnorm, verification. Seven tests in
-  `bots/youtube/tests/` run it on synthetic media, so the renderer is proven
-  before a single recording exists.
+- `bots/youtube/scripts/cutroom.py` — the renderer: probe, silences, segments,
+  EDL, cut/concat/loudnorm, verify, cards, crossfades, `assemble`, `package`.
+- `bots/youtube/scripts/transcribe.py` — the one stage that needs weights. It is a
+  seam, not a model: shell out to whisper.cpp, normalise to `{words, text}`. All
+  the judgement (hooks, topics, ranking) stays in cutroom.py and stays testable.
+  Runs locally or on omarchy over `tailscale ssh` — omarchy has 2x RTX 3090.
+- 27 tests in `bots/youtube/tests/` on synthetic media.
 - `/opt/data/media/incoming/` — OBS output lands here (symlink or rsync from omarchy).
 - `/opt/data/media/work/<session>/` — per-session artifacts (transcript, segments, EDL).
 - `/opt/data/media/out/<slug>/` — render targets, `upload.md` metadata sheet.
@@ -93,4 +96,5 @@ each video is one coherent takeaway, cut from wherever he actually said it.
 
 - 2026-11-07 — bot seeded; pipeline specified; no media ingested yet.
 - 2026-11-07 — deterministic half implemented: `scripts/cutroom.py` (probe → silences → segments → EDL → render → verify), 7 synthetic-media tests green. Dead air is dropped at pause boundaries; transcription still needs whisper weights.
+- 2026-11-08 — transcription stage added (`transcribe.py`), local or over the tailnet to omarchy. Still needs a whisper build on the GPU box; the pipeline works without it, just segmenting on pauses instead of topics.
 - 2026-11-08 — packaging added: `cutroom.py package` writes `upload.md` with title (front-loaded, ≤60 chars), chapters (first always 0:00, sub-10s merged), deduped tags, thumbnail prompt, and `visibility: unlisted`. It refuses to emit a private name — the public handle is sovthpaw. 14 renderer/packaging tests green.

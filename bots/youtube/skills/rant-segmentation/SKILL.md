@@ -15,6 +15,20 @@ Input: `transcript.json` (word-level timestamps). Output: `segments.json`.
 This is the skill that decides what the video is *about*; everything downstream
 inherits its mistakes.
 
+## Getting the transcript
+
+`bots/youtube/scripts/transcribe.py <media> [--host omarchy]` produces
+`{words: [{start, end, text}], text}`. Word timestamps are the input this skill
+needs; with a GPU box (omarchy, 2x RTX 3090) run it there:
+
+```bash
+python bots/youtube/scripts/transcribe.py session.mkv \
+    --host omarchy --model models/ggml-large-v3-turbo.bin
+```
+
+Without a transcript the pipeline still runs, but segmentation falls back to pause
+gaps only — you get cuts, not topics.
+
 ## Procedure
 
 1. **Load words**, not lines. Lines are an artifact of whisper's chunking and
