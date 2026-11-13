@@ -1,7 +1,7 @@
 ---
 type: index
 title: Fleet
-updated: 2026-11-12
+updated: 2026-11-13
 tags: [fleet, index]
 ---
 
@@ -10,9 +10,12 @@ tags: [fleet, index]
 Nine bots: eight per topic, plus `bot-wiki` (Klerik), which maintains the method
 they all run on. Status legend: `live` (running now), `seeding` (skills written,
 loops not yet armed), `blocked` (needs a human decision). Verified against every
-`bots/*/BOT.md` on 2026-11-12: status and live-loop count are read from each
+`bots/*/BOT.md` on 2026-11-13: status and live-loop count are read from each
 BOT.md's frontmatter and its own Loops table; "Blocked on" compresses that bot's
-`## Needs from Chris`, never invents one.
+`## Needs from Chris`, never invents one. Both `live` loops are backed by real
+cron jobs, not just declared state — `fleet-reconcile` at `0 6 * * *` and
+`mesh-health` at `30 6 * * *`, both in the `default` profile with this wiki as
+workdir. A loop whose BOT.md says `live` with no job behind it is an index bug.
 
 | Bot | Callsign | Topic | Status | Live loops | Blocked on |
 |---|---|---|---|---|---|
@@ -44,6 +47,13 @@ BOT.md's frontmatter and its own Loops table; "Blocked on" compresses that bot's
 
 - `ai-daw/stem-separation` and `anser/faq-distill` exist on disk but are not yet
   declared in their own Skills tables — only the owning bot edits its BOT.md.
+  Open since 2026-11-10 and 2026-11-11; the validator counts them (33 skills) but
+  neither bot's published skill lists them, so the procedure exists and is
+  unreachable from the bot that owns it.
+- `ssi`: the program inventory the fleet queue still lists as missing to-do work
+  is already written into `bots/ssi/BOT.md` (six programs, first form each,
+  2026-11-07). What is missing is Chris's per-child status, not the list — the
+  queue row was reworded on 2026-11-13 rather than left to read as unstarted.
 - `hermes`: the 443 serve proxy points at `127.0.0.1:8788` (nothing listening),
   not the documented `8091`; `:9119` binds `0.0.0.0`. Recorded in its own log,
   unfixed.
@@ -54,6 +64,19 @@ BOT.md's frontmatter and its own Loops table; "Blocked on" compresses that bot's
   clone at `~/.hermes/wiki` carried none on 2026-11-12; the maintainer edits
   `~/work/agent-wiki` and mirrors them. Two clones, one queue, is a fork waiting
   to happen — worth making `.system/` tracked or fixing the mirroring.
+- Both clones were corrupt again at the 2026-11-13 run: five zero-byte loose
+  objects in `~/.hermes/wiki`, `HEAD` unreadable, no working tree. The documented
+  repair (delete only 0-byte objects, `git fetch`, `git reset --mixed
+  origin/main`, `git checkout -- .`) restored both with nothing lost —
+  `43ea9aa` on `main`. The corruption is not a one-off: the cron job's workdir is
+  the clone it is repairing, so an interrupted run damages its own checkout
+  first. Nothing in the wiki can prevent that; only a worktree the job does not
+  share (or a re-clone step at the start of the run) can.
+- `pocketshop` ↔ `ssi` flatbed arbitration is one table in
+  `bots/_fleet/skills/wifi-scanner-control` (07:00–19:00 cards, 19:00–07:00
+  documents, `deadline-watch` outranks both). It is written but unpublished —
+  same `publish_skills.py` gap as below — so neither bot's installed skill
+  contains it yet.
 
 ## Cross-bot dependencies
 

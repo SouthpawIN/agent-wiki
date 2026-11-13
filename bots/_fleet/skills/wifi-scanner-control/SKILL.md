@@ -1,7 +1,7 @@
 ---
 name: wifi-scanner-control
 description: The shared protocol for driving the one flatbed scanner both bots use.
-version: 1.0.0
+version: 1.1.0
 author: Klerik
 license: MIT
 metadata:
@@ -45,7 +45,7 @@ appears in two places is a bug the day the router hands out a new lease.
    ```bash
    exec 9>data/scanner.lock
    flock -n 9 || { echo "device busy: $(cat data/scanner.owner 2>/dev/null)"; exit 3; }
-   echo "<bot> <job-id> $(date -Is)" > data/scanner.owner
+   echo "<bot> <job-id> $$ $(date -Is)" > data/scanner.owner
    ```
 
    `flock -n` failing is a normal outcome, not an error: report who holds it and
@@ -74,6 +74,33 @@ appears in two places is a bug the day the router hands out a new lease.
    line to the bot's own ledger naming job, count, and device URI, so the other
    bot can see the last clean scan without opening a file.
 
+## Stale hand-off (a job that died holding the sheet)
+
+The `flock` is the device's authority; `data/scanner.owner` is only a note. They
+disagree exactly when a job was killed mid-batch, and that is the case worth
+reading the note for:
+
+- **Owner file exists, lock is free** → the previous holder died. The kernel
+  releases the flock when the process goes; it does not clean up the file. The
+  device is yours, but the prior batch is **unverified**: read that bot's ledger,
+  then re-scan from the first card or page the ledger does not name. Never append
+  to a half-written batch — a batch that resumes at the wrong sheet silently
+  labels every later card with the wrong sku.
+- **`flock -n` fails and the owner line is under 120 s old** → a live batch.
+  Report the holder, skip to the next queue item, next tick. Do not wait, do not
+  kill it: a killed card batch loses the sheet on the glass.
+- **`flock -n` fails and the owner line names a pid that is gone** (`kill -0
+  <pid>` fails) → the lock was inherited by something that is not that job. Take
+  the device, log `stale <bot> <job-id>` in your ledger, and treat the previous
+  batch as unverified by the rule above.
+- Record the crash so the other bot is not left guessing: append
+  `crash <bot> <job-id> <pages-scanned>` to your own ledger and file one
+  `[BOTS]` line in the fleet queue. A crashed batch writes no hand-off line, so
+  the ledger is the only place the gap is visible.
+
+The `$$` in the owner line is what makes this checkable; a line without a pid
+cannot be diagnosed and is treated as live until the clock window changes hands.
+
 ## Collision policy
 
 | Window (local) | Owner | Job |
@@ -83,9 +110,14 @@ appears in two places is a bug the day the router hands out a new lease.
 
 The window is a default, not a gate: a deadline-bound document outranks cards at
 any hour (`ssi/loops/deadline-watch` wins), and a card batch already holding the
-lock is never interrupted mid-sheet. Neither bot changes `scanner.json` (dpi,
-mode, source, ADF) without a `[BOTS]` line — a silent ADF switch mid-batch
-crops half a card and the loss is invisible until grading.
+lock is never interrupted mid-sheet. Every scheduled job currently falls inside
+its owner's window except `deadline-watch` at 07:00 — the hand-over minute — which
+the precedence rule covers, so neither bot needs a special case. This table is the
+whole agreement between Binder and Beacon: no per-job negotiation, no calendar.
+
+Neither bot changes `scanner.json` (dpi, mode, source, ADF) without a `[BOTS]`
+line — a silent ADF switch mid-batch crops half a card and the loss is invisible
+until grading.
 
 ## Verification
 
@@ -100,6 +132,7 @@ crops half a card and the loss is invisible until grading.
 | Symptom | Cause | Fix |
 |---|---|---|
 | `flock -n` fails | other bot holds the flatbed | read `owner`, skip this job, retry next tick |
+| lock free, `owner` file still there | previous holder was killed | take it, ledger `crash`, re-scan from the last good page — see *Stale hand-off* |
 | `scanimage: open of device failed: Invalid argument` | stale URI after DHCP moved the device | re-read `scanner.json`; if the URI is old, file a `[BOTS]` line, do not edit it |
 | Black page | lid not initialised, or `--source ADF` with empty feeder | re-run once with `--source Flatbed` |
 | Pages reversed in PDF | ADF duplex guess | print `--source Flatbed`, one page per call |
